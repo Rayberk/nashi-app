@@ -19,6 +19,10 @@ internal static class ToolSetupChecks
             File.Delete(Path.Combine(target,"ready"));File.WriteAllText(Path.Combine(target,"partial"),"rollback");
             try{ToolInstallation.Publish(second,target,p=>{if(p==second){Directory.Delete(second,true);return true;}return false;});throw new Exception("Vanished stage published");}catch(IOException){check(File.ReadAllText(Path.Combine(target,"partial"))=="rollback","Failed replacement did not restore installed tools");}
             File.WriteAllText(Path.Combine(target,"zero.exe"),"");check(!ToolInstallation.UsableFile(Path.Combine(target,"zero.exe")),"Empty placeholder must not count as installed tool");
+            var platform=Path.Combine(directory,"platform tools");Directory.CreateDirectory(platform);var suffix=OperatingSystem.IsWindows()?".exe":"";
+            foreach(var name in new[]{"ffmpeg","ffprobe","yt-dlp"})File.WriteAllText(Path.Combine(platform,name+suffix),"x");File.WriteAllText(Path.Combine(platform,OperatingSystem.IsWindows()?"deno":"deno.exe"),"x");
+            check(!new Toolchain(platform).Ready,"A tool named for another platform must not count as installed");
+            File.WriteAllText(Path.Combine(platform,"deno"+suffix),"x");check(new Toolchain(platform).Ready&&new Toolchain(platform).Executable("deno")==Path.Combine(platform,"deno"+suffix),"Tools must use this platform's executable names");
         }
         finally{Directory.Delete(directory,true);}
     }

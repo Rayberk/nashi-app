@@ -10,6 +10,11 @@ public sealed record ToolSetupStatus(bool MediaReady, bool OfficeReady)
 public static class ToolInstallation
 {
     public static bool UsableFile(string path) => File.Exists(path) && new FileInfo(path).Length > 0;
+    /// Linux does not keep the executable bit when a download is moved or unpacked.
+    public static void MakeExecutable(string path)
+    {
+        if (!OperatingSystem.IsWindows()) File.SetUnixFileMode(path, UnixFileMode.UserRead | UnixFileMode.UserWrite | UnixFileMode.UserExecute | UnixFileMode.GroupRead | UnixFileMode.GroupExecute | UnixFileMode.OtherRead | UnixFileMode.OtherExecute);
+    }
     public static void Publish(string stage, string target, Func<string, bool> complete)
     {
         if (!complete(stage)) throw new InvalidDataException("The downloaded tools are incomplete. Please try setup again.");

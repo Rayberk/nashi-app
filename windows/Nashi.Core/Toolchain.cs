@@ -1,5 +1,7 @@
 using System.IO.Compression;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
+using SharpCompress.Readers;
 
 namespace Nashi.Core;
 
@@ -11,10 +13,11 @@ public sealed class Toolchain(string directory)
     public string Executable(string name)
     {
         if(name is not ("ffmpeg" or "ffprobe" or "yt-dlp" or "deno"))throw new ArgumentException("Unknown tool.");
-        var path=Path.Combine(DirectoryPath,name+".exe");
+        var path=Path.Combine(DirectoryPath,FileName(name));
         if(!ToolInstallation.UsableFile(path))throw new FileNotFoundException("Choose Set up media tools first.");return path;
     }
-    private static bool Complete(string directory)=>new[]{"ffmpeg","ffprobe","yt-dlp","deno"}.All(n=>ToolInstallation.UsableFile(Path.Combine(directory,n+".exe")));
+    private static string FileName(string name)=>OperatingSystem.IsWindows()?name+".exe":name;
+    private static bool Complete(string directory)=>new[]{"ffmpeg","ffprobe","yt-dlp","deno"}.All(n=>ToolInstallation.UsableFile(Path.Combine(directory,FileName(n))));
     public bool Ready=>Complete(DirectoryPath);
     public async Task InstallAsync(IProgress<OperationProgress>? progress=null,CancellationToken token=default)
     {
@@ -23,11 +26,7 @@ public sealed class Toolchain(string directory)
         var stage=Path.Combine(parent,"tools-"+Guid.NewGuid().ToString("N"));Directory.CreateDirectory(stage);
         try
         {
-            var packages=new[]{
-                new Package("FFmpeg 9.0","https://github.com/GyanD/codexffmpeg/releases/download/9.0.2/ffmpeg-9.0.2-full_build.zip","759d0a9831c436a0eb331ad36f236c06cb04aaa0005da46571f0e9d3d9206f6b",["ffmpeg.exe","ffprobe.exe"]),
-                new Package("yt-dlp","https://github.com/yt-dlp/yt-dlp/releases/download/2026.08.19/yt-dlp.exe","66674953fe251b89f4d08c5f0e35e0728679bd67ab3d7d05c0562af101dd3e7a",["yt-dlp.exe"]),
-                new Package("Deno","https://github.com/denoland/deno/releases/download/v2.9.7/deno-x86_64-pc-windows-msvc.zip","a0c3101b4158d1dfb7d6a78a7bf0f3de80c96bb423c152beec8beb22786f2238",["deno.exe"])
-            };
+            var packages=Packages();
             for(var n=0;n<packages.Length;n++)
             {
                 var package=packages[n];var archive=Path.Combine(stage,"package-"+n);
@@ -45,13 +44,39 @@ public sealed class Toolchain(string directory)
                     var notice=zip.Entries.FirstOrDefault(e=>Path.GetFileName(e.FullName).StartsWith("LICENSE",StringComparison.OrdinalIgnoreCase)&&e.Length<1024*1024);
                     notice?.ExtractToFile(Path.Combine(stage,package.Name.Split(' ')[0]+"-LICENSE.txt"));
                 }
+                else if(package.Url.EndsWith(".tar.xz",StringComparison.Ordinal))ExtractTarXz(archive,stage,package,token);
                 else File.Move(archive,Path.Combine(stage,package.Files[0]));
                 if(File.Exists(archive))File.Delete(archive);
+                foreach(var name in package.Files)ToolInstallation.MakeExecutable(Path.Combine(stage,name));
             }
             token.ThrowIfCancellationRequested();
             ToolInstallation.Publish(stage,DirectoryPath,Complete);progress?.Report(new(1,"Media tools ready"));
         }
         finally{if(Directory.Exists(stage))Directory.Delete(stage,true);}
+    }
+    // Linux FFmpeg is pinned to a month-end BtbN build because daily builds are deleted after 14 days.
+    private static Package[] Packages()=>OperatingSystem.IsWindows()?[
+        new Package("FFmpeg 9.0","https://github.com/GyanD/codexffmpeg/releases/download/9.0.2/ffmpeg-9.0.2-full_build.zip","759d0a9831c436a0eb331ad36f236c06cb04aaa0005da46571f0e9d3d9206f6b",["ffmpeg.exe","ffprobe.exe"]),
+        new Package("yt-dlp","https://github.com/yt-dlp/yt-dlp/releases/download/2026.08.19/yt-dlp.exe","66674953fe251b89f4d08c5f0e35e0728679bd67ab3d7d05c0562af101dd3e7a",["yt-dlp.exe"]),
+        new Package("Deno","https://github.com/denoland/deno/releases/download/v2.9.7/deno-x86_64-pc-windows-msvc.zip","a0c3101b4158d1dfb7d6a78a7bf0f3de80c96bb423c152beec8beb22786f2238",["deno.exe"])
+    ]:OperatingSystem.IsLinux()&&RuntimeInformation.OSArchitecture==Architecture.X64?[
+        new Package("FFmpeg 9.0","https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-2026-09-30-13-08/ffmpeg-n9.0.2-17-g2a571b6068-linux64-gpl-9.0.tar.xz","68ee646831adaae2495618346f3bba94ff207ff83bbd34d643e7004730d66269",["ffmpeg","ffprobe"]),
+        new Package("yt-dlp","https://github.com/yt-dlp/yt-dlp/releases/download/2026.08.19/yt-dlp_linux","58162f9bfdc27458ea47bfcb311cf47028f17d8154a8bf7d689861d46399230a",["yt-dlp"]),
+        new Package("Deno","https://github.com/denoland/deno/releases/download/v2.9.7/deno-x86_64-unknown-linux-gnu.zip","c6527f24f4b16031d3ae4fa9f658d5f11534c8d84ce7dc8502420280919c3490",["deno"])
+    ]:throw new PlatformNotSupportedException("Media tools setup supports Windows and Linux x64.");
+    // .NET cannot read xz, so SharpCompress streams the tar and only the wanted files reach the disk.
+    private static void ExtractTarXz(string archive,string stage,Package package,CancellationToken token)
+    {
+        using var file=File.OpenRead(archive);using var reader=ReaderFactory.OpenReader(file);var found=new HashSet<string>();var notice=false;
+        while(reader.MoveToNextEntry())
+        {
+            token.ThrowIfCancellationRequested();var entry=reader.Entry;if(entry.IsDirectory)continue;var name=Path.GetFileName(entry.Key??"");string? output=null;
+            if(package.Files.Contains(name)&&entry.Size>0&&entry.Size<256L*1024*1024){if(!found.Add(name))throw new InvalidDataException("The tool archive contains duplicate files.");output=Path.Combine(stage,name);}
+            else if(!notice&&name.StartsWith("LICENSE",StringComparison.OrdinalIgnoreCase)&&entry.Size<1024*1024){notice=true;output=Path.Combine(stage,package.Name.Split(' ')[0]+"-LICENSE.txt");}
+            if(output is null)continue;if(!string.IsNullOrEmpty(entry.LinkTarget))throw new InvalidDataException("The tool archive contains links.");
+            using var source=reader.OpenEntryStream();using var target=new FileStream(output,FileMode.CreateNew);source.CopyTo(target);
+        }
+        if(found.Count!=package.Files.Length)throw new InvalidDataException("The downloaded tools are incomplete. Please try setup again.");
     }
     private sealed record Package(string Name,string Url,string Sha256,string[] Files);
 }

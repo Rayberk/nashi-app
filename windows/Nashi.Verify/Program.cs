@@ -5,6 +5,8 @@ if(Environment.GetEnvironmentVariable("NASHI_VERIFY_DOWNLOAD_TOOLS")=="1")
 {
     var toolPath=Environment.GetEnvironmentVariable("NASHI_VERIFY_TOOLS_DIRECTORY")??throw new Exception("Set a test tool directory.");
     var tools=new Toolchain(toolPath);if(!tools.Ready)await tools.InstallAsync();
+    // Starting each download proves it is this platform's binary and that it kept its executable bit.
+    await ProcessRunner.RunAsync(tools.Executable("yt-dlp"),["--version"]);await ProcessRunner.RunAsync(tools.Executable("deno"),["--version"]);
     Environment.SetEnvironmentVariable("NASHI_VERIFY_FFMPEG",tools.Executable("ffmpeg"));Environment.SetEnvironmentVariable("NASHI_VERIFY_FFPROBE",tools.Executable("ffprobe"));
 }
 var checks = 0;
@@ -145,6 +147,22 @@ if(Environment.GetEnvironmentVariable("NASHI_VERIFY_FFMPEG") is {} encoder && En
         var finalHash=System.Security.Cryptography.SHA256.HashData(await File.ReadAllBytesAsync(source));
         Check(original.SequenceEqual(finalHash),"Source changed");
         Console.WriteLine(JsonSerializer.Serialize(new{passed=checks,scope="Engine safety plus real FFmpeg conversion, trim, mute, speed, crop, split, join, normalize, snapshots and redaction; Windows UI not claimed"}));
+    }
+    finally{Directory.Delete(directory,true);}
+}
+
+// Optional ExifTool checks install the pinned upstream package beside the test media tools.
+if(Environment.GetEnvironmentVariable("NASHI_VERIFY_DOWNLOAD_TOOLS")=="1"&&Environment.GetEnvironmentVariable("NASHI_VERIFY_TOOLS_DIRECTORY") is {} metadataTools)
+{
+    var metadata=new MetadataService(metadataTools.TrimEnd('/','\\')+" Metadata");await metadata.InstallAsync(null,CancellationToken.None);
+    var directory=Path.Combine(Path.GetTempPath(),"Nashi-Metadata-"+Guid.NewGuid().ToString("N"));Directory.CreateDirectory(directory);
+    try
+    {
+        var photo=Path.Combine(directory,"Fixture ' $().jpg");using(var image=new ImageMagick.MagickImage(ImageMagick.MagickColors.Gold,16,16))image.Write(photo,ImageMagick.MagickFormat.Jpeg);
+        var tagged=await metadata.WriteAsync([photo],directory,false,new Dictionary<string,string>{{"EXIF:Artist","Nashi fixture"}});
+        Check((await metadata.ReadAsync(tagged[0])).GetValueOrDefault("EXIF:Artist")=="Nashi fixture","ExifTool did not write and read back a tag");
+        Check(!(await metadata.ReadAsync(photo)).ContainsKey("EXIF:Artist"),"Metadata editing changed the original");
+        Console.WriteLine(JsonSerializer.Serialize(new{passed=checks,scope="Verified ExifTool download, tag write and read back"}));
     }
     finally{Directory.Delete(directory,true);}
 }
