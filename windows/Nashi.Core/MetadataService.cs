@@ -7,7 +7,8 @@ public sealed class MetadataService(string root)
     public static readonly string[] EditableTags=["EXIF:Artist","EXIF:Copyright","EXIF:ImageDescription","EXIF:Make","EXIF:Model","EXIF:Software","EXIF:DateTimeOriginal","EXIF:CreateDate","EXIF:ModifyDate","EXIF:UserComment","XMP:Title","XMP:Description","XMP:Creator","XMP:Rights","PDF:Title","PDF:Author","PDF:Subject","PDF:Keywords","QuickTime:Title","QuickTime:Artist","QuickTime:Comment","ID3:Title","ID3:Artist","ID3:Album","ID3:Year","ID3:Genre","ID3:Comment"];
     // Windows gets ExifTool with Strawberry Perl; Linux gets the plain Perl script and needs a system perl.
     private static readonly string FileName=OperatingSystem.IsWindows()?"exiftool.exe":"exiftool";
-    public string? Executable=>File.Exists(Path.Combine(root,"metadata-13.59",FileName))?Path.Combine(root,"metadata-13.59",FileName):null;
+    private static bool Ready(string directory)=>File.Exists(Path.Combine(directory,FileName))&&ToolInstallation.CanExecute(Path.Combine(directory,FileName));
+    public string? Executable=>Ready(Path.Combine(root,"metadata-13.59"))?Path.Combine(root,"metadata-13.59",FileName):null;
     public async Task InstallAsync(IProgress<OperationProgress>? progress,CancellationToken token)
     {
         if(Executable is not null)return;var windows=OperatingSystem.IsWindows();
@@ -18,7 +19,7 @@ public sealed class MetadataService(string root)
         {
             var zip=Path.Combine(stage,windows?"exiftool.zip":"exiftool.tar.gz");await VerifiedDownload.FetchAsync(new(url),zip,30_000_000,p=>progress?.Report(new(p*.8,"Downloading ExifTool…")),token);
             await using(var file=File.OpenRead(zip))if(Convert.ToHexString(await SHA256.HashDataAsync(file,token)).ToLowerInvariant()!=sha256)throw new InvalidDataException("Metadata tools checksum mismatch.");
-            var unpack=ArchiveEngine.Extract(zip,stage,null,null,token)[0];var exe=Directory.GetFiles(unpack,script,SearchOption.AllDirectories).Single();var folder=Path.GetDirectoryName(exe)!;if(windows)File.Move(exe,Path.Combine(folder,"exiftool.exe"));ToolInstallation.MakeExecutable(Path.Combine(folder,FileName));token.ThrowIfCancellationRequested();Directory.Move(folder,Path.Combine(root,"metadata-13.59"));progress?.Report(new(1,"Metadata tools ready"));
+            var unpack=ArchiveEngine.Extract(zip,stage,null,null,token)[0];var exe=Directory.GetFiles(unpack,script,SearchOption.AllDirectories).Single();var folder=Path.GetDirectoryName(exe)!;if(windows)File.Move(exe,Path.Combine(folder,"exiftool.exe"));ToolInstallation.MakeExecutable(Path.Combine(folder,FileName));token.ThrowIfCancellationRequested();ToolInstallation.Publish(folder,Path.Combine(root,"metadata-13.59"),Ready);progress?.Report(new(1,"Metadata tools ready"));
         }finally{if(Directory.Exists(stage))Directory.Delete(stage,true);}
     }
     public async Task<IReadOnlyDictionary<string,string>> ReadAsync(string input,CancellationToken token=default)

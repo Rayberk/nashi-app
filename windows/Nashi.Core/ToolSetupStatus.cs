@@ -10,6 +10,8 @@ public sealed record ToolSetupStatus(bool MediaReady, bool OfficeReady)
 public static class ToolInstallation
 {
     public static bool UsableFile(string path) => File.Exists(path) && new FileInfo(path).Length > 0;
+    /// Linux can restore or copy a tool folder without the executable bit.
+    public static bool CanExecute(string path) => OperatingSystem.IsWindows() || (File.GetUnixFileMode(path) & UnixFileMode.UserExecute) != 0;
     /// Linux does not keep the executable bit when a download is moved or unpacked.
     public static void MakeExecutable(string path)
     {

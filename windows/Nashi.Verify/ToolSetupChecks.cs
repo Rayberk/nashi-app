@@ -20,9 +20,17 @@ internal static class ToolSetupChecks
             try{ToolInstallation.Publish(second,target,p=>{if(p==second){Directory.Delete(second,true);return true;}return false;});throw new Exception("Vanished stage published");}catch(IOException){check(File.ReadAllText(Path.Combine(target,"partial"))=="rollback","Failed replacement did not restore installed tools");}
             File.WriteAllText(Path.Combine(target,"zero.exe"),"");check(!ToolInstallation.UsableFile(Path.Combine(target,"zero.exe")),"Empty placeholder must not count as installed tool");
             var platform=Path.Combine(directory,"platform tools");Directory.CreateDirectory(platform);var suffix=OperatingSystem.IsWindows()?".exe":"";
-            foreach(var name in new[]{"ffmpeg","ffprobe","yt-dlp"})File.WriteAllText(Path.Combine(platform,name+suffix),"x");File.WriteAllText(Path.Combine(platform,OperatingSystem.IsWindows()?"deno":"deno.exe"),"x");
+            void Tool(string name){var path=Path.Combine(platform,name);File.WriteAllText(path,"x");ToolInstallation.MakeExecutable(path);}
+            foreach(var name in new[]{"ffmpeg","ffprobe","yt-dlp"})Tool(name+suffix);Tool(OperatingSystem.IsWindows()?"deno":"deno.exe");
             check(!new Toolchain(platform).Ready,"A tool named for another platform must not count as installed");
-            File.WriteAllText(Path.Combine(platform,"deno"+suffix),"x");check(new Toolchain(platform).Ready&&new Toolchain(platform).Executable("deno")==Path.Combine(platform,"deno"+suffix),"Tools must use this platform's executable names");
+            Tool("deno"+suffix);check(new Toolchain(platform).Ready&&new Toolchain(platform).Executable("deno")==Path.Combine(platform,"deno"+suffix),"Tools must use this platform's executable names");
+            if(!OperatingSystem.IsWindows())
+            {
+                File.SetUnixFileMode(Path.Combine(platform,"deno"),UnixFileMode.UserRead|UnixFileMode.UserWrite);check(!new Toolchain(platform).Ready,"A tool without the executable bit must not count as installed");
+                var metadata=Path.Combine(directory,"metadata");var exiftool=Path.Combine(metadata,"metadata-13.59","exiftool");Directory.CreateDirectory(Path.GetDirectoryName(exiftool)!);File.WriteAllText(exiftool,"x");
+                check(new MetadataService(metadata).Executable is null,"Metadata tools without the executable bit must not count as installed");
+                ToolInstallation.MakeExecutable(exiftool);check(new MetadataService(metadata).Executable==exiftool,"Executable metadata tools must count as installed");
+            }
         }
         finally{Directory.Delete(directory,true);}
     }

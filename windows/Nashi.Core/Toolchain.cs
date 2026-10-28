@@ -14,10 +14,10 @@ public sealed class Toolchain(string directory)
     {
         if(name is not ("ffmpeg" or "ffprobe" or "yt-dlp" or "deno"))throw new ArgumentException("Unknown tool.");
         var path=Path.Combine(DirectoryPath,FileName(name));
-        if(!ToolInstallation.UsableFile(path))throw new FileNotFoundException("Choose Set up media tools first.");return path;
+        if(!ToolInstallation.UsableFile(path)||!ToolInstallation.CanExecute(path))throw new FileNotFoundException("Choose Set up media tools first.");return path;
     }
     private static string FileName(string name)=>OperatingSystem.IsWindows()?name+".exe":name;
-    private static bool Complete(string directory)=>new[]{"ffmpeg","ffprobe","yt-dlp","deno"}.All(n=>ToolInstallation.UsableFile(Path.Combine(directory,FileName(n))));
+    private static bool Complete(string directory)=>new[]{"ffmpeg","ffprobe","yt-dlp","deno"}.All(n=>ToolInstallation.UsableFile(Path.Combine(directory,FileName(n)))&&ToolInstallation.CanExecute(Path.Combine(directory,FileName(n))));
     public bool Ready=>Complete(DirectoryPath);
     public async Task InstallAsync(IProgress<OperationProgress>? progress=null,CancellationToken token=default)
     {
