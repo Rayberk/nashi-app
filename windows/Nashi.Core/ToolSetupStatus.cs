@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Nashi.Core;
 
 public enum ToolGroup { Media, Office }
@@ -11,7 +13,8 @@ public static class ToolInstallation
 {
     public static bool UsableFile(string path) => File.Exists(path) && new FileInfo(path).Length > 0;
     /// Linux can restore or copy a tool folder without the executable bit.
-    public static bool CanExecute(string path) => OperatingSystem.IsWindows() || (File.GetUnixFileMode(path) & UnixFileMode.UserExecute) != 0;
+    public static bool CanExecute(string path) => OperatingSystem.IsWindows() || access(path, 1) == 0;
+    [DllImport("libc", SetLastError = true)] private static extern int access([MarshalAs(UnmanagedType.LPUTF8Str)] string path, int mode);
     /// Linux does not keep the executable bit when a download is moved or unpacked.
     public static void MakeExecutable(string path)
     {

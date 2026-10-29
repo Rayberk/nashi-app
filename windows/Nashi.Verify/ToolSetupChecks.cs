@@ -32,6 +32,12 @@ internal static class ToolSetupChecks
                 var metadata=Path.Combine(directory,"metadata");var exiftool=Path.Combine(metadata,"metadata-13.59","exiftool");Directory.CreateDirectory(Path.GetDirectoryName(exiftool)!);File.WriteAllText(exiftool,"x");
                 check(new MetadataService(metadata).Executable is null,"Metadata tools without the executable bit must not count as installed");
                 ToolInstallation.MakeExecutable(exiftool);check(new MetadataService(metadata).Executable==exiftool,"Executable metadata tools must count as installed");
+                var mode=Path.Combine(directory,"mode");File.WriteAllText(mode,"x");
+                File.SetUnixFileMode(mode,UnixFileMode.UserRead|UnixFileMode.UserWrite|UnixFileMode.GroupRead|UnixFileMode.OtherRead);check(!ToolInstallation.CanExecute(mode),"A 0644 file must not be executable");
+                ToolInstallation.MakeExecutable(mode);check(ToolInstallation.CanExecute(mode),"A 0755 file must be executable");
+                File.SetUnixFileMode(mode,UnixFileMode.OtherExecute);check(!ToolInstallation.CanExecute(mode),"Only the other execute bit must not make the owner's file executable");
+                check(ToolInstallation.CanExecute("/bin/sh"),"System executables owned by root must be executable");
+                check(!ToolInstallation.CanExecute(Path.Combine(directory,"missing")),"A missing file must not be executable");
             }
             var bundled=Path.Combine(directory,"bundled");var installed=Path.Combine(directory,"installed");Directory.CreateDirectory(installed);
             foreach(var name in new[]{"ffmpeg","ffprobe","yt-dlp","deno"})Write(Path.Combine(installed,name+suffix),"tool");
