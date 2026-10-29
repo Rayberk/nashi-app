@@ -38,6 +38,8 @@ do {
         ]
         for (key,data) in optionalDefaults where supplied[key] is [String:Any] { defaults[key]=try JSONSerialization.jsonObject(with:data) }
         options=try JSONDecoder().decode(OperationOptions.self,from:JSONSerialization.data(withJSONObject:mergeDefaults(defaults,with:supplied)));paths.removeSubrange(i...i+1)
+        // The decoder drops keys it does not know, so a misspelled option would silently fall back to its default.
+        if let key=unknownKey(supplied,in:try JSONSerialization.jsonObject(with:JSONEncoder().encode(options)) as? [String:Any] ?? [:]) { throw NashiError.invalidInput("Unknown option: \(key)") }
     }
     let operation:Operation
     if args[1]=="convert" { operation = .convert(args[2]) }
@@ -51,6 +53,13 @@ do {
 
     }
 
+    private static func unknownKey(_ supplied:[String:Any],in decoded:[String:Any],prefix:String="")->String? {
+        for (key,value) in supplied.sorted(by:{$0.key<$1.key}) where !(value is NSNull) {
+            guard let known=decoded[key] else { return prefix+key }
+            if let value=value as? [String:Any],let known=known as? [String:Any],let nested=unknownKey(value,in:known,prefix:prefix+key+".") { return nested }
+        }
+        return nil
+    }
     private static func mergeDefaults(_ defaults:[String:Any],with supplied:[String:Any])->[String:Any] {
         defaults.merging(supplied) { old,new in
             if let old=old as? [String:Any],let new=new as? [String:Any] { return mergeDefaults(old,with:new) }
