@@ -79,6 +79,20 @@ public sealed class FFmpegProgress(double? duration, Action<OperationProgress> r
 internal static class JobObjectTracker
 {
     private static readonly IntPtr JobHandle = InitJob();
+    private static readonly System.Collections.Concurrent.ConcurrentDictionary<Process, byte> FallbackProcesses = new();
+    private static int exitRegistered;
+    private static void EnsureExitHandler()
+    {
+        if (System.Threading.Interlocked.Exchange(ref exitRegistered, 1) != 0) return;
+        AppDomain.CurrentDomain.ProcessExit += (_, _) =>
+        {
+            foreach (var p in FallbackProcesses.Keys)
+            {
+                try { if (!p.HasExited) p.Kill(entireProcessTree: true); }
+                catch { }
+            }
+        };
+    }
     private static IntPtr InitJob()
     {
         if (!OperatingSystem.IsWindows()) return IntPtr.Zero;
@@ -117,16 +131,26 @@ internal static class JobObjectTracker
             {
                 if (!process.HasExited && AssignProcessToJobObject(JobHandle, process.Handle))
                     return;
+                var error = Marshal.GetLastWin32Error();
+                Trace.TraceWarning("Failed to assign process to job object: Win32 error {0}.", error);
             }
-            catch { }
+            catch (Exception ex)
+            {
+                Trace.TraceWarning("Exception assigning process to job object: {0}.", ex.Message);
+            }
         }
         try
         {
-            AppDomain.CurrentDomain.ProcessExit += (_, _) =>
+            if (process.HasExited) return;
+            EnsureExitHandler();
+            FallbackProcesses.TryAdd(process, 0);
+            try
             {
-                try { if (!process.HasExited) process.Kill(entireProcessTree: true); }
-                catch { }
-            };
+                process.EnableRaisingEvents = true;
+                process.Exited += (_, _) => FallbackProcesses.TryRemove(process, out _);
+            }
+            catch { }
+            if (process.HasExited) FallbackProcesses.TryRemove(process, out _);
         }
         catch { }
     }

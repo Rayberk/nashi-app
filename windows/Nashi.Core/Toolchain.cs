@@ -97,6 +97,9 @@ public static class VerifiedDownload
             catch(Exception error)when(!token.IsCancellationRequested&&error is HttpRequestException or IOException or TimeoutException or InvalidDataException)
             {
                 last=error;
+            }
+            finally
+            {
                 for(var d=0;d<3&&File.Exists(temporary);d++)
                 {
                     try{File.Delete(temporary);break;}
