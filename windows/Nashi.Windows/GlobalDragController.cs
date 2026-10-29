@@ -103,9 +103,9 @@ internal sealed class GlobalDropWheel:Window
     private WebMediaPayload? Payload(IDataObject data)=>DragPayload.Parse(data,hint());
     private IReadOnlyList<ToolChoice> Choices(string[] files,WebMediaPayload? dataLink,WebMediaPayload? web)
     {
-        // Dragged files win. A link replaces them only when the drag data itself is a YouTube or Instagram page
-        // (browsers may attach a temporary thumbnail file). A link guessed from the start point never hides files.
-        if(files.Length>0&&dataLink is not {Kind:"youtube" or "instagramPhotos" or "instagramReel"})
+        // A link carried by the drag data itself (a browser drag) still wins, as before. A link only guessed from
+        // the element under the start point (for example the NVIDIA App overlay) never hides dragged files.
+        if(files.Length>0&&dataLink is null)
         {
             if(mode=="convert")return FeatureCatalog.Formats(files).Select(f=>new ToolChoice("convert:"+f,f.ToUpperInvariant(),"↗")).ToArray();
             if(mode=="actions")return [new("share","Share","◉"),new("float","Float","▣"),new("copy","Copy","▱"),new("move","Move","↗"),new("copyPath","Copy Path","↪"),new("terminal","Terminal",">_")];
