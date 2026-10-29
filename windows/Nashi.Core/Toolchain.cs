@@ -7,17 +7,34 @@ namespace Nashi.Core;
 
 /// First-use setup downloads directly from upstream. Nashi does not redistribute
 /// the upstream executable archives or silently import browser credentials.
-public sealed class Toolchain(string directory)
+/// With a search path, tools the user already installed are reused and setup
+/// downloads only the missing packages; downloaded tools still take priority.
+public sealed class Toolchain(string directory,string? searchPath=null)
 {
+    private static readonly string[] Names=["ffmpeg","ffprobe","yt-dlp","deno"];
     public string DirectoryPath=>Path.GetFullPath(directory);
     public string Executable(string name)
     {
-        if(name is not ("ffmpeg" or "ffprobe" or "yt-dlp" or "deno"))throw new ArgumentException("Unknown tool.");
-        var path=Path.Combine(DirectoryPath,FileName(name));
-        if(!ToolInstallation.UsableFile(path)||!ToolInstallation.CanExecute(path))throw new FileNotFoundException("Choose Set up media tools first.");return path;
+        if(!Names.Contains(name))throw new ArgumentException("Unknown tool.");
+        return Find(name,DirectoryPath)??throw new FileNotFoundException("Choose Set up media tools first.");
     }
     private static string FileName(string name)=>OperatingSystem.IsWindows()?name+".exe":name;
-    private static bool Complete(string directory)=>new[]{"ffmpeg","ffprobe","yt-dlp","deno"}.All(n=>ToolInstallation.UsableFile(Path.Combine(directory,FileName(n)))&&ToolInstallation.CanExecute(Path.Combine(directory,FileName(n))));
+    private static bool Usable(string path)=>ToolInstallation.UsableFile(path)&&ToolInstallation.CanExecute(path);
+    private string? Find(string name,string bundled){var path=Path.Combine(bundled,FileName(name));return Usable(path)?path:Installed(name);}
+    private string? Installed(string name)
+    {
+        foreach(var entry in (searchPath??"").Split(Path.PathSeparator,StringSplitOptions.RemoveEmptyEntries|StringSplitOptions.TrimEntries))
+        {
+            // Relative entries such as "." would resolve against whatever folder Nashi was started from.
+            var folder=entry.Trim('"');if(folder.IndexOfAny(Path.GetInvalidPathChars())>=0||!Path.IsPathFullyQualified(folder))continue;
+            var path=Path.Combine(folder,FileName(name));
+            // Package managers such as WinGet publish tools as symbolic links whose own length is zero.
+            try{if(new FileInfo(path).ResolveLinkTarget(true) is FileInfo target)path=target.FullName;}catch(IOException){continue;}catch(UnauthorizedAccessException){continue;}
+            if(Usable(path))return path;
+        }
+        return null;
+    }
+    private bool Complete(string directory)=>Names.All(n=>Find(n,directory) is not null);
     public bool Ready=>Complete(DirectoryPath);
     public async Task InstallAsync(IProgress<OperationProgress>? progress=null,CancellationToken token=default)
     {
@@ -26,7 +43,7 @@ public sealed class Toolchain(string directory)
         var stage=Path.Combine(parent,"tools-"+Guid.NewGuid().ToString("N"));Directory.CreateDirectory(stage);
         try
         {
-            var packages=Packages();
+            var packages=Packages().Where(p=>p.Files.Any(f=>Installed(Path.GetFileNameWithoutExtension(f)) is null)).ToArray();
             for(var n=0;n<packages.Length;n++)
             {
                 var package=packages[n];var archive=Path.Combine(stage,"package-"+n);
@@ -50,6 +67,8 @@ public sealed class Toolchain(string directory)
                 foreach(var name in package.Files)ToolInstallation.MakeExecutable(Path.Combine(stage,name));
             }
             token.ThrowIfCancellationRequested();
+            // Publish replaces the whole folder, so carry over downloaded tools whose package was skipped because PATH has them.
+            if(Directory.Exists(DirectoryPath))foreach(var file in Directory.GetFiles(DirectoryPath)){var kept=Path.Combine(stage,Path.GetFileName(file));if(!File.Exists(kept)&&ToolInstallation.UsableFile(file))File.Copy(file,kept);}
             ToolInstallation.Publish(stage,DirectoryPath,Complete);progress?.Report(new(1,"Media tools ready"));
         }
         finally{if(Directory.Exists(stage))Directory.Delete(stage,true);}

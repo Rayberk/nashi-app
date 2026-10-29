@@ -19,8 +19,10 @@ internal static class ToolSetupChecks
             File.Delete(Path.Combine(target,"ready"));File.WriteAllText(Path.Combine(target,"partial"),"rollback");
             try{ToolInstallation.Publish(second,target,p=>{if(p==second){Directory.Delete(second,true);return true;}return false;});throw new Exception("Vanished stage published");}catch(IOException){check(File.ReadAllText(Path.Combine(target,"partial"))=="rollback","Failed replacement did not restore installed tools");}
             File.WriteAllText(Path.Combine(target,"zero.exe"),"");check(!ToolInstallation.UsableFile(Path.Combine(target,"zero.exe")),"Empty placeholder must not count as installed tool");
-            var platform=Path.Combine(directory,"platform tools");Directory.CreateDirectory(platform);var suffix=OperatingSystem.IsWindows()?".exe":"";
-            void Tool(string name){var path=Path.Combine(platform,name);File.WriteAllText(path,"x");ToolInstallation.MakeExecutable(path);}
+            var suffix=OperatingSystem.IsWindows()?".exe":"";
+            void Write(string path,string text){File.WriteAllText(path,text);ToolInstallation.MakeExecutable(path);}
+            var platform=Path.Combine(directory,"platform tools");Directory.CreateDirectory(platform);
+            void Tool(string name)=>Write(Path.Combine(platform,name),"x");
             foreach(var name in new[]{"ffmpeg","ffprobe","yt-dlp"})Tool(name+suffix);Tool(OperatingSystem.IsWindows()?"deno":"deno.exe");
             check(!new Toolchain(platform).Ready,"A tool named for another platform must not count as installed");
             Tool("deno"+suffix);check(new Toolchain(platform).Ready&&new Toolchain(platform).Executable("deno")==Path.Combine(platform,"deno"+suffix),"Tools must use this platform's executable names");
@@ -31,6 +33,17 @@ internal static class ToolSetupChecks
                 check(new MetadataService(metadata).Executable is null,"Metadata tools without the executable bit must not count as installed");
                 ToolInstallation.MakeExecutable(exiftool);check(new MetadataService(metadata).Executable==exiftool,"Executable metadata tools must count as installed");
             }
+            var bundled=Path.Combine(directory,"bundled");var installed=Path.Combine(directory,"installed");Directory.CreateDirectory(installed);
+            foreach(var name in new[]{"ffmpeg","ffprobe","yt-dlp","deno"})Write(Path.Combine(installed,name+suffix),"tool");
+            check(!new Toolchain(bundled).Ready,"Tools on PATH must stay unused without a search path");
+            var found=new Toolchain(bundled,string.Join(Path.PathSeparator,"","relative",'"'+installed+'"'));
+            check(found.Ready&&found.Executable("yt-dlp")==Path.Combine(installed,"yt-dlp"+suffix),"Installed tools on the search path must be reused");
+            check(found.InstallAsync().IsCompletedSuccessfully&&!Directory.Exists(bundled),"Tools on the search path must not be downloaded again");
+            var previous=Environment.CurrentDirectory;Environment.CurrentDirectory=installed;
+            try{check(!new Toolchain(bundled,".").Ready,"Relative search path entries must be ignored");}finally{Environment.CurrentDirectory=previous;}
+            Directory.CreateDirectory(bundled);Write(Path.Combine(bundled,"ffmpeg"+suffix),"pinned");
+            check(found.Executable("ffmpeg")==Path.Combine(bundled,"ffmpeg"+suffix)&&found.Executable("ffprobe")==Path.Combine(installed,"ffprobe"+suffix),"Downloaded tools must take priority over the search path");
+            Write(Path.Combine(installed,"deno"+suffix),"");check(!found.Ready,"Empty search path placeholder must not count as installed tool");
         }
         finally{Directory.Delete(directory,true);}
     }
