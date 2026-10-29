@@ -190,7 +190,9 @@ private enum PagesDOCXReader {
             if let margin = section.first("pgMar") { for (attribute,property) in [("left","leftMargin"),("right","rightMargin"),("top","topMargin"),("bottom","bottomMargin")] { if let value = margin.number(attribute) { page[property] = value / 20 } } }
             model["pageSetup"] = page
             for (reference,property) in [("headerReference","header"),("footerReference","footer")] {
-                if let id = section.first(reference)?.attr("id"), let target = relationships[id], let path = reader.localPath(target), let part = try? xml(path) { model[property] = part.rootElement().map(plainText) }
+                // Pages keeps one header and footer; use the default variant, not even/first-page ones.
+                let entry = section.elements(reference).first { ($0.attr("type") ?? "default") == "default" }
+                if let id = entry?.attr("id"), let target = relationships[id], let path = reader.localPath(target), let part = try? xml(path) { model[property] = part.rootElement().map(plainText) }
             }
         }
         return model
