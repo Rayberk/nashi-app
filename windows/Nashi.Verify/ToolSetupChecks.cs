@@ -1,6 +1,7 @@
 using Nashi.Core;
 internal static class ToolSetupChecks
 {
+    [System.Runtime.InteropServices.DllImport("libc")]private static extern uint geteuid();
     internal static void Run(Action<bool,string> check,string root)
     {
         check(!new ToolSetupStatus(false,false).Ready&&new ToolSetupStatus(false,false).Missing.SequenceEqual(new[]{ToolGroup.Media,ToolGroup.Office}),"Clean profile must offer both tool groups");
@@ -35,7 +36,7 @@ internal static class ToolSetupChecks
                 var mode=Path.Combine(directory,"mode");File.WriteAllText(mode,"x");
                 File.SetUnixFileMode(mode,UnixFileMode.UserRead|UnixFileMode.UserWrite|UnixFileMode.GroupRead|UnixFileMode.OtherRead);check(!ToolInstallation.CanExecute(mode),"A 0644 file must not be executable");
                 ToolInstallation.MakeExecutable(mode);check(ToolInstallation.CanExecute(mode),"A 0755 file must be executable");
-                File.SetUnixFileMode(mode,UnixFileMode.OtherExecute);check(!ToolInstallation.CanExecute(mode),"Only the other execute bit must not make the owner's file executable");
+                File.SetUnixFileMode(mode,UnixFileMode.OtherExecute);if(geteuid()!=0)check(!ToolInstallation.CanExecute(mode),"Only the other execute bit must not make the owner's file executable");
                 check(ToolInstallation.CanExecute("/bin/sh"),"System executables owned by root must be executable");
                 check(!ToolInstallation.CanExecute(Path.Combine(directory,"missing")),"A missing file must not be executable");
             }
