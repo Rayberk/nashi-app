@@ -8,6 +8,7 @@
 "%@ QR codes found." = "%@ codes QR trouvés.";
 "%@ files" = "%@ fichiers";
 "%@ files, ready to go." = "%@ fichiers, prêts à partir.";
+"%@ found" = "%@ trouvés";
 "%@ is enabled" = "%@ est activé";
 "%@ items" = "%@ éléments";
 "%@ selected" = "%@ sélectionnés";
@@ -22,6 +23,7 @@
 "%lld QR codes found." = "%lld codes QR trouvés.";
 "%lld files" = "%lld fichiers";
 "%lld files, ready to go." = "%lld fichiers, prêts à partir.";
+"%lld found" = "%lld trouvés";
 "%lld is enabled" = "%lld est activé";
 "%lld items" = "%lld éléments";
 "%lld selected" = "%lld sélectionnés";
@@ -111,6 +113,8 @@
 "ADD SELECTED RANGE" = "AJOUTER LA PLAGE SÉLECTIONNÉE";
 "ADD SPLIT" = "AJOUTER UNE COUPURE";
 "ADD TO AN EXISTING FLOAT" = "AJOUTER À UN FLOAT EXISTANT";
+"ADD TO FLOAT" = "AJOUTER AU FLOAT";
+"ADDED TO FLOAT." = "AJOUTÉ AU FLOAT.";
 "ADDING PAGES…" = "AJOUT DES PAGES…";
 "ADDITIONAL OPTIONS" = "OPTIONS SUPPLÉMENTAIRES";
 "ALL" = "TOUT";
@@ -176,7 +180,9 @@
 "Add files" = "Ajouter des fichiers";
 "Add or change files" = "Modifier la sélection";
 "Add selected range" = "Ajouter la plage sélectionnée";
+"Add to Float" = "Ajouter au Float";
 "Add to an existing Float" = "Ajouter à un Float existant";
+"Added to Float." = "Ajouté au Float.";
 "Adding pages…" = "Ajout des pages…";
 "Additional options" = "Options supplémentaires";
 "All" = "Tout";
@@ -649,6 +655,7 @@
 "DRAG ACROSS THE PREVIEW TO SELECT THE AREA TO KEEP." = "FAITES GLISSER SUR L’APERÇU POUR SÉLECTIONNER LA ZONE À CONSERVER.";
 "DRAG AN AREA FIRST." = "FAITES D’ABORD GLISSER UNE ZONE.";
 "DRAG AN EXISTING ANNOTATION TO MOVE IT; DRAG ITS HANDLES TO RESIZE. TURN OFF SELECT / MOVE TO DRAW." = "FAITES GLISSER UNE ANNOTATION EXISTANTE POUR LA DÉPLACER ; FAITES GLISSER SES POIGNÉES POUR LA REDIMENSIONNER. DÉSACTIVEZ SÉLECTIONNER / DÉPLACER POUR DESSINER.";
+"DRAG EITHER EDGE TO RESIZE THE RANGE, OR DRAG ITS MIDDLE TO MOVE IT." = "FAITES GLISSER UN BORD POUR REDIMENSIONNER LA PLAGE, OU SON MILIEU POUR LA DÉPLACER.";
 "DRAG INSIDE TO MOVE. DRAG NEAR A CORNER TO RESIZE. DRAG OUTSIDE TO START A NEW SELECTION." = "FAITES GLISSER À L’INTÉRIEUR POUR DÉPLACER. FAITES GLISSER PRÈS D’UN COIN POUR REDIMENSIONNER. FAITES GLISSER À L’EXTÉRIEUR POUR DÉMARRER UNE NOUVELLE SÉLECTION.";
 "DRAG ON THE PREVIEW TO ADD AN AREA. EACH AREA IS SAVED INTO THE NEW COPY." = "FAITES GLISSER SUR L’APERÇU POUR AJOUTER UNE ZONE. CHAQUE ZONE EST ENREGISTRÉE DANS LA NOUVELLE COPIE.";
 "DRAG SHORTCUTS" = "RACCOURCIS DE GLISSER-DÉPOSER";
@@ -724,6 +731,7 @@
 "Drag across the preview to select the area to keep." = "Faites glisser sur l’aperçu pour sélectionner la zone à conserver.";
 "Drag an area first." = "Faites d’abord glisser une zone.";
 "Drag an existing annotation to move it; drag its handles to resize. Turn off Select / Move to draw." = "Faites glisser une annotation existante pour la déplacer ; faites glisser ses poignées pour la redimensionner. Désactivez Sélectionner / Déplacer pour dessiner.";
+"Drag either edge to resize the range, or drag its middle to move it." = "Faites glisser un bord pour redimensionner la plage, ou son milieu pour la déplacer.";
 "Drag inside to move. Drag near a corner to resize. Drag outside to start a new selection." = "Faites glisser à l’intérieur pour déplacer. Faites glisser près d’un coin pour redimensionner. Faites glisser à l’extérieur pour démarrer une nouvelle sélection.";
 "Drag on the preview to add an area. Each area is saved into the new copy." = "Faites glisser sur l’aperçu pour ajouter une zone. Chaque zone est enregistrée dans la nouvelle copie.";
 "Drag shortcuts" = "Raccourcis de glisser-déposer";
@@ -814,6 +822,7 @@
 "FILE TOOLS WHEEL" = "ROUE DES OUTILS DE FICHIER";
 "FILES" = "FICHIERS";
 "FILES ARE PROCESSED LOCALLY ON YOUR MAC." = "LES FICHIERS SONT TRAITÉS LOCALEMENT SUR VOTRE MAC.";
+"FILES COPIED." = "FICHIERS COPIÉS.";
 "FILES COPIED. PASTE THEM WHEREVER YOU NEED." = "FICHIERS COPIÉS. COLLEZ-LES OÙ VOUS VOULEZ.";
 "FILES IN FLOAT" = "FICHIERS DANS FLOAT";
 "FILES MISSING" = "FICHIERS MANQUANTS";
@@ -879,6 +888,7 @@
 "File tools wheel" = "Roue des outils de fichier";
 "Files" = "Fichiers";
 "Files are processed locally on your Mac." = "Les fichiers sont traités localement sur votre Mac.";
+"Files copied." = "Fichiers copiés.";
 "Files copied. Paste them wherever you need." = "Fichiers copiés. Collez-les où vous voulez.";
 "Files in Float" = "Fichiers dans Float";
 "Files missing" = "Fichiers manquants";
@@ -1345,6 +1355,8 @@
 "Open link" = "Ouvrir le lien";
 "Open permission settings…" = "Ouvrir les réglages d’autorisation…";
 "Open wheel" = "Ouvrir la roue";
+"Opened in %@." = "Ouvert dans %@.";
+"Opened in %lld." = "Ouvert dans %lld.";
 "Optional. You can change this in Settings." = "Facultatif. Vous pouvez le modifier dans les Réglages.";
 "Organize PDF" = "Organiser un PDF";
 "Original" = "Original";
@@ -1491,6 +1503,10 @@
 "Processing…" = "Traitement en cours…";
 "Protected media cannot be downloaded." = "Les médias protégés ne peuvent pas être téléchargés.";
 "Public updates work without a token." = "Les mises à jour publiques fonctionnent sans jeton.";
+"QR CODE COPIED." = "CODE QR COPIÉ.";
+"QR CODES COPIED." = "CODES QR COPIÉS.";
+"QR code copied." = "Code QR copié.";
+"QR codes copied." = "Codes QR copiés.";
 "QUALITY" = "QUALITÉ";
 "QUALITY (%)" = "QUALITÉ (%)";
 "QUICK LOOK" = "COUP D’ŒIL";
@@ -1663,6 +1679,7 @@
 "SAVING DOCUMENT…" = "ENREGISTREMENT DU DOCUMENT…";
 "SAVING IMAGES…" = "ENREGISTREMENT DES IMAGES…";
 "SCAN AGAIN" = "ANALYSER À NOUVEAU";
+"SCAN COMPLETE." = "ANALYSE TERMINÉE.";
 "SEARCH FORMATS" = "RECHERCHER DES FORMATS";
 "SEARCH METADATA" = "RECHERCHER DANS LES MÉTADONNÉES";
 "SECONDS" = "SECONDES";
@@ -1704,6 +1721,7 @@
 "SHADOW RADIUS" = "RAYON DE L’OMBRE";
 "SHADOWS" = "OMBRES";
 "SHARE" = "PARTAGER";
+"SHARED WITH AIRDROP." = "PARTAGÉ VIA AIRDROP.";
 "SHARE…" = "PARTAGER…";
 "SHARPEN" = "ACCENTUER";
 "SHARPNESS" = "NETTETÉ";
@@ -1798,6 +1816,7 @@
 "Saving document…" = "Enregistrement du document…";
 "Saving images…" = "Enregistrement des images…";
 "Scan again" = "Analyser à nouveau";
+"Scan complete." = "Analyse terminée.";
 "Search formats" = "Rechercher des formats";
 "Search metadata" = "Rechercher dans les métadonnées";
 "Seconds" = "Secondes";
@@ -1841,6 +1860,7 @@
 "Shadow radius" = "Rayon de l’ombre";
 "Shadows" = "Ombres";
 "Share" = "Partager";
+"Shared with AirDrop." = "Partagé via AirDrop.";
 "Share…" = "Partager…";
 "Sharpen" = "Accentuer";
 "Sharpness" = "Netteté";

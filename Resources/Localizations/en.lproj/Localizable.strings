@@ -8,6 +8,7 @@
 "%@ QR codes found." = "%@ QR codes found.";
 "%@ files" = "%@ files";
 "%@ files, ready to go." = "%@ files, ready to go.";
+"%@ found" = "%@ found";
 "%@ is enabled" = "%@ is enabled";
 "%@ items" = "%@ items";
 "%@ selected" = "%@ selected";
@@ -22,6 +23,7 @@
 "%lld QR codes found." = "%lld QR codes found.";
 "%lld files" = "%lld files";
 "%lld files, ready to go." = "%lld files, ready to go.";
+"%lld found" = "%lld found";
 "%lld is enabled" = "%lld is enabled";
 "%lld items" = "%lld items";
 "%lld selected" = "%lld selected";
@@ -111,6 +113,8 @@
 "ADD SELECTED RANGE" = "ADD SELECTED RANGE";
 "ADD SPLIT" = "ADD SPLIT";
 "ADD TO AN EXISTING FLOAT" = "ADD TO AN EXISTING FLOAT";
+"ADD TO FLOAT" = "ADD TO FLOAT";
+"ADDED TO FLOAT." = "ADDED TO FLOAT.";
 "ADDING PAGES…" = "ADDING PAGES…";
 "ADDITIONAL OPTIONS" = "ADDITIONAL OPTIONS";
 "ALL" = "ALL";
@@ -176,7 +180,9 @@
 "Add files" = "Add files";
 "Add or change files" = "Add or change files";
 "Add selected range" = "Add selected range";
+"Add to Float" = "Add to Float";
 "Add to an existing Float" = "Add to an existing Float";
+"Added to Float." = "Added to Float.";
 "Adding pages…" = "Adding pages…";
 "Additional options" = "Additional options";
 "All" = "All";
@@ -649,6 +655,7 @@
 "DRAG ACROSS THE PREVIEW TO SELECT THE AREA TO KEEP." = "DRAG ACROSS THE PREVIEW TO SELECT THE AREA TO KEEP.";
 "DRAG AN AREA FIRST." = "DRAG AN AREA FIRST.";
 "DRAG AN EXISTING ANNOTATION TO MOVE IT; DRAG ITS HANDLES TO RESIZE. TURN OFF SELECT / MOVE TO DRAW." = "DRAG AN EXISTING ANNOTATION TO MOVE IT; DRAG ITS HANDLES TO RESIZE. TURN OFF SELECT / MOVE TO DRAW.";
+"DRAG EITHER EDGE TO RESIZE THE RANGE, OR DRAG ITS MIDDLE TO MOVE IT." = "DRAG EITHER EDGE TO RESIZE THE RANGE, OR DRAG ITS MIDDLE TO MOVE IT.";
 "DRAG INSIDE TO MOVE. DRAG NEAR A CORNER TO RESIZE. DRAG OUTSIDE TO START A NEW SELECTION." = "DRAG INSIDE TO MOVE. DRAG NEAR A CORNER TO RESIZE. DRAG OUTSIDE TO START A NEW SELECTION.";
 "DRAG ON THE PREVIEW TO ADD AN AREA. EACH AREA IS SAVED INTO THE NEW COPY." = "DRAG ON THE PREVIEW TO ADD AN AREA. EACH AREA IS SAVED INTO THE NEW COPY.";
 "DRAG SHORTCUTS" = "DRAG SHORTCUTS";
@@ -724,6 +731,7 @@
 "Drag across the preview to select the area to keep." = "Drag across the preview to select the area to keep.";
 "Drag an area first." = "Drag an area first.";
 "Drag an existing annotation to move it; drag its handles to resize. Turn off Select / Move to draw." = "Drag an existing annotation to move it; drag its handles to resize. Turn off Select / Move to draw.";
+"Drag either edge to resize the range, or drag its middle to move it." = "Drag either edge to resize the range, or drag its middle to move it.";
 "Drag inside to move. Drag near a corner to resize. Drag outside to start a new selection." = "Drag inside to move. Drag near a corner to resize. Drag outside to start a new selection.";
 "Drag on the preview to add an area. Each area is saved into the new copy." = "Drag on the preview to add an area. Each area is saved into the new copy.";
 "Drag shortcuts" = "Drag shortcuts";
@@ -814,6 +822,7 @@
 "FILE TOOLS WHEEL" = "FILE TOOLS WHEEL";
 "FILES" = "FILES";
 "FILES ARE PROCESSED LOCALLY ON YOUR MAC." = "FILES ARE PROCESSED LOCALLY ON YOUR MAC.";
+"FILES COPIED." = "FILES COPIED.";
 "FILES COPIED. PASTE THEM WHEREVER YOU NEED." = "FILES COPIED. PASTE THEM WHEREVER YOU NEED.";
 "FILES IN FLOAT" = "FILES IN FLOAT";
 "FILES MISSING" = "FILES MISSING";
@@ -879,6 +888,7 @@
 "File tools wheel" = "File tools wheel";
 "Files" = "Files";
 "Files are processed locally on your Mac." = "Files are processed locally on your Mac.";
+"Files copied." = "Files copied.";
 "Files copied. Paste them wherever you need." = "Files copied. Paste them wherever you need.";
 "Files in Float" = "Files in Float";
 "Files missing" = "Files missing";
@@ -1345,6 +1355,8 @@
 "Open link" = "Open link";
 "Open permission settings…" = "Open permission settings…";
 "Open wheel" = "Open wheel";
+"Opened in %@." = "Opened in %@.";
+"Opened in %lld." = "Opened in %lld.";
 "Optional. You can change this in Settings." = "Optional. You can change this in Settings.";
 "Organize PDF" = "Organize PDF";
 "Original" = "Original";
@@ -1491,6 +1503,10 @@
 "Processing…" = "Processing…";
 "Protected media cannot be downloaded." = "Protected media cannot be downloaded.";
 "Public updates work without a token." = "Public updates work without a token.";
+"QR CODE COPIED." = "QR CODE COPIED.";
+"QR CODES COPIED." = "QR CODES COPIED.";
+"QR code copied." = "QR code copied.";
+"QR codes copied." = "QR codes copied.";
 "QUALITY" = "QUALITY";
 "QUALITY (%)" = "QUALITY (%)";
 "QUICK LOOK" = "QUICK LOOK";
@@ -1663,6 +1679,7 @@
 "SAVING DOCUMENT…" = "SAVING DOCUMENT…";
 "SAVING IMAGES…" = "SAVING IMAGES…";
 "SCAN AGAIN" = "SCAN AGAIN";
+"SCAN COMPLETE." = "SCAN COMPLETE.";
 "SEARCH FORMATS" = "SEARCH FORMATS";
 "SEARCH METADATA" = "SEARCH METADATA";
 "SECONDS" = "SECONDS";
@@ -1704,6 +1721,7 @@
 "SHADOW RADIUS" = "SHADOW RADIUS";
 "SHADOWS" = "SHADOWS";
 "SHARE" = "SHARE";
+"SHARED WITH AIRDROP." = "SHARED WITH AIRDROP.";
 "SHARE…" = "SHARE…";
 "SHARPEN" = "SHARPEN";
 "SHARPNESS" = "SHARPNESS";
@@ -1798,6 +1816,7 @@
 "Saving document…" = "Saving document…";
 "Saving images…" = "Saving images…";
 "Scan again" = "Scan again";
+"Scan complete." = "Scan complete.";
 "Search formats" = "Search formats";
 "Search metadata" = "Search metadata";
 "Seconds" = "Seconds";
@@ -1841,6 +1860,7 @@
 "Shadow radius" = "Shadow radius";
 "Shadows" = "Shadows";
 "Share" = "Share";
+"Shared with AirDrop." = "Shared with AirDrop.";
 "Share…" = "Share…";
 "Sharpen" = "Sharpen";
 "Sharpness" = "Sharpness";
