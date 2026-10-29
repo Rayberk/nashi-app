@@ -76,6 +76,31 @@ public sealed class Toolchain(string directory,string? searchPath=null)
 public static class VerifiedDownload
 {
     public static Task FetchAsync(Uri uri,string output,long maximum,Action<double>? progress,CancellationToken token)=>FetchCore(uri,output,maximum,progress,token,null,TimeSpan.FromSeconds(60));
+    public static async Task FetchAnyAsync(IReadOnlyList<Uri> uris,string output,long maximum,Action<double>? progress,CancellationToken token,Func<string,bool>? validator=null)
+    {
+        if(uris.Count==0)throw new ArgumentException("At least one download URI is required.");
+        Exception? last=null;
+        for(var index=0;index<uris.Count;index++)
+        {
+            token.ThrowIfCancellationRequested();
+            try
+            {
+                await FetchAsync(uris[index],output,maximum,progress,token);
+                if(validator is not null&&!validator(output))throw new InvalidDataException("Downloaded package validation failed for mirror: "+uris[index]);
+                return;
+            }
+            catch(Exception error)when(!token.IsCancellationRequested&&error is HttpRequestException or IOException or TimeoutException or InvalidDataException)
+            {
+                last=error;
+                for(var d=0;d<3&&File.Exists(output);d++)
+                {
+                    try{File.Delete(output);break;}
+                    catch(IOException){await Task.Delay(50*(d+1),CancellationToken.None);}
+                }
+            }
+        }
+        throw last??new InvalidDataException("All download mirrors failed.");
+    }
     internal static Task FetchForTest(Uri uri,string output,long maximum,Action<double>? progress,CancellationToken token,HttpMessageHandler handler,TimeSpan idle)=>FetchCore(uri,output,maximum,progress,token,handler,idle);
     private static async Task FetchCore(Uri uri,string output,long maximum,Action<double>? progress,CancellationToken token,HttpMessageHandler? handler,TimeSpan idle)
     {
