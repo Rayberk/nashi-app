@@ -151,7 +151,10 @@ enum PagesCodec {
             if number(value["underline"], 0) > 0 { decoration.append("underline") }
             if number(value["strikethru"], 0) > 0 { decoration.append("line-through") }
             if !decoration.isEmpty { css += "text-decoration:\(decoration.joined(separator: " "));" }
-            if let color = value["fontColor"] as? [String: Any] { css += "color:rgb(\(Int(number(color["r"], 0) * 255)),\(Int(number(color["g"], 0) * 255)),\(Int(number(color["b"], 0) * 255)));" }
+            if let color = value["fontColor"] as? [String: Any] {
+                let channel = { (key: String) -> Int in let value = number(color[key], 0); return value.isFinite ? Int(min(max(value, 0), 1) * 255) : 0 }
+                css += "color:rgb(\(channel("r")),\(channel("g")),\(channel("b")));"
+            }
             return css
         }
         static func number(_ value: Any?, _ fallback: Double) -> Double { (value as? NSNumber)?.doubleValue ?? fallback }
