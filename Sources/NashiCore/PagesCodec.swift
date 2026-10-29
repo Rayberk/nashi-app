@@ -190,7 +190,7 @@ private enum PagesDOCXReader {
             if let margin = section.first("pgMar") { for (attribute,property) in [("left","leftMargin"),("right","rightMargin"),("top","topMargin"),("bottom","bottomMargin")] { if let value = margin.number(attribute) { page[property] = value / 20 } } }
             model["pageSetup"] = page
             for (reference,property) in [("headerReference","header"),("footerReference","footer")] {
-                if let id = section.first(reference)?.attr("id"), let target = relationships[id], let path = reader.localPath(target), let part = try? xml(path) { model[property] = part.rootElement()?.descendants("t").map(text).joined() }
+                if let id = section.first(reference)?.attr("id"), let target = relationships[id], let path = reader.localPath(target), let part = try? xml(path) { model[property] = part.rootElement().map(plainText) }
             }
         }
         return model
@@ -255,7 +255,7 @@ private enum PagesDOCXReader {
                             throw NashiError.invalidInput("This Word document contains a table wider than the supported limit of \(maximumColumns) columns. It could not be converted to Pages.")
                         }
                         let cellParagraphs = blockElements(cell).filter { $0.local == "p" }
-                        let value = cellParagraphs.map { $0.descendants("t").map(text).joined() }.joined(separator:"\n")
+                        let value = cellParagraphs.map(plainText).joined(separator:"\n")
                         var cellModel: [String:Any] = ["text":value]
                         if let fill = properties?.first("shd")?.attr("fill"), let color = color(fill) { cellModel["formatting"] = ["fill":["kind":"color","color":color]] }
                         cells.append(cellModel)
@@ -323,6 +323,23 @@ private enum PagesDOCXReader {
     /// Block-level content controls and custom XML only wrap ordinary paragraphs and tables.
     static func blockElements(_ parent: XMLElement) -> [XMLElement] {
         parent.elements(nil).flatMap { ["sdt","sdtContent","customXml"].contains($0.local) ? blockElements($0) : [$0] }
+    }
+    /// Plain text of a paragraph or part: tabs, line breaks and paragraph boundaries are kept.
+    static func plainText(_ element: XMLElement) -> String {
+        var output = ""
+        func visit(_ item: XMLElement) {
+            switch item.local {
+            case "t": output += text(item)
+            case "tab": output += "\t"
+            case "br", "cr": output += "\n"
+            case "pPr", "rPr": return
+            default:
+                if item.local == "p", !output.isEmpty { output += "\n" }
+                item.elements(nil).forEach(visit)
+            }
+        }
+        visit(element)
+        return output
     }
     static func character(_ element: XMLElement?) -> [String:Any] {
         guard let element else{return [:]};var result:[String:Any]=[:]
