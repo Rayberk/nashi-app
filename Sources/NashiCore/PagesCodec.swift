@@ -221,6 +221,7 @@ private enum PagesDOCXReader {
                         for child in item.elements(nil) {
                             if child.local == "t" { var run: [String:Any] = ["text":text(child),"character":formatting];if let link {run["link"]=link};runs.append(run) }
                             else if child.local == "tab" { runs.append(["text":"\t","character":formatting]) }
+                            else if child.local == "noBreakHyphen" { runs.append(["text":"\u{2011}","character":formatting]) }
                             else if child.local == "br" || child.local == "cr" { runs.append(["text":"\n","character":formatting]) }
                             else if ["drawing","pict"].contains(child.local), let image = try image(child) { runs.append(image) }
                         }
@@ -333,6 +334,7 @@ private enum PagesDOCXReader {
             switch item.local {
             case "t": output += text(item)
             case "tab": output += "\t"
+            case "noBreakHyphen": output += "\u{2011}"
             case "br", "cr": output += "\n"
             case "pPr", "rPr": return
             default:
