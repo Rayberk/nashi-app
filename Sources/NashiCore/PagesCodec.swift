@@ -225,7 +225,7 @@ private enum PagesDOCXReader {
                     } else if item.local == "hyperlink" {
                         let destination = item.attr("id").flatMap { relationships[$0] }
                         for child in item.elements(nil) { try visit(child, link:destination) }
-                    } else if ["sdt","sdtContent","ins","smartTag"].contains(item.local) { for child in item.elements(nil) { try visit(child, link:link) } }
+                    } else if ["sdt","sdtContent","ins","smartTag","fldSimple","customXml","moveTo","dir","bdo"].contains(item.local) { for child in item.elements(nil) { try visit(child, link:link) } }
                 }
                 for child in element.elements(nil) { try visit(child) }
                 // An empty paragraph has no run from which to recover its font.
