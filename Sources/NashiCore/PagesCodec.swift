@@ -143,7 +143,7 @@ enum PagesCodec {
         }
         static func characterCSS(_ value: [String: Any]) -> String {
             var css = ""
-            if let font = value["fontName"] as? String { css += "font-family:'\(font.replacingOccurrences(of: "'", with: "").replacingOccurrences(of: ";", with: ""))';" }
+            if let font = value["fontName"] as? String { css += "font-family:'\(String(String.UnicodeScalarView(font.unicodeScalars.filter { $0.value >= 0x20 && $0.value != 0x7f })).replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "'", with: "").replacingOccurrences(of: ";", with: ""))';" }
             if let size = value["fontSize"] as? NSNumber, size.doubleValue > 0 { css += "font-size:\(size.doubleValue)pt;" }
             if let bold = value["bold"] as? Bool { css += "font-weight:\(bold ? "bold" : "normal");" }
             if let italic = value["italic"] as? Bool { css += "font-style:\(italic ? "italic" : "normal");" }
