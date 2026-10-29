@@ -10,7 +10,8 @@ public sealed record WebMediaPayload(string Url,string Kind,string? Thumbnail=nu
         if(html is not null)foreach(Match match in Regex.Matches(html,"(?:href|src)\\s*=\\s*(?:\"([^\"]+)\"|'([^']+)'|([^\\s>\"']+))",RegexOptions.IgnoreCase,TimeSpan.FromSeconds(1)))
             candidates.Add(WebUtility.HtmlDecode(match.Groups[1].Success?match.Groups[1].Value:match.Groups[2].Success?match.Groups[2].Value:match.Groups[3].Value));
         if(text is not null)candidates.AddRange(text.Split(['\r','\n','\t'],StringSplitOptions.RemoveEmptyEntries).Select(t=>t.Trim()));
-        var urls=candidates.Where(c=>Uri.TryCreate(c,UriKind.Absolute,out var u)&&u.Scheme is "http" or "https"&&string.IsNullOrEmpty(u.UserInfo)).Distinct().Select(c=>new Uri(c)).ToArray();
+        // Hosts without a dot (the NVIDIA App overlay reports https://nvfile/..., or localhost) are local app pages.
+        var urls=candidates.Where(c=>Uri.TryCreate(c,UriKind.Absolute,out var u)&&u.Scheme is "http" or "https"&&string.IsNullOrEmpty(u.UserInfo)&&u.Host.Contains('.')).Distinct().Select(c=>new Uri(c)).ToArray();
         foreach(var url in urls)
         {
             var host=url.Host.ToLowerInvariant();if(host is "youtube.com" or "www.youtube.com" or "m.youtube.com" or "youtu.be"||host.EndsWith(".ytimg.com",StringComparison.Ordinal)||host=="i.ytimg.com")
