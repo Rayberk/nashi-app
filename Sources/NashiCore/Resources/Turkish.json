@@ -269,6 +269,8 @@
   "Check automatically while Nashi is running": "Nashi çalışırken otomatik denetle",
   "No update checks yet": "Henüz güncelleme denetlenmedi",
   "A fresh Nashi is ready.": "Yeni Nashi hazır.",
+  "Version {0} · Install when you’re ready.": "Sürüm {0} · Hazır olduğunda kur.",
+  "Your task will finish before Nashi restarts.": "İşlemin, Nashi yeniden başlamadan önce tamamlanacak.",
   "A little fresher. Ready when you are.": "Yeni sürüm hazır. Sen hazır olduğunda.",
   "You choose when to download and install.": "Ne zaman indirip kuracağına sen karar ver.",
   "Update…": "Güncelle…",

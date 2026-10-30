@@ -269,6 +269,8 @@
   "Check automatically while Nashi is running": "Rechercher automatiquement pendant que Nashi est en cours d’exécution",
   "No update checks yet": "Aucune recherche de mise à jour pour l’instant",
   "A fresh Nashi is ready.": "Une nouvelle version de Nashi est prête.",
+  "Version {0} · Install when you’re ready.": "Version {0} · Installez-la quand vous voulez.",
+  "Your task will finish before Nashi restarts.": "Votre tâche se terminera avant le redémarrage de Nashi.",
   "A little fresher. Ready when you are.": "Un peu plus frais. Prêt quand vous l’êtes.",
   "You choose when to download and install.": "Vous choisissez quand télécharger et installer.",
   "Update…": "Mettre à jour…",

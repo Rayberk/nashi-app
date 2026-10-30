@@ -2141,6 +2141,8 @@
 "VISUALIZATION" = "VISUALIZATION";
 "Value" = "Value";
 "Verifying update signature…" = "Verifying update signature…";
+"Version %@ · Install when you’re ready." = "Version %@ · Install when you’re ready.";
+"Version %lld · Install when you’re ready." = "Version %lld · Install when you’re ready.";
 "Vibrance" = "Vibrance";
 "Video" = "Video";
 "Video Compression" = "Video Compression";
@@ -2196,6 +2198,7 @@
 "YOUR LIBRARY" = "YOUR LIBRARY";
 "YOUR NEXT FRESH COPY WILL LAND HERE." = "YOUR NEXT FRESH COPY WILL LAND HERE.";
 "YOUR ORIGINAL STAYS SAFE" = "YOUR ORIGINAL STAYS SAFE";
+"YOUR TASK WILL FINISH BEFORE NASHI RESTARTS." = "YOUR TASK WILL FINISH BEFORE NASHI RESTARTS.";
 "YOUR TOOLS ARE READY." = "YOUR TOOLS ARE READY.";
 "YOUR TOOLS ARE READY. LET’S PUT THAT NEXT FILE TO GOOD USE." = "YOUR TOOLS ARE READY. LET’S PUT THAT NEXT FILE TO GOOD USE.";
 "YOUTUBE THUMBNAIL · BEST AVAILABLE FULL-SIZE IMAGE" = "YOUTUBE THUMBNAIL · BEST AVAILABLE FULL-SIZE IMAGE";
@@ -2216,6 +2219,7 @@
 "Your kind of flow." = "Your kind of flow.";
 "Your next fresh copy will land here." = "Your next fresh copy will land here.";
 "Your original stays safe" = "Your original stays safe";
+"Your task will finish before Nashi restarts." = "Your task will finish before Nashi restarts.";
 "Your tools are ready." = "Your tools are ready.";
 "Your tools are ready. Let’s put that next file to good use." = "Your tools are ready. Let’s put that next file to good use.";
 "You’re all set.\nMake something good." = "You’re all set.\nMake something good.";
