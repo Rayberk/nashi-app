@@ -12,6 +12,7 @@ internal static class ParityChecks
         check(!FeatureCatalog.Formats(["a.png","b.mp4"]).Any(),"Unrelated inputs offered an invalid format");
         check(FeatureCatalog.Tools(["a.pdf","b.pdf"]).SequenceEqual(new[]{"compress","removeMetadata","splitPDF","mergePDF","readQRCode"}),"Multiple PDF wheel diverged from Mac");
         check(FeatureCatalog.Tools(["a.jpg","b.png"]).Contains("createCollage"),"Mixed image collage missing");
+        check(FeatureCatalog.Tools(["a.gif"]).SequenceEqual(new[]{"removeMetadata","readQRCode"})&&FeatureCatalog.Tools(["a.gif","b.png"]).Contains("readQRCode")&&!FeatureCatalog.Tools(["a.mp4"]).Contains("readQRCode"),"GIF wheel lost Read QR Codes, unlike the Mac");
         check(DocumentEngine.PageRange("3-1, 2",3).SequenceEqual(new[]{3,2,1,2}),"PDF descending page ranges or duplicates changed");
         // Hand-written content streams keep these fixtures independent of font resolution, and a fixed A4
         // page keeps them independent of the region (PdfSharp picks Letter on US machines).
