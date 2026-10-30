@@ -122,6 +122,8 @@ public enum PDFEngine {
                 defer { if wrote && !complete { try? FileManager.default.removeItem(at:output) } }
                 for attempt in 0..<14 {
                     try token.check();let compressed=PDFDocument()
+                    // Keep the title, author, subject and keywords, as the PDFKit rewrite above does.
+                    compressed.documentAttributes=pdf.documentAttributes
                     for n in 0..<pdf.pageCount {
                         try token.check();progress(Double(n)/Double(pdf.pageCount),"Compressing PDF · attempt \(attempt+1) · page \(n+1) of \(pdf.pageCount)")
                         guard let page=pdf.page(at:n) else { continue };let bounds=page.bounds(for:.cropBox)
