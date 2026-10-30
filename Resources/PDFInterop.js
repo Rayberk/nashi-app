@@ -162,6 +162,10 @@ function importRich(dest,src,prefix,includeAttachments=true){
  const copier=PDFObjectCopier.for(src.context,dest.context),pages=[];
  for(const p of src.getPages()){
   const ref=copier.copy(p.ref),leaf=dest.context.lookup(ref);
+  // The copier keeps the attributes a page inherits; one it leaves at its default must
+  // not pick up the destination's page-tree values (/Rotate 0, CropBox = MediaBox).
+  if(!leaf.has(name('Rotate')))leaf.set(name('Rotate'),dest.context.obj(0));
+  if(!leaf.has(name('CropBox'))&&leaf.has(name('MediaBox')))leaf.set(name('CropBox'),leaf.get(name('MediaBox')));
   const copy=PDFPage.of(leaf,ref,dest);dest.addPage(copy);pages.push(copy);
  }
  const sourceForm=src.catalog.get(name('AcroForm'));
