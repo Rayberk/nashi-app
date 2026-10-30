@@ -65,7 +65,7 @@ public static class PhotoCodec
         using var image=new MagickImage(png,new MagickReadSettings{Format=MagickFormat.Png});
         // The pixel loop below reads channels 0..2 as R, G, B and 3 as alpha. A grayscale
         // PNG has one gray channel (plus alpha), so expand it to RGB first.
-        if(image.ColorType is ColorType.Grayscale or ColorType.GrayscaleAlpha)image.ColorSpace=ColorSpace.sRGB;
+        if(image.ColorType is ColorType.Grayscale or ColorType.GrayscaleAlpha){image.ColorSpace=ColorSpace.sRGB;image.ColorType=image.HasAlpha?ColorType.TrueColorAlpha:ColorType.TrueColor;}
         if(o.Exposure!=0)image.Evaluate(Channels.RGB,EvaluateOperator.Multiply,Math.Pow(2,o.Exposure));
         image.BrightnessContrast(new Percentage(o.Brightness*100),new Percentage((o.Contrast-1)*50));
         if(o.Gamma!=1)image.GammaCorrect(o.Gamma,Channels.RGB);
