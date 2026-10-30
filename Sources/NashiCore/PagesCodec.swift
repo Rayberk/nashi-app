@@ -183,7 +183,7 @@ private enum PagesDOCXReader {
         let defaultParagraph = paragraph(defaults?.first("pPrDefault")?.first("pPr"))
         let relationships = try relationMap(package.appendingPathComponent("word/_rels/document.xml.rels"))
         let reader = Reader(package: package, relationships: relationships, styles: styles, defaultCharacter: defaultCharacter, defaultParagraph: defaultParagraph, token: token)
-        var model: [String: Any] = ["blocks": try body.elements(nil).compactMap { try reader.block($0) }]
+        var model: [String: Any] = ["blocks": try blockElements(body).compactMap { try reader.block($0) }]
         if let section = body.first("sectPr") {
             var page: [String: Any] = [:]
             if let size = section.first("pgSz") { if let w = size.number("w") { page["pageWidth"] = w / 20 }; if let h = size.number("h") { page["pageHeight"] = h / 20 } }
@@ -322,11 +322,15 @@ private enum PagesDOCXReader {
     /// Plain text of a table cell. A nested table keeps its text as lines of
     /// tab-separated cells, since a Pages cell cannot hold a table.
     static func cellText(_ cell: XMLElement, depth: Int = 0) -> String {
-        cell.elements(nil).compactMap { child -> String? in
+        blockElements(cell).compactMap { child -> String? in
             if child.local == "p" { return child.descendants("t").map(text).joined() }
             guard child.local == "tbl", depth < 32 else { return nil }
             return child.elements("tr").map { $0.elements("tc").map { cellText($0, depth: depth + 1) }.joined(separator: "\t") }.joined(separator: "\n")
         }.joined(separator: "\n")
+    }
+    /// Block-level content controls and custom XML only wrap ordinary paragraphs and tables.
+    static func blockElements(_ parent: XMLElement) -> [XMLElement] {
+        parent.elements(nil).flatMap { ["sdt","sdtContent","customXml"].contains($0.local) ? blockElements($0) : [$0] }
     }
     static func character(_ element: XMLElement?) -> [String:Any] {
         guard let element else{return [:]};var result:[String:Any]=[:]
