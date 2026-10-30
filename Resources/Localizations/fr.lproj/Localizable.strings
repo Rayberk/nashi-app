@@ -13,6 +13,8 @@
 "%@ selected" = "%@ sélectionnés";
 "%@ selected · Drag to carry files" = "%@ sélectionnés · Faites glisser pour emporter les fichiers";
 "%@ ways to change it" = "%@ façons de le transformer";
+"%@ · %@ smaller" = "%@ · %@ plus léger";
+"%@ · %lld smaller" = "%@ · %lld plus léger";
 "%@ · Nashi" = "%@ · Nashi";
 "%@ · Original stays safe" = "%@ · L’original reste intact";
 "%lld  Convert" = "%lld  Convertir";
@@ -27,6 +29,8 @@
 "%lld selected" = "%lld sélectionnés";
 "%lld selected · Drag to carry files" = "%lld sélectionnés · Faites glisser pour emporter les fichiers";
 "%lld ways to change it" = "%lld façons de le transformer";
+"%lld · %@ smaller" = "%lld · %@ plus léger";
+"%lld · %lld smaller" = "%lld · %lld plus léger";
 "%lld · Nashi" = "%lld · Nashi";
 "%lld · Original stays safe" = "%lld · L’original reste intact";
 "1 ITEM" = "1 ÉLÉMENT";
@@ -120,6 +124,7 @@
 "ALLOW HOME FOLDER ACCESS…" = "AUTORISER L’ACCÈS AU DOSSIER DE DÉPART…";
 "ALLOW NASHI IN MACOS LOGIN ITEMS." = "AUTORISEZ NASHI DANS LES ÉLÉMENTS D’OUVERTURE DE MACOS.";
 "ALREADY AVAILABLE ON YOUR COMPUTER" = "DÉJÀ DISPONIBLES SUR VOTRE ORDINATEUR";
+"ALREADY OPTIMIZED. ORIGINAL QUALITY RETAINED." = "DÉJÀ OPTIMISÉ. QUALITÉ D’ORIGINE CONSERVÉE.";
 "AN EMBEDDED IMAGE IS MISSING OR TOO LARGE." = "UNE IMAGE INTÉGRÉE EST MANQUANTE OU TROP VOLUMINEUSE.";
 "AN EMPTY OUTPUT WAS PRODUCED." = "UNE SORTIE VIDE A ÉTÉ PRODUITE.";
 "AN HTTPS DOWNLOAD IS REQUIRED." = "UN TÉLÉCHARGEMENT HTTPS EST REQUIS.";
@@ -188,6 +193,7 @@
 "Allow Home Folder Access…" = "Autoriser l’accès au dossier de départ…";
 "Allow Nashi in macOS Login Items." = "Autorisez Nashi dans les éléments d’ouverture de macOS.";
 "Already available on your computer" = "Déjà disponibles sur votre ordinateur";
+"Already optimized. Original quality retained." = "Déjà optimisé. Qualité d’origine conservée.";
 "An HTTPS download is required." = "Un téléchargement HTTPS est requis.";
 "An RTFD attachment is missing or too large: %@" = "Une pièce jointe RTFD est manquante ou trop volumineuse : %@";
 "An RTFD attachment is missing or too large: %lld" = "Une pièce jointe RTFD est manquante ou trop volumineuse : %lld";
@@ -1794,6 +1800,8 @@
 "Saved %lld new files. Originals kept." = "%lld nouveaux fichiers enregistrés. Originaux conservés.";
 "Saved 1 new file. Originals kept." = "1 nouveau fichier enregistré. Originaux conservés.";
 "Saved in post order in a new Instagram folder." = "Enregistrées dans l’ordre de la publication, dans un nouveau dossier Instagram.";
+"Saved size: %@" = "Taille enregistrée : %@";
+"Saved size: %lld" = "Taille enregistrée : %lld";
 "Saving collage…" = "Enregistrement du collage…";
 "Saving document…" = "Enregistrement du document…";
 "Saving images…" = "Enregistrement des images…";
