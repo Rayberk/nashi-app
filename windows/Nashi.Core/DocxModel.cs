@@ -9,11 +9,16 @@ public sealed partial class OfficeDocuments
     private static double? Num(XElement? e,string n)=>double.TryParse(Attr(e,n),NumberStyles.Float,CultureInfo.InvariantCulture,out var x)&&double.IsFinite(x)?x:null;
     private static Dictionary<string,object?> Merge(params Dictionary<string,object?>[] dictionaries){var result=new Dictionary<string,object?>();foreach(var d in dictionaries)foreach(var p in d)result[p.Key]=p.Value;return result;}
     private static object? FontColor(string? value)=>value?.Length==6&&int.TryParse(value,NumberStyles.HexNumber,CultureInfo.InvariantCulture,out var n)?new{r=((n>>16)&255)/255d,g=((n>>8)&255)/255d,b=(n&255)/255d,space="srgb"}:null;
+    private static object? HighlightColor(string? value)=>FontColor(value switch
+    {
+        "black"=>"000000","blue"=>"0000FF","cyan"=>"00FFFF","green"=>"00FF00","magenta"=>"FF00FF","red"=>"FF0000","yellow"=>"FFFF00","white"=>"FFFFFF",
+        "darkBlue"=>"000080","darkCyan"=>"008080","darkGreen"=>"008000","darkMagenta"=>"800080","darkRed"=>"800000","darkYellow"=>"808000","darkGray"=>"808080","lightGray"=>"C0C0C0",_=>value
+    });
     private static Dictionary<string,object?> Character(XElement? e)
     {
         var d=new Dictionary<string,object?>();if(e is null)return d;foreach(var (name,key) in new[]{("b","bold"),("i","italic")})if(Child(e,name) is {} p)d[key]=Attr(p,"val") is not ("0" or "false" or "off");
         if(Num(Child(e,"sz"),"val") is {} size)d["fontSize"]=size/2;if((Attr(Child(e,"rFonts"),"ascii")??Attr(Child(e,"rFonts"),"hAnsi")) is {} font)d["fontName"]=font;
-        if(FontColor(Attr(Child(e,"color"),"val")) is {} color)d["fontColor"]=color;if(FontColor(Attr(Child(e,"highlight"),"val")) is {} bg)d["backgroundColor"]=bg;
+        if(FontColor(Attr(Child(e,"color"),"val")) is {} color)d["fontColor"]=color;if(Child(e,"highlight") is {} highlight)d["backgroundColor"]=HighlightColor(Attr(highlight,"val"));
         if(Child(e,"u") is {} u)d["underline"]=Attr(u,"val") switch{"none"=>0,"double"=>2,_=>1};if(Child(e,"strike") is {} strike)d["strikethru"]=Attr(strike,"val")=="0"?0:1;
         if(Attr(Child(e,"vertAlign"),"val") is {} align)d["superscript"]=align=="superscript"?1:align=="subscript"?-1:0;if(Attr(Child(e,"lang"),"val") is {} lang)d["language"]=lang;return d;
     }
@@ -54,7 +59,7 @@ public sealed partial class OfficeDocuments
                     else if(item.Name.LocalName=="hyperlink"){var destination=rels.GetValueOrDefault(Attr(item,"id")??"");foreach(var child in item.Elements())Visit(child,destination);}
                     else if(item.Name.LocalName is "sdt" or "sdtContent" or "ins" or "smartTag")foreach(var child in item.Elements())Visit(child,link);
                 }
-                foreach(var child in element.Elements())Visit(child);return new{type="paragraph",runs,character=runs.Count==0?Merge(baseStyle.C,Character(Child(props,"rPr"))):baseStyle.C,paragraph=Merge(baseStyle.P,ParagraphStyle(props))};
+                foreach(var child in element.Elements())Visit(child);return new{type="paragraph",runs,character=runs.Count==0?Merge(baseStyle.C,Character(Child(props,"rPr"))):baseStyle.C.Where(p=>p.Key!="backgroundColor").ToDictionary(p=>p.Key,p=>p.Value),paragraph=Merge(baseStyle.P,ParagraphStyle(props))};
             }
             if(element.Name.LocalName=="tbl")
             {
