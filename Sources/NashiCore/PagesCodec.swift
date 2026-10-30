@@ -242,6 +242,15 @@ private enum PagesDOCXReader {
                 let maximumColumns = 1024
                 for (rowIndex,row) in element.elements("tr").enumerated() {
                     var cells: [[String:Any]] = [], column = 0
+                    // w:gridBefore leaves leading grid columns empty, so the
+                    // row's first cell starts that many columns to the right.
+                    if let raw = row.first("trPr")?.first("gridBefore")?.attr("val"), let skipped = Int(raw), skipped > 0 {
+                        guard skipped <= maximumColumns else {
+                            throw NashiError.invalidInput("This Word document contains a table wider than the supported limit of \(maximumColumns) columns. It could not be converted to Pages.")
+                        }
+                        cells = Array(repeating: ["text":""], count: skipped)
+                        column = skipped
+                    }
                     for cell in row.elements("tc") {
                         let properties = cell.first("tcPr")
                         let span: Int
