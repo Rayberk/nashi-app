@@ -535,6 +535,8 @@
 "Color" = "Renk";
 "Column" = "Sütun";
 "Columns" = "Sütun sayısı";
+"Columns: %@" = "Sütun sayısı: %@";
+"Columns: %lld" = "Sütun sayısı: %lld";
 "Compatibility" = "Uyumluluk";
 "Compress" = "Sıkıştır";
 "Compress & save" = "Sıkıştır ve kaydet";
@@ -1312,6 +1314,7 @@
 "ORIGINAL STAYS SAFE" = "ORİJİNAL DOSYAN GÜVENDE";
 "ORIGINALS REMAIN SAFE. CHOOSE WHERE NEW COPIES SHOULD LAND." = "ORİJİNALLER GÜVENDE. YENİ KOPYALARIN NEREYE KAYDEDİLECEĞİNİ SEÇ.";
 "OTHER" = "DİĞER";
+"OUTER PADDING" = "DIŞ BOŞLUK";
 "OUTPUT" = "ÇIKTI";
 "OUTPUT FORMAT" = "ÇIKTI BİÇİMİ";
 "OUTPUT-ONLY FORMAT." = "YALNIZCA ÇIKTI BİÇİMİ.";
@@ -1355,6 +1358,7 @@
 "Original stays safe" = "Orijinal dosyan güvende";
 "Originals remain safe. Choose where new copies should land." = "Orijinaller güvende. Yeni kopyaların nereye kaydedileceğini seç.";
 "Other" = "Diğer";
+"Outer padding" = "Dış boşluk";
 "Output" = "Çıktı";
 "Output format" = "Çıktı biçimi";
 "Output-only format." = "Yalnızca çıktı biçimi.";
