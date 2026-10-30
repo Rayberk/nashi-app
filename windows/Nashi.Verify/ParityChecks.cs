@@ -6,6 +6,18 @@ internal static class ParityChecks
 {
     public static void Run(Action<bool,string> check,string root)
     {
+        var characterDefaults=Path.Combine(root,"Character style defaults.docx");using(var archive=ZipFile.Open(characterDefaults,ZipArchiveMode.Create))
+        {
+            void Part(string name,string text){using var writer=new StreamWriter(archive.CreateEntry(name).Open(),new UTF8Encoding(false));writer.Write(text);}
+            Part("word/styles.xml","<w:styles xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><w:docDefaults><w:rPrDefault><w:rPr><w:highlight w:val=\"yellow\"/><w:sz w:val=\"20\"/></w:rPr></w:rPrDefault></w:docDefaults><w:style w:type=\"paragraph\" w:styleId=\"Body\"><w:rPr><w:highlight w:val=\"cyan\"/><w:sz w:val=\"44\"/></w:rPr></w:style><w:style w:type=\"character\" w:styleId=\"Parent\"><w:rPr><w:i/></w:rPr></w:style><w:style w:type=\"character\" w:styleId=\"Emphasis\"><w:basedOn w:val=\"Parent\"/></w:style></w:styles>");
+            Part("word/document.xml","<w:document xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><w:body><w:p><w:pPr><w:pStyle w:val=\"Body\"/></w:pPr><w:r><w:rPr><w:rStyle w:val=\"Emphasis\"/></w:rPr><w:t>Inherited cyan</w:t></w:r><w:r><w:rPr><w:rStyle w:val=\"Missing\"/></w:rPr><w:t>Unknown style</w:t></w:r><w:r><w:rPr><w:rStyle w:val=\"Emphasis\"/><w:highlight w:val=\"green\"/></w:rPr><w:t>Direct green</w:t></w:r></w:p></w:body></w:document>");
+        }
+        using(var model=System.Text.Json.JsonDocument.Parse(System.Text.Json.JsonSerializer.Serialize(OfficeDocuments.ReadDocx(characterDefaults))))
+        {
+            var runs=model.RootElement.GetProperty("blocks")[0].GetProperty("runs");
+            foreach(var index in new[]{0,1}){var character=runs[index].GetProperty("character");var color=character.GetProperty("backgroundColor");check(color.GetProperty("r").GetDouble()==0&&color.GetProperty("g").GetDouble()==1&&color.GetProperty("b").GetDouble()==1&&character.GetProperty("fontSize").GetDouble()==22,"A character style reapplied document defaults over paragraph formatting");}
+            check(runs[0].GetProperty("character").GetProperty("italic").GetBoolean()&&runs[2].GetProperty("character").GetProperty("backgroundColor").GetProperty("b").GetDouble()==0,"Character style inheritance or direct highlighting was lost");
+        }
         check(FeatureCatalog.Conversions.Count==46&&FeatureCatalog.ToolNames.Count==27,"Mac/Windows catalog count diverged");
         check(FeatureCatalog.Formats(["a.htm","b.html"]).SequenceEqual(new[]{"pdf"})&&FeatureCatalog.Tools(["a.html"]).Length==0,"HTML inputs lost their PDF route");
         check(FeatureCatalog.Formats(["a.jpeg","b.png"]).Contains("webp"),"Mixed image conversion intersection failed");

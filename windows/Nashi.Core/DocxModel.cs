@@ -36,7 +36,7 @@ public sealed partial class OfficeDocuments
         var styleMap=styles?.Root?.Elements().Where(e=>e.Name.LocalName=="style").ToDictionary(e=>Attr(e,"styleId")??throw new InvalidDataException("Invalid style identifier."))??[];
         var rels=zip.GetEntry("word/_rels/document.xml.rels") is not null?Xml(zip,"word/_rels/document.xml.rels").Root!.Elements().ToDictionary(e=>Attr(e,"Id")??"",e=>Attr(e,"Target")??""):[];
         string? Local(string relative){if(Uri.TryCreate(relative,UriKind.Absolute,out _))return null;var stack=new List<string>{"word"};foreach(var p in relative.Replace('\\','/').Split('/')){if(p is "" or ".")continue;if(p==".."){if(stack.Count==0)return null;stack.RemoveAt(stack.Count-1);}else stack.Add(p);}return string.Join('/',stack);}
-        (Dictionary<string,object?> C,Dictionary<string,object?> P) Resolve(string? id,int depth=0){if(depth>=16||id is null||!styleMap.TryGetValue(id,out var style))return(dc,dp);var parent=Resolve(Attr(Child(style,"basedOn"),"val"),depth+1);return(Merge(parent.C,Character(Child(style,"rPr"))),Merge(parent.P,ParagraphStyle(Child(style,"pPr"))));}
+        (Dictionary<string,object?> C,Dictionary<string,object?> P) Resolve(string? id,int depth=0,bool includeDefaults=true){if(depth>=16||id is null||!styleMap.TryGetValue(id,out var style))return includeDefaults?(dc,dp):(new(),new());var parent=Resolve(Attr(Child(style,"basedOn"),"val"),depth+1,includeDefaults);return(Merge(parent.C,Character(Child(style,"rPr"))),Merge(parent.P,ParagraphStyle(Child(style,"pPr"))));}
         object? Block(XElement element)
         {
             if(element.Name.LocalName=="p")
@@ -46,7 +46,7 @@ public sealed partial class OfficeDocuments
                 {
                     if(item.Name.LocalName=="r")
                     {
-                        var rp=Child(item,"rPr");var runBase=Attr(Child(rp,"rStyle"),"val") is {} sid?Resolve(sid).C:new();var formatting=Merge(baseStyle.C,runBase,Character(rp));
+                        var rp=Child(item,"rPr");var runBase=Attr(Child(rp,"rStyle"),"val") is {} sid?Resolve(sid,includeDefaults:false).C:new();var formatting=Merge(baseStyle.C,runBase,Character(rp));
                         foreach(var child in item.Elements())
                         {
                             if(child.Name.LocalName is "t" or "tab" or "br" or "cr")runs.Add(new{text=child.Name.LocalName=="t"?child.Value:child.Name.LocalName=="tab"?"\t":"\n",character=formatting,link});
