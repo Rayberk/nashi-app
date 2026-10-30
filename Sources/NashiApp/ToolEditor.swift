@@ -232,7 +232,7 @@ struct ToolEditor:View {
             slider("Left volume",value:$options.leftVolume,range:0...2,unit:"×");slider("Right volume",value:$options.rightVolume,range:0...2,unit:"×")
             HStack { Button("Preview Left") { previewChannel(0) };Button("Preview Right") { previewChannel(1) };Button("Original") { playOriginal() } }
         case .splitVideo:
-            HStack { Text("\(options.splitPoints.count) split point\(options.splitPoints.count==1 ? "":"s")");Spacer();Button("Add Split",action:addSplitPoint).disabled(!canAddSplitPoint).help("Add split at playhead (M)") }
+            HStack { LText(options.splitPoints.count==1 ? "1 split point":"\(options.splitPoints.count) split points");Spacer();Button("Add Split",action:addSplitPoint).disabled(!canAddSplitPoint).help("Add split at playhead (M)") }
             ForEach(Array(options.splitPoints.enumerated()),id:\.offset) { index,time in HStack { Text(timeLabel(time));Spacer();Button { options.equalClips=nil;options.splitPoints.remove(at:index) } label:{Image(systemName:"xmark.circle")} } }
             HStack { Stepper("Equal clips: \(equalClips)",value:$equalClips,in:2...100);Button("Set") { options.equalClips=equalClips;options.splitPoints=(1..<equalClips).map{duration*Double($0)/Double(equalClips)} } }
             splitEditingControls
@@ -405,7 +405,7 @@ struct ToolEditor:View {
             Text("Drag on the preview to add an area. Each area is saved into the new copy.").font(.caption).foregroundStyle(.secondary)
             if tool == .redactImage { HStack { Button("Detect Faces") { detectRedactions(faces:true) };Button("Detect Text") { detectRedactions(faces:false) } } }
             if tool == .redactVideo { timeRangeFields }
-            Text("\(options.redactions.count) area\(options.redactions.count==1 ? "":"s") selected")
+            LText(options.redactions.count==1 ? "1 area selected":"\(options.redactions.count) areas selected")
             if tool == .redactVideo { ForEach(Array(options.videoRedactions.enumerated()),id:\.offset) { index,redaction in HStack {
                 LText("Area \(index+1)");TextField("Start",value:Binding(get:{options.videoRedactions[index].start},set:{options.videoRedactions[index].start=$0}),format:.number)
                 TextField("End",value:Binding(get:{options.videoRedactions[index].end ?? duration},set:{options.videoRedactions[index].end=$0}),format:.number)
