@@ -15,8 +15,11 @@ final class ImageTemperatureTintDirectionTests: XCTestCase {
 
     private func center(_ image:CGImage) throws -> (r:Int,g:Int,b:Int) {
         var bytes=[UInt8](repeating:0,count:image.width*image.height*4)
-        let ctx=try XCTUnwrap(CGContext(data:&bytes,width:image.width,height:image.height,bitsPerComponent:8,bytesPerRow:image.width*4,space:space,bitmapInfo:CGImageAlphaInfo.premultipliedLast.rawValue))
-        ctx.draw(image,in:CGRect(x:0,y:0,width:image.width,height:image.height))
+        // The buffer pointer is only valid inside this closure, so draw there.
+        try bytes.withUnsafeMutableBytes { buffer in
+            let ctx=try XCTUnwrap(CGContext(data:buffer.baseAddress,width:image.width,height:image.height,bitsPerComponent:8,bytesPerRow:image.width*4,space:space,bitmapInfo:CGImageAlphaInfo.premultipliedLast.rawValue))
+            ctx.draw(image,in:CGRect(x:0,y:0,width:image.width,height:image.height))
+        }
         let offset=(image.height/2*image.width+image.width/2)*4
         return (Int(bytes[offset]),Int(bytes[offset+1]),Int(bytes[offset+2]))
     }
