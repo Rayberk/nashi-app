@@ -253,7 +253,7 @@ private struct RecentFileRow:View {
             if let first=urls.first { AsyncFileArtwork(url:first).frame(width:29,height:29).padding(5).background(NashiPalette.inset,in:RoundedRectangle(cornerRadius:11)) }
             VStack(alignment:.leading,spacing:4) {
                 Text(urls.first?.lastPathComponent ?? job.title).font(.system(size:12,weight:.semibold)).lineLimit(1)
-                HStack(spacing:3) { if available.isEmpty { Text("Moved or removed") } else { LText(job.title);Text("· "+job.date.formatted(.relative(presentation:.named))) } }.font(.system(size:10)).foregroundStyle(.secondary).lineLimit(1)
+                HStack(spacing:3) { if available.isEmpty { Text("Moved or removed") } else { LText(job.title);Text("· \(job.date,format:.relative(presentation:.named))") } }.font(.system(size:10)).foregroundStyle(.secondary).lineLimit(1)
             }
             Spacer()
             if urls.count>1 { Text("\(urls.count) files").font(.caption2).foregroundStyle(.secondary) }
