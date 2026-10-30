@@ -31,8 +31,17 @@ internal static class ToolSetupChecks
             {
                 File.SetUnixFileMode(Path.Combine(platform,"deno"),UnixFileMode.UserRead|UnixFileMode.UserWrite);check(!new Toolchain(platform).Ready,"A tool without the executable bit must not count as installed");
                 var metadata=Path.Combine(directory,"metadata");var exiftool=Path.Combine(metadata,"metadata-13.59","exiftool");Directory.CreateDirectory(Path.GetDirectoryName(exiftool)!);File.WriteAllText(exiftool,"x");
-                check(new MetadataService(metadata).Executable is null,"Metadata tools without the executable bit must not count as installed");
-                ToolInstallation.MakeExecutable(exiftool);check(new MetadataService(metadata).Executable==exiftool,"Executable metadata tools must count as installed");
+                // The perl search path is a test directory so the real system perl is never touched.
+                var perlBin=Path.Combine(directory,"perl-bin");Directory.CreateDirectory(perlBin);var perl=Path.Combine(perlBin,"perl");File.WriteAllText(perl,"x");ToolInstallation.MakeExecutable(perl);
+                var library=Path.Combine(Path.GetDirectoryName(exiftool)!,"lib","Image","ExifTool.pm");Directory.CreateDirectory(Path.GetDirectoryName(library)!);File.WriteAllText(library,"x");
+                check(new MetadataService(metadata,perlBin).Executable is null,"Metadata tools without the executable bit must not count as installed");
+                ToolInstallation.MakeExecutable(exiftool);check(new MetadataService(metadata,perlBin).Executable==exiftool,"Executable metadata tools must count as installed");
+                File.Delete(library);check(new MetadataService(metadata,perlBin).Executable is null,"ExifTool without lib/Image/ExifTool.pm must not count as installed");File.WriteAllText(library,"x");
+                var noPerl=Path.Combine(directory,"no-perl");Directory.CreateDirectory(noPerl);
+                check(new MetadataService(metadata,noPerl).Executable is null,"ExifTool must not count as installed without perl");
+                var noPerlInstall=false;try{new MetadataService(Path.Combine(directory,"fresh-metadata"),noPerl).InstallAsync(null,CancellationToken.None).GetAwaiter().GetResult();}catch(InvalidOperationException){noPerlInstall=true;}check(noPerlInstall,"Metadata setup must stop before downloading when perl is missing");
+                File.SetUnixFileMode(perl,UnixFileMode.UserRead|UnixFileMode.UserWrite);check(new MetadataService(metadata,perlBin).Executable is null,"A perl without the executable bit must not count as usable");
+                ToolInstallation.MakeExecutable(perl);var perlLink=Path.Combine(directory,"perl-link");Directory.CreateDirectory(perlLink);File.CreateSymbolicLink(Path.Combine(perlLink,"perl"),perl);check(new MetadataService(metadata,perlLink).Executable==exiftool,"A perl symlink to an executable must count as usable");
                 var mode=Path.Combine(directory,"mode");File.WriteAllText(mode,"x");
                 File.SetUnixFileMode(mode,UnixFileMode.UserRead|UnixFileMode.UserWrite|UnixFileMode.GroupRead|UnixFileMode.OtherRead);check(!ToolInstallation.CanExecute(mode),"A 0644 file must not be executable");
                 ToolInstallation.MakeExecutable(mode);check(ToolInstallation.CanExecute(mode),"A 0755 file must be executable");
