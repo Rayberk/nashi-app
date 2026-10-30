@@ -1725,7 +1725,12 @@
 "SOUND FOLLOWS YOUR MAC’S VOLUME. HAPTICS NEED A COMPATIBLE FORCE TOUCH TRACKPAD." = "SES, MAC'İNİN SES DÜZEYİNİ KULLANIR. TİTREŞİM İÇİN UYUMLU BİR FORCE TOUCH TRACKPAD GEREKİR.";
 "SOURCE & THIRD-PARTY NOTICES" = "KAYNAK KODU VE ÜÇÜNCÜ TARAF BİLDİRİMLERİ";
 "SPACE PLAY/PAUSE · ←/→ 1S · SHIFT+←/→ 1 FRAME (VIDEO), 0.1S (AUDIO) · I/O SET RANGE · ENTER SAVE" = "SPACE OYNAT/DURAKLAT · ←/→ 1 SN · SHIFT+←/→ 1 KARE (VİDEO), 0,1 SN (SES) · I/O ARALIĞI AYARLA · ENTER KAYDET";
+"SPACE PLAY/PAUSE · ←/→ 1S · ⇧←/→ 0.1S" = "SPACE OYNAT/DURAKLAT · ←/→ 1 SN · ⇧←/→ 0,1 SN";
+"SPACE PLAY/PAUSE · ←/→ 1S · ⇧←/→ 0.1S · I/O SET RANGE · ⇧SPACE PLAY RANGE" = "SPACE OYNAT/DURAKLAT · ←/→ 1 SN · ⇧←/→ 0,1 SN · I/O ARALIĞI AYARLA · ⇧SPACE ARALIĞI OYNAT";
+"SPACE PLAY/PAUSE · ←/→ 1S · ⇧←/→ 1 FRAME" = "SPACE OYNAT/DURAKLAT · ←/→ 1 SN · ⇧←/→ 1 KARE";
 "SPACE PLAY/PAUSE · ←/→ 1S · ⇧←/→ 1 FRAME · I/O SET RANGE · ⇧SPACE PLAY RANGE" = "SPACE OYNAT/DURAKLAT · ←/→ 1 SN · ⇧←/→ 1 KARE · I/O ARALIĞI AYARLA · ⇧SPACE ARALIĞI OYNAT";
+"SPACE PLAY/PAUSE · ←/→ 1S · ⇧←/→ 1 FRAME · M ADD FRAME" = "SPACE OYNAT/DURAKLAT · ←/→ 1 SN · ⇧←/→ 1 KARE · M KARE EKLE";
+"SPACE PLAY/PAUSE · ←/→ 1S · ⇧←/→ 1 FRAME · M ADD SPLIT" = "SPACE OYNAT/DURAKLAT · ←/→ 1 SN · ⇧←/→ 1 KARE · M BÖLME NOKTASI EKLE";
 "SPACE · PREVIEW" = "BOŞLUK · ÖNİZLEME";
 "SPACE: PREVIEW · ENTER: USE IN NASHI" = "BOŞLUK: ÖNİZLE · ENTER: NASHI'DE KULLAN";
 "SPACING" = "BOŞLUK";
@@ -1863,7 +1868,12 @@
 "Sound follows your Mac’s volume. Haptics need a compatible Force Touch trackpad." = "Ses, Mac'inin ses düzeyini kullanır. Titreşim için uyumlu bir Force Touch trackpad gerekir.";
 "Source & third-party notices" = "Kaynak kodu ve üçüncü taraf bildirimleri";
 "Space play/pause · ←/→ 1s · Shift+←/→ 1 frame (video), 0.1s (audio) · I/O set range · Enter save" = "Space oynat/duraklat · ←/→ 1 sn · Shift+←/→ 1 kare (video), 0,1 sn (ses) · I/O aralığı ayarla · Enter kaydet";
+"Space play/pause · ←/→ 1s · ⇧←/→ 0.1s" = "Space oynat/duraklat · ←/→ 1 sn · ⇧←/→ 0,1 sn";
+"Space play/pause · ←/→ 1s · ⇧←/→ 0.1s · I/O set range · ⇧Space play range" = "Space oynat/duraklat · ←/→ 1 sn · ⇧←/→ 0,1 sn · I/O aralığı ayarla · ⇧Space aralığı oynat";
+"Space play/pause · ←/→ 1s · ⇧←/→ 1 frame" = "Space oynat/duraklat · ←/→ 1 sn · ⇧←/→ 1 kare";
 "Space play/pause · ←/→ 1s · ⇧←/→ 1 frame · I/O set range · ⇧Space play range" = "Space oynat/duraklat · ←/→ 1 sn · ⇧←/→ 1 kare · I/O aralığı ayarla · ⇧Space aralığı oynat";
+"Space play/pause · ←/→ 1s · ⇧←/→ 1 frame · M add frame" = "Space oynat/duraklat · ←/→ 1 sn · ⇧←/→ 1 kare · M kare ekle";
+"Space play/pause · ←/→ 1s · ⇧←/→ 1 frame · M add split" = "Space oynat/duraklat · ←/→ 1 sn · ⇧←/→ 1 kare · M bölme noktası ekle";
 "Space · Preview" = "Boşluk · Önizleme";
 "Space: preview · Enter: use in Nashi" = "Boşluk: önizle · Enter: Nashi'de kullan";
 "Spacing" = "Boşluk";
