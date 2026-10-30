@@ -102,7 +102,7 @@ public sealed class MediaEngine(string ffmpeg, string ffprobe)
                 else
                 {
                     arguments.AddRange(["-map","0:v:0","-map","0:a:0?"]);
-                    if (options.Width is not null || options.Height is not null) arguments.AddRange(["-vf",Scale(options)]);
+                    arguments.AddRange(["-vf",options.Width is not null || options.Height is not null?Scale(options):"pad=ceil(iw/2)*2:ceil(ih/2)*2"]);
                     arguments.AddRange(VideoEncoding(format,options));
                 }
             }
