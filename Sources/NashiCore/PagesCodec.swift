@@ -259,14 +259,19 @@ private enum PagesDOCXReader {
                         if let fill = properties?.first("shd")?.attr("fill"), let color = color(fill) { cellModel["formatting"] = ["fill":["kind":"color","color":color]] }
                         cells.append(cellModel)
                         if span > 1 { for _ in 1..<span { cells.append(["text":""]) } }
+                        var extendsVertical = false
                         if let vertical = properties?.first("vMerge") {
                             if vertical.attr("val") == "restart" { activeVertical[column] = (rowIndex,span) }
                             else if let origin = activeVertical[column] {
+                                extendsVertical = true
                                 if let index = merges.firstIndex(where: {$0["row"] == origin.0 && $0["column"] == column}) { merges[index]["rowCount"] = rowIndex - origin.0 + 1 }
                                 else { merges.append(["row":origin.0,"column":column,"rowCount":rowIndex-origin.0+1,"columnCount":origin.1]) }
                             }
                         } else { activeVertical[column] = nil }
-                        if span > 1 && properties?.first("vMerge") == nil { merges.append(["row":rowIndex,"column":column,"rowCount":1,"columnCount":span]) }
+                        // A restart's horizontal span is recorded now and grows
+                        // downward if continuations follow; it must not depend
+                        // on whether one does.
+                        if span > 1 && !extendsVertical { merges.append(["row":rowIndex,"column":column,"rowCount":1,"columnCount":span]) }
                         column += span
                     }
                     rows.append(cells)
