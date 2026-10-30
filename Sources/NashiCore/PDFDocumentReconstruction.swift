@@ -298,8 +298,10 @@ enum PDFDocumentReconstruction {
 enum PDFPlacedImages {
     static func regions(_ page: PDFPage, token: CancellationToken) throws -> [CGRect] {
         guard let cgPage = page.pageRef, let dictionary = cgPage.dictionary else { return [] }
-        var resources: CGPDFDictionaryRef?
-        guard CGPDFDictionaryGetDictionary(dictionary, "Resources", &resources), let resources else { return [] }
+        // A page may inherit /Resources from its page-tree nodes; the bound stops /Parent cycles.
+        var resources: CGPDFDictionaryRef?, node: CGPDFDictionaryRef? = dictionary
+        for _ in 0..<64 where resources == nil { guard let current = node else { break }; node = nil; _ = CGPDFDictionaryGetDictionary(current, "Resources", &resources); _ = CGPDFDictionaryGetDictionary(current, "Parent", &node) }
+        guard let resources else { return [] }
         let content = CGPDFContentStreamCreateWithPage(cgPage)
         defer { CGPDFContentStreamRelease(content) }
         let scanner = Scanner(content: content, resources: resources, transform: .identity, token: token, depth: 0)
