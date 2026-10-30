@@ -417,13 +417,15 @@ private enum PagesDOCXReader {
         if let size=element.first("sz")?.number("val"){result["fontSize"]=size/2}
         if let font=element.first("rFonts")?.attr("ascii") ?? element.first("rFonts")?.attr("hAnsi"){result["fontName"]=font}
         if let value=element.first("color")?.attr("val"),let color=color(value){result["fontColor"]=color}
-        if let value=element.first("highlight")?.attr("val"),let color=color(value){result["backgroundColor"]=color}
+        if let value=element.first("highlight")?.attr("val"),let color=color(highlights[value] ?? value){result["backgroundColor"]=color}
         if let underline=element.first("u"){result["underline"] = underline.attr("val") == "none" ? 0 : underline.attr("val") == "double" ? 2 : 1}
         if let strike=element.first("strike"){result["strikethru"] = ["0","false","off"].contains(strike.attr("val") ?? "1") ? 0 : 1}
         if let align=element.first("vertAlign")?.attr("val"){result["superscript"] = align == "superscript" ? 1 : align == "subscript" ? -1 : 0}
         if let language=element.first("lang")?.attr("val"){result["language"]=language}
         return result
     }
+    /// w:highlight takes ST_HighlightColor names, not hex values.
+    static let highlights=["black":"000000","blue":"0000FF","cyan":"00FFFF","green":"00FF00","magenta":"FF00FF","red":"FF0000","yellow":"FFFF00","white":"FFFFFF","darkBlue":"000080","darkCyan":"008080","darkGreen":"008000","darkMagenta":"800080","darkRed":"800000","darkYellow":"808000","darkGray":"808080","lightGray":"C0C0C0"]
     static func paragraph(_ element:XMLElement?) -> [String:Any] {
         guard let element else{return [:]};var result:[String:Any]=[:]
         if let alignment=element.first("jc")?.attr("val"){result["alignment"]=["left":0,"start":0,"right":1,"end":1,"center":2,"both":3,"distribute":3][alignment] ?? 0}
