@@ -28,6 +28,8 @@ internal static class ParityChecks
         check(textBlank.Length==0&&textHtml.Contains("Nashi")&&!textHtml.Contains("data:image")&&vectorBlank.SequenceEqual(new[]{1})&&vectorHtml.Contains("data:image/png;base64,AQID"),"A PDF page without extractable text or images converted to a blank page");
         // macOS (Quartz) PDFs set "1 Tf" and scale the text matrix; the drawn size is what matters.
         check(OfficeDocuments.PdfHtml(Pdf("Scaled text.pdf","BT /F1 1 Tf 24 0 0 24 72 700 Tm (Scaled) Tj ET")).Contains("<span style=\"font-size:24pt;\">Scaled</span>"),"Editable PDF text drawn through a scaled text matrix lost its size");
+        // A zero font size under an overflowing matrix gives a NaN drawn size; keep the default instead of writing "NaNpt".
+        check(OfficeDocuments.PdfHtml(Pdf("Overflowing text.pdf","1e300 0 0 1e300 0 0 cm BT /F1 0 Tf 1e300 0 0 1e300 72 700 Tm (Overflow) Tj ET")).Contains("<span style=\"font-size:12pt;\">Overflow</span>"),"Editable PDF text wrote a NaN font size");
         // A JPEG behind a Flate filter: PDFium draws it, PdfPig cannot hand it over.
         var tinyJpeg=System.Convert.FromBase64String("/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDAAgKCgsKCw0NDQ0NDRAPEBAQEBAQEBAQEBASEhIVFRUSEhIQEBISFBQVFRcXFxUVFRUXFxkZGR4eHBwjIyQrKzP/xABLAAEBAAAAAAAAAAAAAAAAAAAAAgEBAAAAAAAAAAAAAAAAAAAABhABAAAAAAAAAAAAAAAAAAAAABEBAAAAAAAAAAAAAAAAAAAAAP/AABEIAAgACAMBIgACEQADEQD/2gAMAwEAAhEDEQA/AIAFDV//2Q==");
         byte[] chained;using(var packed=new MemoryStream()){using(var zlib=new ZLibStream(packed,CompressionLevel.Optimal,true))zlib.Write(tinyJpeg);chained=packed.ToArray();}
