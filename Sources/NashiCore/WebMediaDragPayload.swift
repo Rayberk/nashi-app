@@ -20,7 +20,8 @@ public struct WebMediaDragPayload:Equatable,Sendable {
         for markup in html.prefix(8) where markup.utf8.count<=131_072 {
             let base=attributes(markup,tag:"base",attribute:"href").compactMap{try? WebDownloadEngine.link(decode($0))}.first ?? bases.first
             func resolve(_ value:String)->URL? {
-                let value=decode(value)
+                // Browsers strip spaces around URL attributes; Foundation would encode them into a relative path.
+                let value=decode(value).trimmingCharacters(in:.whitespacesAndNewlines)
                 guard let url=URL(string:value,relativeTo:base)?.absoluteURL else { return nil }
                 return try? WebDownloadEngine.link(url.absoluteString)
             }
