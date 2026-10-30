@@ -269,6 +269,8 @@
 "Border" = "Kenarlık";
 "Bottom" = "Alt";
 "Brightness" = "Parlaklık";
+"Build %@" = "Derleme %@";
+"Build %lld" = "Derleme %lld";
 "Built for your files. Made for your Mac." = "Dosyaların için geliştirildi. Mac'in için tasarlandı.";
 "CALLOUT" = "AÇIKLAMA";
 "CANCEL" = "İPTAL";
@@ -1244,6 +1246,10 @@
 "NOTHING HERE YET. PASTE SOMETHING OR MAKE YOUR FIRST FRESH COPY." = "BURADA HENÜZ BİR ŞEY YOK. BİR DOSYA YAPIŞTIR VEYA İLK KOPYANI OLUŞTUR.";
 "NUMBER" = "NUMARA";
 "NUMBER OF CLIPS" = "KLİP SAYISI";
+"Nashi %@ · Build %@" = "Nashi %@ · Derleme %@";
+"Nashi %@ · Build %lld" = "Nashi %@ · Derleme %lld";
+"Nashi %lld · Build %@" = "Nashi %lld · Derleme %@";
+"Nashi %lld · Build %lld" = "Nashi %lld · Derleme %lld";
 "Nashi Settings" = "Nashi Ayarları";
 "Nashi checks once an hour while it’s running. You choose when to download and install." = "Nashi çalışırken saatte bir denetler. İndirme ve kurulum zamanını sen seçersin.";
 "Nashi is already running but is still starting. Open it from the system tray or try again in a moment." = "Nashi zaten çalışıyor ama hâlâ açılıyor. Sistem tepsisinden aç veya birazdan tekrar dene.";

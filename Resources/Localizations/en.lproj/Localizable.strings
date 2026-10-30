@@ -269,6 +269,8 @@
 "Border" = "Border";
 "Bottom" = "Bottom";
 "Brightness" = "Brightness";
+"Build %@" = "Build %@";
+"Build %lld" = "Build %lld";
 "Built for your files. Made for your Mac." = "Built for your files. Made for your Mac.";
 "CALLOUT" = "CALLOUT";
 "CANCEL" = "CANCEL";
@@ -1244,6 +1246,10 @@
 "NOTHING HERE YET. PASTE SOMETHING OR MAKE YOUR FIRST FRESH COPY." = "NOTHING HERE YET. PASTE SOMETHING OR MAKE YOUR FIRST FRESH COPY.";
 "NUMBER" = "NUMBER";
 "NUMBER OF CLIPS" = "NUMBER OF CLIPS";
+"Nashi %@ · Build %@" = "Nashi %@ · Build %@";
+"Nashi %@ · Build %lld" = "Nashi %@ · Build %lld";
+"Nashi %lld · Build %@" = "Nashi %lld · Build %@";
+"Nashi %lld · Build %lld" = "Nashi %lld · Build %lld";
 "Nashi Settings" = "Nashi Settings";
 "Nashi checks once an hour while it’s running. You choose when to download and install." = "Nashi checks once an hour while it’s running. You choose when to download and install.";
 "Nashi is already running but is still starting. Open it from the system tray or try again in a moment." = "Nashi is already running but is still starting. Open it from the system tray or try again in a moment.";
