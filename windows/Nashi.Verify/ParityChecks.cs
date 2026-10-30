@@ -135,7 +135,11 @@ internal static class ParityChecks
         byte[] Flat(bool gray,bool alpha){using var flat=new MagickImage(new MagickColor(128,128,128,(byte)(alpha?200:255)),4,4){Format=MagickFormat.Png};if(gray)flat.ColorType=alpha?ColorType.GrayscaleAlpha:ColorType.Grayscale;else flat.Settings.SetDefine(MagickFormat.Png,"color-type",alpha?"6":"2");return flat.ToByteArray();}
         string Sample(byte[] bytes){using var decoded=new MagickImage(bytes);decoded.ColorSpace=ColorSpace.sRGB;return string.Join(",",decoded.GetPixels().GetValue(1,1)!.Take(decoded.HasAlpha?4:3));}
         foreach(var alpha in new[]{false,true})foreach(var adjustment in new[]{new PhotoAdjustments{Saturation=1.5},new(){Temperature=.5},new(){Tint=.4,Vibrance=.3}})
-            check(Sample(PhotoCodec.Adjust(Flat(true,alpha),adjustment))==Sample(PhotoCodec.Adjust(Flat(false,alpha),adjustment)),"A grayscale photo adjusted differently from the same RGB photo");
+        {
+            var adjustedGray=PhotoCodec.Adjust(Flat(true,alpha),adjustment);
+            check(Sample(adjustedGray)==Sample(PhotoCodec.Adjust(Flat(false,alpha),adjustment)),"A grayscale photo adjusted differently from the same RGB photo");
+            if(alpha){using var decodedGray=new MagickImage(adjustedGray);check(decodedGray.GetPixels().GetPixel(1,1).ToColor()!.A==200,"Photo adjustment changed grayscale alpha");}
+        }
         var neutral=PhotoCodec.Adjust(png,new());using(var decoded=new MagickImage(neutral))check(decoded.Width==96&&decoded.Height==64,"Neutral photo adjustment changed dimensions");
         var changed=PhotoCodec.Adjust(png,new(){Brightness=.2,Saturation=.3,Temperature=.2,Shadows=.1});using(var a=new MagickImage(png))using(var b=new MagickImage(changed))check(a.Compare(b,ErrorMetric.Absolute)>0,"Photo adjustments did not change pixels");
         foreach(var effect in new[]{new PhotoAdjustments{Blur=2},new(){Sharpen=1},new(){NoiseReduction=.5},new(){Grain=.3},new(){Vignette=.4},new(){Gamma=1.2},new(){Exposure=.5},new(){Hue=50},new(){Dehaze=.2}})check(PhotoCodec.Adjust(png,effect).Length>0,"Photo effect failed");
