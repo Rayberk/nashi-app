@@ -578,6 +578,8 @@
 "Copy path" = "Copy path";
 "Corner radius" = "Corner radius";
 "Corners" = "Corners";
+"Could not open %@." = "Could not open %@.";
+"Could not open %lld." = "Could not open %lld.";
 "Couldn’t check for updates" = "Couldn’t check for updates";
 "Couldn’t finish" = "Couldn’t finish";
 "Couldn’t open this tool" = "Couldn’t open this tool";

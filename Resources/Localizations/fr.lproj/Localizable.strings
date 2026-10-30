@@ -578,6 +578,8 @@
 "Copy path" = "Copier le chemin";
 "Corner radius" = "Rayon des coins";
 "Corners" = "Coins";
+"Could not open %@." = "Impossible d’ouvrir %@.";
+"Could not open %lld." = "Impossible d’ouvrir %lld.";
 "Couldn’t check for updates" = "Impossible de rechercher les mises à jour";
 "Couldn’t finish" = "Impossible de terminer";
 "Couldn’t open this tool" = "Impossible d’ouvrir cet outil";
