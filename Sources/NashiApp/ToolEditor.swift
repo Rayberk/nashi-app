@@ -713,6 +713,7 @@ struct ToolEditor:View {
     }
     func previewChannel(_ channel:Int) {
         guard let input,readyToApply,!isLoading else { return };let settings=options,token=previewToken,generation=editorGeneration
+        previewError=nil
         Task { do {
             let url=try await Task.detached { try MediaEngine.previewChannel(input,channel:channel,options:settings,token:token) }.value
             guard generation==editorGeneration,!token.isCancelled else { try? FileManager.default.removeItem(at:url.deletingLastPathComponent());return }
@@ -799,7 +800,7 @@ struct ToolEditor:View {
     func processedPreview() {
         guard let input,readyToApply,!isLoading else { return };var settings=options;let kind=tool,token=previewToken,generation=editorGeneration
         if kind == .splitVideo { settings.joinSplitClips=true }
-        previewBusy=true
+        previewError=nil;previewBusy=true
         Task { do {
             let preview=try await MediaPreviewEngine.processedPreview(kind,input:input,options:settings,token:token)
             guard generation==editorGeneration,!token.isCancelled else { preview.removeTemporaryFiles();return }
