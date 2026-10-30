@@ -31,29 +31,48 @@ public static class FileActions
     }
     public static async Task<IReadOnlyList<string>> MoveAsync(IReadOnlyList<string> inputs,string destination,IProgress<OperationProgress>? progress,CancellationToken token)
     {
-        using var tx=new ExportTransaction(destination);var staged=new List<string>();
+        using var tx=new ExportTransaction(destination);
+        var dest=Path.TrimEndingDirectorySeparator(Path.GetFullPath(destination));
+        var toMove=new List<string>();
+        var staged=new List<string>();
+        var seen=new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        var resolved=new Dictionary<string,string>(StringComparer.OrdinalIgnoreCase);
         foreach(var path in inputs)
         {
-            var full=Path.GetFullPath(path);var dest=Path.GetFullPath(destination).TrimEnd(Path.DirectorySeparatorChar);
+            var full=Path.GetFullPath(path);
             if(Directory.Exists(full)&&(dest.Equals(full,StringComparison.OrdinalIgnoreCase)||dest.StartsWith(full.TrimEnd(Path.DirectorySeparatorChar)+Path.DirectorySeparatorChar,StringComparison.OrdinalIgnoreCase)))throw new ArgumentException("Choose a destination outside the folder being moved.");
-            var target=SafePaths.Unique(tx.StagingDirectory,Path.GetFileName(full));await CopyTree(full,target,token);staged.Add(target);progress?.Report(new(staged.Count/(double)inputs.Count*.95,"Preparing move…"));
+            var parent=Path.GetDirectoryName(full);
+            if(parent is not null) parent=Path.TrimEndingDirectorySeparator(parent);
+            if(string.Equals(parent,dest,StringComparison.OrdinalIgnoreCase)){resolved[full]=full;continue;}
+            if(!seen.Add(full))continue;
+            var target=SafePaths.Unique(tx.StagingDirectory,Path.GetFileName(full));
+            await CopyTree(full,target,token);
+            staged.Add(target);
+            toMove.Add(full);
+            progress?.Report(new(staged.Count/(double)inputs.Count*.95,"Preparing move…"));
         }
-        token.ThrowIfCancellationRequested();var published=tx.Publish(staged,token);
-        // Only after every copy was published may originals be removed. If a
-        // locked original remains, the destination is retained and reported.
-        var retained=new List<string>();
-        foreach(var input in inputs)
+        token.ThrowIfCancellationRequested();
+        if(staged.Count>0)
         {
-            var deleted=false;
-            for(var attempt=0;attempt<5;attempt++)
+            var published=tx.Publish(staged,token);
+            for(var i=0;i<toMove.Count;i++)resolved[toMove[i]]=published[i];
+            // Only after every copy was published may originals be removed. If a
+            // locked original remains, the destination is retained and reported.
+            var retained=new List<string>();
+            foreach(var orig in toMove)
             {
-                try{if(Directory.Exists(input))Directory.Delete(input,true);else if(File.Exists(input))File.Delete(input);deleted=true;break;}
-                catch(Exception ex)when(attempt<4&&(ex is IOException or UnauthorizedAccessException)){await Task.Delay(25*(attempt+1),CancellationToken.None);}
-                catch(Exception ex)when(ex is IOException or UnauthorizedAccessException){break;}
+                var deleted=false;
+                for(var attempt=0;attempt<5;attempt++)
+                {
+                    try{if(Directory.Exists(orig))Directory.Delete(orig,true);else if(File.Exists(orig))File.Delete(orig);deleted=true;break;}
+                    catch(Exception ex)when(attempt<4&&(ex is IOException or UnauthorizedAccessException)){await Task.Delay(25*(attempt+1),CancellationToken.None);}
+                    catch(Exception ex)when(ex is IOException or UnauthorizedAccessException){break;}
+                }
+                if(!deleted&&(File.Exists(orig)||Directory.Exists(orig)))retained.Add(orig);
             }
-            if(!deleted&&(File.Exists(input)||Directory.Exists(input)))retained.Add(input);
+            if(retained.Count>0)throw new IOException("Files were copied safely, but some originals could not be removed. New copies are in "+destination+". Check the originals before retrying.");
         }
-        if(retained.Count>0)throw new IOException("Files were copied safely, but some originals could not be removed. New copies are in "+destination+". Check the originals before retrying.");return published;
+        return inputs.Select(p=>resolved[Path.GetFullPath(p)]).ToArray();
     }
     private static async Task CopyTree(string source,string target,CancellationToken token,int depth=0)
     {
