@@ -13,8 +13,15 @@ final class ExportTransaction {
 
     private let manager=FileManager.default
     private var areas:[Area]=[]
+    /// Output folders this transaction had to create; cleanUp removes them again
+    /// if they are still empty, so a failed export leaves no folders behind.
+    private var createdFolders:[URL]=[]
 
     func makeArea(destination:URL) throws -> Area {
+        var folder=destination.standardizedFileURL
+        while folder.path != "/",(try? manager.attributesOfItem(atPath:folder.path))==nil {
+            createdFolders.append(folder);folder=folder.deletingLastPathComponent()
+        }
         try manager.createDirectory(at:destination,withIntermediateDirectories:true)
         let directory=destination.appendingPathComponent(".Nashi-\(UUID().uuidString)",isDirectory:true)
         try manager.createDirectory(at:directory,withIntermediateDirectories:false,attributes:[.posixPermissions:0o700])
@@ -88,5 +95,10 @@ final class ExportTransaction {
         return destination
     }
 
-    func cleanUp() { for area in areas { try? manager.removeItem(at:area.directory) } }
+    func cleanUp() {
+        for area in areas { try? manager.removeItem(at:area.directory) }
+        // rmdir removes only empty folders: published outputs and anything
+        // another writer put there keep their folder.
+        for folder in createdFolders.sorted(by:{$0.path.count>$1.path.count}) { _=rmdir(folder.path) }
+    }
 }
