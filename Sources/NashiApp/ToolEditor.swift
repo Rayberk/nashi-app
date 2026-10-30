@@ -237,7 +237,7 @@ struct ToolEditor:View {
             HStack { Stepper("Equal clips: \(equalClips)",value:$equalClips,in:2...100);Button("Set") { options.equalClips=equalClips;options.splitPoints=(1..<equalClips).map{duration*Double($0)/Double(equalClips)} } }
             splitEditingControls
         case .videoSnapshots:
-            HStack { Text("\(options.snapshotTimes.count) selected");Spacer();Button("Add Frame") { options.snapshotTimes.append(playhead) }.help("Add frame at playhead (M)") }
+            HStack { LText("\(options.snapshotTimes.count) selected");Spacer();Button("Add Frame") { options.snapshotTimes.append(playhead) }.help("Add frame at playhead (M)") }
             if let source=playbackURL ?? input { LazyVGrid(columns:[GridItem(.adaptive(minimum:100))]) { ForEach(Array(options.snapshotTimes.enumerated()),id:\.offset) { index,time in VStack {
                 VideoFrameThumbnail(source:source,time:time).frame(height:70).cornerRadius(6)
                 HStack { Text(timeLabel(time)).font(.caption);Spacer();Button { options.snapshotTimes.remove(at:index) } label:{Image(systemName:"xmark.circle")} }
