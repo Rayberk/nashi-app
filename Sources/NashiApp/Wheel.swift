@@ -203,7 +203,8 @@ final class WheelView:NSView {
         case 124,125: if !items.isEmpty { selected=((selected ?? -1)+1)%items.count }
         case 115: selected=items.isEmpty ? nil:0
         case 119: selected=items.isEmpty ? nil:items.count-1
-        case 36,49: if let selected { onSelect?(items[selected]) }
+        // A held key is one press: its auto-repeat must not pick the petal the keyboard wheel preselects.
+        case 36,49: if !event.isARepeat,let selected { onSelect?(items[selected]) }
         default: break
         }
     }
