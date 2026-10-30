@@ -1110,6 +1110,8 @@
   "QR code copied.": "QR kodu kopyalandı.",
   "QR codes copied.": "QR kodları kopyalandı.",
   "{0} found": "{0} bulundu",
+  "0 found": "0 bulundu",
+  "1 found": "1 bulundu",
   "Drag either edge to resize the range, or drag its middle to move it.": "Aralığı boyutlandırmak için kenarlarından birini, taşımak için ortasını sürükle.",
   "Remove from selection": "Seçimden kaldır",
   "Space: preview · Enter: use in Nashi": "Boşluk: önizle · Enter: Nashi'de kullan",

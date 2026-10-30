@@ -31,7 +31,11 @@
 "%lld ways to change it" = "%lld farklı biçime çevir";
 "%lld · Nashi" = "%lld · Nashi";
 "%lld · Original stays safe" = "%lld · Orijinal dosyan güvende";
+"0 FOUND" = "0 BULUNDU";
+"0 found" = "0 bulundu";
+"1 FOUND" = "1 BULUNDU";
 "1 ITEM" = "1 ÖĞE";
+"1 found" = "1 bulundu";
 "1 item" = "1 öğe";
 "1/3 LEFT · MIDDLE · RIGHT   /   1/2 LEFT · RIGHT   /   2/3 LEFT · RIGHT" = "1/3 SOL · ORTA · SAĞ   /   1/2 SOL · SAĞ   /   2/3 SOL · SAĞ";
 "1/3 left · middle · right   /   1/2 left · right   /   2/3 left · right" = "1/3 sol · orta · sağ   /   1/2 sol · sağ   /   2/3 sol · sağ";
