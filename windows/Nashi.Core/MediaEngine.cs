@@ -182,13 +182,19 @@ public sealed class MediaEngine(string ffmpeg, string ffprobe)
             case "compress":return [await CompressAsync(input,info,directory,options,progress,token)];
             case "videoSnapshots":
                 RequireVideo(info);if(options.SnapshotTimes.Length==0)throw new ArgumentException("Choose at least one frame.");var frames=new List<string>();
-                // FFmpeg seeks to the next frame start, so a playhead on the last frame (or an audio tail) saved nothing; seek inside it.
-                var lastFrame=Math.Max(0,(info.Video!.Duration>0?info.Video.Duration:info.Duration)-1.5/info.Video.FrameRate);
                 for(var n=0;n<options.SnapshotTimes.Length;n++)
                 {
-                    var time=options.SnapshotTimes[n];if(!double.IsFinite(time)||time<0||(info.Duration>0&&time>=info.Duration))throw new ArgumentException("A frame lies outside the video.");
+                    var time=options.SnapshotTimes[n];if(!double.IsFinite(time)||time<0||(info.Duration>0&&time>info.Duration))throw new ArgumentException("A frame lies outside the video.");
                     var file=Output(directory,input,"png"," Frame "+(n+1));
-                    await RenderAsync(["-ss",Number(Math.Min(time,lastFrame)),"-i",input,"-map","0:v:0","-frames:v","1","-update","1","-c:v","png"],file,null,progress,token);frames.Add(file);
+                    try{await RenderAsync(["-ss",Number(time),"-i",input,"-map","0:v:0","-frames:v","1","-update","1","-c:v","png"],file,null,progress,token);}
+                    catch(IOException)when(!File.Exists(file)||new FileInfo(file).Length==0)
+                    {
+                        // FFmpeg writes the first frame at or after -ss. Past the start of the last frame (the end, a long last
+                        // frame or an audio tail) there is none, yet the player shows the last frame, so decode to the end and
+                        // keep it. Seeking past the video stream finds nothing; without a stream duration, decode it all.
+                        File.Delete(file);var seek=info.Video!.Duration>0?new[]{"-ss",Number(Math.Min(time,info.Video.Duration)),"-noaccurate_seek"}:[];
+                        await RenderAsync([..seek,"-i",input,"-map","0:v:0","-update","1","-c:v","png"],file,null,progress,token);
+                    }frames.Add(file);
                     progress(new((double)(n+1)/options.SnapshotTimes.Length,"Saving frame "+(n+1)));
                 }
                 return frames;
