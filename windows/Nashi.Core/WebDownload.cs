@@ -10,7 +10,7 @@ public sealed partial class WebDownload(Toolchain tools)
     {
         if(!line.StartsWith("NASHI:",StringComparison.Ordinal))return null;
         var parts=line.Split(':');
-        if(parts.Length!=3||!double.TryParse(parts[1],NumberStyles.Float,CultureInfo.InvariantCulture,out var current)||!double.TryParse(parts[2],NumberStyles.Float,CultureInfo.InvariantCulture,out var total)||total<=0)return null;
+        if(parts.Length!=3||!double.TryParse(parts[1],NumberStyles.Float,CultureInfo.InvariantCulture,out var current)||!double.TryParse(parts[2],NumberStyles.Float,CultureInfo.InvariantCulture,out var total)||!double.IsFinite(current)||!double.IsFinite(total)||total<=0)return null;
         return Math.Clamp(current/total,0,.98);
     }
     public static Uri Validate(string input)

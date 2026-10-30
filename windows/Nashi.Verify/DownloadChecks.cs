@@ -22,7 +22,7 @@ internal static class DownloadChecks
                 System.Globalization.CultureInfo.CurrentCulture=new(name);
                 check(WebDownload.ProgressFraction("NASHI:524288:1048576.0")==.5&&WebDownload.ProgressFraction("NASHI:1048576:1048576.0")==.98,$"yt-dlp progress parsed differently under {name}");
             }
-            check(WebDownload.ProgressFraction("NASHI:12:NA") is null&&WebDownload.ProgressFraction("NASHI:1:0") is null&&WebDownload.ProgressFraction("[download] 5%") is null,"Unusable yt-dlp progress lines must be ignored");
+            check(WebDownload.ProgressFraction("NASHI:12:NA") is null&&WebDownload.ProgressFraction("NASHI:1:0") is null&&WebDownload.ProgressFraction("[download] 5%") is null&&WebDownload.ProgressFraction("NASHI:NaN:1048576.0") is null&&WebDownload.ProgressFraction("NASHI:5:NaN") is null&&WebDownload.ProgressFraction("NASHI:5:Infinity") is null,"Unusable yt-dlp progress lines must be ignored");
         }
         finally{System.Globalization.CultureInfo.CurrentCulture=culture;}
         var uri=new Uri("https://download.example/fixture");var output=Path.Combine(root,"Download.bin");var bytes=new byte[]{1,2,3};
