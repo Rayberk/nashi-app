@@ -26,6 +26,8 @@ internal static class ParityChecks
         var textPdf=Pdf("Text.pdf","BT /F1 24 Tf 72 700 Td (Nashi fixture) Tj ET");var vectorPdf=Pdf("Vector.pdf","0 0 1 rg 72 72 200 200 re f");
         var textHtml=OfficeDocuments.PdfHtml(textPdf,"",(_,_)=>[9],out var textBlank);var vectorHtml=OfficeDocuments.PdfHtml(vectorPdf,"",(_,area)=>area is null?[1,2,3]:null,out var vectorBlank);
         check(textBlank.Length==0&&textHtml.Contains("Nashi")&&!textHtml.Contains("data:image")&&vectorBlank.SequenceEqual(new[]{1})&&vectorHtml.Contains("data:image/png;base64,AQID"),"A PDF page without extractable text or images converted to a blank page");
+        // macOS (Quartz) PDFs set "1 Tf" and scale the text matrix; the drawn size is what matters.
+        check(OfficeDocuments.PdfHtml(Pdf("Scaled text.pdf","BT /F1 1 Tf 24 0 0 24 72 700 Tm (Scaled) Tj ET")).Contains("<span style=\"font-size:24pt;\">Scaled</span>"),"Editable PDF text drawn through a scaled text matrix lost its size");
         // A JPEG behind a Flate filter: PDFium draws it, PdfPig cannot hand it over.
         var tinyJpeg=System.Convert.FromBase64String("/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDAAgKCgsKCw0NDQ0NDRAPEBAQEBAQEBAQEBASEhIVFRUSEhIQEBISFBQVFRcXFxUVFRUXFxkZGR4eHBwjIyQrKzP/xABLAAEBAAAAAAAAAAAAAAAAAAAAAgEBAAAAAAAAAAAAAAAAAAAABhABAAAAAAAAAAAAAAAAAAAAABEBAAAAAAAAAAAAAAAAAAAAAP/AABEIAAgACAMBIgACEQADEQD/2gAMAwEAAhEDEQA/AIAFDV//2Q==");
         byte[] chained;using(var packed=new MemoryStream()){using(var zlib=new ZLibStream(packed,CompressionLevel.Optimal,true))zlib.Write(tinyJpeg);chained=packed.ToArray();}
