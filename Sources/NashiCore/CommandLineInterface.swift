@@ -19,10 +19,29 @@ do {
         }
         print(String(decoding:try JSONSerialization.data(withJSONObject:result,options:.sortedKeys),as:UTF8.self));return 0
     }
+    if args.count>=3,args[1]=="calc" {
+        let query=args.dropFirst(2).joined(separator:" ")
+        let local=ProcessInfo.processInfo.environment["NASHI_CURRENCY"] ?? Locale.current.currency?.identifier ?? "USD"
+        final class RatesBox:@unchecked Sendable { var rates=CurrencyRateService.cached() }
+        let box=RatesBox()
+        var outcome=Calculator.evaluate(query,rates:box.rates,localCurrency:local)
+        let stale:Bool={ if case .answer(let answer)? = outcome { return answer.kind == .currency && CurrencyRateService.isStale(box.rates) };if case .needsRates? = outcome { return true };return false }()
+        if stale {
+            // The command line is synchronous; wait for the one rate request.
+            let done=DispatchSemaphore(value:0)
+            Task.detached { if let fresh=try? await CurrencyRateService.fetch() { box.rates=fresh };done.signal() }
+            done.wait();outcome=Calculator.evaluate(query,rates:box.rates,localCurrency:local)
+        }
+        switch outcome {
+        case .answer(let answer)?:print("\(answer.detail) \(answer.text)");return 0
+        case .needsRates?:throw NashiError.invalidInput("Currency rates are unavailable right now.")
+        case nil:throw NashiError.invalidInput("Nothing to calculate.")
+        }
+    }
     if args.count==2,args[1]=="dependencies" {
         var result:[String:String]=[:];for name in ["ffmpeg","ffprobe","soffice","exiftool"] { result[name]=try Dependencies.executable(name).path };print(String(decoding:try JSONSerialization.data(withJSONObject:result,options:.sortedKeys),as:UTF8.self));return 0
     }
-    guard args.count>=4 else { print("Usage: nashi-cli convert FORMAT FILE... [--options JSON]\n       nashi-cli tool TOOL_ID FILE... [--options JSON]\n       nashi-cli catalog");return 64 }
+    guard args.count>=4 else { print("Usage: nashi-cli convert FORMAT FILE... [--options JSON]\n       nashi-cli tool TOOL_ID FILE... [--options JSON]\n       nashi-cli catalog\n       nashi-cli calc \"1 USD to TRY\"");return 64 }
     var options=OperationOptions(), paths=Array(args.dropFirst(3))
     let jsonOutput=paths.contains("--json");paths.removeAll{$0=="--json"}
     if let i=paths.firstIndex(of:"--options"),i+1<paths.count {

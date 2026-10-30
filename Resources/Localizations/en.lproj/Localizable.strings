@@ -231,6 +231,8 @@
 "Audio to Video" = "Audio to Video";
 "Audio · MP3" = "Audio · MP3";
 "Authorize Saved Token…" = "Authorize Saved Token…";
+"Automatic (%@)" = "Automatic (%@)";
+"Automatic (%lld)" = "Automatic (%lld)";
 "Available files selected. Some files have moved or were deleted." = "Available files selected. Some files have moved or were deleted.";
 "BACK" = "BACK";
 "BACKGROUND" = "BACKGROUND";
@@ -270,6 +272,8 @@
 "Bottom" = "Bottom";
 "Brightness" = "Brightness";
 "Built for your files. Made for your Mac." = "Built for your files. Made for your Mac.";
+"CALCULATE OR CONVERT" = "CALCULATE OR CONVERT";
+"CALCULATOR" = "CALCULATOR";
 "CALLOUT" = "CALLOUT";
 "CANCEL" = "CANCEL";
 "CANCEL DOWNLOAD" = "CANCEL DOWNLOAD";
@@ -366,6 +370,7 @@
 "CHOOSE ZIP, TAR OR GZIP." = "CHOOSE ZIP, TAR OR GZIP.";
 "CLARITY" = "CLARITY";
 "CLEAR" = "CLEAR";
+"CLEAR CALCULATION" = "CLEAR CALCULATION";
 "CLEAR FLOAT" = "CLEAR FLOAT";
 "CLEAR SELECTION" = "CLEAR SELECTION";
 "CLIPBOARD IS BUSY. TRY AGAIN." = "CLIPBOARD IS BUSY. TRY AGAIN.";
@@ -397,6 +402,7 @@
 "CONVERT TO" = "CONVERT TO";
 "CONVERT · WHILE DRAGGING" = "CONVERT · WHILE DRAGGING";
 "CONVERT, FINE-TUNE, AND SEND THEM ON THEIR WAY." = "CONVERT, FINE-TUNE, AND SEND THEM ON THEIR WAY.";
+"COPIED" = "COPIED";
 "COPIED LINK" = "COPIED LINK";
 "COPY" = "COPY";
 "COPY A FILE, SOME TEXT, AN IMAGE OR A PUBLIC MEDIA LINK FIRST." = "COPY A FILE, SOME TEXT, AN IMAGE OR A PUBLIC MEDIA LINK FIRST.";
@@ -425,6 +431,8 @@
 "CTRL+SHIFT+D  USE A COPIED LINK  ·  PUBLIC, DOWNLOADABLE MEDIA" = "CTRL+SHIFT+D  USE A COPIED LINK  ·  PUBLIC, DOWNLOADABLE MEDIA";
 "CUSTOM DIMENSIONS" = "CUSTOM DIMENSIONS";
 "CUT" = "CUT";
+"Calculate or convert" = "Calculate or convert";
+"Calculator" = "Calculator";
 "Callout" = "Callout";
 "Cancel" = "Cancel";
 "Cancel download" = "Cancel download";
@@ -525,6 +533,7 @@
 "Clear" = "Clear";
 "Clear Float" = "Clear Float";
 "Clear Selection" = "Clear Selection";
+"Clear calculation" = "Clear calculation";
 "Clip %@" = "Clip %@";
 "Clip %lld" = "Clip %lld";
 "Clipboard is busy. Try Paste again." = "Clipboard is busy. Try Paste again.";
@@ -568,6 +577,7 @@
 "Convert to %lld" = "Convert to %lld";
 "Convert · while dragging" = "Convert · while dragging";
 "Convert, fine-tune, and send them on their way." = "Convert, fine-tune, and send them on their way.";
+"Copied" = "Copied";
 "Copied link" = "Copied link";
 "Copy" = "Copy";
 "Copy Path" = "Copy Path";
@@ -760,6 +770,7 @@
 "EPUB layout" = "EPUB layout";
 "ESC TO CLOSE" = "ESC TO CLOSE";
 "EVERYTHING HAS A NEXT FORM." = "EVERYTHING HAS A NEXT FORM.";
+"EXCHANGE RATES ARE UNAVAILABLE. CHECK YOUR CONNECTION AND TRY AGAIN." = "EXCHANGE RATES ARE UNAVAILABLE. CHECK YOUR CONNECTION AND TRY AGAIN.";
 "EXPAND FLOAT" = "EXPAND FLOAT";
 "EXPANDED UPDATE IS TOO LARGE." = "EXPANDED UPDATE IS TOO LARGE.";
 "EXPORT CLIPS" = "EXPORT CLIPS";
@@ -788,6 +799,9 @@
 "Enter page numbers within this PDF, in the desired order." = "Enter page numbers within this PDF, in the desired order.";
 "Esc to close" = "Esc to close";
 "Everything has a next form." = "Everything has a next form.";
+"Exchange rates are unavailable. Check your connection and try again." = "Exchange rates are unavailable. Check your connection and try again.";
+"Exchange rates: %@" = "Exchange rates: %@";
+"Exchange rates: %lld" = "Exchange rates: %lld";
 "Expand Float" = "Expand Float";
 "Expanded update is too large." = "Expanded update is too large.";
 "Export One Video" = "Export One Video";
@@ -961,6 +975,10 @@
 "Gamma must be positive; contrast and saturation cannot be negative." = "Gamma must be positive; contrast and saturation cannot be negative.";
 "General" = "General";
 "Get started" = "Get started";
+"Getting today’s exchange rates for %@ → %@…" = "Getting today’s exchange rates for %@ → %@…";
+"Getting today’s exchange rates for %@ → %lld…" = "Getting today’s exchange rates for %@ → %lld…";
+"Getting today’s exchange rates for %lld → %@…" = "Getting today’s exchange rates for %lld → %@…";
+"Getting today’s exchange rates for %lld → %lld…" = "Getting today’s exchange rates for %lld → %lld…";
 "GitHub repository" = "GitHub repository";
 "Give it a little breathing room." = "Give it a little breathing room.";
 "Glass" = "Glass";
@@ -1090,6 +1108,7 @@
 "LITTLE TWEAKS.\nBIG DIFFERENCE." = "LITTLE TWEAKS.\nBIG DIFFERENCE.";
 "LITTLE TWEAKS. A WHOLE NEW LOOK." = "LITTLE TWEAKS. A WHOLE NEW LOOK.";
 "LOCAL BY DESIGN" = "LOCAL BY DESIGN";
+"LOCAL CURRENCY" = "LOCAL CURRENCY";
 "LOOKING FOR LITTLE SQUARES…" = "LOOKING FOR LITTLE SQUARES…";
 "LOUDNESS RANGE" = "LOUDNESS RANGE";
 "Landscape" = "Landscape";
@@ -1121,6 +1140,7 @@
 "Local by design" = "Local by design";
 "Local by design · MIT source\nVersion %@" = "Local by design · MIT source\nVersion %@";
 "Local by design · MIT source\nVersion %lld" = "Local by design · MIT source\nVersion %lld";
+"Local currency" = "Local currency";
 "Looking for little squares…" = "Looking for little squares…";
 "Loudness range" = "Loudness range";
 "MACOS REDUCE MOTION IS ON. NASHI KEEPS MOTION OFF." = "MACOS REDUCE MOTION IS ON. NASHI KEEPS MOTION OFF.";
@@ -1134,6 +1154,7 @@
 "MAKE YOUR POINT." = "MAKE YOUR POINT.";
 "MARKER" = "MARKER";
 "MATCH SOURCE" = "MATCH SOURCE";
+"MATH, UNITS, AND CURRENCIES. ANSWERS APPEAR AS YOU TYPE." = "MATH, UNITS, AND CURRENCIES. ANSWERS APPEAR AS YOU TYPE.";
 "MAXIMIZE" = "MAXIMIZE";
 "MAXIMUM HEIGHT" = "MAXIMUM HEIGHT";
 "MAXIMUM VIDEO HEIGHT" = "MAXIMUM VIDEO HEIGHT";
@@ -1175,6 +1196,7 @@
 "Marker" = "Marker";
 "Match Source" = "Match Source";
 "Match source" = "Match source";
+"Math, units, and currencies. Answers appear as you type." = "Math, units, and currencies. Answers appear as you type.";
 "Maximize" = "Maximize";
 "Maximum height" = "Maximum height";
 "Maximum video height" = "Maximum video height";
@@ -1548,6 +1570,7 @@
 "RESIZE IMAGE" = "RESIZE IMAGE";
 "RESTORE CLIPS" = "RESTORE CLIPS";
 "RESTORE DEFAULTS" = "RESTORE DEFAULTS";
+"RETURN COPIES THE ANSWER" = "RETURN COPIES THE ANSWER";
 "REVEAL FINISHED FILES IN EXPLORER" = "REVEAL FINISHED FILES IN EXPLORER";
 "REVEAL FINISHED FILES IN FINDER" = "REVEAL FINISHED FILES IN FINDER";
 "RIGHT" = "RIGHT";
@@ -1611,6 +1634,7 @@
 "Restore Clips" = "Restore Clips";
 "Restore Defaults" = "Restore Defaults";
 "Restore defaults" = "Restore defaults";
+"Return copies the answer" = "Return copies the answer";
 "Reveal finished files in Explorer" = "Reveal finished files in Explorer";
 "Reveal finished files in Finder" = "Reveal finished files in Finder";
 "Right" = "Right";
@@ -1972,8 +1996,10 @@
 "TRUE PEAK DB" = "TRUE PEAK DB";
 "TRUE PEAK LIMIT" = "TRUE PEAK LIMIT";
 "TRY A CLEARER IMAGE OR ANOTHER PDF." = "TRY A CLEARER IMAGE OR ANOTHER PDF.";
+"TRY AGAIN" = "TRY AGAIN";
 "TRY FEEDBACK" = "TRY FEEDBACK";
 "TURN OFF UNIFORM WIDTH TO PRESERVE THIS PDF’S FORM FIELDS, ATTACHMENTS, LINKS OR NAVIGATION." = "TURN OFF UNIFORM WIDTH TO PRESERVE THIS PDF’S FORM FIELDS, ATTACHMENTS, LINKS OR NAVIGATION.";
+"TYPE ON HOME: 10+10, 1 USD, 1 USD TO TRY OR 5 KM IN MI. CURRENCY AMOUNTS CONVERT TO THIS CURRENCY UNLESS YOU NAME ANOTHER. EXCHANGE RATES DOWNLOAD ONLY WHEN YOU CONVERT A CURRENCY." = "TYPE ON HOME: 10+10, 1 USD, 1 USD TO TRY OR 5 KM IN MI. CURRENCY AMOUNTS CONVERT TO THIS CURRENCY UNLESS YOU NAME ANOTHER. EXCHANGE RATES DOWNLOAD ONLY WHEN YOU CONVERT A CURRENCY.";
 "Tap the chosen modifier combination while dragging files." = "Tap the chosen modifier combination while dragging files.";
 "Target" = "Target";
 "Target LUFS" = "Target LUFS";
@@ -2061,8 +2087,10 @@
 "True peak dB" = "True peak dB";
 "True peak limit" = "True peak limit";
 "Try a clearer image or another PDF." = "Try a clearer image or another PDF.";
+"Try again" = "Try again";
 "Try feedback" = "Try feedback";
 "Turn off uniform width to preserve this PDF’s form fields, attachments, links or navigation." = "Turn off uniform width to preserve this PDF’s form fields, attachments, links or navigation.";
+"Type on Home: 10+10, 1 USD, 1 USD to TRY or 5 km in mi. Currency amounts convert to this currency unless you name another. Exchange rates download only when you convert a currency." = "Type on Home: 10+10, 1 USD, 1 USD to TRY or 5 km in mi. Currency amounts convert to this currency unless you name another. Exchange rates download only when you convert a currency.";
 "UNDO" = "UNDO";
 "UNDO AREA" = "UNDO AREA";
 "UNDO LAST MARK" = "UNDO LAST MARK";

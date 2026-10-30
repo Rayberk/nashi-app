@@ -231,6 +231,8 @@
 "Audio to Video" = "Sesten Video Oluştur";
 "Audio · MP3" = "Ses · MP3";
 "Authorize Saved Token…" = "Kayıtlı Tokena İzin Ver…";
+"Automatic (%@)" = "Otomatik (%@)";
+"Automatic (%lld)" = "Otomatik (%lld)";
 "Available files selected. Some files have moved or were deleted." = "Mevcut dosyalar seçildi. Bazı dosyalar taşınmış veya silinmiş.";
 "BACK" = "GERİ";
 "BACKGROUND" = "ARKA PLAN";
@@ -270,6 +272,8 @@
 "Bottom" = "Alt";
 "Brightness" = "Parlaklık";
 "Built for your files. Made for your Mac." = "Dosyaların için geliştirildi. Mac'in için tasarlandı.";
+"CALCULATE OR CONVERT" = "HESAPLA VEYA DÖNÜŞTÜR";
+"CALCULATOR" = "HESAP MAKİNESİ";
 "CALLOUT" = "AÇIKLAMA";
 "CANCEL" = "İPTAL";
 "CANCEL DOWNLOAD" = "İNDİRMEYİ İPTAL ET";
@@ -366,6 +370,7 @@
 "CHOOSE ZIP, TAR OR GZIP." = "ZIP, TAR VEYA GZIP SEÇ.";
 "CLARITY" = "NETLİK";
 "CLEAR" = "TEMİZLE";
+"CLEAR CALCULATION" = "HESAPLAMAYI TEMİZLE";
 "CLEAR FLOAT" = "YÜZEN PENCEREYİ TEMİZLE";
 "CLEAR SELECTION" = "SEÇİMİ TEMİZLE";
 "CLIPBOARD IS BUSY. TRY AGAIN." = "PANO MEŞGUL. TEKRAR DENE.";
@@ -397,6 +402,7 @@
 "CONVERT TO" = "ŞUNA DÖNÜŞTÜR";
 "CONVERT · WHILE DRAGGING" = "DÖNÜŞTÜR · SÜRÜKLERKEN";
 "CONVERT, FINE-TUNE, AND SEND THEM ON THEIR WAY." = "DÖNÜŞTÜR, İNCE AYAR YAP VE PAYLAŞ.";
+"COPIED" = "KOPYALANDI";
 "COPIED LINK" = "KOPYALANAN BAĞLANTI";
 "COPY" = "KOPYALA";
 "COPY A FILE, SOME TEXT, AN IMAGE OR A PUBLIC MEDIA LINK FIRST." = "ÖNCE BİR DOSYA, METİN, GÖRSEL VEYA HERKESE AÇIK BİR MEDYA BAĞLANTISI KOPYALA.";
@@ -425,6 +431,8 @@
 "CTRL+SHIFT+D  USE A COPIED LINK  ·  PUBLIC, DOWNLOADABLE MEDIA" = "CTRL+SHIFT+D  KOPYALANAN BAĞLANTIYI KULLAN  ·  HERKESE AÇIK, İNDİRİLEBİLİR MEDYA";
 "CUSTOM DIMENSIONS" = "ÖZEL BOYUTLAR";
 "CUT" = "KES";
+"Calculate or convert" = "Hesapla veya dönüştür";
+"Calculator" = "Hesap makinesi";
 "Callout" = "Açıklama";
 "Cancel" = "İptal";
 "Cancel download" = "İndirmeyi iptal et";
@@ -525,6 +533,7 @@
 "Clear" = "Temizle";
 "Clear Float" = "Yüzen Pencereyi Temizle";
 "Clear Selection" = "Seçimi Temizle";
+"Clear calculation" = "Hesaplamayı temizle";
 "Clip %@" = "Klip %@";
 "Clip %lld" = "Klip %lld";
 "Clipboard is busy. Try Paste again." = "Pano meşgul. Yeniden yapıştırmayı dene.";
@@ -568,6 +577,7 @@
 "Convert to %lld" = "%lld biçimine dönüştür";
 "Convert · while dragging" = "Dönüştür · sürüklerken";
 "Convert, fine-tune, and send them on their way." = "Dönüştür, ince ayar yap ve paylaş.";
+"Copied" = "Kopyalandı";
 "Copied link" = "Kopyalanan bağlantı";
 "Copy" = "Kopyala";
 "Copy Path" = "Yolu Kopyala";
@@ -760,6 +770,7 @@
 "EPUB layout" = "EPUB düzeni";
 "ESC TO CLOSE" = "KAPATMAK İÇİN ESC";
 "EVERYTHING HAS A NEXT FORM." = "HER DOSYANIN YENİ BİR HÂLİ VAR.";
+"EXCHANGE RATES ARE UNAVAILABLE. CHECK YOUR CONNECTION AND TRY AGAIN." = "DÖVİZ KURLARINA ULAŞILAMIYOR. BAĞLANTINI KONTROL EDİP TEKRAR DENE.";
 "EXPAND FLOAT" = "FLOAT’I GENİŞLET";
 "EXPANDED UPDATE IS TOO LARGE." = "AÇILAN GÜNCELLEME ÇOK BÜYÜK.";
 "EXPORT CLIPS" = "KLİPLERİ KAYDET";
@@ -788,6 +799,9 @@
 "Enter page numbers within this PDF, in the desired order." = "Bu PDF'deki sayfa numaralarını istediğin sırayla gir.";
 "Esc to close" = "Kapatmak için Esc";
 "Everything has a next form." = "Her dosyanın yeni bir hâli var.";
+"Exchange rates are unavailable. Check your connection and try again." = "Döviz kurlarına ulaşılamıyor. Bağlantını kontrol edip tekrar dene.";
+"Exchange rates: %@" = "Döviz kurları: %@";
+"Exchange rates: %lld" = "Döviz kurları: %lld";
 "Expand Float" = "Float’ı genişlet";
 "Expanded update is too large." = "Açılan güncelleme çok büyük.";
 "Export One Video" = "Tek Video Olarak Kaydet";
@@ -961,6 +975,10 @@
 "Gamma must be positive; contrast and saturation cannot be negative." = "Gama pozitif olmalı; kontrast ve doygunluk negatif olamaz.";
 "General" = "Genel";
 "Get started" = "Başla";
+"Getting today’s exchange rates for %@ → %@…" = "%@ → %@ için güncel döviz kurları alınıyor…";
+"Getting today’s exchange rates for %@ → %lld…" = "%@ → %lld için güncel döviz kurları alınıyor…";
+"Getting today’s exchange rates for %lld → %@…" = "%lld → %@ için güncel döviz kurları alınıyor…";
+"Getting today’s exchange rates for %lld → %lld…" = "%lld → %lld için güncel döviz kurları alınıyor…";
 "GitHub repository" = "GitHub deposu";
 "Give it a little breathing room." = "Biraz nefes alacak alan aç.";
 "Glass" = "Cam";
@@ -1090,6 +1108,7 @@
 "LITTLE TWEAKS.\nBIG DIFFERENCE." = "KÜÇÜK DOKUNUŞLAR.\nBÜYÜK FARK.";
 "LITTLE TWEAKS. A WHOLE NEW LOOK." = "KÜÇÜK DOKUNUŞLAR. YEPYENİ BİR GÖRÜNÜM.";
 "LOCAL BY DESIGN" = "VERİLERİN CİHAZINDA KALIR";
+"LOCAL CURRENCY" = "YEREL PARA BİRİMİ";
 "LOOKING FOR LITTLE SQUARES…" = "QR KODLARI ARANIYOR…";
 "LOUDNESS RANGE" = "SES DÜZEYİ ARALIĞI";
 "Landscape" = "Yatay";
@@ -1121,6 +1140,7 @@
 "Local by design" = "Verilerin cihazında kalır";
 "Local by design · MIT source\nVersion %@" = "Verilerin cihazında kalır · MIT lisanslı kaynak kodu\nSürüm %@";
 "Local by design · MIT source\nVersion %lld" = "Verilerin cihazında kalır · MIT lisanslı kaynak kodu\nSürüm %lld";
+"Local currency" = "Yerel para birimi";
 "Looking for little squares…" = "QR kodları aranıyor…";
 "Loudness range" = "Ses düzeyi aralığı";
 "MACOS REDUCE MOTION IS ON. NASHI KEEPS MOTION OFF." = "MACOS HAREKETİ AZALT AÇIK. NASHI ANİMASYONLARI KAPALI TUTAR.";
@@ -1134,6 +1154,7 @@
 "MAKE YOUR POINT." = "ANLATMAK İSTEDİĞİNİ İŞARETLE.";
 "MARKER" = "KALEM";
 "MATCH SOURCE" = "KAYNAKLA AYNI";
+"MATH, UNITS, AND CURRENCIES. ANSWERS APPEAR AS YOU TYPE." = "MATEMATİK, BİRİMLER VE PARA BİRİMLERİ. SONUÇ SEN YAZARKEN GÖRÜNÜR.";
 "MAXIMIZE" = "BÜYÜT";
 "MAXIMUM HEIGHT" = "EN FAZLA YÜKSEKLİK";
 "MAXIMUM VIDEO HEIGHT" = "EN FAZLA VİDEO YÜKSEKLİĞİ";
@@ -1175,6 +1196,7 @@
 "Marker" = "Kalem";
 "Match Source" = "Kaynakla Aynı";
 "Match source" = "Kaynakla aynı";
+"Math, units, and currencies. Answers appear as you type." = "Matematik, birimler ve para birimleri. Sonuç sen yazarken görünür.";
 "Maximize" = "Büyüt";
 "Maximum height" = "En fazla yükseklik";
 "Maximum video height" = "En fazla video yüksekliği";
@@ -1548,6 +1570,7 @@
 "RESIZE IMAGE" = "GÖRSELİ BOYUTLANDIR";
 "RESTORE CLIPS" = "KLİPLERİ GERİ GETİR";
 "RESTORE DEFAULTS" = "VARSAYILANLARA DÖN";
+"RETURN COPIES THE ANSWER" = "RETURN SONUCU KOPYALAR";
 "REVEAL FINISHED FILES IN EXPLORER" = "TAMAMLANAN DOSYALARI DOSYA GEZGİNİ'NDE GÖSTER";
 "REVEAL FINISHED FILES IN FINDER" = "TAMAMLANAN DOSYALARI FINDER'DA GÖSTER";
 "RIGHT" = "SAĞ";
@@ -1611,6 +1634,7 @@
 "Restore Clips" = "Klipleri Geri Getir";
 "Restore Defaults" = "Varsayılanlara Dön";
 "Restore defaults" = "Varsayılanlara dön";
+"Return copies the answer" = "Return sonucu kopyalar";
 "Reveal finished files in Explorer" = "Tamamlanan dosyaları Dosya Gezgini'nde göster";
 "Reveal finished files in Finder" = "Tamamlanan dosyaları Finder'da göster";
 "Right" = "Sağ";
@@ -1972,8 +1996,10 @@
 "TRUE PEAK DB" = "GERÇEK TEPE DÜZEYİ DB";
 "TRUE PEAK LIMIT" = "TEPE DÜZEYİ SINIRI";
 "TRY A CLEARER IMAGE OR ANOTHER PDF." = "DAHA NET BİR GÖRSEL VEYA BAŞKA BİR PDF DENE.";
+"TRY AGAIN" = "TEKRAR DENE";
 "TRY FEEDBACK" = "GERİ BİLDİRİMİ DENE";
 "TURN OFF UNIFORM WIDTH TO PRESERVE THIS PDF’S FORM FIELDS, ATTACHMENTS, LINKS OR NAVIGATION." = "BU PDF'NİN FORM ALANLARINI, EKLERİNİ, BAĞLANTILARINI VEYA GEZİNMESİNİ KORUMAK İÇİN EŞİT GENİŞLİĞİ KAPAT.";
+"TYPE ON HOME: 10+10, 1 USD, 1 USD TO TRY OR 5 KM IN MI. CURRENCY AMOUNTS CONVERT TO THIS CURRENCY UNLESS YOU NAME ANOTHER. EXCHANGE RATES DOWNLOAD ONLY WHEN YOU CONVERT A CURRENCY." = "ANA SAYFA’DA YAZ: 10+10, 1 USD, 1 USD TO TRY VEYA 5 KM İN Mİ. BAŞKA BİR PARA BİRİMİ YAZMAZSAN TUTARLAR BU PARA BİRİMİNE ÇEVRİLİR. DÖVİZ KURLARI YALNIZCA PARA BİRİMİ ÇEVİRDİĞİNDE İNDİRİLİR.";
 "Tap the chosen modifier combination while dragging files." = "Dosyaları sürüklerken seçtiğin tuş birleşimine bas.";
 "Target" = "Hedef";
 "Target LUFS" = "Hedef LUFS";
@@ -2061,8 +2087,10 @@
 "True peak dB" = "Gerçek tepe düzeyi dB";
 "True peak limit" = "Tepe düzeyi sınırı";
 "Try a clearer image or another PDF." = "Daha net bir görsel veya başka bir PDF dene.";
+"Try again" = "Tekrar dene";
 "Try feedback" = "Geri bildirimi dene";
 "Turn off uniform width to preserve this PDF’s form fields, attachments, links or navigation." = "Bu PDF'nin form alanlarını, eklerini, bağlantılarını veya gezinmesini korumak için eşit genişliği kapat.";
+"Type on Home: 10+10, 1 USD, 1 USD to TRY or 5 km in mi. Currency amounts convert to this currency unless you name another. Exchange rates download only when you convert a currency." = "Ana Sayfa’da yaz: 10+10, 1 USD, 1 USD to TRY veya 5 km in mi. Başka bir para birimi yazmazsan tutarlar bu para birimine çevrilir. Döviz kurları yalnızca para birimi çevirdiğinde indirilir.";
 "UNDO" = "GERİ AL";
 "UNDO AREA" = "ALANI GERİ AL";
 "UNDO LAST MARK" = "SON İŞARETİ GERİ AL";
