@@ -370,6 +370,7 @@
 "CLEAR SELECTION" = "EFFACER LA SÉLECTION";
 "CLIPBOARD IS BUSY. TRY AGAIN." = "LE PRESSE-PAPIERS EST OCCUPÉ. RÉESSAYEZ.";
 "CLIPBOARD IS BUSY. TRY PASTE AGAIN." = "LE PRESSE-PAPIERS EST OCCUPÉ. RÉESSAYEZ DE COLLER.";
+"CLOSE" = "FERMER";
 "CLOSE FLOAT WITHOUT DELETING FILES" = "FERMER FLOAT SANS SUPPRIMER LES FICHIERS";
 "CLOSE WINDOW" = "FERMER LA FENÊTRE";
 "COLLAPSE FLOAT" = "RÉDUIRE FLOAT";
@@ -529,6 +530,7 @@
 "Clip %lld" = "Clip %lld";
 "Clipboard is busy. Try Paste again." = "Le presse-papiers est occupé. Réessayez de coller.";
 "Clipboard is busy. Try again." = "Le presse-papiers est occupé. Réessayez.";
+"Close" = "Fermer";
 "Close Float without deleting files" = "Fermer Float sans supprimer les fichiers";
 "Close Window" = "Fermer la fenêtre";
 "Collapse Float" = "Réduire Float";
