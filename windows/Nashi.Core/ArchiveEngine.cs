@@ -49,7 +49,8 @@ public static class ArchiveEngine
             using(var source=entry.OpenEntryStream())using(var target=new FileStream(output,FileMode.CreateNew)){var buffer=new byte[81920];int count;
             while((count=source.Read(buffer))>0){token.ThrowIfCancellationRequested();copied+=count;if(copied>4L*1024*1024*1024)throw new InvalidDataException("Archive expands beyond 4 GB.");target.Write(buffer,0,count);}}
             // Keep each file's modification date, as macOS does; the file must be closed first.
-            if(entry.LastModifiedTime is {Year:>=1970} modified)File.SetLastWriteTime(output,modified);
+            // SharpCompress reports some RAR 4 file times only as CreatedTime.
+            if((entry.LastModifiedTime??entry.CreatedTime) is {Year:>=1970} modified)File.SetLastWriteTime(output,modified);
             progress?.Report(new(++index/(double)Math.Max(1,entries.Length)*.98,"Extracting files…"));
         }
         return tx.Publish([folder],token);
