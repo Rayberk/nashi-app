@@ -3,7 +3,7 @@ using System.Text.Json;
 
 namespace Nashi.Core;
 
-public sealed record MediaStream(int Index, string Kind, string Codec, int? Width, int? Height, bool AttachedPicture,int Bits=0,string SampleFormat="",double FrameRate=30,int SampleRate=0,double Duration=0);
+public sealed record MediaStream(int Index, string Kind, string Codec, int? Width, int? Height, bool AttachedPicture,int Bits=0,string SampleFormat="",double FrameRate=30,int SampleRate=0);
 public sealed record MediaInfo(double Duration, long Bytes, IReadOnlyList<MediaStream> Streams)
 {
     public MediaStream? Video => Streams.FirstOrDefault(s => s.Kind == "video" && !s.AttachedPicture);
@@ -74,12 +74,22 @@ public sealed class MediaEngine(string ffmpeg, string ffprobe)
             // FFmpeg auto-rotates decoded frames before crop/scale filters. The
             // editor and validation use those same displayed dimensions.
             if(double.IsFinite(rotation)&&Math.Abs(Math.Abs(rotation)%180-90)<.001)(width,height)=(height,width);
-            streams.Add(new(stream.GetProperty("index").GetInt32(), GetString(stream,"codec_type"), GetString(stream,"codec_name"), width, height, attached,GetInt(stream,"bits_per_raw_sample")??GetInt(stream,"bits_per_sample")??0,GetString(stream,"sample_fmt"),ParseFrameRate(GetString(stream,"avg_frame_rate")),int.TryParse(GetString(stream,"sample_rate"),NumberStyles.Integer,CultureInfo.InvariantCulture,out var sampleRate)&&sampleRate>0?sampleRate:0,double.TryParse(GetString(stream,"duration"),CultureInfo.InvariantCulture,out var streamDuration)&&double.IsFinite(streamDuration)&&streamDuration>0?streamDuration:0));
+            streams.Add(new(stream.GetProperty("index").GetInt32(), GetString(stream,"codec_type"), GetString(stream,"codec_name"), width, height, attached,GetInt(stream,"bits_per_raw_sample")??GetInt(stream,"bits_per_sample")??0,GetString(stream,"sample_fmt"),ParseFrameRate(GetString(stream,"avg_frame_rate")),int.TryParse(GetString(stream,"sample_rate"),NumberStyles.Integer,CultureInfo.InvariantCulture,out var sampleRate)&&sampleRate>0?sampleRate:0));
         }
         var duration = root.TryGetProperty("format", out var format) && double.TryParse(GetString(format,"duration"), CultureInfo.InvariantCulture, out var seconds) && double.IsFinite(seconds) ? Math.Max(0,seconds) : 0;
         return new(duration, new FileInfo(input).Length, streams);
     }
 
+    // Just before the last video frame's start, as an input -ss value. Reads packet timestamps without decoding.
+    private async Task<double?> LastFrameStartAsync(string input,CancellationToken token)
+    {
+        var result=await ProcessRunner.RunAsync(ffprobe,["-v","error","-select_streams","v:0","-show_entries","packet=pts_time:format=start_time","-of","json=c=1",input],token);
+        using var json=JsonDocument.Parse(result.Output);double? last=null;
+        if(json.RootElement.TryGetProperty("packets",out var packets))foreach(var packet in packets.EnumerateArray())if(double.TryParse(GetString(packet,"pts_time"),NumberStyles.Float,CultureInfo.InvariantCulture,out var pts)&&double.IsFinite(pts)&&(last is null||pts>last))last=pts;
+        // Input -ss counts from the container's start time; stay a millisecond early so rounding cannot skip the frame.
+        var start=json.RootElement.TryGetProperty("format",out var format)&&double.TryParse(GetString(format,"start_time"),NumberStyles.Float,CultureInfo.InvariantCulture,out var value)&&double.IsFinite(value)?value:0;
+        return last is {} found?Math.Max(0,found-start-.001):null;
+    }
     private static double ParseFrameRate(string value){var parts=value.Split('/');if(parts.Length==2&&double.TryParse(parts[0],CultureInfo.InvariantCulture,out var numerator)&&double.TryParse(parts[1],CultureInfo.InvariantCulture,out var denominator)&&denominator>0&&double.IsFinite(numerator/denominator)&&numerator/denominator>=1)return numerator/denominator;return 30;}
 
     public async Task<IReadOnlyList<string>> ConvertAsync(IReadOnlyList<string> inputs, string format, string destination,
@@ -190,10 +200,9 @@ public sealed class MediaEngine(string ffmpeg, string ffprobe)
                     catch(IOException)when(!File.Exists(file)||new FileInfo(file).Length==0)
                     {
                         // FFmpeg writes the first frame at or after -ss. Past the start of the last frame (the end, a long last
-                        // frame or an audio tail) there is none, yet the player shows the last frame, so decode to the end and
-                        // keep it. Seeking past the video stream finds nothing; without a stream duration, decode it all.
-                        File.Delete(file);var seek=info.Video!.Duration>0?new[]{"-ss",Number(Math.Min(time,info.Video.Duration)),"-noaccurate_seek"}:[];
-                        await RenderAsync([..seek,"-i",input,"-map","0:v:0","-update","1","-c:v","png"],file,null,progress,token);
+                        // frame or an audio tail) there is none, yet the player shows the last frame there, so seek to its own timestamp.
+                        File.Delete(file);if(await LastFrameStartAsync(input,token) is not {} last||last>=time)throw;
+                        await RenderAsync(["-ss",Number(last),"-i",input,"-map","0:v:0","-frames:v","1","-update","1","-c:v","png"],file,null,progress,token);
                     }frames.Add(file);
                     progress(new((double)(n+1)/options.SnapshotTimes.Length,"Saving frame "+(n+1)));
                 }
