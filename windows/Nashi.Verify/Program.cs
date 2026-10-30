@@ -103,6 +103,14 @@ if(Environment.GetEnvironmentVariable("NASHI_VERIFY_FFMPEG") is {} encoder && En
         await ProcessRunner.RunAsync(encoder,["-v","error","-f","lavfi","-i","testsrc2=size=128x72:rate=12:duration=2","-f","lavfi","-i","sine=duration=2:sample_rate=48000","-c:v","libx264","-c:a","aac",source]);
         var original=System.Security.Cryptography.SHA256.HashData(await File.ReadAllBytesAsync(source));
         var engine=new MediaEngine(encoder,probe);var progress=new List<OperationProgress>();
+        var odd=Path.Combine(directory,"Odd dimensions.mkv");await ProcessRunner.RunAsync(encoder,["-v","error","-f","lavfi","-i","testsrc=size=97x65:duration=0.2","-c:v","ffv1",odd]);
+        var oddInfo=await engine.InspectAsync(odd);Check(oddInfo.Video is {Width:97,Height:65},"Odd-dimension fixture was rounded before conversion");
+        foreach(var format in new[]{"mp4","mov","mkv","m4v"})
+        {
+            var padded=await engine.ConvertAsync([odd],format,directory,new());var paddedInfo=await engine.InspectAsync(padded[0]);
+            Check(paddedInfo.Video is {Width:98,Height:66}&&paddedInfo.Duration>0,"Odd video dimensions could not convert to "+format);
+        }
+        Check((await engine.InspectAsync(odd)).Video is {Width:97,Height:65},"Odd-dimension conversion changed the source");
         var reporter=new InlineProgress(p=>progress.Add(p));
         Check(Math.Abs((await engine.InspectAsync(source)).Video!.FrameRate-12)<.001,"Frame-by-frame preview lost actual source FPS");
         var trimmed=await engine.ToolAsync("trimVideo",[source],directory,new(){Start=.25,End=1.25},reporter);
