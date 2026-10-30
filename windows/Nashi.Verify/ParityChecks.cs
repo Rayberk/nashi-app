@@ -24,6 +24,8 @@ internal static class ParityChecks
         }
         void Catalog(PdfSharp.Pdf.PdfDocument pdf,string key,PdfSharp.Pdf.PdfItem value)=>pdf.Internals.Catalog.Elements[key]=value;
         var textPdf=Pdf("Text.pdf","BT /F1 24 Tf 72 700 Td (Nashi fixture) Tj ET");var vectorPdf=Pdf("Vector.pdf","0 0 1 rg 72 72 200 200 re f");
+        var titledPdf=Pdf("Titled.pdf","BT /F1 24 Tf 72 700 Td (Report) Tj ET",pdf=>{pdf.Info.Title="Rapor";pdf.Info.Author="Ayşe Yılmaz";pdf.Info.Subject="Satış";pdf.Info.Keywords="q3";});
+        using(var compressed=PdfSharp.Pdf.IO.PdfReader.Open(DocumentEngine.Pdf("compress",[titledPdf],root)[0],PdfSharp.Pdf.IO.PdfDocumentOpenMode.Import))check(compressed.Info is {Title:"Rapor",Author:"Ayşe Yılmaz",Subject:"Satış",Keywords:"q3"},"Compressing a PDF dropped its title, author, subject or keywords");
         var textHtml=OfficeDocuments.PdfHtml(textPdf,"",(_,_)=>[9],out var textBlank);var vectorHtml=OfficeDocuments.PdfHtml(vectorPdf,"",(_,area)=>area is null?[1,2,3]:null,out var vectorBlank);
         check(textBlank.Length==0&&textHtml.Contains("Nashi")&&!textHtml.Contains("data:image")&&vectorBlank.SequenceEqual(new[]{1})&&vectorHtml.Contains("data:image/png;base64,AQID"),"A PDF page without extractable text or images converted to a blank page");
         // A JPEG behind a Flate filter: PDFium draws it, PdfPig cannot hand it over.
