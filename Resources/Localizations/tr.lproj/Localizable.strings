@@ -116,7 +116,10 @@
 "ALL" = "TÜMÜ";
 "ALL METADATA" = "TÜM META VERİLER";
 "ALL SET. YOU’RE READY TO GO." = "HER ŞEY HAZIR.";
+"ALLOW ACCESS" = "ERİŞİM İZNİ VER";
+"ALLOW FOLDER ACCESS" = "KLASÖRE ERİŞİM İZNİ VER";
 "ALLOW FOLDER…" = "KLASÖRE İZİN VER…";
+"ALLOW HOME FOLDER ACCESS" = "ANA KLASÖRE ERİŞİM İZNİ VER";
 "ALLOW HOME FOLDER ACCESS…" = "ANA KLASÖRE ERİŞİM İZNİ VER…";
 "ALLOW NASHI IN MACOS LOGIN ITEMS." = "MACOS GİRİŞ ÖĞELERİ BÖLÜMÜNDEN NASHI'YE İZİN VER.";
 "ALREADY AVAILABLE ON YOUR COMPUTER" = "BİLGİSAYARINDA ZATEN HAZIR";
@@ -184,7 +187,10 @@
 "All set. You’re ready to go." = "Her şey hazır.";
 "Allow %@ once to move and resize other apps’ windows." = "Diğer uygulamaların pencerelerini taşımak ve boyutlandırmak için bir kez %@ izni ver.";
 "Allow %lld once to move and resize other apps’ windows." = "Diğer uygulamaların pencerelerini taşımak ve boyutlandırmak için bir kez %lld izni ver.";
+"Allow Access" = "Erişim İzni Ver";
+"Allow Folder Access" = "Klasöre Erişim İzni Ver";
 "Allow Folder…" = "Klasöre İzin Ver…";
+"Allow Home Folder Access" = "Ana Klasöre Erişim İzni Ver";
 "Allow Home Folder Access…" = "Ana Klasöre Erişim İzni Ver…";
 "Allow Nashi in macOS Login Items." = "macOS Giriş Öğeleri bölümünden Nashi'ye izin ver.";
 "Already available on your computer" = "Bilgisayarında zaten hazır";
@@ -303,6 +309,7 @@
 "CHOOSE A DESTINATION OUTSIDE THE FOLDER BEING MOVED." = "TAŞINAN KLASÖRÜN DIŞINDA BİR HEDEF SEÇ.";
 "CHOOSE A FILE TO PREVIEW." = "ÖNİZLEMEK İÇİN BİR DOSYA SEÇ.";
 "CHOOSE A FINISHED VIDEO INSTEAD OF A LIVE OR UPCOMING STREAM." = "CANLI VEYA HENÜZ BAŞLAMAMIŞ BİR YAYIN YERİNE TAMAMLANMIŞ BİR VİDEO SEÇ.";
+"CHOOSE A FOLDER WHERE NASHI MAY SAVE RESULTS. EVERY FOLDER INSIDE IT IS INCLUDED." = "NASHI'NİN SONUÇLARI KAYDEDEBİLECEĞİ BİR KLASÖR SEÇ. İÇİNDEKİ TÜM KLASÖRLER DE DAHİL EDİLİR.";
 "CHOOSE A HEX BACKGROUND COLOR, SUCH AS #FFFFFF OR #00FFFFFF." = "#FFFFFF VEYA #00FFFFFF GİBİ ONALTILIK BİR ARKA PLAN RENGİ SEÇ.";
 "CHOOSE A LARGER TARGET SIZE." = "DAHA BÜYÜK BİR HEDEF BOYUT SEÇ.";
 "CHOOSE A NONEMPTY IMAGE." = "BOŞ OLMAYAN BİR GÖRSEL SEÇ.";
@@ -363,6 +370,7 @@
 "CHOOSE VIDEO, AUDIO, THUMBNAIL OR IMAGES." = "VİDEO, SES, KÜÇÜK RESİM VEYA GÖRSEL SEÇ.";
 "CHOOSE VISUALIZATION IMAGE…" = "GÖRSELLEŞTİRME GÖRSELİ SEÇ…";
 "CHOOSE WHAT YOUR FILE SHARES." = "DOSYANIN NE PAYLAŞTIĞINI SEN SEÇ.";
+"CHOOSE YOUR HOME FOLDER OR A FOLDER WHERE YOU SAVE FILES." = "ANA KLASÖRÜNÜ VEYA DOSYALARINI KAYDETTİĞİN BİR KLASÖRÜ SEÇ.";
 "CHOOSE ZIP, TAR OR GZIP." = "ZIP, TAR VEYA GZIP SEÇ.";
 "CLARITY" = "NETLİK";
 "CLEAR" = "TEMİZLE";
@@ -471,6 +479,7 @@
 "Choose a destination outside the folder being moved." = "Taşınan klasörün dışında bir hedef seç.";
 "Choose a file to preview." = "Önizlemek için bir dosya seç.";
 "Choose a finished video instead of a live or upcoming stream." = "Canlı veya henüz başlamamış bir yayın yerine tamamlanmış bir video seç.";
+"Choose a folder where Nashi may save results. Every folder inside it is included." = "Nashi'nin sonuçları kaydedebileceği bir klasör seç. İçindeki tüm klasörler de dahil edilir.";
 "Choose a hex background color, such as #FFFFFF or #00FFFFFF." = "#FFFFFF veya #00FFFFFF gibi onaltılık bir arka plan rengi seç.";
 "Choose a larger target size." = "Daha büyük bir hedef boyut seç.";
 "Choose a nonempty image." = "Boş olmayan bir görsel seç.";
@@ -521,6 +530,7 @@
 "Choose video, audio, thumbnail or images." = "Video, ses, küçük resim veya görsel seç.";
 "Choose visualization image…" = "Görselleştirme görseli seç…";
 "Choose what your file shares." = "Dosyanın ne paylaştığını sen seç.";
+"Choose your home folder or a folder where you save files." = "Ana klasörünü veya dosyalarını kaydettiğin bir klasörü seç.";
 "Clarity" = "Netlik";
 "Clear" = "Temizle";
 "Clear Float" = "Yüzen Pencereyi Temizle";
