@@ -183,7 +183,7 @@ private enum PagesDOCXReader {
         let defaultParagraph = paragraph(defaults?.first("pPrDefault")?.first("pPr"))
         let relationships = try relationMap(package.appendingPathComponent("word/_rels/document.xml.rels"))
         let reader = Reader(package: package, relationships: relationships, styles: styles, defaultCharacter: defaultCharacter, defaultParagraph: defaultParagraph, token: token)
-        var model: [String: Any] = ["blocks": try body.elements(nil).compactMap { try reader.block($0) }]
+        var model: [String: Any] = ["blocks": try body.elements(nil).flatMap { try reader.blocks($0) }]
         if let section = body.first("sectPr") {
             var page: [String: Any] = [:]
             if let size = section.first("pgSz") { if let w = size.number("w") { page["pageWidth"] = w / 20 }; if let h = size.number("h") { page["pageHeight"] = h / 20 } }
@@ -219,6 +219,7 @@ private enum PagesDOCXReader {
                         for child in item.elements(nil) {
                             if child.local == "t" { var run: [String:Any] = ["text":text(child),"character":formatting];if let link {run["link"]=link};runs.append(run) }
                             else if child.local == "tab" { runs.append(["text":"\t","character":formatting]) }
+                            else if child.local == "br", child.attr("type") == "page" { runs.append(["type":"pageBreak"]) }
                             else if child.local == "br" || child.local == "cr" { runs.append(["text":"\n","character":formatting]) }
                             else if ["drawing","pict"].contains(child.local), let image = try image(child) { runs.append(image) }
                         }
@@ -280,6 +281,21 @@ private enum PagesDOCXReader {
                 return nil
             }
             return nil
+        }
+        /// A manual page break splits a Word paragraph: Pages has no inline page
+        /// break, so the text after it becomes a paragraph that starts a new page.
+        func blocks(_ element: XMLElement) throws -> [[String: Any]] {
+            guard let block = try block(element) else { return [] }
+            guard let runs = block["runs"] as? [[String:Any]], runs.contains(where: { $0["type"] as? String == "pageBreak" }) else { return [block] }
+            var segments: [[[String:Any]]] = [[]]
+            for run in runs { if run["type"] as? String == "pageBreak" { segments.append([]) } else { segments[segments.count-1].append(run) } }
+            let paragraph = block["paragraph"] as? [String:Any] ?? [:]
+            return segments.enumerated().map { index, segment in
+                var part = block
+                part["runs"] = segment
+                if index > 0 { part["paragraph"] = paragraph.merging(["pageBreakBefore":true]) { _,new in new } }
+                return part
+            }
         }
         func localPath(_ relative: String) -> URL? {
             guard URL(string:relative)?.scheme == nil else { return nil }
