@@ -839,7 +839,8 @@ struct ToolEditor:View {
             string.wrappedValue=preservingOpacity ? ImageColorCodec.backgroundHex(NSColor($0)):hex($0)
         })
     }
-    func hex(_ color:Color)->String { guard let rgb=NSColor(color).usingColorSpace(.sRGB) else{return "#FFFFFF"};return String(format:"#%02X%02X%02X",Int(rgb.redComponent*255),Int(rgb.greenComponent*255),Int(rgb.blueComponent*255)) }
+    /// Rounds to the nearest byte like the frame/collage pickers; truncating turns a picked 10.99999 into 0A.
+    func hex(_ color:Color)->String { String(ImageColorCodec.backgroundHex(NSColor(color)).prefix(7)) }
     func timeLabel(_ time:Double)->String {
         guard time.isFinite,time>=0,time<Double(Int.max) else { return "—" }
         // Round to the displayed millisecond first so 59.9996 carries into the minute.
