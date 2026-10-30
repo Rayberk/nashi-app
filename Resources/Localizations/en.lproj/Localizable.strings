@@ -397,6 +397,7 @@
 "CONVERT TO" = "CONVERT TO";
 "CONVERT · WHILE DRAGGING" = "CONVERT · WHILE DRAGGING";
 "CONVERT, FINE-TUNE, AND SEND THEM ON THEIR WAY." = "CONVERT, FINE-TUNE, AND SEND THEM ON THEIR WAY.";
+"CONVERTING DOWNLOADED AUDIO…" = "CONVERTING DOWNLOADED AUDIO…";
 "COPIED LINK" = "COPIED LINK";
 "COPY" = "COPY";
 "COPY A FILE, SOME TEXT, AN IMAGE OR A PUBLIC MEDIA LINK FIRST." = "COPY A FILE, SOME TEXT, AN IMAGE OR A PUBLIC MEDIA LINK FIRST.";
@@ -568,6 +569,7 @@
 "Convert to %lld" = "Convert to %lld";
 "Convert · while dragging" = "Convert · while dragging";
 "Convert, fine-tune, and send them on their way." = "Convert, fine-tune, and send them on their way.";
+"Converting downloaded audio…" = "Converting downloaded audio…";
 "Copied link" = "Copied link";
 "Copy" = "Copy";
 "Copy Path" = "Copy Path";
@@ -641,6 +643,7 @@
 "DOWNLOAD VIDEO" = "DOWNLOAD VIDEO";
 "DOWNLOAD ↗" = "DOWNLOAD ↗";
 "DOWNLOADING LIBREOFFICE 26.8.1…" = "DOWNLOADING LIBREOFFICE 26.8.1…";
+"DOWNLOADING MEDIA…" = "DOWNLOADING MEDIA…";
 "DOWNLOADING…" = "DOWNLOADING…";
 "DRAG A CROP INSIDE THE IMAGE." = "DRAG A CROP INSIDE THE IMAGE.";
 "DRAG A RANGE TO MOVE IT; DRAG ITS EDGES TO RESIZE. DRAG EMPTY SPACE TO ADD." = "DRAG A RANGE TO MOVE IT; DRAG ITS EDGES TO RESIZE. DRAG EMPTY SPACE TO ADD.";
@@ -716,6 +719,9 @@
 "Downloading LibreOffice 26.8.1…" = "Downloading LibreOffice 26.8.1…";
 "Downloading Nashi %@…" = "Downloading Nashi %@…";
 "Downloading Nashi %lld…" = "Downloading Nashi %lld…";
+"Downloading media…" = "Downloading media…";
+"Downloading · %@" = "Downloading · %@";
+"Downloading · %lld" = "Downloading · %lld";
 "Downloading…" = "Downloading…";
 "Drag a crop inside the image." = "Drag a crop inside the image.";
 "Drag a range to move it; drag its edges to resize. Drag empty space to add." = "Drag a range to move it; drag its edges to resize. Drag empty space to add.";
@@ -835,9 +841,12 @@
 "FINISH OR CANCEL THE CURRENT OPERATION FIRST." = "FINISH OR CANCEL THE CURRENT OPERATION FIRST.";
 "FINISH SETUP" = "FINISH SETUP";
 "FINISH THE CURRENT OPERATION OR CHOOSE CANCEL BEFORE CLOSING NASHI." = "FINISH THE CURRENT OPERATION OR CHOOSE CANCEL BEFORE CLOSING NASHI.";
+"FINISHING MEDIA…" = "FINISHING MEDIA…";
+"FINISHING YOUR FILE…" = "FINISHING YOUR FILE…";
 "FIRST-TIME SETUP" = "FIRST-TIME SETUP";
 "FIT" = "FIT";
 "FIT WHOLE IMAGE" = "FIT WHOLE IMAGE";
+"FITTING VIDEO TO THE SELECTED SIZE…" = "FITTING VIDEO TO THE SELECTED SIZE…";
 "FIXED PAGES" = "FIXED PAGES";
 "FLEXIBLE, REFLOWABLE TEXT" = "FLEXIBLE, REFLOWABLE TEXT";
 "FLIP" = "FLIP";
@@ -902,10 +911,13 @@
 "Finish or cancel the current operation first." = "Finish or cancel the current operation first.";
 "Finish setup" = "Finish setup";
 "Finish the current operation or choose Cancel before closing Nashi." = "Finish the current operation or choose Cancel before closing Nashi.";
+"Finishing media…" = "Finishing media…";
+"Finishing your file…" = "Finishing your file…";
 "Fit" = "Fit";
 "Fit whole image" = "Fit whole image";
 "Fitting image · attempt %@…" = "Fitting image · attempt %@…";
 "Fitting image · attempt %lld…" = "Fitting image · attempt %lld…";
+"Fitting video to the selected size…" = "Fitting video to the selected size…";
 "Fixed pages" = "Fixed pages";
 "Flexible, reflowable text" = "Flexible, reflowable text";
 "Flip" = "Flip";
@@ -1406,6 +1418,7 @@
 "POSITION X" = "POSITION X";
 "POSITION Y" = "POSITION Y";
 "PREPARING A LOCAL PREVIEW…" = "PREPARING A LOCAL PREVIEW…";
+"PREPARING MEDIA…" = "PREPARING MEDIA…";
 "PREPARING MOVE…" = "PREPARING MOVE…";
 "PREPARING PREVIEW…" = "PREPARING PREVIEW…";
 "PREPARING PROCESSED PREVIEW…" = "PREPARING PROCESSED PREVIEW…";
@@ -1447,6 +1460,10 @@
 "Pasted image" = "Pasted image";
 "Pasted text" = "Pasted text";
 "Pause" = "Pause";
+"Photo %@ of %@…" = "Photo %@ of %@…";
+"Photo %@ of %lld…" = "Photo %@ of %lld…";
+"Photo %lld of %@…" = "Photo %lld of %@…";
+"Photo %lld of %lld…" = "Photo %lld of %lld…";
 "Photos" = "Photos";
 "Pick a folder you work in. Fresh copies are saved beside the originals by default." = "Pick a folder you work in. Fresh copies are saved beside the originals by default.";
 "Pin" = "Pin";
@@ -1466,6 +1483,7 @@
 "Preparing %@…" = "Preparing %@…";
 "Preparing %lld…" = "Preparing %lld…";
 "Preparing a local preview…" = "Preparing a local preview…";
+"Preparing media…" = "Preparing media…";
 "Preparing move…" = "Preparing move…";
 "Preparing preview…" = "Preparing preview…";
 "Preparing processed preview…" = "Preparing processed preview…";
@@ -1794,6 +1812,8 @@
 "Saved %lld new files. Originals kept." = "Saved %lld new files. Originals kept.";
 "Saved 1 new file. Originals kept." = "Saved 1 new file. Originals kept.";
 "Saved in post order in a new Instagram folder." = "Saved in post order in a new Instagram folder.";
+"Saved to %@" = "Saved to %@";
+"Saved to %lld" = "Saved to %lld";
 "Saving collage…" = "Saving collage…";
 "Saving document…" = "Saving document…";
 "Saving images…" = "Saving images…";
