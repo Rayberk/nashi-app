@@ -23,16 +23,16 @@ public enum PDFEngine {
         var outputs:[URL]=[]
         do {
             for index in 0..<pdf.pageCount {
-                try token.check();guard let page=pdf.page(at:index),let ref=page.pageRef else { throw NashiError.failed("A PDF page could not be read.") }
+                try token.check();guard let page=pdf.page(at:index) else { throw NashiError.failed("A PDF page could not be read.") }
                 let bounds=PDFOfficeCodec.visualBounds(page),scale=Double(max(36,min(1200,options.dpi)))/72
                 let scaledWidth=bounds.width*scale,scaledHeight=bounds.height*scale
                 guard scaledWidth.isFinite,scaledHeight.isFinite,scaledWidth>0,scaledHeight>0,scaledWidth<=32000,scaledHeight<=32000 else { throw NashiError.failed("PDF page is too large to render at this DPI.") }
                 let w=max(1,Int(scaledWidth.rounded())),h=max(1,Int(scaledHeight.rounded()))
                 guard w<=32000,h<=32000,let ctx=CGContext(data:nil,width:w,height:h,bitsPerComponent:8,bytesPerRow:0,space:CGColorSpaceCreateDeviceRGB(),bitmapInfo:CGImageAlphaInfo.premultipliedLast.rawValue) else { throw NashiError.failed("PDF page is too large to render at this DPI.") }
                 ctx.setFillColor(CGColor(gray:1,alpha:1));ctx.fill(CGRect(x:0,y:0,width:w,height:h));ctx.scaleBy(x:scale,y:scale)
-                ctx.concatenate(ref.getDrawingTransform(.cropBox,rect:bounds,rotate:Int32(page.rotation)-ref.rotationAngle,preserveAspectRatio:true))
-                ctx.drawPDFPage(ref)
-                for annotation in page.annotations { annotation.draw(with:.mediaBox,in:ctx) }
+                // PDFKit draws the crop box upright with its annotations. Annotations drawn into an
+                // already turned context were turned again, off the image of a rotated page.
+                page.draw(with:.cropBox,to:ctx)
                 try token.check()
                 guard let image=ctx.makeImage() else { throw NashiError.failed("A PDF page could not be rendered.") }
                 let output=folder.appendingPathComponent(String(format:"Page %03d.%@",index+1,format));try ImageEngine.write(image,to:output,quality:options.quality);outputs.append(output)
