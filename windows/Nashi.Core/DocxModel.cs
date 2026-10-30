@@ -29,6 +29,7 @@ public sealed partial class OfficeDocuments
         using var zip=ZipFile.OpenRead(path);if(zip.Entries.Count>10000||zip.Entries.Sum(e=>e.Length)>512_000_000||zip.Entries.GroupBy(e=>e.FullName,StringComparer.OrdinalIgnoreCase).Any(g=>g.Count()>1))throw new InvalidDataException("The document package is too large or contains duplicate entries.");
         var doc=Xml(zip,"word/document.xml");var body=Child(doc.Root,"body")??throw new InvalidDataException("The document has no editable body.");var styles=zip.GetEntry("word/styles.xml") is not null?Xml(zip,"word/styles.xml"):null;var defaults=Child(styles?.Root,"docDefaults");var dc=Character(Child(Child(defaults,"rPrDefault"),"rPr"));var dp=ParagraphStyle(Child(Child(defaults,"pPrDefault"),"pPr"));
         var styleMap=styles?.Root?.Elements().Where(e=>e.Name.LocalName=="style").ToDictionary(e=>Attr(e,"styleId")??throw new InvalidDataException("Invalid style identifier."))??[];
+        var defaultStyle=styleMap.Values.LastOrDefault(e=>(Attr(e,"type")??"paragraph")=="paragraph"&&Attr(e,"default") is "1" or "true" or "on");
         var rels=zip.GetEntry("word/_rels/document.xml.rels") is not null?Xml(zip,"word/_rels/document.xml.rels").Root!.Elements().ToDictionary(e=>Attr(e,"Id")??"",e=>Attr(e,"Target")??""):[];
         string? Local(string relative){if(Uri.TryCreate(relative,UriKind.Absolute,out _))return null;var stack=new List<string>{"word"};foreach(var p in relative.Replace('\\','/').Split('/')){if(p is "" or ".")continue;if(p==".."){if(stack.Count==0)return null;stack.RemoveAt(stack.Count-1);}else stack.Add(p);}return string.Join('/',stack);}
         (Dictionary<string,object?> C,Dictionary<string,object?> P) Resolve(string? id,int depth=0){if(depth>=16||id is null||!styleMap.TryGetValue(id,out var style))return(dc,dp);var parent=Resolve(Attr(Child(style,"basedOn"),"val"),depth+1);return(Merge(parent.C,Character(Child(style,"rPr"))),Merge(parent.P,ParagraphStyle(Child(style,"pPr"))));}
@@ -36,7 +37,7 @@ public sealed partial class OfficeDocuments
         {
             if(element.Name.LocalName=="p")
             {
-                var props=Child(element,"pPr");var baseStyle=Resolve(Attr(Child(props,"pStyle"),"val"));var runs=new List<object>();
+                var props=Child(element,"pPr");var baseStyle=Resolve(Attr(Child(props,"pStyle"),"val")??Attr(defaultStyle,"styleId"));var runs=new List<object>();
                 void Visit(XElement item,string? link=null)
                 {
                     if(item.Name.LocalName=="r")
