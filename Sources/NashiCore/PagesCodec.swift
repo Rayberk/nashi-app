@@ -254,7 +254,7 @@ private enum PagesDOCXReader {
                         guard column <= maximumColumns - span else {
                             throw NashiError.invalidInput("This Word document contains a table wider than the supported limit of \(maximumColumns) columns. It could not be converted to Pages.")
                         }
-                        let value = cell.elements("p").map { paragraph in paragraph.descendants("t").map(text).joined() }.joined(separator:"\n")
+                        let value = cellText(cell)
                         var cellModel: [String:Any] = ["text":value]
                         if let fill = properties?.first("shd")?.attr("fill"), let color = color(fill) { cellModel["formatting"] = ["fill":["kind":"color","color":color]] }
                         cells.append(cellModel)
@@ -318,6 +318,15 @@ private enum PagesDOCXReader {
         let raw=element.xmlString
         guard let open=raw.firstIndex(of:">"),let close=raw.lastIndex(of:"<"),open<close else{return ""}
         return DocumentText.decodeEntities(String(raw[raw.index(after:open)..<close]))
+    }
+    /// Plain text of a table cell. A nested table keeps its text as lines of
+    /// tab-separated cells, since a Pages cell cannot hold a table.
+    static func cellText(_ cell: XMLElement, depth: Int = 0) -> String {
+        cell.elements(nil).compactMap { child -> String? in
+            if child.local == "p" { return child.descendants("t").map(text).joined() }
+            guard child.local == "tbl", depth < 32 else { return nil }
+            return child.elements("tr").map { $0.elements("tc").map { cellText($0, depth: depth + 1) }.joined(separator: "\t") }.joined(separator: "\n")
+        }.joined(separator: "\n")
     }
     static func character(_ element: XMLElement?) -> [String:Any] {
         guard let element else{return [:]};var result:[String:Any]=[:]
