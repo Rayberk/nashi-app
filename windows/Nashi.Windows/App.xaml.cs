@@ -82,7 +82,7 @@ public partial class App:Application
             {
                 Directory.CreateDirectory(directory);
                 var assertions=ParitySmokeTests.RunMoveChecks(directory,(passed,reason)=>{if(!passed)throw new Exception(reason);});
-                var report=new{passed=assertions,scenarios=5,status="All MoveAsync scenarios passed"};
+                var report=new{passed=assertions,scenarios=7,status="All MoveAsync scenarios passed"};
                 var json=System.Text.Json.JsonSerializer.Serialize(report,new System.Text.Json.JsonSerializerOptions{WriteIndented=true});
                 File.WriteAllText(Path.Combine(directory,"file-actions.json"),json);
                 Console.WriteLine(json);

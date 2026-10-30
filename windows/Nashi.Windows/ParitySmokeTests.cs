@@ -94,6 +94,48 @@ internal static class ParitySmokeTests
         var conflictFolder=Path.Combine(outputs,"ConflictMoved");Directory.CreateDirectory(conflictFolder);var conflictTarget=Path.Combine(conflictFolder,"Conflict.txt");File.WriteAllText(conflictTarget,"EXISTING");var conflictSource=Path.Combine(outputs,"Conflict.txt");File.WriteAllText(conflictSource,"NEW");var conflictMoved=Wait(FileActions.MoveAsync([conflictSource],conflictFolder,null,CancellationToken.None));LocalCheck(File.Exists(conflictTarget)&&File.ReadAllText(conflictTarget)=="EXISTING","Target file was overwritten");LocalCheck(File.Exists(Path.Combine(conflictFolder,"Conflict 2.txt"))&&File.ReadAllText(Path.Combine(conflictFolder,"Conflict 2.txt"))=="NEW","Incoming file was not safely renamed");LocalCheck(!File.Exists(conflictSource),"Conflict source was not removed");LocalCheck(conflictMoved.SequenceEqual([Path.Combine(conflictFolder,"Conflict 2.txt")]),"Conflict returned path mismatch");
         var dupFolder=Path.Combine(outputs,"DupMoved");Directory.CreateDirectory(dupFolder);var dupSource=Path.Combine(outputs,"Duplicate.txt");File.WriteAllText(dupSource,"DUP");var dupMoved=Wait(FileActions.MoveAsync([dupSource,dupSource],dupFolder,null,CancellationToken.None));LocalCheck(Directory.GetFiles(dupFolder).Length==1,"Duplicate inputs created redundant files in destination");LocalCheck(!File.Exists(dupSource),"Duplicate source was not removed");LocalCheck(dupMoved.Count==2&&dupMoved.All(p=>p==Path.Combine(dupFolder,"Duplicate.txt")),"Duplicate returned paths mismatch");
         var mixedDest=Path.Combine(outputs,"MixedDest");Directory.CreateDirectory(mixedDest);var mixedAlreadyThere=Path.Combine(mixedDest,"AlreadyThere.txt");File.WriteAllText(mixedAlreadyThere,"ALREADY");var mixedToMove=Path.Combine(outputs,"ToMove.txt");File.WriteAllText(mixedToMove,"TOMOVE");var mixedMoved=Wait(FileActions.MoveAsync([mixedAlreadyThere,mixedToMove],mixedDest,null,CancellationToken.None));LocalCheck(File.Exists(mixedAlreadyThere)&&File.ReadAllText(mixedAlreadyThere)=="ALREADY","Existing file in mixed batch was altered");LocalCheck(!File.Exists(Path.Combine(mixedDest,"AlreadyThere 2.txt")),"Existing file in mixed batch was duplicated");LocalCheck(File.Exists(Path.Combine(mixedDest,"ToMove.txt"))&&!File.Exists(mixedToMove),"ToMove file in mixed batch was not moved properly");LocalCheck(mixedMoved.Count==2&&mixedMoved[0]==mixedAlreadyThere&&mixedMoved[1]==Path.Combine(mixedDest,"ToMove.txt"),"Mixed batch returned paths mismatch");
+        var missingSource=Path.Combine(outputs,"MissingSource.txt");File.WriteAllText(missingSource,"TEMP");File.Delete(missingSource);
+        var missingThrown=false;try{Wait(FileActions.MoveAsync([missingSource],outputs,null,CancellationToken.None));}catch(FileNotFoundException){missingThrown=true;}
+        LocalCheck(missingThrown,"Missing same-directory source did not throw FileNotFoundException");
+        var junctionRoot=Path.Combine(outputs,"JunctionTest_"+Guid.NewGuid().ToString("N"));Directory.CreateDirectory(junctionRoot);
+        var juncRealDir=Path.Combine(junctionRoot,"Real");Directory.CreateDirectory(juncRealDir);
+        var juncDir=Path.Combine(junctionRoot,"Junction");var juncFile=Path.Combine(juncRealDir,"JunctionDoc.txt");File.WriteAllText(juncFile,"Junction content");
+        var createdTime=File.GetCreationTimeUtc(juncFile);
+        try
+        {
+            var mklink=new ProcessStartInfo("cmd.exe",$"/c mklink /J \"{juncDir}\" \"{juncRealDir}\""){CreateNoWindow=true,UseShellExecute=false,RedirectStandardOutput=true,RedirectStandardError=true};
+            using var proc=Process.Start(mklink);proc?.WaitForExit(5000);
+            if(!Directory.Exists(juncDir)){var err=proc?.StandardError.ReadToEnd()??"";throw new PlatformNotSupportedException($"Directory junction creation failed (exit code {proc?.ExitCode}): {err}");}
+            var fileViaJunction=Path.Combine(juncDir,"JunctionDoc.txt");
+            var juncMoved=Wait(FileActions.MoveAsync([fileViaJunction],juncRealDir,null,CancellationToken.None));
+            LocalCheck(File.Exists(juncFile),"Original file in real dir was deleted");
+            LocalCheck(File.ReadAllText(juncFile)=="Junction content","File content was corrupted");
+            LocalCheck(!File.Exists(Path.Combine(juncRealDir,"JunctionDoc 2.txt")),"File was unnecessarily renamed via junction");
+            LocalCheck(File.GetCreationTimeUtc(juncFile)==createdTime,"File metadata was altered via junction");
+            LocalCheck(juncMoved.SequenceEqual([juncFile]),"Junction move returned incorrect path");
+            var juncMovedReverse=Wait(FileActions.MoveAsync([juncFile],juncDir,null,CancellationToken.None));
+            LocalCheck(File.Exists(juncFile),"File was deleted during reverse junction move");
+            LocalCheck(!File.Exists(Path.Combine(juncDir,"JunctionDoc 2.txt")),"File was renamed during reverse junction move");
+            LocalCheck(juncMovedReverse.SequenceEqual([Path.Combine(juncDir,"JunctionDoc.txt")]),"Reverse junction move returned incorrect path");
+        }
+        finally
+        {
+            try{if(Directory.Exists(juncDir))Directory.Delete(juncDir,false);}catch{}
+            try{if(Directory.Exists(junctionRoot))Directory.Delete(junctionRoot,true);}catch{}
+        }
+        var zeroA=new FileActions.BY_HANDLE_FILE_INFORMATION{dwVolumeSerialNumber=100,nFileIndexHigh=0,nFileIndexLow=0};
+        var zeroB=new FileActions.BY_HANDLE_FILE_INFORMATION{dwVolumeSerialNumber=100,nFileIndexHigh=0,nFileIndexLow=0};
+        LocalCheck(FileActions.CompareDirectoryIdentity(true,in zeroA,true,in zeroB,()=>@"C:\Dir",()=>@"C:\Dir"),"Zero index fallback should return true when canonical paths match");
+        LocalCheck(!FileActions.CompareDirectoryIdentity(true,in zeroA,true,in zeroB,()=>@"C:\Dir1",()=>@"C:\Dir2"),"Zero index fallback should return false when canonical paths differ");
+        var zeroThrow=false;try{FileActions.CompareDirectoryIdentity(true,in zeroA,true,in zeroB,()=>null,()=>null);}catch(IOException){zeroThrow=true;}
+        LocalCheck(zeroThrow,"Zero index with unresolved canonical paths should throw IOException");
+        var validA=new FileActions.BY_HANDLE_FILE_INFORMATION{dwVolumeSerialNumber=100,nFileIndexHigh=1,nFileIndexLow=2};
+        var validSame=new FileActions.BY_HANDLE_FILE_INFORMATION{dwVolumeSerialNumber=100,nFileIndexHigh=1,nFileIndexLow=2};
+        LocalCheck(FileActions.CompareDirectoryIdentity(true,in validA,true,in validSame,()=>null,()=>null),"Valid matching file ID should return true without GetFinalPath");
+        var validDiff=new FileActions.BY_HANDLE_FILE_INFORMATION{dwVolumeSerialNumber=100,nFileIndexHigh=1,nFileIndexLow=3};
+        LocalCheck(!FileActions.CompareDirectoryIdentity(true,in validA,true,in validDiff,()=>null,()=>null),"Valid differing file ID on same volume should return false");
+        var diffVol=new FileActions.BY_HANDLE_FILE_INFORMATION{dwVolumeSerialNumber=200,nFileIndexHigh=1,nFileIndexLow=2};
+        LocalCheck(!FileActions.CompareDirectoryIdentity(true,in validA,true,in diffVol,()=>null,()=>null),"Differing volume serial numbers should return false");
         return checks;
     }
 }
