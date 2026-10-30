@@ -51,6 +51,12 @@ internal static class ToolSetupChecks
             Directory.CreateDirectory(bundled);Write(Path.Combine(bundled,"ffmpeg"+suffix),"pinned");
             check(found.Executable("ffmpeg")==Path.Combine(bundled,"ffmpeg"+suffix)&&found.Executable("ffprobe")==Path.Combine(installed,"ffprobe"+suffix),"Downloaded tools must take priority over the search path");
             Write(Path.Combine(installed,"deno"+suffix),"");check(!found.Ready,"Empty search path placeholder must not count as installed tool");
+            if(!OperatingSystem.IsWindows())
+            {
+                var snapBin=Path.Combine(directory,"snap bin");Directory.CreateDirectory(snapBin);
+                Write(Path.Combine(snapBin,"launcher"),"launcher");File.CreateSymbolicLink(Path.Combine(snapBin,"ffmpeg"),Path.Combine(snapBin,"launcher"));
+                check(new Toolchain(Path.Combine(directory,"none"),snapBin).Executable("ffmpeg").EndsWith("/ffmpeg",StringComparison.Ordinal),"A PATH tool symlinked to a launcher must run under its PATH name");
+            }
         }
         finally{Directory.Delete(directory,true);}
     }

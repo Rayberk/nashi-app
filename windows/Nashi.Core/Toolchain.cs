@@ -28,9 +28,12 @@ public sealed class Toolchain(string directory,string? searchPath=null)
             // Relative entries such as "." would resolve against whatever folder Nashi was started from.
             var folder=entry.Trim('"');if(folder.IndexOfAny(Path.GetInvalidPathChars())>=0||!Path.IsPathFullyQualified(folder))continue;
             var path=Path.Combine(folder,FileName(name));
-            // Package managers such as WinGet publish tools as symbolic links whose own length is zero.
-            try{if(new FileInfo(path).ResolveLinkTarget(true) is FileInfo target)path=target.FullName;}catch(IOException){continue;}catch(UnauthorizedAccessException){continue;}
-            if(Usable(path))return path;
+            // Package managers such as WinGet publish tools as symbolic links whose own length is zero, so only the
+            // availability check follows the link. The tool runs from its PATH location because launchers such as
+            // /snap/bin/ffmpeg -> /usr/bin/snap pick their behaviour from the name they were started under.
+            var checkedPath=path;
+            try{if(new FileInfo(path).ResolveLinkTarget(true) is FileInfo target)checkedPath=target.FullName;}catch(IOException){continue;}catch(UnauthorizedAccessException){continue;}
+            if(Usable(checkedPath))return path;
         }
         return null;
     }
