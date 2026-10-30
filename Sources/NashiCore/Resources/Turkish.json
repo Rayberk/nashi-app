@@ -154,6 +154,8 @@
   "Check link": "Bağlantıyı kontrol et",
   "Finding the media…": "Medya bulunuyor…",
   "Select photos": "Fotoğrafları seç",
+  "{0} video items are not included. Only photos will be saved.": "{0} video öğesi dahil edilmedi. Yalnızca fotoğraflar kaydedilecek.",
+  "1 video items are not included. Only photos will be saved.": "1 video öğesi dahil edilmedi. Yalnızca fotoğraflar kaydedilecek.",
   "Saved in post order in a new Instagram folder.": "Gönderi sırasıyla yeni bir Instagram klasörüne kaydedilir.",
   "Ready on your Mac": "Mac'inde hazır",
   "Ready on your PC": "Bilgisayarında hazır",
