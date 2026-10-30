@@ -61,13 +61,17 @@ enum FloatShelfViewMode:Int { case icons,list }
 
     func append(_ urls:[URL]) {
         let previousSelection=Set(selectedIndices.map{items[$0].id})
-        var present=Set(items.map{$0.url.standardizedFileURL.path})
+        var present=Set(items.flatMap{Self.pathKeys($0.url)})
         for url in urls where url.isFileURL {
-            let canonical=url.standardizedFileURL
-            if present.insert(canonical.path).inserted { items.append(ShelfFile(url:canonical)) }
+            let canonical=url.standardizedFileURL,keys=Self.pathKeys(canonical)
+            if present.isDisjoint(with:keys) { present.formUnion(keys);items.append(ShelfFile(url:canonical)) }
         }
         reload(preserving:previousSelection)
         if isExpanded { setExpanded(true,forceLayout:true) }
+    }
+    /// A case variant or symlinked spelling of an existing file's path is the same file.
+    private static func pathKeys(_ url:URL)->[String] {
+        [url.standardizedFileURL.path]+[(try? url.resourceValues(forKeys:[.canonicalPathKey]))?.canonicalPath].compactMap{$0}
     }
 
     func attach(to edge:FloatShelfEdge?) {
