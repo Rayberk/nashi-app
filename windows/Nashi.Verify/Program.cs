@@ -132,11 +132,14 @@ if(Environment.GetEnvironmentVariable("NASHI_VERIFY_FFMPEG") is {} encoder && En
         var pictureEndsEarly=Path.Combine(directory,"Picture ends early.mp4");await ProcessRunner.RunAsync(encoder,["-v","error","-f","lavfi","-i","testsrc=size=128x96:rate=25:duration=2","-f","lavfi","-i","sine=duration=2.5:sample_rate=48000","-c:v","libx264","-pix_fmt","yuv420p","-c:a","aac",pictureEndsEarly]);
         // Matroska stores no video stream duration, so its end is found by decoding.
         var pictureEndsEarlyMkv=Path.ChangeExtension(pictureEndsEarly,"mkv");await ProcessRunner.RunAsync(encoder,["-v","error","-i",pictureEndsEarly,"-c","copy",pictureEndsEarlyMkv]);
-        foreach(var clip in new[]{pictureEndsEarly,pictureEndsEarlyMkv})
+        // MPEG-4 with B-frames in AVI leaves the last packets without a presentation time.
+        var pictureEndsEarlyAvi=Path.ChangeExtension(pictureEndsEarly,"avi");await ProcessRunner.RunAsync(encoder,["-v","error","-f","lavfi","-i","testsrc=size=128x96:rate=25:duration=2","-f","lavfi","-i","sine=duration=2.5:sample_rate=48000","-c:v","mpeg4","-bf","2","-c:a","libmp3lame",pictureEndsEarlyAvi]);
+        foreach(var clip in new[]{pictureEndsEarly,pictureEndsEarlyMkv,pictureEndsEarlyAvi})
         {
             var middle=clip+" middle.png";var last=clip+" last.png";await ProcessRunner.RunAsync(encoder,["-v","error","-ss","1","-i",clip,"-map","0:v:0","-frames:v","1","-c:v","png",middle]);await ProcessRunner.RunAsync(encoder,["-v","error","-i",clip,"-map","0:v:0","-update","1","-c:v","png",last]);
-            var endFrames=await engine.ToolAsync("videoSnapshots",[clip],directory,new(){SnapshotTimes=[1,1.97,1.99,2.3,(await engine.InspectAsync(clip)).Duration]});var lastBytes=File.ReadAllBytes(last);
-            Check(endFrames.Count==5&&File.ReadAllBytes(endFrames[0]).SequenceEqual(File.ReadAllBytes(middle))&&endFrames.Skip(1).All(f=>File.ReadAllBytes(f).SequenceEqual(lastBytes))&&!lastBytes.SequenceEqual(File.ReadAllBytes(middle)),"End-of-video snapshots did not show the last frame, or a mid-video snapshot moved ("+Path.GetExtension(clip)+")");
+            var endFrames=await engine.ToolAsync("videoSnapshots",[clip],directory,new(){SnapshotTimes=[..(clip==pictureEndsEarlyAvi?new[]{1,2.3}:[1,1.97,1.99,2.3]),(await engine.InspectAsync(clip)).Duration]});var lastBytes=File.ReadAllBytes(last);
+            // In AVI, FFmpeg retimes the reordered last frames slightly past 2 s, so only playheads after them are compared there.
+            Check(endFrames.Count==(clip==pictureEndsEarlyAvi?3:5)&&File.ReadAllBytes(endFrames[0]).SequenceEqual(File.ReadAllBytes(middle))&&endFrames.Skip(1).All(f=>File.ReadAllBytes(f).SequenceEqual(lastBytes))&&!lastBytes.SequenceEqual(File.ReadAllBytes(middle)),"End-of-video snapshots did not show the last frame, or a mid-video snapshot moved ("+Path.GetExtension(clip)+")");
         }
         var bleeped=await engine.ToolAsync("redactAudio",audio,directory,new(){AudioRedactions=[new(.25,.75)]});Check((await engine.InspectAsync(bleeped[0])).HasAudio,"Bleep export failed");
         var stereo=Path.Combine(directory,"Stereo.wav");await ProcessRunner.RunAsync(encoder,["-v","error","-f","lavfi","-i","sine=duration=1:sample_rate=48000","-ac","2",stereo]);var stereoBleep=await engine.ToolAsync("redactAudio",[stereo],directory,new(){AudioRedactions=[new(.25,.75)]});
