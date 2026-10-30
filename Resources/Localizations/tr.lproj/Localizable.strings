@@ -1139,6 +1139,7 @@
 "MAXIMUM VIDEO HEIGHT" = "EN FAZLA VİDEO YÜKSEKLİĞİ";
 "MAXIMUM VIDEO HEIGHT (0 = ORIGINAL)" = "EN FAZLA VİDEO YÜKSEKLİĞİ (0 = ORİJİNAL)";
 "MAXIMUM WIDTH" = "EN FAZLA GENİŞLİK";
+"MEDIA RANGE TIMELINE" = "MEDYA ARALIĞI ZAMAN ÇİZELGESİ";
 "MEDIA SETUP" = "MEDYA KURULUMU";
 "MEDIA TOOLS" = "MEDYA ARAÇLARI";
 "MEDIA TOOLS ARE ALREADY INSTALLED." = "MEDYA ARAÇLARI ZATEN KURULU.";
@@ -1180,6 +1181,7 @@
 "Maximum video height" = "En fazla video yüksekliği";
 "Maximum video height (0 = original)" = "En fazla video yüksekliği (0 = orijinal)";
 "Maximum width" = "En fazla genişlik";
+"Media range timeline" = "Medya aralığı zaman çizelgesi";
 "Media setup" = "Medya kurulumu";
 "Media tools" = "Medya araçları";
 "Media tools are already installed." = "Medya araçları zaten kurulu.";
@@ -1967,6 +1969,7 @@
 "TRIM" = "KIRP";
 "TRIM AUDIO" = "SESİ KIRP";
 "TRIM AUDIO · NASHI" = "SESİ KIRP · NASHI";
+"TRIM TIMELINE" = "KIRPMA ZAMAN ÇİZELGESİ";
 "TRIM VIDEO" = "VİDEOYU KIRP";
 "TRIM VIDEO · NASHI" = "VİDEOYU KIRP · NASHI";
 "TRUE PEAK DB" = "GERÇEK TEPE DÜZEYİ DB";
@@ -2058,6 +2061,7 @@
 "Trim Audio · Nashi" = "Sesi Kırp · Nashi";
 "Trim Video" = "Videoyu Kırp";
 "Trim Video · Nashi" = "Videoyu Kırp · Nashi";
+"Trim timeline" = "Kırpma zaman çizelgesi";
 "True peak dB" = "Gerçek tepe düzeyi dB";
 "True peak limit" = "Tepe düzeyi sınırı";
 "Try a clearer image or another PDF." = "Daha net bir görsel veya başka bir PDF dene.";

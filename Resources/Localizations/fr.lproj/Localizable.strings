@@ -1139,6 +1139,7 @@
 "MAXIMUM VIDEO HEIGHT" = "HAUTEUR VIDÉO MAXIMALE";
 "MAXIMUM VIDEO HEIGHT (0 = ORIGINAL)" = "HAUTEUR VIDÉO MAXIMALE (0 = ORIGINAL)";
 "MAXIMUM WIDTH" = "LARGEUR MAXIMALE";
+"MEDIA RANGE TIMELINE" = "CHRONOLOGIE DE LA PLAGE MULTIMÉDIA";
 "MEDIA SETUP" = "CONFIGURATION DES MÉDIAS";
 "MEDIA TOOLS" = "OUTILS MULTIMÉDIAS";
 "MEDIA TOOLS ARE ALREADY INSTALLED." = "LES OUTILS MULTIMÉDIAS SONT DÉJÀ INSTALLÉS.";
@@ -1180,6 +1181,7 @@
 "Maximum video height" = "Hauteur vidéo maximale";
 "Maximum video height (0 = original)" = "Hauteur vidéo maximale (0 = original)";
 "Maximum width" = "Largeur maximale";
+"Media range timeline" = "Chronologie de la plage multimédia";
 "Media setup" = "Configuration des médias";
 "Media tools" = "Outils multimédias";
 "Media tools are already installed." = "Les outils multimédias sont déjà installés.";
@@ -1967,6 +1969,7 @@
 "TRIM" = "ÉLAGUER";
 "TRIM AUDIO" = "ÉLAGUER L’AUDIO";
 "TRIM AUDIO · NASHI" = "ÉLAGUER L’AUDIO · NASHI";
+"TRIM TIMELINE" = "CHRONOLOGIE D’ÉLAGAGE";
 "TRIM VIDEO" = "ÉLAGUER LA VIDÉO";
 "TRIM VIDEO · NASHI" = "ÉLAGUER LA VIDÉO · NASHI";
 "TRUE PEAK DB" = "CRÊTE RÉELLE EN DB";
@@ -2058,6 +2061,7 @@
 "Trim Audio · Nashi" = "Élaguer l’audio · Nashi";
 "Trim Video" = "Élaguer la vidéo";
 "Trim Video · Nashi" = "Élaguer la vidéo · Nashi";
+"Trim timeline" = "Chronologie d’élagage";
 "True peak dB" = "Crête réelle en dB";
 "True peak limit" = "Limite de crête réelle";
 "Try a clearer image or another PDF." = "Essayez une image plus nette ou un autre PDF.";
