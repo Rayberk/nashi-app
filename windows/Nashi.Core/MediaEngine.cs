@@ -3,7 +3,7 @@ using System.Text.Json;
 
 namespace Nashi.Core;
 
-public sealed record MediaStream(int Index, string Kind, string Codec, int? Width, int? Height, bool AttachedPicture,int Bits=0,string SampleFormat="",double FrameRate=30,int SampleRate=0);
+public sealed record MediaStream(int Index, string Kind, string Codec, int? Width, int? Height, bool AttachedPicture,int Bits=0,string SampleFormat="",double FrameRate=30,int SampleRate=0,double Duration=0);
 public sealed record MediaInfo(double Duration, long Bytes, IReadOnlyList<MediaStream> Streams)
 {
     public MediaStream? Video => Streams.FirstOrDefault(s => s.Kind == "video" && !s.AttachedPicture);
@@ -74,7 +74,7 @@ public sealed class MediaEngine(string ffmpeg, string ffprobe)
             // FFmpeg auto-rotates decoded frames before crop/scale filters. The
             // editor and validation use those same displayed dimensions.
             if(double.IsFinite(rotation)&&Math.Abs(Math.Abs(rotation)%180-90)<.001)(width,height)=(height,width);
-            streams.Add(new(stream.GetProperty("index").GetInt32(), GetString(stream,"codec_type"), GetString(stream,"codec_name"), width, height, attached,GetInt(stream,"bits_per_raw_sample")??GetInt(stream,"bits_per_sample")??0,GetString(stream,"sample_fmt"),ParseFrameRate(GetString(stream,"avg_frame_rate")),int.TryParse(GetString(stream,"sample_rate"),NumberStyles.Integer,CultureInfo.InvariantCulture,out var sampleRate)&&sampleRate>0?sampleRate:0));
+            streams.Add(new(stream.GetProperty("index").GetInt32(), GetString(stream,"codec_type"), GetString(stream,"codec_name"), width, height, attached,GetInt(stream,"bits_per_raw_sample")??GetInt(stream,"bits_per_sample")??0,GetString(stream,"sample_fmt"),ParseFrameRate(GetString(stream,"avg_frame_rate")),int.TryParse(GetString(stream,"sample_rate"),NumberStyles.Integer,CultureInfo.InvariantCulture,out var sampleRate)&&sampleRate>0?sampleRate:0,double.TryParse(GetString(stream,"duration"),CultureInfo.InvariantCulture,out var streamDuration)&&double.IsFinite(streamDuration)&&streamDuration>0?streamDuration:0));
         }
         var duration = root.TryGetProperty("format", out var format) && double.TryParse(GetString(format,"duration"), CultureInfo.InvariantCulture, out var seconds) && double.IsFinite(seconds) ? Math.Max(0,seconds) : 0;
         return new(duration, new FileInfo(input).Length, streams);
@@ -182,11 +182,13 @@ public sealed class MediaEngine(string ffmpeg, string ffprobe)
             case "compress":return [await CompressAsync(input,info,directory,options,progress,token)];
             case "videoSnapshots":
                 RequireVideo(info);if(options.SnapshotTimes.Length==0)throw new ArgumentException("Choose at least one frame.");var frames=new List<string>();
+                // FFmpeg seeks to the next frame start, so a playhead on the last frame (or an audio tail) saved nothing; seek inside it.
+                var lastFrame=Math.Max(0,(info.Video!.Duration>0?info.Video.Duration:info.Duration)-1.5/info.Video.FrameRate);
                 for(var n=0;n<options.SnapshotTimes.Length;n++)
                 {
                     var time=options.SnapshotTimes[n];if(!double.IsFinite(time)||time<0||(info.Duration>0&&time>=info.Duration))throw new ArgumentException("A frame lies outside the video.");
                     var file=Output(directory,input,"png"," Frame "+(n+1));
-                    await RenderAsync(["-ss",Number(time),"-i",input,"-map","0:v:0","-frames:v","1","-update","1","-c:v","png"],file,null,progress,token);frames.Add(file);
+                    await RenderAsync(["-ss",Number(Math.Min(time,lastFrame)),"-i",input,"-map","0:v:0","-frames:v","1","-update","1","-c:v","png"],file,null,progress,token);frames.Add(file);
                     progress(new((double)(n+1)/options.SnapshotTimes.Length,"Saving frame "+(n+1)));
                 }
                 return frames;
