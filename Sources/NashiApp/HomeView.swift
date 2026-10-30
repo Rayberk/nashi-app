@@ -173,7 +173,7 @@ struct HomeView:View {
     private var selectionActions:some View {
         VStack(alignment:.leading,spacing:12) {
             HStack(spacing:12) {
-                Button { HomeActionMenu.show(formats.map{format in (format=="gz" ? "GZIP":format.uppercased(),{state.select(.convert(format))})}) } label:{HomeActionTile(title:"Convert",subtitle:formats.isEmpty ? "No output formats":"\(formats.count) ways to change it",symbol:"arrow.triangle.2.circlepath",color:.nashi)}
+                Button { HomeActionMenu.show(formats.map{format in (format=="gz" ? "GZIP":format.uppercased(),{state.select(.convert(format))})}) } label:{HomeActionTile(title:"Convert",subtitle:formats.isEmpty ? "No output formats":formats.count==1 ? "1 way to change it":"\(formats.count) ways to change it",symbol:"arrow.triangle.2.circlepath",color:.nashi)}
                     .buttonStyle(.plain).disabled(formats.isEmpty || state.working)
                 Button { HomeActionMenu.show(tools.map{tool in (tool.title,{state.select(.tool(tool))})}) } label:{HomeActionTile(title:"Fine-tune",subtitle:tools.isEmpty ? "No tools for this selection":"Edit, compress, and more",symbol:"slider.horizontal.3",color:NashiPalette.forest)}
                     .buttonStyle(.plain).disabled(tools.isEmpty || state.working)
