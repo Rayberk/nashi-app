@@ -84,6 +84,11 @@ try
     using(var malicious=System.IO.Compression.ZipFile.Open(unsafeZip,System.IO.Compression.ZipArchiveMode.Create)){using var entry=malicious.CreateEntry("../outside.txt").Open();entry.WriteByte(1);}
     try{DocumentEngine.Unzip(unsafeZip,root);throw new Exception("Traversal archive succeeded");}catch(InvalidDataException){checks++;}
     Check(!File.Exists(Path.Combine(Path.GetDirectoryName(root)!,"outside.txt")),"Archive wrote outside destination");
+    var datedZip=Path.Combine(root,"Dated.zip");var dated=new DateTime(2020,1,2,3,4,6);
+    using(var archive=System.IO.Compression.ZipFile.Open(datedZip,System.IO.Compression.ZipArchiveMode.Create)){var entry=archive.CreateEntry("Dated.txt");entry.LastWriteTime=dated;using var stream=entry.Open();stream.WriteByte(1);}
+    Check(File.GetLastWriteTime(Path.Combine(ArchiveEngine.Extract(datedZip,root)[0],"Dated.txt"))==dated,"Extracted files lost their modification dates");
+    using(var converted=System.IO.Compression.ZipFile.OpenRead(ArchiveEngine.Convert(datedZip,"zip",root)[0]))Check(converted.GetEntry("Dated.txt")!.LastWriteTime.DateTime==dated,"Converted ZIP lost its file dates");
+    using(var converted=File.OpenRead(ArchiveEngine.Convert(datedZip,"tar",root)[0]))Check(new System.Formats.Tar.TarReader(converted).GetNextEntry()!.ModificationTime.LocalDateTime==dated,"Converted TAR lost its file dates");
     var fake=Path.Combine(root,"fake.zip");File.WriteAllText(fake,"untrusted");
     var update=new WindowsUpdate("99.0.0.0","https://github.com/orkunisitmak/nashi-app/releases/download/test/Nashi.zip",new FileInfo(fake).Length,Convert.ToBase64String(new byte[64]));
     try{await PublicUpdates.VerifyAsync(fake,update);throw new Exception("Unsigned update accepted");}catch(InvalidDataException){checks++;}
