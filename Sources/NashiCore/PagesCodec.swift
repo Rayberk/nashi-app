@@ -221,7 +221,7 @@ private enum PagesDOCXReader {
                     try token.check()
                     if item.local == "r" {
                         let runBase = item.first("rPr")?.first("rStyle")?.attr("val").map {resolved($0).0} ?? [:]
-                        let formatting = base.0.merging(runBase) { _,new in new }.merging(character(item.first("rPr"))) { _,new in new }
+                        let formatting = PagesDOCXReader.visible(base.0.merging(runBase) { _,new in new }.merging(character(item.first("rPr"))) { _,new in new })
                         for child in item.elements(nil) {
                             if child.local == "fldChar" {
                                 switch child.attr("fldCharType") {
@@ -249,7 +249,7 @@ private enum PagesDOCXReader {
                 // An empty paragraph has no run from which to recover its font.
                 // Keep the paragraph mark's formatting, including tiny end
                 // paragraphs that prevent a final table from adding a blank page.
-                let paragraphCharacter = runs.isEmpty ? base.0.merging(character(properties?.first("rPr"))) { _,new in new } : base.0
+                let paragraphCharacter = PagesDOCXReader.visible(runs.isEmpty ? base.0.merging(character(properties?.first("rPr"))) { _,new in new } : base.0)
                 return ["type":"paragraph","runs":runs,"character":paragraphCharacter,"paragraph":base.1.merging(paragraph(properties)) { _,new in new }]
             }
             if element.local == "tbl" {
@@ -417,13 +417,16 @@ private enum PagesDOCXReader {
         if let size=element.first("sz")?.number("val"){result["fontSize"]=size/2}
         if let font=element.first("rFonts")?.attr("ascii") ?? element.first("rFonts")?.attr("hAnsi"){result["fontName"]=font}
         if let value=element.first("color")?.attr("val"),let color=color(value){result["fontColor"]=color}
-        if let value=element.first("highlight")?.attr("val"),let color=color(highlights[value] ?? value){result["backgroundColor"]=color}
+        // "none" must override a highlight inherited from a style; visible() drops the marker.
+        if let value=element.first("highlight")?.attr("val"){if value == "none" {result["backgroundColor"]=NSNull()} else if let color=color(highlights[value] ?? value){result["backgroundColor"]=color}}
         if let underline=element.first("u"){result["underline"] = underline.attr("val") == "none" ? 0 : underline.attr("val") == "double" ? 2 : 1}
         if let strike=element.first("strike"){result["strikethru"] = ["0","false","off"].contains(strike.attr("val") ?? "1") ? 0 : 1}
         if let align=element.first("vertAlign")?.attr("val"){result["superscript"] = align == "superscript" ? 1 : align == "subscript" ? -1 : 0}
         if let language=element.first("lang")?.attr("val"){result["language"]=language}
         return result
     }
+    /// Drops the NSNull markers that clear an inherited property.
+    static func visible(_ character:[String:Any]) -> [String:Any] { character.filter { !($0.value is NSNull) } }
     /// w:highlight takes ST_HighlightColor names, not hex values.
     static let highlights=["black":"000000","blue":"0000FF","cyan":"00FFFF","green":"00FF00","magenta":"FF00FF","red":"FF0000","yellow":"FFFF00","white":"FFFFFF","darkBlue":"000080","darkCyan":"008080","darkGreen":"008000","darkMagenta":"800080","darkRed":"800000","darkYellow":"808000","darkGray":"808080","lightGray":"C0C0C0"]
     static func paragraph(_ element:XMLElement?) -> [String:Any] {
