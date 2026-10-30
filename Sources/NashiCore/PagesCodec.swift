@@ -211,13 +211,25 @@ private enum PagesDOCXReader {
                 let properties = element.first("pPr")
                 let base = resolved(properties?.first("pStyle")?.attr("val"))
                 var runs: [[String:Any]] = []
+                // Open complex fields (fldChar begin ... end); a HYPERLINK
+                // field links its result runs once its instruction is complete.
+                var fields: [(instruction: String, link: String?)] = []
                 func visit(_ item: XMLElement, link: String? = nil) throws {
                     try token.check()
                     if item.local == "r" {
                         let runBase = item.first("rPr")?.first("rStyle")?.attr("val").map {resolved($0).0} ?? [:]
                         let formatting = base.0.merging(runBase) { _,new in new }.merging(character(item.first("rPr"))) { _,new in new }
                         for child in item.elements(nil) {
-                            if child.local == "t" { var run: [String:Any] = ["text":text(child),"character":formatting];if let link {run["link"]=link};runs.append(run) }
+                            if child.local == "fldChar" {
+                                switch child.attr("fldCharType") {
+                                case "begin": fields.append(("", nil))
+                                case "separate": if !fields.isEmpty { fields[fields.count-1].link = hyperlinkField(fields[fields.count-1].instruction) }
+                                case "end": _ = fields.popLast()
+                                default: break
+                                }
+                            }
+                            else if child.local == "instrText", !fields.isEmpty { fields[fields.count-1].instruction += text(child) }
+                            else if child.local == "t" { var run: [String:Any] = ["text":text(child),"character":formatting];if let link = link ?? fields.last(where: { $0.link != nil })?.link {run["link"]=link};runs.append(run) }
                             else if child.local == "tab" { runs.append(["text":"\t","character":formatting]) }
                             else if child.local == "br" || child.local == "cr" { runs.append(["text":"\n","character":formatting]) }
                             else if ["drawing","pict"].contains(child.local), let image = try image(child) { runs.append(image) }
@@ -318,6 +330,32 @@ private enum PagesDOCXReader {
         let raw=element.xmlString
         guard let open=raw.firstIndex(of:">"),let close=raw.lastIndex(of:"<"),open<close else{return ""}
         return DocumentText.decodeEntities(String(raw[raw.index(after:open)..<close]))
+    }
+    /// The external target of a `HYPERLINK "url" [\o "tip"] [\l "bookmark"]`
+    /// field instruction; bookmark-only links have no URL in the Pages model.
+    static func hyperlinkField(_ instruction: String) -> String? {
+        var tokens: [(value: String, quoted: Bool)] = [], index = instruction.startIndex
+        while index < instruction.endIndex {
+            if instruction[index].isWhitespace { index = instruction.index(after: index); continue }
+            if instruction[index] == "\"" {
+                let start = instruction.index(after: index)
+                let end = instruction[start...].firstIndex(of: "\"") ?? instruction.endIndex
+                tokens.append((String(instruction[start..<end]), true))
+                index = end < instruction.endIndex ? instruction.index(after: end) : end
+            } else {
+                let end = instruction[index...].firstIndex(where: \.isWhitespace) ?? instruction.endIndex
+                tokens.append((String(instruction[index..<end]), false))
+                index = end
+            }
+        }
+        guard tokens.first.map({ !$0.quoted && $0.value.uppercased() == "HYPERLINK" }) == true else { return nil }
+        var position = 1
+        while position < tokens.count {
+            let token = tokens[position]
+            if !token.quoted, token.value.hasPrefix("\\") { position += ["\\l","\\o","\\t"].contains(token.value.lowercased()) ? 2 : 1; continue }
+            return token.value.isEmpty ? nil : token.value
+        }
+        return nil
     }
     static func character(_ element: XMLElement?) -> [String:Any] {
         guard let element else{return [:]};var result:[String:Any]=[:]
