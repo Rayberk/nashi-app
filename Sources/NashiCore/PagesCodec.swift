@@ -242,6 +242,7 @@ private enum PagesDOCXReader {
                 let maximumColumns = 1024
                 for (rowIndex,row) in element.elements("tr").enumerated() {
                     var cells: [[String:Any]] = [], column = 0
+                    var horizontalAnchor: Int?
                     for cell in row.elements("tc") {
                         let properties = cell.first("tcPr")
                         let span: Int
@@ -266,7 +267,18 @@ private enum PagesDOCXReader {
                                 else { merges.append(["row":origin.0,"column":column,"rowCount":rowIndex-origin.0+1,"columnCount":origin.1]) }
                             }
                         } else { activeVertical[column] = nil }
-                        if span > 1 && properties?.first("vMerge") == nil { merges.append(["row":rowIndex,"column":column,"rowCount":1,"columnCount":span]) }
+                        // Legacy w:hMerge continuations join the restart cell
+                        // to their left; cells that also merge vertically stay out.
+                        var joinsHorizontal = false
+                        if properties?.first("vMerge") == nil, let horizontal = properties?.first("hMerge") {
+                            if horizontal.attr("val") == "restart" { horizontalAnchor = column }
+                            else if let anchor = horizontalAnchor {
+                                joinsHorizontal = true
+                                if let index = merges.firstIndex(where: {$0["row"] == rowIndex && $0["column"] == anchor}) { merges[index]["columnCount"] = column + span - anchor }
+                                else { merges.append(["row":rowIndex,"column":anchor,"rowCount":1,"columnCount":column + span - anchor]) }
+                            }
+                        } else { horizontalAnchor = nil }
+                        if span > 1 && properties?.first("vMerge") == nil && !joinsHorizontal { merges.append(["row":rowIndex,"column":column,"rowCount":1,"columnCount":span]) }
                         column += span
                     }
                     rows.append(cells)
