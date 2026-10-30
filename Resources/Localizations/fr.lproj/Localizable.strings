@@ -120,6 +120,7 @@
 "ALLOW HOME FOLDER ACCESS…" = "AUTORISER L’ACCÈS AU DOSSIER DE DÉPART…";
 "ALLOW NASHI IN MACOS LOGIN ITEMS." = "AUTORISEZ NASHI DANS LES ÉLÉMENTS D’OUVERTURE DE MACOS.";
 "ALREADY AVAILABLE ON YOUR COMPUTER" = "DÉJÀ DISPONIBLES SUR VOTRE ORDINATEUR";
+"ALWAYS A LITTLE FRESHER." = "TOUJOURS UN PEU PLUS FRAIS.";
 "AN EMBEDDED IMAGE IS MISSING OR TOO LARGE." = "UNE IMAGE INTÉGRÉE EST MANQUANTE OU TROP VOLUMINEUSE.";
 "AN EMPTY OUTPUT WAS PRODUCED." = "UNE SORTIE VIDE A ÉTÉ PRODUITE.";
 "AN HTTPS DOWNLOAD IS REQUIRED." = "UN TÉLÉCHARGEMENT HTTPS EST REQUIS.";
@@ -188,6 +189,7 @@
 "Allow Home Folder Access…" = "Autoriser l’accès au dossier de départ…";
 "Allow Nashi in macOS Login Items." = "Autorisez Nashi dans les éléments d’ouverture de macOS.";
 "Already available on your computer" = "Déjà disponibles sur votre ordinateur";
+"Always a little fresher." = "Toujours un peu plus frais.";
 "An HTTPS download is required." = "Un téléchargement HTTPS est requis.";
 "An RTFD attachment is missing or too large: %@" = "Une pièce jointe RTFD est manquante ou trop volumineuse : %@";
 "An RTFD attachment is missing or too large: %lld" = "Une pièce jointe RTFD est manquante ou trop volumineuse : %lld";
@@ -294,7 +296,9 @@
 "CHECK SELECTED RANGE" = "VÉRIFIEZ LA PLAGE SÉLECTIONNÉE";
 "CHECK YOUR LINK" = "VÉRIFIEZ VOTRE LIEN";
 "CHECK YOUR SETTINGS" = "VÉRIFIEZ VOS RÉGLAGES";
+"CHECKING FOR A FRESH VERSION…" = "RECHERCHE D’UNE NOUVELLE VERSION…";
 "CHECKING FOR UPDATES…" = "RECHERCHE DE MISES À JOUR…";
+"CHECKING RELEASES…" = "RECHERCHE DES VERSIONS…";
 "CHECKING THE CONNECTION…" = "VÉRIFICATION DE LA CONNEXION…";
 "CHOOSE 2–100 IMAGES FOR A COLLAGE." = "CHOISISSEZ DE 2 À 100 IMAGES POUR UN COLLAGE.";
 "CHOOSE A BACKGROUND IMAGE." = "CHOISISSEZ UNE IMAGE D’ARRIÈRE-PLAN.";
@@ -387,6 +391,9 @@
 "COMPRESSION REQUIRES A KNOWN DURATION." = "LA COMPRESSION NÉCESSITE UNE DURÉE CONNUE.";
 "COMPRESSION SETTINGS" = "RÉGLAGES DE COMPRESSION";
 "COMPRESSION STRENGTH" = "INTENSITÉ DE COMPRESSION";
+"CONNECT A PRIVATE OR PUBLIC UPDATES REPOSITORY." = "CONNECTEZ UN DÉPÔT DE MISES À JOUR PRIVÉ OU PUBLIC.";
+"CONNECT YOUR GITHUB RELEASES ONCE. NASHI HANDLES THE NEXT UPDATE CHECKS." = "CONNECTEZ VOS VERSIONS GITHUB UNE FOIS. NASHI S’OCCUPE DES PROCHAINES RECHERCHES DE MISES À JOUR.";
+"CONNECT…" = "SE CONNECTER…";
 "CONTINUE TO NASHI" = "CONTINUER VERS NASHI";
 "CONTRAST" = "CONTRASTE";
 "CONVERSION SETTINGS" = "RÉGLAGES DE CONVERSION";
@@ -449,7 +456,9 @@
 "Check selected range" = "Vérifiez la plage sélectionnée";
 "Check your link" = "Vérifiez votre lien";
 "Check your settings" = "Vérifiez vos réglages";
+"Checking for a fresh version…" = "Recherche d’une nouvelle version…";
 "Checking for updates…" = "Recherche de mises à jour…";
+"Checking releases…" = "Recherche des versions…";
 "Checking the connection…" = "Vérification de la connexion…";
 "Choose 2–100 images for a collage." = "Choisissez de 2 à 100 images pour un collage.";
 "Choose Background Image…" = "Choisir une image d’arrière-plan…";
@@ -554,6 +563,11 @@
 "Compression preset" = "Préréglage de compression";
 "Compression requires a known duration." = "La compression nécessite une durée connue.";
 "Compression strength" = "Intensité de compression";
+"Connect a private or public updates repository." = "Connectez un dépôt de mises à jour privé ou public.";
+"Connect your GitHub releases once. Nashi handles the next update checks." = "Connectez vos versions GitHub une fois. Nashi s’occupe des prochaines recherches de mises à jour.";
+"Connected to %@" = "Connecté à %@";
+"Connected to %lld" = "Connecté à %lld";
+"Connect…" = "Se connecter…";
 "Continue to Nashi" = "Continuer vers Nashi";
 "Contrast" = "Contraste";
 "Conversion Settings" = "Réglages de conversion";
@@ -862,6 +876,7 @@
 "FREEHAND" = "MAIN LEVÉE";
 "FRESH COPY" = "NOUVELLE COPIE";
 "FRESH THINGS, ON THEIR WAY." = "DE NOUVEAUX FICHIERS, EN ROUTE.";
+"FRESH VERSIONS, ONE CLICK AWAY." = "DE NOUVELLES VERSIONS, À UN CLIC.";
 "FRESHLY MADE" = "TOUT JUSTE CRÉÉS";
 "FRESHLY MADE, PASTED, AND READY FOR ANOTHER ROUND." = "TOUT JUSTE CRÉÉS, COLLÉS ET PRÊTS POUR UN NOUVEAU TOUR.";
 "Fade" = "Fondu";
@@ -934,6 +949,7 @@
 "Freehand" = "Main levée";
 "Fresh copy" = "Nouvelle copie";
 "Fresh things, on their way." = "De nouveaux fichiers, en route.";
+"Fresh versions, one click away." = "De nouvelles versions, à un clic.";
 "Freshly made" = "Tout juste créés";
 "Freshly made, pasted, and ready for another round." = "Tout juste créés, collés et prêts pour un nouveau tour.";
 "GAMMA" = "GAMMA";
@@ -948,6 +964,7 @@
 "GIF frames per second" = "Images par seconde du GIF";
 "GIF maximum width" = "Largeur maximale du GIF";
 "GIF width" = "Largeur du GIF";
+"GITHUB RELEASE CONNECTION" = "CONNEXION AUX VERSIONS GITHUB";
 "GITHUB REPOSITORY" = "DÉPÔT GITHUB";
 "GIVE IT A LITTLE BREATHING ROOM." = "LAISSEZ-LUI UN PEU D’AIR.";
 "GLASS" = "VERRE";
@@ -961,6 +978,7 @@
 "Gamma must be positive; contrast and saturation cannot be negative." = "Le gamma doit être positif ; le contraste et la saturation ne peuvent pas être négatifs.";
 "General" = "Général";
 "Get started" = "Démarrer";
+"GitHub release connection" = "Connexion aux versions GitHub";
 "GitHub repository" = "Dépôt GitHub";
 "Give it a little breathing room." = "Laissez-lui un peu d’air.";
 "Glass" = "Verre";
@@ -1097,6 +1115,8 @@
 "Language" = "Langue";
 "Large · 2560 px" = "Grand · 2560 px";
 "Large · 2560 px longest edge" = "Grand · 2560 px sur le plus grand côté";
+"Last checked %@" = "Dernière recherche : %@";
+"Last checked %lld" = "Dernière recherche : %lld";
 "Launch at login" = "Ouvrir avec la session";
 "Launch at login is unavailable for this copy." = "L’option Ouvrir avec la session n’est pas disponible pour cette copie.";
 "Layout" = "Mise en page";
@@ -1132,6 +1152,7 @@
 "MAKE IT YOURS · NASHI" = "À VOTRE FAÇON · NASHI";
 "MAKE SOME SPACE. KEEP WHAT MATTERS." = "FAITES DE LA PLACE. GARDEZ L’ESSENTIEL.";
 "MAKE YOUR POINT." = "FAITES PASSER VOTRE MESSAGE.";
+"MANAGE…" = "GÉRER…";
 "MARKER" = "SURLIGNEUR";
 "MATCH SOURCE" = "IDENTIQUE À LA SOURCE";
 "MAXIMIZE" = "AGRANDIR";
@@ -1172,6 +1193,7 @@
 "Make it yours · Nashi" = "À votre façon · Nashi";
 "Make some space. Keep what matters." = "Faites de la place. Gardez l’essentiel.";
 "Make your point." = "Faites passer votre message.";
+"Manage…" = "Gérer…";
 "Marker" = "Surligneur";
 "Match Source" = "Identique à la source";
 "Match source" = "Identique à la source";
@@ -1215,6 +1237,7 @@
 "NASHI UPDATE" = "MISE À JOUR DE NASHI";
 "NASHI UPDATE COULD NOT FINISH" = "LA MISE À JOUR DE NASHI N’A PAS PU SE TERMINER";
 "NASHI · FEATURES & SHORTCUTS" = "NASHI · FONCTIONNALITÉS ET RACCOURCIS";
+"NEW FEATURES AND SMALL IMPROVEMENTS, DELIVERED RIGHT HERE." = "DE NOUVELLES FONCTIONNALITÉS ET DE PETITES AMÉLIORATIONS, LIVRÉES ICI MÊME.";
 "NEXT" = "SUIVANT";
 "NEXT FRAME" = "IMAGE SUIVANTE";
 "NEXT PAGE" = "PAGE SUIVANTE";
@@ -1252,6 +1275,7 @@
 "Nashi update" = "Mise à jour de Nashi";
 "Nashi update could not finish" = "La mise à jour de Nashi n’a pas pu se terminer";
 "Nashi · Features & shortcuts" = "Nashi · Fonctionnalités et raccourcis";
+"New features and small improvements, delivered right here." = "De nouvelles fonctionnalités et de petites améliorations, livrées ici même.";
 "Next" = "Suivant";
 "Next frame" = "Image suivante";
 "Next page" = "Page suivante";
@@ -1291,6 +1315,7 @@
 "OFFICE TOOLS ARE READY." = "LES OUTILS BUREAUTIQUES SONT PRÊTS.";
 "OFFICE TOOLS READY" = "OUTILS BUREAUTIQUES PRÊTS";
 "OFFICE TOOLS READY." = "OUTILS BUREAUTIQUES PRÊTS.";
+"OFFICIAL PUBLIC RELEASES · NO ACCOUNT OR TOKEN NEEDED" = "VERSIONS PUBLIQUES OFFICIELLES · AUCUN COMPTE NI JETON NÉCESSAIRE";
 "ON YOUR MAC" = "SUR VOTRE MAC";
 "ON YOUR PC" = "SUR VOTRE PC";
 "ONE DOWNLOAD PER TOOL GROUP. NO ACCOUNT OR GITHUB TOKEN." = "UN TÉLÉCHARGEMENT PAR GROUPE D’OUTILS. AUCUN COMPTE NI JETON GITHUB.";
@@ -1332,6 +1357,7 @@
 "Office tools are ready." = "Les outils bureautiques sont prêts.";
 "Office tools ready" = "Outils bureautiques prêts";
 "Office tools ready." = "Outils bureautiques prêts.";
+"Official public releases · No account or token needed" = "Versions publiques officielles · Aucun compte ni jeton nécessaire";
 "On your Mac" = "Sur votre Mac";
 "On your PC" = "Sur votre PC";
 "One download per tool group. No account or GitHub token." = "Un téléchargement par groupe d’outils. Aucun compte ni jeton GitHub.";
@@ -1371,6 +1397,7 @@
 "PASTE A VIDEO SHARE LINK OR IMAGE ADDRESS" = "COLLEZ LE LIEN DE PARTAGE D’UNE VIDÉO OU L’ADRESSE D’UNE IMAGE";
 "PASTE LINK" = "COLLER LE LIEN";
 "PASTE ONE COMPLETE PUBLIC MEDIA LINK." = "COLLEZ UN LIEN MÉDIA PUBLIC COMPLET.";
+"PASTE YOUR GITHUB TOKEN" = "COLLEZ VOTRE JETON GITHUB";
 "PASTED IMAGE" = "IMAGE COLLÉE";
 "PASTED TEXT" = "TEXTE COLLÉ";
 "PAUSE" = "PAUSE";
@@ -1423,11 +1450,13 @@
 "PREVIEW VISUALIZATION" = "APERÇU DE LA VISUALISATION";
 "PREVIOUS FRAME" = "IMAGE PRÉCÉDENTE";
 "PREVIOUS PAGE" = "PAGE PRÉCÉDENTE";
+"PRIVATE REPOSITORY · TOKEN SAVED IN KEYCHAIN" = "DÉPÔT PRIVÉ · JETON ENREGISTRÉ DANS LE TROUSSEAU";
 "PROCESSED PREVIEW UNAVAILABLE FOR THIS WINDOWS CODEC." = "APERÇU TRAITÉ INDISPONIBLE POUR CE CODEC WINDOWS.";
 "PROCESSED PREVIEW · EXPORT USES THE ORIGINAL FILE." = "APERÇU TRAITÉ · L’EXPORT UTILISE LE FICHIER D’ORIGINE.";
 "PROCESSED PREVIEW. CHOOSE ORIGINAL TO EDIT AREAS." = "APERÇU TRAITÉ. CHOISISSEZ ORIGINAL POUR MODIFIER LES ZONES.";
 "PROCESSING…" = "TRAITEMENT EN COURS…";
 "PROTECTED MEDIA CANNOT BE DOWNLOADED." = "LES MÉDIAS PROTÉGÉS NE PEUVENT PAS ÊTRE TÉLÉCHARGÉS.";
+"PUBLIC REPOSITORY · NO TOKEN NEEDED" = "DÉPÔT PUBLIC · AUCUN JETON NÉCESSAIRE";
 "PUBLIC UPDATES WORK WITHOUT A TOKEN." = "LES MISES À JOUR PUBLIQUES FONCTIONNENT SANS JETON.";
 "Padding" = "Marge intérieure";
 "Page %@" = "Page %@";
@@ -1444,6 +1473,7 @@
 "Paste a video share link or image address" = "Collez le lien de partage d’une vidéo ou l’adresse d’une image";
 "Paste link" = "Coller le lien";
 "Paste one complete public media link." = "Collez un lien média public complet.";
+"Paste your GitHub token" = "Collez votre jeton GitHub";
 "Pasted image" = "Image collée";
 "Pasted text" = "Texte collé";
 "Pause" = "Pause";
@@ -1485,11 +1515,13 @@
 "Preview uses the first 12 seconds. Export includes the full recording." = "L’aperçu utilise les 12 premières secondes. L’export inclut l’enregistrement complet.";
 "Previous frame" = "Image précédente";
 "Previous page" = "Page précédente";
+"Private repository · Token saved in Keychain" = "Dépôt privé · Jeton enregistré dans le trousseau";
 "Processed preview unavailable for this Windows codec." = "Aperçu traité indisponible pour ce codec Windows.";
 "Processed preview · export uses the original file." = "Aperçu traité · l’export utilise le fichier d’origine.";
 "Processed preview. Choose Original to edit areas." = "Aperçu traité. Choisissez Original pour modifier les zones.";
 "Processing…" = "Traitement en cours…";
 "Protected media cannot be downloaded." = "Les médias protégés ne peuvent pas être téléchargés.";
+"Public repository · No token needed" = "Dépôt public · Aucun jeton nécessaire";
 "Public updates work without a token." = "Les mises à jour publiques fonctionnent sans jeton.";
 "QUALITY" = "QUALITÉ";
 "QUALITY (%)" = "QUALITÉ (%)";
@@ -1505,9 +1537,12 @@
 "READ QR CODES" = "LIRE LES CODES QR";
 "READ QR CODES · NASHI" = "LIRE LES CODES QR · NASHI";
 "READY" = "PRÊT";
+"READY AFTER YOUR CURRENT TASK" = "PRÊT APRÈS VOTRE TÂCHE EN COURS";
+"READY FOR A FRESH VERSION?" = "PRÊT POUR UNE NOUVELLE VERSION ?";
 "READY FOR ANOTHER ROUND." = "PRÊT POUR UN NOUVEAU TOUR.";
 "READY ON YOUR MAC" = "PRÊT SUR VOTRE MAC";
 "READY ON YOUR PC" = "PRÊT SUR VOTRE PC";
+"READY TO CHECK FOR UPDATES" = "PRÊT À RECHERCHER LES MISES À JOUR";
 "READY TO MAKE A FRESH COPY. NO EXTRA SETTINGS NEEDED." = "PRÊT À CRÉER UNE NOUVELLE COPIE. AUCUN RÉGLAGE SUPPLÉMENTAIRE NÉCESSAIRE.";
 "READY WHEN YOU ARE" = "PRÊT QUAND VOUS L’ÊTES";
 "READY WHEN YOU LOG IN" = "PRÊT DÈS VOTRE CONNEXION";
@@ -1566,9 +1601,12 @@
 "Read QR Codes · Nashi" = "Lire les codes QR · Nashi";
 "Read QR codes" = "Lire les codes QR";
 "Ready" = "Prêt";
+"Ready after your current task" = "Prêt après votre tâche en cours";
+"Ready for a fresh version?" = "Prêt pour une nouvelle version ?";
 "Ready for another round." = "Prêt pour un nouveau tour.";
 "Ready on your Mac" = "Prêt sur votre Mac";
 "Ready on your PC" = "Prêt sur votre PC";
+"Ready to check for updates" = "Prêt à rechercher les mises à jour";
 "Ready to make a fresh copy. No extra settings needed." = "Prêt à créer une nouvelle copie. Aucun réglage supplémentaire nécessaire.";
 "Ready when you log in" = "Prêt dès votre connexion";
 "Ready." = "Prêt.";
@@ -1659,6 +1697,7 @@
 "SAVE WITH BACKGROUND" = "ENREGISTRER AVEC L’ARRIÈRE-PLAN";
 "SAVED 1 NEW FILE. ORIGINALS KEPT." = "1 NOUVEAU FICHIER ENREGISTRÉ. ORIGINAUX CONSERVÉS.";
 "SAVED IN POST ORDER IN A NEW INSTAGRAM FOLDER." = "ENREGISTRÉES DANS L’ORDRE DE LA PUBLICATION, DANS UN NOUVEAU DOSSIER INSTAGRAM.";
+"SAVED TOKEN · LEAVE BLANK TO KEEP IT" = "JETON ENREGISTRÉ · LAISSEZ VIDE POUR LE CONSERVER";
 "SAVING COLLAGE…" = "ENREGISTREMENT DU COLLAGE…";
 "SAVING DOCUMENT…" = "ENREGISTREMENT DU DOCUMENT…";
 "SAVING IMAGES…" = "ENREGISTREMENT DES IMAGES…";
@@ -1794,6 +1833,7 @@
 "Saved %lld new files. Originals kept." = "%lld nouveaux fichiers enregistrés. Originaux conservés.";
 "Saved 1 new file. Originals kept." = "1 nouveau fichier enregistré. Originaux conservés.";
 "Saved in post order in a new Instagram folder." = "Enregistrées dans l’ordre de la publication, dans un nouveau dossier Instagram.";
+"Saved token · Leave blank to keep it" = "Jeton enregistré · Laissez vide pour le conserver";
 "Saving collage…" = "Enregistrement du collage…";
 "Saving document…" = "Enregistrement du document…";
 "Saving images…" = "Enregistrement des images…";
@@ -1921,6 +1961,7 @@
 "THE SAME CONVERSION AND TOOL CATALOG AS MACOS." = "LE MÊME CATALOGUE DE CONVERSIONS ET D’OUTILS QUE SUR MACOS.";
 "THE SIGNED PACKAGE VERSION DOES NOT MATCH THIS UPDATE." = "LA VERSION DU PAQUET SIGNÉ NE CORRESPOND PAS À CETTE MISE À JOUR.";
 "THE UPDATE DOES NOT CONTAIN NASHI." = "LA MISE À JOUR NE CONTIENT PAS NASHI.";
+"THE UPDATE NEEDS ANOTHER TRY" = "LA MISE À JOUR DOIT ÊTRE RELANCÉE";
 "THE UPDATE SIGNATURE IS INVALID. YOUR EXISTING APP WAS KEPT." = "LA SIGNATURE DE LA MISE À JOUR EST INVALIDE. VOTRE APP EXISTANTE A ÉTÉ CONSERVÉE.";
 "THESE FILES HAVE MOVED OR WERE DELETED." = "CES FICHIERS ONT ÉTÉ DÉPLACÉS OU SUPPRIMÉS.";
 "THIS CROP APPLIES TO EVERY SELECTED IMAGE AND MUST FIT INSIDE EACH ONE." = "CE RECADRAGE S’APPLIQUE À TOUTES LES IMAGES SÉLECTIONNÉES ET DOIT TENIR DANS CHACUNE D’ELLES.";
@@ -2008,6 +2049,7 @@
 "The same conversion and tool catalog as macOS." = "Le même catalogue de conversions et d’outils que sur macOS.";
 "The signed package version does not match this update." = "La version du paquet signé ne correspond pas à cette mise à jour.";
 "The update does not contain Nashi." = "La mise à jour ne contient pas Nashi.";
+"The update needs another try" = "La mise à jour doit être relancée";
 "The update signature is invalid. Your existing app was kept." = "La signature de la mise à jour est invalide. Votre app existante a été conservée.";
 "These files have moved or were deleted." = "Ces fichiers ont été déplacés ou supprimés.";
 "This PDF contains no pages." = "Ce PDF ne contient aucune page.";
@@ -2075,6 +2117,7 @@
 "UP TO 1080P" = "JUSQU’À 1080P";
 "UP TO 720P" = "JUSQU’À 720P";
 "UPDATE CANCELLED." = "MISE À JOUR ANNULÉE.";
+"UPDATE CONNECTION" = "CONNEXION AUX MISES À JOUR";
 "UPDATE CONNECTION…" = "CONNEXION AUX MISES À JOUR…";
 "UPDATE MANIFEST IS TOO LARGE." = "LE MANIFESTE DE MISE À JOUR EST TROP VOLUMINEUX.";
 "UPDATE READY" = "MISE À JOUR PRÊTE";
@@ -2106,6 +2149,7 @@
 "Up to 720p" = "Jusqu’à 720p";
 "Update Connection…" = "Connexion aux mises à jour…";
 "Update cancelled." = "Mise à jour annulée.";
+"Update connection" = "Connexion aux mises à jour";
 "Update manifest is too large." = "Le manifeste de mise à jour est trop volumineux.";
 "Update ready" = "Mise à jour prête";
 "Update size mismatch." = "La taille de la mise à jour ne correspond pas.";
@@ -2137,10 +2181,13 @@
 "VIDEO SIZE" = "TAILLE DE LA VIDÉO";
 "VIDEO SNAPSHOTS" = "CAPTURES DE LA VIDÉO";
 "VIDEO, AUDIO, OR AN IMAGE. STRAIGHT INTO YOUR TOOLS." = "VIDÉO, AUDIO OU IMAGE. DIRECTEMENT DANS VOS OUTILS.";
+"VIEW RELEASES" = "VOIR LES VERSIONS";
 "VIGNETTE" = "VIGNETTAGE";
 "VISUALIZATION" = "VISUALISATION";
 "Value" = "Valeur";
 "Verifying update signature…" = "Vérification de la signature de la mise à jour…";
+"Version %@ is available" = "La version %@ est disponible";
+"Version %lld is available" = "La version %lld est disponible";
 "Vibrance" = "Éclat";
 "Video" = "Vidéo";
 "Video Compression" = "Compression vidéo";
@@ -2149,6 +2196,7 @@
 "Video quality" = "Qualité vidéo";
 "Video size" = "Taille de la vidéo";
 "Video, audio, or an image. Straight into your tools." = "Vidéo, audio ou image. Directement dans vos outils.";
+"View releases" = "Voir les versions";
 "Vignette" = "Vignettage";
 "Visualization" = "Visualisation";
 "WAIT FOR THE PROCESSED PREVIEW TO FINISH BEFORE RESETTING." = "ATTENDEZ LA FIN DE L’APERÇU TRAITÉ AVANT DE RÉINITIALISER.";
