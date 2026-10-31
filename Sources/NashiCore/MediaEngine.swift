@@ -143,8 +143,11 @@ public enum MediaEngine {
                 arguments += videoEncoding(ext, quality: options.quality, audioBitrate: options.audioBitrate * 1000, sourceAudio: info.audio)
             }
         }
-        if options.preserveMetadata { arguments += ["-map_metadata", "0"] }
-        else { arguments += ["-map_metadata", "-1", "-map_metadata:s", "-1", "-map_chapters", "-1"] }
+        if options.preserveMetadata {
+            arguments += ["-map_metadata", "0"]
+            // Ogg keeps Vorbis/Opus comments on the audio stream; other containers write file-level tags.
+            if info.format.split(separator: ",").contains("ogg"), info.audio?.metadata.isEmpty == false { arguments += ["-map_metadata", "0:s:a:0"] }
+        } else { arguments += ["-map_metadata", "-1", "-map_metadata:s", "-1", "-map_chapters", "-1"] }
         arguments += metadataArguments(options.metadata)
         try render(arguments, to: output, token: token, duration: info.duration, progress: progress)
         return [output]
