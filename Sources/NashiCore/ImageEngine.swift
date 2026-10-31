@@ -10,8 +10,19 @@ public enum ImageEngine {
     private static let imageColorSpace = CGColorSpace(name: CGColorSpace.sRGB)!
     private static let imageContext = CIContext(options: [.cacheIntermediates: false])
     public static func load(_ url: URL) throws -> CGImage {
-        if let source = CGImageSourceCreateWithURL(url as CFURL, nil),
-           let image = CGImageSourceCreateThumbnailAtIndex(source, 0, [kCGImageSourceCreateThumbnailFromImageAlways:true, kCGImageSourceCreateThumbnailWithTransform:true, kCGImageSourceThumbnailMaxPixelSize:32000] as CFDictionary) { return image }
+        if let source = CGImageSourceCreateWithURL(url as CFURL, nil) {
+            // The thumbnail transform also applies the pixel aspect ratio implied by unequal
+            // horizontal and vertical DPI, which resamples the stored pixels. Orient those files here.
+            let properties = CGImageSourceCopyPropertiesAtIndex(source, 0, nil) as? [CFString:Any]
+            let squarePixels = (properties?[kCGImagePropertyDPIWidth] as? Double) == (properties?[kCGImagePropertyDPIHeight] as? Double)
+            if let image = CGImageSourceCreateThumbnailAtIndex(source, 0, [kCGImageSourceCreateThumbnailFromImageAlways:true, kCGImageSourceCreateThumbnailWithTransform:squarePixels, kCGImageSourceThumbnailMaxPixelSize:32000] as CFDictionary) {
+                let orientation = (properties?[kCGImagePropertyOrientation] as? NSNumber)?.int32Value ?? 1
+                if squarePixels || !(2...8).contains(orientation) { return image }
+                let oriented = CIImage(cgImage: image).oriented(forExifOrientation: orientation)
+                guard let result = imageContext.createCGImage(oriented, from: oriented.extent) else { throw NashiError.failed("Could not orient image.") }
+                return result
+            }
+        }
         if let image = NSImage(contentsOf: url), let cg = image.cgImage(forProposedRect:nil,context:nil,hints:nil) { return cg }
         // FFmpeg handles additional decoders (including animated inputs' first frame).
         let temp = try OutputFiles.temporaryDirectory(); defer { try? FileManager.default.removeItem(at:temp) }
