@@ -306,7 +306,8 @@ public enum MediaEngine {
             for (index, time) in options.snapshotTimes.enumerated() {
                 guard time.isFinite, time >= 0, info.duration <= 0 || time < info.duration else { throw NashiError.invalidInput("A snapshot time is outside the video.") }
                 let out = try outputURL(input, ext: "png", suffix: " Frame \(index + 1)", options: options)
-                try render(["-ss", decimal(time), "-i", input.path, "-map", "0:v:0", "-frames:v", "1", "-update", "1", "-c:v", "png"], to: out, token: token)
+                // Image viewers ignore a PNG pixel aspect, so non-square pixels are resized to their displayed shape.
+                try render(["-ss", decimal(time), "-i", input.path, "-map", "0:v:0", "-frames:v", "1", "-update", "1", "-vf", "scale=-1:ih:reset_sar=1", "-c:v", "png"], to: out, token: token)
                 outputs.append(out)
                 progress(Double(index+1)/Double(options.snapshotTimes.count),"Saving frame \(index+1) of \(options.snapshotTimes.count)…")
             }
