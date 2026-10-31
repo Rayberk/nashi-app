@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {resetDemoHistory} from '../docs/assets/reset-state.mjs';
+import {resetDemoHistory,isCurrentDemoGeneration} from '../docs/assets/reset-state.mjs';
 test('reset clears exported results, pinned items and their object URLs',()=>{
   const released=[];
   const state={urls:new Set(['blob:one','blob:two']),library:[{name:'one'}],shelf:[{name:'pinned'}],float:{open:true,expanded:true,list:true,selected:['one'],x:100,y:10},files:[{id:'sample'}],selected:['sample']};

@@ -61,7 +61,7 @@ const ids=['compress','removeMetadata','editImage','annotateImage','frameImage',
   await page.locator('[data-group="image"]').click();
   await page.locator('[data-mode="convert"]').click();
   await page.getByRole('menuitem',{name:'PNG',exact:true}).click();
-  assert.ok(Number(await page.locator('#library-count').textContent())>0);
+  await page.waitForFunction(()=>Number(document.querySelector('#library-count').textContent)>0);
   await page.locator('[data-mode="actions"]').click();
   await page.getByRole('menuitem',{name:'Yüzen Pencere',exact:true}).click();
   assert.equal(await page.locator('.float-shelf').count(),1);
