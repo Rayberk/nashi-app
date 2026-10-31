@@ -264,7 +264,7 @@ struct ToolEditor:View {
     }
     var compressionControls:some View {
         VStack(alignment:.leading,spacing:18) {
-            if let input,let size=try? input.resourceValues(forKeys:[.fileSizeKey]).fileSize { LText("Original size: \(ByteCountFormatter.string(fromByteCount:Int64(size),countStyle:.file))").fontWeight(.semibold) }
+            if let input,let size=try? input.resourceValues(forKeys:[.fileSizeKey]).fileSize { LText("Original size: \(Int64(size).formatted(.byteCount(style:.file).locale(locale)))").fontWeight(.semibold) }
             Text("Compression preset").font(.headline)
             Picker("Preset",selection:$preset) { Text("Balanced").tag("Balanced");Text("Strong").tag("Strong") }.pickerStyle(.segmented).labelsHidden()
             Text(preset=="Balanced" ? "Smaller files with less quality loss.":"Smaller files with stronger compression.").foregroundStyle(.secondary).font(.callout)
