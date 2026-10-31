@@ -18,6 +18,7 @@
 "%@ selected" = "%@ sélectionnés";
 "%@ selected · Drag to carry files" = "%@ sélectionnés · Faites glisser pour emporter les fichiers";
 "%@ split points" = "%@ points de coupure";
+"%@ video items are not included. Only photos will be saved." = "%@ éléments vidéo ne sont pas inclus. Seules les photos seront enregistrées.";
 "%@ ways to change it" = "%@ façons de le transformer";
 "%@ · %@ smaller" = "%@ · %@ plus léger";
 "%@ · %lld smaller" = "%@ · %lld plus léger";
@@ -42,6 +43,7 @@
 "%lld selected" = "%lld sélectionnés";
 "%lld selected · Drag to carry files" = "%lld sélectionnés · Faites glisser pour emporter les fichiers";
 "%lld split points" = "%lld points de coupure";
+"%lld video items are not included. Only photos will be saved." = "%lld éléments vidéo ne sont pas inclus. Seules les photos seront enregistrées.";
 "%lld ways to change it" = "%lld façons de le transformer";
 "%lld · %@ smaller" = "%lld · %@ plus léger";
 "%lld · %lld smaller" = "%lld · %lld plus léger";
@@ -60,12 +62,14 @@
 "1 PHOTO" = "1 PHOTO";
 "1 SELECTED" = "1 SÉLECTIONNÉ";
 "1 SPLIT POINT" = "1 POINT DE COUPURE";
+"1 VIDEO ITEMS ARE NOT INCLUDED. ONLY PHOTOS WILL BE SAVED." = "1 ÉLÉMENT VIDÉO N’EST PAS INCLUS. SEULES LES PHOTOS SERONT ENREGISTRÉES.";
 "1 WAY TO CHANGE IT" = "1 FAÇON DE LE TRANSFORMER";
 "1 area selected" = "1 zone sélectionnée";
 "1 item" = "1 élément";
 "1 photo" = "1 photo";
 "1 selected" = "1 sélectionné";
 "1 split point" = "1 point de coupure";
+"1 video items are not included. Only photos will be saved." = "1 élément vidéo n’est pas inclus. Seules les photos seront enregistrées.";
 "1 way to change it" = "1 façon de le transformer";
 "1/3 LEFT · MIDDLE · RIGHT   /   1/2 LEFT · RIGHT   /   2/3 LEFT · RIGHT" = "1/3 GAUCHE · MILIEU · DROITE   /   1/2 GAUCHE · DROITE   /   2/3 GAUCHE · DROITE";
 "1/3 left · middle · right   /   1/2 left · right   /   2/3 left · right" = "1/3 gauche · milieu · droite   /   1/2 gauche · droite   /   2/3 gauche · droite";
@@ -101,6 +105,8 @@
 "A LITTLE PEAR. A LOT OF POSSIBILITY." = "UNE PETITE POIRE. PLEIN DE POSSIBILITÉS.";
 "A NEW FORM.\nIN A TAP." = "UNE NOUVELLE FORME.\nEN UN GESTE.";
 "A PAGE RANGE IS OUTSIDE THE PDF." = "UNE PLAGE DE PAGES DÉPASSE LE PDF.";
+"A PDF PAGE COULD NOT BE READ." = "UNE PAGE PDF N’A PAS PU ÊTRE LUE.";
+"A PDF page could not be read." = "Une page PDF n’a pas pu être lue.";
 "A PERFECT LANDING SPOT" = "UN POINT DE CHUTE IDÉAL";
 "A PHOTO IS UNAVAILABLE. TRY A FRESH PUBLIC POST LINK." = "UNE PHOTO EST INDISPONIBLE. ESSAYEZ UN NOUVEAU LIEN DE PUBLICATION PUBLIQUE.";
 "A PLACE FOR FRESH FILES." = "UN ENDROIT POUR LES NOUVEAUX FICHIERS.";
@@ -360,6 +366,7 @@
 "CHOOSE A BACKGROUND IMAGE." = "CHOISISSEZ UNE IMAGE D’ARRIÈRE-PLAN.";
 "CHOOSE A CANVAS WITHIN 100 MP AND 30,000 PIXELS." = "CHOISISSEZ UN CANEVAS DE 100 MPX ET 30 000 PIXELS AU MAXIMUM.";
 "CHOOSE A COMPLETE RTFD FOLDER CONTAINING TXT.RTF." = "CHOISISSEZ UN DOSSIER RTFD COMPLET CONTENANT TXT.RTF.";
+"CHOOSE A CROP RECTANGLE." = "CHOISISSEZ UN RECTANGLE DE RECADRAGE.";
 "CHOOSE A DESTINATION OUTSIDE THE FOLDER BEING MOVED." = "CHOISISSEZ UNE DESTINATION EN DEHORS DU DOSSIER DÉPLACÉ.";
 "CHOOSE A FILE TO PREVIEW." = "CHOISISSEZ UN FICHIER À PRÉVISUALISER.";
 "CHOOSE A FINISHED VIDEO INSTEAD OF A LIVE OR UPCOMING STREAM." = "CHOISISSEZ UNE VIDÉO TERMINÉE PLUTÔT QU’UNE DIFFUSION EN DIRECT OU À VENIR.";
@@ -373,6 +380,7 @@
 "CHOOSE A PLAIN OUTPUT FILENAME." = "CHOISISSEZ UN NOM DE FICHIER DE SORTIE SIMPLE.";
 "CHOOSE A POSITIVE SIZE OR A REDUCTION BELOW 100%. ZERO USES AUTOMATIC COMPRESSION." = "CHOISISSEZ UNE TAILLE POSITIVE OU UNE RÉDUCTION INFÉRIEURE À 100 %. ZÉRO UTILISE LA COMPRESSION AUTOMATIQUE.";
 "CHOOSE A POSITIVE TARGET SIZE OR A REDUCTION BETWEEN 0 AND 100%." = "CHOISISSEZ UNE TAILLE CIBLE POSITIVE OU UNE RÉDUCTION COMPRISE ENTRE 0 ET 100 %.";
+"CHOOSE A READABLE LOCAL MEDIA FILE." = "CHOISISSEZ UN FICHIER MÉDIA LOCAL LISIBLE.";
 "CHOOSE A RECTANGLE INSIDE THE VIDEO." = "CHOISISSEZ UN RECTANGLE À L’INTÉRIEUR DE LA VIDÉO.";
 "CHOOSE A SUPPORTED MAXIMUM VIDEO HEIGHT." = "CHOISISSEZ UNE HAUTEUR VIDÉO MAXIMALE PRISE EN CHARGE.";
 "CHOOSE A TARGET OF AT LEAST 2 KB." = "CHOISISSEZ UNE CIBLE D’AU MOINS 2 KO.";
@@ -486,6 +494,8 @@
 "CORNERS" = "COINS";
 "COULD NOT COPY THE SELECTED FILE PATHS." = "IMPOSSIBLE DE COPIER LES CHEMINS DES FICHIERS SÉLECTIONNÉS.";
 "COULD NOT COPY THE SELECTED FILES." = "IMPOSSIBLE DE COPIER LES FICHIERS SÉLECTIONNÉS.";
+"COULD NOT ORIENT IMAGE." = "IMPOSSIBLE D’ORIENTER L’IMAGE.";
+"COULD NOT RENDER THE REDACTION." = "IMPOSSIBLE D’APPLIQUER LE CAVIARDAGE.";
 "COULDN’T CHECK FOR UPDATES" = "IMPOSSIBLE DE RECHERCHER LES MISES À JOUR";
 "COULDN’T FINISH" = "IMPOSSIBLE DE TERMINER";
 "COULDN’T OPEN THIS TOOL" = "IMPOSSIBLE D’OUVRIR CET OUTIL";
@@ -497,8 +507,10 @@
 "CREATED" = "CRÉATION";
 "CROP" = "RECADRER";
 "CROP AREA" = "ZONE DE RECADRAGE";
+"CROP COORDINATES MUST BE FINITE." = "LES COORDONNÉES DE RECADRAGE DOIVENT ÊTRE DES NOMBRES FINIS.";
 "CROP IMAGE" = "RECADRER L’IMAGE";
 "CROP IMAGE · NASHI" = "RECADRER L’IMAGE · NASHI";
+"CROP ORIGINS MUST BE NONNEGATIVE AND DIMENSIONS AT LEAST 1 × 1 PIXEL." = "L’ORIGINE DU RECADRAGE NE PEUT PAS ÊTRE NÉGATIVE ET SES DIMENSIONS DOIVENT ÊTRE D’AU MOINS 1 × 1 PIXEL.";
 "CROP VIDEO" = "RECADRER LA VIDÉO";
 "CTRL+O  CHOOSE FILES\nCTRL+V  PASTE FILES, TEXT, AN IMAGE OR LINK\nCTRL+SPACE / ENTER  OPEN TOOLS\nCTRL+1 / CTRL+2  HOME / LIBRARY\nCTRL+F  FIND IN LIBRARY\nCTRL+SHIFT+D  USE A COPIED DOWNLOAD LINK\nCTRL+U  CHECK FOR UPDATES\n\nWHEEL: ARROWS / TAB TO CHOOSE, ENTER TO OPEN, ESC TO CLOSE\nMEDIA: SPACE PLAY/PAUSE, ←/→ 1 SECOND, SHIFT+←/→ 1/30S, I/O SET RANGE\nCROP: DRAG, SHIFT LOCKS RATIO, ENTER SAVES\nEDITING TEXT: NORMAL PASTE AND ARROW KEYS ARE PRESERVED." = "CTRL+O  CHOISIR DES FICHIERS\nCTRL+V  COLLER DES FICHIERS, DU TEXTE, UNE IMAGE OU UN LIEN\nCTRL+ESPACE / ENTRÉE  OUVRIR LES OUTILS\nCTRL+1 / CTRL+2  ACCUEIL / BIBLIOTHÈQUE\nCTRL+F  RECHERCHER DANS LA BIBLIOTHÈQUE\nCTRL+MAJ+D  UTILISER UN LIEN DE TÉLÉCHARGEMENT COPIÉ\nCTRL+U  RECHERCHER LES MISES À JOUR\n\nROUE : FLÈCHES / TAB POUR CHOISIR, ENTRÉE POUR OUVRIR, ÉCHAP POUR FERMER\nMÉDIAS : ESPACE LECTURE/PAUSE, ←/→ 1 SECONDE, MAJ+←/→ 1/30 S, I/O DÉFINIR LA PLAGE\nRECADRAGE : GLISSER, MAJ VERROUILLE LES PROPORTIONS, ENTRÉE ENREGISTRE\nMODIFICATION DE TEXTE : LE COLLAGE ET LES FLÈCHES FONCTIONNENT NORMALEMENT.";
 "CTRL+O  CHOOSE FILES\nCTRL+V  PASTE FILES, TEXT, AN IMAGE OR LINK\nCTRL+SPACE / ENTER  OPEN TOOLS AND CONVERSIONS\nDELETE  REMOVE SELECTED FILES FROM NASHI\nCTRL+1 / CTRL+2  HOME / LIBRARY\nCTRL+F  FIND IN LIBRARY\nCTRL+SHIFT+D  USE A COPIED DOWNLOAD LINK\nCTRL+U  CHECK FOR UPDATES\n\nWHEEL: ARROWS / TAB TO CHOOSE, ENTER TO OPEN, ESC TO CLOSE\nMEDIA: SPACE PLAY/PAUSE, ←/→ 1 SECOND, SHIFT+←/→ 1/30S, I/O SET RANGE\nCROP: DRAG, SHIFT LOCKS RATIO, ENTER SAVES\nEDITING TEXT: NORMAL PASTE AND ARROW KEYS ARE PRESERVED." = "CTRL+O  CHOISIR DES FICHIERS\nCTRL+V  COLLER DES FICHIERS, DU TEXTE, UNE IMAGE OU UN LIEN\nCTRL+ESPACE / ENTRÉE  OUVRIR LES OUTILS ET LES CONVERSIONS\nSUPPR  RETIRER LES FICHIERS SÉLECTIONNÉS DE NASHI\nCTRL+1 / CTRL+2  ACCUEIL / BIBLIOTHÈQUE\nCTRL+F  RECHERCHER DANS LA BIBLIOTHÈQUE\nCTRL+MAJ+D  UTILISER UN LIEN DE TÉLÉCHARGEMENT COPIÉ\nCTRL+U  RECHERCHER LES MISES À JOUR\n\nROUE : FLÈCHES / TAB POUR CHOISIR, ENTRÉE POUR OUVRIR, ÉCHAP POUR FERMER\nMÉDIAS : ESPACE LECTURE/PAUSE, ←/→ 1 SECONDE, MAJ+←/→ 1/30 S, I/O DÉFINIR LA PLAGE\nRECADRAGE : GLISSER, MAJ VERROUILLE LES PROPORTIONS, ENTRÉE ENREGISTRE\nMODIFICATION DE TEXTE : LE COLLAGE ET LES FLÈCHES FONCTIONNENT NORMALEMENT.";
@@ -550,6 +562,7 @@
 "Choose a background image." = "Choisissez une image d’arrière-plan.";
 "Choose a canvas within 100 MP and 30,000 pixels." = "Choisissez un canevas de 100 Mpx et 30 000 pixels au maximum.";
 "Choose a complete RTFD folder containing TXT.rtf." = "Choisissez un dossier RTFD complet contenant TXT.rtf.";
+"Choose a crop rectangle." = "Choisissez un rectangle de recadrage.";
 "Choose a destination outside the folder being moved." = "Choisissez une destination en dehors du dossier déplacé.";
 "Choose a file to preview." = "Choisissez un fichier à prévisualiser.";
 "Choose a finished video instead of a live or upcoming stream." = "Choisissez une vidéo terminée plutôt qu’une diffusion en direct ou à venir.";
@@ -561,6 +574,7 @@
 "Choose a plain output filename." = "Choisissez un nom de fichier de sortie simple.";
 "Choose a positive size or a reduction below 100%. Zero uses automatic compression." = "Choisissez une taille positive ou une réduction inférieure à 100 %. Zéro utilise la compression automatique.";
 "Choose a positive target size or a reduction between 0 and 100%." = "Choisissez une taille cible positive ou une réduction comprise entre 0 et 100 %.";
+"Choose a readable local media file." = "Choisissez un fichier média local lisible.";
 "Choose a rectangle inside the video." = "Choisissez un rectangle à l’intérieur de la vidéo.";
 "Choose a supported maximum video height." = "Choisissez une hauteur vidéo maximale prise en charge.";
 "Choose a target of at least 2 KB." = "Choisissez une cible d’au moins 2 Ko.";
@@ -686,6 +700,8 @@
 "Could not copy the selected files." = "Impossible de copier les fichiers sélectionnés.";
 "Could not open %@." = "Impossible d’ouvrir %@.";
 "Could not open %lld." = "Impossible d’ouvrir %lld.";
+"Could not orient image." = "Impossible d’orienter l’image.";
+"Could not render the redaction." = "Impossible d’appliquer le caviardage.";
 "Couldn’t check for updates" = "Impossible de rechercher les mises à jour";
 "Couldn’t finish" = "Impossible de terminer";
 "Couldn’t open this tool" = "Impossible d’ouvrir cet outil";
@@ -701,6 +717,8 @@
 "Crop Image · Nashi" = "Recadrer l’image · Nashi";
 "Crop Video" = "Recadrer la vidéo";
 "Crop area" = "Zone de recadrage";
+"Crop coordinates must be finite." = "Les coordonnées de recadrage doivent être des nombres finis.";
+"Crop origins must be nonnegative and dimensions at least 1 × 1 pixel." = "L’origine du recadrage ne peut pas être négative et ses dimensions doivent être d’au moins 1 × 1 pixel.";
 "Ctrl+O  Choose files\nCtrl+V  Paste files, text, an image or link\nCtrl+Space / Enter  Open tools\nCtrl+1 / Ctrl+2  Home / Library\nCtrl+F  Find in Library\nCtrl+Shift+D  Use a copied download link\nCtrl+U  Check for updates\n\nWheel: arrows / Tab to choose, Enter to open, Esc to close\nMedia: Space play/pause, ←/→ 1 second, Shift+←/→ 1/30s, I/O set range\nCrop: drag, Shift locks ratio, Enter saves\nEditing text: normal paste and arrow keys are preserved." = "Ctrl+O  Choisir des fichiers\nCtrl+V  Coller des fichiers, du texte, une image ou un lien\nCtrl+Espace / Entrée  Ouvrir les outils\nCtrl+1 / Ctrl+2  Accueil / Bibliothèque\nCtrl+F  Rechercher dans la bibliothèque\nCtrl+Maj+D  Utiliser un lien de téléchargement copié\nCtrl+U  Rechercher les mises à jour\n\nRoue : flèches / Tab pour choisir, Entrée pour ouvrir, Échap pour fermer\nMédias : Espace lecture/pause, ←/→ 1 seconde, Maj+←/→ 1/30 s, I/O définir la plage\nRecadrage : glisser, Maj verrouille les proportions, Entrée enregistre\nModification de texte : le collage et les flèches fonctionnent normalement.";
 "Ctrl+O  Choose files\nCtrl+V  Paste files, text, an image or link\nCtrl+Space / Enter  Open tools and conversions\nDelete  Remove selected files from Nashi\nCtrl+1 / Ctrl+2  Home / Library\nCtrl+F  Find in Library\nCtrl+Shift+D  Use a copied download link\nCtrl+U  Check for updates\n\nWheel: arrows / Tab to choose, Enter to open, Esc to close\nMedia: Space play/pause, ←/→ 1 second, Shift+←/→ 1/30s, I/O set range\nCrop: drag, Shift locks ratio, Enter saves\nEditing text: normal paste and arrow keys are preserved." = "Ctrl+O  Choisir des fichiers\nCtrl+V  Coller des fichiers, du texte, une image ou un lien\nCtrl+Espace / Entrée  Ouvrir les outils et les conversions\nSuppr  Retirer les fichiers sélectionnés de Nashi\nCtrl+1 / Ctrl+2  Accueil / Bibliothèque\nCtrl+F  Rechercher dans la bibliothèque\nCtrl+Maj+D  Utiliser un lien de téléchargement copié\nCtrl+U  Rechercher les mises à jour\n\nRoue : flèches / Tab pour choisir, Entrée pour ouvrir, Échap pour fermer\nMédias : Espace lecture/pause, ←/→ 1 seconde, Maj+←/→ 1/30 s, I/O définir la plage\nRecadrage : glisser, Maj verrouille les proportions, Entrée enregistre\nModification de texte : le collage et les flèches fonctionnent normalement.";
 "Ctrl+Shift+D  Use a copied link  ·  Public, downloadable media" = "Ctrl+Maj+D  Utiliser un lien copié  ·  Médias publics téléchargeables";
@@ -921,6 +939,10 @@
 "Equal clips: %@" = "Clips égaux : %@";
 "Equal clips: %lld" = "Clips égaux : %lld";
 "Esc to close" = "Échap pour fermer";
+"Every redaction area must have positive dimensions and fit completely inside the %@ × %@ pixel image. Adjust the areas for this image and try again." = "Chaque zone caviardée doit avoir des dimensions positives et tenir entièrement dans l’image de %@ × %@ pixels. Ajustez les zones pour cette image, puis réessayez.";
+"Every redaction area must have positive dimensions and fit completely inside the %@ × %lld pixel image. Adjust the areas for this image and try again." = "Chaque zone caviardée doit avoir des dimensions positives et tenir entièrement dans l’image de %@ × %lld pixels. Ajustez les zones pour cette image, puis réessayez.";
+"Every redaction area must have positive dimensions and fit completely inside the %lld × %@ pixel image. Adjust the areas for this image and try again." = "Chaque zone caviardée doit avoir des dimensions positives et tenir entièrement dans l’image de %lld × %@ pixels. Ajustez les zones pour cette image, puis réessayez.";
+"Every redaction area must have positive dimensions and fit completely inside the %lld × %lld pixel image. Adjust the areas for this image and try again." = "Chaque zone caviardée doit avoir des dimensions positives et tenir entièrement dans l’image de %lld × %lld pixels. Ajustez les zones pour cette image, puis réessayez.";
 "Everything has a next form." = "Tout a une prochaine forme.";
 "Expand Float" = "Développer Float";
 "Expanded update is too large." = "La mise à jour décompressée est trop volumineuse.";
@@ -1178,6 +1200,10 @@
 "Invalid YouTube video ID." = "Identifiant de vidéo YouTube invalide.";
 "Invalid metadata field." = "Champ de métadonnées invalide.";
 "Invalid metadata stream/chapter." = "Flux ou chapitre de métadonnées invalide.";
+"Invalid page range: %@. Use numbers between 1 and %@." = "Plage de pages invalide : %@. Utilisez des nombres entre 1 et %@.";
+"Invalid page range: %@. Use numbers between 1 and %lld." = "Plage de pages invalide : %@. Utilisez des nombres entre 1 et %lld.";
+"Invalid page range: %lld. Use numbers between 1 and %@." = "Plage de pages invalide : %lld. Utilisez des nombres entre 1 et %@.";
+"Invalid page range: %lld. Use numbers between 1 and %lld." = "Plage de pages invalide : %lld. Utilisez des nombres entre 1 et %lld.";
 "Invalid public update location or size." = "Emplacement ou taille de mise à jour publique invalide.";
 "Invalid subtitle timestamp." = "Horodatage de sous-titre invalide.";
 "Invalid update manifest." = "Manifeste de mise à jour invalide.";
@@ -1394,6 +1420,7 @@
 "NO QR CODES FOUND. TRY A LARGER OR SHARPER IMAGE." = "AUCUN CODE QR TROUVÉ. ESSAYEZ UNE IMAGE PLUS GRANDE OU PLUS NETTE.";
 "NO QR CODES THIS TIME." = "AUCUN CODE QR CETTE FOIS.";
 "NO TEXT COULD BE EXTRACTED OR RECOGNIZED IN THIS PDF." = "AUCUN TEXTE N’A PU ÊTRE EXTRAIT OU RECONNU DANS CE PDF.";
+"NO TIMED SUBTITLE CUES WERE FOUND IN THIS FILE." = "AUCUNE RÉPLIQUE DE SOUS-TITRE HORODATÉE N’A ÉTÉ TROUVÉE DANS CE FICHIER.";
 "NO TIMED SUBTITLE CUES WERE FOUND." = "AUCUNE RÉPLIQUE DE SOUS-TITRE HORODATÉE N’A ÉTÉ TROUVÉE.";
 "NO TOOLS FOR THIS FILE TYPE" = "AUCUN OUTIL POUR CE TYPE DE FICHIER";
 "NO UNPROTECTED DOWNLOADABLE FORMAT IS AVAILABLE." = "AUCUN FORMAT TÉLÉCHARGEABLE NON PROTÉGÉ N’EST DISPONIBLE.";
@@ -1451,6 +1478,7 @@
 "No output was produced." = "Aucune sortie n’a été produite.";
 "No public downloadable media found. Some sites require sign-in or do not expose downloadable media." = "Aucun média public téléchargeable trouvé. Certains sites exigent une connexion ou n’exposent pas de médias téléchargeables.";
 "No text could be extracted or recognized in this PDF." = "Aucun texte n’a pu être extrait ou reconnu dans ce PDF.";
+"No timed subtitle cues were found in this file." = "Aucune réplique de sous-titre horodatée n’a été trouvée dans ce fichier.";
 "No timed subtitle cues were found." = "Aucune réplique de sous-titre horodatée n’a été trouvée.";
 "No tools for this file type" = "Aucun outil pour ce type de fichier";
 "No unprotected downloadable format is available." = "Aucun format téléchargeable non protégé n’est disponible.";
@@ -1568,6 +1596,7 @@
 "PDF LAYOUT" = "MISE EN PAGE DU PDF";
 "PDF OUTPUT LAYOUT" = "MISE EN PAGE DE SORTIE PDF";
 "PDF PAGE EXCEEDS 100 MP." = "LA PAGE PDF DÉPASSE 100 MPX.";
+"PDF PAGE IS TOO LARGE TO RENDER AT THIS DPI." = "LA PAGE PDF EST TROP GRANDE POUR ÊTRE RENDUE À CE DPI.";
 "PDF PASSWORD (IF NEEDED)" = "MOT DE PASSE DU PDF (SI NÉCESSAIRE)";
 "PDF PREVIEW BACKGROUND COULD NOT BE PREPARED." = "IMPOSSIBLE DE PRÉPARER L’ARRIÈRE-PLAN DE L’APERÇU PDF.";
 "PDF PREVIEW BITMAP COULD NOT BE ALLOCATED." = "IMPOSSIBLE D’ALLOUER LE BITMAP DE L’APERÇU PDF.";
@@ -1575,6 +1604,7 @@
 "PDF layout" = "Mise en page du PDF";
 "PDF output layout" = "Mise en page de sortie PDF";
 "PDF page exceeds 100 MP." = "La page PDF dépasse 100 Mpx.";
+"PDF page is too large to render at this DPI." = "La page PDF est trop grande pour être rendue à ce DPI.";
 "PDF password (if needed)" = "Mot de passe du PDF (si nécessaire)";
 "PDF preview background could not be prepared." = "Impossible de préparer l’arrière-plan de l’aperçu PDF.";
 "PDF preview bitmap could not be allocated." = "Impossible d’allouer le bitmap de l’aperçu PDF.";
@@ -1795,6 +1825,10 @@
 "Redact Image" = "Caviarder l’image";
 "Redact Photo" = "Caviarder la photo";
 "Redact Video" = "Caviarder la vidéo";
+"Redaction coordinates must be finite for the %@ × %@ pixel image." = "Les coordonnées de caviardage doivent être des nombres finis pour l’image de %@ × %@ pixels.";
+"Redaction coordinates must be finite for the %@ × %lld pixel image." = "Les coordonnées de caviardage doivent être des nombres finis pour l’image de %@ × %lld pixels.";
+"Redaction coordinates must be finite for the %lld × %@ pixel image." = "Les coordonnées de caviardage doivent être des nombres finis pour l’image de %lld × %@ pixels.";
+"Redaction coordinates must be finite for the %lld × %lld pixel image." = "Les coordonnées de caviardage doivent être des nombres finis pour l’image de %lld × %lld pixels.";
 "Redo" = "Rétablir";
 "Reduce padding or spacing to fit the images." = "Réduisez les marges ou l’espacement pour que les images tiennent.";
 "Reduce spacing to fit the featured layout." = "Réduisez l’espacement pour que la mise en page en vedette tienne.";
@@ -1889,7 +1923,9 @@
 "SELECT / MOVE" = "SÉLECTIONNER / DÉPLACER";
 "SELECT A CLIP AND PRESS DELETE TO REMOVE IT FROM THE RESULT." = "SÉLECTIONNEZ UN CLIP ET APPUYEZ SUR SUPPRIMER POUR LE RETIRER DU RÉSULTAT.";
 "SELECT ALL" = "TOUT SÉLECTIONNER";
+"SELECT AN AREA TO REDACT, OR DETECT FACES OR TEXT." = "SÉLECTIONNEZ UNE ZONE À CAVIARDER, OU DÉTECTEZ LES VISAGES OU LE TEXTE.";
 "SELECT AT LEAST ONE AVAILABLE PHOTO." = "SÉLECTIONNEZ AU MOINS UNE PHOTO DISPONIBLE.";
+"SELECT AT LEAST ONE PAGE." = "SÉLECTIONNEZ AU MOINS UNE PAGE.";
 "SELECT ONE CROP RECTANGLE." = "SÉLECTIONNEZ UN SEUL RECTANGLE DE RECADRAGE.";
 "SELECT ONLY THIS REPOSITORY AND GIVE CONTENTS READ ACCESS. THE TOKEN STAYS IN THIS MAC’S KEYCHAIN." = "SÉLECTIONNEZ UNIQUEMENT CE DÉPÔT ET ACCORDEZ L’ACCÈS EN LECTURE À CONTENTS. LE JETON RESTE DANS LE TROUSSEAU DE CE MAC.";
 "SELECT PHOTOS" = "SÉLECTIONNER DES PHOTOS";
@@ -2039,7 +2075,9 @@
 "Select / Move" = "Sélectionner / Déplacer";
 "Select All" = "Tout sélectionner";
 "Select a clip and press Delete to remove it from the result." = "Sélectionnez un clip et appuyez sur Supprimer pour le retirer du résultat.";
+"Select an area to redact, or detect faces or text." = "Sélectionnez une zone à caviarder, ou détectez les visages ou le texte.";
 "Select at least one available photo." = "Sélectionnez au moins une photo disponible.";
+"Select at least one page." = "Sélectionnez au moins une page.";
 "Select one crop rectangle." = "Sélectionnez un seul rectangle de recadrage.";
 "Select only this repository and give Contents read access. The token stays in this Mac’s Keychain." = "Sélectionnez uniquement ce dépôt et accordez l’accès en lecture à Contents. Le jeton reste dans le trousseau de ce Mac.";
 "Select photos" = "Sélectionner des photos";
@@ -2147,6 +2185,7 @@
 "TEXT SIZE" = "TAILLE DU TEXTE";
 "TEXTURE" = "TEXTURE";
 "THAT PDF SIZE CANNOT BE REACHED WHILE KEEPING SELECTABLE TEXT, LINKS AND ANNOTATIONS. CHOOSE A LARGER TARGET." = "CETTE TAILLE DE PDF EST IMPOSSIBLE À ATTEINDRE EN CONSERVANT LE TEXTE SÉLECTIONNABLE, LES LIENS ET LES ANNOTATIONS. CHOISISSEZ UNE CIBLE PLUS GRANDE.";
+"THAT PDF SIZE CANNOT BE REACHED WHILE KEEPING SELECTABLE TEXT, LINKS, AND ANNOTATIONS. CHOOSE A LARGER TARGET." = "CETTE TAILLE DE PDF EST IMPOSSIBLE À ATTEINDRE EN CONSERVANT LE TEXTE SÉLECTIONNABLE, LES LIENS ET LES ANNOTATIONS. CHOISISSEZ UNE CIBLE PLUS GRANDE.";
 "THE ARCHIVE CONTAINS AN UNNAMED ENTRY." = "L’ARCHIVE CONTIENT UNE ENTRÉE SANS NOM.";
 "THE ARCHIVE CONTAINS AN UNSAFE PATH." = "L’ARCHIVE CONTIENT UN CHEMIN NON SÛR.";
 "THE ARCHIVE ENTRY LEAVES ITS DESTINATION." = "L’ENTRÉE DE L’ARCHIVE SORT DE SA DESTINATION.";
@@ -2161,8 +2200,12 @@
 "THE IMAGE DOWNLOAD ENDED EARLY." = "LE TÉLÉCHARGEMENT DE L’IMAGE S’EST TERMINÉ PRÉMATURÉMENT.";
 "THE IMAGE ORDER MUST INCLUDE EVERY IMAGE ONCE." = "L’ORDRE DES IMAGES DOIT INCLURE CHAQUE IMAGE UNE FOIS.";
 "THE MEDIA SERVER REDIRECTED TO AN INSECURE URL." = "LE SERVEUR MULTIMÉDIA A REDIRIGÉ VERS UNE URL NON SÉCURISÉE.";
+"THE PDF CONTAINS NO PAGES." = "LE PDF NE CONTIENT AUCUNE PAGE.";
+"THE PDF PAGE IS TOO LARGE TO RENDER AT THIS RESOLUTION." = "LA PAGE PDF EST TROP GRANDE POUR ÊTRE RENDUE À CETTE RÉSOLUTION.";
 "THE PROCESSING TOOL COULD NOT START." = "L’OUTIL DE TRAITEMENT N’A PAS PU DÉMARRER.";
+"THE REQUESTED FILE SIZE COULD NOT BE REACHED. CHOOSE A LARGER TARGET." = "LA TAILLE DE FICHIER DEMANDÉE N’A PAS PU ÊTRE ATTEINTE. CHOISISSEZ UNE CIBLE PLUS GRANDE.";
 "THE REQUESTED IMAGE SIZE COULD NOT BE REACHED. CHOOSE A LARGER TARGET." = "LA TAILLE D’IMAGE DEMANDÉE N’A PAS PU ÊTRE ATTEINTE. CHOISISSEZ UNE CIBLE PLUS GRANDE.";
+"THE REQUESTED PDF SIZE COULD NOT BE REACHED." = "LA TAILLE DE PDF DEMANDÉE N’A PAS PU ÊTRE ATTEINTE.";
 "THE REQUESTED PDF SIZE COULD NOT BE REACHED. CHOOSE A LARGER TARGET." = "LA TAILLE DE PDF DEMANDÉE N’A PAS PU ÊTRE ATTEINTE. CHOISISSEZ UNE CIBLE PLUS GRANDE.";
 "THE SAME CONVERSION AND TOOL CATALOG AS MACOS." = "LE MÊME CATALOGUE DE CONVERSIONS ET D’OUTILS QUE SUR MACOS.";
 "THE SIGNED PACKAGE VERSION DOES NOT MATCH THIS UPDATE." = "LA VERSION DU PAQUET SIGNÉ NE CORRESPOND PAS À CETTE MISE À JOUR.";
@@ -2186,6 +2229,7 @@
 "THIS PDF CONTAINS NO PAGES." = "CE PDF NE CONTIENT AUCUNE PAGE.";
 "THIS PDF HAS FORM FIELDS OR ATTACHMENTS THAT MERGING, SPLITTING OR REORDERING PAGES CANNOT KEEP. NO COPY WAS EXPORTED." = "CE PDF CONTIENT DES CHAMPS DE FORMULAIRE OU DES PIÈCES JOINTES QUE LA FUSION, LA DIVISION OU LA RÉORGANISATION DES PAGES NE PEUT PAS CONSERVER. AUCUNE COPIE N’A ÉTÉ EXPORTÉE.";
 "THIS PDF HAS FORM FIELDS OR ATTACHMENTS THAT METADATA CLEANUP CANNOT KEEP. NO COPY WAS EXPORTED." = "CE PDF CONTIENT DES CHAMPS DE FORMULAIRE OU DES PIÈCES JOINTES QUE LE NETTOYAGE DES MÉTADONNÉES NE PEUT PAS CONSERVER. AUCUNE COPIE N’A ÉTÉ EXPORTÉE.";
+"THIS PDF IS PASSWORD PROTECTED. ENTER ITS PASSWORD." = "CE PDF EST PROTÉGÉ PAR UN MOT DE PASSE. SAISISSEZ SON MOT DE PASSE.";
 "THIS PDF PAGE COULD NOT BE READ." = "CETTE PAGE PDF N’A PAS PU ÊTRE LUE.";
 "THIS POST CONTAINS VIDEOS. USE ITS REEL LINK TO DOWNLOAD VIDEO." = "CETTE PUBLICATION CONTIENT DES VIDÉOS. UTILISEZ SON LIEN REEL POUR TÉLÉCHARGER LA VIDÉO.";
 "THIS REPOSITORY IS PRIVATE" = "CE DÉPÔT EST PRIVÉ";
@@ -2238,6 +2282,11 @@
 "Text size" = "Taille du texte";
 "Texture" = "Texture";
 "That PDF size cannot be reached while keeping selectable text, links and annotations. Choose a larger target." = "Cette taille de PDF est impossible à atteindre en conservant le texte sélectionnable, les liens et les annotations. Choisissez une cible plus grande.";
+"That PDF size cannot be reached while keeping selectable text, links, and annotations. Choose a larger target." = "Cette taille de PDF est impossible à atteindre en conservant le texte sélectionnable, les liens et les annotations. Choisissez une cible plus grande.";
+"The PDF contains no pages." = "Le PDF ne contient aucune page.";
+"The PDF page is too large to render at this resolution." = "La page PDF est trop grande pour être rendue à cette résolution.";
+"The UTF-16 text in %@ is damaged." = "Le texte UTF-16 de %@ est endommagé.";
+"The UTF-16 text in %lld is damaged." = "Le texte UTF-16 de %lld est endommagé.";
 "The UTF-32 text in %@ is damaged." = "Le texte UTF-32 de %@ est endommagé.";
 "The UTF-32 text in %lld is damaged." = "Le texte UTF-32 de %lld est endommagé.";
 "The archive contains an unnamed entry." = "L’archive contient une entrée sans nom.";
@@ -2245,6 +2294,10 @@
 "The archive entry leaves its destination." = "L’entrée de l’archive sort de sa destination.";
 "The clipping exceeds 200 MB." = "Le fragment dépasse 200 Mo.";
 "The clipping has no readable text. Include its original resource fork/AppleDouble sidecar, or paste its text into Nashi." = "Le fragment ne contient aucun texte lisible. Incluez son fichier annexe d’origine (resource fork/AppleDouble) ou collez son texte dans Nashi.";
+"The crop rectangle must fit completely inside the %@ × %@ pixel image." = "Le rectangle de recadrage doit tenir entièrement dans l’image de %@ × %@ pixels.";
+"The crop rectangle must fit completely inside the %@ × %lld pixel image." = "Le rectangle de recadrage doit tenir entièrement dans l’image de %@ × %lld pixels.";
+"The crop rectangle must fit completely inside the %lld × %@ pixel image." = "Le rectangle de recadrage doit tenir entièrement dans l’image de %lld × %@ pixels.";
+"The crop rectangle must fit completely inside the %lld × %lld pixel image." = "Le rectangle de recadrage doit tenir entièrement dans l’image de %lld × %lld pixels.";
 "The document has no editable body." = "Le document n’a pas de corps modifiable.";
 "The document is missing %@" = "Il manque %@ au document";
 "The document is missing %lld" = "Il manque %lld au document";
@@ -2256,11 +2309,17 @@
 "The image download ended early." = "Le téléchargement de l’image s’est terminé prématurément.";
 "The image order must include every image once." = "L’ordre des images doit inclure chaque image une fois.";
 "The media server redirected to an insecure URL." = "Le serveur multimédia a redirigé vers une URL non sécurisée.";
+"The metadata field %@ could not be removed." = "Le champ de métadonnées %@ n’a pas pu être supprimé.";
+"The metadata field %lld could not be removed." = "Le champ de métadonnées %lld n’a pas pu être supprimé.";
 "The processing tool could not start." = "L’outil de traitement n’a pas pu démarrer.";
+"The requested PDF size could not be reached." = "La taille de PDF demandée n’a pas pu être atteinte.";
 "The requested PDF size could not be reached. Choose a larger target." = "La taille de PDF demandée n’a pas pu être atteinte. Choisissez une cible plus grande.";
+"The requested file size could not be reached. Choose a larger target." = "La taille de fichier demandée n’a pas pu être atteinte. Choisissez une cible plus grande.";
 "The requested image size could not be reached. Choose a larger target." = "La taille d’image demandée n’a pas pu être atteinte. Choisissez une cible plus grande.";
 "The same conversion and tool catalog as macOS." = "Le même catalogue de conversions et d’outils que sur macOS.";
 "The signed package version does not match this update." = "La version du paquet signé ne correspond pas à cette mise à jour.";
+"The text encoding of %@ could not be read." = "L’encodage du texte de %@ n’a pas pu être lu.";
+"The text encoding of %lld could not be read." = "L’encodage du texte de %lld n’a pas pu être lu.";
 "The update does not contain Nashi." = "La mise à jour ne contient pas Nashi.";
 "The update needs another try" = "La mise à jour doit être relancée";
 "The update signature is invalid. Your existing app was kept." = "La signature de la mise à jour est invalide. Votre app existante a été conservée.";
@@ -2268,6 +2327,7 @@
 "This PDF contains no pages." = "Ce PDF ne contient aucune page.";
 "This PDF has form fields or attachments that merging, splitting or reordering pages cannot keep. No copy was exported." = "Ce PDF contient des champs de formulaire ou des pièces jointes que la fusion, la division ou la réorganisation des pages ne peut pas conserver. Aucune copie n’a été exportée.";
 "This PDF has form fields or attachments that metadata cleanup cannot keep. No copy was exported." = "Ce PDF contient des champs de formulaire ou des pièces jointes que le nettoyage des métadonnées ne peut pas conserver. Aucune copie n’a été exportée.";
+"This PDF is password protected. Enter its password." = "Ce PDF est protégé par un mot de passe. Saisissez son mot de passe.";
 "This PDF page could not be read." = "Cette page PDF n’a pas pu être lue.";
 "This RTFD attachment syntax could not be preserved." = "Cette syntaxe de pièce jointe RTFD n’a pas pu être préservée.";
 "This Windows codec cannot play directly. Set up media tools to create a local preview." = "Ce codec Windows ne peut pas être lu directement. Configurez les outils multimédias pour créer un aperçu local.";
