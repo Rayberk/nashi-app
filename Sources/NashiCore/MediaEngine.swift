@@ -101,6 +101,9 @@ public enum MediaEngine {
         }
         for key in metadata.keys.sorted() {
             guard let value = metadata[key], !key.isEmpty, !key.contains("\0"), !value.contains("\0") else { throw NashiError.invalidInput("Metadata fields cannot be empty or contain null characters.") }
+            // Remove All already clears every tag and drops chapters, artwork and data tracks; the
+            // editor still sends each listed field as a blank, which would address removed items.
+            if removeAll && value.isEmpty { continue }
             let (requested, field) = try metadataSpecifier(key)
             var specifier = requested
             guard !field.isEmpty, !field.contains("=") else { throw NashiError.invalidInput("Invalid metadata field: \(key)") }
