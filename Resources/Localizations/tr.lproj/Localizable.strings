@@ -679,6 +679,12 @@
 "Compressing PDF · attempt %lld · page %lld/%lld…" = "PDF sıkıştırılıyor · deneme %lld · sayfa %lld/%lld…";
 "Compression" = "Sıkıştırma";
 "Compression Settings" = "Sıkıştırma Ayarları";
+"Compression attempt %@ · Analyzing video…" = "Sıkıştırma denemesi %@ · Video analiz ediliyor…";
+"Compression attempt %@ · Encoding…" = "Sıkıştırma denemesi %@ · Kodlanıyor…";
+"Compression attempt %@…" = "Sıkıştırma denemesi %@…";
+"Compression attempt %lld · Analyzing video…" = "Sıkıştırma denemesi %lld · Video analiz ediliyor…";
+"Compression attempt %lld · Encoding…" = "Sıkıştırma denemesi %lld · Kodlanıyor…";
+"Compression attempt %lld…" = "Sıkıştırma denemesi %lld…";
 "Compression preset" = "Sıkıştırma ön ayarı";
 "Compression requires a known duration." = "Sıkıştırma için sürenin bilinmesi gerekiyor.";
 "Compression strength" = "Sıkıştırma gücü";
@@ -1223,6 +1229,8 @@
 "Input and output format." = "Girdi ve çıktı biçimi.";
 "Input format" = "Girdi biçimi";
 "Input-only format." = "Yalnızca girdi biçimi.";
+"Inspecting %@…" = "%@ inceleniyor…";
+"Inspecting %lld…" = "%lld inceleniyor…";
 "Instagram photo posts open a photo selection. For videos, use the share link; for other photos, drag the image or use Copy Image Address. Public media only; login-required and protected items may be unavailable." = "Instagram fotoğraf gönderilerinde fotoğraf seçimi açılır. Videolar için paylaşım bağlantısını kullan; diğer fotoğrafları sürükle veya görsel adresini kopyala. Yalnızca herkese açık medya desteklenir; giriş gerektiren veya korumalı içerikler kullanılamayabilir.";
 "Instagram photo posts open a photo selection. Reel links offer video and audio. Public downloadable media only." = "Instagram fotoğraf gönderilerinde fotoğraf seçimi açılır. Reels bağlantılarında video ve ses seçenekleri sunulur. Yalnızca herkese açık, indirilebilir medya desteklenir.";
 "Install an OCR language in Windows Language settings to detect text." = "Metin algılamak için Windows dil ayarlarından bir OCR dili yükle.";
@@ -1350,6 +1358,7 @@
 "MAXIMUM VIDEO HEIGHT" = "EN FAZLA VİDEO YÜKSEKLİĞİ";
 "MAXIMUM VIDEO HEIGHT (0 = ORIGINAL)" = "EN FAZLA VİDEO YÜKSEKLİĞİ (0 = ORİJİNAL)";
 "MAXIMUM WIDTH" = "EN FAZLA GENİŞLİK";
+"MEASURING AUDIO LOUDNESS…" = "SES DÜZEYİ ÖLÇÜLÜYOR…";
 "MEDIA RANGE TIMELINE" = "MEDYA ARALIĞI ZAMAN ÇİZELGESİ";
 "MEDIA SETUP" = "MEDYA KURULUMU";
 "MEDIA TOOLS" = "MEDYA ARAÇLARI";
@@ -1394,6 +1403,7 @@
 "Maximum video height" = "En fazla video yüksekliği";
 "Maximum video height (0 = original)" = "En fazla video yüksekliği (0 = orijinal)";
 "Maximum width" = "En fazla genişlik";
+"Measuring audio loudness…" = "Ses düzeyi ölçülüyor…";
 "Media range timeline" = "Medya aralığı zaman çizelgesi";
 "Media setup" = "Medya kurulumu";
 "Media tools" = "Medya araçları";
@@ -2260,6 +2270,8 @@
 "THE REQUESTED IMAGE SIZE COULD NOT BE REACHED. CHOOSE A LARGER TARGET." = "İSTENEN GÖRSEL BOYUTUNA İNİLEMEDİ. DAHA BÜYÜK BİR HEDEF SEÇ.";
 "THE REQUESTED PDF SIZE COULD NOT BE REACHED." = "İSTENEN PDF BOYUTUNA İNİLEMEDİ.";
 "THE REQUESTED PDF SIZE COULD NOT BE REACHED. CHOOSE A LARGER TARGET." = "İSTENEN PDF BOYUTUNA İNİLEMEDİ. DAHA BÜYÜK BİR HEDEF SEÇ.";
+"THE REQUESTED SIZE CANNOT BE REACHED WITH THIS FORMAT. CHOOSE A LARGER TARGET SIZE OR A SMALLER VIDEO RESOLUTION." = "BU BİÇİMLE İSTENEN BOYUTA ULAŞILAMIYOR. DAHA BÜYÜK BİR HEDEF BOYUT VEYA DAHA DÜŞÜK BİR VİDEO ÇÖZÜNÜRLÜĞÜ SEÇ.";
+"THE REQUESTED SIZE IS TOO SMALL FOR A MEDIA CONTAINER. CHOOSE AT LEAST 2 KB." = "İSTENEN BOYUT BİR MEDYA KAPSAYICISI İÇİN ÇOK KÜÇÜK. EN AZ 2 KB SEÇ.";
 "THE SAME CONVERSION AND TOOL CATALOG AS MACOS." = "MACOS İLE AYNI DÖNÜŞTÜRME VE ARAÇ SEÇENEKLERİ.";
 "THE SIGNED PACKAGE VERSION DOES NOT MATCH THIS UPDATE." = "İMZALI PAKETİN SÜRÜMÜ BU GÜNCELLEMEYLE EŞLEŞMİYOR.";
 "THE SITE COULD NOT PROVIDE THIS MEDIA. TRY A FRESH PUBLIC SHARE LINK OR A DIRECT MEDIA URL." = "SİTE BU MEDYAYI SAĞLAYAMADI. HERKESE AÇIK YENİ BİR PAYLAŞIM BAĞLANTISI VEYA DOĞRUDAN BİR MEDYA URL'Sİ DENE.";
@@ -2301,6 +2313,7 @@
 "THIS REPOSITORY IS PRIVATE" = "BU DEPO GİZLİ";
 "THIS RTFD ATTACHMENT SYNTAX COULD NOT BE PRESERVED." = "BU RTFD EKİNİN YAPISI KORUNAMADI.";
 "THIS SIZE CANNOT BE REACHED. CHOOSE A LARGER TARGET OR SMALLER DIMENSIONS." = "BU BOYUTA İNİLEMİYOR. DAHA BÜYÜK BİR HEDEF VEYA DAHA KÜÇÜK BOYUTLAR SEÇ.";
+"THIS SOURCE USES MORE THAN 32-BIT INTEGER AUDIO. CHOOSE AN OUTPUT BIT DEPTH IN SETTINGS." = "BU KAYNAK 32 BİTTEN YÜKSEK TAM SAYI SES KULLANIYOR. AYARLARDAN BİR ÇIKIŞ BİT DERİNLİĞİ SEÇ.";
 "THIS TEXT IS TOO LARGE TO PASTE. CHOOSE A TEXT FILE INSTEAD." = "BU METİN YAPIŞTIRMAK İÇİN ÇOK BÜYÜK. BUNUN YERİNE BİR METİN DOSYASI SEÇ.";
 "THIS TEXT IS TOO LARGE TO PREVIEW. USE OPEN TO READ THE COMPLETE FILE." = "BU METİN ÖNİZLEME İÇİN ÇOK BÜYÜK. DOSYANIN TAMAMINI OKUMAK İÇİN AÇ'I KULLAN.";
 "THIS WINDOW COULD NOT BE ARRANGED. THE APP MAY RESTRICT RESIZING." = "BU PENCERE DÜZENLENEMEDİ. UYGULAMA YENİDEN BOYUTLANDIRMAYI KISITLIYOR OLABİLİR.";
@@ -2389,6 +2402,8 @@
 "The requested PDF size could not be reached. Choose a larger target." = "İstenen PDF boyutuna inilemedi. Daha büyük bir hedef seç.";
 "The requested file size could not be reached. Choose a larger target." = "İstenen dosya boyutuna inilemedi. Daha büyük bir hedef seç.";
 "The requested image size could not be reached. Choose a larger target." = "İstenen görsel boyutuna inilemedi. Daha büyük bir hedef seç.";
+"The requested size cannot be reached with this format. Choose a larger target size or a smaller video resolution." = "Bu biçimle istenen boyuta ulaşılamıyor. Daha büyük bir hedef boyut veya daha düşük bir video çözünürlüğü seç.";
+"The requested size is too small for a media container. Choose at least 2 KB." = "İstenen boyut bir medya kapsayıcısı için çok küçük. En az 2 KB seç.";
 "The same conversion and tool catalog as macOS." = "macOS ile aynı dönüştürme ve araç seçenekleri.";
 "The signed package version does not match this update." = "İmzalı paketin sürümü bu güncellemeyle eşleşmiyor.";
 "The site could not provide this media. Try a fresh public share link or a direct media URL." = "Site bu medyayı sağlayamadı. Herkese açık yeni bir paylaşım bağlantısı veya doğrudan bir medya URL'si dene.";
@@ -2435,6 +2450,7 @@
 "This post contains videos. Use its Reel link to download video." = "Bu gönderide video var. Videoyu indirmek için Reel bağlantısını kullan.";
 "This repository is private" = "Bu depo gizli";
 "This size cannot be reached. Choose a larger target or smaller dimensions." = "Bu boyuta inilemiyor. Daha büyük bir hedef veya daha küçük boyutlar seç.";
+"This source uses more than 32-bit integer audio. Choose an output bit depth in settings." = "Bu kaynak 32 bitten yüksek tam sayı ses kullanıyor. Ayarlardan bir çıkış bit derinliği seç.";
 "This text is too large to paste. Choose a text file instead." = "Bu metin yapıştırmak için çok büyük. Bunun yerine bir metin dosyası seç.";
 "This text is too large to preview. Use Open to read the complete file." = "Bu metin önizleme için çok büyük. Dosyanın tamamını okumak için Aç'ı kullan.";
 "This window could not be arranged. The app may restrict resizing." = "Bu pencere düzenlenemedi. Uygulama yeniden boyutlandırmayı kısıtlıyor olabilir.";

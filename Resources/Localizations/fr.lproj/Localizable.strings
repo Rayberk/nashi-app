@@ -679,6 +679,12 @@
 "Compressing PDF · attempt %lld · page %lld/%lld…" = "Compression du PDF · tentative %lld · page %lld/%lld…";
 "Compression" = "Compression";
 "Compression Settings" = "Réglages de compression";
+"Compression attempt %@ · Analyzing video…" = "Tentative de compression %@ · Analyse de la vidéo…";
+"Compression attempt %@ · Encoding…" = "Tentative de compression %@ · Encodage…";
+"Compression attempt %@…" = "Tentative de compression %@…";
+"Compression attempt %lld · Analyzing video…" = "Tentative de compression %lld · Analyse de la vidéo…";
+"Compression attempt %lld · Encoding…" = "Tentative de compression %lld · Encodage…";
+"Compression attempt %lld…" = "Tentative de compression %lld…";
 "Compression preset" = "Préréglage de compression";
 "Compression requires a known duration." = "La compression nécessite une durée connue.";
 "Compression strength" = "Intensité de compression";
@@ -1223,6 +1229,8 @@
 "Input and output format." = "Format d’entrée et de sortie.";
 "Input format" = "Format d’entrée";
 "Input-only format." = "Format d’entrée uniquement.";
+"Inspecting %@…" = "Analyse de %@…";
+"Inspecting %lld…" = "Analyse de %lld…";
 "Instagram photo posts open a photo selection. For videos, use the share link; for other photos, drag the image or use Copy Image Address. Public media only; login-required and protected items may be unavailable." = "Les publications de photos Instagram ouvrent une sélection de photos. Pour les vidéos, utilisez le lien de partage ; pour les autres photos, faites glisser l’image ou utilisez Copier l’adresse de l’image. Médias publics uniquement ; les éléments protégés ou nécessitant une connexion peuvent être indisponibles.";
 "Instagram photo posts open a photo selection. Reel links offer video and audio. Public downloadable media only." = "Les publications de photos Instagram ouvrent une sélection de photos. Les liens de Reels proposent la vidéo et l’audio. Médias publics téléchargeables uniquement.";
 "Install an OCR language in Windows Language settings to detect text." = "Installez une langue OCR dans les réglages de langue de Windows pour détecter le texte.";
@@ -1350,6 +1358,7 @@
 "MAXIMUM VIDEO HEIGHT" = "HAUTEUR VIDÉO MAXIMALE";
 "MAXIMUM VIDEO HEIGHT (0 = ORIGINAL)" = "HAUTEUR VIDÉO MAXIMALE (0 = ORIGINAL)";
 "MAXIMUM WIDTH" = "LARGEUR MAXIMALE";
+"MEASURING AUDIO LOUDNESS…" = "MESURE DU VOLUME SONORE…";
 "MEDIA RANGE TIMELINE" = "CHRONOLOGIE DE LA PLAGE MULTIMÉDIA";
 "MEDIA SETUP" = "CONFIGURATION DES MÉDIAS";
 "MEDIA TOOLS" = "OUTILS MULTIMÉDIAS";
@@ -1394,6 +1403,7 @@
 "Maximum video height" = "Hauteur vidéo maximale";
 "Maximum video height (0 = original)" = "Hauteur vidéo maximale (0 = original)";
 "Maximum width" = "Largeur maximale";
+"Measuring audio loudness…" = "Mesure du volume sonore…";
 "Media range timeline" = "Chronologie de la plage multimédia";
 "Media setup" = "Configuration des médias";
 "Media tools" = "Outils multimédias";
@@ -2260,6 +2270,8 @@
 "THE REQUESTED IMAGE SIZE COULD NOT BE REACHED. CHOOSE A LARGER TARGET." = "LA TAILLE D’IMAGE DEMANDÉE N’A PAS PU ÊTRE ATTEINTE. CHOISISSEZ UNE CIBLE PLUS GRANDE.";
 "THE REQUESTED PDF SIZE COULD NOT BE REACHED." = "LA TAILLE DE PDF DEMANDÉE N’A PAS PU ÊTRE ATTEINTE.";
 "THE REQUESTED PDF SIZE COULD NOT BE REACHED. CHOOSE A LARGER TARGET." = "LA TAILLE DE PDF DEMANDÉE N’A PAS PU ÊTRE ATTEINTE. CHOISISSEZ UNE CIBLE PLUS GRANDE.";
+"THE REQUESTED SIZE CANNOT BE REACHED WITH THIS FORMAT. CHOOSE A LARGER TARGET SIZE OR A SMALLER VIDEO RESOLUTION." = "LA TAILLE DEMANDÉE NE PEUT PAS ÊTRE ATTEINTE AVEC CE FORMAT. CHOISISSEZ UNE TAILLE CIBLE PLUS GRANDE OU UNE RÉSOLUTION VIDÉO PLUS PETITE.";
+"THE REQUESTED SIZE IS TOO SMALL FOR A MEDIA CONTAINER. CHOOSE AT LEAST 2 KB." = "LA TAILLE DEMANDÉE EST TROP PETITE POUR UN CONTENEUR MULTIMÉDIA. CHOISISSEZ AU MOINS 2 KO.";
 "THE SAME CONVERSION AND TOOL CATALOG AS MACOS." = "LE MÊME CATALOGUE DE CONVERSIONS ET D’OUTILS QUE SUR MACOS.";
 "THE SIGNED PACKAGE VERSION DOES NOT MATCH THIS UPDATE." = "LA VERSION DU PAQUET SIGNÉ NE CORRESPOND PAS À CETTE MISE À JOUR.";
 "THE SITE COULD NOT PROVIDE THIS MEDIA. TRY A FRESH PUBLIC SHARE LINK OR A DIRECT MEDIA URL." = "LE SITE N’A PAS PU FOURNIR CE MÉDIA. ESSAYEZ UN NOUVEAU LIEN DE PARTAGE PUBLIC OU UNE URL DIRECTE VERS LE MÉDIA.";
@@ -2301,6 +2313,7 @@
 "THIS REPOSITORY IS PRIVATE" = "CE DÉPÔT EST PRIVÉ";
 "THIS RTFD ATTACHMENT SYNTAX COULD NOT BE PRESERVED." = "CETTE SYNTAXE DE PIÈCE JOINTE RTFD N’A PAS PU ÊTRE PRÉSERVÉE.";
 "THIS SIZE CANNOT BE REACHED. CHOOSE A LARGER TARGET OR SMALLER DIMENSIONS." = "CETTE TAILLE EST IMPOSSIBLE À ATTEINDRE. CHOISISSEZ UNE CIBLE PLUS GRANDE OU DES DIMENSIONS PLUS PETITES.";
+"THIS SOURCE USES MORE THAN 32-BIT INTEGER AUDIO. CHOOSE AN OUTPUT BIT DEPTH IN SETTINGS." = "CETTE SOURCE UTILISE UN AUDIO ENTIER DE PLUS DE 32 BITS. CHOISISSEZ UNE PROFONDEUR DE BITS DE SORTIE DANS LES RÉGLAGES.";
 "THIS TEXT IS TOO LARGE TO PASTE. CHOOSE A TEXT FILE INSTEAD." = "CE TEXTE EST TROP VOLUMINEUX POUR ÊTRE COLLÉ. CHOISISSEZ PLUTÔT UN FICHIER TEXTE.";
 "THIS TEXT IS TOO LARGE TO PREVIEW. USE OPEN TO READ THE COMPLETE FILE." = "CE TEXTE EST TROP VOLUMINEUX POUR L’APERÇU. UTILISEZ OUVRIR POUR LIRE LE FICHIER COMPLET.";
 "THIS WINDOW COULD NOT BE ARRANGED. THE APP MAY RESTRICT RESIZING." = "CETTE FENÊTRE N’A PAS PU ÊTRE DISPOSÉE. L’APP LIMITE PEUT-ÊTRE LE REDIMENSIONNEMENT.";
@@ -2389,6 +2402,8 @@
 "The requested PDF size could not be reached. Choose a larger target." = "La taille de PDF demandée n’a pas pu être atteinte. Choisissez une cible plus grande.";
 "The requested file size could not be reached. Choose a larger target." = "La taille de fichier demandée n’a pas pu être atteinte. Choisissez une cible plus grande.";
 "The requested image size could not be reached. Choose a larger target." = "La taille d’image demandée n’a pas pu être atteinte. Choisissez une cible plus grande.";
+"The requested size cannot be reached with this format. Choose a larger target size or a smaller video resolution." = "La taille demandée ne peut pas être atteinte avec ce format. Choisissez une taille cible plus grande ou une résolution vidéo plus petite.";
+"The requested size is too small for a media container. Choose at least 2 KB." = "La taille demandée est trop petite pour un conteneur multimédia. Choisissez au moins 2 Ko.";
 "The same conversion and tool catalog as macOS." = "Le même catalogue de conversions et d’outils que sur macOS.";
 "The signed package version does not match this update." = "La version du paquet signé ne correspond pas à cette mise à jour.";
 "The site could not provide this media. Try a fresh public share link or a direct media URL." = "Le site n’a pas pu fournir ce média. Essayez un nouveau lien de partage public ou une URL directe vers le média.";
@@ -2435,6 +2450,7 @@
 "This post contains videos. Use its Reel link to download video." = "Cette publication contient des vidéos. Utilisez son lien Reel pour télécharger la vidéo.";
 "This repository is private" = "Ce dépôt est privé";
 "This size cannot be reached. Choose a larger target or smaller dimensions." = "Cette taille est impossible à atteindre. Choisissez une cible plus grande ou des dimensions plus petites.";
+"This source uses more than 32-bit integer audio. Choose an output bit depth in settings." = "Cette source utilise un audio entier de plus de 32 bits. Choisissez une profondeur de bits de sortie dans les réglages.";
 "This text is too large to paste. Choose a text file instead." = "Ce texte est trop volumineux pour être collé. Choisissez plutôt un fichier texte.";
 "This text is too large to preview. Use Open to read the complete file." = "Ce texte est trop volumineux pour l’aperçu. Utilisez Ouvrir pour lire le fichier complet.";
 "This window could not be arranged. The app may restrict resizing." = "Cette fenêtre n’a pas pu être disposée. L’app limite peut-être le redimensionnement.";
