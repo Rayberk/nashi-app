@@ -1077,6 +1077,10 @@
 "Featured" = "Öne çıkan";
 "Features & shortcuts" = "Özellikler ve kısayollar";
 "Field" = "Alan";
+"File %@ of %@" = "Dosya %@/%@";
+"File %@ of %lld" = "Dosya %@/%lld";
+"File %lld of %@" = "Dosya %lld/%@";
+"File %lld of %lld" = "Dosya %lld/%lld";
 "File action could not finish" = "Dosya işlemi tamamlanamadı";
 "File actions" = "Dosya işlemleri";
 "File actions wheel" = "Dosya işlemleri çarkı";

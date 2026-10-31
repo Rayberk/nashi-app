@@ -1077,6 +1077,10 @@
 "Featured" = "En vedette";
 "Features & shortcuts" = "Fonctionnalités et raccourcis";
 "Field" = "Champ";
+"File %@ of %@" = "Fichier %@ sur %@";
+"File %@ of %lld" = "Fichier %@ sur %lld";
+"File %lld of %@" = "Fichier %lld sur %@";
+"File %lld of %lld" = "Fichier %lld sur %lld";
 "File action could not finish" = "L’action sur le fichier n’a pas pu se terminer";
 "File actions" = "Actions sur les fichiers";
 "File actions wheel" = "Roue des actions sur les fichiers";

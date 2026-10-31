@@ -728,6 +728,7 @@
   "Downloading media…": "Téléchargement du média…",
   "Downloading · {0}": "Téléchargement · {0}",
   "Photo {0} of {1}…": "Photo {0} sur {1}…",
+  "File {0} of {1}": "Fichier {0} sur {1}",
   "Finishing media…": "Finalisation du média…",
   "Fitting video to the selected size…": "Ajustement de la vidéo à la taille choisie…",
   "Converting downloaded audio…": "Conversion de l’audio téléchargé…",
