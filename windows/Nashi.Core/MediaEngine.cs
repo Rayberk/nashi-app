@@ -114,7 +114,12 @@ public sealed class MediaEngine(string ffmpeg, string ffprobe)
             var output = Output(transaction.StagingDirectory,input,format,"");
             List<string> arguments = ["-i",input,..WmaChannels(format,SourceDepth(options,info))];
             if (AudioFormats.Contains(format))
-            { RequireAudio(info); arguments.AddRange(["-map","0:a:0","-vn"]); arguments.AddRange(AudioEncoding(format,SourceDepth(options,info))); }
+            {
+                RequireAudio(info);
+                // Album art is an attached picture stream, not a tag; keep it where the container stores JPEG/PNG art (as on macOS).
+                var art=options.PreserveMetadata&&format is "mp3" or "m4a" or "flac"?info.Streams.FirstOrDefault(s=>s.AttachedPicture&&s.Codec is "mjpeg" or "png"):null;
+                arguments.AddRange(["-map","0:a:0",..(art is null?["-vn"]:new[]{"-map","0:"+art.Index.ToString(CultureInfo.InvariantCulture),"-c:v","copy"})]);arguments.AddRange(AudioEncoding(format,SourceDepth(options,info)));
+            }
             else
             {
                 RequireVideo(info);
