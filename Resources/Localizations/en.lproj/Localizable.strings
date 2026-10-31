@@ -1071,6 +1071,10 @@
 "Featured" = "Featured";
 "Features & shortcuts" = "Features & shortcuts";
 "Field" = "Field";
+"File %@ of %@" = "File %@ of %@";
+"File %@ of %lld" = "File %@ of %lld";
+"File %lld of %@" = "File %lld of %@";
+"File %lld of %lld" = "File %lld of %lld";
 "File action could not finish" = "File action could not finish";
 "File actions" = "File actions";
 "File actions wheel" = "File actions wheel";

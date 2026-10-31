@@ -725,6 +725,7 @@
   "Downloading media…": "Medya indiriliyor…",
   "Downloading · {0}": "İndiriliyor · {0}",
   "Photo {0} of {1}…": "Fotoğraf {0}/{1}…",
+  "File {0} of {1}": "Dosya {0}/{1}",
   "Finishing media…": "Medya tamamlanıyor…",
   "Fitting video to the selected size…": "Video seçilen boyuta sığdırılıyor…",
   "Converting downloaded audio…": "İndirilen ses dönüştürülüyor…",
