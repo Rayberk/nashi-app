@@ -5,6 +5,7 @@ namespace Nashi.Core;
 public sealed partial class OfficeDocuments
 {
     private static XElement? Child(XElement? e,string n)=>e?.Elements().FirstOrDefault(c=>c.Name.LocalName==n);
+    private static IEnumerable<XElement> Blocks(XElement e)=>e.Elements().SelectMany(c=>c.Name.LocalName is "sdt" or "sdtContent" or "customXml"?Blocks(c):[c]);
     private static string? Attr(XElement? e,string n)=>e?.Attributes().FirstOrDefault(a=>a.Name.LocalName==n)?.Value;
     private static double? Num(XElement? e,string n)=>double.TryParse(Attr(e,n),NumberStyles.Float,CultureInfo.InvariantCulture,out var x)&&double.IsFinite(x)?x:null;
     private static Dictionary<string,object?> Merge(params Dictionary<string,object?>[] dictionaries){var result=new Dictionary<string,object?>();foreach(var d in dictionaries)foreach(var p in d)result[p.Key]=p.Value;return result;}
@@ -63,14 +64,14 @@ public sealed partial class OfficeDocuments
                 {
                     var cells=new List<object>();var column=0;foreach(var cell in row.Elements().Where(e=>e.Name.LocalName=="tc"))
                     {
-                        var props=Child(cell,"tcPr");var raw=Num(Child(props,"gridSpan"),"val");var span=raw is null?1:checked((int)raw.Value);if(span is <1 or >1024||column>1024-span)throw new InvalidDataException("A table cell span is invalid or exceeds 1,024 columns.");var text=string.Join("\n",cell.Elements().Where(p=>p.Name.LocalName=="p").Select(p=>string.Concat(p.Descendants().Where(e=>e.Name.LocalName=="t").Select(t=>t.Value))));cells.Add(new{text});for(var n=1;n<span;n++)cells.Add(new{text=""});
+                        var props=Child(cell,"tcPr");var raw=Num(Child(props,"gridSpan"),"val");var span=raw is null?1:checked((int)raw.Value);if(span is <1 or >1024||column>1024-span)throw new InvalidDataException("A table cell span is invalid or exceeds 1,024 columns.");var text=string.Join("\n",Blocks(cell).Where(p=>p.Name.LocalName=="p").Select(p=>string.Concat(p.Descendants().Where(e=>e.Name.LocalName=="t").Select(t=>t.Value))));cells.Add(new{text});for(var n=1;n<span;n++)cells.Add(new{text=""});
                         var vm=Child(props,"vMerge");if(vm is not null){if(Attr(vm,"val")=="restart")vertical[column]=(rowIndex,span);else if(vertical.TryGetValue(column,out var origin)){var merged=merges.FirstOrDefault(m=>m["row"]==origin.Row&&m["column"]==column);if(merged is null){merged=new(){{"row",origin.Row},{"column",column},{"rowCount",1},{"columnCount",origin.Span}};merges.Add(merged);}merged["rowCount"]=rowIndex-origin.Row+1;}}else{vertical.Remove(column);if(span>1)merges.Add(new(){{"row",rowIndex},{"column",column},{"rowCount",1},{"columnCount",span}});}column+=span;
                     }rows.Add(cells);rowIndex++;
                 }
                 return new{type="table",rows,merges,columnWidths=Child(element,"tblGrid")?.Elements().Select(c=>(Num(c,"w")??2400)/20).ToArray()??[]};
             }return null;
         }
-        var blocks=body.Elements().Select(Block).Where(b=>b is not null).ToArray();var model=new Dictionary<string,object?>{{"blocks",blocks}};var section=Child(body,"sectPr");if(section is not null)
+        var blocks=Blocks(body).Select(Block).Where(b=>b is not null).ToArray();var model=new Dictionary<string,object?>{{"blocks",blocks}};var section=Child(body,"sectPr");if(section is not null)
         {
             var setup=new Dictionary<string,object?>();foreach(var (name,key) in new[]{("w","pageWidth"),("h","pageHeight")})if(Num(Child(section,"pgSz"),name) is {} size)setup[key]=size/20;foreach(var (name,key) in new[]{("left","leftMargin"),("right","rightMargin"),("top","topMargin"),("bottom","bottomMargin")})if(Num(Child(section,"pgMar"),name) is {} size)setup[key]=size/20;model["pageSetup"]=setup;
             foreach(var (name,key) in new[]{("headerReference","header"),("footerReference","footer")})if(Attr(Child(section,name),"id") is {} id&&rels.TryGetValue(id,out var target)&&Local(target) is {} local&&zip.GetEntry(local) is not null)model[key]=string.Concat(Xml(zip,local).Descendants().Where(e=>e.Name.LocalName=="t").Select(e=>e.Value));
