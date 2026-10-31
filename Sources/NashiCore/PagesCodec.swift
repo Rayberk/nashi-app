@@ -406,7 +406,7 @@ private enum PagesDOCXReader {
         if let value=element.first("color")?.attr("val"),let color=color(value){result["fontColor"]=color}
         if let value=element.first("highlight")?.attr("val"),let color=color(value){result["backgroundColor"]=color}
         if let underline=element.first("u"){result["underline"] = underline.attr("val") == "none" ? 0 : underline.attr("val") == "double" ? 2 : 1}
-        if let strike=element.first("strike"){result["strikethru"] = strike.attr("val") == "0" ? 0 : 1}
+        if let strike=element.first("strike"){result["strikethru"] = ["0","false","off"].contains(strike.attr("val") ?? "1") ? 0 : 1}
         if let align=element.first("vertAlign")?.attr("val"){result["superscript"] = align == "superscript" ? 1 : align == "subscript" ? -1 : 0}
         if let language=element.first("lang")?.attr("val"){result["language"]=language}
         return result

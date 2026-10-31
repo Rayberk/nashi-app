@@ -9,7 +9,6 @@
 "%@ exports" = "%@ çıktıları";
 "%@ files" = "%@ dosya";
 "%@ files, ready to go." = "%@ dosya hazır.";
-"%@ found" = "%@ bulundu";
 "%@ input" = "%@ girdisi";
 "%@ is enabled" = "%@ izni açık";
 "%@ is not installed." = "%@ kurulu değil.";
@@ -32,7 +31,6 @@
 "%lld exports" = "%lld çıktıları";
 "%lld files" = "%lld dosya";
 "%lld files, ready to go." = "%lld dosya hazır.";
-"%lld found" = "%lld bulundu";
 "%lld input" = "%lld girdisi";
 "%lld is enabled" = "%lld izni açık";
 "%lld is not installed." = "%lld kurulu değil.";
@@ -47,18 +45,16 @@
 "%lld · Original stays safe" = "%lld · Orijinal dosyan güvende";
 "%lld, page %@" = "%lld, sayfa %@";
 "%lld, page %lld" = "%lld, sayfa %lld";
-"0 FOUND" = "0 BULUNDU";
 "0 SELECTED" = "0 SEÇİLİ";
-"0 found" = "0 bulundu";
 "0 selected" = "0 seçili";
-"1 FOUND" = "1 BULUNDU";
 "1 ITEM" = "1 ÖĞE";
 "1 PHOTO" = "1 FOTOĞRAF";
 "1 SELECTED" = "1 SEÇİLİ";
-"1 found" = "1 bulundu";
+"1 WAY TO CHANGE IT" = "1 FARKLI BİÇİME ÇEVİR";
 "1 item" = "1 öğe";
 "1 photo" = "1 fotoğraf";
 "1 selected" = "1 seçili";
+"1 way to change it" = "1 farklı biçime çevir";
 "1/3 LEFT · MIDDLE · RIGHT   /   1/2 LEFT · RIGHT   /   2/3 LEFT · RIGHT" = "1/3 SOL · ORTA · SAĞ   /   1/2 SOL · SAĞ   /   2/3 SOL · SAĞ";
 "1/3 left · middle · right   /   1/2 left · right   /   2/3 left · right" = "1/3 sol · orta · sağ   /   1/2 sol · sağ   /   2/3 sol · sağ";
 "1280 PX LONGEST EDGE" = "UZUN KENAR 1280 PX";
@@ -141,8 +137,6 @@
 "ADD SELECTED RANGE" = "SEÇİLİ ARALIĞI EKLE";
 "ADD SPLIT" = "BÖLME NOKTASI EKLE";
 "ADD TO AN EXISTING FLOAT" = "MEVCUT YÜZEN PENCEREYE EKLE";
-"ADD TO FLOAT" = "YÜZEN PENCEREYE EKLE";
-"ADDED TO FLOAT." = "YÜZEN PENCEREYE EKLENDİ.";
 "ADDING PAGES…" = "SAYFALAR EKLENİYOR…";
 "ADDITIONAL OPTIONS" = "DİĞER SEÇENEKLER";
 "AIRDROP IS UNAVAILABLE ON THIS MAC." = "AİRDROP BU MAC'TE KULLANILAMIYOR.";
@@ -157,6 +151,7 @@
 "ALLOW NASHI IN MACOS LOGIN ITEMS." = "MACOS GİRİŞ ÖĞELERİ BÖLÜMÜNDEN NASHI'YE İZİN VER.";
 "ALREADY AVAILABLE ON YOUR COMPUTER" = "BİLGİSAYARINDA ZATEN HAZIR";
 "ALREADY OPTIMIZED. ORIGINAL QUALITY RETAINED." = "ZATEN OPTİMİZE EDİLMİŞ. ORİJİNAL KALİTE KORUNDU.";
+"ALWAYS A LITTLE FRESHER." = "HEP BİRAZ DAHA YENİ.";
 "AN EMBEDDED IMAGE IS MISSING OR TOO LARGE." = "GÖMÜLÜ BİR GÖRSEL EKSİK VEYA ÇOK BÜYÜK.";
 "AN EMPTY OUTPUT WAS PRODUCED." = "BOŞ BİR ÇIKTI OLUŞTU.";
 "AN HTTPS DOWNLOAD IS REQUIRED." = "İNDİRME HTTPS ÜZERİNDEN YAPILMALI.";
@@ -214,9 +209,7 @@
 "Add files" = "Dosya ekle";
 "Add or change files" = "Dosya ekle veya değiştir";
 "Add selected range" = "Seçili aralığı ekle";
-"Add to Float" = "Yüzen pencereye ekle";
 "Add to an existing Float" = "Mevcut yüzen pencereye ekle";
-"Added to Float." = "Yüzen pencereye eklendi.";
 "Adding pages…" = "Sayfalar ekleniyor…";
 "Additional options" = "Diğer seçenekler";
 "AirDrop is unavailable on this Mac." = "AirDrop bu Mac'te kullanılamıyor.";
@@ -233,6 +226,7 @@
 "Allow Nashi in macOS Login Items." = "macOS Giriş Öğeleri bölümünden Nashi'ye izin ver.";
 "Already available on your computer" = "Bilgisayarında zaten hazır";
 "Already optimized. Original quality retained." = "Zaten optimize edilmiş. Orijinal kalite korundu.";
+"Always a little fresher." = "Hep biraz daha yeni.";
 "An HTTPS download is required." = "İndirme HTTPS üzerinden yapılmalı.";
 "An RTFD attachment is missing or too large: %@" = "Bir RTFD eki eksik veya çok büyük: %@";
 "An RTFD attachment is missing or too large: %lld" = "Bir RTFD eki eksik veya çok büyük: %lld";
@@ -344,7 +338,9 @@
 "CHECK SELECTED RANGE" = "SEÇİLİ ARALIĞI KONTROL ET";
 "CHECK YOUR LINK" = "BAĞLANTINI KONTROL ET";
 "CHECK YOUR SETTINGS" = "AYARLARINI KONTROL ET";
+"CHECKING FOR A FRESH VERSION…" = "YENİ SÜRÜM DENETLENİYOR…";
 "CHECKING FOR UPDATES…" = "GÜNCELLEMELER DENETLENİYOR…";
+"CHECKING RELEASES…" = "SÜRÜMLER DENETLENİYOR…";
 "CHECKING THE CONNECTION…" = "BAĞLANTI KONTROL EDİLİYOR…";
 "CHOOSE 2–100 IMAGES FOR A COLLAGE." = "KOLAJ İÇİN 2–100 ARASI GÖRSEL SEÇ.";
 "CHOOSE A BACKGROUND IMAGE." = "BİR ARKA PLAN GÖRSELİ SEÇ.";
@@ -444,6 +440,9 @@
 "COMPRESSION REQUIRES A KNOWN DURATION." = "SIKIŞTIRMA İÇİN SÜRENİN BİLİNMESİ GEREKİYOR.";
 "COMPRESSION SETTINGS" = "SIKIŞTIRMA AYARLARI";
 "COMPRESSION STRENGTH" = "SIKIŞTIRMA GÜCÜ";
+"CONNECT A PRIVATE OR PUBLIC UPDATES REPOSITORY." = "GİZLİ VEYA HERKESE AÇIK BİR GÜNCELLEME DEPOSU BAĞLA.";
+"CONNECT YOUR GITHUB RELEASES ONCE. NASHI HANDLES THE NEXT UPDATE CHECKS." = "GITHUB SÜRÜMLERİNİ BİR KEZ BAĞLA. SONRAKİ GÜNCELLEME DENETİMLERİNİ NASHI ÜSTLENİR.";
+"CONNECT…" = "BAĞLAN…";
 "CONTINUE" = "DEVAM ET";
 "CONTINUE TO NASHI" = "NASHI’YE DEVAM ET";
 "CONTRAST" = "KONTRAST";
@@ -514,7 +513,9 @@
 "Check selected range" = "Seçili aralığı kontrol et";
 "Check your link" = "Bağlantını kontrol et";
 "Check your settings" = "Ayarlarını kontrol et";
+"Checking for a fresh version…" = "Yeni sürüm denetleniyor…";
 "Checking for updates…" = "Güncellemeler denetleniyor…";
+"Checking releases…" = "Sürümler denetleniyor…";
 "Checking the connection…" = "Bağlantı kontrol ediliyor…";
 "Choose 2–100 images for a collage." = "Kolaj için 2–100 arası görsel seç.";
 "Choose Background Image…" = "Arka Plan Görseli Seç…";
@@ -628,6 +629,11 @@
 "Compression preset" = "Sıkıştırma ön ayarı";
 "Compression requires a known duration." = "Sıkıştırma için sürenin bilinmesi gerekiyor.";
 "Compression strength" = "Sıkıştırma gücü";
+"Connect a private or public updates repository." = "Gizli veya herkese açık bir güncelleme deposu bağla.";
+"Connect your GitHub releases once. Nashi handles the next update checks." = "GitHub sürümlerini bir kez bağla. Sonraki güncelleme denetimlerini Nashi üstlenir.";
+"Connected to %@" = "%@ deposuna bağlı";
+"Connected to %lld" = "%lld deposuna bağlı";
+"Connect…" = "Bağlan…";
 "Continue" = "Devam et";
 "Continue to Nashi" = "Nashi’ye devam et";
 "Contrast" = "Kontrast";
@@ -735,7 +741,6 @@
 "DRAG ACROSS THE PREVIEW TO SELECT THE AREA TO KEEP." = "KORUNACAK ALANI SEÇMEK İÇİN ÖNİZLEMEDE SÜRÜKLE.";
 "DRAG AN AREA FIRST." = "ÖNCE BİR ALAN SÜRÜKLE.";
 "DRAG AN EXISTING ANNOTATION TO MOVE IT; DRAG ITS HANDLES TO RESIZE. TURN OFF SELECT / MOVE TO DRAW." = "BİR İŞARETİ TAŞIMAK İÇİN İÇİNİ, BOYUTLANDIRMAK İÇİN TUTAMAĞINI SÜRÜKLE. ÇİZMEK İÇİN SEÇ / TAŞI'YI KAPAT.";
-"DRAG EITHER EDGE TO RESIZE THE RANGE, OR DRAG ITS MIDDLE TO MOVE IT." = "ARALIĞI BOYUTLANDIRMAK İÇİN KENARLARINDAN BİRİNİ, TAŞIMAK İÇİN ORTASINI SÜRÜKLE.";
 "DRAG INSIDE TO MOVE. DRAG NEAR A CORNER TO RESIZE. DRAG OUTSIDE TO START A NEW SELECTION." = "TAŞIMAK İÇİN ALANIN İÇİNİ, BOYUTLANDIRMAK İÇİN KÖŞEYİ SÜRÜKLE. YENİ SEÇİM İÇİN ALANIN DIŞINDA SÜRÜKLE.";
 "DRAG ON THE PREVIEW TO ADD AN AREA. EACH AREA IS SAVED INTO THE NEW COPY." = "ALAN EKLEMEK İÇİN ÖNİZLEMEDE SÜRÜKLE. HER ALAN YENİ KOPYAYA İŞLENİR.";
 "DRAG SHORTCUTS" = "SÜRÜKLEME KISAYOLLARI";
@@ -813,7 +818,6 @@
 "Drag across the preview to select the area to keep." = "Korunacak alanı seçmek için önizlemede sürükle.";
 "Drag an area first." = "Önce bir alan sürükle.";
 "Drag an existing annotation to move it; drag its handles to resize. Turn off Select / Move to draw." = "Bir işareti taşımak için içini, boyutlandırmak için tutamağını sürükle. Çizmek için Seç / Taşı'yı kapat.";
-"Drag either edge to resize the range, or drag its middle to move it." = "Aralığı boyutlandırmak için kenarlarından birini, taşımak için ortasını sürükle.";
 "Drag inside to move. Drag near a corner to resize. Drag outside to start a new selection." = "Taşımak için alanın içini, boyutlandırmak için köşeyi sürükle. Yeni seçim için alanın dışında sürükle.";
 "Drag on the preview to add an area. Each area is saved into the new copy." = "Alan eklemek için önizlemede sürükle. Her alan yeni kopyaya işlenir.";
 "Drag shortcuts" = "Sürükleme kısayolları";
@@ -910,7 +914,6 @@
 "FILE TOOLS WHEEL" = "DOSYA ARAÇLARI ÇARKI";
 "FILES" = "DOSYALAR";
 "FILES ARE PROCESSED LOCALLY ON YOUR MAC." = "DOSYALAR MAC'İNDE İŞLENİR.";
-"FILES COPIED." = "DOSYALAR KOPYALANDI.";
 "FILES COPIED. PASTE THEM WHEREVER YOU NEED." = "DOSYALAR KOPYALANDI. İSTEDİĞİN YERE YAPIŞTIR.";
 "FILES IN FLOAT" = "FLOAT’TAKİ DOSYALAR";
 "FILES MISSING" = "DOSYALAR BULUNAMIYOR";
@@ -960,6 +963,7 @@
 "FREEHAND" = "SERBEST ÇİZİM";
 "FRESH COPY" = "YENİ KOPYA";
 "FRESH THINGS, ON THEIR WAY." = "YENİ ŞEYLER YOLDA.";
+"FRESH VERSIONS, ONE CLICK AWAY." = "YENİ SÜRÜMLER BİR TIK UZAĞINDA.";
 "FRESHLY MADE" = "YENİ HAZIRLANANLAR";
 "FRESHLY MADE, PASTED, AND READY FOR ANOTHER ROUND." = "YENİ HAZIRLANAN, YAPIŞTIRILAN VE YENİDEN KULLANIMA HAZIR DOSYALARIN.";
 "Fade" = "Soluklaştırma";
@@ -977,7 +981,6 @@
 "File tools wheel" = "Dosya araçları çarkı";
 "Files" = "Dosyalar";
 "Files are processed locally on your Mac." = "Dosyalar Mac'inde işlenir.";
-"Files copied." = "Dosyalar kopyalandı.";
 "Files copied. Paste them wherever you need." = "Dosyalar kopyalandı. İstediğin yere yapıştır.";
 "Files in Float" = "Float’taki dosyalar";
 "Files missing" = "Dosyalar bulunamıyor";
@@ -1034,6 +1037,7 @@
 "Freehand" = "Serbest çizim";
 "Fresh copy" = "Yeni kopya";
 "Fresh things, on their way." = "Yeni şeyler yolda.";
+"Fresh versions, one click away." = "Yeni sürümler bir tık uzağında.";
 "Freshly made" = "Yeni hazırlananlar";
 "Freshly made, pasted, and ready for another round." = "Yeni hazırlanan, yapıştırılan ve yeniden kullanıma hazır dosyaların.";
 "GAMMA" = "GAMA";
@@ -1048,6 +1052,7 @@
 "GIF frames per second" = "GIF saniyedeki kare sayısı";
 "GIF maximum width" = "En fazla GIF genişliği";
 "GIF width" = "GIF genişliği";
+"GITHUB RELEASE CONNECTION" = "GITHUB SÜRÜM BAĞLANTISI";
 "GITHUB REPOSITORY" = "GITHUB DEPOSU";
 "GIVE IT A LITTLE BREATHING ROOM." = "BİRAZ NEFES ALACAK ALAN AÇ.";
 "GLASS" = "CAM";
@@ -1061,6 +1066,7 @@
 "Gamma must be positive; contrast and saturation cannot be negative." = "Gama pozitif olmalı; kontrast ve doygunluk negatif olamaz.";
 "General" = "Genel";
 "Get started" = "Başla";
+"GitHub release connection" = "GitHub sürüm bağlantısı";
 "GitHub repository" = "GitHub deposu";
 "Give it a little breathing room." = "Biraz nefes alacak alan aç.";
 "Glass" = "Cam";
@@ -1200,6 +1206,8 @@
 "Language" = "Dil";
 "Large · 2560 px" = "Büyük · 2560 px";
 "Large · 2560 px longest edge" = "Büyük · uzun kenar 2560 px";
+"Last checked %@" = "Son denetim: %@";
+"Last checked %lld" = "Son denetim: %lld";
 "Launch at login" = "Oturum açıldığında başlat";
 "Launch at login is unavailable for this copy." = "Bu kopyada otomatik başlatma kullanılamıyor.";
 "Layout" = "Düzen";
@@ -1236,6 +1244,7 @@
 "MAKE IT YOURS · NASHI" = "SANA GÖRE · NASHI";
 "MAKE SOME SPACE. KEEP WHAT MATTERS." = "YER AÇ. ÖNEMLİ OLANI KORU.";
 "MAKE YOUR POINT." = "ANLATMAK İSTEDİĞİNİ İŞARETLE.";
+"MANAGE…" = "YÖNET…";
 "MARKER" = "KALEM";
 "MATCH SOURCE" = "KAYNAKLA AYNI";
 "MAXIMIZE" = "BÜYÜT";
@@ -1243,6 +1252,7 @@
 "MAXIMUM VIDEO HEIGHT" = "EN FAZLA VİDEO YÜKSEKLİĞİ";
 "MAXIMUM VIDEO HEIGHT (0 = ORIGINAL)" = "EN FAZLA VİDEO YÜKSEKLİĞİ (0 = ORİJİNAL)";
 "MAXIMUM WIDTH" = "EN FAZLA GENİŞLİK";
+"MEDIA RANGE TIMELINE" = "MEDYA ARALIĞI ZAMAN ÇİZELGESİ";
 "MEDIA SETUP" = "MEDYA KURULUMU";
 "MEDIA TOOLS" = "MEDYA ARAÇLARI";
 "MEDIA TOOLS ARE ALREADY INSTALLED." = "MEDYA ARAÇLARI ZATEN KURULU.";
@@ -1277,6 +1287,7 @@
 "Make it yours · Nashi" = "Sana göre · Nashi";
 "Make some space. Keep what matters." = "Yer aç. Önemli olanı koru.";
 "Make your point." = "Anlatmak istediğini işaretle.";
+"Manage…" = "Yönet…";
 "Marker" = "Kalem";
 "Match Source" = "Kaynakla Aynı";
 "Match source" = "Kaynakla aynı";
@@ -1285,6 +1296,7 @@
 "Maximum video height" = "En fazla video yüksekliği";
 "Maximum video height (0 = original)" = "En fazla video yüksekliği (0 = orijinal)";
 "Maximum width" = "En fazla genişlik";
+"Media range timeline" = "Medya aralığı zaman çizelgesi";
 "Media setup" = "Medya kurulumu";
 "Media tools" = "Medya araçları";
 "Media tools are already installed." = "Medya araçları zaten kurulu.";
@@ -1325,6 +1337,7 @@
 "NASHI UPDATE COULD NOT FINISH" = "NASHI GÜNCELLEMESİ TAMAMLANAMADI";
 "NASHI WEB MEDIA WHEEL" = "NASHI WEB MEDYASI ÇARKI";
 "NASHI · FEATURES & SHORTCUTS" = "NASHI · ÖZELLİKLER VE KISAYOLLAR";
+"NEW FEATURES AND SMALL IMPROVEMENTS, DELIVERED RIGHT HERE." = "YENİ ÖZELLİKLER VE KÜÇÜK İYİLEŞTİRMELER, DOĞRUDAN BURADA.";
 "NEXT" = "İLERİ";
 "NEXT FRAME" = "SONRAKİ KARE";
 "NEXT PAGE" = "SONRAKİ SAYFA";
@@ -1355,10 +1368,8 @@
 "NOTHING HERE YET. PASTE SOMETHING OR MAKE YOUR FIRST FRESH COPY." = "BURADA HENÜZ BİR ŞEY YOK. BİR DOSYA YAPIŞTIR VEYA İLK KOPYANI OLUŞTUR.";
 "NUMBER" = "NUMARA";
 "NUMBER OF CLIPS" = "KLİP SAYISI";
-"Nashi %@ wheel" = "Nashi %@ çarkı";
 "Nashi %@ · Build %@" = "Nashi %@ · Derleme %@";
 "Nashi %@ · Build %lld" = "Nashi %@ · Derleme %lld";
-"Nashi %lld wheel" = "Nashi %lld çarkı";
 "Nashi %lld · Build %@" = "Nashi %lld · Derleme %@";
 "Nashi %lld · Build %lld" = "Nashi %lld · Derleme %lld";
 "Nashi Settings" = "Nashi Ayarları";
@@ -1373,6 +1384,7 @@
 "Nashi update could not finish" = "Nashi güncellemesi tamamlanamadı";
 "Nashi web media wheel" = "Nashi web medyası çarkı";
 "Nashi · Features & shortcuts" = "Nashi · Özellikler ve kısayollar";
+"New features and small improvements, delivered right here." = "Yeni özellikler ve küçük iyileştirmeler, doğrudan burada.";
 "Next" = "İleri";
 "Next frame" = "Sonraki kare";
 "Next page" = "Sonraki sayfa";
@@ -1413,6 +1425,7 @@
 "OFFICE TOOLS ARE READY." = "OFİS ARAÇLARI HAZIR.";
 "OFFICE TOOLS READY" = "OFİS ARAÇLARI HAZIR";
 "OFFICE TOOLS READY." = "OFİS ARAÇLARI HAZIR.";
+"OFFICIAL PUBLIC RELEASES · NO ACCOUNT OR TOKEN NEEDED" = "RESMİ HERKESE AÇIK SÜRÜMLER · HESAP VEYA TOKEN GEREKMEZ";
 "ON YOUR MAC" = "MAC'İNDE";
 "ON YOUR PC" = "BİLGİSAYARINDA";
 "ONE DOWNLOAD PER TOOL GROUP. NO ACCOUNT OR GITHUB TOKEN." = "HER ARAÇ GRUBU İÇİN BİR KEZ İNDİR. HESAP VEYA GITHUB TOKENI GEREKMEZ.";
@@ -1456,6 +1469,7 @@
 "Office tools are ready." = "Ofis araçları hazır.";
 "Office tools ready" = "Ofis araçları hazır";
 "Office tools ready." = "Ofis araçları hazır.";
+"Official public releases · No account or token needed" = "Resmi herkese açık sürümler · Hesap veya token gerekmez";
 "On your Mac" = "Mac'inde";
 "On your PC" = "Bilgisayarında";
 "One download per tool group. No account or GitHub token." = "Her araç grubu için bir kez indir. Hesap veya GitHub tokenı gerekmez.";
@@ -1469,8 +1483,6 @@
 "Open link" = "Bağlantıyı aç";
 "Open permission settings…" = "İzin ayarlarını aç…";
 "Open wheel" = "Çarkı aç";
-"Opened in %@." = "%@ ile açıldı.";
-"Opened in %lld." = "%lld ile açıldı.";
 "Optional. You can change this in Settings." = "İsteğe bağlı. Ayarlardan değiştirebilirsin.";
 "Organize PDF" = "PDF'yi Düzenle";
 "Original" = "Orijinal";
@@ -1500,6 +1512,7 @@
 "PASTE LINK" = "BAĞLANTI YAPIŞTIR";
 "PASTE ONE COMPLETE HTTP:// OR HTTPS:// MEDIA LINK." = "BİR HTTP:// VEYA HTTPS:// MEDYA BAĞLANTISININ TAMAMINI YAPIŞTIR.";
 "PASTE ONE COMPLETE PUBLIC MEDIA LINK." = "HERKESE AÇIK BİR MEDYA BAĞLANTISININ TAMAMINI YAPIŞTIR.";
+"PASTE YOUR GITHUB TOKEN" = "GITHUB TOKENINI YAPIŞTIR";
 "PASTED IMAGE" = "YAPIŞTIRILAN GÖRSEL";
 "PASTED TEXT" = "YAPIŞTIRILAN METİN";
 "PAUSE" = "DURAKLAT";
@@ -1553,11 +1566,13 @@
 "PREVIEW VISUALIZATION" = "GÖRSELLEŞTİRMEYİ ÖNİZLE";
 "PREVIOUS FRAME" = "ÖNCEKİ KARE";
 "PREVIOUS PAGE" = "ÖNCEKİ SAYFA";
+"PRIVATE REPOSITORY · TOKEN SAVED IN KEYCHAIN" = "GİZLİ DEPO · TOKEN ANAHTAR ZİNCİRİ'NDE KAYITLI";
 "PROCESSED PREVIEW UNAVAILABLE FOR THIS WINDOWS CODEC." = "BU WINDOWS CODEC'İ İÇİN İŞLENMİŞ ÖNİZLEME KULLANILAMIYOR.";
 "PROCESSED PREVIEW · EXPORT USES THE ORIGINAL FILE." = "İŞLENMİŞ ÖNİZLEME · DIŞA AKTARMADA ORİJİNAL DOSYA KULLANILIR.";
 "PROCESSED PREVIEW. CHOOSE ORIGINAL TO EDIT AREAS." = "İŞLENMİŞ ÖNİZLEME. ALANLARI DÜZENLEMEK İÇİN ORİJİNAL'İ SEÇ.";
 "PROCESSING…" = "İŞLENİYOR…";
 "PROTECTED MEDIA CANNOT BE DOWNLOADED." = "KORUMALI MEDYA İNDİRİLEMEZ.";
+"PUBLIC REPOSITORY · NO TOKEN NEEDED" = "HERKESE AÇIK DEPO · TOKEN GEREKMEZ";
 "PUBLIC UPDATES WORK WITHOUT A TOKEN." = "HERKESE AÇIK GÜNCELLEMELER İÇİN TOKEN GEREKMEZ.";
 "Padding" = "İç boşluk";
 "Page %@" = "Sayfa %@";
@@ -1575,6 +1590,7 @@
 "Paste link" = "Bağlantı yapıştır";
 "Paste one complete http:// or https:// media link." = "Bir http:// veya https:// medya bağlantısının tamamını yapıştır.";
 "Paste one complete public media link." = "Herkese açık bir medya bağlantısının tamamını yapıştır.";
+"Paste your GitHub token" = "GitHub tokenını yapıştır";
 "Pasted image" = "Yapıştırılan görsel";
 "Pasted text" = "Yapıştırılan metin";
 "Pause" = "Duraklat";
@@ -1619,16 +1635,14 @@
 "Preview uses the first 12 seconds. Export includes the full recording." = "Önizleme ilk 12 saniyeyi kullanır. Dışa aktarma kaydın tamamını içerir.";
 "Previous frame" = "Önceki kare";
 "Previous page" = "Önceki sayfa";
+"Private repository · Token saved in Keychain" = "Gizli depo · Token Anahtar Zinciri'nde kayıtlı";
 "Processed preview unavailable for this Windows codec." = "Bu Windows codec'i için işlenmiş önizleme kullanılamıyor.";
 "Processed preview · export uses the original file." = "İşlenmiş önizleme · dışa aktarmada orijinal dosya kullanılır.";
 "Processed preview. Choose Original to edit areas." = "İşlenmiş önizleme. Alanları düzenlemek için Orijinal'i seç.";
 "Processing…" = "İşleniyor…";
 "Protected media cannot be downloaded." = "Korumalı medya indirilemez.";
+"Public repository · No token needed" = "Herkese açık depo · Token gerekmez";
 "Public updates work without a token." = "Herkese açık güncellemeler için token gerekmez.";
-"QR CODE COPIED." = "QR KODU KOPYALANDI.";
-"QR CODES COPIED." = "QR KODLARI KOPYALANDI.";
-"QR code copied." = "QR kodu kopyalandı.";
-"QR codes copied." = "QR kodları kopyalandı.";
 "QUALITY" = "KALİTE";
 "QUALITY (%)" = "KALİTE (%)";
 "QUICK LOOK" = "HIZLI BAKIŞ";
@@ -1644,9 +1658,12 @@
 "READ QR CODES · NASHI" = "QR KODLARINI OKU · NASHI";
 "READING WAVEFORM…" = "DALGA BİÇİMİ OKUNUYOR…";
 "READY" = "HAZIR";
+"READY AFTER YOUR CURRENT TASK" = "MEVCUT İŞLEM BİTİNCE HAZIR";
+"READY FOR A FRESH VERSION?" = "YENİ SÜRÜME HAZIR MISIN?";
 "READY FOR ANOTHER ROUND." = "YENİDEN KULLANIMA HAZIR.";
 "READY ON YOUR MAC" = "MAC'İNDE HAZIR";
 "READY ON YOUR PC" = "BİLGİSAYARINDA HAZIR";
+"READY TO CHECK FOR UPDATES" = "GÜNCELLEMELERİ DENETLEMEYE HAZIR";
 "READY TO MAKE A FRESH COPY. NO EXTRA SETTINGS NEEDED." = "YENİ KOPYA OLUŞTURMAYA HAZIR. EK AYAR GEREKMEZ.";
 "READY WHEN YOU ARE" = "SIRA SENDE";
 "READY WHEN YOU LOG IN" = "OTURUM AÇTIĞINDA HAZIR";
@@ -1706,9 +1723,12 @@
 "Read QR codes" = "QR kodlarını oku";
 "Reading waveform…" = "Dalga biçimi okunuyor…";
 "Ready" = "Hazır";
+"Ready after your current task" = "Mevcut işlem bitince hazır";
+"Ready for a fresh version?" = "Yeni sürüme hazır mısın?";
 "Ready for another round." = "Yeniden kullanıma hazır.";
 "Ready on your Mac" = "Mac'inde hazır";
 "Ready on your PC" = "Bilgisayarında hazır";
+"Ready to check for updates" = "Güncellemeleri denetlemeye hazır";
 "Ready to make a fresh copy. No extra settings needed." = "Yeni kopya oluşturmaya hazır. Ek ayar gerekmez.";
 "Ready when you log in" = "Oturum açtığında hazır";
 "Ready." = "Hazır.";
@@ -1800,11 +1820,11 @@
 "SAVE WITH BACKGROUND" = "ARKA PLANLA KAYDET";
 "SAVED 1 NEW FILE. ORIGINALS KEPT." = "1 YENİ DOSYA KAYDEDİLDİ. ORİJİNAL KORUNDU.";
 "SAVED IN POST ORDER IN A NEW INSTAGRAM FOLDER." = "GÖNDERİ SIRASIYLA YENİ BİR INSTAGRAM KLASÖRÜNE KAYDEDİLİR.";
+"SAVED TOKEN · LEAVE BLANK TO KEEP IT" = "KAYITLI TOKEN · KORUMAK İÇİN BOŞ BIRAK";
 "SAVING COLLAGE…" = "KOLAJ KAYDEDİLİYOR…";
 "SAVING DOCUMENT…" = "BELGE KAYDEDİLİYOR…";
 "SAVING IMAGES…" = "GÖRSELLER KAYDEDİLİYOR…";
 "SCAN AGAIN" = "YENİDEN TARA";
-"SCAN COMPLETE." = "TARAMA TAMAMLANDI.";
 "SEARCH FORMATS" = "BİÇİMLERDE ARA";
 "SEARCH METADATA" = "META VERİLERDE ARA";
 "SECONDS" = "SANİYE";
@@ -1846,7 +1866,6 @@
 "SHADOW RADIUS" = "GÖLGE YARIÇAPI";
 "SHADOWS" = "GÖLGELER";
 "SHARE" = "PAYLAŞ";
-"SHARED WITH AIRDROP." = "AİRDROP İLE PAYLAŞILDI.";
 "SHARE…" = "PAYLAŞ…";
 "SHARPEN" = "KESKİNLEŞTİRME";
 "SHARPNESS" = "KESKİNLİK";
@@ -1949,11 +1968,11 @@
 "Saved in post order in a new Instagram folder." = "Gönderi sırasıyla yeni bir Instagram klasörüne kaydedilir.";
 "Saved size: %@" = "Kaydedilen boyut: %@";
 "Saved size: %lld" = "Kaydedilen boyut: %lld";
+"Saved token · Leave blank to keep it" = "Kayıtlı token · Korumak için boş bırak";
 "Saving collage…" = "Kolaj kaydediliyor…";
 "Saving document…" = "Belge kaydediliyor…";
 "Saving images…" = "Görseller kaydediliyor…";
 "Scan again" = "Yeniden tara";
-"Scan complete." = "Tarama tamamlandı.";
 "Search formats" = "Biçimlerde ara";
 "Search metadata" = "Meta verilerde ara";
 "Seconds" = "Saniye";
@@ -1997,7 +2016,6 @@
 "Shadow radius" = "Gölge yarıçapı";
 "Shadows" = "Gölgeler";
 "Share" = "Paylaş";
-"Shared with AirDrop." = "AirDrop ile paylaşıldı.";
 "Share…" = "Paylaş…";
 "Sharpen" = "Keskinleştirme";
 "Sharpness" = "Keskinlik";
@@ -2090,6 +2108,7 @@
 "THE SAME CONVERSION AND TOOL CATALOG AS MACOS." = "MACOS İLE AYNI DÖNÜŞTÜRME VE ARAÇ SEÇENEKLERİ.";
 "THE SIGNED PACKAGE VERSION DOES NOT MATCH THIS UPDATE." = "İMZALI PAKETİN SÜRÜMÜ BU GÜNCELLEMEYLE EŞLEŞMİYOR.";
 "THE UPDATE DOES NOT CONTAIN NASHI." = "GÜNCELLEME NASHI'Yİ İÇERMİYOR.";
+"THE UPDATE NEEDS ANOTHER TRY" = "GÜNCELLEMEYİ YENİDEN DENEMEK GEREKİYOR";
 "THE UPDATE SIGNATURE IS INVALID. YOUR EXISTING APP WAS KEPT." = "GÜNCELLEME İMZASI GEÇERSİZ. MEVCUT UYGULAMAN KORUNDU.";
 "THESE FILES HAVE MOVED OR WERE DELETED." = "BU DOSYALAR TAŞINMIŞ VEYA SİLİNMİŞ.";
 "THIS CROP APPLIES TO EVERY SELECTED IMAGE AND MUST FIT INSIDE EACH ONE." = "BU KIRPMA, SEÇİLEN TÜM GÖRSELLERE UYGULANIR VE HER GÖRSELİN SINIRLARINA SIĞMALIDIR.";
@@ -2136,6 +2155,7 @@
 "TRIM" = "KIRP";
 "TRIM AUDIO" = "SESİ KIRP";
 "TRIM AUDIO · NASHI" = "SESİ KIRP · NASHI";
+"TRIM TIMELINE" = "KIRPMA ZAMAN ÇİZELGESİ";
 "TRIM VIDEO" = "VİDEOYU KIRP";
 "TRIM VIDEO · NASHI" = "VİDEOYU KIRP · NASHI";
 "TRUE PEAK DB" = "GERÇEK TEPE DÜZEYİ DB";
@@ -2180,6 +2200,7 @@
 "The same conversion and tool catalog as macOS." = "macOS ile aynı dönüştürme ve araç seçenekleri.";
 "The signed package version does not match this update." = "İmzalı paketin sürümü bu güncellemeyle eşleşmiyor.";
 "The update does not contain Nashi." = "Güncelleme Nashi'yi içermiyor.";
+"The update needs another try" = "Güncellemeyi yeniden denemek gerekiyor";
 "The update signature is invalid. Your existing app was kept." = "Güncelleme imzası geçersiz. Mevcut uygulaman korundu.";
 "These files have moved or were deleted." = "Bu dosyalar taşınmış veya silinmiş.";
 "This PDF contains no pages." = "Bu PDF'de sayfa yok.";
@@ -2230,6 +2251,7 @@
 "Trim Audio · Nashi" = "Sesi Kırp · Nashi";
 "Trim Video" = "Videoyu Kırp";
 "Trim Video · Nashi" = "Videoyu Kırp · Nashi";
+"Trim timeline" = "Kırpma zaman çizelgesi";
 "True peak dB" = "Gerçek tepe düzeyi dB";
 "True peak limit" = "Tepe düzeyi sınırı";
 "Try a clearer image or another PDF." = "Daha net bir görsel veya başka bir PDF dene.";
@@ -2247,6 +2269,7 @@
 "UP TO 1080P" = "EN FAZLA 1080P";
 "UP TO 720P" = "EN FAZLA 720P";
 "UPDATE CANCELLED." = "GÜNCELLEME İPTAL EDİLDİ.";
+"UPDATE CONNECTION" = "GÜNCELLEME BAĞLANTISI";
 "UPDATE CONNECTION…" = "GÜNCELLEME BAĞLANTISI…";
 "UPDATE MANIFEST IS TOO LARGE." = "GÜNCELLEME BİLGİSİ ÇOK BÜYÜK.";
 "UPDATE READY" = "GÜNCELLEME HAZIR";
@@ -2278,6 +2301,7 @@
 "Up to 720p" = "En fazla 720p";
 "Update Connection…" = "Güncelleme Bağlantısı…";
 "Update cancelled." = "Güncelleme iptal edildi.";
+"Update connection" = "Güncelleme bağlantısı";
 "Update manifest is too large." = "Güncelleme bilgisi çok büyük.";
 "Update ready" = "Güncelleme hazır";
 "Update size mismatch." = "Güncelleme boyutu eşleşmiyor.";
@@ -2309,13 +2333,16 @@
 "VIDEO SIZE" = "VİDEO BOYUTU";
 "VIDEO SNAPSHOTS" = "VİDEODAN KARE AL";
 "VIDEO, AUDIO, OR AN IMAGE. STRAIGHT INTO YOUR TOOLS." = "VİDEO, SES VEYA GÖRSEL. DOĞRUDAN ARAÇLARINA AKTAR.";
+"VIEW RELEASES" = "SÜRÜMLERİ GÖR";
 "VIGNETTE" = "VİNYET";
 "VISUALIZATION" = "GÖRSELLEŞTİRME";
 "Value" = "Değer";
 "Verifying update signature…" = "Güncelleme imzası doğrulanıyor…";
 "Version %@" = "Sürüm %@";
+"Version %@ is available" = "%@ sürümü hazır";
 "Version %@ · Install when you’re ready." = "Sürüm %@ · Hazır olduğunda kur.";
 "Version %lld" = "Sürüm %lld";
+"Version %lld is available" = "%lld sürümü hazır";
 "Version %lld · Install when you’re ready." = "Sürüm %lld · Hazır olduğunda kur.";
 "Vibrance" = "Canlılık";
 "Video" = "Video";
@@ -2325,6 +2352,7 @@
 "Video quality" = "Video kalitesi";
 "Video size" = "Video boyutu";
 "Video, audio, or an image. Straight into your tools." = "Video, ses veya görsel. Doğrudan araçlarına aktar.";
+"View releases" = "Sürümleri gör";
 "Vignette" = "Vinyet";
 "Visualization" = "Görselleştirme";
 "WAIT FOR THE PROCESSED PREVIEW TO FINISH BEFORE RESETTING." = "SIFIRLAMADAN ÖNCE İŞLENMİŞ ÖNİZLEMENİN BİTMESİNİ BEKLE.";
