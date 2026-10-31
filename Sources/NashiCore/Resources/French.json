@@ -695,6 +695,8 @@
   "Canvas width": "Largeur du canevas",
   "Canvas height": "Hauteur du canevas",
   "Spacing": "Espacement",
+  "Outer padding": "Marge extérieure",
+  "Columns: {0}": "Colonnes : {0}",
   "Visualization": "Visualisation",
   "Choose visualization image…": "Choisir l’image de visualisation…",
   "Replace selected audio with": "Remplacer l’audio sélectionné par",

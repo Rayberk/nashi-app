@@ -596,6 +596,8 @@
 "Color" = "Color";
 "Column" = "Column";
 "Columns" = "Columns";
+"Columns: %@" = "Columns: %@";
+"Columns: %lld" = "Columns: %lld";
 "Command for tools" = "Command for tools";
 "Compatibility" = "Compatibility";
 "Compress" = "Compress";
@@ -1417,6 +1419,7 @@
 "ORIGINAL STAYS SAFE" = "ORIGINAL STAYS SAFE";
 "ORIGINALS REMAIN SAFE. CHOOSE WHERE NEW COPIES SHOULD LAND." = "ORIGINALS REMAIN SAFE. CHOOSE WHERE NEW COPIES SHOULD LAND.";
 "OTHER" = "OTHER";
+"OUTER PADDING" = "OUTER PADDING";
 "OUTPUT" = "OUTPUT";
 "OUTPUT FORMAT" = "OUTPUT FORMAT";
 "OUTPUT-ONLY FORMAT." = "OUTPUT-ONLY FORMAT.";
@@ -1461,6 +1464,7 @@
 "Original stays safe" = "Original stays safe";
 "Originals remain safe. Choose where new copies should land." = "Originals remain safe. Choose where new copies should land.";
 "Other" = "Other";
+"Outer padding" = "Outer padding";
 "Output" = "Output";
 "Output format" = "Output format";
 "Output-only format." = "Output-only format.";

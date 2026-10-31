@@ -695,6 +695,8 @@
   "Canvas width": "Tuval genişliği",
   "Canvas height": "Tuval yüksekliği",
   "Spacing": "Boşluk",
+  "Outer padding": "Dış boşluk",
+  "Columns: {0}": "Sütun sayısı: {0}",
   "Visualization": "Görselleştirme",
   "Choose visualization image…": "Görselleştirme görseli seç…",
   "Replace selected audio with": "Seçili sesi şununla değiştir",
