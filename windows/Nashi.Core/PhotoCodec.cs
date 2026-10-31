@@ -46,7 +46,10 @@ public static class PhotoCodec
     public static void EncodePng(byte[] pixels,string output,string format,int quality=85,string? encoder=null,CancellationToken token=default)
     {
         using var image=new MagickImage(pixels,new MagickReadSettings{Format=MagickFormat.Png});image.Strip();image.Quality=(uint)Math.Clamp(quality,1,100);
-        if(format=="heic"){if(encoder is null)throw new InvalidOperationException("Set up media tools once to enable HEIC encoding on Windows.");var width=(int)image.Width;var height=(int)image.Height;Task.Run(()=>HeifCodec.EncodeAsync(encoder,pixels,output,width,height,quality,token),token).GetAwaiter().GetResult();return;}image.Write(output,Format(format));
+        if(format=="heic"){if(encoder is null)throw new InvalidOperationException("Set up media tools once to enable HEIC encoding on Windows.");var width=(int)image.Width;var height=(int)image.Height;
+            // FFmpeg's HEVC still drops alpha; like macOS, keep it as a separate plane. Opaque images encode as before.
+            byte[]? alpha=null;if(!image.IsOpaque){using var mask=image.Separate(Channels.Alpha).Single();alpha=mask.ToByteArray(MagickFormat.Png);}
+            Task.Run(()=>HeifCodec.EncodeAsync(encoder,pixels,output,width,height,quality,token,alpha),token).GetAwaiter().GetResult();return;}image.Write(output,Format(format));
     }
     /// Encodes straight (non-premultiplied) BGRA32 pixels without an intermediate PNG.
     public static void EncodePixels(byte[] bgra,int width,int height,string output,string format,int quality=85,string? encoder=null,CancellationToken token=default)
