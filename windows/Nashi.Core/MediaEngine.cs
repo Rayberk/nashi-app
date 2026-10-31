@@ -360,7 +360,8 @@ public sealed class MediaEngine(string ffmpeg, string ffprobe)
         for(var index=0;index<inputs.Count;index++)
         {
             var args=new List<string>{"-i",Path.GetFullPath(inputs[index])};if(audio&&!infos[index].HasAudio)args.AddRange(["-f","lavfi","-i","anullsrc=r=48000:cl=stereo"]);
-            args.AddRange(["-map","0:v:0","-vf",$"scale={width}:{height}:force_original_aspect_ratio=decrease,pad={width}:{height}:(ow-iw)/2:(oh-ih)/2,setsar=1,fps=30,setpts=PTS-STARTPTS"]);
+            // reset_sar fits the displayed shape, so clips with non-square pixels (DV, DVD, HDV) keep it after setsar=1 (as on macOS).
+            args.AddRange(["-map","0:v:0","-vf",$"scale={width}:{height}:force_original_aspect_ratio=decrease:reset_sar=1,pad={width}:{height}:(ow-iw)/2:(oh-ih)/2,setsar=1,fps=30,setpts=PTS-STARTPTS"]);
             if(audio)args.AddRange(["-map",infos[index].HasAudio?"0:a:0":"1:a:0","-ac","2","-ar","48000","-af","asetpts=PTS-STARTPTS"]);else args.Add("-an");
             args.AddRange(["-t",Number(infos[index].Duration),..VideoEncoding("mp4",options)]);var file=Path.Combine(work,$"clip-{index}.mp4");
             await RenderAsync(args,file,infos[index].Duration,p=>progress?.Report(p with{Fraction=(index+(p.Fraction??0))/inputs.Count*.95,Label=$"Joining clip {index+1} of {inputs.Count}"}),token);clips.Add(file);
