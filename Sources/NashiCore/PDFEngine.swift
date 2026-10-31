@@ -104,7 +104,9 @@ public enum PDFEngine {
                 if let bytes=options.targetBytes,bytes<=0 { throw NashiError.invalidInput("Target file size must be positive.") }
                 if let percent=options.percentage,(!percent.isFinite || percent<=0 || percent>=100) { throw NashiError.invalidInput("Percentage reduction must be between 0 and 100.") }
                 let target=options.targetBytes ?? options.percentage.map{Int64(Double(original)*(1-$0/100))}
-                if !(pdf.string ?? "").trimmingCharacters(in:.whitespacesAndNewlines).isEmpty || requiresPreservingWrite(pdf) {
+                // PDFKit's complete write keeps a password-protected PDF encrypted;
+                // the rasterized copy below would be written without a password.
+                if !(pdf.string ?? "").trimmingCharacters(in:.whitespacesAndNewlines).isEmpty || pdf.isEncrypted || requiresPreservingWrite(pdf) {
                     try token.check()
                     var settings:[PDFDocumentWriteOption:Any]=[:]
                     if #available(macOS 13.4,*) { settings=[.saveImagesAsJPEGOption:true,.optimizeImagesForScreenOption:true] }
