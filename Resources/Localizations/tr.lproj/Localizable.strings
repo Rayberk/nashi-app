@@ -105,6 +105,8 @@
 "A LITTLE PEAR. A LOT OF POSSIBILITY." = "KÜÇÜK BİR ARMUT. BİR SÜRÜ OLASILIK.";
 "A NEW FORM.\nIN A TAP." = "TEK DOKUNUŞ.\nYENİ BİR BİÇİM.";
 "A PAGE RANGE IS OUTSIDE THE PDF." = "BİR SAYFA ARALIĞI PDF'NİN DIŞINDA.";
+"A PDF PAGE COULD NOT BE READ." = "BİR PDF SAYFASI OKUNAMADI.";
+"A PDF page could not be read." = "Bir PDF sayfası okunamadı.";
 "A PERFECT LANDING SPOT" = "BURAYA BIRAKABİLİRSİN";
 "A PHOTO IS UNAVAILABLE. TRY A FRESH PUBLIC POST LINK." = "BİR FOTOĞRAFA ULAŞILAMIYOR. GÖNDERİNİN GÜNCEL, HERKESE AÇIK BAĞLANTISINI DENE.";
 "A PLACE FOR FRESH FILES." = "YENİ DOSYALAR İÇİN BİR YER.";
@@ -2164,6 +2166,7 @@
 "THE IMAGE DOWNLOAD ENDED EARLY." = "GÖRSEL İNDİRMESİ ERKEN SONA ERDİ.";
 "THE IMAGE ORDER MUST INCLUDE EVERY IMAGE ONCE." = "GÖRSEL SIRASINDA HER GÖRSEL BİR KEZ YER ALMALI.";
 "THE MEDIA SERVER REDIRECTED TO AN INSECURE URL." = "MEDYA SUNUCUSU GÜVENLİ OLMAYAN BİR ADRESE YÖNLENDİRDİ.";
+"THE PDF PAGE IS TOO LARGE TO RENDER AT THIS RESOLUTION." = "PDF SAYFASI BU ÇÖZÜNÜRLÜKTE İŞLENEMEYECEK KADAR BÜYÜK.";
 "THE PROCESSING TOOL COULD NOT START." = "İŞLEME ARACI BAŞLATILAMADI.";
 "THE REQUESTED IMAGE SIZE COULD NOT BE REACHED. CHOOSE A LARGER TARGET." = "İSTENEN GÖRSEL BOYUTUNA İNİLEMEDİ. DAHA BÜYÜK BİR HEDEF SEÇ.";
 "THE REQUESTED PDF SIZE COULD NOT BE REACHED. CHOOSE A LARGER TARGET." = "İSTENEN PDF BOYUTUNA İNİLEMEDİ. DAHA BÜYÜK BİR HEDEF SEÇ.";
@@ -2241,6 +2244,7 @@
 "Text size" = "Metin boyutu";
 "Texture" = "Doku";
 "That PDF size cannot be reached while keeping selectable text, links and annotations. Choose a larger target." = "Seçilebilir metin, bağlantılar ve notlar korunarak bu PDF boyutuna inilemiyor. Daha büyük bir hedef seç.";
+"The PDF page is too large to render at this resolution." = "PDF sayfası bu çözünürlükte işlenemeyecek kadar büyük.";
 "The archive contains an unsafe path." = "Arşivde güvenli olmayan bir yol var.";
 "The archive entry leaves its destination." = "Arşivdeki bir öğe hedef klasörün dışına çıkıyor.";
 "The clipping exceeds 200 MB." = "Metin kırpıntısı 200 MB'ı aşıyor.";

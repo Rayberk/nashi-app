@@ -105,6 +105,8 @@
 "A LITTLE PEAR. A LOT OF POSSIBILITY." = "A LITTLE PEAR. A LOT OF POSSIBILITY.";
 "A NEW FORM.\nIN A TAP." = "A NEW FORM.\nIN A TAP.";
 "A PAGE RANGE IS OUTSIDE THE PDF." = "A PAGE RANGE IS OUTSIDE THE PDF.";
+"A PDF PAGE COULD NOT BE READ." = "A PDF PAGE COULD NOT BE READ.";
+"A PDF page could not be read." = "A PDF page could not be read.";
 "A PERFECT LANDING SPOT" = "A PERFECT LANDING SPOT";
 "A PHOTO IS UNAVAILABLE. TRY A FRESH PUBLIC POST LINK." = "A PHOTO IS UNAVAILABLE. TRY A FRESH PUBLIC POST LINK.";
 "A PLACE FOR FRESH FILES." = "A PLACE FOR FRESH FILES.";
@@ -2164,6 +2166,7 @@
 "THE IMAGE DOWNLOAD ENDED EARLY." = "THE IMAGE DOWNLOAD ENDED EARLY.";
 "THE IMAGE ORDER MUST INCLUDE EVERY IMAGE ONCE." = "THE IMAGE ORDER MUST INCLUDE EVERY IMAGE ONCE.";
 "THE MEDIA SERVER REDIRECTED TO AN INSECURE URL." = "THE MEDIA SERVER REDIRECTED TO AN INSECURE URL.";
+"THE PDF PAGE IS TOO LARGE TO RENDER AT THIS RESOLUTION." = "THE PDF PAGE IS TOO LARGE TO RENDER AT THIS RESOLUTION.";
 "THE PROCESSING TOOL COULD NOT START." = "THE PROCESSING TOOL COULD NOT START.";
 "THE REQUESTED IMAGE SIZE COULD NOT BE REACHED. CHOOSE A LARGER TARGET." = "THE REQUESTED IMAGE SIZE COULD NOT BE REACHED. CHOOSE A LARGER TARGET.";
 "THE REQUESTED PDF SIZE COULD NOT BE REACHED. CHOOSE A LARGER TARGET." = "THE REQUESTED PDF SIZE COULD NOT BE REACHED. CHOOSE A LARGER TARGET.";
@@ -2241,6 +2244,7 @@
 "Text size" = "Text size";
 "Texture" = "Texture";
 "That PDF size cannot be reached while keeping selectable text, links and annotations. Choose a larger target." = "That PDF size cannot be reached while keeping selectable text, links and annotations. Choose a larger target.";
+"The PDF page is too large to render at this resolution." = "The PDF page is too large to render at this resolution.";
 "The archive contains an unsafe path." = "The archive contains an unsafe path.";
 "The archive entry leaves its destination." = "The archive entry leaves its destination.";
 "The clipping exceeds 200 MB." = "The clipping exceeds 200 MB.";
