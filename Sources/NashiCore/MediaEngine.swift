@@ -442,6 +442,10 @@ public enum MediaEngine {
             if mode == "solid" {
                 graph.append("[\(previous)]drawbox=x=\(rect.x):y=\(rect.y):w=\(rect.w):h=\(rect.h):color=\(try ffmpegColor(options.backgroundColor,opaque:true)):t=fill:enable='\(enable)'[\(next)]")
             } else {
+                // overlay rounds x/y down to the 4:2:0 chroma grid, which would shift an odd-origin
+                // patch and leave the last column/row visible. Start the patch on even pixels.
+                let x = rect.x / 2 * 2, y = rect.y / 2 * 2
+                let rect = (x: x, y: y, w: rect.w + rect.x - x, h: rect.h + rect.y - y)
                 let effect = mode == "blur" ? "gblur=sigma=20:steps=2" : "scale=\(max(1, rect.w / 16)):\(max(1, rect.h / 16)):flags=neighbor,scale=\(rect.w):\(rect.h):flags=neighbor"
                 // overlay alpha-blends its second input. Drop the patch's alpha so it replaces
                 // the area: otherwise transparent pixels in videos with alpha show the original.
