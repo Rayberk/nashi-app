@@ -379,6 +379,7 @@
 "CHOOSE A PLAIN OUTPUT FILENAME." = "CHOISISSEZ UN NOM DE FICHIER DE SORTIE SIMPLE.";
 "CHOOSE A POSITIVE SIZE OR A REDUCTION BELOW 100%. ZERO USES AUTOMATIC COMPRESSION." = "CHOISISSEZ UNE TAILLE POSITIVE OU UNE RÉDUCTION INFÉRIEURE À 100 %. ZÉRO UTILISE LA COMPRESSION AUTOMATIQUE.";
 "CHOOSE A POSITIVE TARGET SIZE OR A REDUCTION BETWEEN 0 AND 100%." = "CHOISISSEZ UNE TAILLE CIBLE POSITIVE OU UNE RÉDUCTION COMPRISE ENTRE 0 ET 100 %.";
+"CHOOSE A READABLE LOCAL MEDIA FILE." = "CHOISISSEZ UN FICHIER MÉDIA LOCAL LISIBLE.";
 "CHOOSE A RECTANGLE INSIDE THE VIDEO." = "CHOISISSEZ UN RECTANGLE À L’INTÉRIEUR DE LA VIDÉO.";
 "CHOOSE A SUPPORTED MAXIMUM VIDEO HEIGHT." = "CHOISISSEZ UNE HAUTEUR VIDÉO MAXIMALE PRISE EN CHARGE.";
 "CHOOSE A TARGET OF AT LEAST 2 KB." = "CHOISISSEZ UNE CIBLE D’AU MOINS 2 KO.";
@@ -492,6 +493,8 @@
 "CORNERS" = "COINS";
 "COULD NOT COPY THE SELECTED FILE PATHS." = "IMPOSSIBLE DE COPIER LES CHEMINS DES FICHIERS SÉLECTIONNÉS.";
 "COULD NOT COPY THE SELECTED FILES." = "IMPOSSIBLE DE COPIER LES FICHIERS SÉLECTIONNÉS.";
+"COULD NOT ORIENT IMAGE." = "IMPOSSIBLE D’ORIENTER L’IMAGE.";
+"COULD NOT RENDER THE REDACTION." = "IMPOSSIBLE D’APPLIQUER LE CAVIARDAGE.";
 "COULDN’T CHECK FOR UPDATES" = "IMPOSSIBLE DE RECHERCHER LES MISES À JOUR";
 "COULDN’T FINISH" = "IMPOSSIBLE DE TERMINER";
 "COULDN’T OPEN THIS TOOL" = "IMPOSSIBLE D’OUVRIR CET OUTIL";
@@ -567,6 +570,7 @@
 "Choose a plain output filename." = "Choisissez un nom de fichier de sortie simple.";
 "Choose a positive size or a reduction below 100%. Zero uses automatic compression." = "Choisissez une taille positive ou une réduction inférieure à 100 %. Zéro utilise la compression automatique.";
 "Choose a positive target size or a reduction between 0 and 100%." = "Choisissez une taille cible positive ou une réduction comprise entre 0 et 100 %.";
+"Choose a readable local media file." = "Choisissez un fichier média local lisible.";
 "Choose a rectangle inside the video." = "Choisissez un rectangle à l’intérieur de la vidéo.";
 "Choose a supported maximum video height." = "Choisissez une hauteur vidéo maximale prise en charge.";
 "Choose a target of at least 2 KB." = "Choisissez une cible d’au moins 2 Ko.";
@@ -692,6 +696,8 @@
 "Could not copy the selected files." = "Impossible de copier les fichiers sélectionnés.";
 "Could not open %@." = "Impossible d’ouvrir %@.";
 "Could not open %lld." = "Impossible d’ouvrir %lld.";
+"Could not orient image." = "Impossible d’orienter l’image.";
+"Could not render the redaction." = "Impossible d’appliquer le caviardage.";
 "Couldn’t check for updates" = "Impossible de rechercher les mises à jour";
 "Couldn’t finish" = "Impossible de terminer";
 "Couldn’t open this tool" = "Impossible d’ouvrir cet outil";
@@ -2168,6 +2174,7 @@
 "THE MEDIA SERVER REDIRECTED TO AN INSECURE URL." = "LE SERVEUR MULTIMÉDIA A REDIRIGÉ VERS UNE URL NON SÉCURISÉE.";
 "THE PDF PAGE IS TOO LARGE TO RENDER AT THIS RESOLUTION." = "LA PAGE PDF EST TROP GRANDE POUR ÊTRE RENDUE À CETTE RÉSOLUTION.";
 "THE PROCESSING TOOL COULD NOT START." = "L’OUTIL DE TRAITEMENT N’A PAS PU DÉMARRER.";
+"THE REQUESTED FILE SIZE COULD NOT BE REACHED. CHOOSE A LARGER TARGET." = "LA TAILLE DE FICHIER DEMANDÉE N’A PAS PU ÊTRE ATTEINTE. CHOISISSEZ UNE CIBLE PLUS GRANDE.";
 "THE REQUESTED IMAGE SIZE COULD NOT BE REACHED. CHOOSE A LARGER TARGET." = "LA TAILLE D’IMAGE DEMANDÉE N’A PAS PU ÊTRE ATTEINTE. CHOISISSEZ UNE CIBLE PLUS GRANDE.";
 "THE REQUESTED PDF SIZE COULD NOT BE REACHED. CHOOSE A LARGER TARGET." = "LA TAILLE DE PDF DEMANDÉE N’A PAS PU ÊTRE ATTEINTE. CHOISISSEZ UNE CIBLE PLUS GRANDE.";
 "THE SAME CONVERSION AND TOOL CATALOG AS MACOS." = "LE MÊME CATALOGUE DE CONVERSIONS ET D’OUTILS QUE SUR MACOS.";
@@ -2260,8 +2267,11 @@
 "The image download ended early." = "Le téléchargement de l’image s’est terminé prématurément.";
 "The image order must include every image once." = "L’ordre des images doit inclure chaque image une fois.";
 "The media server redirected to an insecure URL." = "Le serveur multimédia a redirigé vers une URL non sécurisée.";
+"The metadata field %@ could not be removed." = "Le champ de métadonnées %@ n’a pas pu être supprimé.";
+"The metadata field %lld could not be removed." = "Le champ de métadonnées %lld n’a pas pu être supprimé.";
 "The processing tool could not start." = "L’outil de traitement n’a pas pu démarrer.";
 "The requested PDF size could not be reached. Choose a larger target." = "La taille de PDF demandée n’a pas pu être atteinte. Choisissez une cible plus grande.";
+"The requested file size could not be reached. Choose a larger target." = "La taille de fichier demandée n’a pas pu être atteinte. Choisissez une cible plus grande.";
 "The requested image size could not be reached. Choose a larger target." = "La taille d’image demandée n’a pas pu être atteinte. Choisissez une cible plus grande.";
 "The same conversion and tool catalog as macOS." = "Le même catalogue de conversions et d’outils que sur macOS.";
 "The signed package version does not match this update." = "La version du paquet signé ne correspond pas à cette mise à jour.";
