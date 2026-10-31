@@ -1190,6 +1190,10 @@
 "Invalid YouTube video ID." = "Identifiant de vidéo YouTube invalide.";
 "Invalid metadata field." = "Champ de métadonnées invalide.";
 "Invalid metadata stream/chapter." = "Flux ou chapitre de métadonnées invalide.";
+"Invalid page range: %@. Use numbers between 1 and %@." = "Plage de pages invalide : %@. Utilisez des nombres entre 1 et %@.";
+"Invalid page range: %@. Use numbers between 1 and %lld." = "Plage de pages invalide : %@. Utilisez des nombres entre 1 et %lld.";
+"Invalid page range: %lld. Use numbers between 1 and %@." = "Plage de pages invalide : %lld. Utilisez des nombres entre 1 et %@.";
+"Invalid page range: %lld. Use numbers between 1 and %lld." = "Plage de pages invalide : %lld. Utilisez des nombres entre 1 et %lld.";
 "Invalid public update location or size." = "Emplacement ou taille de mise à jour publique invalide.";
 "Invalid subtitle timestamp." = "Horodatage de sous-titre invalide.";
 "Invalid update manifest." = "Manifeste de mise à jour invalide.";
@@ -1580,6 +1584,7 @@
 "PDF LAYOUT" = "MISE EN PAGE DU PDF";
 "PDF OUTPUT LAYOUT" = "MISE EN PAGE DE SORTIE PDF";
 "PDF PAGE EXCEEDS 100 MP." = "LA PAGE PDF DÉPASSE 100 MPX.";
+"PDF PAGE IS TOO LARGE TO RENDER AT THIS DPI." = "LA PAGE PDF EST TROP GRANDE POUR ÊTRE RENDUE À CE DPI.";
 "PDF PASSWORD (IF NEEDED)" = "MOT DE PASSE DU PDF (SI NÉCESSAIRE)";
 "PDF PREVIEW BACKGROUND COULD NOT BE PREPARED." = "IMPOSSIBLE DE PRÉPARER L’ARRIÈRE-PLAN DE L’APERÇU PDF.";
 "PDF PREVIEW BITMAP COULD NOT BE ALLOCATED." = "IMPOSSIBLE D’ALLOUER LE BITMAP DE L’APERÇU PDF.";
@@ -1587,6 +1592,7 @@
 "PDF layout" = "Mise en page du PDF";
 "PDF output layout" = "Mise en page de sortie PDF";
 "PDF page exceeds 100 MP." = "La page PDF dépasse 100 Mpx.";
+"PDF page is too large to render at this DPI." = "La page PDF est trop grande pour être rendue à ce DPI.";
 "PDF password (if needed)" = "Mot de passe du PDF (si nécessaire)";
 "PDF preview background could not be prepared." = "Impossible de préparer l’arrière-plan de l’aperçu PDF.";
 "PDF preview bitmap could not be allocated." = "Impossible d’allouer le bitmap de l’aperçu PDF.";
@@ -1902,6 +1908,7 @@
 "SELECT A CLIP AND PRESS DELETE TO REMOVE IT FROM THE RESULT." = "SÉLECTIONNEZ UN CLIP ET APPUYEZ SUR SUPPRIMER POUR LE RETIRER DU RÉSULTAT.";
 "SELECT ALL" = "TOUT SÉLECTIONNER";
 "SELECT AT LEAST ONE AVAILABLE PHOTO." = "SÉLECTIONNEZ AU MOINS UNE PHOTO DISPONIBLE.";
+"SELECT AT LEAST ONE PAGE." = "SÉLECTIONNEZ AU MOINS UNE PAGE.";
 "SELECT ONE CROP RECTANGLE." = "SÉLECTIONNEZ UN SEUL RECTANGLE DE RECADRAGE.";
 "SELECT ONLY THIS REPOSITORY AND GIVE CONTENTS READ ACCESS. THE TOKEN STAYS IN THIS MAC’S KEYCHAIN." = "SÉLECTIONNEZ UNIQUEMENT CE DÉPÔT ET ACCORDEZ L’ACCÈS EN LECTURE À CONTENTS. LE JETON RESTE DANS LE TROUSSEAU DE CE MAC.";
 "SELECT PHOTOS" = "SÉLECTIONNER DES PHOTOS";
@@ -2052,6 +2059,7 @@
 "Select All" = "Tout sélectionner";
 "Select a clip and press Delete to remove it from the result." = "Sélectionnez un clip et appuyez sur Supprimer pour le retirer du résultat.";
 "Select at least one available photo." = "Sélectionnez au moins une photo disponible.";
+"Select at least one page." = "Sélectionnez au moins une page.";
 "Select one crop rectangle." = "Sélectionnez un seul rectangle de recadrage.";
 "Select only this repository and give Contents read access. The token stays in this Mac’s Keychain." = "Sélectionnez uniquement ce dépôt et accordez l’accès en lecture à Contents. Le jeton reste dans le trousseau de ce Mac.";
 "Select photos" = "Sélectionner des photos";
@@ -2159,6 +2167,7 @@
 "TEXT SIZE" = "TAILLE DU TEXTE";
 "TEXTURE" = "TEXTURE";
 "THAT PDF SIZE CANNOT BE REACHED WHILE KEEPING SELECTABLE TEXT, LINKS AND ANNOTATIONS. CHOOSE A LARGER TARGET." = "CETTE TAILLE DE PDF EST IMPOSSIBLE À ATTEINDRE EN CONSERVANT LE TEXTE SÉLECTIONNABLE, LES LIENS ET LES ANNOTATIONS. CHOISISSEZ UNE CIBLE PLUS GRANDE.";
+"THAT PDF SIZE CANNOT BE REACHED WHILE KEEPING SELECTABLE TEXT, LINKS, AND ANNOTATIONS. CHOOSE A LARGER TARGET." = "CETTE TAILLE DE PDF EST IMPOSSIBLE À ATTEINDRE EN CONSERVANT LE TEXTE SÉLECTIONNABLE, LES LIENS ET LES ANNOTATIONS. CHOISISSEZ UNE CIBLE PLUS GRANDE.";
 "THE ARCHIVE CONTAINS AN UNSAFE PATH." = "L’ARCHIVE CONTIENT UN CHEMIN NON SÛR.";
 "THE ARCHIVE ENTRY LEAVES ITS DESTINATION." = "L’ENTRÉE DE L’ARCHIVE SORT DE SA DESTINATION.";
 "THE CLIPPING EXCEEDS 200 MB." = "LE FRAGMENT DÉPASSE 200 MO.";
@@ -2172,10 +2181,12 @@
 "THE IMAGE DOWNLOAD ENDED EARLY." = "LE TÉLÉCHARGEMENT DE L’IMAGE S’EST TERMINÉ PRÉMATURÉMENT.";
 "THE IMAGE ORDER MUST INCLUDE EVERY IMAGE ONCE." = "L’ORDRE DES IMAGES DOIT INCLURE CHAQUE IMAGE UNE FOIS.";
 "THE MEDIA SERVER REDIRECTED TO AN INSECURE URL." = "LE SERVEUR MULTIMÉDIA A REDIRIGÉ VERS UNE URL NON SÉCURISÉE.";
+"THE PDF CONTAINS NO PAGES." = "LE PDF NE CONTIENT AUCUNE PAGE.";
 "THE PDF PAGE IS TOO LARGE TO RENDER AT THIS RESOLUTION." = "LA PAGE PDF EST TROP GRANDE POUR ÊTRE RENDUE À CETTE RÉSOLUTION.";
 "THE PROCESSING TOOL COULD NOT START." = "L’OUTIL DE TRAITEMENT N’A PAS PU DÉMARRER.";
 "THE REQUESTED FILE SIZE COULD NOT BE REACHED. CHOOSE A LARGER TARGET." = "LA TAILLE DE FICHIER DEMANDÉE N’A PAS PU ÊTRE ATTEINTE. CHOISISSEZ UNE CIBLE PLUS GRANDE.";
 "THE REQUESTED IMAGE SIZE COULD NOT BE REACHED. CHOOSE A LARGER TARGET." = "LA TAILLE D’IMAGE DEMANDÉE N’A PAS PU ÊTRE ATTEINTE. CHOISISSEZ UNE CIBLE PLUS GRANDE.";
+"THE REQUESTED PDF SIZE COULD NOT BE REACHED." = "LA TAILLE DE PDF DEMANDÉE N’A PAS PU ÊTRE ATTEINTE.";
 "THE REQUESTED PDF SIZE COULD NOT BE REACHED. CHOOSE A LARGER TARGET." = "LA TAILLE DE PDF DEMANDÉE N’A PAS PU ÊTRE ATTEINTE. CHOISISSEZ UNE CIBLE PLUS GRANDE.";
 "THE SAME CONVERSION AND TOOL CATALOG AS MACOS." = "LE MÊME CATALOGUE DE CONVERSIONS ET D’OUTILS QUE SUR MACOS.";
 "THE SIGNED PACKAGE VERSION DOES NOT MATCH THIS UPDATE." = "LA VERSION DU PAQUET SIGNÉ NE CORRESPOND PAS À CETTE MISE À JOUR.";
@@ -2199,6 +2210,7 @@
 "THIS PDF CONTAINS NO PAGES." = "CE PDF NE CONTIENT AUCUNE PAGE.";
 "THIS PDF HAS FORM FIELDS OR ATTACHMENTS THAT MERGING, SPLITTING OR REORDERING PAGES CANNOT KEEP. NO COPY WAS EXPORTED." = "CE PDF CONTIENT DES CHAMPS DE FORMULAIRE OU DES PIÈCES JOINTES QUE LA FUSION, LA DIVISION OU LA RÉORGANISATION DES PAGES NE PEUT PAS CONSERVER. AUCUNE COPIE N’A ÉTÉ EXPORTÉE.";
 "THIS PDF HAS FORM FIELDS OR ATTACHMENTS THAT METADATA CLEANUP CANNOT KEEP. NO COPY WAS EXPORTED." = "CE PDF CONTIENT DES CHAMPS DE FORMULAIRE OU DES PIÈCES JOINTES QUE LE NETTOYAGE DES MÉTADONNÉES NE PEUT PAS CONSERVER. AUCUNE COPIE N’A ÉTÉ EXPORTÉE.";
+"THIS PDF IS PASSWORD PROTECTED. ENTER ITS PASSWORD." = "CE PDF EST PROTÉGÉ PAR UN MOT DE PASSE. SAISISSEZ SON MOT DE PASSE.";
 "THIS PDF PAGE COULD NOT BE READ." = "CETTE PAGE PDF N’A PAS PU ÊTRE LUE.";
 "THIS POST CONTAINS VIDEOS. USE ITS REEL LINK TO DOWNLOAD VIDEO." = "CETTE PUBLICATION CONTIENT DES VIDÉOS. UTILISEZ SON LIEN REEL POUR TÉLÉCHARGER LA VIDÉO.";
 "THIS REPOSITORY IS PRIVATE" = "CE DÉPÔT EST PRIVÉ";
@@ -2251,6 +2263,8 @@
 "Text size" = "Taille du texte";
 "Texture" = "Texture";
 "That PDF size cannot be reached while keeping selectable text, links and annotations. Choose a larger target." = "Cette taille de PDF est impossible à atteindre en conservant le texte sélectionnable, les liens et les annotations. Choisissez une cible plus grande.";
+"That PDF size cannot be reached while keeping selectable text, links, and annotations. Choose a larger target." = "Cette taille de PDF est impossible à atteindre en conservant le texte sélectionnable, les liens et les annotations. Choisissez une cible plus grande.";
+"The PDF contains no pages." = "Le PDF ne contient aucune page.";
 "The PDF page is too large to render at this resolution." = "La page PDF est trop grande pour être rendue à cette résolution.";
 "The archive contains an unsafe path." = "L’archive contient un chemin non sûr.";
 "The archive entry leaves its destination." = "L’entrée de l’archive sort de sa destination.";
@@ -2270,6 +2284,7 @@
 "The metadata field %@ could not be removed." = "Le champ de métadonnées %@ n’a pas pu être supprimé.";
 "The metadata field %lld could not be removed." = "Le champ de métadonnées %lld n’a pas pu être supprimé.";
 "The processing tool could not start." = "L’outil de traitement n’a pas pu démarrer.";
+"The requested PDF size could not be reached." = "La taille de PDF demandée n’a pas pu être atteinte.";
 "The requested PDF size could not be reached. Choose a larger target." = "La taille de PDF demandée n’a pas pu être atteinte. Choisissez une cible plus grande.";
 "The requested file size could not be reached. Choose a larger target." = "La taille de fichier demandée n’a pas pu être atteinte. Choisissez une cible plus grande.";
 "The requested image size could not be reached. Choose a larger target." = "La taille d’image demandée n’a pas pu être atteinte. Choisissez une cible plus grande.";
@@ -2282,6 +2297,7 @@
 "This PDF contains no pages." = "Ce PDF ne contient aucune page.";
 "This PDF has form fields or attachments that merging, splitting or reordering pages cannot keep. No copy was exported." = "Ce PDF contient des champs de formulaire ou des pièces jointes que la fusion, la division ou la réorganisation des pages ne peut pas conserver. Aucune copie n’a été exportée.";
 "This PDF has form fields or attachments that metadata cleanup cannot keep. No copy was exported." = "Ce PDF contient des champs de formulaire ou des pièces jointes que le nettoyage des métadonnées ne peut pas conserver. Aucune copie n’a été exportée.";
+"This PDF is password protected. Enter its password." = "Ce PDF est protégé par un mot de passe. Saisissez son mot de passe.";
 "This PDF page could not be read." = "Cette page PDF n’a pas pu être lue.";
 "This RTFD attachment syntax could not be preserved." = "Cette syntaxe de pièce jointe RTFD n’a pas pu être préservée.";
 "This Windows codec cannot play directly. Set up media tools to create a local preview." = "Ce codec Windows ne peut pas être lu directement. Configurez les outils multimédias pour créer un aperçu local.";

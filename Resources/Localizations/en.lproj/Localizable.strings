@@ -1190,6 +1190,10 @@
 "Invalid YouTube video ID." = "Invalid YouTube video ID.";
 "Invalid metadata field." = "Invalid metadata field.";
 "Invalid metadata stream/chapter." = "Invalid metadata stream/chapter.";
+"Invalid page range: %@. Use numbers between 1 and %@." = "Invalid page range: %@. Use numbers between 1 and %@.";
+"Invalid page range: %@. Use numbers between 1 and %lld." = "Invalid page range: %@. Use numbers between 1 and %lld.";
+"Invalid page range: %lld. Use numbers between 1 and %@." = "Invalid page range: %lld. Use numbers between 1 and %@.";
+"Invalid page range: %lld. Use numbers between 1 and %lld." = "Invalid page range: %lld. Use numbers between 1 and %lld.";
 "Invalid public update location or size." = "Invalid public update location or size.";
 "Invalid subtitle timestamp." = "Invalid subtitle timestamp.";
 "Invalid update manifest." = "Invalid update manifest.";
@@ -1580,6 +1584,7 @@
 "PDF LAYOUT" = "PDF LAYOUT";
 "PDF OUTPUT LAYOUT" = "PDF OUTPUT LAYOUT";
 "PDF PAGE EXCEEDS 100 MP." = "PDF PAGE EXCEEDS 100 MP.";
+"PDF PAGE IS TOO LARGE TO RENDER AT THIS DPI." = "PDF PAGE IS TOO LARGE TO RENDER AT THIS DPI.";
 "PDF PASSWORD (IF NEEDED)" = "PDF PASSWORD (IF NEEDED)";
 "PDF PREVIEW BACKGROUND COULD NOT BE PREPARED." = "PDF PREVIEW BACKGROUND COULD NOT BE PREPARED.";
 "PDF PREVIEW BITMAP COULD NOT BE ALLOCATED." = "PDF PREVIEW BITMAP COULD NOT BE ALLOCATED.";
@@ -1587,6 +1592,7 @@
 "PDF layout" = "PDF layout";
 "PDF output layout" = "PDF output layout";
 "PDF page exceeds 100 MP." = "PDF page exceeds 100 MP.";
+"PDF page is too large to render at this DPI." = "PDF page is too large to render at this DPI.";
 "PDF password (if needed)" = "PDF password (if needed)";
 "PDF preview background could not be prepared." = "PDF preview background could not be prepared.";
 "PDF preview bitmap could not be allocated." = "PDF preview bitmap could not be allocated.";
@@ -1902,6 +1908,7 @@
 "SELECT A CLIP AND PRESS DELETE TO REMOVE IT FROM THE RESULT." = "SELECT A CLIP AND PRESS DELETE TO REMOVE IT FROM THE RESULT.";
 "SELECT ALL" = "SELECT ALL";
 "SELECT AT LEAST ONE AVAILABLE PHOTO." = "SELECT AT LEAST ONE AVAILABLE PHOTO.";
+"SELECT AT LEAST ONE PAGE." = "SELECT AT LEAST ONE PAGE.";
 "SELECT ONE CROP RECTANGLE." = "SELECT ONE CROP RECTANGLE.";
 "SELECT ONLY THIS REPOSITORY AND GIVE CONTENTS READ ACCESS. THE TOKEN STAYS IN THIS MAC’S KEYCHAIN." = "SELECT ONLY THIS REPOSITORY AND GIVE CONTENTS READ ACCESS. THE TOKEN STAYS IN THIS MAC’S KEYCHAIN.";
 "SELECT PHOTOS" = "SELECT PHOTOS";
@@ -2052,6 +2059,7 @@
 "Select All" = "Select All";
 "Select a clip and press Delete to remove it from the result." = "Select a clip and press Delete to remove it from the result.";
 "Select at least one available photo." = "Select at least one available photo.";
+"Select at least one page." = "Select at least one page.";
 "Select one crop rectangle." = "Select one crop rectangle.";
 "Select only this repository and give Contents read access. The token stays in this Mac’s Keychain." = "Select only this repository and give Contents read access. The token stays in this Mac’s Keychain.";
 "Select photos" = "Select photos";
@@ -2159,6 +2167,7 @@
 "TEXT SIZE" = "TEXT SIZE";
 "TEXTURE" = "TEXTURE";
 "THAT PDF SIZE CANNOT BE REACHED WHILE KEEPING SELECTABLE TEXT, LINKS AND ANNOTATIONS. CHOOSE A LARGER TARGET." = "THAT PDF SIZE CANNOT BE REACHED WHILE KEEPING SELECTABLE TEXT, LINKS AND ANNOTATIONS. CHOOSE A LARGER TARGET.";
+"THAT PDF SIZE CANNOT BE REACHED WHILE KEEPING SELECTABLE TEXT, LINKS, AND ANNOTATIONS. CHOOSE A LARGER TARGET." = "THAT PDF SIZE CANNOT BE REACHED WHILE KEEPING SELECTABLE TEXT, LINKS, AND ANNOTATIONS. CHOOSE A LARGER TARGET.";
 "THE ARCHIVE CONTAINS AN UNSAFE PATH." = "THE ARCHIVE CONTAINS AN UNSAFE PATH.";
 "THE ARCHIVE ENTRY LEAVES ITS DESTINATION." = "THE ARCHIVE ENTRY LEAVES ITS DESTINATION.";
 "THE CLIPPING EXCEEDS 200 MB." = "THE CLIPPING EXCEEDS 200 MB.";
@@ -2172,10 +2181,12 @@
 "THE IMAGE DOWNLOAD ENDED EARLY." = "THE IMAGE DOWNLOAD ENDED EARLY.";
 "THE IMAGE ORDER MUST INCLUDE EVERY IMAGE ONCE." = "THE IMAGE ORDER MUST INCLUDE EVERY IMAGE ONCE.";
 "THE MEDIA SERVER REDIRECTED TO AN INSECURE URL." = "THE MEDIA SERVER REDIRECTED TO AN INSECURE URL.";
+"THE PDF CONTAINS NO PAGES." = "THE PDF CONTAINS NO PAGES.";
 "THE PDF PAGE IS TOO LARGE TO RENDER AT THIS RESOLUTION." = "THE PDF PAGE IS TOO LARGE TO RENDER AT THIS RESOLUTION.";
 "THE PROCESSING TOOL COULD NOT START." = "THE PROCESSING TOOL COULD NOT START.";
 "THE REQUESTED FILE SIZE COULD NOT BE REACHED. CHOOSE A LARGER TARGET." = "THE REQUESTED FILE SIZE COULD NOT BE REACHED. CHOOSE A LARGER TARGET.";
 "THE REQUESTED IMAGE SIZE COULD NOT BE REACHED. CHOOSE A LARGER TARGET." = "THE REQUESTED IMAGE SIZE COULD NOT BE REACHED. CHOOSE A LARGER TARGET.";
+"THE REQUESTED PDF SIZE COULD NOT BE REACHED." = "THE REQUESTED PDF SIZE COULD NOT BE REACHED.";
 "THE REQUESTED PDF SIZE COULD NOT BE REACHED. CHOOSE A LARGER TARGET." = "THE REQUESTED PDF SIZE COULD NOT BE REACHED. CHOOSE A LARGER TARGET.";
 "THE SAME CONVERSION AND TOOL CATALOG AS MACOS." = "THE SAME CONVERSION AND TOOL CATALOG AS MACOS.";
 "THE SIGNED PACKAGE VERSION DOES NOT MATCH THIS UPDATE." = "THE SIGNED PACKAGE VERSION DOES NOT MATCH THIS UPDATE.";
@@ -2199,6 +2210,7 @@
 "THIS PDF CONTAINS NO PAGES." = "THIS PDF CONTAINS NO PAGES.";
 "THIS PDF HAS FORM FIELDS OR ATTACHMENTS THAT MERGING, SPLITTING OR REORDERING PAGES CANNOT KEEP. NO COPY WAS EXPORTED." = "THIS PDF HAS FORM FIELDS OR ATTACHMENTS THAT MERGING, SPLITTING OR REORDERING PAGES CANNOT KEEP. NO COPY WAS EXPORTED.";
 "THIS PDF HAS FORM FIELDS OR ATTACHMENTS THAT METADATA CLEANUP CANNOT KEEP. NO COPY WAS EXPORTED." = "THIS PDF HAS FORM FIELDS OR ATTACHMENTS THAT METADATA CLEANUP CANNOT KEEP. NO COPY WAS EXPORTED.";
+"THIS PDF IS PASSWORD PROTECTED. ENTER ITS PASSWORD." = "THIS PDF IS PASSWORD PROTECTED. ENTER ITS PASSWORD.";
 "THIS PDF PAGE COULD NOT BE READ." = "THIS PDF PAGE COULD NOT BE READ.";
 "THIS POST CONTAINS VIDEOS. USE ITS REEL LINK TO DOWNLOAD VIDEO." = "THIS POST CONTAINS VIDEOS. USE ITS REEL LINK TO DOWNLOAD VIDEO.";
 "THIS REPOSITORY IS PRIVATE" = "THIS REPOSITORY IS PRIVATE";
@@ -2251,6 +2263,8 @@
 "Text size" = "Text size";
 "Texture" = "Texture";
 "That PDF size cannot be reached while keeping selectable text, links and annotations. Choose a larger target." = "That PDF size cannot be reached while keeping selectable text, links and annotations. Choose a larger target.";
+"That PDF size cannot be reached while keeping selectable text, links, and annotations. Choose a larger target." = "That PDF size cannot be reached while keeping selectable text, links, and annotations. Choose a larger target.";
+"The PDF contains no pages." = "The PDF contains no pages.";
 "The PDF page is too large to render at this resolution." = "The PDF page is too large to render at this resolution.";
 "The archive contains an unsafe path." = "The archive contains an unsafe path.";
 "The archive entry leaves its destination." = "The archive entry leaves its destination.";
@@ -2270,6 +2284,7 @@
 "The metadata field %@ could not be removed." = "The metadata field %@ could not be removed.";
 "The metadata field %lld could not be removed." = "The metadata field %lld could not be removed.";
 "The processing tool could not start." = "The processing tool could not start.";
+"The requested PDF size could not be reached." = "The requested PDF size could not be reached.";
 "The requested PDF size could not be reached. Choose a larger target." = "The requested PDF size could not be reached. Choose a larger target.";
 "The requested file size could not be reached. Choose a larger target." = "The requested file size could not be reached. Choose a larger target.";
 "The requested image size could not be reached. Choose a larger target." = "The requested image size could not be reached. Choose a larger target.";
@@ -2282,6 +2297,7 @@
 "This PDF contains no pages." = "This PDF contains no pages.";
 "This PDF has form fields or attachments that merging, splitting or reordering pages cannot keep. No copy was exported." = "This PDF has form fields or attachments that merging, splitting or reordering pages cannot keep. No copy was exported.";
 "This PDF has form fields or attachments that metadata cleanup cannot keep. No copy was exported." = "This PDF has form fields or attachments that metadata cleanup cannot keep. No copy was exported.";
+"This PDF is password protected. Enter its password." = "This PDF is password protected. Enter its password.";
 "This PDF page could not be read." = "This PDF page could not be read.";
 "This RTFD attachment syntax could not be preserved." = "This RTFD attachment syntax could not be preserved.";
 "This Windows codec cannot play directly. Set up media tools to create a local preview." = "This Windows codec cannot play directly. Set up media tools to create a local preview.";
