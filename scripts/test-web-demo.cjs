@@ -105,6 +105,31 @@ const ids=['compress','removeMetadata','editImage','annotateImage','frameImage',
   await page.locator('dialog').waitFor({state:'detached'});
   assert.equal(await page.locator('#library-count').textContent(),before);
  });
+ await test('A closed image editor that finishes decoding late leaves the next editor alone',async()=>{
+  await page.locator('[data-group="image"]').click();
+  await page.locator('.demo-file').first().click();
+  // Hold every image decode until the test releases it, so the closed editor finishes last.
+  await page.evaluate(()=>{const Real=window.Image;window.__realImage=Real;window.__heldDecodes=[];window.Image=function(){const image=new Real();let onload=null;Object.defineProperty(image,'onload',{get:()=>onload,set:f=>{onload=f;}});image.addEventListener('load',()=>window.__heldDecodes.push(()=>onload?.()));return image;};});
+  const held=n=>page.waitForFunction(n=>window.__heldDecodes.length>=n,n);
+  const release=i=>page.evaluate(i=>window.__heldDecodes.splice(i,1)[0](),i);
+  try{
+   await page.locator('[data-mode="tools"]').click();await page.getByRole('menuitem',{name:'Arka Plan Ekle',exact:true}).click();
+   await held(1);await release(0);await held(1);
+   await page.locator('.close-editor').click();
+   await page.locator('.demo-file').nth(1).click({modifiers:['Shift']});
+   await page.locator('[data-mode="tools"]').click();await page.getByRole('menuitem',{name:'Kolaj Oluştur',exact:true}).click();
+   await held(2);await release(1);await held(3);await release(1);await release(1);
+   await page.waitForFunction(()=>document.querySelector('dialog .editor-filename'));
+   await release(0);
+   assert.equal(await page.locator('dialog input[type=color]').inputValue(),'#e6dfc8');
+  }finally{await page.evaluate(()=>{window.Image=window.__realImage;});}
+  await save();
+  await page.locator('#demo-library').click();
+  const u=await page.locator('.library-item').filter({hasText:'orchard-createCollage.png'}).first().locator('a').getAttribute('href');
+  const pixel=await page.evaluate(async u=>{const bitmap=await createImageBitmap(await(await fetch(u)).blob()),c=document.createElement('canvas');c.width=bitmap.width;c.height=bitmap.height;const ctx=c.getContext('2d');ctx.drawImage(bitmap,0,0);return[...ctx.getImageData(1,1,1,1).data.slice(0,3)];},u);
+  assert.deepEqual(pixel,[0xe6,0xdf,0xc8],'the collage background must stay the collage editor\'s own colour');
+  await page.locator('.close-editor').click();
+ });
  if(errors.length)failures.push({name:'No browser errors',error:errors.join('\n')});
  const report={url:base,passed:passed.length,checks:passed,failures,consoleErrors:errors};await fs.writeFile(path.join(output,'report.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({passed:passed.length,failed:failures.length,errors:errors.length}));await browser.close();if(failures.length)process.exitCode=1;
 })().catch(e=>{console.error(e);process.exitCode=1;});
