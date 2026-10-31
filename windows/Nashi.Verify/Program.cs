@@ -175,6 +175,17 @@ if(Environment.GetEnvironmentVariable("NASHI_VERIFY_FFMPEG") is {} encoder && En
         {
             var converted=await engine.ConvertAsync([source],ext,directory,new());Check((await engine.InspectAsync(converted[0])).HasAudio,"No audio in "+ext);if(FeatureCatalog.Conversions.ContainsKey(ext)){var edited=await engine.ToolAsync("removeMetadata",converted,directory,new(){RemoveAllMetadata=false,Metadata=new(){{"title","Nashi tag roundtrip"}}});Check((await Tags(edited[0])).GetValueOrDefault("title")=="Nashi tag roundtrip","Audio metadata failed: "+ext);}
         }
+        // FFmpeg reads Ogg Vorbis and Opus comments as audio-stream tags, while MP3, M4A, FLAC and WAV store file-level tags.
+        async Task<Dictionary<string,string>> FileTags(string file){using var doc=JsonDocument.Parse((await ProcessRunner.RunAsync(probe,["-v","error","-show_format","-of","json",file])).Output);var tags=new Dictionary<string,string>(StringComparer.OrdinalIgnoreCase);if(doc.RootElement.GetProperty("format").TryGetProperty("tags",out var values))foreach(var p in values.EnumerateObject())tags[p.Name]=p.Value.ToString();return tags;}
+        foreach(var (oggName,oggCodec) in new[]{("Tagged.ogg","libvorbis"),("Tagged.opus","libopus")})
+        {
+            var oggSource=Path.Combine(directory,oggName);await ProcessRunner.RunAsync(encoder,["-v","error","-f","lavfi","-i","sine=duration=1:sample_rate=48000","-c:a",oggCodec,"-metadata","title=Ogg title","-metadata","artist=Ogg artist",oggSource]);
+            foreach(var target in new[]{"mp3","m4a","flac","wav"})
+            {
+                var kept=await FileTags((await engine.ConvertAsync([oggSource],target,directory,new()))[0]);Check(kept.GetValueOrDefault("title")=="Ogg title"&&kept.GetValueOrDefault("artist")=="Ogg artist",oggName+" lost its tags converting to "+target+" with metadata kept");
+                var dropped=await FileTags((await engine.ConvertAsync([oggSource],target,directory,new(){PreserveMetadata=false}))[0]);Check(!dropped.ContainsKey("title")&&!dropped.ContainsKey("artist"),oggName+" kept its tags converting to "+target+" with metadata off");
+            }
+        }
         foreach(var ext in MediaEngine.VideoFormats)
         {
             var converted=await engine.ConvertAsync([source],ext,directory,new());Check((await engine.InspectAsync(converted[0])).Video is not null,"No video in "+ext);
