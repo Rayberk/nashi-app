@@ -185,7 +185,7 @@ final class WheelView:NSView {
     }
     func updateSelection(_ point:NSPoint) { selected=items.indices.first{petal($0).contains(point)} }
     func updateAccessibility() {
-        setAccessibilityLabel(inputs.first?.isFileURL == false ? "Nashi web media wheel":"Nashi \(mode.rawValue) wheel")
+        setAccessibilityLabel(L10n.text(inputs.first?.isFileURL == false ? "Nashi web media wheel":"Nashi \(mode.rawValue) wheel"))
         let children=items.enumerated().map { index,item -> WheelAccessibilityItem in
             let child=WheelAccessibilityItem();child.setAccessibilityRole(.button);child.setAccessibilityEnabled(true);child.setAccessibilityLabel(L10n.text(item.operation?.title ?? item.title));child.setAccessibilityParent(self)
             if let window { child.setAccessibilityFrame(window.convertToScreen(convert(petal(index).bounds,to:nil))) }
