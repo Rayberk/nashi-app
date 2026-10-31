@@ -15,6 +15,7 @@
 "%@ is not installed." = "%@ kurulu değil.";
 "%@ items" = "%@ öğe";
 "%@ photos" = "%@ fotoğraf";
+"%@ ready to paste." = "%@ kod yapıştırmaya hazır.";
 "%@ selected" = "%@ seçili";
 "%@ selected · Drag to carry files" = "%@ seçili · Dosyaları taşımak için sürükle";
 "%@ split points" = "%@ bölme noktası";
@@ -40,6 +41,7 @@
 "%lld is not installed." = "%lld kurulu değil.";
 "%lld items" = "%lld öğe";
 "%lld photos" = "%lld fotoğraf";
+"%lld ready to paste." = "%lld kod yapıştırmaya hazır.";
 "%lld selected" = "%lld seçili";
 "%lld selected · Drag to carry files" = "%lld seçili · Dosyaları taşımak için sürükle";
 "%lld split points" = "%lld bölme noktası";
@@ -60,6 +62,7 @@
 "1 AREA SELECTED" = "1 ALAN SEÇİLİ";
 "1 ITEM" = "1 ÖĞE";
 "1 PHOTO" = "1 FOTOĞRAF";
+"1 READY TO PASTE." = "1 KOD YAPIŞTIRMAYA HAZIR.";
 "1 SELECTED" = "1 SEÇİLİ";
 "1 SPLIT POINT" = "1 BÖLME NOKTASI";
 "1 VIDEO ITEMS ARE NOT INCLUDED. ONLY PHOTOS WILL BE SAVED." = "1 VİDEO ÖĞESİ DAHİL EDİLMEDİ. YALNIZCA FOTOĞRAFLAR KAYDEDİLECEK.";
@@ -67,6 +70,7 @@
 "1 area selected" = "1 alan seçili";
 "1 item" = "1 öğe";
 "1 photo" = "1 fotoğraf";
+"1 ready to paste." = "1 kod yapıştırmaya hazır.";
 "1 selected" = "1 seçili";
 "1 split point" = "1 bölme noktası";
 "1 video items are not included. Only photos will be saved." = "1 video öğesi dahil edilmedi. Yalnızca fotoğraflar kaydedilecek.";
@@ -493,6 +497,8 @@
 "COPY PATH" = "YOLU KOPYALA";
 "CORNER RADIUS" = "KÖŞE YUVARLAKLIĞI";
 "CORNERS" = "KÖŞELER";
+"COULD NOT COPY THE QR CODE." = "QR KODU KOPYALANAMADI.";
+"COULD NOT COPY THE QR CODES." = "QR KODLARI KOPYALANAMADI.";
 "COULD NOT COPY THE SELECTED FILE PATHS." = "SEÇİLİ DOSYA YOLLARI KOPYALANAMADI.";
 "COULD NOT COPY THE SELECTED FILES." = "SEÇİLİ DOSYALAR KOPYALANAMADI.";
 "COULD NOT ORIENT IMAGE." = "GÖRSELİN YÖNÜ DÜZELTİLEMEDİ.";
@@ -699,6 +705,8 @@
 "Copy path" = "Yolu kopyala";
 "Corner radius" = "Köşe yuvarlaklığı";
 "Corners" = "Köşeler";
+"Could not copy the QR code." = "QR kodu kopyalanamadı.";
+"Could not copy the QR codes." = "QR kodları kopyalanamadı.";
 "Could not copy the selected file paths." = "Seçili dosya yolları kopyalanamadı.";
 "Could not copy the selected files." = "Seçili dosyalar kopyalanamadı.";
 "Could not open %@." = "%@ açılamadı.";
@@ -1757,6 +1765,7 @@
 "READY ON YOUR PC" = "BİLGİSAYARINDA HAZIR";
 "READY TO CHECK FOR UPDATES" = "GÜNCELLEMELERİ DENETLEMEYE HAZIR";
 "READY TO MAKE A FRESH COPY. NO EXTRA SETTINGS NEEDED." = "YENİ KOPYA OLUŞTURMAYA HAZIR. EK AYAR GEREKMEZ.";
+"READY TO PASTE." = "YAPIŞTIRMAYA HAZIR.";
 "READY WHEN YOU ARE" = "SIRA SENDE";
 "READY WHEN YOU LOG IN" = "OTURUM AÇTIĞINDA HAZIR";
 "READY." = "HAZIR.";
@@ -1822,6 +1831,7 @@
 "Ready on your PC" = "Bilgisayarında hazır";
 "Ready to check for updates" = "Güncellemeleri denetlemeye hazır";
 "Ready to make a fresh copy. No extra settings needed." = "Yeni kopya oluşturmaya hazır. Ek ayar gerekmez.";
+"Ready to paste." = "Yapıştırmaya hazır.";
 "Ready when you log in" = "Oturum açtığında hazır";
 "Ready." = "Hazır.";
 "Ready. You can go back to your files." = "Hazır. Dosyalarına dönebilirsin.";

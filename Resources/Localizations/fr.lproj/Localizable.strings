@@ -15,6 +15,7 @@
 "%@ is not installed." = "%@ n’est pas installé.";
 "%@ items" = "%@ éléments";
 "%@ photos" = "%@ photos";
+"%@ ready to paste." = "%@ prêts à coller.";
 "%@ selected" = "%@ sélectionnés";
 "%@ selected · Drag to carry files" = "%@ sélectionnés · Faites glisser pour emporter les fichiers";
 "%@ split points" = "%@ points de coupure";
@@ -40,6 +41,7 @@
 "%lld is not installed." = "%lld n’est pas installé.";
 "%lld items" = "%lld éléments";
 "%lld photos" = "%lld photos";
+"%lld ready to paste." = "%lld prêts à coller.";
 "%lld selected" = "%lld sélectionnés";
 "%lld selected · Drag to carry files" = "%lld sélectionnés · Faites glisser pour emporter les fichiers";
 "%lld split points" = "%lld points de coupure";
@@ -60,6 +62,7 @@
 "1 AREA SELECTED" = "1 ZONE SÉLECTIONNÉE";
 "1 ITEM" = "1 ÉLÉMENT";
 "1 PHOTO" = "1 PHOTO";
+"1 READY TO PASTE." = "1 PRÊT À COLLER.";
 "1 SELECTED" = "1 SÉLECTIONNÉ";
 "1 SPLIT POINT" = "1 POINT DE COUPURE";
 "1 VIDEO ITEMS ARE NOT INCLUDED. ONLY PHOTOS WILL BE SAVED." = "1 ÉLÉMENT VIDÉO N’EST PAS INCLUS. SEULES LES PHOTOS SERONT ENREGISTRÉES.";
@@ -67,6 +70,7 @@
 "1 area selected" = "1 zone sélectionnée";
 "1 item" = "1 élément";
 "1 photo" = "1 photo";
+"1 ready to paste." = "1 prêt à coller.";
 "1 selected" = "1 sélectionné";
 "1 split point" = "1 point de coupure";
 "1 video items are not included. Only photos will be saved." = "1 élément vidéo n’est pas inclus. Seules les photos seront enregistrées.";
@@ -493,6 +497,8 @@
 "COPY PATH" = "COPIER LE CHEMIN";
 "CORNER RADIUS" = "RAYON DES COINS";
 "CORNERS" = "COINS";
+"COULD NOT COPY THE QR CODE." = "IMPOSSIBLE DE COPIER LE CODE QR.";
+"COULD NOT COPY THE QR CODES." = "IMPOSSIBLE DE COPIER LES CODES QR.";
 "COULD NOT COPY THE SELECTED FILE PATHS." = "IMPOSSIBLE DE COPIER LES CHEMINS DES FICHIERS SÉLECTIONNÉS.";
 "COULD NOT COPY THE SELECTED FILES." = "IMPOSSIBLE DE COPIER LES FICHIERS SÉLECTIONNÉS.";
 "COULD NOT ORIENT IMAGE." = "IMPOSSIBLE D’ORIENTER L’IMAGE.";
@@ -699,6 +705,8 @@
 "Copy path" = "Copier le chemin";
 "Corner radius" = "Rayon des coins";
 "Corners" = "Coins";
+"Could not copy the QR code." = "Impossible de copier le code QR.";
+"Could not copy the QR codes." = "Impossible de copier les codes QR.";
 "Could not copy the selected file paths." = "Impossible de copier les chemins des fichiers sélectionnés.";
 "Could not copy the selected files." = "Impossible de copier les fichiers sélectionnés.";
 "Could not open %@." = "Impossible d’ouvrir %@.";
@@ -1757,6 +1765,7 @@
 "READY ON YOUR PC" = "PRÊT SUR VOTRE PC";
 "READY TO CHECK FOR UPDATES" = "PRÊT À RECHERCHER LES MISES À JOUR";
 "READY TO MAKE A FRESH COPY. NO EXTRA SETTINGS NEEDED." = "PRÊT À CRÉER UNE NOUVELLE COPIE. AUCUN RÉGLAGE SUPPLÉMENTAIRE NÉCESSAIRE.";
+"READY TO PASTE." = "PRÊT À COLLER.";
 "READY WHEN YOU ARE" = "PRÊT QUAND VOUS L’ÊTES";
 "READY WHEN YOU LOG IN" = "PRÊT DÈS VOTRE CONNEXION";
 "READY." = "PRÊT.";
@@ -1822,6 +1831,7 @@
 "Ready on your PC" = "Prêt sur votre PC";
 "Ready to check for updates" = "Prêt à rechercher les mises à jour";
 "Ready to make a fresh copy. No extra settings needed." = "Prêt à créer une nouvelle copie. Aucun réglage supplémentaire nécessaire.";
+"Ready to paste." = "Prêt à coller.";
 "Ready when you log in" = "Prêt dès votre connexion";
 "Ready." = "Prêt.";
 "Ready. You can go back to your files." = "Prêt. Vous pouvez retourner à vos fichiers.";
