@@ -16,6 +16,8 @@ public struct MediaStream: Sendable, Equatable {
     public let frameRate: Double?
     public let isAttachedPicture: Bool
     public let rotation: Int
+    /// Width of one frame pixel relative to its height, in the displayed (rotated) frame; 1 for square pixels.
+    public let sampleAspectRatio: Double
     public let metadata: [String: String]
 }
 
@@ -65,7 +67,10 @@ public enum MediaEngine {
             let swap = abs(rotation % 180) == 90
             // FFmpeg and AVPlayer apply the display matrix; editing coordinates use that canvas.
             let width = integer(item[swap ? "height" : "width"]), height = integer(item[swap ? "width" : "height"])
-            return MediaStream(index: integer(item["index"]) ?? 0, kind: item["codec_type"] as? String ?? "unknown", codec: item["codec_name"] as? String ?? "unknown", duration: number(item["duration"]), width: width, height: height, channels: count(item["channels"], upTo: 512), sampleRate: count(item["sample_rate"], upTo: Int(Int32.max)), bitsPerSample: integer(item["bits_per_sample"]), bitsPerRawSample: integer(item["bits_per_raw_sample"]), sampleFormat: item["sample_fmt"] as? String, bitRate: integer(item["bit_rate"]), frameRate: fraction(item["avg_frame_rate"] as? String) ?? fraction(item["r_frame_rate"] as? String), isAttachedPicture: integer(disposition["attached_pic"]) == 1, rotation: rotation, metadata: metadata)
+            // Players stretch non-square pixels; the editor needs this to match its canvas to the picture.
+            let sar = (item["sample_aspect_ratio"] as? String)?.split(separator: ":").compactMap { Double($0) }
+            let aspect = sar.flatMap { $0.count == 2 && $0[0] > 0 && $0[1] > 0 && ($0[0] / $0[1]).isFinite ? $0[0] / $0[1] : nil } ?? 1
+            return MediaStream(index: integer(item["index"]) ?? 0, kind: item["codec_type"] as? String ?? "unknown", codec: item["codec_name"] as? String ?? "unknown", duration: number(item["duration"]), width: width, height: height, channels: count(item["channels"], upTo: 512), sampleRate: count(item["sample_rate"], upTo: Int(Int32.max)), bitsPerSample: integer(item["bits_per_sample"]), bitsPerRawSample: integer(item["bits_per_raw_sample"]), sampleFormat: item["sample_fmt"] as? String, bitRate: integer(item["bit_rate"]), frameRate: fraction(item["avg_frame_rate"] as? String) ?? fraction(item["r_frame_rate"] as? String), isAttachedPicture: integer(disposition["attached_pic"]) == 1, rotation: rotation, sampleAspectRatio: swap ? 1 / aspect : aspect, metadata: metadata)
         }
         let chapters = (root["chapters"] as? [[String: Any]] ?? []).enumerated().map { index, item in
             MediaChapter(index: index, start: number(item["start_time"]) ?? 0, end: number(item["end_time"]) ?? 0, metadata: tags(item["tags"]))
