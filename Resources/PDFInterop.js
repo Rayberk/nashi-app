@@ -118,7 +118,12 @@ function pruneForms(doc){
   const remove=widgets.map((w,i)=>({i,p:widgetPages.get(w.dict)})).filter(w=>!w.p).map(x=>x.i);
   for(const w of widgets){const p=widgetPages.get(w.dict);if(p)w.setP(p);}
   if(remove.length===widgets.length){form.acroForm.removeField(field.acroField);doc.context.delete(field.ref);record.push({field:field.getName(),removed:'field'});}
-  else {for(const i of remove.reverse())field.acroField.removeWidget(i);record.push({field:field.getName(),removedWidgets:remove.length});}
+  else {
+   // A button's /Opt holds one export value per widget in /Kids order; remove the value with its widget.
+   const opt=field instanceof PDFLib.PDFRadioGroup||field instanceof PDFLib.PDFCheckBox?field.acroField.dict.lookup(name('Opt')):undefined,aligned=opt instanceof PDFArray&&opt.size()===widgets.length;
+   for(const i of remove.reverse()){field.acroField.removeWidget(i);if(aligned)opt.remove(i);}
+   record.push({field:field.getName(),removedWidgets:remove.length});
+  }
  }
  return record;
 }
