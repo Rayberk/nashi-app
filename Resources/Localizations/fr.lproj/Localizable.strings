@@ -457,6 +457,7 @@
 "CONVERT TO" = "CONVERTIR EN";
 "CONVERT · WHILE DRAGGING" = "CONVERTIR · PENDANT LE GLISSEMENT";
 "CONVERT, FINE-TUNE, AND SEND THEM ON THEIR WAY." = "CONVERTISSEZ, PEAUFINEZ ET ENVOYEZ-LES SUR LEUR CHEMIN.";
+"CONVERTING DOWNLOADED AUDIO…" = "CONVERSION DE L’AUDIO TÉLÉCHARGÉ…";
 "COPIED ALL" = "TOUT COPIÉ";
 "COPIED LINK" = "LIEN COPIÉ";
 "COPY" = "COPIER";
@@ -653,6 +654,7 @@
 "Convert to %lld" = "Convertir en %lld";
 "Convert · while dragging" = "Convertir · pendant le glissement";
 "Convert, fine-tune, and send them on their way." = "Convertissez, peaufinez et envoyez-les sur leur chemin.";
+"Converting downloaded audio…" = "Conversion de l’audio téléchargé…";
 "Copied all" = "Tout copié";
 "Copied link" = "Lien copié";
 "Copy" = "Copier";
@@ -740,6 +742,7 @@
 "DOWNLOAD VIDEO…" = "TÉLÉCHARGER LA VIDÉO…";
 "DOWNLOAD ↗" = "TÉLÉCHARGER ↗";
 "DOWNLOADING LIBREOFFICE 26.8.1…" = "TÉLÉCHARGEMENT DE LIBREOFFICE 26.8.1…";
+"DOWNLOADING MEDIA…" = "TÉLÉCHARGEMENT DU MÉDIA…";
 "DOWNLOADING…" = "TÉLÉCHARGEMENT…";
 "DOWNLOAD…" = "TÉLÉCHARGER…";
 "DRAG A CROP INSIDE THE IMAGE." = "FAITES GLISSER UN RECADRAGE À L’INTÉRIEUR DE L’IMAGE.";
@@ -822,6 +825,9 @@
 "Downloading LibreOffice 26.8.1…" = "Téléchargement de LibreOffice 26.8.1…";
 "Downloading Nashi %@…" = "Téléchargement de Nashi %@…";
 "Downloading Nashi %lld…" = "Téléchargement de Nashi %lld…";
+"Downloading media…" = "Téléchargement du média…";
+"Downloading · %@" = "Téléchargement · %@";
+"Downloading · %lld" = "Téléchargement · %lld";
 "Downloading…" = "Téléchargement…";
 "Download…" = "Télécharger…";
 "Drag a crop inside the image." = "Faites glisser un recadrage à l’intérieur de l’image.";
@@ -949,9 +955,12 @@
 "FINISH OR CANCEL THE CURRENT OPERATION FIRST." = "TERMINEZ OU ANNULEZ D’ABORD L’OPÉRATION EN COURS.";
 "FINISH SETUP" = "TERMINER LA CONFIGURATION";
 "FINISH THE CURRENT OPERATION OR CHOOSE CANCEL BEFORE CLOSING NASHI." = "TERMINEZ L’OPÉRATION EN COURS OU CHOISISSEZ ANNULER AVANT DE FERMER NASHI.";
+"FINISHING MEDIA…" = "FINALISATION DU MÉDIA…";
+"FINISHING YOUR FILE…" = "FINALISATION DE VOTRE FICHIER…";
 "FIRST-TIME SETUP" = "PREMIÈRE CONFIGURATION";
 "FIT" = "AJUSTER";
 "FIT WHOLE IMAGE" = "AJUSTER L’IMAGE ENTIÈRE";
+"FITTING VIDEO TO THE SELECTED SIZE…" = "AJUSTEMENT DE LA VIDÉO À LA TAILLE CHOISIE…";
 "FIXED PAGES" = "PAGES FIXES";
 "FLEXIBLE, REFLOWABLE TEXT" = "TEXTE SOUPLE ET ADAPTABLE";
 "FLIP" = "RETOURNER";
@@ -1018,10 +1027,13 @@
 "Finish or cancel the current operation first." = "Terminez ou annulez d’abord l’opération en cours.";
 "Finish setup" = "Terminer la configuration";
 "Finish the current operation or choose Cancel before closing Nashi." = "Terminez l’opération en cours ou choisissez Annuler avant de fermer Nashi.";
+"Finishing media…" = "Finalisation du média…";
+"Finishing your file…" = "Finalisation de votre fichier…";
 "Fit" = "Ajuster";
 "Fit whole image" = "Ajuster l’image entière";
 "Fitting image · attempt %@…" = "Ajustement de l’image · tentative %@…";
 "Fitting image · attempt %lld…" = "Ajustement de l’image · tentative %lld…";
+"Fitting video to the selected size…" = "Ajustement de la vidéo à la taille choisie…";
 "Fixed pages" = "Pages fixes";
 "Flexible, reflowable text" = "Texte souple et adaptable";
 "Flip" = "Retourner";
@@ -1570,6 +1582,7 @@
 "POSITION X" = "POSITION X";
 "POSITION Y" = "POSITION Y";
 "PREPARING A LOCAL PREVIEW…" = "PRÉPARATION D’UN APERÇU LOCAL…";
+"PREPARING MEDIA…" = "PRÉPARATION DU MÉDIA…";
 "PREPARING MOVE…" = "PRÉPARATION DU DÉPLACEMENT…";
 "PREPARING PREVIEW…" = "PRÉPARATION DE L’APERÇU…";
 "PREPARING PROCESSED PREVIEW…" = "PRÉPARATION DE L’APERÇU TRAITÉ…";
@@ -1617,7 +1630,11 @@
 "Pasted text" = "Texte collé";
 "Pause" = "Pause";
 "Photo %@" = "Photo %@";
+"Photo %@ of %@…" = "Photo %@ sur %@…";
+"Photo %@ of %lld…" = "Photo %@ sur %lld…";
 "Photo %lld" = "Photo %lld";
+"Photo %lld of %@…" = "Photo %lld sur %@…";
+"Photo %lld of %lld…" = "Photo %lld sur %lld…";
 "Photos" = "Photos";
 "Pick a folder you work in. Fresh copies are saved beside the originals by default." = "Choisissez un dossier dans lequel vous travaillez. Par défaut, les nouvelles copies sont enregistrées à côté des originaux.";
 "Pin" = "Épingler";
@@ -1637,6 +1654,7 @@
 "Preparing %@…" = "Préparation de %@…";
 "Preparing %lld…" = "Préparation de %lld…";
 "Preparing a local preview…" = "Préparation d’un aperçu local…";
+"Preparing media…" = "Préparation du média…";
 "Preparing move…" = "Préparation du déplacement…";
 "Preparing preview…" = "Préparation de l’aperçu…";
 "Preparing processed preview…" = "Préparation de l’aperçu traité…";
@@ -1990,6 +2008,8 @@
 "Saved in post order in a new Instagram folder." = "Enregistrées dans l’ordre de la publication, dans un nouveau dossier Instagram.";
 "Saved size: %@" = "Taille enregistrée : %@";
 "Saved size: %lld" = "Taille enregistrée : %lld";
+"Saved to %@" = "Enregistré dans %@";
+"Saved to %lld" = "Enregistré dans %lld";
 "Saved token · Leave blank to keep it" = "Jeton enregistré · Laissez vide pour le conserver";
 "Saving collage…" = "Enregistrement du collage…";
 "Saving document…" = "Enregistrement du document…";
