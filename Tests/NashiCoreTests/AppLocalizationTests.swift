@@ -71,6 +71,13 @@ final class AppLocalizationTests:XCTestCase {
         XCTAssertTrue(AppLocalization.matches("Crop Image",query:"recadrer",language:"fr"))
         for code in ["png","MP4","Ctrl+Shift","⌘S","00:01.250"] { XCTAssertEqual(AppLocalization.text(code,language:"fr"),code) }
     }
+    func testQRFoundCountUsesFrenchSingularForZeroAndOne() {
+        XCTAssertEqual(AppLocalization.text("0 found",language:"fr"),"0 trouvé")
+        XCTAssertEqual(AppLocalization.text("1 found",language:"fr"),"1 trouvé")
+        XCTAssertEqual(AppLocalization.text("2 found",language:"fr"),"2 trouvés")
+        XCTAssertEqual(AppLocalization.text("1 found",language:"tr"),"1 bulundu")
+        XCTAssertEqual(AppLocalization.text("12 found",language:"tr"),"12 bulundu")
+    }
     /// Literals from Wheel.swift: the web-link petals and the empty-wheel centre (with the configured shortcut symbols).
     func testWheelWebPetalsAndEmptyWheelAreTranslated() {
         let petals=["Download photos…","Download video…","Download image…","Download…","Download thumbnail…","Audio MP3…","Copy link"]
