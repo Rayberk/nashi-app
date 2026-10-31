@@ -1798,7 +1798,12 @@
 "SOUND FOLLOWS YOUR MAC’S VOLUME. HAPTICS NEED A COMPATIBLE FORCE TOUCH TRACKPAD." = "SOUND FOLLOWS YOUR MAC’S VOLUME. HAPTICS NEED A COMPATIBLE FORCE TOUCH TRACKPAD.";
 "SOURCE & THIRD-PARTY NOTICES" = "SOURCE & THIRD-PARTY NOTICES";
 "SPACE PLAY/PAUSE · ←/→ 1S · SHIFT+←/→ 1 FRAME (VIDEO), 0.1S (AUDIO) · I/O SET RANGE · ENTER SAVE" = "SPACE PLAY/PAUSE · ←/→ 1S · SHIFT+←/→ 1 FRAME (VIDEO), 0.1S (AUDIO) · I/O SET RANGE · ENTER SAVE";
+"SPACE PLAY/PAUSE · ←/→ 1S · ⇧←/→ 0.1S" = "SPACE PLAY/PAUSE · ←/→ 1S · ⇧←/→ 0.1S";
+"SPACE PLAY/PAUSE · ←/→ 1S · ⇧←/→ 0.1S · I/O SET RANGE · ⇧SPACE PLAY RANGE" = "SPACE PLAY/PAUSE · ←/→ 1S · ⇧←/→ 0.1S · I/O SET RANGE · ⇧SPACE PLAY RANGE";
+"SPACE PLAY/PAUSE · ←/→ 1S · ⇧←/→ 1 FRAME" = "SPACE PLAY/PAUSE · ←/→ 1S · ⇧←/→ 1 FRAME";
 "SPACE PLAY/PAUSE · ←/→ 1S · ⇧←/→ 1 FRAME · I/O SET RANGE · ⇧SPACE PLAY RANGE" = "SPACE PLAY/PAUSE · ←/→ 1S · ⇧←/→ 1 FRAME · I/O SET RANGE · ⇧SPACE PLAY RANGE";
+"SPACE PLAY/PAUSE · ←/→ 1S · ⇧←/→ 1 FRAME · M ADD FRAME" = "SPACE PLAY/PAUSE · ←/→ 1S · ⇧←/→ 1 FRAME · M ADD FRAME";
+"SPACE PLAY/PAUSE · ←/→ 1S · ⇧←/→ 1 FRAME · M ADD SPLIT" = "SPACE PLAY/PAUSE · ←/→ 1S · ⇧←/→ 1 FRAME · M ADD SPLIT";
 "SPACE · PREVIEW" = "SPACE · PREVIEW";
 "SPACE: PREVIEW · ENTER: USE IN NASHI" = "SPACE: PREVIEW · ENTER: USE IN NASHI";
 "SPACING" = "SPACING";
@@ -1941,7 +1946,12 @@
 "Sound follows your Mac’s volume. Haptics need a compatible Force Touch trackpad." = "Sound follows your Mac’s volume. Haptics need a compatible Force Touch trackpad.";
 "Source & third-party notices" = "Source & third-party notices";
 "Space play/pause · ←/→ 1s · Shift+←/→ 1 frame (video), 0.1s (audio) · I/O set range · Enter save" = "Space play/pause · ←/→ 1s · Shift+←/→ 1 frame (video), 0.1s (audio) · I/O set range · Enter save";
+"Space play/pause · ←/→ 1s · ⇧←/→ 0.1s" = "Space play/pause · ←/→ 1s · ⇧←/→ 0.1s";
+"Space play/pause · ←/→ 1s · ⇧←/→ 0.1s · I/O set range · ⇧Space play range" = "Space play/pause · ←/→ 1s · ⇧←/→ 0.1s · I/O set range · ⇧Space play range";
+"Space play/pause · ←/→ 1s · ⇧←/→ 1 frame" = "Space play/pause · ←/→ 1s · ⇧←/→ 1 frame";
 "Space play/pause · ←/→ 1s · ⇧←/→ 1 frame · I/O set range · ⇧Space play range" = "Space play/pause · ←/→ 1s · ⇧←/→ 1 frame · I/O set range · ⇧Space play range";
+"Space play/pause · ←/→ 1s · ⇧←/→ 1 frame · M add frame" = "Space play/pause · ←/→ 1s · ⇧←/→ 1 frame · M add frame";
+"Space play/pause · ←/→ 1s · ⇧←/→ 1 frame · M add split" = "Space play/pause · ←/→ 1s · ⇧←/→ 1 frame · M add split";
 "Space · Preview" = "Space · Preview";
 "Space: preview · Enter: use in Nashi" = "Space: preview · Enter: use in Nashi";
 "Spacing" = "Spacing";

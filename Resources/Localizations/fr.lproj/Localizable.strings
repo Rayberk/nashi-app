@@ -1798,7 +1798,12 @@
 "SOUND FOLLOWS YOUR MAC’S VOLUME. HAPTICS NEED A COMPATIBLE FORCE TOUCH TRACKPAD." = "LE SON SUIT LE VOLUME DE VOTRE MAC. LE RETOUR HAPTIQUE NÉCESSITE UN TRACKPAD FORCE TOUCH COMPATIBLE.";
 "SOURCE & THIRD-PARTY NOTICES" = "MENTIONS SUR LES SOURCES ET LES COMPOSANTS TIERS";
 "SPACE PLAY/PAUSE · ←/→ 1S · SHIFT+←/→ 1 FRAME (VIDEO), 0.1S (AUDIO) · I/O SET RANGE · ENTER SAVE" = "ESPACE LECTURE/PAUSE · ←/→ 1 S · MAJ+←/→ 1 IMAGE (VIDÉO), 0,1 S (AUDIO) · I/O DÉFINIR LA PLAGE · ENTRÉE ENREGISTRER";
+"SPACE PLAY/PAUSE · ←/→ 1S · ⇧←/→ 0.1S" = "ESPACE LECTURE/PAUSE · ←/→ 1 S · ⇧←/→ 0,1 S";
+"SPACE PLAY/PAUSE · ←/→ 1S · ⇧←/→ 0.1S · I/O SET RANGE · ⇧SPACE PLAY RANGE" = "ESPACE LECTURE/PAUSE · ←/→ 1 S · ⇧←/→ 0,1 S · I/O DÉFINIR LA PLAGE · ⇧ESPACE LIRE LA PLAGE";
+"SPACE PLAY/PAUSE · ←/→ 1S · ⇧←/→ 1 FRAME" = "ESPACE LECTURE/PAUSE · ←/→ 1 S · ⇧←/→ 1 IMAGE";
 "SPACE PLAY/PAUSE · ←/→ 1S · ⇧←/→ 1 FRAME · I/O SET RANGE · ⇧SPACE PLAY RANGE" = "ESPACE LECTURE/PAUSE · ←/→ 1 S · ⇧←/→ 1 IMAGE · I/O DÉFINIR LA PLAGE · ⇧ESPACE LIRE LA PLAGE";
+"SPACE PLAY/PAUSE · ←/→ 1S · ⇧←/→ 1 FRAME · M ADD FRAME" = "ESPACE LECTURE/PAUSE · ←/→ 1 S · ⇧←/→ 1 IMAGE · M AJOUTER UNE IMAGE";
+"SPACE PLAY/PAUSE · ←/→ 1S · ⇧←/→ 1 FRAME · M ADD SPLIT" = "ESPACE LECTURE/PAUSE · ←/→ 1 S · ⇧←/→ 1 IMAGE · M AJOUTER UNE COUPURE";
 "SPACE · PREVIEW" = "ESPACE · APERÇU";
 "SPACE: PREVIEW · ENTER: USE IN NASHI" = "ESPACE : APERÇU · ENTRÉE : UTILISER DANS NASHI";
 "SPACING" = "ESPACEMENT";
@@ -1941,7 +1946,12 @@
 "Sound follows your Mac’s volume. Haptics need a compatible Force Touch trackpad." = "Le son suit le volume de votre Mac. Le retour haptique nécessite un trackpad Force Touch compatible.";
 "Source & third-party notices" = "Mentions sur les sources et les composants tiers";
 "Space play/pause · ←/→ 1s · Shift+←/→ 1 frame (video), 0.1s (audio) · I/O set range · Enter save" = "Espace lecture/pause · ←/→ 1 s · Maj+←/→ 1 image (vidéo), 0,1 s (audio) · I/O définir la plage · Entrée enregistrer";
+"Space play/pause · ←/→ 1s · ⇧←/→ 0.1s" = "Espace lecture/pause · ←/→ 1 s · ⇧←/→ 0,1 s";
+"Space play/pause · ←/→ 1s · ⇧←/→ 0.1s · I/O set range · ⇧Space play range" = "Espace lecture/pause · ←/→ 1 s · ⇧←/→ 0,1 s · I/O définir la plage · ⇧Espace lire la plage";
+"Space play/pause · ←/→ 1s · ⇧←/→ 1 frame" = "Espace lecture/pause · ←/→ 1 s · ⇧←/→ 1 image";
 "Space play/pause · ←/→ 1s · ⇧←/→ 1 frame · I/O set range · ⇧Space play range" = "Espace lecture/pause · ←/→ 1 s · ⇧←/→ 1 image · I/O définir la plage · ⇧Espace lire la plage";
+"Space play/pause · ←/→ 1s · ⇧←/→ 1 frame · M add frame" = "Espace lecture/pause · ←/→ 1 s · ⇧←/→ 1 image · M ajouter une image";
+"Space play/pause · ←/→ 1s · ⇧←/→ 1 frame · M add split" = "Espace lecture/pause · ←/→ 1 s · ⇧←/→ 1 image · M ajouter une coupure";
 "Space · Preview" = "Espace · Aperçu";
 "Space: preview · Enter: use in Nashi" = "Espace : aperçu · Entrée : utiliser dans Nashi";
 "Spacing" = "Espacement";
