@@ -184,6 +184,13 @@ if(Environment.GetEnvironmentVariable("NASHI_VERIFY_FFMPEG") is {} encoder && En
             Check(endFrames.Count==(clip==pictureEndsEarlyAvi?3:5)&&File.ReadAllBytes(endFrames[0]).SequenceEqual(File.ReadAllBytes(middle))&&endFrames.Skip(1).All(f=>File.ReadAllBytes(f).SequenceEqual(lastBytes))&&!lastBytes.SequenceEqual(File.ReadAllBytes(middle)),"End-of-video snapshots did not show the last frame, or a mid-video snapshot moved ("+Path.GetExtension(clip)+")");
         }
         var bleeped=await engine.ToolAsync("redactAudio",audio,directory,new(){AudioRedactions=[new(.25,.75)]});Check((await engine.InspectAsync(bleeped[0])).HasAudio,"Bleep export failed");
+        // Fully transparent videos with a white stripe: overlay blends a blurred or pixelated patch by its alpha, so a patch that kept it showed the stripe.
+        foreach(var (alphaName,alphaCodec) in new[]{("Alpha qtrle.mov",new[]{"-c:v","qtrle"}),("Alpha ProRes 4444.mov",["-c:v","prores_ks","-profile:v","4444","-pix_fmt","yuva444p10le"]),("Alpha PNG.mov",["-c:v","png"]),("Alpha VP9.webm",["-c:v","libvpx-vp9","-pix_fmt","yuva420p"])})
+        {
+            var alphaSource=Path.Combine(directory,alphaName);await ProcessRunner.RunAsync(encoder,["-v","error","-f","lavfi","-i","color=black:s=128x96:r=12:d=1,drawbox=x=60:y=0:w=8:h=96:color=white:t=fill,format=rgba,colorchannelmixer=aa=0",..alphaCodec,alphaSource]);
+            foreach(var alphaMode in new[]{"blur","pixelate"})
+            {var alphaRedacted=(await engine.ToolAsync("redactVideo",[alphaSource],directory,new(){Regions=[new(16,16,96,64)],RedactionMode=alphaMode}))[0];var alphaPixel=alphaRedacted+".gray";await ProcessRunner.RunAsync(encoder,["-v","error","-i",alphaRedacted,"-frames:v","1","-vf","format=gray,crop=1:1:63:48","-f","rawvideo",alphaPixel]);Check(File.ReadAllBytes(alphaPixel)[0]<128,$"{alphaName} {alphaMode} redaction left the original pixels visible ({File.ReadAllBytes(alphaPixel)[0]})");}
+        }
         var stereo=Path.Combine(directory,"Stereo.wav");await ProcessRunner.RunAsync(encoder,["-v","error","-f","lavfi","-i","sine=duration=1:sample_rate=48000","-ac","2",stereo]);var stereoBleep=await engine.ToolAsync("redactAudio",[stereo],directory,new(){AudioRedactions=[new(.25,.75)]});
         Check((await ProcessRunner.RunAsync(probe,["-v","error","-select_streams","a:0","-show_entries","stream=channels","-of","csv=p=0",stereoBleep[0]])).Output.Trim()=="2","Audio redaction downmixed a stereo file");
         // FLAC and AC-3 surround decode as 5.1(side); libopus takes only Vorbis-order layouts and WMA at most two channels.
