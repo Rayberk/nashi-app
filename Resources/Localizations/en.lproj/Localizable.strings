@@ -696,6 +696,12 @@
 "Compressing PDF · attempt %lld · page %lld/%lld…" = "Compressing PDF · attempt %lld · page %lld/%lld…";
 "Compression" = "Compression";
 "Compression Settings" = "Compression Settings";
+"Compression attempt %@ · Analyzing video…" = "Compression attempt %@ · Analyzing video…";
+"Compression attempt %@ · Encoding…" = "Compression attempt %@ · Encoding…";
+"Compression attempt %@…" = "Compression attempt %@…";
+"Compression attempt %lld · Analyzing video…" = "Compression attempt %lld · Analyzing video…";
+"Compression attempt %lld · Encoding…" = "Compression attempt %lld · Encoding…";
+"Compression attempt %lld…" = "Compression attempt %lld…";
 "Compression preset" = "Compression preset";
 "Compression requires a known duration." = "Compression requires a known duration.";
 "Compression strength" = "Compression strength";
@@ -1246,6 +1252,8 @@
 "Input and output format." = "Input and output format.";
 "Input format" = "Input format";
 "Input-only format." = "Input-only format.";
+"Inspecting %@…" = "Inspecting %@…";
+"Inspecting %lld…" = "Inspecting %lld…";
 "Instagram photo posts open a photo selection. For videos, use the share link; for other photos, drag the image or use Copy Image Address. Public media only; login-required and protected items may be unavailable." = "Instagram photo posts open a photo selection. For videos, use the share link; for other photos, drag the image or use Copy Image Address. Public media only; login-required and protected items may be unavailable.";
 "Instagram photo posts open a photo selection. Reel links offer video and audio. Public downloadable media only." = "Instagram photo posts open a photo selection. Reel links offer video and audio. Public downloadable media only.";
 "Install an OCR language in Windows Language settings to detect text." = "Install an OCR language in Windows Language settings to detect text.";
@@ -1383,6 +1391,7 @@
 "MAXIMUM VIDEO HEIGHT" = "MAXIMUM VIDEO HEIGHT";
 "MAXIMUM VIDEO HEIGHT (0 = ORIGINAL)" = "MAXIMUM VIDEO HEIGHT (0 = ORIGINAL)";
 "MAXIMUM WIDTH" = "MAXIMUM WIDTH";
+"MEASURING AUDIO LOUDNESS…" = "MEASURING AUDIO LOUDNESS…";
 "MEDIA RANGE TIMELINE" = "MEDIA RANGE TIMELINE";
 "MEDIA SETUP" = "MEDIA SETUP";
 "MEDIA TOOLS" = "MEDIA TOOLS";
@@ -1427,6 +1436,7 @@
 "Maximum video height" = "Maximum video height";
 "Maximum video height (0 = original)" = "Maximum video height (0 = original)";
 "Maximum width" = "Maximum width";
+"Measuring audio loudness…" = "Measuring audio loudness…";
 "Media range timeline" = "Media range timeline";
 "Media setup" = "Media setup";
 "Media tools" = "Media tools";
@@ -2314,6 +2324,8 @@
 "THE REQUESTED IMAGE SIZE COULD NOT BE REACHED. CHOOSE A LARGER TARGET." = "THE REQUESTED IMAGE SIZE COULD NOT BE REACHED. CHOOSE A LARGER TARGET.";
 "THE REQUESTED PDF SIZE COULD NOT BE REACHED." = "THE REQUESTED PDF SIZE COULD NOT BE REACHED.";
 "THE REQUESTED PDF SIZE COULD NOT BE REACHED. CHOOSE A LARGER TARGET." = "THE REQUESTED PDF SIZE COULD NOT BE REACHED. CHOOSE A LARGER TARGET.";
+"THE REQUESTED SIZE CANNOT BE REACHED WITH THIS FORMAT. CHOOSE A LARGER TARGET SIZE OR A SMALLER VIDEO RESOLUTION." = "THE REQUESTED SIZE CANNOT BE REACHED WITH THIS FORMAT. CHOOSE A LARGER TARGET SIZE OR A SMALLER VIDEO RESOLUTION.";
+"THE REQUESTED SIZE IS TOO SMALL FOR A MEDIA CONTAINER. CHOOSE AT LEAST 2 KB." = "THE REQUESTED SIZE IS TOO SMALL FOR A MEDIA CONTAINER. CHOOSE AT LEAST 2 KB.";
 "THE SAME CONVERSION AND TOOL CATALOG AS MACOS." = "THE SAME CONVERSION AND TOOL CATALOG AS MACOS.";
 "THE SELECTED RECTANGLE MUST BE INSIDE THE VIDEO AND AT LEAST 2 × 2 PIXELS." = "THE SELECTED RECTANGLE MUST BE INSIDE THE VIDEO AND AT LEAST 2 × 2 PIXELS.";
 "THE SIGNED PACKAGE VERSION DOES NOT MATCH THIS UPDATE." = "THE SIGNED PACKAGE VERSION DOES NOT MATCH THIS UPDATE.";
@@ -2360,6 +2372,7 @@
 "THIS REPOSITORY IS PRIVATE" = "THIS REPOSITORY IS PRIVATE";
 "THIS RTFD ATTACHMENT SYNTAX COULD NOT BE PRESERVED." = "THIS RTFD ATTACHMENT SYNTAX COULD NOT BE PRESERVED.";
 "THIS SIZE CANNOT BE REACHED. CHOOSE A LARGER TARGET OR SMALLER DIMENSIONS." = "THIS SIZE CANNOT BE REACHED. CHOOSE A LARGER TARGET OR SMALLER DIMENSIONS.";
+"THIS SOURCE USES MORE THAN 32-BIT INTEGER AUDIO. CHOOSE AN OUTPUT BIT DEPTH IN SETTINGS." = "THIS SOURCE USES MORE THAN 32-BIT INTEGER AUDIO. CHOOSE AN OUTPUT BIT DEPTH IN SETTINGS.";
 "THIS TEXT CLIPPING CONTAINS NO SUPPORTED TEXT RESOURCE." = "THIS TEXT CLIPPING CONTAINS NO SUPPORTED TEXT RESOURCE.";
 "THIS TEXT IS TOO LARGE TO PASTE. CHOOSE A TEXT FILE INSTEAD." = "THIS TEXT IS TOO LARGE TO PASTE. CHOOSE A TEXT FILE INSTEAD.";
 "THIS TEXT IS TOO LARGE TO PREVIEW. USE OPEN TO READ THE COMPLETE FILE." = "THIS TEXT IS TOO LARGE TO PREVIEW. USE OPEN TO READ THE COMPLETE FILE.";
@@ -2466,6 +2479,8 @@
 "The requested PDF size could not be reached. Choose a larger target." = "The requested PDF size could not be reached. Choose a larger target.";
 "The requested file size could not be reached. Choose a larger target." = "The requested file size could not be reached. Choose a larger target.";
 "The requested image size could not be reached. Choose a larger target." = "The requested image size could not be reached. Choose a larger target.";
+"The requested size cannot be reached with this format. Choose a larger target size or a smaller video resolution." = "The requested size cannot be reached with this format. Choose a larger target size or a smaller video resolution.";
+"The requested size is too small for a media container. Choose at least 2 KB." = "The requested size is too small for a media container. Choose at least 2 KB.";
 "The same conversion and tool catalog as macOS." = "The same conversion and tool catalog as macOS.";
 "The selected rectangle must be inside the video and at least 2 × 2 pixels." = "The selected rectangle must be inside the video and at least 2 × 2 pixels.";
 "The signed package version does not match this update." = "The signed package version does not match this update.";
@@ -2523,6 +2538,7 @@
 "This post contains videos. Use its Reel link to download video." = "This post contains videos. Use its Reel link to download video.";
 "This repository is private" = "This repository is private";
 "This size cannot be reached. Choose a larger target or smaller dimensions." = "This size cannot be reached. Choose a larger target or smaller dimensions.";
+"This source uses more than 32-bit integer audio. Choose an output bit depth in settings." = "This source uses more than 32-bit integer audio. Choose an output bit depth in settings.";
 "This text clipping contains no supported text resource." = "This text clipping contains no supported text resource.";
 "This text is too large to paste. Choose a text file instead." = "This text is too large to paste. Choose a text file instead.";
 "This text is too large to preview. Use Open to read the complete file." = "This text is too large to preview. Use Open to read the complete file.";
