@@ -256,6 +256,8 @@ public sealed class MediaEngine(string ffmpeg, string ffprobe)
                     if(options.RedactionMode=="solid")graph.Add($"[{previous}]drawbox=x={rect.X}:y={rect.Y}:w={rect.Width}:h={rect.Height}:color=black:t=fill:enable='{enabled}'[{next}]");
                     else
                     {
+                        // overlay rounds x and y down to even pixels in 4:2:0 video; start the patch there so it lands where it was cut (as on macOS).
+                        rect=(rect.X/2*2,rect.Y/2*2,rect.Width+rect.X%2,rect.Height+rect.Y%2);
                         var effect=options.RedactionMode=="blur"?"gblur=sigma=20:steps=2":$"scale={Math.Max(1,rect.Width/16)}:{Math.Max(1,rect.Height/16)}:flags=neighbor,scale={rect.Width}:{rect.Height}:flags=neighbor";
                         graph.Add($"[{previous}]split[b{n}][c{n}];[c{n}]crop={rect.Width}:{rect.Height}:{rect.X}:{rect.Y}:exact=1,{effect}[e{n}];[b{n}][e{n}]overlay={rect.X}:{rect.Y}:enable='{enabled}'[{next}]");
                     }
