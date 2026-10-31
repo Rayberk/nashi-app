@@ -388,6 +388,7 @@
 "CHOOSE A VALID START AND END WITHIN THE FILE’S DURATION." = "CHOOSE A VALID START AND END WITHIN THE FILE’S DURATION.";
 "CHOOSE A VALID TIME RANGE." = "CHOOSE A VALID TIME RANGE.";
 "CHOOSE AN EXISTING MEDIA FILE." = "CHOOSE AN EXISTING MEDIA FILE.";
+"CHOOSE AN IMAGE OR PDF." = "CHOOSE AN IMAGE OR PDF.";
 "CHOOSE AN IMAGE." = "CHOOSE AN IMAGE.";
 "CHOOSE AN INPUT FORMAT TO SEE ITS AVAILABLE OUTPUTS." = "CHOOSE AN INPUT FORMAT TO SEE ITS AVAILABLE OUTPUTS.";
 "CHOOSE AN INSTAGRAM PHOTO POST LINK." = "CHOOSE AN INSTAGRAM PHOTO POST LINK.";
@@ -494,6 +495,7 @@
 "COULD NOT COPY THE SELECTED FILE PATHS." = "COULD NOT COPY THE SELECTED FILE PATHS.";
 "COULD NOT COPY THE SELECTED FILES." = "COULD NOT COPY THE SELECTED FILES.";
 "COULD NOT ORIENT IMAGE." = "COULD NOT ORIENT IMAGE.";
+"COULD NOT READ THIS PDF." = "COULD NOT READ THIS PDF.";
 "COULD NOT RENDER THE REDACTION." = "COULD NOT RENDER THE REDACTION.";
 "COULDN’T CHECK FOR UPDATES" = "COULDN’T CHECK FOR UPDATES";
 "COULDN’T FINISH" = "COULDN’T FINISH";
@@ -580,6 +582,7 @@
 "Choose a valid time range." = "Choose a valid time range.";
 "Choose an Instagram photo post link." = "Choose an Instagram photo post link.";
 "Choose an existing media file." = "Choose an existing media file.";
+"Choose an image or PDF." = "Choose an image or PDF.";
 "Choose an image." = "Choose an image.";
 "Choose an input format to see its available outputs." = "Choose an input format to see its available outputs.";
 "Choose annotation image…" = "Choose annotation image…";
@@ -697,6 +700,9 @@
 "Could not open %@." = "Could not open %@.";
 "Could not open %lld." = "Could not open %lld.";
 "Could not orient image." = "Could not orient image.";
+"Could not read this PDF." = "Could not read this PDF.";
+"Could not render PDF page %@." = "Could not render PDF page %@.";
+"Could not render PDF page %lld." = "Could not render PDF page %lld.";
 "Could not render the redaction." = "Could not render the redaction.";
 "Couldn’t check for updates" = "Couldn’t check for updates";
 "Couldn’t finish" = "Couldn’t finish";
@@ -2203,6 +2209,7 @@
 "THIS FILE HAS NO VIDEO STREAM." = "THIS FILE HAS NO VIDEO STREAM.";
 "THIS FORMAT CAN BE IMPORTED. CHOOSE AN OUTPUT FORMAT IN THE SIDEBAR TO CONFIGURE ITS DEFAULTS." = "THIS FORMAT CAN BE IMPORTED. CHOOSE AN OUTPUT FORMAT IN THE SIDEBAR TO CONFIGURE ITS DEFAULTS.";
 "THIS FORMAT USES ITS ORIGINAL DOCUMENT STRUCTURE. NO EXPORT DEFAULTS ARE NEEDED." = "THIS FORMAT USES ITS ORIGINAL DOCUMENT STRUCTURE. NO EXPORT DEFAULTS ARE NEEDED.";
+"THIS IMAGE COULD NOT BE DECODED." = "THIS IMAGE COULD NOT BE DECODED.";
 "THIS IMAGE EXCEEDS 100 MP." = "THIS IMAGE EXCEEDS 100 MP.";
 "THIS IMAGE EXCEEDS 200 MB." = "THIS IMAGE EXCEEDS 200 MB.";
 "THIS IMAGE IS TOO LARGE (100 MP LIMIT)." = "THIS IMAGE IS TOO LARGE (100 MP LIMIT).";
@@ -2214,6 +2221,7 @@
 "THIS PDF HAS FORM FIELDS OR ATTACHMENTS THAT METADATA CLEANUP CANNOT KEEP. NO COPY WAS EXPORTED." = "THIS PDF HAS FORM FIELDS OR ATTACHMENTS THAT METADATA CLEANUP CANNOT KEEP. NO COPY WAS EXPORTED.";
 "THIS PDF IS PASSWORD PROTECTED. ENTER ITS PASSWORD." = "THIS PDF IS PASSWORD PROTECTED. ENTER ITS PASSWORD.";
 "THIS PDF PAGE COULD NOT BE READ." = "THIS PDF PAGE COULD NOT BE READ.";
+"THIS PDF REQUIRES A VALID PASSWORD." = "THIS PDF REQUIRES A VALID PASSWORD.";
 "THIS POST CONTAINS VIDEOS. USE ITS REEL LINK TO DOWNLOAD VIDEO." = "THIS POST CONTAINS VIDEOS. USE ITS REEL LINK TO DOWNLOAD VIDEO.";
 "THIS REPOSITORY IS PRIVATE" = "THIS REPOSITORY IS PRIVATE";
 "THIS RTFD ATTACHMENT SYNTAX COULD NOT BE PRESERVED." = "THIS RTFD ATTACHMENT SYNTAX COULD NOT BE PRESERVED.";
@@ -2305,6 +2313,7 @@
 "This PDF has form fields or attachments that metadata cleanup cannot keep. No copy was exported." = "This PDF has form fields or attachments that metadata cleanup cannot keep. No copy was exported.";
 "This PDF is password protected. Enter its password." = "This PDF is password protected. Enter its password.";
 "This PDF page could not be read." = "This PDF page could not be read.";
+"This PDF requires a valid password." = "This PDF requires a valid password.";
 "This RTFD attachment syntax could not be preserved." = "This RTFD attachment syntax could not be preserved.";
 "This Windows codec cannot play directly. Set up media tools to create a local preview." = "This Windows codec cannot play directly. Set up media tools to create a local preview.";
 "This conversion is not available for %@." = "This conversion is not available for %@.";
@@ -2316,6 +2325,7 @@
 "This file has no video stream." = "This file has no video stream.";
 "This format can be imported. Choose an output format in the sidebar to configure its defaults." = "This format can be imported. Choose an output format in the sidebar to configure its defaults.";
 "This format uses its original document structure. No export defaults are needed." = "This format uses its original document structure. No export defaults are needed.";
+"This image could not be decoded." = "This image could not be decoded.";
 "This image exceeds 100 MP." = "This image exceeds 100 MP.";
 "This image exceeds 200 MB." = "This image exceeds 200 MB.";
 "This image is too large (100 MP limit)." = "This image is too large (100 MP limit).";

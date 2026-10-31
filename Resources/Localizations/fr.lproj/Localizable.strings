@@ -388,6 +388,7 @@
 "CHOOSE A VALID START AND END WITHIN THE FILE’S DURATION." = "CHOISISSEZ UN DÉBUT ET UNE FIN VALIDES, DANS LA DURÉE DU FICHIER.";
 "CHOOSE A VALID TIME RANGE." = "CHOISISSEZ UNE PLAGE DE TEMPS VALIDE.";
 "CHOOSE AN EXISTING MEDIA FILE." = "CHOISISSEZ UN FICHIER MÉDIA EXISTANT.";
+"CHOOSE AN IMAGE OR PDF." = "CHOISISSEZ UNE IMAGE OU UN PDF.";
 "CHOOSE AN IMAGE." = "CHOISISSEZ UNE IMAGE.";
 "CHOOSE AN INPUT FORMAT TO SEE ITS AVAILABLE OUTPUTS." = "CHOISISSEZ UN FORMAT D’ENTRÉE POUR VOIR LES SORTIES DISPONIBLES.";
 "CHOOSE AN INSTAGRAM PHOTO POST LINK." = "CHOISISSEZ UN LIEN DE PUBLICATION DE PHOTOS INSTAGRAM.";
@@ -494,6 +495,7 @@
 "COULD NOT COPY THE SELECTED FILE PATHS." = "IMPOSSIBLE DE COPIER LES CHEMINS DES FICHIERS SÉLECTIONNÉS.";
 "COULD NOT COPY THE SELECTED FILES." = "IMPOSSIBLE DE COPIER LES FICHIERS SÉLECTIONNÉS.";
 "COULD NOT ORIENT IMAGE." = "IMPOSSIBLE D’ORIENTER L’IMAGE.";
+"COULD NOT READ THIS PDF." = "IMPOSSIBLE DE LIRE CE PDF.";
 "COULD NOT RENDER THE REDACTION." = "IMPOSSIBLE D’APPLIQUER LE CAVIARDAGE.";
 "COULDN’T CHECK FOR UPDATES" = "IMPOSSIBLE DE RECHERCHER LES MISES À JOUR";
 "COULDN’T FINISH" = "IMPOSSIBLE DE TERMINER";
@@ -580,6 +582,7 @@
 "Choose a valid time range." = "Choisissez une plage de temps valide.";
 "Choose an Instagram photo post link." = "Choisissez un lien de publication de photos Instagram.";
 "Choose an existing media file." = "Choisissez un fichier média existant.";
+"Choose an image or PDF." = "Choisissez une image ou un PDF.";
 "Choose an image." = "Choisissez une image.";
 "Choose an input format to see its available outputs." = "Choisissez un format d’entrée pour voir les sorties disponibles.";
 "Choose annotation image…" = "Choisir l’image d’annotation…";
@@ -697,6 +700,9 @@
 "Could not open %@." = "Impossible d’ouvrir %@.";
 "Could not open %lld." = "Impossible d’ouvrir %lld.";
 "Could not orient image." = "Impossible d’orienter l’image.";
+"Could not read this PDF." = "Impossible de lire ce PDF.";
+"Could not render PDF page %@." = "Impossible de rendre la page %@ du PDF.";
+"Could not render PDF page %lld." = "Impossible de rendre la page %lld du PDF.";
 "Could not render the redaction." = "Impossible d’appliquer le caviardage.";
 "Couldn’t check for updates" = "Impossible de rechercher les mises à jour";
 "Couldn’t finish" = "Impossible de terminer";
@@ -2203,6 +2209,7 @@
 "THIS FILE HAS NO VIDEO STREAM." = "CE FICHIER N’A PAS DE FLUX VIDÉO.";
 "THIS FORMAT CAN BE IMPORTED. CHOOSE AN OUTPUT FORMAT IN THE SIDEBAR TO CONFIGURE ITS DEFAULTS." = "CE FORMAT PEUT ÊTRE IMPORTÉ. CHOISISSEZ UN FORMAT DE SORTIE DANS LA BARRE LATÉRALE POUR CONFIGURER SES RÉGLAGES PAR DÉFAUT.";
 "THIS FORMAT USES ITS ORIGINAL DOCUMENT STRUCTURE. NO EXPORT DEFAULTS ARE NEEDED." = "CE FORMAT UTILISE LA STRUCTURE D’ORIGINE DU DOCUMENT. AUCUN RÉGLAGE D’EXPORT PAR DÉFAUT N’EST NÉCESSAIRE.";
+"THIS IMAGE COULD NOT BE DECODED." = "IMPOSSIBLE DE DÉCODER CETTE IMAGE.";
 "THIS IMAGE EXCEEDS 100 MP." = "CETTE IMAGE DÉPASSE 100 MPX.";
 "THIS IMAGE EXCEEDS 200 MB." = "CETTE IMAGE DÉPASSE 200 MO.";
 "THIS IMAGE IS TOO LARGE (100 MP LIMIT)." = "CETTE IMAGE EST TROP GRANDE (LIMITE DE 100 MPX).";
@@ -2214,6 +2221,7 @@
 "THIS PDF HAS FORM FIELDS OR ATTACHMENTS THAT METADATA CLEANUP CANNOT KEEP. NO COPY WAS EXPORTED." = "CE PDF CONTIENT DES CHAMPS DE FORMULAIRE OU DES PIÈCES JOINTES QUE LE NETTOYAGE DES MÉTADONNÉES NE PEUT PAS CONSERVER. AUCUNE COPIE N’A ÉTÉ EXPORTÉE.";
 "THIS PDF IS PASSWORD PROTECTED. ENTER ITS PASSWORD." = "CE PDF EST PROTÉGÉ PAR UN MOT DE PASSE. SAISISSEZ SON MOT DE PASSE.";
 "THIS PDF PAGE COULD NOT BE READ." = "CETTE PAGE PDF N’A PAS PU ÊTRE LUE.";
+"THIS PDF REQUIRES A VALID PASSWORD." = "CE PDF NÉCESSITE UN MOT DE PASSE VALIDE.";
 "THIS POST CONTAINS VIDEOS. USE ITS REEL LINK TO DOWNLOAD VIDEO." = "CETTE PUBLICATION CONTIENT DES VIDÉOS. UTILISEZ SON LIEN REEL POUR TÉLÉCHARGER LA VIDÉO.";
 "THIS REPOSITORY IS PRIVATE" = "CE DÉPÔT EST PRIVÉ";
 "THIS RTFD ATTACHMENT SYNTAX COULD NOT BE PRESERVED." = "CETTE SYNTAXE DE PIÈCE JOINTE RTFD N’A PAS PU ÊTRE PRÉSERVÉE.";
@@ -2305,6 +2313,7 @@
 "This PDF has form fields or attachments that metadata cleanup cannot keep. No copy was exported." = "Ce PDF contient des champs de formulaire ou des pièces jointes que le nettoyage des métadonnées ne peut pas conserver. Aucune copie n’a été exportée.";
 "This PDF is password protected. Enter its password." = "Ce PDF est protégé par un mot de passe. Saisissez son mot de passe.";
 "This PDF page could not be read." = "Cette page PDF n’a pas pu être lue.";
+"This PDF requires a valid password." = "Ce PDF nécessite un mot de passe valide.";
 "This RTFD attachment syntax could not be preserved." = "Cette syntaxe de pièce jointe RTFD n’a pas pu être préservée.";
 "This Windows codec cannot play directly. Set up media tools to create a local preview." = "Ce codec Windows ne peut pas être lu directement. Configurez les outils multimédias pour créer un aperçu local.";
 "This conversion is not available for %@." = "Cette conversion n’est pas disponible pour %@.";
@@ -2316,6 +2325,7 @@
 "This file has no video stream." = "Ce fichier n’a pas de flux vidéo.";
 "This format can be imported. Choose an output format in the sidebar to configure its defaults." = "Ce format peut être importé. Choisissez un format de sortie dans la barre latérale pour configurer ses réglages par défaut.";
 "This format uses its original document structure. No export defaults are needed." = "Ce format utilise la structure d’origine du document. Aucun réglage d’export par défaut n’est nécessaire.";
+"This image could not be decoded." = "Impossible de décoder cette image.";
 "This image exceeds 100 MP." = "Cette image dépasse 100 Mpx.";
 "This image exceeds 200 MB." = "Cette image dépasse 200 Mo.";
 "This image is too large (100 MP limit)." = "Cette image est trop grande (limite de 100 Mpx).";
