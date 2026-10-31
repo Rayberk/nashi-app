@@ -446,6 +446,7 @@
 "CONVERT TO" = "CONVERTIR EN";
 "CONVERT · WHILE DRAGGING" = "CONVERTIR · PENDANT LE GLISSEMENT";
 "CONVERT, FINE-TUNE, AND SEND THEM ON THEIR WAY." = "CONVERTISSEZ, PEAUFINEZ ET ENVOYEZ-LES SUR LEUR CHEMIN.";
+"COPIED ALL" = "TOUT COPIÉ";
 "COPIED LINK" = "LIEN COPIÉ";
 "COPY" = "COPIER";
 "COPY A FILE, SOME TEXT, AN IMAGE OR A PUBLIC MEDIA LINK FIRST." = "COPIEZ D’ABORD UN FICHIER, DU TEXTE, UNE IMAGE OU UN LIEN MÉDIA PUBLIC.";
@@ -453,6 +454,7 @@
 "COPY A LINK, THEN CHOOSE DOWNLOAD LINK FROM THE NASHI MENU." = "COPIEZ UN LIEN, PUIS CHOISISSEZ TÉLÉCHARGER LE LIEN DANS LE MENU NASHI.";
 "COPY A PUBLIC MEDIA LINK FIRST." = "COPIEZ D’ABORD UN LIEN MÉDIA PUBLIC.";
 "COPY A VIDEO SHARE LINK OR AN IMAGE ADDRESS FIRST." = "COPIEZ D’ABORD LE LIEN DE PARTAGE D’UNE VIDÉO OU L’ADRESSE D’UNE IMAGE.";
+"COPY ALL" = "TOUT COPIER";
 "COPY DETAILS" = "COPIER LES DÉTAILS";
 "COPY PATH" = "COPIER LE CHEMIN";
 "CORNER RADIUS" = "RAYON DES COINS";
@@ -630,6 +632,7 @@
 "Convert to %lld" = "Convertir en %lld";
 "Convert · while dragging" = "Convertir · pendant le glissement";
 "Convert, fine-tune, and send them on their way." = "Convertissez, peaufinez et envoyez-les sur leur chemin.";
+"Copied all" = "Tout copié";
 "Copied link" = "Lien copié";
 "Copy" = "Copier";
 "Copy Path" = "Copier le chemin";
@@ -638,6 +641,7 @@
 "Copy a link, then choose Download Link from the Nashi menu." = "Copiez un lien, puis choisissez Télécharger le lien dans le menu Nashi.";
 "Copy a public media link first." = "Copiez d’abord un lien média public.";
 "Copy a video share link or an image address first." = "Copiez d’abord le lien de partage d’une vidéo ou l’adresse d’une image.";
+"Copy all" = "Tout copier";
 "Copy details" = "Copier les détails";
 "Copy path" = "Copier le chemin";
 "Corner radius" = "Rayon des coins";

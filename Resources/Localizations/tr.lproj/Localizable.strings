@@ -446,6 +446,7 @@
 "CONVERT TO" = "ŞUNA DÖNÜŞTÜR";
 "CONVERT · WHILE DRAGGING" = "DÖNÜŞTÜR · SÜRÜKLERKEN";
 "CONVERT, FINE-TUNE, AND SEND THEM ON THEIR WAY." = "DÖNÜŞTÜR, İNCE AYAR YAP VE PAYLAŞ.";
+"COPIED ALL" = "TÜMÜ KOPYALANDI";
 "COPIED LINK" = "KOPYALANAN BAĞLANTI";
 "COPY" = "KOPYALA";
 "COPY A FILE, SOME TEXT, AN IMAGE OR A PUBLIC MEDIA LINK FIRST." = "ÖNCE BİR DOSYA, METİN, GÖRSEL VEYA HERKESE AÇIK BİR MEDYA BAĞLANTISI KOPYALA.";
@@ -453,6 +454,7 @@
 "COPY A LINK, THEN CHOOSE DOWNLOAD LINK FROM THE NASHI MENU." = "BİR BAĞLANTI KOPYALA, SONRA NASHI MENÜSÜNDEN BAĞLANTIDAN İNDİR'İ SEÇ.";
 "COPY A PUBLIC MEDIA LINK FIRST." = "ÖNCE HERKESE AÇIK BİR MEDYA BAĞLANTISI KOPYALA.";
 "COPY A VIDEO SHARE LINK OR AN IMAGE ADDRESS FIRST." = "ÖNCE BİR VİDEO PAYLAŞIM BAĞLANTISI VEYA GÖRSEL ADRESİ KOPYALA.";
+"COPY ALL" = "TÜMÜNÜ KOPYALA";
 "COPY DETAILS" = "AYRINTILARI KOPYALA";
 "COPY PATH" = "YOLU KOPYALA";
 "CORNER RADIUS" = "KÖŞE YUVARLAKLIĞI";
@@ -630,6 +632,7 @@
 "Convert to %lld" = "%lld biçimine dönüştür";
 "Convert · while dragging" = "Dönüştür · sürüklerken";
 "Convert, fine-tune, and send them on their way." = "Dönüştür, ince ayar yap ve paylaş.";
+"Copied all" = "Tümü kopyalandı";
 "Copied link" = "Kopyalanan bağlantı";
 "Copy" = "Kopyala";
 "Copy Path" = "Yolu Kopyala";
@@ -638,6 +641,7 @@
 "Copy a link, then choose Download Link from the Nashi menu." = "Bir bağlantı kopyala, sonra Nashi menüsünden Bağlantıdan İndir'i seç.";
 "Copy a public media link first." = "Önce herkese açık bir medya bağlantısı kopyala.";
 "Copy a video share link or an image address first." = "Önce bir video paylaşım bağlantısı veya görsel adresi kopyala.";
+"Copy all" = "Tümünü kopyala";
 "Copy details" = "Ayrıntıları kopyala";
 "Copy path" = "Yolu kopyala";
 "Corner radius" = "Köşe yuvarlaklığı";
