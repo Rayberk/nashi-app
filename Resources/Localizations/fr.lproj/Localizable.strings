@@ -373,6 +373,7 @@
 "CHOOSE A PLAIN OUTPUT FILENAME." = "CHOISISSEZ UN NOM DE FICHIER DE SORTIE SIMPLE.";
 "CHOOSE A POSITIVE SIZE OR A REDUCTION BELOW 100%. ZERO USES AUTOMATIC COMPRESSION." = "CHOISISSEZ UNE TAILLE POSITIVE OU UNE RÉDUCTION INFÉRIEURE À 100 %. ZÉRO UTILISE LA COMPRESSION AUTOMATIQUE.";
 "CHOOSE A POSITIVE TARGET SIZE OR A REDUCTION BETWEEN 0 AND 100%." = "CHOISISSEZ UNE TAILLE CIBLE POSITIVE OU UNE RÉDUCTION COMPRISE ENTRE 0 ET 100 %.";
+"CHOOSE A READABLE LOCAL MEDIA FILE." = "CHOISISSEZ UN FICHIER MÉDIA LOCAL LISIBLE.";
 "CHOOSE A RECTANGLE INSIDE THE VIDEO." = "CHOISISSEZ UN RECTANGLE À L’INTÉRIEUR DE LA VIDÉO.";
 "CHOOSE A SUPPORTED MAXIMUM VIDEO HEIGHT." = "CHOISISSEZ UNE HAUTEUR VIDÉO MAXIMALE PRISE EN CHARGE.";
 "CHOOSE A TARGET OF AT LEAST 2 KB." = "CHOISISSEZ UNE CIBLE D’AU MOINS 2 KO.";
@@ -561,6 +562,7 @@
 "Choose a plain output filename." = "Choisissez un nom de fichier de sortie simple.";
 "Choose a positive size or a reduction below 100%. Zero uses automatic compression." = "Choisissez une taille positive ou une réduction inférieure à 100 %. Zéro utilise la compression automatique.";
 "Choose a positive target size or a reduction between 0 and 100%." = "Choisissez une taille cible positive ou une réduction comprise entre 0 et 100 %.";
+"Choose a readable local media file." = "Choisissez un fichier média local lisible.";
 "Choose a rectangle inside the video." = "Choisissez un rectangle à l’intérieur de la vidéo.";
 "Choose a supported maximum video height." = "Choisissez une hauteur vidéo maximale prise en charge.";
 "Choose a target of at least 2 KB." = "Choisissez une cible d’au moins 2 Ko.";
