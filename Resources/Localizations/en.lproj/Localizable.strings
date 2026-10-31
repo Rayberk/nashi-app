@@ -2147,6 +2147,7 @@
 "TEXT SIZE" = "TEXT SIZE";
 "TEXTURE" = "TEXTURE";
 "THAT PDF SIZE CANNOT BE REACHED WHILE KEEPING SELECTABLE TEXT, LINKS AND ANNOTATIONS. CHOOSE A LARGER TARGET." = "THAT PDF SIZE CANNOT BE REACHED WHILE KEEPING SELECTABLE TEXT, LINKS AND ANNOTATIONS. CHOOSE A LARGER TARGET.";
+"THE ARCHIVE CONTAINS AN UNNAMED ENTRY." = "THE ARCHIVE CONTAINS AN UNNAMED ENTRY.";
 "THE ARCHIVE CONTAINS AN UNSAFE PATH." = "THE ARCHIVE CONTAINS AN UNSAFE PATH.";
 "THE ARCHIVE ENTRY LEAVES ITS DESTINATION." = "THE ARCHIVE ENTRY LEAVES ITS DESTINATION.";
 "THE CLIPPING EXCEEDS 200 MB." = "THE CLIPPING EXCEEDS 200 MB.";
@@ -2237,6 +2238,9 @@
 "Text size" = "Text size";
 "Texture" = "Texture";
 "That PDF size cannot be reached while keeping selectable text, links and annotations. Choose a larger target." = "That PDF size cannot be reached while keeping selectable text, links and annotations. Choose a larger target.";
+"The UTF-32 text in %@ is damaged." = "The UTF-32 text in %@ is damaged.";
+"The UTF-32 text in %lld is damaged." = "The UTF-32 text in %lld is damaged.";
+"The archive contains an unnamed entry." = "The archive contains an unnamed entry.";
 "The archive contains an unsafe path." = "The archive contains an unsafe path.";
 "The archive entry leaves its destination." = "The archive entry leaves its destination.";
 "The clipping exceeds 200 MB." = "The clipping exceeds 200 MB.";
