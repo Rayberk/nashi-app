@@ -184,6 +184,7 @@
 "ALREADY AVAILABLE ON YOUR COMPUTER" = "BİLGİSAYARINDA ZATEN HAZIR";
 "ALREADY OPTIMIZED. ORIGINAL QUALITY RETAINED." = "ZATEN OPTİMİZE EDİLMİŞ. ORİJİNAL KALİTE KORUNDU.";
 "ALWAYS A LITTLE FRESHER." = "HEP BİRAZ DAHA YENİ.";
+"AN ARCHIVE LINK POINTS OUTSIDE THE EXTRACTION FOLDER." = "ARŞİVDEKİ BİR BAĞLANTI, AÇILACAĞI KLASÖRÜN DIŞINI GÖSTERİYOR.";
 "AN EMBEDDED IMAGE IS MISSING OR TOO LARGE." = "GÖMÜLÜ BİR GÖRSEL EKSİK VEYA ÇOK BÜYÜK.";
 "AN EMPTY OUTPUT WAS PRODUCED." = "BOŞ BİR ÇIKTI OLUŞTU.";
 "AN HTTPS DOWNLOAD IS REQUIRED." = "İNDİRME HTTPS ÜZERİNDEN YAPILMALI.";
@@ -265,6 +266,7 @@
 "An HTTPS download is required." = "İndirme HTTPS üzerinden yapılmalı.";
 "An RTFD attachment is missing or too large: %@" = "Bir RTFD eki eksik veya çok büyük: %@";
 "An RTFD attachment is missing or too large: %lld" = "Bir RTFD eki eksik veya çok büyük: %lld";
+"An archive link points outside the extraction folder." = "Arşivdeki bir bağlantı, açılacağı klasörün dışını gösteriyor.";
 "An embedded image is missing or too large." = "Gömülü bir görsel eksik veya çok büyük.";
 "An empty output was produced." = "Boş bir çıktı oluştu.";
 "An output cannot be a symbolic link." = "Çıktı sembolik bağlantı olamaz.";
@@ -2230,6 +2232,8 @@
 "TEXTURE" = "DOKU";
 "THAT PDF SIZE CANNOT BE REACHED WHILE KEEPING SELECTABLE TEXT, LINKS AND ANNOTATIONS. CHOOSE A LARGER TARGET." = "SEÇİLEBİLİR METİN, BAĞLANTILAR VE NOTLAR KORUNARAK BU PDF BOYUTUNA İNİLEMİYOR. DAHA BÜYÜK BİR HEDEF SEÇ.";
 "THAT PDF SIZE CANNOT BE REACHED WHILE KEEPING SELECTABLE TEXT, LINKS, AND ANNOTATIONS. CHOOSE A LARGER TARGET." = "SEÇİLEBİLİR METİN, BAĞLANTILAR VE NOTLAR KORUNARAK BU PDF BOYUTUNA İNİLEMİYOR. DAHA BÜYÜK BİR HEDEF SEÇ.";
+"THE ARCHIVE CONTAINS A PATH OUTSIDE ITS EXTRACTION FOLDER." = "ARŞİVDE, AÇILACAĞI KLASÖRÜN DIŞINA ÇIKAN BİR YOL VAR.";
+"THE ARCHIVE CONTAINS AN ABSOLUTE PATH." = "ARŞİVDE MUTLAK BİR YOL VAR.";
 "THE ARCHIVE CONTAINS AN UNNAMED ENTRY." = "ARŞİVDE ADI OLMAYAN BİR ÖĞE VAR.";
 "THE ARCHIVE CONTAINS AN UNSAFE PATH." = "ARŞİVDE GÜVENLİ OLMAYAN BİR YOL VAR.";
 "THE ARCHIVE ENTRY LEAVES ITS DESTINATION." = "ARŞİVDEKİ BİR ÖĞE HEDEF KLASÖRÜN DIŞINA ÇIKIYOR.";
@@ -2263,6 +2267,7 @@
 "THIS FILE HAS MOVED OR WAS REMOVED." = "BU DOSYA TAŞINMIŞ VEYA SİLİNMİŞ.";
 "THIS FILE HAS NO AUDIO STREAM." = "BU DOSYADA SES YOK.";
 "THIS FILE HAS NO VIDEO STREAM." = "BU DOSYADA GÖRÜNTÜ YOK.";
+"THIS FILE IS NOT A GZIP STREAM." = "BU DOSYA BİR GZIP AKIŞI DEĞİL.";
 "THIS FORMAT CAN BE IMPORTED. CHOOSE AN OUTPUT FORMAT IN THE SIDEBAR TO CONFIGURE ITS DEFAULTS." = "BU BİÇİM İÇE AKTARILABİLİR. VARSAYILANLARI AYARLAMAK İÇİN KENAR ÇUBUĞUNDAN BİR ÇIKTI BİÇİMİ SEÇ.";
 "THIS FORMAT USES ITS ORIGINAL DOCUMENT STRUCTURE. NO EXPORT DEFAULTS ARE NEEDED." = "BU BİÇİM ORİJİNAL BELGE YAPISINI KULLANIR. DIŞA AKTARMA TERCİHİ GEREKMEZ.";
 "THIS IMAGE COULD NOT BE DECODED." = "BU GÖRSELİN KODU ÇÖZÜLEMEDİ.";
@@ -2336,8 +2341,14 @@
 "The UTF-16 text in %lld is damaged." = "%lld içindeki UTF-16 metin bozuk.";
 "The UTF-32 text in %@ is damaged." = "%@ içindeki UTF-32 metin bozuk.";
 "The UTF-32 text in %lld is damaged." = "%lld içindeki UTF-32 metin bozuk.";
+"The archive contains a path outside its extraction folder." = "Arşivde, açılacağı klasörün dışına çıkan bir yol var.";
+"The archive contains an absolute path." = "Arşivde mutlak bir yol var.";
 "The archive contains an unnamed entry." = "Arşivde adı olmayan bir öğe var.";
 "The archive contains an unsafe path." = "Arşivde güvenli olmayan bir yol var.";
+"The archive contains an unsupported special file: %@" = "Arşivde desteklenmeyen özel bir dosya var: %@";
+"The archive contains an unsupported special file: %lld" = "Arşivde desteklenmeyen özel bir dosya var: %lld";
+"The archive contains duplicate file paths: %@" = "Arşivde yinelenen dosya yolları var: %@";
+"The archive contains duplicate file paths: %lld" = "Arşivde yinelenen dosya yolları var: %lld";
 "The archive entry leaves its destination." = "Arşivdeki bir öğe hedef klasörün dışına çıkıyor.";
 "The clipping exceeds 200 MB." = "Metin kırpıntısı 200 MB'ı aşıyor.";
 "The clipping has no readable text. Include its original resource fork/AppleDouble sidecar, or paste its text into Nashi." = "Metin kırpıntısında okunabilir metin yok. Orijinal resource fork/AppleDouble dosyasını da ekle veya metnini Nashi'ye yapıştır.";
@@ -2387,6 +2398,7 @@
 "This file has moved or was removed." = "Bu dosya taşınmış veya silinmiş.";
 "This file has no audio stream." = "Bu dosyada ses yok.";
 "This file has no video stream." = "Bu dosyada görüntü yok.";
+"This file is not a GZIP stream." = "Bu dosya bir GZIP akışı değil.";
 "This format can be imported. Choose an output format in the sidebar to configure its defaults." = "Bu biçim içe aktarılabilir. Varsayılanları ayarlamak için kenar çubuğundan bir çıktı biçimi seç.";
 "This format uses its original document structure. No export defaults are needed." = "Bu biçim orijinal belge yapısını kullanır. Dışa aktarma tercihi gerekmez.";
 "This image could not be decoded." = "Bu görselin kodu çözülemedi.";

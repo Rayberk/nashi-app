@@ -184,6 +184,7 @@
 "ALREADY AVAILABLE ON YOUR COMPUTER" = "DÉJÀ DISPONIBLES SUR VOTRE ORDINATEUR";
 "ALREADY OPTIMIZED. ORIGINAL QUALITY RETAINED." = "DÉJÀ OPTIMISÉ. QUALITÉ D’ORIGINE CONSERVÉE.";
 "ALWAYS A LITTLE FRESHER." = "TOUJOURS UN PEU PLUS FRAIS.";
+"AN ARCHIVE LINK POINTS OUTSIDE THE EXTRACTION FOLDER." = "UN LIEN DE L’ARCHIVE POINTE HORS DU DOSSIER D’EXTRACTION.";
 "AN EMBEDDED IMAGE IS MISSING OR TOO LARGE." = "UNE IMAGE INTÉGRÉE EST MANQUANTE OU TROP VOLUMINEUSE.";
 "AN EMPTY OUTPUT WAS PRODUCED." = "UNE SORTIE VIDE A ÉTÉ PRODUITE.";
 "AN HTTPS DOWNLOAD IS REQUIRED." = "UN TÉLÉCHARGEMENT HTTPS EST REQUIS.";
@@ -265,6 +266,7 @@
 "An HTTPS download is required." = "Un téléchargement HTTPS est requis.";
 "An RTFD attachment is missing or too large: %@" = "Une pièce jointe RTFD est manquante ou trop volumineuse : %@";
 "An RTFD attachment is missing or too large: %lld" = "Une pièce jointe RTFD est manquante ou trop volumineuse : %lld";
+"An archive link points outside the extraction folder." = "Un lien de l’archive pointe hors du dossier d’extraction.";
 "An embedded image is missing or too large." = "Une image intégrée est manquante ou trop volumineuse.";
 "An empty output was produced." = "Une sortie vide a été produite.";
 "An output cannot be a symbolic link." = "Une sortie ne peut pas être un lien symbolique.";
@@ -2230,6 +2232,8 @@
 "TEXTURE" = "TEXTURE";
 "THAT PDF SIZE CANNOT BE REACHED WHILE KEEPING SELECTABLE TEXT, LINKS AND ANNOTATIONS. CHOOSE A LARGER TARGET." = "CETTE TAILLE DE PDF EST IMPOSSIBLE À ATTEINDRE EN CONSERVANT LE TEXTE SÉLECTIONNABLE, LES LIENS ET LES ANNOTATIONS. CHOISISSEZ UNE CIBLE PLUS GRANDE.";
 "THAT PDF SIZE CANNOT BE REACHED WHILE KEEPING SELECTABLE TEXT, LINKS, AND ANNOTATIONS. CHOOSE A LARGER TARGET." = "CETTE TAILLE DE PDF EST IMPOSSIBLE À ATTEINDRE EN CONSERVANT LE TEXTE SÉLECTIONNABLE, LES LIENS ET LES ANNOTATIONS. CHOISISSEZ UNE CIBLE PLUS GRANDE.";
+"THE ARCHIVE CONTAINS A PATH OUTSIDE ITS EXTRACTION FOLDER." = "L’ARCHIVE CONTIENT UN CHEMIN SITUÉ HORS DE SON DOSSIER D’EXTRACTION.";
+"THE ARCHIVE CONTAINS AN ABSOLUTE PATH." = "L’ARCHIVE CONTIENT UN CHEMIN ABSOLU.";
 "THE ARCHIVE CONTAINS AN UNNAMED ENTRY." = "L’ARCHIVE CONTIENT UNE ENTRÉE SANS NOM.";
 "THE ARCHIVE CONTAINS AN UNSAFE PATH." = "L’ARCHIVE CONTIENT UN CHEMIN NON SÛR.";
 "THE ARCHIVE ENTRY LEAVES ITS DESTINATION." = "L’ENTRÉE DE L’ARCHIVE SORT DE SA DESTINATION.";
@@ -2263,6 +2267,7 @@
 "THIS FILE HAS MOVED OR WAS REMOVED." = "CE FICHIER A ÉTÉ DÉPLACÉ OU SUPPRIMÉ.";
 "THIS FILE HAS NO AUDIO STREAM." = "CE FICHIER N’A PAS DE FLUX AUDIO.";
 "THIS FILE HAS NO VIDEO STREAM." = "CE FICHIER N’A PAS DE FLUX VIDÉO.";
+"THIS FILE IS NOT A GZIP STREAM." = "CE FICHIER N’EST PAS UN FLUX GZIP.";
 "THIS FORMAT CAN BE IMPORTED. CHOOSE AN OUTPUT FORMAT IN THE SIDEBAR TO CONFIGURE ITS DEFAULTS." = "CE FORMAT PEUT ÊTRE IMPORTÉ. CHOISISSEZ UN FORMAT DE SORTIE DANS LA BARRE LATÉRALE POUR CONFIGURER SES RÉGLAGES PAR DÉFAUT.";
 "THIS FORMAT USES ITS ORIGINAL DOCUMENT STRUCTURE. NO EXPORT DEFAULTS ARE NEEDED." = "CE FORMAT UTILISE LA STRUCTURE D’ORIGINE DU DOCUMENT. AUCUN RÉGLAGE D’EXPORT PAR DÉFAUT N’EST NÉCESSAIRE.";
 "THIS IMAGE COULD NOT BE DECODED." = "IMPOSSIBLE DE DÉCODER CETTE IMAGE.";
@@ -2336,8 +2341,14 @@
 "The UTF-16 text in %lld is damaged." = "Le texte UTF-16 de %lld est endommagé.";
 "The UTF-32 text in %@ is damaged." = "Le texte UTF-32 de %@ est endommagé.";
 "The UTF-32 text in %lld is damaged." = "Le texte UTF-32 de %lld est endommagé.";
+"The archive contains a path outside its extraction folder." = "L’archive contient un chemin situé hors de son dossier d’extraction.";
+"The archive contains an absolute path." = "L’archive contient un chemin absolu.";
 "The archive contains an unnamed entry." = "L’archive contient une entrée sans nom.";
 "The archive contains an unsafe path." = "L’archive contient un chemin non sûr.";
+"The archive contains an unsupported special file: %@" = "L’archive contient un fichier spécial non pris en charge : %@";
+"The archive contains an unsupported special file: %lld" = "L’archive contient un fichier spécial non pris en charge : %lld";
+"The archive contains duplicate file paths: %@" = "L’archive contient des chemins de fichiers en double : %@";
+"The archive contains duplicate file paths: %lld" = "L’archive contient des chemins de fichiers en double : %lld";
 "The archive entry leaves its destination." = "L’entrée de l’archive sort de sa destination.";
 "The clipping exceeds 200 MB." = "Le fragment dépasse 200 Mo.";
 "The clipping has no readable text. Include its original resource fork/AppleDouble sidecar, or paste its text into Nashi." = "Le fragment ne contient aucun texte lisible. Incluez son fichier annexe d’origine (resource fork/AppleDouble) ou collez son texte dans Nashi.";
@@ -2387,6 +2398,7 @@
 "This file has moved or was removed." = "Ce fichier a été déplacé ou supprimé.";
 "This file has no audio stream." = "Ce fichier n’a pas de flux audio.";
 "This file has no video stream." = "Ce fichier n’a pas de flux vidéo.";
+"This file is not a GZIP stream." = "Ce fichier n’est pas un flux GZIP.";
 "This format can be imported. Choose an output format in the sidebar to configure its defaults." = "Ce format peut être importé. Choisissez un format de sortie dans la barre latérale pour configurer ses réglages par défaut.";
 "This format uses its original document structure. No export defaults are needed." = "Ce format utilise la structure d’origine du document. Aucun réglage d’export par défaut n’est nécessaire.";
 "This image could not be decoded." = "Impossible de décoder cette image.";
