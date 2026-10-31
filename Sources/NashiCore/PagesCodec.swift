@@ -223,7 +223,7 @@ private enum PagesDOCXReader {
                     try token.check()
                     if item.local == "r" {
                         let runBase = item.first("rPr")?.first("rStyle")?.attr("val").map {resolved($0).0} ?? [:]
-                        let formatting = base.0.merging(runBase) { _,new in new }.merging(character(item.first("rPr"))) { _,new in new }
+                        let formatting = PagesDOCXReader.visible(base.0.merging(runBase) { _,new in new }.merging(character(item.first("rPr"))) { _,new in new })
                         for child in item.elements(nil) {
                             if child.local == "fldChar" {
                                 switch child.attr("fldCharType") {
@@ -252,7 +252,7 @@ private enum PagesDOCXReader {
                 // An empty paragraph has no run from which to recover its font.
                 // Keep the paragraph mark's formatting, including tiny end
                 // paragraphs that prevent a final table from adding a blank page.
-                let paragraphCharacter = runs.isEmpty ? base.0.merging(character(properties?.first("rPr"))) { _,new in new } : base.0
+                let paragraphCharacter = PagesDOCXReader.visible(runs.isEmpty ? base.0.merging(character(properties?.first("rPr"))) { _,new in new } : base.0)
                 return ["type":"paragraph","runs":runs,"character":paragraphCharacter,"paragraph":base.1.merging(paragraph(properties)) { _,new in new }]
             }
             if element.local == "tbl" {
@@ -266,6 +266,15 @@ private enum PagesDOCXReader {
                     // A vertical merge only survives rows that continue it in
                     // the same grid column; a wider or missing cell ends it.
                     var continued: [Int:(Int,Int)] = [:]
+                    // w:gridBefore leaves leading grid columns empty, so the
+                    // row's first cell starts that many columns to the right.
+                    if let raw = row.first("trPr")?.first("gridBefore")?.attr("val"), let skipped = Int(raw), skipped > 0 {
+                        guard skipped <= maximumColumns else {
+                            throw NashiError.invalidInput("This Word document contains a table wider than the supported limit of \(maximumColumns) columns. It could not be converted to Pages.")
+                        }
+                        cells = Array(repeating: ["text":""], count: skipped)
+                        column = skipped
+                    }
                     var horizontalAnchor: Int?
                     for cell in row.elements("tc") {
                         let properties = cell.first("tcPr")
@@ -284,6 +293,7 @@ private enum PagesDOCXReader {
                         if let fill = properties?.first("shd")?.attr("fill"), let color = color(fill) { cellModel["formatting"] = ["fill":["kind":"color","color":color]] }
                         cells.append(cellModel)
                         if span > 1 { for _ in 1..<span { cells.append(["text":""]) } }
+                        var extendsVertical = false
                         if let vertical = properties?.first("vMerge") {
                             if vertical.attr("val") == "restart" { continued[column] = (rowIndex,span) }
                             // A continuation narrower or wider than its restart
@@ -291,6 +301,7 @@ private enum PagesDOCXReader {
                             // swallowing or overlapping neighbouring cells.
                             else if let origin = activeVertical[column], origin.1 == span {
                                 continued[column] = origin
+                                extendsVertical = true
                                 if let index = merges.firstIndex(where: {$0["row"] == origin.0 && $0["column"] == column}) { merges[index]["rowCount"] = rowIndex - origin.0 + 1 }
                                 else { merges.append(["row":origin.0,"column":column,"rowCount":rowIndex-origin.0+1,"columnCount":origin.1]) }
                             }
@@ -306,7 +317,10 @@ private enum PagesDOCXReader {
                                 else { merges.append(["row":rowIndex,"column":anchor,"rowCount":1,"columnCount":column + span - anchor]) }
                             }
                         } else { horizontalAnchor = nil }
-                        if span > 1 && properties?.first("vMerge") == nil && !joinsHorizontal { merges.append(["row":rowIndex,"column":column,"rowCount":1,"columnCount":span]) }
+                        // A restart's horizontal span is recorded now and grows
+                        // downward if continuations follow; it must not depend
+                        // on whether one does.
+                        if span > 1 && !extendsVertical && !joinsHorizontal { merges.append(["row":rowIndex,"column":column,"rowCount":1,"columnCount":span]) }
                         column += span
                     }
                     activeVertical = continued
@@ -438,13 +452,18 @@ private enum PagesDOCXReader {
         if let size=element.first("sz")?.number("val"){result["fontSize"]=size/2}
         if let font=element.first("rFonts")?.attr("ascii") ?? element.first("rFonts")?.attr("hAnsi"){result["fontName"]=font}
         if let value=element.first("color")?.attr("val"),let color=color(value){result["fontColor"]=color}
-        if let value=element.first("highlight")?.attr("val"),let color=color(value){result["backgroundColor"]=color}
+        // "none" must override a highlight inherited from a style; visible() drops the marker.
+        if let value=element.first("highlight")?.attr("val"){if value == "none" {result["backgroundColor"]=NSNull()} else if let color=color(highlights[value] ?? value){result["backgroundColor"]=color}}
         if let underline=element.first("u"){result["underline"] = underline.attr("val") == "none" ? 0 : underline.attr("val") == "double" ? 2 : 1}
         if let strike=element.first("strike"){result["strikethru"] = ["0","false","off"].contains(strike.attr("val") ?? "1") ? 0 : 1}
         if let align=element.first("vertAlign")?.attr("val"){result["superscript"] = align == "superscript" ? 1 : align == "subscript" ? -1 : 0}
         if let language=element.first("lang")?.attr("val"){result["language"]=language}
         return result
     }
+    /// Drops the NSNull markers that clear an inherited property.
+    static func visible(_ character:[String:Any]) -> [String:Any] { character.filter { !($0.value is NSNull) } }
+    /// w:highlight takes ST_HighlightColor names, not hex values.
+    static let highlights=["black":"000000","blue":"0000FF","cyan":"00FFFF","green":"00FF00","magenta":"FF00FF","red":"FF0000","yellow":"FFFF00","white":"FFFFFF","darkBlue":"000080","darkCyan":"008080","darkGreen":"008000","darkMagenta":"800080","darkRed":"800000","darkYellow":"808000","darkGray":"808080","lightGray":"C0C0C0"]
     static func paragraph(_ element:XMLElement?) -> [String:Any] {
         guard let element else{return [:]};var result:[String:Any]=[:]
         if let alignment=element.first("jc")?.attr("val"){result["alignment"]=["left":0,"start":0,"right":1,"end":1,"center":2,"both":3,"distribute":3][alignment] ?? 0}

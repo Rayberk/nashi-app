@@ -3,12 +3,14 @@ using System.Text.Json;
 
 namespace Nashi.Core;
 
-public sealed record MediaStream(int Index, string Kind, string Codec, int? Width, int? Height, bool AttachedPicture,int Bits=0,string SampleFormat="",double FrameRate=30,int SampleRate=0);
+public sealed record MediaStream(int Index, string Kind, string Codec, int? Width, int? Height, bool AttachedPicture,int Bits=0,string SampleFormat="",double FrameRate=30,int SampleRate=0,int Channels=0);
 public sealed record MediaInfo(double Duration, long Bytes, IReadOnlyList<MediaStream> Streams)
 {
     public MediaStream? Video => Streams.FirstOrDefault(s => s.Kind == "video" && !s.AttachedPicture);
     public MediaStream? Audio => Streams.FirstOrDefault(s => s.Kind == "audio");
     public bool HasAudio => Streams.Any(s => s.Kind == "audio");
+    /// Ogg keeps Vorbis and Opus comments on the audio stream rather than in file-level tags.
+    public bool OggStreamTags { get; init; }
 }
 public sealed record MediaRegion(double X, double Y, double Width, double Height, double Start = 0, double? End = null);
 public sealed record MediaRange(double Start, double End);
@@ -45,6 +47,8 @@ public sealed record MediaOptions
     public MediaRange[] AudioRedactions { get; init; } = [];
     public bool RemoveAllMetadata{get;init;}=true;
     public Dictionary<string,string> Metadata { get; init; } = [];
+    /// Channels of the audio reaching the encoder; set from the source, 0 when unknown.
+    internal int SourceChannels { get; init; }
 }
 
 /// File-only FFmpeg operations. The UI and CLI call the same transaction and
@@ -74,10 +78,11 @@ public sealed class MediaEngine(string ffmpeg, string ffprobe)
             // FFmpeg auto-rotates decoded frames before crop/scale filters. The
             // editor and validation use those same displayed dimensions.
             if(double.IsFinite(rotation)&&Math.Abs(Math.Abs(rotation)%180-90)<.001)(width,height)=(height,width);
-            streams.Add(new(stream.GetProperty("index").GetInt32(), GetString(stream,"codec_type"), GetString(stream,"codec_name"), width, height, attached,GetInt(stream,"bits_per_raw_sample")??GetInt(stream,"bits_per_sample")??0,GetString(stream,"sample_fmt"),ParseFrameRate(GetString(stream,"avg_frame_rate")),int.TryParse(GetString(stream,"sample_rate"),NumberStyles.Integer,CultureInfo.InvariantCulture,out var sampleRate)&&sampleRate>0?sampleRate:0));
+            streams.Add(new(stream.GetProperty("index").GetInt32(), GetString(stream,"codec_type"), GetString(stream,"codec_name"), width, height, attached,GetInt(stream,"bits_per_raw_sample")??GetInt(stream,"bits_per_sample")??0,GetString(stream,"sample_fmt"),ParseFrameRate(GetString(stream,"avg_frame_rate")),int.TryParse(GetString(stream,"sample_rate"),NumberStyles.Integer,CultureInfo.InvariantCulture,out var sampleRate)&&sampleRate>0?sampleRate:0,GetInt(stream,"channels") is {} channels&&channels is >0 and <=512?channels:0));
         }
         var duration = root.TryGetProperty("format", out var format) && double.TryParse(GetString(format,"duration"), CultureInfo.InvariantCulture, out var seconds) && double.IsFinite(seconds) ? Math.Max(0,seconds) : 0;
-        return new(duration, new FileInfo(input).Length, streams);
+        var oggTags=format.ValueKind==JsonValueKind.Object&&GetString(format,"format_name").Split(',').Contains("ogg")&&root.GetProperty("streams").EnumerateArray().FirstOrDefault(s=>GetString(s,"codec_type")=="audio") is {ValueKind:JsonValueKind.Object} audio&&audio.TryGetProperty("tags",out var audioTags)&&audioTags.ValueKind==JsonValueKind.Object&&audioTags.EnumerateObject().Any();
+        return new(duration, new FileInfo(input).Length, streams){OggStreamTags=oggTags};
     }
 
     // The last video packet's time from the container start, read without decoding: the final minute first, then the whole file.
@@ -107,7 +112,7 @@ public sealed class MediaEngine(string ffmpeg, string ffprobe)
         {
             var input = Path.GetFullPath(inputs[index]); var info = await InspectAsync(input,token);
             var output = Output(transaction.StagingDirectory,input,format,"");
-            var arguments = new List<string> { "-i",input };
+            List<string> arguments = ["-i",input,..WmaChannels(format,SourceDepth(options,info))];
             if (AudioFormats.Contains(format))
             { RequireAudio(info); arguments.AddRange(["-map","0:a:0","-vn"]); arguments.AddRange(AudioEncoding(format,SourceDepth(options,info))); }
             else
@@ -118,10 +123,13 @@ public sealed class MediaEngine(string ffmpeg, string ffprobe)
                 {
                     arguments.AddRange(["-map","0:v:0","-map","0:a:0?"]);
                     arguments.AddRange(["-vf",options.Width is not null || options.Height is not null?Scale(options):"pad=ceil(iw/2)*2:ceil(ih/2)*2"]);
-                    arguments.AddRange(VideoEncoding(format,options));
+                    arguments.AddRange(VideoEncoding(format,SourceDepth(options,info)));
                 }
             }
+            if (format is "wma" or "wmv") arguments.AddRange(WmaRate(info));
             arguments.AddRange(options.PreserveMetadata ? ["-map_metadata","0"] : ["-map_metadata","-1","-map_metadata:s","-1","-map_chapters","-1"]);
+            // Other containers write file-level tags, so copy Ogg's stream comments there too (as on macOS).
+            if(options.PreserveMetadata&&info.OggStreamTags)arguments.AddRange(["-map_metadata","0:s:a:0"]);
             await RenderAsync(arguments,output,info.Duration,Scoped(progress,index,inputs.Count),token);
             outputs.Add(output);
         }
@@ -147,7 +155,8 @@ public sealed class MediaEngine(string ffmpeg, string ffprobe)
 
     private async Task<IReadOnlyList<string>> ApplyAsync(string tool,string input,MediaInfo info,string directory,MediaOptions options,Action<OperationProgress> progress,CancellationToken token)
     {
-        options=SourceDepth(options,info);progress(new(null,"Preparing "+Path.GetFileName(input)+"…"));
+        // Audio Channels encodes its own mono or stereo mix.
+        options=SourceDepth(options,info);if(tool=="audioChannels")options=options with{SourceChannels=options.Channels};progress(new(null,"Preparing "+Path.GetFileName(input)+"…"));
         var ext=Path.GetExtension(input).TrimStart('.').ToLowerInvariant();if(ext=="aif")ext="aiff";
         var output=Output(directory,input,ext," "+ToolSuffix(tool));
         var args=new List<string>{"-i",input};double? duration=info.Duration;
@@ -255,7 +264,7 @@ public sealed class MediaEngine(string ffmpeg, string ffprobe)
                 args.AddRange(["-filter_complex",string.Join(';',graph),"-map","["+previous+"]","-map","0:a:0?",..VideoEncoding(ext,options)]);break;
             default:throw new ArgumentException("Unsupported media tool.");
         }
-        await RenderAsync(args,output,duration,progress,token);return [output];
+        args.AddRange(WmaChannels(Path.GetExtension(output).TrimStart('.').ToLowerInvariant(),options));await RenderAsync(args,output,duration,progress,token);return [output];
     }
 
     private async Task<string> NormalizeAsync(string input,MediaInfo info,string directory,string ext,MediaOptions options,Action<OperationProgress> progress,CancellationToken token)
@@ -282,6 +291,8 @@ public sealed class MediaEngine(string ffmpeg, string ffprobe)
         int? rate=ext switch{"wav" or "aiff" or "flac"=>source,"ogg"=>Math.Min(source,192000),"mp3" or "m4a" or "aac" or "wma"=>Math.Min(source,48000),_=>null};
         return rate is {} value?["-ar",value.ToString(CultureInfo.InvariantCulture)]:[];
     }
+    // WMA stops at 48 kHz. FFmpeg fits other encoders' rates (AAC, MP3) on its own, but not WMA's, so hi-res sources failed.
+    private static string[] WmaRate(MediaInfo info)=>info.Audio is {SampleRate:>48000}?["-ar","48000"]:[];
 
     private async Task<string> CompressAsync(string input,MediaInfo info,string directory,MediaOptions options,Action<OperationProgress> progress,CancellationToken token)
     {
@@ -377,23 +388,28 @@ public sealed class MediaEngine(string ffmpeg, string ffprobe)
     private static string ToolSuffix(string tool)=>tool switch{"muteVideo"=>"Muted","removeMetadata"=>"Metadata","trimAudio" or "trimVideo"=>"Trimmed","cropVideo"=>"Cropped","changeVideoSpeed"=>"Speed","audioChannels"=>"Channels","redactVideo" or "redactAudio"=>"Redacted",_=>tool};
     internal static MediaOptions SourceDepth(MediaOptions options,MediaInfo info)
     {
-        if(options.SampleDepth!="matchSource")return options;var audio=info.Streams.FirstOrDefault(s=>s.Kind=="audio");
+        var audio=info.Streams.FirstOrDefault(s=>s.Kind=="audio");options=options with{SourceChannels=audio?.Channels??0};if(options.SampleDepth!="matchSource")return options;
         var depth=audio?.Codec.Contains("pcm_f",StringComparison.Ordinal)==true?"float32":audio?.Bits>24?"pcm32":audio?.Bits>16?"pcm24":"pcm16";return options with{SampleDepth=depth};
     }
     private static string[] AudioEncoding(string ext,MediaOptions o)=>ext switch
     {
         "mp3"=>["-c:a","libmp3lame","-b:a",o.AudioBitrate+"k"],"m4a" or "aac"=>["-c:a","aac","-b:a",o.AudioBitrate+"k"],
         "wav"=>["-c:a",o.SampleDepth switch{"pcm24"=>"pcm_s24le","pcm32"=>"pcm_s32le","float32"=>"pcm_f32le",_=>"pcm_s16le"}],"aiff"=>["-c:a",o.SampleDepth switch{"pcm24"=>"pcm_s24be","pcm32"=>"pcm_s32be","float32"=>"pcm_f32be",_=>"pcm_s16be"}],"flac"=>["-c:a","flac","-compression_level","8"],
-        "ogg"=>["-c:a","libvorbis","-q:a",Number(o.Quality*9)],"opus"=>["-c:a","libopus","-b:a",Math.Min(256,o.AudioBitrate)+"k"],
+        "ogg"=>["-c:a","libvorbis","-q:a",Number(o.Quality*9)],"opus"=>["-c:a","libopus","-b:a",Math.Min(256,o.AudioBitrate)+"k",..OpusLayout(o)],
         "wma"=>["-c:a","wmav2","-b:a",Math.Min(320,o.AudioBitrate)+"k"],_=>throw new ArgumentException("Unsupported audio format.")
     };
     private static string[] VideoEncoding(string ext,MediaOptions o)=>ext switch
     {
-        "webm"=>["-c:v","libvpx-vp9","-crf",Number(45-o.Quality*30),"-b:v","0","-pix_fmt","yuv420p","-c:a","libopus","-b:a",Math.Min(256,o.AudioBitrate)+"k"],
+        "webm"=>["-c:v","libvpx-vp9","-crf",Number(45-o.Quality*30),"-b:v","0","-pix_fmt","yuv420p","-c:a","libopus","-b:a",Math.Min(256,o.AudioBitrate)+"k",..OpusLayout(o)],
         "avi"=>["-c:v","mpeg4","-q:v",Number(25-o.Quality*22),"-c:a","libmp3lame"],
         "wmv"=>["-c:v","wmv2","-q:v",Number(25-o.Quality*22),"-c:a","wmav2"],
         _=>["-c:v","libx264","-preset","medium","-crf",Number(35-o.Quality*23),"-pix_fmt","yuv420p","-c:a","aac","-b:a",o.AudioBitrate+"k"]
     };
+    // libopus rejects surround layouts outside Vorbis order, such as the 5.1(side) of FLAC and AC-3 sources (as on macOS).
+    private static string[] OpusLayout(MediaOptions o)=>o.SourceChannels switch{3=>["-ch_layout","3.0"],4=>["-ch_layout","quad"],5=>["-ch_layout","5.0"],6=>["-ch_layout","5.1"],7=>["-ch_layout","6.1"],8=>["-ch_layout","7.1"],_=>[]};
+    // WMA (also in WMV) stores at most two channels, so surround is downmixed instead of failing the export.
+    // Stream copies ignore -ac, and Audio Channels already mixes to its own count.
+    private static string[] WmaChannels(string ext,MediaOptions o)=>ext is "wma" or "wmv"&&o.SourceChannels>2?["-ac","2"]:[];
     private static string Scale(MediaOptions o)=>$"scale={o.Width?.ToString(CultureInfo.InvariantCulture)??"-2"}:{(o.Height is {} h?$"'min({h.ToString(CultureInfo.InvariantCulture)},ih)'":"-2")}:force_original_aspect_ratio=decrease,pad=ceil(iw/2)*2:ceil(ih/2)*2";
     private static string Tempo(double speed){var parts=new List<string>();while(speed>2){parts.Add("atempo=2");speed/=2;}while(speed<.5){parts.Add("atempo=0.5");speed*=2;}parts.Add("atempo="+Number(speed));return string.Join(',',parts);}
     private static MediaRange TimeRange(double start,double? end,double duration){var stop=end??duration;if(!double.IsFinite(start)||!double.IsFinite(stop)||start<0||Math.Round(stop-start,6)<.05||duration>0&&stop>duration+.001)throw new ArgumentException("Choose a valid time range.");return new(start,stop);}
