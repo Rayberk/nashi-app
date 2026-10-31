@@ -77,6 +77,18 @@ const ids=['compress','removeMetadata','editImage','annotateImage','frameImage',
   assert.equal(await page.locator('.demo-file[aria-pressed="true"]').count(),1);
   assert.equal(await page.locator('.demo-file').first().getAttribute('aria-pressed'),'true');
  });
+ await test('Keyboard Enter on a file applies the slice chosen with the arrows',async()=>{
+  await page.locator('[data-group="pdf"]').click();
+  await page.locator('.demo-file').first().focus();
+  await page.keyboard.press('Enter');
+  await page.keyboard.press('ArrowRight');
+  assert.equal(await page.locator('.wheel-option.active').getAttribute('data-index'),'0');
+  await page.keyboard.press('Enter');
+  assert.equal(await page.locator('.demo-wheel').count(),0);
+  assert.equal(await page.locator('dialog').count(),1);
+  await page.locator('.close-editor').click();
+  await page.locator('[data-group="image"]').click();
+ });
  if(errors.length)failures.push({name:'No browser errors',error:errors.join('\n')});
  const report={url:base,passed:passed.length,checks:passed,failures,consoleErrors:errors};await fs.writeFile(path.join(output,'report.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({passed:passed.length,failed:failures.length,errors:errors.length}));await browser.close();if(failures.length)process.exitCode=1;
 })().catch(e=>{console.error(e);process.exitCode=1;});
