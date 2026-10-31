@@ -307,6 +307,8 @@
 "Bottom" = "Bas";
 "Brightness" = "Luminosité";
 "Bring this format in, then choose its next form." = "Importez ce format, puis choisissez sa prochaine forme.";
+"Build %@" = "Build %@";
+"Build %lld" = "Build %lld";
 "Built for your files. Made for your Mac." = "Conçu pour vos fichiers. Fait pour votre Mac.";
 "CALLOUT" = "LÉGENDE";
 "CANCEL" = "ANNULER";
@@ -1327,6 +1329,10 @@
 "NOTHING HERE YET. PASTE SOMETHING OR MAKE YOUR FIRST FRESH COPY." = "RIEN ICI POUR L’INSTANT. COLLEZ QUELQUE CHOSE OU CRÉEZ VOTRE PREMIÈRE COPIE.";
 "NUMBER" = "NUMÉRO";
 "NUMBER OF CLIPS" = "NOMBRE DE CLIPS";
+"Nashi %@ · Build %@" = "Nashi %@ · Build %@";
+"Nashi %@ · Build %lld" = "Nashi %@ · Build %lld";
+"Nashi %lld · Build %@" = "Nashi %lld · Build %@";
+"Nashi %lld · Build %lld" = "Nashi %lld · Build %lld";
 "Nashi Settings" = "Réglages de Nashi";
 "Nashi actions wheel" = "Roue des actions sur les fichiers Nashi";
 "Nashi checks once an hour while it’s running. You choose when to download and install." = "Nashi vérifie une fois par heure pendant son exécution. Vous choisissez quand télécharger et installer.";

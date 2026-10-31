@@ -1171,6 +1171,8 @@
   "Fresh copy": "Yeni kopya",
   "Save new files to…": "Yeni dosyaları şuraya kaydet…",
   "Downloading Nashi {0}…": "Nashi {0} indiriliyor…",
+  "Build {0}": "Derleme {0}",
+  "Nashi {0} · Build {1}": "Nashi {0} · Derleme {1}",
   "Verifying update signature…": "Güncelleme imzası doğrulanıyor…",
   "Downloading LibreOffice 26.8.1…": "LibreOffice 26.8.1 indiriliyor…",
   "Compressing PDF · attempt {0} · page {1}/{2}…": "PDF sıkıştırılıyor · deneme {0} · sayfa {1}/{2}…",
