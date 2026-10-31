@@ -92,6 +92,8 @@ internal static class ParityChecks
         var oversized=Path.Combine(root,"Oversized preferences");Directory.CreateDirectory(oversized);File.WriteAllText(Path.Combine(oversized,"preferences.json"),new string(' ',1_000_001));var oversizedSettings=new PreferencesStore(oversized);check(oversizedSettings.RecoveryNotice is not null&&oversizedSettings.Value.Language=="en"&&oversizedSettings.Value.Enabled,"Oversized settings crashed startup or did not fall back to defaults");
         check(WebMediaPayload.Parse(null,null,"https://nvfile/C:/Program%20Files/NVIDIA%20Corporation/NVIDIA%20App/osc/index.html#/") is null&&WebMediaPayload.Parse("http://localhost/video.mp4") is null&&WebMediaPayload.Parse("http://[::1]/video.mp4") is null&&WebMediaPayload.Parse("http://[2001:db8::1]/video.mp4") is {Kind:"media"},"A local app page under the drag start point was treated as web media");
         check(WebMediaPayload.Parse("https://i.ytimg.com/vi/mXS5W7_kdzk/hqdefault.jpg") is {Kind:"youtube",Url:"https://www.youtube.com/watch?v=mXS5W7_kdzk"},"YouTube home thumbnail did not recover its video");
+        check(WebMediaPayload.Parse("https://music.youtube.com/watch?v=mXS5W7_kdzk&list=synthetic") is {Kind:"youtube",Url:"https://www.youtube.com/watch?v=mXS5W7_kdzk"},
+            "YouTube Music share links did not resolve to the video/thumbnail card.");
         check(WebMediaPayload.Parse(null,"<a href=https://youtu.be/mXS5W7_kdzk>Video</a>") is {Kind:"youtube",Url:"https://www.youtube.com/watch?v=mXS5W7_kdzk"},"Unquoted HTML video link was lost");
         check(WebMediaPayload.Parse(null,"<img src=https://cdn.example.invalid/photo.png>") is {Kind:"image"},"Unquoted HTML image source was lost");
         foreach(var (link,kind,canonical) in new[]{("https://m.instagram.com/p/C1a2B3c4D5e/","instagramPhotos","https://www.instagram.com/p/C1a2B3c4D5e/"),("https://www.instagram.com/natgeo/reel/C1a2B3c4D5e/","instagramReel","https://www.instagram.com/reel/C1a2B3c4D5e/"),("https://instagram.com/some.user_1/p/C1a2B3c4D5e/","instagramPhotos","https://www.instagram.com/p/C1a2B3c4D5e/")})
@@ -108,6 +110,10 @@ internal static class ParityChecks
             "Malformed Instagram thumbnail variants hid a valid public image.");
         // YouTube's hover preview is an animated thumbnail under /an_webp/; like on the Mac, it stands for its video.
         check(WebMediaPayload.Parse("https://i.ytimg.com/an_webp/mXS5W7_kdzk/mqdefault_6s.webp?du=3000&sqp=synthetic") is {Kind:"youtube",Url:"https://www.youtube.com/watch?v=mXS5W7_kdzk"},"YouTube hover preview was downloaded as an image instead of its video");
+        // Embeds often use YouTube's older thumbnail hosts; the Mac maps img.youtube.com and ytimg.com to the video too.
+        foreach(var thumbnail in new[]{"https://img.youtube.com/vi/mXS5W7_kdzk/maxresdefault.jpg","https://ytimg.com/vi/mXS5W7_kdzk/hqdefault.jpg"})
+            check(WebMediaPayload.Parse(thumbnail) is {Kind:"youtube",Url:"https://www.youtube.com/watch?v=mXS5W7_kdzk"} parsed&&parsed.Thumbnail==thumbnail,$"YouTube thumbnail was downloaded as an image instead of its video: {thumbnail}");
+        check(WebMediaPayload.Parse("https://img.youtube.com/favicon.jpg") is {Kind:"image"}&&WebMediaPayload.Parse("https://img.youtube.com.evil.example/vi/mXS5W7_kdzk/0.jpg") is {Kind:"image"},"A non-thumbnail image was taken for a YouTube video");
         check(LegacyTextCodec.Decode(Encoding.Unicode.GetPreamble().Concat(Encoding.Unicode.GetBytes("Türkçe 🍐")).ToArray())=="Türkçe 🍐","UTF-16 text lost Unicode");
         check(LegacyTextCodec.Decode(new UTF32Encoding(false,true).GetPreamble().Concat(Encoding.UTF32.GetBytes("Türkçe 🍐")).ToArray())=="Türkçe 🍐","UTF-32 text was read as UTF-16");
         // Files from Turkish Windows, 7-Zip and Excel: ANSI 1254 text, OEM 857 ZIP names, semicolon CSV.

@@ -70,6 +70,16 @@ final class AppLocalizationTests:XCTestCase {
         XCTAssertTrue(AppLocalization.matches("Crop Image",query:"recadrer",language:"fr"))
         for code in ["png","MP4","Ctrl+Shift","⌘S","00:01.250"] { XCTAssertEqual(AppLocalization.text(code,language:"fr"),code) }
     }
+    /// Literals from Wheel.swift: the web-link petals and the empty-wheel centre (with the configured shortcut symbols).
+    func testWheelWebPetalsAndEmptyWheelAreTranslated() {
+        let petals=["Download photos…","Download video…","Download image…","Download…","Download thumbnail…","Audio MP3…","Copy link"]
+        for language in ["tr","fr"] {
+            for source in petals { XCTAssertNotEqual(AppLocalization.text(source,language:language),source,"\(language): \(source)") }
+        }
+        XCTAssertEqual(AppLocalization.uppercased(AppLocalization.text("Download video…",language:"tr"),language:"tr"),"VİDEOYU İNDİR…")
+        XCTAssertEqual(AppLocalization.text("No formats\n⌘ Tools\n⌃ Actions",language:"tr"),"Biçim yok\n⌘ Araçlar\n⌃ İşlemler")
+        XCTAssertEqual(AppLocalization.text("No file tools\n⇧ Convert\n⌃ Actions",language:"fr"),"Aucun outil de fichier\n⇧ Convertir\n⌃ Actions")
+    }
     func testFrenchSelectedCountIsSingularForZeroAndOne() {
         // French uses the singular for 0 and 1 ("1 sélectionné"); Turkish never inflects after a number.
         XCTAssertEqual(AppLocalization.text("1 selected",language:"fr"),"1 sélectionné")

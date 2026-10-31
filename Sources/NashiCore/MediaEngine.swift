@@ -16,6 +16,8 @@ public struct MediaStream: Sendable, Equatable {
     public let frameRate: Double?
     public let isAttachedPicture: Bool
     public let rotation: Int
+    /// Width of one frame pixel relative to its height, in the displayed (rotated) frame; 1 for square pixels.
+    public let sampleAspectRatio: Double
     public let metadata: [String: String]
 }
 
@@ -65,13 +67,17 @@ public enum MediaEngine {
             let swap = abs(rotation % 180) == 90
             // FFmpeg and AVPlayer apply the display matrix; editing coordinates use that canvas.
             let width = integer(item[swap ? "height" : "width"]), height = integer(item[swap ? "width" : "height"])
-            return MediaStream(index: integer(item["index"]) ?? 0, kind: item["codec_type"] as? String ?? "unknown", codec: item["codec_name"] as? String ?? "unknown", duration: number(item["duration"]), width: width, height: height, channels: count(item["channels"], upTo: 512), sampleRate: count(item["sample_rate"], upTo: Int(Int32.max)), bitsPerSample: integer(item["bits_per_sample"]), bitsPerRawSample: integer(item["bits_per_raw_sample"]), sampleFormat: item["sample_fmt"] as? String, bitRate: integer(item["bit_rate"]), frameRate: fraction(item["avg_frame_rate"] as? String) ?? fraction(item["r_frame_rate"] as? String), isAttachedPicture: integer(disposition["attached_pic"]) == 1, rotation: rotation, metadata: metadata)
+            // Players stretch non-square pixels; the editor needs this to match its canvas to the picture.
+            let sar = (item["sample_aspect_ratio"] as? String)?.split(separator: ":").compactMap { Double($0) }
+            let aspect = sar.flatMap { $0.count == 2 && $0[0] > 0 && $0[1] > 0 && ($0[0] / $0[1]).isFinite ? $0[0] / $0[1] : nil } ?? 1
+            return MediaStream(index: integer(item["index"]) ?? 0, kind: item["codec_type"] as? String ?? "unknown", codec: item["codec_name"] as? String ?? "unknown", duration: number(item["duration"]), width: width, height: height, channels: count(item["channels"], upTo: 512), sampleRate: count(item["sample_rate"], upTo: Int(Int32.max)), bitsPerSample: integer(item["bits_per_sample"]), bitsPerRawSample: integer(item["bits_per_raw_sample"]), sampleFormat: item["sample_fmt"] as? String, bitRate: integer(item["bit_rate"]), frameRate: fraction(item["avg_frame_rate"] as? String) ?? fraction(item["r_frame_rate"] as? String), isAttachedPicture: integer(disposition["attached_pic"]) == 1, rotation: rotation, sampleAspectRatio: swap ? 1 / aspect : aspect, metadata: metadata)
         }
         let chapters = (root["chapters"] as? [[String: Any]] ?? []).enumerated().map { index, item in
             MediaChapter(index: index, start: number(item["start_time"]) ?? 0, end: number(item["end_time"]) ?? 0, metadata: tags(item["tags"]))
         }
         let duration = number(format["duration"]) ?? streams.compactMap(\.duration).max() ?? 0
-        let size = (try input.resourceValues(forKeys: [.fileSizeKey]).fileSize).map(Int64.init) ?? 0
+        // A symlink's own size is a few bytes; compression targets come from the media it points to.
+        let size = (try input.resolvingSymlinksInPath().resourceValues(forKeys: [.fileSizeKey]).fileSize).map(Int64.init) ?? 0
         return MediaInfo(duration: duration, size: size, format: format["format_name"] as? String ?? input.pathExtension, streams: streams, chapters: chapters, metadata: tags(format["tags"]))
     }
 
@@ -153,6 +159,9 @@ public enum MediaEngine {
             arguments += ["-map_metadata", "0"]
             // Ogg keeps Vorbis/Opus comments on the audio stream; other containers write file-level tags.
             if info.format.split(separator: ",").contains("ogg"), info.audio?.metadata.isEmpty == false { arguments += ["-map_metadata", "0:s:a:0"] }
+            // Apple devices store location, make, model and capture date as QuickTime keys. The MP4/MOV
+            // muxer writes only its fixed tag list unless those keys are requested; -movflags is set once.
+            if info.metadata.keys.contains(where: { $0.hasPrefix("com.apple.quicktime.") }), let flags = arguments.firstIndex(of: "-movflags") { arguments[flags + 1] += "+use_metadata_tags" }
         } else { arguments += ["-map_metadata", "-1", "-map_metadata:s", "-1", "-map_chapters", "-1"] }
         arguments += metadataArguments(options.metadata)
         try render(arguments, to: output, token: token, duration: info.duration, progress: progress)
@@ -686,7 +695,8 @@ public enum MediaEngine {
 
     private static func validateInput(_ url: URL, token: CancellationToken) throws {
         try token.check()
-        guard url.isFileURL, FileManager.default.isReadableFile(atPath: url.path), (try? url.resourceValues(forKeys: [.isRegularFileKey]).isRegularFile) == true else { throw NashiError.invalidInput("Choose a readable local media file.") }
+        // A symlink is never a regular file itself; check the file it points to.
+        guard url.isFileURL, FileManager.default.isReadableFile(atPath: url.path), (try? url.resolvingSymlinksInPath().resourceValues(forKeys: [.isRegularFileKey]).isRegularFile) == true else { throw NashiError.invalidInput("Choose a readable local media file.") }
     }
     private static func requireAudio(_ info: MediaInfo) throws { guard info.hasAudio else { throw NashiError.invalidInput("The file has no audio track.") } }
     private static func requireVideo(_ info: MediaInfo) throws { guard info.hasVideo else { throw NashiError.invalidInput("The file has no video track.") } }

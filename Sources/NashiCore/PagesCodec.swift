@@ -193,7 +193,7 @@ private enum PagesDOCXReader {
             if let margin = section.first("pgMar") { for (attribute,property) in [("left","leftMargin"),("right","rightMargin"),("top","topMargin"),("bottom","bottomMargin")] { if let value = margin.number(attribute) { page[property] = value / 20 } } }
             model["pageSetup"] = page
             for (reference,property) in [("headerReference","header"),("footerReference","footer")] {
-                if let id = section.first(reference)?.attr("id"), let target = relationships[id], let path = reader.localPath(target), let part = try? xml(path) { model[property] = part.rootElement()?.descendants("t").map(text).joined() }
+                if let id = section.first(reference)?.attr("id"), let target = relationships[id], let path = reader.localPath(target), let part = try? xml(path) { model[property] = part.rootElement().map(plainText) }
             }
         }
         return model
@@ -221,7 +221,7 @@ private enum PagesDOCXReader {
                     try token.check()
                     if item.local == "r" {
                         let runBase = item.first("rPr")?.first("rStyle")?.attr("val").map {resolved($0).0} ?? [:]
-                        let formatting = base.0.merging(runBase) { _,new in new }.merging(character(item.first("rPr"))) { _,new in new }
+                        let formatting = PagesDOCXReader.visible(base.0.merging(runBase) { _,new in new }.merging(character(item.first("rPr"))) { _,new in new })
                         for child in item.elements(nil) {
                             if child.local == "fldChar" {
                                 switch child.attr("fldCharType") {
@@ -249,7 +249,7 @@ private enum PagesDOCXReader {
                 // An empty paragraph has no run from which to recover its font.
                 // Keep the paragraph mark's formatting, including tiny end
                 // paragraphs that prevent a final table from adding a blank page.
-                let paragraphCharacter = runs.isEmpty ? base.0.merging(character(properties?.first("rPr"))) { _,new in new } : base.0
+                let paragraphCharacter = PagesDOCXReader.visible(runs.isEmpty ? base.0.merging(character(properties?.first("rPr"))) { _,new in new } : base.0)
                 return ["type":"paragraph","runs":runs,"character":paragraphCharacter,"paragraph":base.1.merging(paragraph(properties)) { _,new in new }]
             }
             if element.local == "tbl" {
@@ -260,6 +260,18 @@ private enum PagesDOCXReader {
                 let maximumColumns = 1024
                 for (rowIndex,row) in element.elements("tr").enumerated() {
                     var cells: [[String:Any]] = [], column = 0
+                    // A vertical merge only survives rows that continue it in
+                    // the same grid column; a wider or missing cell ends it.
+                    var continued: [Int:(Int,Int)] = [:]
+                    // w:gridBefore leaves leading grid columns empty, so the
+                    // row's first cell starts that many columns to the right.
+                    if let raw = row.first("trPr")?.first("gridBefore")?.attr("val"), let skipped = Int(raw), skipped > 0 {
+                        guard skipped <= maximumColumns else {
+                            throw NashiError.invalidInput("This Word document contains a table wider than the supported limit of \(maximumColumns) columns. It could not be converted to Pages.")
+                        }
+                        cells = Array(repeating: ["text":""], count: skipped)
+                        column = skipped
+                    }
                     var horizontalAnchor: Int?
                     for cell in row.elements("tc") {
                         let properties = cell.first("tcPr")
@@ -273,22 +285,24 @@ private enum PagesDOCXReader {
                         guard column <= maximumColumns - span else {
                             throw NashiError.invalidInput("This Word document contains a table wider than the supported limit of \(maximumColumns) columns. It could not be converted to Pages.")
                         }
-                        let cellParagraphs = blockElements(cell).filter { $0.local == "p" }
-                        let value = cellParagraphs.map { $0.descendants("t").map(text).joined() }.joined(separator:"\n")
+                        let value = cellText(cell)
                         var cellModel: [String:Any] = ["text":value]
                         if let fill = properties?.first("shd")?.attr("fill"), let color = color(fill) { cellModel["formatting"] = ["fill":["kind":"color","color":color]] }
                         cells.append(cellModel)
                         if span > 1 { for _ in 1..<span { cells.append(["text":""]) } }
+                        var extendsVertical = false
                         if let vertical = properties?.first("vMerge") {
-                            if vertical.attr("val") == "restart" { activeVertical[column] = (rowIndex,span) }
+                            if vertical.attr("val") == "restart" { continued[column] = (rowIndex,span) }
                             // A continuation narrower or wider than its restart
                             // cannot extend the restart's rectangle without
                             // swallowing or overlapping neighbouring cells.
                             else if let origin = activeVertical[column], origin.1 == span {
+                                continued[column] = origin
+                                extendsVertical = true
                                 if let index = merges.firstIndex(where: {$0["row"] == origin.0 && $0["column"] == column}) { merges[index]["rowCount"] = rowIndex - origin.0 + 1 }
                                 else { merges.append(["row":origin.0,"column":column,"rowCount":rowIndex-origin.0+1,"columnCount":origin.1]) }
-                            } else { activeVertical[column] = nil }
-                        } else { activeVertical[column] = nil }
+                            }
+                        }
                         // Legacy w:hMerge continuations join the restart cell
                         // to their left; cells that also merge vertically stay out.
                         var joinsHorizontal = false
@@ -300,9 +314,13 @@ private enum PagesDOCXReader {
                                 else { merges.append(["row":rowIndex,"column":anchor,"rowCount":1,"columnCount":column + span - anchor]) }
                             }
                         } else { horizontalAnchor = nil }
-                        if span > 1 && properties?.first("vMerge") == nil && !joinsHorizontal { merges.append(["row":rowIndex,"column":column,"rowCount":1,"columnCount":span]) }
+                        // A restart's horizontal span is recorded now and grows
+                        // downward if continuations follow; it must not depend
+                        // on whether one does.
+                        if span > 1 && !extendsVertical && !joinsHorizontal { merges.append(["row":rowIndex,"column":column,"rowCount":1,"columnCount":span]) }
                         column += span
                     }
+                    activeVertical = continued
                     rows.append(cells)
                 }
                 let widths = element.first("tblGrid")?.elements("gridCol").map { ($0.number("w") ?? 2400) / 20 } ?? []
@@ -368,6 +386,15 @@ private enum PagesDOCXReader {
         guard let open=raw.firstIndex(of:">"),let close=raw.lastIndex(of:"<"),open<close else{return ""}
         return DocumentText.decodeEntities(String(raw[raw.index(after:open)..<close]))
     }
+    /// Plain text of a table cell. A nested table keeps its text as lines of
+    /// tab-separated cells, since a Pages cell cannot hold a table.
+    static func cellText(_ cell: XMLElement, depth: Int = 0) -> String {
+        blockElements(cell).compactMap { child -> String? in
+            if child.local == "p" { return plainText(child) }
+            guard child.local == "tbl", depth < 32 else { return nil }
+            return child.elements("tr").map { $0.elements("tc").map { cellText($0, depth: depth + 1) }.joined(separator: "\t") }.joined(separator: "\n")
+        }.joined(separator: "\n")
+    }
     /// The external target of a `HYPERLINK "url" [\o "tip"] [\l "bookmark"]`
     /// field instruction; bookmark-only links have no URL in the Pages model.
     static func hyperlinkField(_ instruction: String) -> String? {
@@ -398,19 +425,41 @@ private enum PagesDOCXReader {
     static func blockElements(_ parent: XMLElement) -> [XMLElement] {
         parent.elements(nil).flatMap { ["sdt","sdtContent","customXml"].contains($0.local) ? blockElements($0) : [$0] }
     }
+    /// Plain text of a paragraph or part: tabs, line breaks and paragraph boundaries are kept.
+    static func plainText(_ element: XMLElement) -> String {
+        var output = ""
+        func visit(_ item: XMLElement) {
+            switch item.local {
+            case "t": output += text(item)
+            case "tab": output += "\t"
+            case "br", "cr": output += "\n"
+            case "pPr", "rPr": return
+            default:
+                if item.local == "p", !output.isEmpty { output += "\n" }
+                item.elements(nil).forEach(visit)
+            }
+        }
+        visit(element)
+        return output
+    }
     static func character(_ element: XMLElement?) -> [String:Any] {
         guard let element else{return [:]};var result:[String:Any]=[:]
         for (name,key) in [("b","bold"),("i","italic")] {if let child=element.first(name){result[key] = !["0","false","off"].contains(child.attr("val") ?? "1")}}
         if let size=element.first("sz")?.number("val"){result["fontSize"]=size/2}
         if let font=element.first("rFonts")?.attr("ascii") ?? element.first("rFonts")?.attr("hAnsi"){result["fontName"]=font}
         if let value=element.first("color")?.attr("val"),let color=color(value){result["fontColor"]=color}
-        if let value=element.first("highlight")?.attr("val"),let color=color(value){result["backgroundColor"]=color}
+        // "none" must override a highlight inherited from a style; visible() drops the marker.
+        if let value=element.first("highlight")?.attr("val"){if value == "none" {result["backgroundColor"]=NSNull()} else if let color=color(highlights[value] ?? value){result["backgroundColor"]=color}}
         if let underline=element.first("u"){result["underline"] = underline.attr("val") == "none" ? 0 : underline.attr("val") == "double" ? 2 : 1}
         if let strike=element.first("strike"){result["strikethru"] = ["0","false","off"].contains(strike.attr("val") ?? "1") ? 0 : 1}
         if let align=element.first("vertAlign")?.attr("val"){result["superscript"] = align == "superscript" ? 1 : align == "subscript" ? -1 : 0}
         if let language=element.first("lang")?.attr("val"){result["language"]=language}
         return result
     }
+    /// Drops the NSNull markers that clear an inherited property.
+    static func visible(_ character:[String:Any]) -> [String:Any] { character.filter { !($0.value is NSNull) } }
+    /// w:highlight takes ST_HighlightColor names, not hex values.
+    static let highlights=["black":"000000","blue":"0000FF","cyan":"00FFFF","green":"00FF00","magenta":"FF00FF","red":"FF0000","yellow":"FFFF00","white":"FFFFFF","darkBlue":"000080","darkCyan":"008080","darkGreen":"008000","darkMagenta":"800080","darkRed":"800000","darkYellow":"808000","darkGray":"808080","lightGray":"C0C0C0"]
     static func paragraph(_ element:XMLElement?) -> [String:Any] {
         guard let element else{return [:]};var result:[String:Any]=[:]
         if let alignment=element.first("jc")?.attr("val"){result["alignment"]=["left":0,"start":0,"right":1,"end":1,"center":2,"both":3,"distribute":3][alignment] ?? 0}
