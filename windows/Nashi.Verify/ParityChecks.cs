@@ -209,6 +209,14 @@ internal static class ParityChecks
             using var pixels=decoded.GetPixels();var blue=pixels.GetPixel(8,8).ToColor()!;var red=pixels.GetPixel(24,8).ToColor()!;check(blue.B>200&&blue.R<55&&red.R>200&&red.B<55,"Raw pixel encode swapped colour channels: "+format);
             if(format=="png")check(pixels.GetPixel(8,24).ToColor()!.A==128,"Raw pixel encode lost alpha");}
         if(Environment.GetEnvironmentVariable("NASHI_VERIFY_FFMPEG") is {} encoder){using var oddImage=new MagickImage(MagickColors.Gold,97,65);var odd=Path.Combine(root,"Odd.heic");PhotoCodec.EncodePng(oddImage.ToByteArray(MagickFormat.Png),odd,"heic",encoder:encoder);using var decodedOdd=PhotoCodec.Read(odd);check(decodedOdd.Width==97&&decodedOdd.Height==65,"HEIC odd dimensions changed");}
+        // Like macOS, HEIC keeps transparency in an alpha plane (opaque | half | clear columns, odd size); opaque photos get none.
+        if(Environment.GetEnvironmentVariable("NASHI_VERIFY_FFMPEG") is {} heicEncoder)foreach(var clear in new[]{true,false})
+        {
+            var pixels=new byte[97*65*4];for(var i=0;i<pixels.Length;i+=4){var x=i/4%97;pixels[i]=200;pixels[i+1]=60;pixels[i+2]=30;pixels[i+3]=!clear||x<32?(byte)255:x<64?(byte)128:(byte)0;}
+            var output=Path.Combine(root,clear?"Transparent.heic":"Opaque.heic");PhotoCodec.EncodePixels(pixels,97,65,output,"heic",85,heicEncoder);using var decoded=PhotoCodec.Read(output);using var values=decoded.GetPixels();
+            var alphas=string.Join(",",new[]{10,48,90,96}.Select(x=>values.GetPixel(x,64).ToColor()!.A));var colour=values.GetPixel(10,30).ToColor()!;
+            check(decoded.Width==97&&decoded.Height==65&&decoded.HasAlpha==clear&&alphas==(clear?"255,128,0,0":"255,255,255,255")&&Math.Abs(colour.B-200)<8&&Math.Abs(colour.R-30)<8,$"HEIC transparency was not kept: alpha {alphas}, colour {colour}, has alpha {decoded.HasAlpha}");
+        }
         var taggedColor=Path.Combine(root,"Wide gamut.webp");using(var wide=new MagickImage(new MagickColor(100,128,30),16,16)){wide.SetProfile(ColorProfiles.AdobeRGB1998);wide.Write(taggedColor,MagickFormat.WebP);}using(var expectedColor=new MagickImage(taggedColor))using(var actualColor=PhotoCodec.Read(taggedColor)){expectedColor.TransformColorSpace(ColorProfiles.SRGB);check(expectedColor.Compare(actualColor,ErrorMetric.Absolute)==0,"Wide-gamut image profile was ignored");}
         byte[] Flat(bool gray,bool alpha){using var flat=new MagickImage(new MagickColor(128,128,128,(byte)(alpha?200:255)),4,4){Format=MagickFormat.Png};if(gray)flat.ColorType=alpha?ColorType.GrayscaleAlpha:ColorType.Grayscale;else flat.Settings.SetDefine(MagickFormat.Png,"color-type",alpha?"6":"2");return flat.ToByteArray();}
         string Sample(byte[] bytes){using var decoded=new MagickImage(bytes);decoded.ColorSpace=ColorSpace.sRGB;return string.Join(",",decoded.GetPixels().GetValue(1,1)!.Take(decoded.HasAlpha?4:3));}
