@@ -127,7 +127,9 @@ public enum MediaEngine {
         var arguments = ["-i", input.path]
         if audioFormats.contains(ext) {
             try requireAudio(info)
-            arguments += ["-map", "0:a:0", "-vn"] + audioEncoding(ext, quality: options.quality, bitrate: options.audioBitrate * 1000, source: info.audio, pcmCodec: try pcmCodec(for: ext, source: info.audio, setting: options.audioSampleDepth), compressionPreset: options.compressionPreset)
+            // Album art is an attached picture stream, not a tag; keep it where the container stores JPEG/PNG art.
+            let artwork = options.preserveMetadata && ["mp3", "m4a", "flac"].contains(ext) ? info.streams.first { $0.isAttachedPicture && ["mjpeg", "png"].contains($0.codec) } : nil
+            arguments += ["-map", "0:a:0"] + (artwork.map { ["-map", "0:\($0.index)", "-c:v", "copy"] } ?? ["-vn"]) + audioEncoding(ext, quality: options.quality, bitrate: options.audioBitrate * 1000, source: info.audio, pcmCodec: try pcmCodec(for: ext, source: info.audio, setting: options.audioSampleDepth), compressionPreset: options.compressionPreset)
         } else {
             try requireVideo(info)
             arguments += ["-map", "0:v:0"]
