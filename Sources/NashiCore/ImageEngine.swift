@@ -315,7 +315,11 @@ public enum ImageEngine {
                 let source=item.sourceRect ?? EditRect(x:rect.x+rect.width*(1-1/item.magnification)/2,y:rect.y+rect.height*(1-1/item.magnification)/2,width:rect.width/item.magnification,height:rect.height/item.magnification)
                 let sourcePixels=CGRect(x:source.x,y:source.y,width:source.width,height:source.height).intersection(CGRect(x:0,y:0,width:image.width,height:image.height))
                 if let crop=image.cropping(to:sourcePixels), !sourcePixels.isEmpty {
-                    ctx.saveGState();ctx.addEllipse(in:r);ctx.clip();ctx.interpolationQuality = .high;ctx.draw(crop,in:r);ctx.restoreGState();ctx.strokeEllipse(in:r)
+                    ctx.saveGState();ctx.addEllipse(in:r);ctx.clip();ctx.interpolationQuality = .high
+                    // Replace the lens area instead of drawing over it: remove the original at the
+                    // lens opacity, then add the magnified pixels, so its transparency stays transparent.
+                    ctx.setBlendMode(.destinationOut);ctx.setFillColor(CGColor(gray:0,alpha:1));ctx.fill(r)
+                    ctx.setBlendMode(.plusLighter);ctx.draw(crop,in:r);ctx.restoreGState();ctx.strokeEllipse(in:r)
                 }
             case .image:
                 guard let imageURL=item.imageURL else { throw NashiError.invalidInput("Choose an image for the annotation.") }
