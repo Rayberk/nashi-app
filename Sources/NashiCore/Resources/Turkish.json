@@ -714,6 +714,7 @@
   "You have the latest published Windows version.": "Yayınlanan en güncel Windows sürümünü kullanıyorsun.",
   "Update cancelled.": "Güncelleme iptal edildi.",
   "Cancelled. Originals kept.": "İptal edildi. Orijinaller korundu.",
+  "The operation was cancelled.": "İşlem iptal edildi.",
   "Saved 1 new file. Originals kept.": "1 yeni dosya kaydedildi. Orijinal korundu.",
   "Saved {0} new files. Originals kept.": "{0} yeni dosya kaydedildi. Orijinaller korundu.",
   "Clipboard is busy. Try Paste again.": "Pano meşgul. Yeniden yapıştırmayı dene.",

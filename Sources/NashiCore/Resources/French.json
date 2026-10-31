@@ -714,6 +714,7 @@
   "You have the latest published Windows version.": "Vous disposez de la dernière version publiée pour Windows.",
   "Update cancelled.": "Mise à jour annulée.",
   "Cancelled. Originals kept.": "Annulé. Originaux conservés.",
+  "The operation was cancelled.": "L’opération a été annulée.",
   "Saved 1 new file. Originals kept.": "1 nouveau fichier enregistré. Originaux conservés.",
   "Saved {0} new files. Originals kept.": "{0} nouveaux fichiers enregistrés. Originaux conservés.",
   "Clipboard is busy. Try Paste again.": "Le presse-papiers est occupé. Réessayez de coller.",
