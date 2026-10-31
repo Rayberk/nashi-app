@@ -27,6 +27,14 @@ final class PagesTextExtractionTests: XCTestCase {
         }
     }
 
+    // F1542
+    func testCellAndHeaderTextKeepTabsBreaksAndParagraphs() throws {
+        let cell = "<w:tbl><w:tr><w:tc><w:p><w:pPr><w:tabs><w:tab w:val=\"left\" w:pos=\"720\"/></w:tabs></w:pPr><w:r><w:t>Name</w:t><w:tab/><w:t>Value</w:t><w:br/><w:t>Second line</w:t></w:r></w:p></w:tc></w:tr></w:tbl>"
+        let model = try convert(body: cell, sections: "<w:headerReference w:type=\"default\" r:id=\"hD\"/>", parts: ["hD": ("hdr", paragraph("Company") + paragraph("Confidential"))])
+        XCTAssertEqual(cellTexts(model), ["Name\tValue\nSecond line"])
+        XCTAssertEqual(model["header"] as? String, "Company\nConfidential")
+    }
+
     private func run(_ text: String) -> String { "<w:r><w:t xml:space=\"preserve\">\(text)</w:t></w:r>" }
     private func paragraph(_ text: String) -> String { "<w:p>\(run(text))</w:p>" }
 

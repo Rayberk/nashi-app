@@ -193,7 +193,7 @@ private enum PagesDOCXReader {
             if let margin = section.first("pgMar") { for (attribute,property) in [("left","leftMargin"),("right","rightMargin"),("top","topMargin"),("bottom","bottomMargin")] { if let value = margin.number(attribute) { page[property] = value / 20 } } }
             model["pageSetup"] = page
             for (reference,property) in [("headerReference","header"),("footerReference","footer")] {
-                if let id = section.first(reference)?.attr("id"), let target = relationships[id], let path = reader.localPath(target), let part = try? xml(path) { model[property] = part.rootElement()?.descendants("t").map(text).joined() }
+                if let id = section.first(reference)?.attr("id"), let target = relationships[id], let path = reader.localPath(target), let part = try? xml(path) { model[property] = part.rootElement().map(plainText) }
             }
         }
         return model
@@ -390,7 +390,7 @@ private enum PagesDOCXReader {
     /// tab-separated cells, since a Pages cell cannot hold a table.
     static func cellText(_ cell: XMLElement, depth: Int = 0) -> String {
         blockElements(cell).compactMap { child -> String? in
-            if child.local == "p" { return child.descendants("t").map(text).joined() }
+            if child.local == "p" { return plainText(child) }
             guard child.local == "tbl", depth < 32 else { return nil }
             return child.elements("tr").map { $0.elements("tc").map { cellText($0, depth: depth + 1) }.joined(separator: "\t") }.joined(separator: "\n")
         }.joined(separator: "\n")
@@ -424,6 +424,23 @@ private enum PagesDOCXReader {
     /// Block-level content controls and custom XML only wrap ordinary paragraphs and tables.
     static func blockElements(_ parent: XMLElement) -> [XMLElement] {
         parent.elements(nil).flatMap { ["sdt","sdtContent","customXml"].contains($0.local) ? blockElements($0) : [$0] }
+    }
+    /// Plain text of a paragraph or part: tabs, line breaks and paragraph boundaries are kept.
+    static func plainText(_ element: XMLElement) -> String {
+        var output = ""
+        func visit(_ item: XMLElement) {
+            switch item.local {
+            case "t": output += text(item)
+            case "tab": output += "\t"
+            case "br", "cr": output += "\n"
+            case "pPr", "rPr": return
+            default:
+                if item.local == "p", !output.isEmpty { output += "\n" }
+                item.elements(nil).forEach(visit)
+            }
+        }
+        visit(element)
+        return output
     }
     static func character(_ element: XMLElement?) -> [String:Any] {
         guard let element else{return [:]};var result:[String:Any]=[:]
