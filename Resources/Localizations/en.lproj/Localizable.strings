@@ -1229,6 +1229,7 @@
 "MAXIMUM VIDEO HEIGHT" = "MAXIMUM VIDEO HEIGHT";
 "MAXIMUM VIDEO HEIGHT (0 = ORIGINAL)" = "MAXIMUM VIDEO HEIGHT (0 = ORIGINAL)";
 "MAXIMUM WIDTH" = "MAXIMUM WIDTH";
+"MEDIA RANGE TIMELINE" = "MEDIA RANGE TIMELINE";
 "MEDIA SETUP" = "MEDIA SETUP";
 "MEDIA TOOLS" = "MEDIA TOOLS";
 "MEDIA TOOLS ARE ALREADY INSTALLED." = "MEDIA TOOLS ARE ALREADY INSTALLED.";
@@ -1271,6 +1272,7 @@
 "Maximum video height" = "Maximum video height";
 "Maximum video height (0 = original)" = "Maximum video height (0 = original)";
 "Maximum width" = "Maximum width";
+"Media range timeline" = "Media range timeline";
 "Media setup" = "Media setup";
 "Media tools" = "Media tools";
 "Media tools are already installed." = "Media tools are already installed.";
@@ -2110,6 +2112,7 @@
 "TRIM" = "TRIM";
 "TRIM AUDIO" = "TRIM AUDIO";
 "TRIM AUDIO · NASHI" = "TRIM AUDIO · NASHI";
+"TRIM TIMELINE" = "TRIM TIMELINE";
 "TRIM VIDEO" = "TRIM VIDEO";
 "TRIM VIDEO · NASHI" = "TRIM VIDEO · NASHI";
 "TRUE PEAK DB" = "TRUE PEAK DB";
@@ -2204,6 +2207,7 @@
 "Trim Audio · Nashi" = "Trim Audio · Nashi";
 "Trim Video" = "Trim Video";
 "Trim Video · Nashi" = "Trim Video · Nashi";
+"Trim timeline" = "Trim timeline";
 "True peak dB" = "True peak dB";
 "True peak limit" = "True peak limit";
 "Try a clearer image or another PDF." = "Try a clearer image or another PDF.";
