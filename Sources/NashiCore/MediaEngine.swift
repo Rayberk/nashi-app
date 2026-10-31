@@ -143,7 +143,12 @@ public enum MediaEngine {
                 arguments += videoEncoding(ext, quality: options.quality, audioBitrate: options.audioBitrate * 1000, sourceAudio: info.audio)
             }
         }
-        if options.preserveMetadata { arguments += ["-map_metadata", "0"] }
+        if options.preserveMetadata {
+            arguments += ["-map_metadata", "0"]
+            // Apple devices store location, make, model and capture date as QuickTime keys. The MP4/MOV
+            // muxer writes only its fixed tag list unless those keys are requested; -movflags is set once.
+            if info.metadata.keys.contains(where: { $0.hasPrefix("com.apple.quicktime.") }), let flags = arguments.firstIndex(of: "-movflags") { arguments[flags + 1] += "+use_metadata_tags" }
+        }
         else { arguments += ["-map_metadata", "-1", "-map_metadata:s", "-1", "-map_chapters", "-1"] }
         arguments += metadataArguments(options.metadata)
         try render(arguments, to: output, token: token, duration: info.duration, progress: progress)
