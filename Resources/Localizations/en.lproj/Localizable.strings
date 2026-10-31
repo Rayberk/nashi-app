@@ -18,6 +18,7 @@
 "%@ selected" = "%@ selected";
 "%@ selected · Drag to carry files" = "%@ selected · Drag to carry files";
 "%@ split points" = "%@ split points";
+"%@ video items are not included. Only photos will be saved." = "%@ video items are not included. Only photos will be saved.";
 "%@ ways to change it" = "%@ ways to change it";
 "%@ · %@ smaller" = "%@ · %@ smaller";
 "%@ · %lld smaller" = "%@ · %lld smaller";
@@ -42,6 +43,7 @@
 "%lld selected" = "%lld selected";
 "%lld selected · Drag to carry files" = "%lld selected · Drag to carry files";
 "%lld split points" = "%lld split points";
+"%lld video items are not included. Only photos will be saved." = "%lld video items are not included. Only photos will be saved.";
 "%lld ways to change it" = "%lld ways to change it";
 "%lld · %@ smaller" = "%lld · %@ smaller";
 "%lld · %lld smaller" = "%lld · %lld smaller";
@@ -60,12 +62,14 @@
 "1 PHOTO" = "1 PHOTO";
 "1 SELECTED" = "1 SELECTED";
 "1 SPLIT POINT" = "1 SPLIT POINT";
+"1 VIDEO ITEMS ARE NOT INCLUDED. ONLY PHOTOS WILL BE SAVED." = "1 VIDEO ITEMS ARE NOT INCLUDED. ONLY PHOTOS WILL BE SAVED.";
 "1 WAY TO CHANGE IT" = "1 WAY TO CHANGE IT";
 "1 area selected" = "1 area selected";
 "1 item" = "1 item";
 "1 photo" = "1 photo";
 "1 selected" = "1 selected";
 "1 split point" = "1 split point";
+"1 video items are not included. Only photos will be saved." = "1 video items are not included. Only photos will be saved.";
 "1 way to change it" = "1 way to change it";
 "1/3 LEFT · MIDDLE · RIGHT   /   1/2 LEFT · RIGHT   /   2/3 LEFT · RIGHT" = "1/3 LEFT · MIDDLE · RIGHT   /   1/2 LEFT · RIGHT   /   2/3 LEFT · RIGHT";
 "1/3 left · middle · right   /   1/2 left · right   /   2/3 left · right" = "1/3 left · middle · right   /   1/2 left · right   /   2/3 left · right";

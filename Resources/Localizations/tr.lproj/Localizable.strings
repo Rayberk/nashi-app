@@ -18,6 +18,7 @@
 "%@ selected" = "%@ seçili";
 "%@ selected · Drag to carry files" = "%@ seçili · Dosyaları taşımak için sürükle";
 "%@ split points" = "%@ bölme noktası";
+"%@ video items are not included. Only photos will be saved." = "%@ video öğesi dahil edilmedi. Yalnızca fotoğraflar kaydedilecek.";
 "%@ ways to change it" = "%@ farklı biçime çevir";
 "%@ · %@ smaller" = "%@ · %@ daha küçük";
 "%@ · %lld smaller" = "%@ · %lld daha küçük";
@@ -42,6 +43,7 @@
 "%lld selected" = "%lld seçili";
 "%lld selected · Drag to carry files" = "%lld seçili · Dosyaları taşımak için sürükle";
 "%lld split points" = "%lld bölme noktası";
+"%lld video items are not included. Only photos will be saved." = "%lld video öğesi dahil edilmedi. Yalnızca fotoğraflar kaydedilecek.";
 "%lld ways to change it" = "%lld farklı biçime çevir";
 "%lld · %@ smaller" = "%lld · %@ daha küçük";
 "%lld · %lld smaller" = "%lld · %lld daha küçük";
@@ -60,12 +62,14 @@
 "1 PHOTO" = "1 FOTOĞRAF";
 "1 SELECTED" = "1 SEÇİLİ";
 "1 SPLIT POINT" = "1 BÖLME NOKTASI";
+"1 VIDEO ITEMS ARE NOT INCLUDED. ONLY PHOTOS WILL BE SAVED." = "1 VİDEO ÖĞESİ DAHİL EDİLMEDİ. YALNIZCA FOTOĞRAFLAR KAYDEDİLECEK.";
 "1 WAY TO CHANGE IT" = "1 FARKLI BİÇİME ÇEVİR";
 "1 area selected" = "1 alan seçili";
 "1 item" = "1 öğe";
 "1 photo" = "1 fotoğraf";
 "1 selected" = "1 seçili";
 "1 split point" = "1 bölme noktası";
+"1 video items are not included. Only photos will be saved." = "1 video öğesi dahil edilmedi. Yalnızca fotoğraflar kaydedilecek.";
 "1 way to change it" = "1 farklı biçime çevir";
 "1/3 LEFT · MIDDLE · RIGHT   /   1/2 LEFT · RIGHT   /   2/3 LEFT · RIGHT" = "1/3 SOL · ORTA · SAĞ   /   1/2 SOL · SAĞ   /   2/3 SOL · SAĞ";
 "1/3 left · middle · right   /   1/2 left · right   /   2/3 left · right" = "1/3 sol · orta · sağ   /   1/2 sol · sağ   /   2/3 sol · sağ";
