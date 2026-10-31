@@ -95,7 +95,7 @@ enum PagesCodec {
             let width = number(setup["pageWidth"], 595.28), height = number(setup["pageHeight"], 841.89)
             let margins = ["topMargin", "rightMargin", "bottomMargin", "leftMargin"].map { "\(number(setup[$0], 56.69))pt" }.joined(separator: " ")
             var content = ""
-            if let header = model["header"] as? String, !header.isEmpty { content += "<header>\(escape(header))</header>" }
+            if let header = model["header"] as? String, !header.isEmpty { content += "<header>\(escape(header).replacingOccurrences(of: "\n", with: "<br/>"))</header>" }
             for block in model["blocks"] as? [[String: Any]] ?? [] {
                 try token.check()
                 if block["type"] as? String == "table" { content += table(block); continue }
@@ -121,7 +121,7 @@ enum PagesCodec {
                 }
                 content += "<p style=\"\(escape(css))\">\(runs.isEmpty ? "<br/>" : runs)</p>"
             }
-            if let footer = model["footer"] as? String, !footer.isEmpty { content += "<footer>\(escape(footer))</footer>" }
+            if let footer = model["footer"] as? String, !footer.isEmpty { content += "<footer>\(escape(footer).replacingOccurrences(of: "\n", with: "<br/>"))</footer>" }
             return "<!DOCTYPE html><html><head><meta charset=\"utf-8\"/><title>Pages document</title><style>@page{size:\(width)pt \(height)pt;margin:\(margins)}body{font:12pt Helvetica,Arial,sans-serif}p{white-space:pre-wrap;margin:0 0 8pt}table{border-collapse:collapse;page-break-inside:auto}td,th{border:1px solid #888;padding:4pt;white-space:pre-wrap}img{max-width:100%;height:auto}header,footer{margin:8pt 0}</style></head><body>\(content)</body></html>"
         }
         static func table(_ block: [String: Any]) -> String {
