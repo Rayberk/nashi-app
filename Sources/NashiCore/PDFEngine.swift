@@ -213,6 +213,8 @@ public enum PDFEngine {
         else if hasKey(names,"EmbeddedFiles") || hasKey(catalog,"AF") || hasKey(catalog,"Collection") || pages.contains(where:{hasKey($0.pageRef?.dictionary,"AF")}) { feature="embedded files" }
         else if hasKey(catalog,"OCProperties") { feature="optional content layers" }
         else if hasKey(catalog,"StructTreeRoot") { feature="accessibility tags" }
+        // Page numbering such as i, ii or A-1 lives in the catalog and is not copied with the pages.
+        else if hasKey(catalog,"PageLabels") { feature="custom page labels" }
         else { feature=nil }
         if let feature { throw NashiError.unsupported("This PDF contains \(feature). Metadata cleanup cannot safely preserve those features. No copy was exported.") }
         let result=PDFDocument()
