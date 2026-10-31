@@ -2205,6 +2205,7 @@
 "THE IMAGE DOWNLOAD ENDED EARLY." = "THE IMAGE DOWNLOAD ENDED EARLY.";
 "THE IMAGE ORDER MUST INCLUDE EVERY IMAGE ONCE." = "THE IMAGE ORDER MUST INCLUDE EVERY IMAGE ONCE.";
 "THE MEDIA SERVER REDIRECTED TO AN INSECURE URL." = "THE MEDIA SERVER REDIRECTED TO AN INSECURE URL.";
+"THE OPERATION WAS CANCELLED." = "THE OPERATION WAS CANCELLED.";
 "THE PDF CONTAINS NO PAGES." = "THE PDF CONTAINS NO PAGES.";
 "THE PDF PAGE IS TOO LARGE TO RENDER AT THIS RESOLUTION." = "THE PDF PAGE IS TOO LARGE TO RENDER AT THIS RESOLUTION.";
 "THE PROCESSING TOOL COULD NOT START." = "THE PROCESSING TOOL COULD NOT START.";
@@ -2315,6 +2316,7 @@
 "The media server redirected to an insecure URL." = "The media server redirected to an insecure URL.";
 "The metadata field %@ could not be removed." = "The metadata field %@ could not be removed.";
 "The metadata field %lld could not be removed." = "The metadata field %lld could not be removed.";
+"The operation was cancelled." = "The operation was cancelled.";
 "The processing tool could not start." = "The processing tool could not start.";
 "The requested PDF size could not be reached." = "The requested PDF size could not be reached.";
 "The requested PDF size could not be reached. Choose a larger target." = "The requested PDF size could not be reached. Choose a larger target.";

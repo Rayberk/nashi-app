@@ -2205,6 +2205,7 @@
 "THE IMAGE DOWNLOAD ENDED EARLY." = "GÖRSEL İNDİRMESİ ERKEN SONA ERDİ.";
 "THE IMAGE ORDER MUST INCLUDE EVERY IMAGE ONCE." = "GÖRSEL SIRASINDA HER GÖRSEL BİR KEZ YER ALMALI.";
 "THE MEDIA SERVER REDIRECTED TO AN INSECURE URL." = "MEDYA SUNUCUSU GÜVENLİ OLMAYAN BİR ADRESE YÖNLENDİRDİ.";
+"THE OPERATION WAS CANCELLED." = "İŞLEM İPTAL EDİLDİ.";
 "THE PDF CONTAINS NO PAGES." = "PDF'DE SAYFA YOK.";
 "THE PDF PAGE IS TOO LARGE TO RENDER AT THIS RESOLUTION." = "PDF SAYFASI BU ÇÖZÜNÜRLÜKTE İŞLENEMEYECEK KADAR BÜYÜK.";
 "THE PROCESSING TOOL COULD NOT START." = "İŞLEME ARACI BAŞLATILAMADI.";
@@ -2315,6 +2316,7 @@
 "The media server redirected to an insecure URL." = "Medya sunucusu güvenli olmayan bir adrese yönlendirdi.";
 "The metadata field %@ could not be removed." = "%@ meta veri alanı kaldırılamadı.";
 "The metadata field %lld could not be removed." = "%lld meta veri alanı kaldırılamadı.";
+"The operation was cancelled." = "İşlem iptal edildi.";
 "The processing tool could not start." = "İşleme aracı başlatılamadı.";
 "The requested PDF size could not be reached." = "İstenen PDF boyutuna inilemedi.";
 "The requested PDF size could not be reached. Choose a larger target." = "İstenen PDF boyutuna inilemedi. Daha büyük bir hedef seç.";
