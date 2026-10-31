@@ -178,7 +178,9 @@ function importRich(dest,src,prefix,includeAttachments=true){
   const copied=copier.copy(sourceForm),dict=dest.context.lookup(copied,PDFDict),fields=dict.lookup(name('Fields'),PDFArray);
   const da=importFormResources(dest,dict,prefix);
   if(!dest.catalog.has(name('AcroForm')))dest.catalog.set(name('AcroForm'),dest.context.obj({Fields:[]}));
-  const group=dest.context.obj({T:PDFHexString.fromText(prefix),Kids:fields}),groupRef=dest.context.register(group);if(da)group.set(name('DA'),da);const q=dict.get(name('Q'));if(q)group.set(name('Q'),q);
+  const group=dest.context.obj({T:PDFHexString.fromText(prefix),Kids:fields}),groupRef=dest.context.register(group);if(da)group.set(name('DA'),da);
+  // A field without /Q would otherwise inherit the destination form's default alignment.
+  group.set(name('Q'),dict.get(name('Q'))||dest.context.obj(0));
   for(const ref of fields.asArray())dest.context.lookup(ref,PDFDict).set(name('Parent'),groupRef);
   dest.catalog.lookup(name('AcroForm'),PDFDict).lookup(name('Fields'),PDFArray).push(groupRef);
  }
