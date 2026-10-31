@@ -96,6 +96,13 @@ enum SubtitleCodec {
 enum DocumentText {
     static func read(_ url: URL) throws -> String {
         let data = try Data(contentsOf: url)
+        // The UTF-32LE byte order mark begins with the UTF-16LE one.
+        if data.starts(with: [0xff, 0xfe, 0, 0]) || data.starts(with: [0, 0, 0xfe, 0xff]) {
+            guard let text = String(data: data, encoding: .utf32) else {
+                throw NashiError.invalidInput("The UTF-32 text in \(url.lastPathComponent) is damaged.")
+            }
+            return text
+        }
         // UTF-16 decoders can accept arbitrary pairs of legacy single-byte
         // characters. Only prefer UTF-16 when a BOM or a clear alternating
         // zero-byte pattern identifies it; otherwise a CP1252 document can
