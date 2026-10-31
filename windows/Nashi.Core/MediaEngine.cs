@@ -9,6 +9,8 @@ public sealed record MediaInfo(double Duration, long Bytes, IReadOnlyList<MediaS
     public MediaStream? Video => Streams.FirstOrDefault(s => s.Kind == "video" && !s.AttachedPicture);
     public MediaStream? Audio => Streams.FirstOrDefault(s => s.Kind == "audio");
     public bool HasAudio => Streams.Any(s => s.Kind == "audio");
+    /// Ogg keeps Vorbis and Opus comments on the audio stream rather than in file-level tags.
+    public bool OggStreamTags { get; init; }
 }
 public sealed record MediaRegion(double X, double Y, double Width, double Height, double Start = 0, double? End = null);
 public sealed record MediaRange(double Start, double End);
@@ -77,7 +79,8 @@ public sealed class MediaEngine(string ffmpeg, string ffprobe)
             streams.Add(new(stream.GetProperty("index").GetInt32(), GetString(stream,"codec_type"), GetString(stream,"codec_name"), width, height, attached,GetInt(stream,"bits_per_raw_sample")??GetInt(stream,"bits_per_sample")??0,GetString(stream,"sample_fmt"),ParseFrameRate(GetString(stream,"avg_frame_rate")),int.TryParse(GetString(stream,"sample_rate"),NumberStyles.Integer,CultureInfo.InvariantCulture,out var sampleRate)&&sampleRate>0?sampleRate:0));
         }
         var duration = root.TryGetProperty("format", out var format) && double.TryParse(GetString(format,"duration"), CultureInfo.InvariantCulture, out var seconds) && double.IsFinite(seconds) ? Math.Max(0,seconds) : 0;
-        return new(duration, new FileInfo(input).Length, streams);
+        var oggTags=format.ValueKind==JsonValueKind.Object&&GetString(format,"format_name").Split(',').Contains("ogg")&&root.GetProperty("streams").EnumerateArray().FirstOrDefault(s=>GetString(s,"codec_type")=="audio") is {ValueKind:JsonValueKind.Object} audio&&audio.TryGetProperty("tags",out var audioTags)&&audioTags.ValueKind==JsonValueKind.Object&&audioTags.EnumerateObject().Any();
+        return new(duration, new FileInfo(input).Length, streams){OggStreamTags=oggTags};
     }
 
     // The last video packet's time from the container start, read without decoding: the final minute first, then the whole file.
@@ -122,6 +125,8 @@ public sealed class MediaEngine(string ffmpeg, string ffprobe)
                 }
             }
             arguments.AddRange(options.PreserveMetadata ? ["-map_metadata","0"] : ["-map_metadata","-1","-map_metadata:s","-1","-map_chapters","-1"]);
+            // Other containers write file-level tags, so copy Ogg's stream comments there too (as on macOS).
+            if(options.PreserveMetadata&&info.OggStreamTags)arguments.AddRange(["-map_metadata","0:s:a:0"]);
             await RenderAsync(arguments,output,info.Duration,Scoped(progress,index,inputs.Count),token);
             outputs.Add(output);
         }
