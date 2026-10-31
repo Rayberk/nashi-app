@@ -1113,6 +1113,8 @@
   "One or more media settings are outside their supported range.": "Bir veya daha fazla medya ayarı desteklenen aralığın dışında.",
   "PDF form appearances could not be prepared.": "PDF form görünümleri hazırlanamadı.",
   "PDF page exceeds 100 MP.": "PDF sayfası 100 MP'yi aşıyor.",
+  "The PDF page is too large to render at this resolution.": "PDF sayfası bu çözünürlükte işlenemeyecek kadar büyük.",
+  "A PDF page could not be read.": "Bir PDF sayfası okunamadı.",
   "PDF preview background could not be prepared.": "PDF önizleme arka planı hazırlanamadı.",
   "PDF preview bitmap could not be allocated.": "PDF önizlemesi için bellek ayrılamadı.",
   "Pages input exceeds 200 MB.": "Pages dosyası 200 MB'ı aşıyor.",

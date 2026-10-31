@@ -1112,6 +1112,8 @@
   "One or more media settings are outside their supported range.": "Un ou plusieurs réglages multimédias sont en dehors de leur plage prise en charge.",
   "PDF form appearances could not be prepared.": "Impossible de préparer l’apparence des formulaires PDF.",
   "PDF page exceeds 100 MP.": "La page PDF dépasse 100 Mpx.",
+  "The PDF page is too large to render at this resolution.": "La page PDF est trop grande pour être rendue à cette résolution.",
+  "A PDF page could not be read.": "Une page PDF n’a pas pu être lue.",
   "PDF preview background could not be prepared.": "Impossible de préparer l’arrière-plan de l’aperçu PDF.",
   "PDF preview bitmap could not be allocated.": "Impossible d’allouer le bitmap de l’aperçu PDF.",
   "Pages input exceeds 200 MB.": "Les pages en entrée dépassent 200 Mo.",
