@@ -2262,6 +2262,7 @@
 "THE CLIPPING HAS NO READABLE TEXT. INCLUDE ITS ORIGINAL RESOURCE FORK/APPLEDOUBLE SIDECAR, OR PASTE ITS TEXT INTO NASHI." = "LE FRAGMENT NE CONTIENT AUCUN TEXTE LISIBLE. INCLUEZ SON FICHIER ANNEXE D’ORIGINE (RESOURCE FORK/APPLEDOUBLE) OU COLLEZ SON TEXTE DANS NASHI.";
 "THE DOCUMENT HAS NO EDITABLE BODY." = "LE DOCUMENT N’A PAS DE CORPS MODIFIABLE.";
 "THE DOCUMENT PACKAGE IS TOO LARGE OR CONTAINS DUPLICATE ENTRIES." = "LE PAQUET DU DOCUMENT EST TROP VOLUMINEUX OU CONTIENT DES ENTRÉES EN DOUBLE.";
+"THE DOCUMENT XML IS NOT SUPPORTED." = "LE XML DU DOCUMENT N’EST PAS PRIS EN CHARGE.";
 "THE DOWNLOAD CONNECTION WAS INTERRUPTED." = "LA CONNEXION DE TÉLÉCHARGEMENT A ÉTÉ INTERROMPUE.";
 "THE DOWNLOAD STOPPED RESPONDING. PLEASE TRY AGAIN." = "LE TÉLÉCHARGEMENT NE RÉPOND PLUS. VEUILLEZ RÉESSAYER.";
 "THE DOWNLOADED FILE CONTAINS NO VIDEO." = "LE FICHIER TÉLÉCHARGÉ NE CONTIENT PAS DE VIDÉO.";
@@ -2308,6 +2309,7 @@
 "THIS LINK REQUIRES A LOGIN OR IS RESTRICTED. TRY A PUBLIC SHARE LINK; NASHI DOES NOT READ YOUR BROWSER SESSIONS." = "CE LIEN NÉCESSITE UNE CONNEXION OU EST RESTREINT. ESSAYEZ UN LIEN DE PARTAGE PUBLIC ; NASHI NE LIT PAS VOS SESSIONS DE NAVIGATEUR.";
 "THIS MEDIA IS PROTECTED AND CANNOT BE DOWNLOADED HERE." = "CE MÉDIA EST PROTÉGÉ ET NE PEUT PAS ÊTRE TÉLÉCHARGÉ ICI.";
 "THIS OUTPUT FORMAT HAS NO ADJUSTABLE CONVERSION DEFAULTS." = "CE FORMAT DE SORTIE N’A PAS DE RÉGLAGES DE CONVERSION MODIFIABLES.";
+"THIS PAGES FILE IS TOO LARGE OR IS NOT A REGULAR DOCUMENT FILE." = "CE FICHIER PAGES EST TROP VOLUMINEUX OU N’EST PAS UN FICHIER DE DOCUMENT ORDINAIRE.";
 "THIS PDF CONTAINS NO PAGES." = "CE PDF NE CONTIENT AUCUNE PAGE.";
 "THIS PDF HAS FORM FIELDS OR ATTACHMENTS THAT MERGING, SPLITTING OR REORDERING PAGES CANNOT KEEP. NO COPY WAS EXPORTED." = "CE PDF CONTIENT DES CHAMPS DE FORMULAIRE OU DES PIÈCES JOINTES QUE LA FUSION, LA DIVISION OU LA RÉORGANISATION DES PAGES NE PEUT PAS CONSERVER. AUCUNE COPIE N’A ÉTÉ EXPORTÉE.";
 "THIS PDF HAS FORM FIELDS OR ATTACHMENTS THAT METADATA CLEANUP CANNOT KEEP. NO COPY WAS EXPORTED." = "CE PDF CONTIENT DES CHAMPS DE FORMULAIRE OU DES PIÈCES JOINTES QUE LE NETTOYAGE DES MÉTADONNÉES NE PEUT PAS CONSERVER. AUCUNE COPIE N’A ÉTÉ EXPORTÉE.";
@@ -2324,6 +2326,10 @@
 "THIS TEXT IS TOO LARGE TO PREVIEW. USE OPEN TO READ THE COMPLETE FILE." = "CE TEXTE EST TROP VOLUMINEUX POUR L’APERÇU. UTILISEZ OUVRIR POUR LIRE LE FICHIER COMPLET.";
 "THIS WINDOW COULD NOT BE ARRANGED. THE APP MAY RESTRICT RESIZING." = "CETTE FENÊTRE N’A PAS PU ÊTRE DISPOSÉE. L’APP LIMITE PEUT-ÊTRE LE REDIMENSIONNEMENT.";
 "THIS WINDOWS CODEC CANNOT PLAY DIRECTLY. SET UP MEDIA TOOLS TO CREATE A LOCAL PREVIEW." = "CE CODEC WINDOWS NE PEUT PAS ÊTRE LU DIRECTEMENT. CONFIGUREZ LES OUTILS MULTIMÉDIAS POUR CRÉER UN APERÇU LOCAL.";
+"THIS WORD DOCUMENT CONTAINS AN INVALID OR OVERSIZED TABLE CELL SPAN. IT COULD NOT BE CONVERTED TO PAGES." = "CE DOCUMENT WORD CONTIENT UNE FUSION DE CELLULES DE TABLEAU INVALIDE OU TROP LARGE. IL N’A PAS PU ÊTRE CONVERTI EN PAGES.";
+"THIS WORD DOCUMENT CONTAINS DUPLICATE RELATIONSHIP IDENTIFIERS. IT COULD NOT BE CONVERTED TO PAGES." = "CE DOCUMENT WORD CONTIENT DES IDENTIFIANTS DE RELATION EN DOUBLE. IL N’A PAS PU ÊTRE CONVERTI EN PAGES.";
+"THIS WORD DOCUMENT CONTAINS DUPLICATE STYLE IDENTIFIERS. IT COULD NOT BE CONVERTED TO PAGES." = "CE DOCUMENT WORD CONTIENT DES IDENTIFIANTS DE STYLE EN DOUBLE. IL N’A PAS PU ÊTRE CONVERTI EN PAGES.";
+"THIS WORD DOCUMENT HAS NO EDITABLE BODY." = "CE DOCUMENT WORD N’A PAS DE CORPS MODIFIABLE.";
 "THOSE FILES ARE NO LONGER AVAILABLE." = "CES FICHIERS NE SONT PLUS DISPONIBLES.";
 "THUMBNAIL" = "MINIATURE";
 "TIMES (SECONDS)" = "DURÉES (SECONDES)";
@@ -2370,6 +2376,8 @@
 "That PDF size cannot be reached while keeping selectable text, links, and annotations. Choose a larger target." = "Cette taille de PDF est impossible à atteindre en conservant le texte sélectionnable, les liens et les annotations. Choisissez une cible plus grande.";
 "The PDF contains no pages." = "Le PDF ne contient aucune page.";
 "The PDF page is too large to render at this resolution." = "La page PDF est trop grande pour être rendue à cette résolution.";
+"The Pages document could not be read: %@." = "Le document Pages n’a pas pu être lu : %@.";
+"The Pages document could not be read: %lld." = "Le document Pages n’a pas pu être lu : %lld.";
 "The UTF-16 text in %@ is damaged." = "Le texte UTF-16 de %@ est endommagé.";
 "The UTF-16 text in %lld is damaged." = "Le texte UTF-16 de %lld est endommagé.";
 "The UTF-32 text in %@ is damaged." = "Le texte UTF-32 de %@ est endommagé.";
@@ -2391,6 +2399,7 @@
 "The crop rectangle must fit completely inside the %@ × %lld pixel image." = "Le rectangle de recadrage doit tenir entièrement dans l’image de %@ × %lld pixels.";
 "The crop rectangle must fit completely inside the %lld × %@ pixel image." = "Le rectangle de recadrage doit tenir entièrement dans l’image de %lld × %@ pixels.";
 "The crop rectangle must fit completely inside the %lld × %lld pixel image." = "Le rectangle de recadrage doit tenir entièrement dans l’image de %lld × %lld pixels.";
+"The document XML is not supported." = "Le XML du document n’est pas pris en charge.";
 "The document has no editable body." = "Le document n’a pas de corps modifiable.";
 "The document is missing %@" = "Il manque %@ au document";
 "The document is missing %lld" = "Il manque %lld au document";
@@ -2430,8 +2439,15 @@
 "This PDF is password protected. Enter its password." = "Ce PDF est protégé par un mot de passe. Saisissez son mot de passe.";
 "This PDF page could not be read." = "Cette page PDF n’a pas pu être lue.";
 "This PDF requires a valid password." = "Ce PDF nécessite un mot de passe valide.";
+"This Pages file is too large or is not a regular document file." = "Ce fichier Pages est trop volumineux ou n’est pas un fichier de document ordinaire.";
 "This RTFD attachment syntax could not be preserved." = "Cette syntaxe de pièce jointe RTFD n’a pas pu être préservée.";
 "This Windows codec cannot play directly. Set up media tools to create a local preview." = "Ce codec Windows ne peut pas être lu directement. Configurez les outils multimédias pour créer un aperçu local.";
+"This Word document contains a table wider than the supported limit of %@ columns. It could not be converted to Pages." = "Ce document Word contient un tableau plus large que la limite prise en charge de %@ colonnes. Il n’a pas pu être converti en Pages.";
+"This Word document contains a table wider than the supported limit of %lld columns. It could not be converted to Pages." = "Ce document Word contient un tableau plus large que la limite prise en charge de %lld colonnes. Il n’a pas pu être converti en Pages.";
+"This Word document contains an invalid or oversized table cell span. It could not be converted to Pages." = "Ce document Word contient une fusion de cellules de tableau invalide ou trop large. Il n’a pas pu être converti en Pages.";
+"This Word document contains duplicate relationship identifiers. It could not be converted to Pages." = "Ce document Word contient des identifiants de relation en double. Il n’a pas pu être converti en Pages.";
+"This Word document contains duplicate style identifiers. It could not be converted to Pages." = "Ce document Word contient des identifiants de style en double. Il n’a pas pu être converti en Pages.";
+"This Word document has no editable body." = "Ce document Word n’a pas de corps modifiable.";
 "This conversion is not available for %@." = "Cette conversion n’est pas disponible pour %@.";
 "This conversion is not available for %lld." = "Cette conversion n’est pas disponible pour %lld.";
 "This crop applies to every selected image and must fit inside each one." = "Ce recadrage s’applique à toutes les images sélectionnées et doit tenir dans chacune d’elles.";
