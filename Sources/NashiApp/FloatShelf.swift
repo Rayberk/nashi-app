@@ -185,6 +185,12 @@ enum FloatShelfViewMode:Int { case icons,list }
         carryGrip.toolTip=L10n.text("Drag the stack to carry all files. Drag the paperclip to move Float.")
         collapseButton.toolTip=L10n.text(isExpanded ? "Collapse Float":"Expand Float")
         collapseButton.setAccessibilityLabel(L10n.text(isExpanded ? "Collapse Float":"Expand Float")+" · \(count)")
+        // Set here, not once in buildContent, so a language switch relabels them too.
+        if let close=header.subviews.first(where:{$0.identifier?.rawValue=="float.closeControl"}) as? NSButton {
+            close.toolTip=L10n.text("Close Float without deleting files");close.image?.accessibilityDescription=close.toolTip
+        }
+        pinButton.toolTip=L10n.text("Float options");pinButton.image?.accessibilityDescription=pinButton.toolTip
+        collection.setAccessibilityLabel(L10n.text("Files in Float"))
         window?.title="Float · \(count)";window?.invalidateShadow()
     }
     private func setFrame(_ frame:NSRect,animate:Bool) {
