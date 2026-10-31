@@ -2259,6 +2259,7 @@
 "THE UPDATE SIGNATURE IS INVALID. YOUR EXISTING APP WAS KEPT." = "LA SIGNATURE DE LA MISE À JOUR EST INVALIDE. VOTRE APP EXISTANTE A ÉTÉ CONSERVÉE.";
 "THESE FILES HAVE MOVED OR WERE DELETED." = "CES FICHIERS ONT ÉTÉ DÉPLACÉS OU SUPPRIMÉS.";
 "THIS CROP APPLIES TO EVERY SELECTED IMAGE AND MUST FIT INSIDE EACH ONE." = "CE RECADRAGE S’APPLIQUE À TOUTES LES IMAGES SÉLECTIONNÉES ET DOIT TENIR DANS CHACUNE D’ELLES.";
+"THIS DOCUMENT NESTS ITS CONTENT TOO DEEPLY TO CONVERT." = "LE CONTENU DE CE DOCUMENT EST TROP PROFONDÉMENT IMBRIQUÉ POUR ÊTRE CONVERTI.";
 "THIS FILE HAS MOVED OR WAS DELETED." = "CE FICHIER A ÉTÉ DÉPLACÉ OU SUPPRIMÉ.";
 "THIS FILE HAS MOVED OR WAS REMOVED." = "CE FICHIER A ÉTÉ DÉPLACÉ OU SUPPRIMÉ.";
 "THIS FILE HAS NO AUDIO STREAM." = "CE FICHIER N’A PAS DE FLUX AUDIO.";
@@ -2383,6 +2384,7 @@
 "This conversion is not available for %@." = "Cette conversion n’est pas disponible pour %@.";
 "This conversion is not available for %lld." = "Cette conversion n’est pas disponible pour %lld.";
 "This crop applies to every selected image and must fit inside each one." = "Ce recadrage s’applique à toutes les images sélectionnées et doit tenir dans chacune d’elles.";
+"This document nests its content too deeply to convert." = "Le contenu de ce document est trop profondément imbriqué pour être converti.";
 "This file has moved or was deleted." = "Ce fichier a été déplacé ou supprimé.";
 "This file has moved or was removed." = "Ce fichier a été déplacé ou supprimé.";
 "This file has no audio stream." = "Ce fichier n’a pas de flux audio.";
