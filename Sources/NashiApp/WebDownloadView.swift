@@ -53,7 +53,7 @@ import NashiCore
                 self.info=found;self.maximumHeight=0;self.selectedPhotos=Set(found.photos.map(\.id))
                 if found.kind == .image { self.linkText=found.url.absoluteString }
                 self.mode=found.modes.contains(self.pendingMode ?? .video) ? (self.pendingMode ?? .video):(found.modes.first ?? .original)
-                self.pendingMode=nil;self.inspecting=false
+                self.pendingMode=nil;self.error=nil;self.inspecting=false
             } catch {
                 guard let self,self.revision==current,!token.isCancelled,!Task.isCancelled else { return }
                 self.error=error.localizedDescription;self.errorDetails=(error as? WebDownloadFailure)?.details;self.inspecting=false
