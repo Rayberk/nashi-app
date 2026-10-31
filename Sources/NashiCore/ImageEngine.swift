@@ -372,7 +372,10 @@ public enum ImageEngine {
                 let filtered:CIImage
                 if settings.style == .blur { filtered=original.clampedToExtent().applyingFilter("CIGaussianBlur",parameters:[kCIInputRadiusKey:max(1,settings.blurRadius)]).cropped(to:bounds) }
                 else { filtered=original.clampedToExtent().applyingFilter("CIPixellate",parameters:[kCIInputScaleKey:max(2,settings.pixelSize),kCIInputCenterKey:CIVector(x:bounds.midX,y:bounds.midY)]).cropped(to:bounds) }
-                guard let cg=imageContext.createCGImage(filtered,from:bounds) else { throw NashiError.failed("Could not render the redaction.") };ctx.draw(cg,in:target)
+                guard let cg=imageContext.createCGImage(filtered,from:bounds) else { throw NashiError.failed("Could not render the redaction.") }
+                // Replace the area. Drawing over it would let the original show
+                // through every transparent or translucent filtered pixel.
+                ctx.saveGState();ctx.setBlendMode(.copy);ctx.draw(cg,in:target);ctx.restoreGState()
             }
         }
         guard let result=ctx.makeImage() else { throw NashiError.failed("Could not redact image.") };return result
