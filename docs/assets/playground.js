@@ -6,6 +6,7 @@ const tr=document.documentElement.lang==='tr',L=(en,tt)=>tr?tt:en;
 const scriptURL=new URL(document.querySelector('script[src*="playground.js"]').src),base=new URL('.',scriptURL),revision=scriptURL.searchParams.get('v')||'';
 const wheelGeometry=await import(new URL('wheel-geometry.mjs?v='+revision,base));
 const {filterFormatRows}=await import(new URL('format-search.mjs?v='+revision,base));
+const {resetDemoHistory}=await import(new URL('reset-state.mjs?v='+revision,base));
 const asset=p=>new URL(p,base).href;
 const $=(s,p=document)=>p.querySelector(s),$$=(s,p=document)=>[...p.querySelectorAll(s)];
 const el=(tag,attrs={},text='')=>{const e=document.createElement(tag);for(const[k,v]of Object.entries(attrs)){if(k==='class')e.className=v;else e.setAttribute(k,v);}if(text)e.textContent=text;return e;};
@@ -32,7 +33,7 @@ const formatRow=el('div',{class:'sample-format-row'}),formatLabel=el('label',{},
 const input=el('input',{type:'file',accept:'image/png,image/jpeg,image/webp,image/gif,image/bmp,application/pdf',multiple:'',hidden:''});root.append(input);
 input.addEventListener('change',async()=>{await importFiles([...input.files]);input.value='';});
 $('#demo-upload').onclick=()=>input.click();
-$('#demo-reset').onclick=()=>{closeWheel();state.selected=[];setGroup(state.group);};
+$('#demo-reset').onclick=()=>{closeWheel();state.drag?.ghost?.remove();state.drag=null;if(state.editor)closeEditor();setGroup(state.group);resetDemoHistory(state,URL.revokeObjectURL);$('#library-count').textContent='0';$('.demo-toast')?.remove();clearTimeout(toastTimer);renderShelf();};
 $('#demo-sound').onclick=async()=>{state.sound=!state.sound;$('#demo-sound').setAttribute('aria-pressed',state.sound);$('#demo-sound').textContent=state.sound?L('Sound on','Ses açık'):L('Sound off','Ses kapalı');if(!state.sound){for(const voice of soundVoices)voice?.stop();}if(state.sound){try{audioContext??=new(window.AudioContext||window.webkitAudioContext)();await audioContext.resume();soundBuffer??=await audioContext.decodeAudioData(await(await fetch(asset('demo/wheel-selection.wav?v='+revision))).arrayBuffer());tick();}catch{state.sound=false;$('#demo-sound').setAttribute('aria-pressed','false');$('#demo-sound').textContent=L('Sound unavailable','Ses kullanılamıyor');}}};
 let audioContext,soundBuffer,lastTick=-Infinity,soundVoiceIndex=0;const soundVoices=Array(catalog.presentation.feedback.voices).fill(null);
 function tick(){if(!state.sound||!soundBuffer||performance.now()-lastTick<catalog.presentation.feedback.minimumInterval*1000)return;lastTick=performance.now();try{const sound=audioContext.createBufferSource(),gain=audioContext.createGain();const index=soundVoiceIndex;soundVoiceIndex=(index+1)%soundVoices.length;soundVoices[index]?.stop();soundVoices[index]=sound;sound.buffer=soundBuffer;gain.gain.value=catalog.presentation.feedback.volume;sound.connect(gain).connect(audioContext.destination);sound.start();sound.onended=()=>{if(soundVoices[index]===sound)soundVoices[index]=null;sound.disconnect();gain.disconnect();};}catch{}}
