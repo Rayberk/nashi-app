@@ -205,7 +205,9 @@ public sealed class MediaEngine(string ffmpeg, string ffprobe)
                 if(info.HasAudio)args.AddRange(["-af",Tempo(options.Speed)]);
                 args.AddRange(VideoEncoding(ext,options));break;
             case "audioChannels":
-                RequireAudio(info);var filter=options.Channels==1?$"aformat=channel_layouts=stereo,pan=mono|c0={Number(options.LeftVolume/2)}*c0+{Number(options.RightVolume/2)}*c1":$"aformat=channel_layouts=stereo,pan=stereo|c0={Number(options.LeftVolume)}*c0|c1={Number(options.RightVolume)}*c1";
+                RequireAudio(info);
+                // Mix a mono source directly, as macOS does: aformat=stereo would first upmix it 3 dB quieter per channel.
+                var filter=info.Audio?.Channels==1?(options.Channels==1?$"volume={Number((options.LeftVolume+options.RightVolume)/2)}":$"pan=stereo|c0={Number(options.LeftVolume)}*c0|c1={Number(options.RightVolume)}*c0"):options.Channels==1?$"aformat=channel_layouts=stereo,pan=mono|c0={Number(options.LeftVolume/2)}*c0+{Number(options.RightVolume/2)}*c1":$"aformat=channel_layouts=stereo,pan=stereo|c0={Number(options.LeftVolume)}*c0|c1={Number(options.RightVolume)}*c1";
                 args.AddRange(["-map","0:a:0","-vn","-af",filter,"-ac",options.Channels.ToString(CultureInfo.InvariantCulture),..AudioEncoding(ext,options)]);break;
             case "normalizeAudio":return [await NormalizeAsync(input,info,directory,ext,options,progress,token)];
             case "compress":return [await CompressAsync(input,info,directory,options,progress,token)];
