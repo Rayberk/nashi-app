@@ -558,7 +558,8 @@ public enum ImageEngine {
         // Attempts are encoded privately; a failed or cancelled pass leaves no partial output.
         let temporary=output.deletingLastPathComponent().appendingPathComponent(".nashi-\(UUID().uuidString)").appendingPathExtension(output.pathExtension)
         defer { try? FileManager.default.removeItem(at:temporary) }
-        var quality=max(0.01,min(1,options.quality))
+        var quality=max(0.01,min(1,options.quality)),scale=1.0
+        let start=image
         for iteration in 0..<24 {
             try token.check();try? FileManager.default.removeItem(at:temporary)
             try write(image,to:temporary,quality:quality)
@@ -570,7 +571,14 @@ public enum ImageEngine {
                 return [output]
             }
             if quality>0.15 && !["png"].contains(ext.lowercased()) { quality *= 0.72 }
-            else { image=try resized(image,width:max(1,Int(Double(image.width)*0.8)),height:max(1,Int(Double(image.height)*0.8))) }
+            else {
+                // Scale both sides from the starting image so rounding does not compound, and stop
+                // once the shorter side is one pixel: shrinking only the longer side would distort it.
+                scale=max(scale*0.8,1/Double(min(start.width,start.height)))
+                let width=max(1,Int((Double(start.width)*scale).rounded())),height=max(1,Int((Double(start.height)*scale).rounded()))
+                guard width<image.width || height<image.height else { throw NashiError.failed("The requested file size could not be reached. Choose a larger target.") }
+                image=try resized(start,width:width,height:height)
+            }
             if iteration == 23 { throw NashiError.failed("The requested file size could not be reached. Choose a larger target.") }
         }
         return [output]
