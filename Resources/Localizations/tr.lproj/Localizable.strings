@@ -642,6 +642,8 @@
 "Corners" = "Köşeler";
 "Could not copy the selected file paths." = "Seçili dosya yolları kopyalanamadı.";
 "Could not copy the selected files." = "Seçili dosyalar kopyalanamadı.";
+"Could not open %@." = "%@ açılamadı.";
+"Could not open %lld." = "%lld açılamadı.";
 "Couldn’t check for updates" = "Güncellemeler denetlenemedi";
 "Couldn’t finish" = "İşlem tamamlanamadı";
 "Couldn’t open this tool" = "Bu araç açılamadı";

@@ -642,6 +642,8 @@
 "Corners" = "Corners";
 "Could not copy the selected file paths." = "Could not copy the selected file paths.";
 "Could not copy the selected files." = "Could not copy the selected files.";
+"Could not open %@." = "Could not open %@.";
+"Could not open %lld." = "Could not open %lld.";
 "Couldn’t check for updates" = "Couldn’t check for updates";
 "Couldn’t finish" = "Couldn’t finish";
 "Couldn’t open this tool" = "Couldn’t open this tool";

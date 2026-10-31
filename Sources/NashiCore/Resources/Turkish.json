@@ -881,6 +881,7 @@
   "Space · Preview": "Boşluk · Önizleme",
   "Drag the stack to carry all files. Drag the paperclip to move Float.": "Tüm dosyaları taşımak için yığını, Float’ın yerini değiştirmek için atacı sürükleyin.",
   "Close Float without deleting files": "Dosyaları silmeden Float’ı kapat",
+  "Could not open {0}.": "{0} açılamadı.",
   "Drop files here": "Dosyaları buraya bırakın",
   "Collapse Float": "Float’ı daralt",
   "Expand Float": "Float’ı genişlet",

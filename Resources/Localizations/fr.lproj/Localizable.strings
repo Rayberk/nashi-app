@@ -642,6 +642,8 @@
 "Corners" = "Coins";
 "Could not copy the selected file paths." = "Impossible de copier les chemins des fichiers sélectionnés.";
 "Could not copy the selected files." = "Impossible de copier les fichiers sélectionnés.";
+"Could not open %@." = "Impossible d’ouvrir %@.";
+"Could not open %lld." = "Impossible d’ouvrir %lld.";
 "Couldn’t check for updates" = "Impossible de rechercher les mises à jour";
 "Couldn’t finish" = "Impossible de terminer";
 "Couldn’t open this tool" = "Impossible d’ouvrir cet outil";
