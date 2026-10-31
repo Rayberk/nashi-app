@@ -133,7 +133,8 @@ public enum MediaEngine {
             arguments += ["-map", "0:v:0"]
             if ext == "gif" {
                 let scale = try scalingFilter(options)
-                let first = (["fps=\(options.gifFrameRate)"] + (scale.map { [$0] } ?? []) + ["scale=w='min(\(options.gifMaxWidth),iw)':h=-2:force_original_aspect_ratio=decrease"]).joined(separator: ",")
+                // GIF viewers ignore a pixel aspect, so non-square pixels are resized to their displayed shape.
+                let first = (["fps=\(options.gifFrameRate)"] + (scale.map { [$0] } ?? []) + ["scale=w='min(\(options.gifMaxWidth),iw)':h=-2:force_original_aspect_ratio=decrease:reset_sar=1"]).joined(separator: ",")
                 arguments += ["-filter_complex", "[0:v:0]\(first),split[p0][p1];[p0]palettegen=stats_mode=diff[pal];[p1][pal]paletteuse=dither=sierra2_4a", "-an", "-loop", "0"]
                 // Complex filters map their final output automatically.
                 arguments.removeSubrange(2..<4)
