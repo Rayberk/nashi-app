@@ -27,7 +27,7 @@ public static class FileActions
         var folder=Directory.Exists(path)?path:Path.GetDirectoryName(path)!;
         var terminal=Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),"Microsoft","WindowsApps","wt.exe");
         var info=new ProcessStartInfo(File.Exists(terminal)?terminal:Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System),"WindowsPowerShell","v1.0","powershell.exe")){UseShellExecute=false,WorkingDirectory=folder};
-        if(File.Exists(terminal)){info.ArgumentList.Add("-d");info.ArgumentList.Add(folder);}Process.Start(info);
+        if(File.Exists(terminal)){info.ArgumentList.Add("-d");info.ArgumentList.Add(folder);}Process.Start(info)?.Dispose();
     }
     public static async Task<IReadOnlyList<string>> MoveAsync(IReadOnlyList<string> inputs,string destination,IProgress<OperationProgress>? progress,CancellationToken token)
     {
@@ -41,7 +41,18 @@ public static class FileActions
         token.ThrowIfCancellationRequested();var published=tx.Publish(staged,token);
         // Only after every copy was published may originals be removed. If a
         // locked original remains, the destination is retained and reported.
-        var retained=new List<string>();foreach(var input in inputs){try{if(Directory.Exists(input))Directory.Delete(input,true);else File.Delete(input);}catch(IOException){retained.Add(input);}catch(UnauthorizedAccessException){retained.Add(input);}}
+        var retained=new List<string>();
+        foreach(var input in inputs)
+        {
+            var deleted=false;
+            for(var attempt=0;attempt<5;attempt++)
+            {
+                try{if(Directory.Exists(input))Directory.Delete(input,true);else if(File.Exists(input))File.Delete(input);deleted=true;break;}
+                catch(Exception ex)when(attempt<4&&(ex is IOException or UnauthorizedAccessException)){await Task.Delay(25*(attempt+1),CancellationToken.None);}
+                catch(Exception ex)when(ex is IOException or UnauthorizedAccessException){break;}
+            }
+            if(!deleted&&(File.Exists(input)||Directory.Exists(input)))retained.Add(input);
+        }
         if(retained.Count>0)throw new IOException("Files were copied safely, but some originals could not be removed. New copies are in "+destination+". Check the originals before retrying.");return published;
     }
     private static async Task CopyTree(string source,string target,CancellationToken token,int depth=0)
