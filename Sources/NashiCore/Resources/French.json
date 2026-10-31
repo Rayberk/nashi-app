@@ -1166,6 +1166,8 @@
   "That PDF size cannot be reached while keeping selectable text, links and annotations. Choose a larger target.": "Cette taille de PDF est impossible à atteindre en conservant le texte sélectionnable, les liens et les annotations. Choisissez une cible plus grande.",
   "The archive contains an unsafe path.": "L’archive contient un chemin non sûr.",
   "The archive entry leaves its destination.": "L’entrée de l’archive sort de sa destination.",
+  "The archive contains an unnamed entry.": "L’archive contient une entrée sans nom.",
+  "The UTF-32 text in {0} is damaged.": "Le texte UTF-32 de {0} est endommagé.",
   "The clipping exceeds 200 MB.": "Le fragment dépasse 200 Mo.",
   "The clipping has no readable text. Include its original resource fork/AppleDouble sidecar, or paste its text into Nashi.": "Le fragment ne contient aucun texte lisible. Incluez son fichier annexe d’origine (resource fork/AppleDouble) ou collez son texte dans Nashi.",
   "The document has no editable body.": "Le document n’a pas de corps modifiable.",

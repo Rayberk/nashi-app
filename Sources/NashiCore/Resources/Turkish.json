@@ -1167,6 +1167,8 @@
   "That PDF size cannot be reached while keeping selectable text, links and annotations. Choose a larger target.": "Seçilebilir metin, bağlantılar ve notlar korunarak bu PDF boyutuna inilemiyor. Daha büyük bir hedef seç.",
   "The archive contains an unsafe path.": "Arşivde güvenli olmayan bir yol var.",
   "The archive entry leaves its destination.": "Arşivdeki bir öğe hedef klasörün dışına çıkıyor.",
+  "The archive contains an unnamed entry.": "Arşivde adı olmayan bir öğe var.",
+  "The UTF-32 text in {0} is damaged.": "{0} içindeki UTF-32 metin bozuk.",
   "The clipping exceeds 200 MB.": "Metin kırpıntısı 200 MB'ı aşıyor.",
   "The clipping has no readable text. Include its original resource fork/AppleDouble sidecar, or paste its text into Nashi.": "Metin kırpıntısında okunabilir metin yok. Orijinal resource fork/AppleDouble dosyasını da ekle veya metnini Nashi'ye yapıştır.",
   "The document has no editable body.": "Belgede düzenlenebilir bir içerik yok.",

@@ -2230,6 +2230,7 @@
 "TEXTURE" = "DOKU";
 "THAT PDF SIZE CANNOT BE REACHED WHILE KEEPING SELECTABLE TEXT, LINKS AND ANNOTATIONS. CHOOSE A LARGER TARGET." = "SEÇİLEBİLİR METİN, BAĞLANTILAR VE NOTLAR KORUNARAK BU PDF BOYUTUNA İNİLEMİYOR. DAHA BÜYÜK BİR HEDEF SEÇ.";
 "THAT PDF SIZE CANNOT BE REACHED WHILE KEEPING SELECTABLE TEXT, LINKS, AND ANNOTATIONS. CHOOSE A LARGER TARGET." = "SEÇİLEBİLİR METİN, BAĞLANTILAR VE NOTLAR KORUNARAK BU PDF BOYUTUNA İNİLEMİYOR. DAHA BÜYÜK BİR HEDEF SEÇ.";
+"THE ARCHIVE CONTAINS AN UNNAMED ENTRY." = "ARŞİVDE ADI OLMAYAN BİR ÖĞE VAR.";
 "THE ARCHIVE CONTAINS AN UNSAFE PATH." = "ARŞİVDE GÜVENLİ OLMAYAN BİR YOL VAR.";
 "THE ARCHIVE ENTRY LEAVES ITS DESTINATION." = "ARŞİVDEKİ BİR ÖĞE HEDEF KLASÖRÜN DIŞINA ÇIKIYOR.";
 "THE CLIPPING EXCEEDS 200 MB." = "METİN KIRPINTISI 200 MB'I AŞIYOR.";
@@ -2333,6 +2334,9 @@
 "The PDF page is too large to render at this resolution." = "PDF sayfası bu çözünürlükte işlenemeyecek kadar büyük.";
 "The UTF-16 text in %@ is damaged." = "%@ içindeki UTF-16 metin bozuk.";
 "The UTF-16 text in %lld is damaged." = "%lld içindeki UTF-16 metin bozuk.";
+"The UTF-32 text in %@ is damaged." = "%@ içindeki UTF-32 metin bozuk.";
+"The UTF-32 text in %lld is damaged." = "%lld içindeki UTF-32 metin bozuk.";
+"The archive contains an unnamed entry." = "Arşivde adı olmayan bir öğe var.";
 "The archive contains an unsafe path." = "Arşivde güvenli olmayan bir yol var.";
 "The archive entry leaves its destination." = "Arşivdeki bir öğe hedef klasörün dışına çıkıyor.";
 "The clipping exceeds 200 MB." = "Metin kırpıntısı 200 MB'ı aşıyor.";
