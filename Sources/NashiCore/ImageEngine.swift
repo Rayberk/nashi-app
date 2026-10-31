@@ -63,7 +63,8 @@ public enum ImageEngine {
         }
         if (CGImageDestinationCopyTypeIdentifiers() as! [String]).contains(type),let destination=CGImageDestinationCreateWithURL(url as CFURL,type as CFString,1,nil) {
             var properties = (metadata as? [CFString:Any]) ?? [:]
-            properties[kCGImageDestinationLossyCompressionQuality] = quality
+            // ImageIO's AVIF encoder fails to write at 1.0; 0.99 already gives its best quality.
+            properties[kCGImageDestinationLossyCompressionQuality] = type == "public.avif" ? min(quality,0.99) : quality
             properties[kCGImagePropertyOrientation] = 1
             CGImageDestinationAddImage(destination,image,properties as CFDictionary)
             guard CGImageDestinationFinalize(destination) else { throw NashiError.failed("Could not write \(url.lastPathComponent)") }
