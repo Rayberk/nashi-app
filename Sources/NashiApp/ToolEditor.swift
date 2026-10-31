@@ -47,6 +47,7 @@ struct ToolEditor:View {
     @State private var seeking=false
     @State private var previewError:String?
     @State private var imageSize=CGSize(width:100,height:100)
+    @State private var pixelAspect=1.0
     @State private var duration=0.0
     @State private var frameRate=30.0
     @State private var playhead=0.0
@@ -504,13 +505,17 @@ struct ToolEditor:View {
             }
         }.frame(height:420).background(Color.black.opacity(0.94)).cornerRadius(20)
     }
+    // The player stretches non-square pixels, so the canvas over it works in displayed
+    // units while crop and redaction areas stay in video pixels.
+    func shown(_ r:EditRect)->EditRect { EditRect(x:r.x*pixelAspect,y:r.y,width:r.width*pixelAspect,height:r.height) }
+    func stored(_ r:EditRect)->EditRect { EditRect(x:r.x/pixelAspect,y:r.y,width:r.width/pixelAspect,height:r.height) }
     var mediaPreview:some View {
         VStack(spacing:10) {
             if let player {
                 ZStack {
                     PlayerView(player:player,onTime:updatePlayhead,onPlayback:{isPlaying=$0},hiddenControls:true)
                         .id(ObjectIdentifier(player)).frame(height:audio && tool != .audioToVideo ? 0:330)
-                    if (tool == .cropVideo || tool == .redactVideo) && !processedPlayback { ImageEditPreview(image:nil,imageSize:imageSize,crop:tool == .cropVideo ? options.crop:nil,redactions:options.redactions,annotations:[],redactionColor:Color(cgColor:ImageEngine.color(options.backgroundColor).copy(alpha:1)!),activeRedactions:tool == .redactVideo ? activeVideoRegions:nil,onMoveRedaction:{i,r in options.redactions[i]=r;if options.videoRedactions.indices.contains(i) { options.videoRedactions[i].rect=r }},onMoveCrop:setCrop,cropEnabled:tool == .cropVideo,cropAspectRatio:cropAspectRatio,onCropInteraction:cropInteraction) { rect in if tool == .cropVideo { setCrop(rect) } else { options.redactions.append(rect);options.videoRedactions.append(VideoRedaction(rect:rect,start:options.start,end:options.end)) } }.frame(height:330) }
+                    if (tool == .cropVideo || tool == .redactVideo) && !processedPlayback { ImageEditPreview(image:nil,imageSize:CGSize(width:imageSize.width*pixelAspect,height:imageSize.height),crop:tool == .cropVideo ? options.crop.map(shown):nil,redactions:options.redactions.map(shown),annotations:[],redactionColor:Color(cgColor:ImageEngine.color(options.backgroundColor).copy(alpha:1)!),activeRedactions:tool == .redactVideo ? activeVideoRegions:nil,onMoveRedaction:{i,r in let r=stored(r);options.redactions[i]=r;if options.videoRedactions.indices.contains(i) { options.videoRedactions[i].rect=r }},onMoveCrop:{ setCrop(stored($0)) },cropEnabled:tool == .cropVideo,cropAspectRatio:cropAspectRatio,onCropInteraction:cropInteraction) { rect in let rect=stored(rect);if tool == .cropVideo { setCrop(rect) } else { options.redactions.append(rect);options.videoRedactions.append(VideoRedaction(rect:rect,start:options.start,end:options.end)) } }.frame(height:330) }
                 }.cornerRadius(10)
             }
             if tool == .audioToVideo {
@@ -580,7 +585,7 @@ struct ToolEditor:View {
                 let info=try await Task.detached { try MediaEngine.inspect(input,token:token) }.value
                 try checkGeneration(generation,token:token)
                 duration=info.duration;options.end=duration
-                if let v=info.video { imageSize=CGSize(width:v.width ?? 100,height:v.height ?? 100);width=v.width ?? 100;height=v.height ?? 100;frameRate=max(1,v.frameRate ?? 30) }
+                if let v=info.video { imageSize=CGSize(width:v.width ?? 100,height:v.height ?? 100);pixelAspect=v.sampleAspectRatio;width=v.width ?? 100;height=v.height ?? 100;frameRate=max(1,v.frameRate ?? 30) }
                 if category == .video { let generator=AVAssetImageGenerator(asset:AVURLAsset(url:input));generator.appliesPreferredTrackTransform=true;if let cg=try? generator.copyCGImage(at:.zero,actualTime:nil) { image=NSImage(cgImage:cg,size:.zero) } }
                 if audio || video {
                     let prepared=try await withTaskCancellationHandler(operation:{try await MediaPreviewEngine.prepare(input,token:token)},onCancel:{token.cancel()})
@@ -619,7 +624,7 @@ struct ToolEditor:View {
         disposeMedia();previewToken=CancellationToken();visualizationToken=CancellationToken()
         isLoading=true;readyToApply=false;inputs=originalInputs;options=OperationOptions()
         pdfEditor.reset();selectedSplitClip=nil;aspect="Free";cropInteracting=false;equalClips=2
-        width=0;height=0;image=nil;baseImage=nil;imageSize=CGSize(width:100,height:100);previewSize=nil;previewZoom=1;showOriginal=false
+        width=0;height=0;image=nil;baseImage=nil;imageSize=CGSize(width:100,height:100);pixelAspect=1;previewSize=nil;previewZoom=1;showOriginal=false
         duration=0;frameRate=30;playhead=0;playerReachedEnd=false;playingRange=false;processedPlayback=false;processedDuration=nil
         waveform=[];leftWaveform=[];rightWaveform=[];processedWaveform=nil;playbackURL=nil;visualizationReady=false;previewBusy=false;previewError=nil
         metadata=[:];originalMetadata=[:];metadataSearch="";metadataRemoveAll=false;addingMetadataField=false;newMetadataKey="{XMP-dc}.Title";newMetadataValue="";qrResults=[]
