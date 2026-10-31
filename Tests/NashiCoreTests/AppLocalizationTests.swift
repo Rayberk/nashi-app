@@ -80,4 +80,12 @@ final class AppLocalizationTests:XCTestCase {
         XCTAssertEqual(AppLocalization.text("No formats\n⌘ Tools\n⌃ Actions",language:"tr"),"Biçim yok\n⌘ Araçlar\n⌃ İşlemler")
         XCTAssertEqual(AppLocalization.text("No file tools\n⇧ Convert\n⌃ Actions",language:"fr"),"Aucun outil de fichier\n⇧ Convertir\n⌃ Actions")
     }
+    func testFrenchSelectedCountIsSingularForZeroAndOne() {
+        // French uses the singular for 0 and 1 ("1 sélectionné"); Turkish never inflects after a number.
+        XCTAssertEqual(AppLocalization.text("1 selected",language:"fr"),"1 sélectionné")
+        XCTAssertEqual(AppLocalization.text("0 selected",language:"fr"),"0 sélectionné")
+        XCTAssertEqual(AppLocalization.text("2 selected",language:"fr"),"2 sélectionnés")
+        XCTAssertEqual(AppLocalization.text("1 selected",language:"tr"),"1 seçili")
+        XCTAssertEqual(AppLocalization.text("1 selected",language:"en"),"1 selected")
+    }
 }
