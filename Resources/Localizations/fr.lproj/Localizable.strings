@@ -184,6 +184,7 @@
 "ALREADY AVAILABLE ON YOUR COMPUTER" = "DÉJÀ DISPONIBLES SUR VOTRE ORDINATEUR";
 "ALREADY OPTIMIZED. ORIGINAL QUALITY RETAINED." = "DÉJÀ OPTIMISÉ. QUALITÉ D’ORIGINE CONSERVÉE.";
 "ALWAYS A LITTLE FRESHER." = "TOUJOURS UN PEU PLUS FRAIS.";
+"AN ARCHIVE HARD LINK DOES NOT POINT TO A REGULAR FILE." = "UN LIEN PHYSIQUE DE L’ARCHIVE NE POINTE PAS VERS UN FICHIER ORDINAIRE.";
 "AN ARCHIVE LINK POINTS OUTSIDE THE EXTRACTION FOLDER." = "UN LIEN DE L’ARCHIVE POINTE HORS DU DOSSIER D’EXTRACTION.";
 "AN EMBEDDED IMAGE IS MISSING OR TOO LARGE." = "UNE IMAGE INTÉGRÉE EST MANQUANTE OU TROP VOLUMINEUSE.";
 "AN EMPTY OUTPUT WAS PRODUCED." = "UNE SORTIE VIDE A ÉTÉ PRODUITE.";
@@ -266,6 +267,7 @@
 "An HTTPS download is required." = "Un téléchargement HTTPS est requis.";
 "An RTFD attachment is missing or too large: %@" = "Une pièce jointe RTFD est manquante ou trop volumineuse : %@";
 "An RTFD attachment is missing or too large: %lld" = "Une pièce jointe RTFD est manquante ou trop volumineuse : %lld";
+"An archive hard link does not point to a regular file." = "Un lien physique de l’archive ne pointe pas vers un fichier ordinaire.";
 "An archive link points outside the extraction folder." = "Un lien de l’archive pointe hors du dossier d’extraction.";
 "An embedded image is missing or too large." = "Une image intégrée est manquante ou trop volumineuse.";
 "An empty output was produced." = "Une sortie vide a été produite.";
@@ -2241,6 +2243,8 @@
 "THE ARCHIVE CONTAINS AN UNNAMED ENTRY." = "L’ARCHIVE CONTIENT UNE ENTRÉE SANS NOM.";
 "THE ARCHIVE CONTAINS AN UNSAFE PATH." = "L’ARCHIVE CONTIENT UN CHEMIN NON SÛR.";
 "THE ARCHIVE ENTRY LEAVES ITS DESTINATION." = "L’ENTRÉE DE L’ARCHIVE SORT DE SA DESTINATION.";
+"THE ARCHIVE EXPANDS BEYOND THE 20 GB SAFETY LIMIT." = "UNE FOIS DÉCOMPRESSÉE, L’ARCHIVE DÉPASSE LA LIMITE DE SÉCURITÉ DE 20 GO.";
+"THE ARCHIVE HAS TOO MANY ENTRIES (100,000 LIMIT)." = "L’ARCHIVE CONTIENT TROP D’ENTRÉES (LIMITE DE 100 000).";
 "THE CLIPPING EXCEEDS 200 MB." = "LE FRAGMENT DÉPASSE 200 MO.";
 "THE CLIPPING HAS NO READABLE TEXT. INCLUDE ITS ORIGINAL RESOURCE FORK/APPLEDOUBLE SIDECAR, OR PASTE ITS TEXT INTO NASHI." = "LE FRAGMENT NE CONTIENT AUCUN TEXTE LISIBLE. INCLUEZ SON FICHIER ANNEXE D’ORIGINE (RESOURCE FORK/APPLEDOUBLE) OU COLLEZ SON TEXTE DANS NASHI.";
 "THE DOCUMENT HAS NO EDITABLE BODY." = "LE DOCUMENT N’A PAS DE CORPS MODIFIABLE.";
@@ -2363,6 +2367,8 @@
 "The archive contains duplicate file paths: %@" = "L’archive contient des chemins de fichiers en double : %@";
 "The archive contains duplicate file paths: %lld" = "L’archive contient des chemins de fichiers en double : %lld";
 "The archive entry leaves its destination." = "L’entrée de l’archive sort de sa destination.";
+"The archive expands beyond the 20 GB safety limit." = "Une fois décompressée, l’archive dépasse la limite de sécurité de 20 Go.";
+"The archive has too many entries (100,000 limit)." = "L’archive contient trop d’entrées (limite de 100 000).";
 "The clipping exceeds 200 MB." = "Le fragment dépasse 200 Mo.";
 "The clipping has no readable text. Include its original resource fork/AppleDouble sidecar, or paste its text into Nashi." = "Le fragment ne contient aucun texte lisible. Incluez son fichier annexe d’origine (resource fork/AppleDouble) ou collez son texte dans Nashi.";
 "The crop rectangle must fit completely inside the %@ × %@ pixel image." = "Le rectangle de recadrage doit tenir entièrement dans l’image de %@ × %@ pixels.";

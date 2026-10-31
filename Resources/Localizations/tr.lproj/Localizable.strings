@@ -184,6 +184,7 @@
 "ALREADY AVAILABLE ON YOUR COMPUTER" = "BİLGİSAYARINDA ZATEN HAZIR";
 "ALREADY OPTIMIZED. ORIGINAL QUALITY RETAINED." = "ZATEN OPTİMİZE EDİLMİŞ. ORİJİNAL KALİTE KORUNDU.";
 "ALWAYS A LITTLE FRESHER." = "HEP BİRAZ DAHA YENİ.";
+"AN ARCHIVE HARD LINK DOES NOT POINT TO A REGULAR FILE." = "ARŞİVDEKİ BİR SABİT BAĞLANTI NORMAL BİR DOSYAYI GÖSTERMİYOR.";
 "AN ARCHIVE LINK POINTS OUTSIDE THE EXTRACTION FOLDER." = "ARŞİVDEKİ BİR BAĞLANTI, AÇILACAĞI KLASÖRÜN DIŞINI GÖSTERİYOR.";
 "AN EMBEDDED IMAGE IS MISSING OR TOO LARGE." = "GÖMÜLÜ BİR GÖRSEL EKSİK VEYA ÇOK BÜYÜK.";
 "AN EMPTY OUTPUT WAS PRODUCED." = "BOŞ BİR ÇIKTI OLUŞTU.";
@@ -266,6 +267,7 @@
 "An HTTPS download is required." = "İndirme HTTPS üzerinden yapılmalı.";
 "An RTFD attachment is missing or too large: %@" = "Bir RTFD eki eksik veya çok büyük: %@";
 "An RTFD attachment is missing or too large: %lld" = "Bir RTFD eki eksik veya çok büyük: %lld";
+"An archive hard link does not point to a regular file." = "Arşivdeki bir sabit bağlantı normal bir dosyayı göstermiyor.";
 "An archive link points outside the extraction folder." = "Arşivdeki bir bağlantı, açılacağı klasörün dışını gösteriyor.";
 "An embedded image is missing or too large." = "Gömülü bir görsel eksik veya çok büyük.";
 "An empty output was produced." = "Boş bir çıktı oluştu.";
@@ -2241,6 +2243,8 @@
 "THE ARCHIVE CONTAINS AN UNNAMED ENTRY." = "ARŞİVDE ADI OLMAYAN BİR ÖĞE VAR.";
 "THE ARCHIVE CONTAINS AN UNSAFE PATH." = "ARŞİVDE GÜVENLİ OLMAYAN BİR YOL VAR.";
 "THE ARCHIVE ENTRY LEAVES ITS DESTINATION." = "ARŞİVDEKİ BİR ÖĞE HEDEF KLASÖRÜN DIŞINA ÇIKIYOR.";
+"THE ARCHIVE EXPANDS BEYOND THE 20 GB SAFETY LIMIT." = "ARŞİV AÇILDIĞINDA 20 GB'LIK GÜVENLİK SINIRINI AŞIYOR.";
+"THE ARCHIVE HAS TOO MANY ENTRIES (100,000 LIMIT)." = "ARŞİVDE ÇOK FAZLA ÖĞE VAR (SINIR 100.000).";
 "THE CLIPPING EXCEEDS 200 MB." = "METİN KIRPINTISI 200 MB'I AŞIYOR.";
 "THE CLIPPING HAS NO READABLE TEXT. INCLUDE ITS ORIGINAL RESOURCE FORK/APPLEDOUBLE SIDECAR, OR PASTE ITS TEXT INTO NASHI." = "METİN KIRPINTISINDA OKUNABİLİR METİN YOK. ORİJİNAL RESOURCE FORK/APPLEDOUBLE DOSYASINI DA EKLE VEYA METNİNİ NASHI'YE YAPIŞTIR.";
 "THE DOCUMENT HAS NO EDITABLE BODY." = "BELGEDE DÜZENLENEBİLİR BİR İÇERİK YOK.";
@@ -2363,6 +2367,8 @@
 "The archive contains duplicate file paths: %@" = "Arşivde yinelenen dosya yolları var: %@";
 "The archive contains duplicate file paths: %lld" = "Arşivde yinelenen dosya yolları var: %lld";
 "The archive entry leaves its destination." = "Arşivdeki bir öğe hedef klasörün dışına çıkıyor.";
+"The archive expands beyond the 20 GB safety limit." = "Arşiv açıldığında 20 GB'lık güvenlik sınırını aşıyor.";
+"The archive has too many entries (100,000 limit)." = "Arşivde çok fazla öğe var (sınır 100.000).";
 "The clipping exceeds 200 MB." = "Metin kırpıntısı 200 MB'ı aşıyor.";
 "The clipping has no readable text. Include its original resource fork/AppleDouble sidecar, or paste its text into Nashi." = "Metin kırpıntısında okunabilir metin yok. Orijinal resource fork/AppleDouble dosyasını da ekle veya metnini Nashi'ye yapıştır.";
 "The crop rectangle must fit completely inside the %@ × %@ pixel image." = "Kırpma alanı %@ × %@ piksellik görselin tamamen içinde kalmalı.";
