@@ -1092,6 +1092,7 @@
   "Compression requires a known duration.": "La compression nécessite une durée connue.",
   "Copy a file, some text, an image or a public media link first.": "Copiez d’abord un fichier, du texte, une image ou un lien média public.",
   "Document XML is too large.": "Le XML du document est trop volumineux.",
+  "This document nests its content too deeply to convert.": "Le contenu de ce document est trop profondément imbriqué pour être converti.",
   "Download ended early.": "Le téléchargement s’est terminé prématurément.",
   "Download exceeded its limit.": "Le téléchargement a dépassé sa limite.",
   "Download is larger than the supported limit.": "Le téléchargement dépasse la limite prise en charge.",

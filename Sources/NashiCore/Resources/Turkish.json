@@ -1093,6 +1093,7 @@
   "Compression requires a known duration.": "Sıkıştırma için sürenin bilinmesi gerekiyor.",
   "Copy a file, some text, an image or a public media link first.": "Önce bir dosya, metin, görsel veya herkese açık bir medya bağlantısı kopyala.",
   "Document XML is too large.": "Belge XML'i çok büyük.",
+  "This document nests its content too deeply to convert.": "Bu belgenin içeriği dönüştürülemeyecek kadar iç içe.",
   "Download ended early.": "İndirme erken sona erdi.",
   "Download exceeded its limit.": "İndirme izin verilen sınırı aştı.",
   "Download is larger than the supported limit.": "İndirilecek dosya desteklenen sınırdan büyük.",
