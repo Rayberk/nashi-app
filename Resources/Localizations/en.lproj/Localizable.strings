@@ -15,6 +15,7 @@
 "%@ is not installed." = "%@ is not installed.";
 "%@ items" = "%@ items";
 "%@ photos" = "%@ photos";
+"%@ ready to paste." = "%@ ready to paste.";
 "%@ selected" = "%@ selected";
 "%@ selected · Drag to carry files" = "%@ selected · Drag to carry files";
 "%@ split points" = "%@ split points";
@@ -40,6 +41,7 @@
 "%lld is not installed." = "%lld is not installed.";
 "%lld items" = "%lld items";
 "%lld photos" = "%lld photos";
+"%lld ready to paste." = "%lld ready to paste.";
 "%lld selected" = "%lld selected";
 "%lld selected · Drag to carry files" = "%lld selected · Drag to carry files";
 "%lld split points" = "%lld split points";
@@ -60,6 +62,7 @@
 "1 AREA SELECTED" = "1 AREA SELECTED";
 "1 ITEM" = "1 ITEM";
 "1 PHOTO" = "1 PHOTO";
+"1 READY TO PASTE." = "1 READY TO PASTE.";
 "1 SELECTED" = "1 SELECTED";
 "1 SPLIT POINT" = "1 SPLIT POINT";
 "1 VIDEO ITEMS ARE NOT INCLUDED. ONLY PHOTOS WILL BE SAVED." = "1 VIDEO ITEMS ARE NOT INCLUDED. ONLY PHOTOS WILL BE SAVED.";
@@ -67,6 +70,7 @@
 "1 area selected" = "1 area selected";
 "1 item" = "1 item";
 "1 photo" = "1 photo";
+"1 ready to paste." = "1 ready to paste.";
 "1 selected" = "1 selected";
 "1 split point" = "1 split point";
 "1 video items are not included. Only photos will be saved." = "1 video items are not included. Only photos will be saved.";
@@ -491,6 +495,8 @@
 "COPY PATH" = "COPY PATH";
 "CORNER RADIUS" = "CORNER RADIUS";
 "CORNERS" = "CORNERS";
+"COULD NOT COPY THE QR CODE." = "COULD NOT COPY THE QR CODE.";
+"COULD NOT COPY THE QR CODES." = "COULD NOT COPY THE QR CODES.";
 "COULD NOT COPY THE SELECTED FILE PATHS." = "COULD NOT COPY THE SELECTED FILE PATHS.";
 "COULD NOT COPY THE SELECTED FILES." = "COULD NOT COPY THE SELECTED FILES.";
 "COULD NOT ORIENT IMAGE." = "COULD NOT ORIENT IMAGE.";
@@ -692,6 +698,8 @@
 "Copy path" = "Copy path";
 "Corner radius" = "Corner radius";
 "Corners" = "Corners";
+"Could not copy the QR code." = "Could not copy the QR code.";
+"Could not copy the QR codes." = "Could not copy the QR codes.";
 "Could not copy the selected file paths." = "Could not copy the selected file paths.";
 "Could not copy the selected files." = "Could not copy the selected files.";
 "Could not open %@." = "Could not open %@.";
@@ -1741,6 +1749,7 @@
 "READY ON YOUR PC" = "READY ON YOUR PC";
 "READY TO CHECK FOR UPDATES" = "READY TO CHECK FOR UPDATES";
 "READY TO MAKE A FRESH COPY. NO EXTRA SETTINGS NEEDED." = "READY TO MAKE A FRESH COPY. NO EXTRA SETTINGS NEEDED.";
+"READY TO PASTE." = "READY TO PASTE.";
 "READY WHEN YOU ARE" = "READY WHEN YOU ARE";
 "READY WHEN YOU LOG IN" = "READY WHEN YOU LOG IN";
 "READY." = "READY.";
@@ -1806,6 +1815,7 @@
 "Ready on your PC" = "Ready on your PC";
 "Ready to check for updates" = "Ready to check for updates";
 "Ready to make a fresh copy. No extra settings needed." = "Ready to make a fresh copy. No extra settings needed.";
+"Ready to paste." = "Ready to paste.";
 "Ready when you log in" = "Ready when you log in";
 "Ready." = "Ready.";
 "Ready. You can go back to your files." = "Ready. You can go back to your files.";
