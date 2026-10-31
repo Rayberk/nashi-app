@@ -360,5 +360,7 @@ private extension XMLElement {
     func first(_ name:String) -> XMLElement? {elements(name).first}
     func descendants(_ name:String) -> [XMLElement] {elements(nil).flatMap{($0.local == name ? [$0] : []) + $0.descendants(name)}}
     func attr(_ name:String) -> String? {(attributes ?? []).first{($0.localName ?? $0.name?.split(separator:":").last.map(String.init)) == name}?.stringValue}
-    func number(_ name:String) -> Double? {attr(name).flatMap(Double.init)}
+    // "NaN", "inf" and overflowing values such as "1e999" parse as non-finite
+    // Doubles, which JSONSerialization rejects with an uncatchable exception.
+    func number(_ name:String) -> Double? {attr(name).flatMap(Double.init).flatMap{$0.isFinite ? $0 : nil}}
 }
