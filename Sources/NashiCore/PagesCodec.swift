@@ -278,7 +278,7 @@ private enum PagesDOCXReader {
                     rows.append(cells)
                 }
                 let widths = element.first("tblGrid")?.elements("gridCol").map { ($0.number("w") ?? 2400) / 20 } ?? []
-                return ["type":"table","rows":rows,"merges":merges,"columnWidths":widths,"headerRows":element.elements("tr").prefix(while: {$0.first("trPr")?.first("tblHeader") != nil}).count]
+                return ["type":"table","rows":rows,"merges":merges,"columnWidths":widths,"headerRows":element.elements("tr").prefix(while: { row in row.first("trPr")?.first("tblHeader").map { !["0","false","off"].contains($0.attr("val") ?? "1") } ?? false }).count]
             }
             if ["sdt","sdtContent"].contains(element.local) {
                 // Block-level content controls are unwrapped by the caller's
