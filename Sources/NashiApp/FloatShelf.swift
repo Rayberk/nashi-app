@@ -285,14 +285,14 @@ enum FloatShelfViewMode:Int { case icons,list }
         if event.keyCode==51 || event.keyCode==117 { removeSelection();return true }
         if event.keyCode==53 { if !collection.selectionIndexPaths.isEmpty { collection.selectionIndexPaths=[];updateLabels() } else { setExpanded(false) };return true }
         guard !event.modifierFlags.contains(.control),!event.modifierFlags.contains(.option),let value=event.characters,!value.isEmpty,value.unicodeScalars.allSatisfy({CharacterSet.alphanumerics.contains($0) || $0==" "}) else { return false }
-        let time=ProcessInfo.processInfo.systemUptime,query=value.lowercased()
+        let time=ProcessInfo.processInfo.systemUptime,query=Self.typeSelectKey(value)
         if time-lastTypeTime>1 { typeBuffer="" };lastTypeTime=time
         let repeated=typeBuffer==query
         typeBuffer=repeated ? query:typeBuffer+query
         let start=repeated ? (selectedIndices.first ?? -1)+1:0
         for offset in items.indices {
             let index=(start+offset)%items.count
-            if items[index].url.lastPathComponent.lowercased().hasPrefix(typeBuffer) {
+            if Self.typeSelectKey(items[index].url.lastPathComponent).hasPrefix(typeBuffer) {
                 let path=IndexPath(item:index,section:0)
                 collection.selectionIndexPaths=[path];collection.scrollToItems(at:[path],scrollPosition:.centeredVertically)
                 updateLabels();updatePreviewIfVisible();return true
@@ -300,6 +300,9 @@ enum FloatShelfViewMode:Int { case icons,list }
         }
         return !items.isEmpty
     }
+    /// Lowercases for type-select. "İ".lowercased() is "i" + COMBINING DOT ABOVE, which would
+    /// never match a typed "i"; drop that dot so İ/i match like every other letter pair.
+    private static func typeSelectKey(_ text:String)->String { text.lowercased().replacingOccurrences(of:"i\u{307}",with:"i") }
 
     private func makeContextMenu()->NSMenu {
         let menu=NSMenu(title:"Float");menu.delegate=self
