@@ -366,7 +366,7 @@ public sealed class MediaEngine(string ffmpeg, string ffprobe)
     };
     private static string[] VideoEncoding(string ext,MediaOptions o)=>ext switch
     {
-        "webm"=>["-c:v","libvpx-vp9","-crf",Number(45-o.Quality*30),"-b:v","0","-c:a","libopus","-b:a",Math.Min(256,o.AudioBitrate)+"k"],
+        "webm"=>["-c:v","libvpx-vp9","-crf",Number(45-o.Quality*30),"-b:v","0","-pix_fmt","yuv420p","-c:a","libopus","-b:a",Math.Min(256,o.AudioBitrate)+"k"],
         "avi"=>["-c:v","mpeg4","-q:v",Number(25-o.Quality*22),"-c:a","libmp3lame"],
         "wmv"=>["-c:v","wmv2","-q:v",Number(25-o.Quality*22),"-c:a","wmav2"],
         _=>["-c:v","libx264","-preset","medium","-crf",Number(35-o.Quality*23),"-pix_fmt","yuv420p","-c:a","aac","-b:a",o.AudioBitrate+"k"]

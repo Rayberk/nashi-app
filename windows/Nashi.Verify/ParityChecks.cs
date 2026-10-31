@@ -25,6 +25,7 @@ internal static class ParityChecks
         check(!FeatureCatalog.Formats(["a.png","b.mp4"]).Any(),"Unrelated inputs offered an invalid format");
         check(FeatureCatalog.Tools(["a.pdf","b.pdf"]).SequenceEqual(new[]{"compress","removeMetadata","splitPDF","mergePDF","readQRCode"}),"Multiple PDF wheel diverged from Mac");
         check(FeatureCatalog.Tools(["a.jpg","b.png"]).Contains("createCollage"),"Mixed image collage missing");
+        check(FeatureCatalog.Tools(["a.gif"]).SequenceEqual(new[]{"removeMetadata","readQRCode"})&&FeatureCatalog.Tools(["a.gif","b.png"]).Contains("readQRCode")&&!FeatureCatalog.Tools(["a.mp4"]).Contains("readQRCode"),"GIF wheel lost Read QR Codes, unlike the Mac");
         check(DocumentEngine.PageRange("3-1, 2",3).SequenceEqual(new[]{3,2,1,2}),"PDF descending page ranges or duplicates changed");
         // Hand-written content streams keep these fixtures independent of font resolution, and a fixed A4
         // page keeps them independent of the region (PdfSharp picks Letter on US machines).
@@ -37,8 +38,15 @@ internal static class ParityChecks
         }
         void Catalog(PdfSharp.Pdf.PdfDocument pdf,string key,PdfSharp.Pdf.PdfItem value)=>pdf.Internals.Catalog.Elements[key]=value;
         var textPdf=Pdf("Text.pdf","BT /F1 24 Tf 72 700 Td (Nashi fixture) Tj ET");var vectorPdf=Pdf("Vector.pdf","0 0 1 rg 72 72 200 200 re f");
+        var titledPdf=Pdf("Titled.pdf","BT /F1 24 Tf 72 700 Td (Report) Tj ET",pdf=>{pdf.Info.Title="Rapor";pdf.Info.Author="Ayşe Yılmaz";pdf.Info.Subject="Satış";pdf.Info.Keywords="q3";});
+        using(var compressed=PdfSharp.Pdf.IO.PdfReader.Open(DocumentEngine.Pdf("compress",[titledPdf],root)[0],PdfSharp.Pdf.IO.PdfDocumentOpenMode.Import))check(compressed.Info is {Title:"Rapor",Author:"Ayşe Yılmaz",Subject:"Satış",Keywords:"q3"},"Compressing a PDF dropped its title, author, subject or keywords");
+        using(var cleaned=PdfSharp.Pdf.IO.PdfReader.Open(DocumentEngine.Pdf("removeMetadata",[titledPdf],root)[0],PdfSharp.Pdf.IO.PdfDocumentOpenMode.Import))check(cleaned.Info is {Title:"",Author:"",Subject:"",Keywords:""},"Remove Metadata kept the title, author, subject or keywords");
         var textHtml=OfficeDocuments.PdfHtml(textPdf,"",(_,_)=>[9],out var textBlank);var vectorHtml=OfficeDocuments.PdfHtml(vectorPdf,"",(_,area)=>area is null?[1,2,3]:null,out var vectorBlank);
         check(textBlank.Length==0&&textHtml.Contains("Nashi")&&!textHtml.Contains("data:image")&&vectorBlank.SequenceEqual(new[]{1})&&vectorHtml.Contains("data:image/png;base64,AQID"),"A PDF page without extractable text or images converted to a blank page");
+        // macOS (Quartz) PDFs set "1 Tf" and scale the text matrix; the drawn size is what matters.
+        check(OfficeDocuments.PdfHtml(Pdf("Scaled text.pdf","BT /F1 1 Tf 24 0 0 24 72 700 Tm (Scaled) Tj ET")).Contains("<span style=\"font-size:24pt;\">Scaled</span>"),"Editable PDF text drawn through a scaled text matrix lost its size");
+        // A zero font size under an overflowing matrix gives a NaN drawn size; keep the default instead of writing "NaNpt".
+        check(OfficeDocuments.PdfHtml(Pdf("Overflowing text.pdf","1e300 0 0 1e300 0 0 cm BT /F1 0 Tf 1e300 0 0 1e300 72 700 Tm (Overflow) Tj ET")).Contains("<span style=\"font-size:12pt;\">Overflow</span>"),"Editable PDF text wrote a NaN font size");
         // A JPEG behind a Flate filter: PDFium draws it, PdfPig cannot hand it over.
         var tinyJpeg=System.Convert.FromBase64String("/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDAAgKCgsKCw0NDQ0NDRAPEBAQEBAQEBAQEBASEhIVFRUSEhIQEBISFBQVFRcXFxUVFRUXFxkZGR4eHBwjIyQrKzP/xABLAAEBAAAAAAAAAAAAAAAAAAAAAgEBAAAAAAAAAAAAAAAAAAAABhABAAAAAAAAAAAAAAAAAAAAABEBAAAAAAAAAAAAAAAAAAAAAP/AABEIAAgACAMBIgACEQADEQD/2gAMAwEAAhEDEQA/AIAFDV//2Q==");
         byte[] chained;using(var packed=new MemoryStream()){using(var zlib=new ZLibStream(packed,CompressionLevel.Optimal,true))zlib.Write(tinyJpeg);chained=packed.ToArray();}
@@ -98,6 +106,8 @@ internal static class ParityChecks
         var partialPhotos=WebPhotos.Instagram("{\"entries\":[{\"duration\":null,\"thumbnails\":[null,{\"url\":42},{\"url\":\"https://cdninstagram.com/synthetic-photo.jpg\",\"width\":900,\"height\":600}]}]}");
         check(partialPhotos.Length==1&&partialPhotos[0].Width==900&&partialPhotos[0].Height==600,
             "Malformed Instagram thumbnail variants hid a valid public image.");
+        // YouTube's hover preview is an animated thumbnail under /an_webp/; like on the Mac, it stands for its video.
+        check(WebMediaPayload.Parse("https://i.ytimg.com/an_webp/mXS5W7_kdzk/mqdefault_6s.webp?du=3000&sqp=synthetic") is {Kind:"youtube",Url:"https://www.youtube.com/watch?v=mXS5W7_kdzk"},"YouTube hover preview was downloaded as an image instead of its video");
         check(LegacyTextCodec.Decode(Encoding.Unicode.GetPreamble().Concat(Encoding.Unicode.GetBytes("Türkçe 🍐")).ToArray())=="Türkçe 🍐","UTF-16 text lost Unicode");
         check(LegacyTextCodec.Decode(new UTF32Encoding(false,true).GetPreamble().Concat(Encoding.UTF32.GetBytes("Türkçe 🍐")).ToArray())=="Türkçe 🍐","UTF-32 text was read as UTF-16");
         // Files from Turkish Windows, 7-Zip and Excel: ANSI 1254 text, OEM 857 ZIP names, semicolon CSV.

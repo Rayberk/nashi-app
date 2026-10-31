@@ -582,7 +582,10 @@ public enum MediaEngine {
         case "mp3":
             let maximum = sampleRate <= 12000 ? 64000 : sampleRate < 32000 ? 160000 : 320000
             return ["-c:a", "libmp3lame", "-b:a", String(max(8000, min(maximum, rate / 8000 * 8000)))] + (channelCount > 2 ? ["-ac", "2"] : [])
-        case "m4a", "aac": return ["-c:a", "aac", "-b:a", String(min(512000, min(rate, 6 * sampleRate * channelCount)))]
+        case "m4a", "aac":
+            // AAC stops at 96 kHz. Hi-res ALAC sources need a supported rate, or Normalize/Bleep's source -ar fails.
+            let aacRate = [96000, 88200, 64000, 48000, 44100, 32000, 24000, 22050, 16000, 12000, 11025, 8000, 7350].first { $0 <= sampleRate } ?? 7350
+            return ["-c:a", "aac", "-b:a", String(min(512000, min(rate, 6 * aacRate * channelCount)))] + (aacRate == sampleRate ? [] : ["-ar", String(aacRate)])
         case "wav": return ["-c:a", pcmCodec ?? "pcm_s16le"]
         case "aiff", "aif": return ["-c:a", pcmCodec ?? "pcm_s16be"]
         case "flac": return ["-c:a", "flac", "-compression_level", compressionPreset == "fast" ? "0" : compressionPreset == "maximum" ? "12" : "8"]
