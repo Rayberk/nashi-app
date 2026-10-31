@@ -186,9 +186,11 @@
 "ALREADY AVAILABLE ON YOUR COMPUTER" = "DÉJÀ DISPONIBLES SUR VOTRE ORDINATEUR";
 "ALREADY OPTIMIZED. ORIGINAL QUALITY RETAINED." = "DÉJÀ OPTIMISÉ. QUALITÉ D’ORIGINE CONSERVÉE.";
 "ALWAYS A LITTLE FRESHER." = "TOUJOURS UN PEU PLUS FRAIS.";
+"AN ARCHIVE HARD LINK DOES NOT POINT TO A REGULAR FILE." = "UN LIEN PHYSIQUE DE L’ARCHIVE NE POINTE PAS VERS UN FICHIER ORDINAIRE.";
 "AN ARCHIVE LINK POINTS OUTSIDE THE EXTRACTION FOLDER." = "UN LIEN DE L’ARCHIVE POINTE HORS DU DOSSIER D’EXTRACTION.";
 "AN EMBEDDED IMAGE IS MISSING OR TOO LARGE." = "UNE IMAGE INTÉGRÉE EST MANQUANTE OU TROP VOLUMINEUSE.";
 "AN EMPTY OUTPUT WAS PRODUCED." = "UNE SORTIE VIDE A ÉTÉ PRODUITE.";
+"AN EPUB IMAGE POINTS OUTSIDE ITS PACKAGE." = "UNE IMAGE DE L’EPUB POINTE HORS DE SON PAQUETAGE.";
 "AN HTTPS DOWNLOAD IS REQUIRED." = "UN TÉLÉCHARGEMENT HTTPS EST REQUIS.";
 "AN OUTPUT CANNOT BE A SYMBOLIC LINK." = "UNE SORTIE NE PEUT PAS ÊTRE UN LIEN SYMBOLIQUE.";
 "AN OUTPUT IS OUTSIDE ITS STAGING DIRECTORY." = "UNE SORTIE SE TROUVE EN DEHORS DE SON DOSSIER INTERMÉDIAIRE.";
@@ -265,9 +267,11 @@
 "Already available on your computer" = "Déjà disponibles sur votre ordinateur";
 "Already optimized. Original quality retained." = "Déjà optimisé. Qualité d’origine conservée.";
 "Always a little fresher." = "Toujours un peu plus frais.";
+"An EPUB image points outside its package." = "Une image de l’EPUB pointe hors de son paquetage.";
 "An HTTPS download is required." = "Un téléchargement HTTPS est requis.";
 "An RTFD attachment is missing or too large: %@" = "Une pièce jointe RTFD est manquante ou trop volumineuse : %@";
 "An RTFD attachment is missing or too large: %lld" = "Une pièce jointe RTFD est manquante ou trop volumineuse : %lld";
+"An archive hard link does not point to a regular file." = "Un lien physique de l’archive ne pointe pas vers un fichier ordinaire.";
 "An archive link points outside the extraction folder." = "Un lien de l’archive pointe hors du dossier d’extraction.";
 "An embedded image is missing or too large." = "Une image intégrée est manquante ou trop volumineuse.";
 "An empty output was produced." = "Une sortie vide a été produite.";
@@ -1207,6 +1211,7 @@
 "INVALID METADATA STREAM/CHAPTER." = "FLUX OU CHAPITRE DE MÉTADONNÉES INVALIDE.";
 "INVALID PUBLIC UPDATE LOCATION OR SIZE." = "EMPLACEMENT OU TAILLE DE MISE À JOUR PUBLIQUE INVALIDE.";
 "INVALID SUBTITLE TIMESTAMP." = "HORODATAGE DE SOUS-TITRE INVALIDE.";
+"INVALID TEXT CLIPPING RESOURCES." = "LES RESSOURCES DU FRAGMENT NE SONT PAS VALIDES.";
 "INVALID UPDATE MANIFEST." = "MANIFESTE DE MISE À JOUR INVALIDE.";
 "INVALID UPDATE SIGNATURE LENGTH." = "LONGUEUR DE SIGNATURE DE MISE À JOUR INVALIDE.";
 "INVALID UPDATE SIGNATURE." = "SIGNATURE DE MISE À JOUR INVALIDE.";
@@ -1240,6 +1245,7 @@
 "Invalid page range: %lld. Use numbers between 1 and %lld." = "Plage de pages invalide : %lld. Utilisez des nombres entre 1 et %lld.";
 "Invalid public update location or size." = "Emplacement ou taille de mise à jour publique invalide.";
 "Invalid subtitle timestamp." = "Horodatage de sous-titre invalide.";
+"Invalid text clipping resources." = "Les ressources du fragment ne sont pas valides.";
 "Invalid update manifest." = "Manifeste de mise à jour invalide.";
 "Invalid update signature length." = "Longueur de signature de mise à jour invalide.";
 "Invalid update signature." = "Signature de mise à jour invalide.";
@@ -1463,6 +1469,7 @@
 "NO PUBLIC DOWNLOADABLE MEDIA FOUND. SOME SITES REQUIRE SIGN-IN OR DO NOT EXPOSE DOWNLOADABLE MEDIA." = "AUCUN MÉDIA PUBLIC TÉLÉCHARGEABLE TROUVÉ. CERTAINS SITES EXIGENT UNE CONNEXION OU N’EXPOSENT PAS DE MÉDIAS TÉLÉCHARGEABLES.";
 "NO QR CODES FOUND. TRY A LARGER OR SHARPER IMAGE." = "AUCUN CODE QR TROUVÉ. ESSAYEZ UNE IMAGE PLUS GRANDE OU PLUS NETTE.";
 "NO QR CODES THIS TIME." = "AUCUN CODE QR CETTE FOIS.";
+"NO READABLE TEXT WAS FOUND IN THIS TEXT CLIPPING." = "AUCUN TEXTE LISIBLE N’A ÉTÉ TROUVÉ DANS CE FRAGMENT.";
 "NO TEXT COULD BE EXTRACTED OR RECOGNIZED IN THIS PDF." = "AUCUN TEXTE N’A PU ÊTRE EXTRAIT OU RECONNU DANS CE PDF.";
 "NO TIMED SUBTITLE CUES WERE FOUND IN THIS FILE." = "AUCUNE RÉPLIQUE DE SOUS-TITRE HORODATÉE N’A ÉTÉ TROUVÉE DANS CE FICHIER.";
 "NO TIMED SUBTITLE CUES WERE FOUND." = "AUCUNE RÉPLIQUE DE SOUS-TITRE HORODATÉE N’A ÉTÉ TROUVÉE.";
@@ -1525,6 +1532,7 @@
 "No media output was produced." = "Aucune sortie multimédia n’a été produite.";
 "No output was produced." = "Aucune sortie n’a été produite.";
 "No public downloadable media found. Some sites require sign-in or do not expose downloadable media." = "Aucun média public téléchargeable trouvé. Certains sites exigent une connexion ou n’exposent pas de médias téléchargeables.";
+"No readable text was found in this text clipping." = "Aucun texte lisible n’a été trouvé dans ce fragment.";
 "No text could be extracted or recognized in this PDF." = "Aucun texte n’a pu être extrait ou reconnu dans ce PDF.";
 "No timed subtitle cues were found in this file." = "Aucune réplique de sous-titre horodatée n’a été trouvée dans ce fichier.";
 "No timed subtitle cues were found." = "Aucune réplique de sous-titre horodatée n’a été trouvée.";
@@ -2261,6 +2269,8 @@
 "THE ARCHIVE CONTAINS AN UNNAMED ENTRY." = "L’ARCHIVE CONTIENT UNE ENTRÉE SANS NOM.";
 "THE ARCHIVE CONTAINS AN UNSAFE PATH." = "L’ARCHIVE CONTIENT UN CHEMIN NON SÛR.";
 "THE ARCHIVE ENTRY LEAVES ITS DESTINATION." = "L’ENTRÉE DE L’ARCHIVE SORT DE SA DESTINATION.";
+"THE ARCHIVE EXPANDS BEYOND THE 20 GB SAFETY LIMIT." = "UNE FOIS DÉCOMPRESSÉE, L’ARCHIVE DÉPASSE LA LIMITE DE SÉCURITÉ DE 20 GO.";
+"THE ARCHIVE HAS TOO MANY ENTRIES (100,000 LIMIT)." = "L’ARCHIVE CONTIENT TROP D’ENTRÉES (LIMITE DE 100 000).";
 "THE CLIPPING EXCEEDS 200 MB." = "LE FRAGMENT DÉPASSE 200 MO.";
 "THE CLIPPING HAS NO READABLE TEXT. INCLUDE ITS ORIGINAL RESOURCE FORK/APPLEDOUBLE SIDECAR, OR PASTE ITS TEXT INTO NASHI." = "LE FRAGMENT NE CONTIENT AUCUN TEXTE LISIBLE. INCLUEZ SON FICHIER ANNEXE D’ORIGINE (RESOURCE FORK/APPLEDOUBLE) OU COLLEZ SON TEXTE DANS NASHI.";
 "THE DOCUMENT HAS NO EDITABLE BODY." = "LE DOCUMENT N’A PAS DE CORPS MODIFIABLE.";
@@ -2289,6 +2299,7 @@
 "THE SITE IS LIMITING REQUESTS. WAIT A LITTLE AND TRY AGAIN." = "LE SITE LIMITE LES REQUÊTES. PATIENTEZ UN PEU, PUIS RÉESSAYEZ.";
 "THE SITE RETURNED TOO MUCH METADATA. TRY AN INDIVIDUAL MEDIA LINK." = "LE SITE A RENVOYÉ TROP DE MÉTADONNÉES. ESSAYEZ LE LIEN D’UN SEUL MÉDIA.";
 "THE START AND END TIMES MUST DESCRIBE A NONEMPTY RANGE INSIDE THE MEDIA." = "LE DÉBUT ET LA FIN DOIVENT DÉLIMITER UNE PLAGE NON VIDE À L’INTÉRIEUR DU MÉDIA.";
+"THE TEXT CLIPPING'S RESOURCE DATA IS DAMAGED." = "LES DONNÉES DE RESSOURCE DU FRAGMENT SONT ENDOMMAGÉES.";
 "THE UPDATE DOES NOT CONTAIN NASHI." = "LA MISE À JOUR NE CONTIENT PAS NASHI.";
 "THE UPDATE NEEDS ANOTHER TRY" = "LA MISE À JOUR DOIT ÊTRE RELANCÉE";
 "THE UPDATE SIGNATURE IS INVALID. YOUR EXISTING APP WAS KEPT." = "LA SIGNATURE DE LA MISE À JOUR EST INVALIDE. VOTRE APP EXISTANTE A ÉTÉ CONSERVÉE.";
@@ -2323,6 +2334,7 @@
 "THIS REPOSITORY IS PRIVATE" = "CE DÉPÔT EST PRIVÉ";
 "THIS RTFD ATTACHMENT SYNTAX COULD NOT BE PRESERVED." = "CETTE SYNTAXE DE PIÈCE JOINTE RTFD N’A PAS PU ÊTRE PRÉSERVÉE.";
 "THIS SIZE CANNOT BE REACHED. CHOOSE A LARGER TARGET OR SMALLER DIMENSIONS." = "CETTE TAILLE EST IMPOSSIBLE À ATTEINDRE. CHOISISSEZ UNE CIBLE PLUS GRANDE OU DES DIMENSIONS PLUS PETITES.";
+"THIS TEXT CLIPPING CONTAINS NO SUPPORTED TEXT RESOURCE." = "CE FRAGMENT NE CONTIENT AUCUNE RESSOURCE TEXTE PRISE EN CHARGE.";
 "THIS TEXT IS TOO LARGE TO PASTE. CHOOSE A TEXT FILE INSTEAD." = "CE TEXTE EST TROP VOLUMINEUX POUR ÊTRE COLLÉ. CHOISISSEZ PLUTÔT UN FICHIER TEXTE.";
 "THIS TEXT IS TOO LARGE TO PREVIEW. USE OPEN TO READ THE COMPLETE FILE." = "CE TEXTE EST TROP VOLUMINEUX POUR L’APERÇU. UTILISEZ OUVRIR POUR LIRE LE FICHIER COMPLET.";
 "THIS WINDOW COULD NOT BE ARRANGED. THE APP MAY RESTRICT RESIZING." = "CETTE FENÊTRE N’A PAS PU ÊTRE DISPOSÉE. L’APP LIMITE PEUT-ÊTRE LE REDIMENSIONNEMENT.";
@@ -2386,6 +2398,8 @@
 "The archive contains duplicate file paths: %@" = "L’archive contient des chemins de fichiers en double : %@";
 "The archive contains duplicate file paths: %lld" = "L’archive contient des chemins de fichiers en double : %lld";
 "The archive entry leaves its destination." = "L’entrée de l’archive sort de sa destination.";
+"The archive expands beyond the 20 GB safety limit." = "Une fois décompressée, l’archive dépasse la limite de sécurité de 20 Go.";
+"The archive has too many entries (100,000 limit)." = "L’archive contient trop d’entrées (limite de 100 000).";
 "The clipping exceeds 200 MB." = "Le fragment dépasse 200 Mo.";
 "The clipping has no readable text. Include its original resource fork/AppleDouble sidecar, or paste its text into Nashi." = "Le fragment ne contient aucun texte lisible. Incluez son fichier annexe d’origine (resource fork/AppleDouble) ou collez son texte dans Nashi.";
 "The crop rectangle must fit completely inside the %@ × %@ pixel image." = "Le rectangle de recadrage doit tenir entièrement dans l’image de %@ × %@ pixels.";
@@ -2420,6 +2434,7 @@
 "The site is limiting requests. Wait a little and try again." = "Le site limite les requêtes. Patientez un peu, puis réessayez.";
 "The site returned too much metadata. Try an individual media link." = "Le site a renvoyé trop de métadonnées. Essayez le lien d’un seul média.";
 "The start and end times must describe a nonempty range inside the media." = "Le début et la fin doivent délimiter une plage non vide à l’intérieur du média.";
+"The text clipping's resource data is damaged." = "Les données de ressource du fragment sont endommagées.";
 "The text encoding of %@ could not be read." = "L’encodage du texte de %@ n’a pas pu être lu.";
 "The text encoding of %lld could not be read." = "L’encodage du texte de %lld n’a pas pu être lu.";
 "The update does not contain Nashi." = "La mise à jour ne contient pas Nashi.";
@@ -2459,6 +2474,7 @@
 "This post contains videos. Use its Reel link to download video." = "Cette publication contient des vidéos. Utilisez son lien Reel pour télécharger la vidéo.";
 "This repository is private" = "Ce dépôt est privé";
 "This size cannot be reached. Choose a larger target or smaller dimensions." = "Cette taille est impossible à atteindre. Choisissez une cible plus grande ou des dimensions plus petites.";
+"This text clipping contains no supported text resource." = "Ce fragment ne contient aucune ressource texte prise en charge.";
 "This text is too large to paste. Choose a text file instead." = "Ce texte est trop volumineux pour être collé. Choisissez plutôt un fichier texte.";
 "This text is too large to preview. Use Open to read the complete file." = "Ce texte est trop volumineux pour l’aperçu. Utilisez Ouvrir pour lire le fichier complet.";
 "This window could not be arranged. The app may restrict resizing." = "Cette fenêtre n’a pas pu être disposée. L’app limite peut-être le redimensionnement.";

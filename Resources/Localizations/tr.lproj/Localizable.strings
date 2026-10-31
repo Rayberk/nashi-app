@@ -186,9 +186,11 @@
 "ALREADY AVAILABLE ON YOUR COMPUTER" = "BİLGİSAYARINDA ZATEN HAZIR";
 "ALREADY OPTIMIZED. ORIGINAL QUALITY RETAINED." = "ZATEN OPTİMİZE EDİLMİŞ. ORİJİNAL KALİTE KORUNDU.";
 "ALWAYS A LITTLE FRESHER." = "HEP BİRAZ DAHA YENİ.";
+"AN ARCHIVE HARD LINK DOES NOT POINT TO A REGULAR FILE." = "ARŞİVDEKİ BİR SABİT BAĞLANTI NORMAL BİR DOSYAYI GÖSTERMİYOR.";
 "AN ARCHIVE LINK POINTS OUTSIDE THE EXTRACTION FOLDER." = "ARŞİVDEKİ BİR BAĞLANTI, AÇILACAĞI KLASÖRÜN DIŞINI GÖSTERİYOR.";
 "AN EMBEDDED IMAGE IS MISSING OR TOO LARGE." = "GÖMÜLÜ BİR GÖRSEL EKSİK VEYA ÇOK BÜYÜK.";
 "AN EMPTY OUTPUT WAS PRODUCED." = "BOŞ BİR ÇIKTI OLUŞTU.";
+"AN EPUB IMAGE POINTS OUTSIDE ITS PACKAGE." = "BİR EPUB GÖRSELİ, PAKETİNİN DIŞINI GÖSTERİYOR.";
 "AN HTTPS DOWNLOAD IS REQUIRED." = "İNDİRME HTTPS ÜZERİNDEN YAPILMALI.";
 "AN OUTPUT CANNOT BE A SYMBOLIC LINK." = "ÇIKTI SEMBOLİK BAĞLANTI OLAMAZ.";
 "AN OUTPUT IS OUTSIDE ITS STAGING DIRECTORY." = "BİR ÇIKTI GEÇİCİ KLASÖRÜNÜN DIŞINDA KALDI.";
@@ -265,9 +267,11 @@
 "Already available on your computer" = "Bilgisayarında zaten hazır";
 "Already optimized. Original quality retained." = "Zaten optimize edilmiş. Orijinal kalite korundu.";
 "Always a little fresher." = "Hep biraz daha yeni.";
+"An EPUB image points outside its package." = "Bir EPUB görseli, paketinin dışını gösteriyor.";
 "An HTTPS download is required." = "İndirme HTTPS üzerinden yapılmalı.";
 "An RTFD attachment is missing or too large: %@" = "Bir RTFD eki eksik veya çok büyük: %@";
 "An RTFD attachment is missing or too large: %lld" = "Bir RTFD eki eksik veya çok büyük: %lld";
+"An archive hard link does not point to a regular file." = "Arşivdeki bir sabit bağlantı normal bir dosyayı göstermiyor.";
 "An archive link points outside the extraction folder." = "Arşivdeki bir bağlantı, açılacağı klasörün dışını gösteriyor.";
 "An embedded image is missing or too large." = "Gömülü bir görsel eksik veya çok büyük.";
 "An empty output was produced." = "Boş bir çıktı oluştu.";
@@ -1207,6 +1211,7 @@
 "INVALID METADATA STREAM/CHAPTER." = "META VERİ AKIŞI VEYA BÖLÜMÜ GEÇERSİZ.";
 "INVALID PUBLIC UPDATE LOCATION OR SIZE." = "GÜNCELLEMENİN KONUMU VEYA BOYUTU GEÇERSİZ.";
 "INVALID SUBTITLE TIMESTAMP." = "ALTYAZI ZAMAN DAMGASI GEÇERSİZ.";
+"INVALID TEXT CLIPPING RESOURCES." = "METİN KIRPINTISININ KAYNAKLARI GEÇERSİZ.";
 "INVALID UPDATE MANIFEST." = "GÜNCELLEME BİLGİSİ GEÇERSİZ.";
 "INVALID UPDATE SIGNATURE LENGTH." = "GÜNCELLEME İMZASININ UZUNLUĞU GEÇERSİZ.";
 "INVALID UPDATE SIGNATURE." = "GÜNCELLEME İMZASI GEÇERSİZ.";
@@ -1240,6 +1245,7 @@
 "Invalid page range: %lld. Use numbers between 1 and %lld." = "Geçersiz sayfa aralığı: %lld. 1 ile %lld arasında sayılar kullan.";
 "Invalid public update location or size." = "Güncellemenin konumu veya boyutu geçersiz.";
 "Invalid subtitle timestamp." = "Altyazı zaman damgası geçersiz.";
+"Invalid text clipping resources." = "Metin kırpıntısının kaynakları geçersiz.";
 "Invalid update manifest." = "Güncelleme bilgisi geçersiz.";
 "Invalid update signature length." = "Güncelleme imzasının uzunluğu geçersiz.";
 "Invalid update signature." = "Güncelleme imzası geçersiz.";
@@ -1463,6 +1469,7 @@
 "NO PUBLIC DOWNLOADABLE MEDIA FOUND. SOME SITES REQUIRE SIGN-IN OR DO NOT EXPOSE DOWNLOADABLE MEDIA." = "HERKESE AÇIK, İNDİRİLEBİLİR MEDYA BULUNAMADI. BAZI SİTELER GİRİŞ GEREKTİRİR VEYA MEDYAYI İNDİRMEYE AÇMAZ.";
 "NO QR CODES FOUND. TRY A LARGER OR SHARPER IMAGE." = "QR KODU BULUNAMADI. DAHA BÜYÜK VEYA DAHA NET BİR GÖRSEL DENE.";
 "NO QR CODES THIS TIME." = "QR KODU BULUNAMADI.";
+"NO READABLE TEXT WAS FOUND IN THIS TEXT CLIPPING." = "BU METİN KIRPINTISINDA OKUNABİLİR METİN BULUNAMADI.";
 "NO TEXT COULD BE EXTRACTED OR RECOGNIZED IN THIS PDF." = "BU PDF'DEN METİN ÇIKARILAMADI VEYA TANINAMADI.";
 "NO TIMED SUBTITLE CUES WERE FOUND IN THIS FILE." = "BU DOSYADA ZAMANLANMIŞ ALTYAZI SATIRI BULUNAMADI.";
 "NO TIMED SUBTITLE CUES WERE FOUND." = "ZAMANLANMIŞ ALTYAZI SATIRI BULUNAMADI.";
@@ -1525,6 +1532,7 @@
 "No media output was produced." = "Medya çıktısı oluşmadı.";
 "No output was produced." = "Çıktı oluşmadı.";
 "No public downloadable media found. Some sites require sign-in or do not expose downloadable media." = "Herkese açık, indirilebilir medya bulunamadı. Bazı siteler giriş gerektirir veya medyayı indirmeye açmaz.";
+"No readable text was found in this text clipping." = "Bu metin kırpıntısında okunabilir metin bulunamadı.";
 "No text could be extracted or recognized in this PDF." = "Bu PDF'den metin çıkarılamadı veya tanınamadı.";
 "No timed subtitle cues were found in this file." = "Bu dosyada zamanlanmış altyazı satırı bulunamadı.";
 "No timed subtitle cues were found." = "Zamanlanmış altyazı satırı bulunamadı.";
@@ -2261,6 +2269,8 @@
 "THE ARCHIVE CONTAINS AN UNNAMED ENTRY." = "ARŞİVDE ADI OLMAYAN BİR ÖĞE VAR.";
 "THE ARCHIVE CONTAINS AN UNSAFE PATH." = "ARŞİVDE GÜVENLİ OLMAYAN BİR YOL VAR.";
 "THE ARCHIVE ENTRY LEAVES ITS DESTINATION." = "ARŞİVDEKİ BİR ÖĞE HEDEF KLASÖRÜN DIŞINA ÇIKIYOR.";
+"THE ARCHIVE EXPANDS BEYOND THE 20 GB SAFETY LIMIT." = "ARŞİV AÇILDIĞINDA 20 GB'LIK GÜVENLİK SINIRINI AŞIYOR.";
+"THE ARCHIVE HAS TOO MANY ENTRIES (100,000 LIMIT)." = "ARŞİVDE ÇOK FAZLA ÖĞE VAR (SINIR 100.000).";
 "THE CLIPPING EXCEEDS 200 MB." = "METİN KIRPINTISI 200 MB'I AŞIYOR.";
 "THE CLIPPING HAS NO READABLE TEXT. INCLUDE ITS ORIGINAL RESOURCE FORK/APPLEDOUBLE SIDECAR, OR PASTE ITS TEXT INTO NASHI." = "METİN KIRPINTISINDA OKUNABİLİR METİN YOK. ORİJİNAL RESOURCE FORK/APPLEDOUBLE DOSYASINI DA EKLE VEYA METNİNİ NASHI'YE YAPIŞTIR.";
 "THE DOCUMENT HAS NO EDITABLE BODY." = "BELGEDE DÜZENLENEBİLİR BİR İÇERİK YOK.";
@@ -2289,6 +2299,7 @@
 "THE SITE IS LIMITING REQUESTS. WAIT A LITTLE AND TRY AGAIN." = "SİTE İSTEKLERİ SINIRLIYOR. BİRAZ BEKLEYİP YENİDEN DENE.";
 "THE SITE RETURNED TOO MUCH METADATA. TRY AN INDIVIDUAL MEDIA LINK." = "SİTE ÇOK FAZLA META VERİ DÖNDÜRDÜ. TEK BİR MEDYANIN BAĞLANTISINI DENE.";
 "THE START AND END TIMES MUST DESCRIBE A NONEMPTY RANGE INSIDE THE MEDIA." = "BAŞLANGIÇ VE BİTİŞ ZAMANLARI MEDYANIN İÇİNDE BOŞ OLMAYAN BİR ARALIK BELİRTMELİ.";
+"THE TEXT CLIPPING'S RESOURCE DATA IS DAMAGED." = "METİN KIRPINTISININ KAYNAK VERİSİ BOZUK.";
 "THE UPDATE DOES NOT CONTAIN NASHI." = "GÜNCELLEME NASHI'Yİ İÇERMİYOR.";
 "THE UPDATE NEEDS ANOTHER TRY" = "GÜNCELLEMEYİ YENİDEN DENEMEK GEREKİYOR";
 "THE UPDATE SIGNATURE IS INVALID. YOUR EXISTING APP WAS KEPT." = "GÜNCELLEME İMZASI GEÇERSİZ. MEVCUT UYGULAMAN KORUNDU.";
@@ -2323,6 +2334,7 @@
 "THIS REPOSITORY IS PRIVATE" = "BU DEPO GİZLİ";
 "THIS RTFD ATTACHMENT SYNTAX COULD NOT BE PRESERVED." = "BU RTFD EKİNİN YAPISI KORUNAMADI.";
 "THIS SIZE CANNOT BE REACHED. CHOOSE A LARGER TARGET OR SMALLER DIMENSIONS." = "BU BOYUTA İNİLEMİYOR. DAHA BÜYÜK BİR HEDEF VEYA DAHA KÜÇÜK BOYUTLAR SEÇ.";
+"THIS TEXT CLIPPING CONTAINS NO SUPPORTED TEXT RESOURCE." = "BU METİN KIRPINTISINDA DESTEKLENEN BİR METİN KAYNAĞI YOK.";
 "THIS TEXT IS TOO LARGE TO PASTE. CHOOSE A TEXT FILE INSTEAD." = "BU METİN YAPIŞTIRMAK İÇİN ÇOK BÜYÜK. BUNUN YERİNE BİR METİN DOSYASI SEÇ.";
 "THIS TEXT IS TOO LARGE TO PREVIEW. USE OPEN TO READ THE COMPLETE FILE." = "BU METİN ÖNİZLEME İÇİN ÇOK BÜYÜK. DOSYANIN TAMAMINI OKUMAK İÇİN AÇ'I KULLAN.";
 "THIS WINDOW COULD NOT BE ARRANGED. THE APP MAY RESTRICT RESIZING." = "BU PENCERE DÜZENLENEMEDİ. UYGULAMA YENİDEN BOYUTLANDIRMAYI KISITLIYOR OLABİLİR.";
@@ -2386,6 +2398,8 @@
 "The archive contains duplicate file paths: %@" = "Arşivde yinelenen dosya yolları var: %@";
 "The archive contains duplicate file paths: %lld" = "Arşivde yinelenen dosya yolları var: %lld";
 "The archive entry leaves its destination." = "Arşivdeki bir öğe hedef klasörün dışına çıkıyor.";
+"The archive expands beyond the 20 GB safety limit." = "Arşiv açıldığında 20 GB'lık güvenlik sınırını aşıyor.";
+"The archive has too many entries (100,000 limit)." = "Arşivde çok fazla öğe var (sınır 100.000).";
 "The clipping exceeds 200 MB." = "Metin kırpıntısı 200 MB'ı aşıyor.";
 "The clipping has no readable text. Include its original resource fork/AppleDouble sidecar, or paste its text into Nashi." = "Metin kırpıntısında okunabilir metin yok. Orijinal resource fork/AppleDouble dosyasını da ekle veya metnini Nashi'ye yapıştır.";
 "The crop rectangle must fit completely inside the %@ × %@ pixel image." = "Kırpma alanı %@ × %@ piksellik görselin tamamen içinde kalmalı.";
@@ -2420,6 +2434,7 @@
 "The site is limiting requests. Wait a little and try again." = "Site istekleri sınırlıyor. Biraz bekleyip yeniden dene.";
 "The site returned too much metadata. Try an individual media link." = "Site çok fazla meta veri döndürdü. Tek bir medyanın bağlantısını dene.";
 "The start and end times must describe a nonempty range inside the media." = "Başlangıç ve bitiş zamanları medyanın içinde boş olmayan bir aralık belirtmeli.";
+"The text clipping's resource data is damaged." = "Metin kırpıntısının kaynak verisi bozuk.";
 "The text encoding of %@ could not be read." = "%@ dosyasının metin kodlaması okunamadı.";
 "The text encoding of %lld could not be read." = "%lld dosyasının metin kodlaması okunamadı.";
 "The update does not contain Nashi." = "Güncelleme Nashi'yi içermiyor.";
@@ -2459,6 +2474,7 @@
 "This post contains videos. Use its Reel link to download video." = "Bu gönderide video var. Videoyu indirmek için Reel bağlantısını kullan.";
 "This repository is private" = "Bu depo gizli";
 "This size cannot be reached. Choose a larger target or smaller dimensions." = "Bu boyuta inilemiyor. Daha büyük bir hedef veya daha küçük boyutlar seç.";
+"This text clipping contains no supported text resource." = "Bu metin kırpıntısında desteklenen bir metin kaynağı yok.";
 "This text is too large to paste. Choose a text file instead." = "Bu metin yapıştırmak için çok büyük. Bunun yerine bir metin dosyası seç.";
 "This text is too large to preview. Use Open to read the complete file." = "Bu metin önizleme için çok büyük. Dosyanın tamamını okumak için Aç'ı kullan.";
 "This window could not be arranged. The app may restrict resizing." = "Bu pencere düzenlenemedi. Uygulama yeniden boyutlandırmayı kısıtlıyor olabilir.";
