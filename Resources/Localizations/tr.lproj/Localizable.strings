@@ -1400,6 +1400,7 @@
 "NO QR CODES FOUND. TRY A LARGER OR SHARPER IMAGE." = "QR KODU BULUNAMADI. DAHA BÜYÜK VEYA DAHA NET BİR GÖRSEL DENE.";
 "NO QR CODES THIS TIME." = "QR KODU BULUNAMADI.";
 "NO TEXT COULD BE EXTRACTED OR RECOGNIZED IN THIS PDF." = "BU PDF'DEN METİN ÇIKARILAMADI VEYA TANINAMADI.";
+"NO TIMED SUBTITLE CUES WERE FOUND IN THIS FILE." = "BU DOSYADA ZAMANLANMIŞ ALTYAZI SATIRI BULUNAMADI.";
 "NO TIMED SUBTITLE CUES WERE FOUND." = "ZAMANLANMIŞ ALTYAZI SATIRI BULUNAMADI.";
 "NO TOOLS FOR THIS FILE TYPE" = "BU DOSYA TÜRÜ İÇİN ARAÇ YOK";
 "NO UNPROTECTED DOWNLOADABLE FORMAT IS AVAILABLE." = "KORUMASIZ, İNDİRİLEBİLİR BİR BİÇİM YOK.";
@@ -1457,6 +1458,7 @@
 "No output was produced." = "Çıktı oluşmadı.";
 "No public downloadable media found. Some sites require sign-in or do not expose downloadable media." = "Herkese açık, indirilebilir medya bulunamadı. Bazı siteler giriş gerektirir veya medyayı indirmeye açmaz.";
 "No text could be extracted or recognized in this PDF." = "Bu PDF'den metin çıkarılamadı veya tanınamadı.";
+"No timed subtitle cues were found in this file." = "Bu dosyada zamanlanmış altyazı satırı bulunamadı.";
 "No timed subtitle cues were found." = "Zamanlanmış altyazı satırı bulunamadı.";
 "No tools for this file type" = "Bu dosya türü için araç yok";
 "No unprotected downloadable format is available." = "Korumasız, indirilebilir bir biçim yok.";
@@ -2245,6 +2247,8 @@
 "Texture" = "Doku";
 "That PDF size cannot be reached while keeping selectable text, links and annotations. Choose a larger target." = "Seçilebilir metin, bağlantılar ve notlar korunarak bu PDF boyutuna inilemiyor. Daha büyük bir hedef seç.";
 "The PDF page is too large to render at this resolution." = "PDF sayfası bu çözünürlükte işlenemeyecek kadar büyük.";
+"The UTF-16 text in %@ is damaged." = "%@ içindeki UTF-16 metin bozuk.";
+"The UTF-16 text in %lld is damaged." = "%lld içindeki UTF-16 metin bozuk.";
 "The archive contains an unsafe path." = "Arşivde güvenli olmayan bir yol var.";
 "The archive entry leaves its destination." = "Arşivdeki bir öğe hedef klasörün dışına çıkıyor.";
 "The clipping exceeds 200 MB." = "Metin kırpıntısı 200 MB'ı aşıyor.";
@@ -2265,6 +2269,8 @@
 "The requested image size could not be reached. Choose a larger target." = "İstenen görsel boyutuna inilemedi. Daha büyük bir hedef seç.";
 "The same conversion and tool catalog as macOS." = "macOS ile aynı dönüştürme ve araç seçenekleri.";
 "The signed package version does not match this update." = "İmzalı paketin sürümü bu güncellemeyle eşleşmiyor.";
+"The text encoding of %@ could not be read." = "%@ dosyasının metin kodlaması okunamadı.";
+"The text encoding of %lld could not be read." = "%lld dosyasının metin kodlaması okunamadı.";
 "The update does not contain Nashi." = "Güncelleme Nashi'yi içermiyor.";
 "The update needs another try" = "Güncellemeyi yeniden denemek gerekiyor";
 "The update signature is invalid. Your existing app was kept." = "Güncelleme imzası geçersiz. Mevcut uygulaman korundu.";

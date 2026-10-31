@@ -1400,6 +1400,7 @@
 "NO QR CODES FOUND. TRY A LARGER OR SHARPER IMAGE." = "AUCUN CODE QR TROUVÉ. ESSAYEZ UNE IMAGE PLUS GRANDE OU PLUS NETTE.";
 "NO QR CODES THIS TIME." = "AUCUN CODE QR CETTE FOIS.";
 "NO TEXT COULD BE EXTRACTED OR RECOGNIZED IN THIS PDF." = "AUCUN TEXTE N’A PU ÊTRE EXTRAIT OU RECONNU DANS CE PDF.";
+"NO TIMED SUBTITLE CUES WERE FOUND IN THIS FILE." = "AUCUNE RÉPLIQUE DE SOUS-TITRE HORODATÉE N’A ÉTÉ TROUVÉE DANS CE FICHIER.";
 "NO TIMED SUBTITLE CUES WERE FOUND." = "AUCUNE RÉPLIQUE DE SOUS-TITRE HORODATÉE N’A ÉTÉ TROUVÉE.";
 "NO TOOLS FOR THIS FILE TYPE" = "AUCUN OUTIL POUR CE TYPE DE FICHIER";
 "NO UNPROTECTED DOWNLOADABLE FORMAT IS AVAILABLE." = "AUCUN FORMAT TÉLÉCHARGEABLE NON PROTÉGÉ N’EST DISPONIBLE.";
@@ -1457,6 +1458,7 @@
 "No output was produced." = "Aucune sortie n’a été produite.";
 "No public downloadable media found. Some sites require sign-in or do not expose downloadable media." = "Aucun média public téléchargeable trouvé. Certains sites exigent une connexion ou n’exposent pas de médias téléchargeables.";
 "No text could be extracted or recognized in this PDF." = "Aucun texte n’a pu être extrait ou reconnu dans ce PDF.";
+"No timed subtitle cues were found in this file." = "Aucune réplique de sous-titre horodatée n’a été trouvée dans ce fichier.";
 "No timed subtitle cues were found." = "Aucune réplique de sous-titre horodatée n’a été trouvée.";
 "No tools for this file type" = "Aucun outil pour ce type de fichier";
 "No unprotected downloadable format is available." = "Aucun format téléchargeable non protégé n’est disponible.";
@@ -2245,6 +2247,8 @@
 "Texture" = "Texture";
 "That PDF size cannot be reached while keeping selectable text, links and annotations. Choose a larger target." = "Cette taille de PDF est impossible à atteindre en conservant le texte sélectionnable, les liens et les annotations. Choisissez une cible plus grande.";
 "The PDF page is too large to render at this resolution." = "La page PDF est trop grande pour être rendue à cette résolution.";
+"The UTF-16 text in %@ is damaged." = "Le texte UTF-16 de %@ est endommagé.";
+"The UTF-16 text in %lld is damaged." = "Le texte UTF-16 de %lld est endommagé.";
 "The archive contains an unsafe path." = "L’archive contient un chemin non sûr.";
 "The archive entry leaves its destination." = "L’entrée de l’archive sort de sa destination.";
 "The clipping exceeds 200 MB." = "Le fragment dépasse 200 Mo.";
@@ -2265,6 +2269,8 @@
 "The requested image size could not be reached. Choose a larger target." = "La taille d’image demandée n’a pas pu être atteinte. Choisissez une cible plus grande.";
 "The same conversion and tool catalog as macOS." = "Le même catalogue de conversions et d’outils que sur macOS.";
 "The signed package version does not match this update." = "La version du paquet signé ne correspond pas à cette mise à jour.";
+"The text encoding of %@ could not be read." = "L’encodage du texte de %@ n’a pas pu être lu.";
+"The text encoding of %lld could not be read." = "L’encodage du texte de %lld n’a pas pu être lu.";
 "The update does not contain Nashi." = "La mise à jour ne contient pas Nashi.";
 "The update needs another try" = "La mise à jour doit être relancée";
 "The update signature is invalid. Your existing app was kept." = "La signature de la mise à jour est invalide. Votre app existante a été conservée.";
