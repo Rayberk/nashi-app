@@ -273,6 +273,8 @@
 "An archive link points outside the extraction folder." = "Un lien de l’archive pointe hors du dossier d’extraction.";
 "An embedded image is missing or too large." = "Une image intégrée est manquante ou trop volumineuse.";
 "An empty output was produced." = "Une sortie vide a été produite.";
+"An empty output was produced: %@" = "Une sortie vide a été produite : %@";
+"An empty output was produced: %lld" = "Une sortie vide a été produite : %lld";
 "An output cannot be a symbolic link." = "Une sortie ne peut pas être un lien symbolique.";
 "An output is outside its staging directory." = "Une sortie se trouve en dehors de son dossier intermédiaire.";
 "Annotate" = "Annoter";
@@ -1697,6 +1699,7 @@
 "PROCESSED PREVIEW UNAVAILABLE FOR THIS WINDOWS CODEC." = "APERÇU TRAITÉ INDISPONIBLE POUR CE CODEC WINDOWS.";
 "PROCESSED PREVIEW · EXPORT USES THE ORIGINAL FILE." = "APERÇU TRAITÉ · L’EXPORT UTILISE LE FICHIER D’ORIGINE.";
 "PROCESSED PREVIEW. CHOOSE ORIGINAL TO EDIT AREAS." = "APERÇU TRAITÉ. CHOISISSEZ ORIGINAL POUR MODIFIER LES ZONES.";
+"PROCESSING MEDIA…" = "TRAITEMENT DU MÉDIA…";
 "PROCESSING…" = "TRAITEMENT EN COURS…";
 "PROTECTED MEDIA CANNOT BE DOWNLOADED." = "LES MÉDIAS PROTÉGÉS NE PEUVENT PAS ÊTRE TÉLÉCHARGÉS.";
 "PUBLIC REPOSITORY · NO TOKEN NEEDED" = "DÉPÔT PUBLIC · AUCUN JETON NÉCESSAIRE";
@@ -1773,6 +1776,7 @@
 "Processed preview unavailable for this Windows codec." = "Aperçu traité indisponible pour ce codec Windows.";
 "Processed preview · export uses the original file." = "Aperçu traité · l’export utilise le fichier d’origine.";
 "Processed preview. Choose Original to edit areas." = "Aperçu traité. Choisissez Original pour modifier les zones.";
+"Processing media…" = "Traitement du média…";
 "Processing…" = "Traitement en cours…";
 "Protected media cannot be downloaded." = "Les médias protégés ne peuvent pas être téléchargés.";
 "Public repository · No token needed" = "Dépôt public · Aucun jeton nécessaire";
