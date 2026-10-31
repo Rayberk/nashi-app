@@ -137,7 +137,10 @@
 "ALL" = "TOUT";
 "ALL METADATA" = "TOUTES LES MÉTADONNÉES";
 "ALL SET. YOU’RE READY TO GO." = "TOUT EST EN PLACE. VOUS ÊTES PRÊT.";
+"ALLOW ACCESS" = "AUTORISER L’ACCÈS";
+"ALLOW FOLDER ACCESS" = "AUTORISER L’ACCÈS AU DOSSIER";
 "ALLOW FOLDER…" = "AUTORISER UN DOSSIER…";
+"ALLOW HOME FOLDER ACCESS" = "AUTORISER L’ACCÈS AU DOSSIER DE DÉPART";
 "ALLOW HOME FOLDER ACCESS…" = "AUTORISER L’ACCÈS AU DOSSIER DE DÉPART…";
 "ALLOW NASHI IN MACOS LOGIN ITEMS." = "AUTORISEZ NASHI DANS LES ÉLÉMENTS D’OUVERTURE DE MACOS.";
 "ALREADY AVAILABLE ON YOUR COMPUTER" = "DÉJÀ DISPONIBLES SUR VOTRE ORDINATEUR";
@@ -208,7 +211,10 @@
 "All set. You’re ready to go." = "Tout est en place. Vous êtes prêt.";
 "Allow %@ once to move and resize other apps’ windows." = "Autorisez %@ une fois pour déplacer et redimensionner les fenêtres d’autres apps.";
 "Allow %lld once to move and resize other apps’ windows." = "Autorisez %lld une fois pour déplacer et redimensionner les fenêtres d’autres apps.";
+"Allow Access" = "Autoriser l’accès";
+"Allow Folder Access" = "Autoriser l’accès au dossier";
 "Allow Folder…" = "Autoriser un dossier…";
+"Allow Home Folder Access" = "Autoriser l’accès au dossier de départ";
 "Allow Home Folder Access…" = "Autoriser l’accès au dossier de départ…";
 "Allow Nashi in macOS Login Items." = "Autorisez Nashi dans les éléments d’ouverture de macOS.";
 "Already available on your computer" = "Déjà disponibles sur votre ordinateur";
@@ -332,6 +338,7 @@
 "CHOOSE A FILE TO PREVIEW." = "CHOISISSEZ UN FICHIER À PRÉVISUALISER.";
 "CHOOSE A FINISHED VIDEO INSTEAD OF A LIVE OR UPCOMING STREAM." = "CHOISISSEZ UNE VIDÉO TERMINÉE PLUTÔT QU’UNE DIFFUSION EN DIRECT OU À VENIR.";
 "CHOOSE A FOLDER" = "CHOISIR UN DOSSIER";
+"CHOOSE A FOLDER WHERE NASHI MAY SAVE RESULTS. EVERY FOLDER INSIDE IT IS INCLUDED." = "CHOISISSEZ UN DOSSIER OÙ NASHI PEUT ENREGISTRER LES RÉSULTATS. TOUS LES DOSSIERS QU’IL CONTIENT SONT INCLUS.";
 "CHOOSE A HEX BACKGROUND COLOR, SUCH AS #FFFFFF OR #00FFFFFF." = "CHOISISSEZ UNE COULEUR D’ARRIÈRE-PLAN HEXADÉCIMALE, COMME #FFFFFF OU #00FFFFFF.";
 "CHOOSE A LARGER TARGET SIZE." = "CHOISISSEZ UNE TAILLE CIBLE PLUS GRANDE.";
 "CHOOSE A NONEMPTY IMAGE." = "CHOISISSEZ UNE IMAGE NON VIDE.";
@@ -394,6 +401,7 @@
 "CHOOSE VIDEO, AUDIO, THUMBNAIL OR IMAGES." = "CHOISISSEZ UNE VIDÉO, UN AUDIO, UNE MINIATURE OU DES IMAGES.";
 "CHOOSE VISUALIZATION IMAGE…" = "CHOISIR L’IMAGE DE VISUALISATION…";
 "CHOOSE WHAT YOUR FILE SHARES." = "CHOISISSEZ CE QUE VOTRE FICHIER PARTAGE.";
+"CHOOSE YOUR HOME FOLDER OR A FOLDER WHERE YOU SAVE FILES." = "CHOISISSEZ VOTRE DOSSIER DE DÉPART OU UN DOSSIER OÙ VOUS ENREGISTREZ VOS FICHIERS.";
 "CHOOSE ZIP, TAR OR GZIP." = "CHOISISSEZ ZIP, TAR OU GZIP.";
 "CLARITY" = "CLARTÉ";
 "CLEAR" = "EFFACER";
@@ -511,6 +519,7 @@
 "Choose a file to preview." = "Choisissez un fichier à prévisualiser.";
 "Choose a finished video instead of a live or upcoming stream." = "Choisissez une vidéo terminée plutôt qu’une diffusion en direct ou à venir.";
 "Choose a folder" = "Choisir un dossier";
+"Choose a folder where Nashi may save results. Every folder inside it is included." = "Choisissez un dossier où Nashi peut enregistrer les résultats. Tous les dossiers qu’il contient sont inclus.";
 "Choose a hex background color, such as #FFFFFF or #00FFFFFF." = "Choisissez une couleur d’arrière-plan hexadécimale, comme #FFFFFF ou #00FFFFFF.";
 "Choose a larger target size." = "Choisissez une taille cible plus grande.";
 "Choose a nonempty image." = "Choisissez une image non vide.";
@@ -563,6 +572,7 @@
 "Choose video, audio, thumbnail or images." = "Choisissez une vidéo, un audio, une miniature ou des images.";
 "Choose visualization image…" = "Choisir l’image de visualisation…";
 "Choose what your file shares." = "Choisissez ce que votre fichier partage.";
+"Choose your home folder or a folder where you save files." = "Choisissez votre dossier de départ ou un dossier où vous enregistrez vos fichiers.";
 "Clarity" = "Clarté";
 "Clear" = "Effacer";
 "Clear Float" = "Vider le Float";
