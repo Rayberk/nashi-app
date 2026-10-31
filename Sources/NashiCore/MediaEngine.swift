@@ -715,10 +715,10 @@ public enum MediaEngine {
         return ("-metadata", key)
     }
     private static func decimal(_ value: Double) -> String { String(format: "%.8f", locale: Locale(identifier: "en_US_POSIX"), value).replacingOccurrences(of: #"\.?0+$"#, with: "", options: .regularExpression) }
+    // ffprobe can print "inf" or "nan"; treat them as unknown, as JSON cannot encode them.
     private static func number(_ value: Any?) -> Double? {
-        if let n = value as? NSNumber { return n.doubleValue }
-        if let s = value as? String { return Double(s) }
-        return nil
+        let result = (value as? NSNumber)?.doubleValue ?? (value as? String).flatMap(Double.init)
+        return result.flatMap { $0.isFinite ? $0 : nil }
     }
     private static func integer(_ value: Any?) -> Int? { number(value).flatMap { $0.isFinite && $0 >= Double(Int.min) && $0 < Double(Int.max) ? Int($0) : nil } }
     private static func fraction(_ value: String?) -> Double? {
