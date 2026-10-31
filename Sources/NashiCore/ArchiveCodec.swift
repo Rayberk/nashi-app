@@ -44,7 +44,8 @@ enum ArchiveCodec {
             let status = a.readNext(reader, &entry)
             if status == 1 { break }
             try a.check(status, handle: reader)
-            guard let entry, let entryName = a.entryPath(entry).map({ String(cString: $0) }) ?? a.entryRawPath(entry).map(legacyName) else { throw NashiError.failed("The archive contains an unnamed entry.") }
+            // Only ZIP stores names in a DOS code page; other formats keep rejecting names they cannot decode.
+            guard let entry, let entryName = a.entryPath(entry).map({ String(cString: $0) }) ?? (a.format(reader) & 0xff0000 == 0x50000 ? a.entryRawPath(entry).map(legacyName) : nil) else { throw NashiError.failed("The archive contains an unnamed entry.") }
             var name = entryName
             if a.format(reader) == 0x90000 {
                 // A gzip stream can hold one ordinary file instead of a tar.
