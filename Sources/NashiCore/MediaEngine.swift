@@ -284,7 +284,9 @@ public enum MediaEngine {
             let clip = temp.appendingPathComponent("clip-\(index).mp4")
             var arguments = ["-i", input.path]
             if audio && !infos[index].hasAudio { arguments += ["-f", "lavfi", "-i", "anullsrc=r=48000:cl=stereo"] }
-            arguments += ["-map", "0:v:0", "-vf", "scale=\(width):\(height):force_original_aspect_ratio=decrease,pad=\(width):\(height):(ow-iw)/2:(oh-ih)/2,setsar=1,fps=\(decimal(fps)),setpts=PTS-STARTPTS"]
+            // Fitting keeps the stored width/height ratio and setsar=1 then drops the pixel aspect,
+            // so anamorphic clips are first scaled to square pixels to keep their display shape.
+            arguments += ["-map", "0:v:0", "-vf", "scale=trunc(iw*sar/2)*2:ih,setsar=1,scale=\(width):\(height):force_original_aspect_ratio=decrease,pad=\(width):\(height):(ow-iw)/2:(oh-ih)/2,setsar=1,fps=\(decimal(fps)),setpts=PTS-STARTPTS"]
             if audio { arguments += ["-map", infos[index].hasAudio ? "0:a:0" : "1:a:0", "-af", "aresample=48000,asetpts=PTS-STARTPTS", "-ac", "2", "-ar", "48000"] } else { arguments += ["-an"] }
             arguments += ["-t", decimal(infos[index].duration)] + videoEncoding("mp4", quality: options.quality)
             try render(arguments, to: clip, token: token, duration: infos[index].duration, progress: { value,_ in progress(OperationProgress.map(value, from: Double(index)/Double(inputs.count)*0.95, to: Double(index+1)/Double(inputs.count)*0.95),"Joining clip \(index+1) of \(inputs.count)…") })
