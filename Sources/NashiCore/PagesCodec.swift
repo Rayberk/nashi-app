@@ -281,6 +281,7 @@ private enum PagesDOCXReader {
                         if let fill = properties?.first("shd")?.attr("fill"), let color = color(fill) { cellModel["formatting"] = ["fill":["kind":"color","color":color]] }
                         cells.append(cellModel)
                         if span > 1 { for _ in 1..<span { cells.append(["text":""]) } }
+                        var extendsVertical = false
                         if let vertical = properties?.first("vMerge") {
                             if vertical.attr("val") == "restart" { continued[column] = (rowIndex,span) }
                             // A continuation narrower or wider than its restart
@@ -288,6 +289,7 @@ private enum PagesDOCXReader {
                             // swallowing or overlapping neighbouring cells.
                             else if let origin = activeVertical[column], origin.1 == span {
                                 continued[column] = origin
+                                extendsVertical = true
                                 if let index = merges.firstIndex(where: {$0["row"] == origin.0 && $0["column"] == column}) { merges[index]["rowCount"] = rowIndex - origin.0 + 1 }
                                 else { merges.append(["row":origin.0,"column":column,"rowCount":rowIndex-origin.0+1,"columnCount":origin.1]) }
                             }
@@ -303,7 +305,10 @@ private enum PagesDOCXReader {
                                 else { merges.append(["row":rowIndex,"column":anchor,"rowCount":1,"columnCount":column + span - anchor]) }
                             }
                         } else { horizontalAnchor = nil }
-                        if span > 1 && properties?.first("vMerge") == nil && !joinsHorizontal { merges.append(["row":rowIndex,"column":column,"rowCount":1,"columnCount":span]) }
+                        // A restart's horizontal span is recorded now and grows
+                        // downward if continuations follow; it must not depend
+                        // on whether one does.
+                        if span > 1 && !extendsVertical && !joinsHorizontal { merges.append(["row":rowIndex,"column":column,"rowCount":1,"columnCount":span]) }
                         column += span
                     }
                     activeVertical = continued
