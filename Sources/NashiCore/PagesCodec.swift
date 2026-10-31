@@ -23,7 +23,8 @@ enum PagesCodec {
 
     static func model(_ input: URL, token: CancellationToken) throws -> [String: Any] {
         try token.check()
-        guard let size = try input.resourceValues(forKeys: [.fileSizeKey]).fileSize, size <= 200_000_000 else { throw NashiError.invalidInput("This Pages file is too large or is not a regular document file.") }
+        // A symlink's own size is a few bytes; the cap applies to the Pages file it points to.
+        guard let size = try input.resolvingSymlinksInPath().resourceValues(forKeys: [.fileSizeKey]).fileSize, size <= 200_000_000 else { throw NashiError.invalidInput("This Pages file is too large or is not a regular document file.") }
         let data = try Data(contentsOf: input)
         guard data.count > 16, data.starts(with: [0x50, 0x4b]) else { throw NashiError.invalidInput("This is not a modern Pages document.") }
         let engine = try Runtime(token: token)
