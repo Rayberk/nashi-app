@@ -75,6 +75,7 @@ struct SettingsView:View {
                                 .foregroundStyle(section==item ? NashiPalette.forest:Color.secondary)
                                 .padding(.horizontal,13).padding(.vertical,12)
                                 .background(section==item ? NashiPalette.sage:Color.clear,in:RoundedRectangle(cornerRadius:12))
+                                .contentShape(RoundedRectangle(cornerRadius:12))
                         }.buttonStyle(.plain).accessibilityAddTraits(section==item ? .isSelected:[])
                     }
                 }

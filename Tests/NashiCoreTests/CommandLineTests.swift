@@ -58,6 +58,30 @@ final class CommandLineTests:XCTestCase {
             XCTAssertNotEqual(NashiCommandLine.run(arguments:["nashi-cli","inspect",root.appendingPathComponent(name).path]),0,name)
         }
     }
+    func testUnknownOptionKeysFailWithoutWritingOutput() throws {
+        let root=try OutputFiles.temporaryDirectory();defer{try? FileManager.default.removeItem(at:root)}
+        let input=root.appendingPathComponent("clip.srt"),destination=root.appendingPathComponent("Out")
+        try FileManager.default.createDirectory(at:destination,withIntermediateDirectories:true)
+        try Data("1\n00:00:00,125 --> 00:00:01,250\nHi\n".utf8).write(to:input)
+        func json(_ object:[String:Any]) throws -> String { String(decoding:try JSONSerialization.data(withJSONObject:object),as:UTF8.self) }
+        for options in [["outputDirectry":destination.path],["outputDirectory":destination.path,"imageAdjustments":["blurr":2]]] as [[String:Any]] {
+            XCTAssertEqual(NashiCommandLine.run(arguments:["nashi-cli","convert","vtt",input.path,"--options",try json(options)]),1)
+        }
+        XCTAssertEqual(try FileManager.default.contentsOfDirectory(atPath:root.path).sorted(),["Out","clip.srt"])
+        XCTAssertEqual(try FileManager.default.contentsOfDirectory(atPath:destination.path),[])
+        XCTAssertEqual(NashiCommandLine.run(arguments:["nashi-cli","convert","vtt",input.path,"--options",try json(["outputDirectory":destination.path,"width":NSNull(),"imageAdjustments":["blur":2]])]),0)
+        XCTAssertEqual(try FileManager.default.contentsOfDirectory(atPath:destination.path),["clip.vtt"])
+    }
+    func testRelativeOutputDirectoryWithColonIsAPath() throws {
+        let root=try OutputFiles.temporaryDirectory();defer{try? FileManager.default.removeItem(at:root)}
+        let files=FileManager.default,previous=files.currentDirectoryPath
+        XCTAssertTrue(files.changeCurrentDirectoryPath(root.path));defer{_=files.changeCurrentDirectoryPath(previous)}
+        try Data("1\n00:00:00,125 --> 00:00:01,250\nHi\n".utf8).write(to:root.appendingPathComponent("clip.srt"))
+        // Finder shows ':' in a folder name as '/', so "Q3/2024" is stored as "Q3:2024".
+        try files.createDirectory(at:root.appendingPathComponent("Q3:2024"),withIntermediateDirectories:true)
+        XCTAssertEqual(NashiCommandLine.run(arguments:["nashi-cli","convert","vtt","clip.srt","--options","{\"outputDirectory\":\"Q3:2024\"}"]),0)
+        XCTAssertEqual(try files.contentsOfDirectory(atPath:root.appendingPathComponent("Q3:2024").path),["clip.vtt"])
+    }
     func testUsageGoesToStandardErrorAndListsEveryCommand() throws {
         let root=try OutputFiles.temporaryDirectory();defer{try? FileManager.default.removeItem(at:root)}
         let out=root.appendingPathComponent("out"),err=root.appendingPathComponent("err")
