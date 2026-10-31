@@ -28,6 +28,8 @@ do {
     if let i=paths.firstIndex(of:"--options"),i+1<paths.count {
         // Missing keys keep defaults via a JSON overlay encoded from defaults.
         guard var supplied=try JSONSerialization.jsonObject(with:Data(paths[i+1].utf8)) as? [String:Any] else { throw NashiError.invalidInput("Options must be a JSON object.") }
+        // The parser turns a too-large negative number into -infinity, which re-encoding raises on.
+        guard JSONSerialization.isValidJSONObject(supplied) else { throw NashiError.invalidInput("Options must contain only finite numbers.") }
         normalizeFileURLs(&supplied)
         var defaults=try JSONSerialization.jsonObject(with:JSONEncoder().encode(options)) as! [String:Any]
         let optionalDefaults:[String:Data]=[
@@ -45,7 +47,12 @@ do {
     if args[1]=="convert" { operation = .convert(args[2]) }
     else if args[1]=="tool",let kind=ToolKind(rawValue:args[2]) { operation = .tool(kind) }
     else { throw NashiError.invalidInput("Unknown operation.") }
-    let outputs=try ConversionEngine.run(ConversionRequest(inputs:paths.map{URL(fileURLWithPath:$0)},operation:operation,options:options))
+    // Ctrl-C, a closed terminal or a supervisor's SIGTERM cancels the job, so its tools are
+    // stopped and its hidden staging folder is removed instead of left in the output folder.
+    let interruption=Interruption();defer { interruption.stop() }
+    let outputs:[URL]
+    do { outputs=try ConversionEngine.run(ConversionRequest(inputs:paths.map{URL(fileURLWithPath:$0)},operation:operation,options:options),token:interruption.token) }
+    catch where interruption.signal != 0 { fputs("Interrupted. No files were saved.\n",stderr);return 128+interruption.signal }
     if jsonOutput { print(String(decoding:try JSONEncoder().encode(outputs.map(\.path)),as:UTF8.self)) }
     else { for url in outputs { print(url.path) } }
     return 0
@@ -60,6 +67,31 @@ do {
         }
         return nil
     }
+    /// Turns SIGINT, SIGTERM and SIGHUP into cancellation for one job. A signal the caller
+    /// already ignores (a background job of a script, nohup) stays ignored.
+    private final class Interruption:@unchecked Sendable {
+        let token=CancellationToken()
+        private let lock=NSLock()
+        private var received:Int32=0
+        private var handled:[(Int32,sigaction,DispatchSourceSignal)]=[]
+        init() {
+            for value in [SIGINT,SIGTERM,SIGHUP] {
+                var current=sigaction();sigaction(value,nil,&current)
+                guard unsafeBitCast(current.__sigaction_u.__sa_handler,to:Int.self) != unsafeBitCast(SIG_IGN,to:Int.self) else { continue }
+                let source=DispatchSource.makeSignalSource(signal:value,queue:.global())
+                source.setEventHandler { [self] in
+                    lock.lock();if received==0 { received=value };lock.unlock()
+                    token.cancel()
+                    // Children that do not poll the token stop too, as when the app quits.
+                    ProcessRunner.terminateAll()
+                }
+                source.resume();Darwin.signal(value,SIG_IGN);handled.append((value,current,source))
+            }
+        }
+        var signal:Int32 { lock.lock();defer { lock.unlock() };return received }
+        func stop() { for (value,previous,source) in handled { var previous=previous;sigaction(value,&previous,nil);source.cancel() };handled=[] }
+    }
+
     private static func mergeDefaults(_ defaults:[String:Any],with supplied:[String:Any])->[String:Any] {
         defaults.merging(supplied) { old,new in
             if let old=old as? [String:Any],let new=new as? [String:Any] { return mergeDefaults(old,with:new) }
