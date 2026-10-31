@@ -389,6 +389,7 @@
 "CHOOSE A VALID START AND END WITHIN THE FILE’S DURATION." = "DOSYANIN SÜRESİ İÇİNDE GEÇERLİ BİR BAŞLANGIÇ VE BİTİŞ SEÇ.";
 "CHOOSE A VALID TIME RANGE." = "GEÇERLİ BİR ZAMAN ARALIĞI SEÇ.";
 "CHOOSE AN EXISTING MEDIA FILE." = "VAR OLAN BİR MEDYA DOSYASI SEÇ.";
+"CHOOSE AN IMAGE OR PDF." = "BİR GÖRSEL VEYA PDF SEÇ.";
 "CHOOSE AN IMAGE." = "BİR GÖRSEL SEÇ.";
 "CHOOSE AN INPUT FORMAT TO SEE ITS AVAILABLE OUTPUTS." = "KULLANILABİLİR ÇIKTILARINI GÖRMEK İÇİN BİR GİRDİ BİÇİMİ SEÇ.";
 "CHOOSE AN INSTAGRAM PHOTO POST LINK." = "BİR INSTAGRAM FOTOĞRAF GÖNDERİSİ BAĞLANTISI SEÇ.";
@@ -495,6 +496,7 @@
 "COULD NOT COPY THE SELECTED FILE PATHS." = "SEÇİLİ DOSYA YOLLARI KOPYALANAMADI.";
 "COULD NOT COPY THE SELECTED FILES." = "SEÇİLİ DOSYALAR KOPYALANAMADI.";
 "COULD NOT ORIENT IMAGE." = "GÖRSELİN YÖNÜ DÜZELTİLEMEDİ.";
+"COULD NOT READ THIS PDF." = "BU PDF OKUNAMADI.";
 "COULD NOT RENDER THE REDACTION." = "SANSÜR UYGULANAMADI.";
 "COULDN’T CHECK FOR UPDATES" = "GÜNCELLEMELER DENETLENEMEDİ";
 "COULDN’T FINISH" = "İŞLEM TAMAMLANAMADI";
@@ -584,6 +586,7 @@
 "Choose a valid time range." = "Geçerli bir zaman aralığı seç.";
 "Choose an Instagram photo post link." = "Bir Instagram fotoğraf gönderisi bağlantısı seç.";
 "Choose an existing media file." = "Var olan bir medya dosyası seç.";
+"Choose an image or PDF." = "Bir görsel veya PDF seç.";
 "Choose an image." = "Bir görsel seç.";
 "Choose an input format to see its available outputs." = "Kullanılabilir çıktılarını görmek için bir girdi biçimi seç.";
 "Choose annotation image…" = "İşaret görseli seç…";
@@ -701,6 +704,9 @@
 "Could not open %@." = "%@ açılamadı.";
 "Could not open %lld." = "%lld açılamadı.";
 "Could not orient image." = "Görselin yönü düzeltilemedi.";
+"Could not read this PDF." = "Bu PDF okunamadı.";
+"Could not render PDF page %@." = "PDF'nin %@. sayfası işlenemedi.";
+"Could not render PDF page %lld." = "PDF'nin %lld. sayfası işlenemedi.";
 "Could not render the redaction." = "Sansür uygulanamadı.";
 "Couldn’t check for updates" = "Güncellemeler denetlenemedi";
 "Couldn’t finish" = "İşlem tamamlanamadı";
@@ -2219,6 +2225,7 @@
 "THIS FILE HAS NO VIDEO STREAM." = "BU DOSYADA GÖRÜNTÜ YOK.";
 "THIS FORMAT CAN BE IMPORTED. CHOOSE AN OUTPUT FORMAT IN THE SIDEBAR TO CONFIGURE ITS DEFAULTS." = "BU BİÇİM İÇE AKTARILABİLİR. VARSAYILANLARI AYARLAMAK İÇİN KENAR ÇUBUĞUNDAN BİR ÇIKTI BİÇİMİ SEÇ.";
 "THIS FORMAT USES ITS ORIGINAL DOCUMENT STRUCTURE. NO EXPORT DEFAULTS ARE NEEDED." = "BU BİÇİM ORİJİNAL BELGE YAPISINI KULLANIR. DIŞA AKTARMA TERCİHİ GEREKMEZ.";
+"THIS IMAGE COULD NOT BE DECODED." = "BU GÖRSELİN KODU ÇÖZÜLEMEDİ.";
 "THIS IMAGE EXCEEDS 100 MP." = "BU GÖRSEL 100 MP'Yİ AŞIYOR.";
 "THIS IMAGE EXCEEDS 200 MB." = "BU GÖRSEL 200 MB'I AŞIYOR.";
 "THIS IMAGE IS TOO LARGE (100 MP LIMIT)." = "BU GÖRSEL ÇOK BÜYÜK (SINIR 100 MP).";
@@ -2230,6 +2237,7 @@
 "THIS PDF HAS FORM FIELDS OR ATTACHMENTS THAT METADATA CLEANUP CANNOT KEEP. NO COPY WAS EXPORTED." = "BU PDF'DE META VERİ TEMİZLİĞİ SIRASINDA KORUNAMAYAN FORM ALANLARI YA DA EKLER VAR. KOPYA DIŞA AKTARILMADI.";
 "THIS PDF IS PASSWORD PROTECTED. ENTER ITS PASSWORD." = "BU PDF PAROLAYLA KORUNUYOR. PAROLASINI GİR.";
 "THIS PDF PAGE COULD NOT BE READ." = "BU PDF SAYFASI OKUNAMADI.";
+"THIS PDF REQUIRES A VALID PASSWORD." = "BU PDF İÇİN GEÇERLİ BİR PAROLA GEREKİYOR.";
 "THIS POST CONTAINS VIDEOS. USE ITS REEL LINK TO DOWNLOAD VIDEO." = "BU GÖNDERİDE VİDEO VAR. VİDEOYU İNDİRMEK İÇİN REEL BAĞLANTISINI KULLAN.";
 "THIS REPOSITORY IS PRIVATE" = "BU DEPO GİZLİ";
 "THIS RTFD ATTACHMENT SYNTAX COULD NOT BE PRESERVED." = "BU RTFD EKİNİN YAPISI KORUNAMADI.";
@@ -2325,6 +2333,7 @@
 "This PDF has form fields or attachments that metadata cleanup cannot keep. No copy was exported." = "Bu PDF'de meta veri temizliği sırasında korunamayan form alanları ya da ekler var. Kopya dışa aktarılmadı.";
 "This PDF is password protected. Enter its password." = "Bu PDF parolayla korunuyor. Parolasını gir.";
 "This PDF page could not be read." = "Bu PDF sayfası okunamadı.";
+"This PDF requires a valid password." = "Bu PDF için geçerli bir parola gerekiyor.";
 "This RTFD attachment syntax could not be preserved." = "Bu RTFD ekinin yapısı korunamadı.";
 "This Windows codec cannot play directly. Set up media tools to create a local preview." = "Bu Windows codec'i doğrudan oynatılamıyor. Yerel önizleme oluşturmak için medya araçlarını kur.";
 "This conversion is not available for %@." = "%@ için bu dönüştürme kullanılamıyor.";
@@ -2336,6 +2345,7 @@
 "This file has no video stream." = "Bu dosyada görüntü yok.";
 "This format can be imported. Choose an output format in the sidebar to configure its defaults." = "Bu biçim içe aktarılabilir. Varsayılanları ayarlamak için kenar çubuğundan bir çıktı biçimi seç.";
 "This format uses its original document structure. No export defaults are needed." = "Bu biçim orijinal belge yapısını kullanır. Dışa aktarma tercihi gerekmez.";
+"This image could not be decoded." = "Bu görselin kodu çözülemedi.";
 "This image exceeds 100 MP." = "Bu görsel 100 MP'yi aşıyor.";
 "This image exceeds 200 MB." = "Bu görsel 200 MB'ı aşıyor.";
 "This image is too large (100 MP limit)." = "Bu görsel çok büyük (sınır 100 MP).";
