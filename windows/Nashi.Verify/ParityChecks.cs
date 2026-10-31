@@ -7,6 +7,18 @@ internal static class ParityChecks
 {
     public static void Run(Action<bool,string> check,string root)
     {
+        var characterDefaults=Path.Combine(root,"Character style defaults.docx");using(var archive=ZipFile.Open(characterDefaults,ZipArchiveMode.Create))
+        {
+            void Part(string name,string text){using var writer=new StreamWriter(archive.CreateEntry(name).Open(),new UTF8Encoding(false));writer.Write(text);}
+            Part("word/styles.xml","<w:styles xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><w:docDefaults><w:rPrDefault><w:rPr><w:highlight w:val=\"yellow\"/><w:sz w:val=\"20\"/></w:rPr></w:rPrDefault></w:docDefaults><w:style w:type=\"paragraph\" w:styleId=\"Body\"><w:rPr><w:highlight w:val=\"cyan\"/><w:sz w:val=\"44\"/></w:rPr></w:style><w:style w:type=\"character\" w:styleId=\"Parent\"><w:rPr><w:i/></w:rPr></w:style><w:style w:type=\"character\" w:styleId=\"Emphasis\"><w:basedOn w:val=\"Parent\"/></w:style></w:styles>");
+            Part("word/document.xml","<w:document xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><w:body><w:p><w:pPr><w:pStyle w:val=\"Body\"/></w:pPr><w:r><w:rPr><w:rStyle w:val=\"Emphasis\"/></w:rPr><w:t>Inherited cyan</w:t></w:r><w:r><w:rPr><w:rStyle w:val=\"Missing\"/></w:rPr><w:t>Unknown style</w:t></w:r><w:r><w:rPr><w:rStyle w:val=\"Emphasis\"/><w:highlight w:val=\"green\"/></w:rPr><w:t>Direct green</w:t></w:r></w:p></w:body></w:document>");
+        }
+        using(var model=System.Text.Json.JsonDocument.Parse(System.Text.Json.JsonSerializer.Serialize(OfficeDocuments.ReadDocx(characterDefaults))))
+        {
+            var runs=model.RootElement.GetProperty("blocks")[0].GetProperty("runs");
+            foreach(var index in new[]{0,1}){var character=runs[index].GetProperty("character");var color=character.GetProperty("backgroundColor");check(color.GetProperty("r").GetDouble()==0&&color.GetProperty("g").GetDouble()==1&&color.GetProperty("b").GetDouble()==1&&character.GetProperty("fontSize").GetDouble()==22,"A character style reapplied document defaults over paragraph formatting");}
+            check(runs[0].GetProperty("character").GetProperty("italic").GetBoolean()&&runs[2].GetProperty("character").GetProperty("backgroundColor").GetProperty("b").GetDouble()==0,"Character style inheritance or direct highlighting was lost");
+        }
         check(FeatureCatalog.Conversions.Count==46&&FeatureCatalog.ToolNames.Count==27,"Mac/Windows catalog count diverged");
         check(FeatureCatalog.Formats(["a.htm","b.html"]).SequenceEqual(new[]{"pdf"})&&FeatureCatalog.Tools(["a.html"]).Length==0,"HTML inputs lost their PDF route");
         check(FeatureCatalog.Formats(["a.jpeg","b.png"]).Contains("webp"),"Mixed image conversion intersection failed");
@@ -106,6 +118,31 @@ internal static class ParityChecks
             {File.WriteAllBytes(streamed,bytes);LegacyTextCodec.ToUtf8Async(streamed,normalized).GetAwaiter().GetResult();check(LegacyTextCodec.Decode(bytes)==table&&File.ReadAllText(normalized)==table&&File.ReadAllBytes(normalized).Length==Encoding.UTF8.GetByteCount(table),"Streamed text normalization did not match Decode");}
         }
         finally{System.Globalization.CultureInfo.CurrentCulture=culture;LegacyTextCodec.SystemCodePages=codePages;}
+        foreach(var (color,rgb) in new[]{("black","0,0,0"),("blue","0,0,255"),("cyan","0,255,255"),("green","0,255,0"),("magenta","255,0,255"),("red","255,0,0"),("yellow","255,255,0"),("white","255,255,255"),("darkBlue","0,0,128"),("darkCyan","0,128,128"),("darkGreen","0,128,0"),("darkMagenta","128,0,128"),("darkRed","128,0,0"),("darkYellow","128,128,0"),("darkGray","128,128,128"),("lightGray","192,192,192")})
+        {
+            var highlighted=Path.Combine(root,"Highlight "+color+".docx");
+            using(var archive=ZipFile.Open(highlighted,ZipArchiveMode.Create))
+            {
+                using var writer=new StreamWriter(archive.CreateEntry("word/document.xml").Open(),new UTF8Encoding(false));
+                writer.Write("<w:document xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><w:body><w:p><w:r><w:rPr><w:highlight w:val=\""+color+"\"/></w:rPr><w:t>Highlighted text</w:t></w:r></w:p></w:body></w:document>");
+            }
+            using var model=System.Text.Json.JsonDocument.Parse(System.Text.Json.JsonSerializer.Serialize(OfficeDocuments.ReadDocx(highlighted)));
+            check(OfficeDocuments.ModelHtml(model.RootElement).Contains("background-color:rgb("+rgb+")"),"Word highlight color '"+color+"' was lost in the interchange");
+        }
+        var clearedHighlight=Path.Combine(root,"Cleared highlight.docx");using(var archive=ZipFile.Open(clearedHighlight,ZipArchiveMode.Create))
+        {
+            void Part(string name,string text){using var writer=new StreamWriter(archive.CreateEntry(name).Open(),new UTF8Encoding(false));writer.Write(text);}
+            Part("word/styles.xml","<w:styles xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><w:style w:type=\"paragraph\" w:styleId=\"Marked\"><w:rPr><w:highlight w:val=\"yellow\"/></w:rPr></w:style></w:styles>");
+            Part("word/document.xml","<w:document xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><w:body><w:p><w:pPr><w:pStyle w:val=\"Marked\"/></w:pPr><w:r><w:t>Inherited</w:t></w:r><w:r><w:rPr><w:highlight w:val=\"none\"/></w:rPr><w:t>Cleared</w:t></w:r></w:p></w:body></w:document>");
+        }
+        using(var model=System.Text.Json.JsonDocument.Parse(System.Text.Json.JsonSerializer.Serialize(OfficeDocuments.ReadDocx(clearedHighlight))))
+        {
+            var runs=model.RootElement.GetProperty("blocks")[0].GetProperty("runs");var inherited=runs[0].GetProperty("character").GetProperty("backgroundColor");
+            check(inherited.GetProperty("r").GetDouble()==1&&inherited.GetProperty("g").GetDouble()==1&&inherited.GetProperty("b").GetDouble()==0,"A Word style's highlight was not inherited");
+            check(runs[1].GetProperty("character").GetProperty("backgroundColor").ValueKind==System.Text.Json.JsonValueKind.Null,"Explicitly cleared Word highlighting remained inherited");
+            var paragraph=System.Xml.Linq.XDocument.Parse(OfficeDocuments.ModelHtml(model.RootElement)).Descendants("p").Single();var spans=paragraph.Elements("span").ToArray();
+            check(!paragraph.Attribute("style")!.Value.Contains("background-color:")&&spans[0].Attribute("style")!.Value.Contains("background-color:rgb(255,255,0)")&&!spans[1].Attribute("style")!.Value.Contains("background-color:"),"Explicitly cleared Word highlighting remained visible behind the run");
+        }
         var clipping=LegacyTextCodec.Clipping(Encoding.UTF8.GetBytes("<?xml version=\"1.0\"?><plist><dict><key>public.utf8-plain-text</key><data>VMO8cmvDp2U=</data></dict></plist>"));check(Encoding.UTF8.GetString(clipping.Bytes)=="Türkçe","Text clipping plist lost content");
         var binary=LegacyTextCodec.Clipping(System.Convert.FromBase64String("YnBsaXN0MDDRAQJfEBZwdWJsaWMudXRmOC1wbGFpbi10ZXh0aQBUAPwAcgBrAOcAZQAg2DzfUAgLJAAAAAAAAAEBAAAAAAAAAAMAAAAAAAAAAAAAAAAAAAA3"));check(Encoding.UTF8.GetString(binary.Bytes)=="Türkçe 🍐","Binary text clipping lost Unicode");
         var docx=Path.Combine(root,"Styled.docx");using(var archive=ZipFile.Open(docx,ZipArchiveMode.Create))
