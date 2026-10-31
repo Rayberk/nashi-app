@@ -126,6 +126,7 @@
 "A SPLIT POINT LIES OUTSIDE THE VIDEO." = "A SPLIT POINT LIES OUTSIDE THE VIDEO.";
 "A SUBTITLE CUE ENDS BEFORE IT STARTS." = "A SUBTITLE CUE ENDS BEFORE IT STARTS.";
 "A TABLE CELL SPAN IS INVALID OR EXCEEDS 1,024 COLUMNS." = "A TABLE CELL SPAN IS INVALID OR EXCEEDS 1,024 COLUMNS.";
+"A WAVEFORM REQUIRES A FINITE MEDIA DURATION." = "A WAVEFORM REQUIRES A FINITE MEDIA DURATION.";
 "A discarded clip is outside the range." = "A discarded clip is outside the range.";
 "A few small preferences. A smoother everyday." = "A few small preferences. A smoother everyday.";
 "A few tools. More possibilities." = "A few tools. More possibilities.";
@@ -150,6 +151,7 @@
 "A split point lies outside the video." = "A split point lies outside the video.";
 "A subtitle cue ends before it starts." = "A subtitle cue ends before it starts.";
 "A table cell span is invalid or exceeds 1,024 columns." = "A table cell span is invalid or exceeds 1,024 columns.";
+"A waveform requires a finite media duration." = "A waveform requires a finite media duration.";
 "ABOUT" = "ABOUT";
 "ACCESSIBILITY" = "ACCESSIBILITY";
 "ACTIONS" = "ACTIONS";
@@ -404,6 +406,7 @@
 "CHOOSE A POSITIVE TARGET SIZE OR A REDUCTION BETWEEN 0 AND 100%." = "CHOOSE A POSITIVE TARGET SIZE OR A REDUCTION BETWEEN 0 AND 100%.";
 "CHOOSE A READABLE LOCAL MEDIA FILE." = "CHOOSE A READABLE LOCAL MEDIA FILE.";
 "CHOOSE A RECTANGLE INSIDE THE VIDEO." = "CHOOSE A RECTANGLE INSIDE THE VIDEO.";
+"CHOOSE A STILL IMAGE FOR THE VIDEO." = "CHOOSE A STILL IMAGE FOR THE VIDEO.";
 "CHOOSE A SUPPORTED MAXIMUM VIDEO HEIGHT." = "CHOOSE A SUPPORTED MAXIMUM VIDEO HEIGHT.";
 "CHOOSE A TARGET OF AT LEAST 2 KB." = "CHOOSE A TARGET OF AT LEAST 2 KB.";
 "CHOOSE A VALID RANGE FIRST." = "CHOOSE A VALID RANGE FIRST.";
@@ -519,6 +522,7 @@
 "COULD NOT COPY THE QR CODES." = "COULD NOT COPY THE QR CODES.";
 "COULD NOT COPY THE SELECTED FILE PATHS." = "COULD NOT COPY THE SELECTED FILE PATHS.";
 "COULD NOT COPY THE SELECTED FILES." = "COULD NOT COPY THE SELECTED FILES.";
+"COULD NOT DECODE THE AUDIO WAVEFORM." = "COULD NOT DECODE THE AUDIO WAVEFORM.";
 "COULD NOT ORIENT IMAGE." = "COULD NOT ORIENT IMAGE.";
 "COULD NOT READ THIS PDF." = "COULD NOT READ THIS PDF.";
 "COULD NOT RENDER THE REDACTION." = "COULD NOT RENDER THE REDACTION.";
@@ -602,6 +606,7 @@
 "Choose a positive target size or a reduction between 0 and 100%." = "Choose a positive target size or a reduction between 0 and 100%.";
 "Choose a readable local media file." = "Choose a readable local media file.";
 "Choose a rectangle inside the video." = "Choose a rectangle inside the video.";
+"Choose a still image for the video." = "Choose a still image for the video.";
 "Choose a supported maximum video height." = "Choose a supported maximum video height.";
 "Choose a target of at least 2 KB." = "Choose a target of at least 2 KB.";
 "Choose a valid range first." = "Choose a valid range first.";
@@ -727,6 +732,7 @@
 "Could not copy the QR codes." = "Could not copy the QR codes.";
 "Could not copy the selected file paths." = "Could not copy the selected file paths.";
 "Could not copy the selected files." = "Could not copy the selected files.";
+"Could not decode the audio waveform." = "Could not decode the audio waveform.";
 "Could not open %@." = "Could not open %@.";
 "Could not open %lld." = "Could not open %lld.";
 "Could not orient image." = "Could not orient image.";
@@ -1339,6 +1345,7 @@
 "Local by design · MIT source\nVersion %lld" = "Local by design · MIT source\nVersion %lld";
 "Looking for little squares…" = "Looking for little squares…";
 "Loudness range" = "Loudness range";
+"MACOS COULD NOT OPEN THE GENERATED MEDIA PREVIEW." = "MACOS COULD NOT OPEN THE GENERATED MEDIA PREVIEW.";
 "MACOS REDUCE MOTION IS ON. NASHI KEEPS MOTION OFF." = "MACOS REDUCE MOTION IS ON. NASHI KEEPS MOTION OFF.";
 "MADE FOR YOUR MAC" = "MADE FOR YOUR MAC";
 "MAGNIFIER" = "MAGNIFIER";
@@ -2560,6 +2567,7 @@
 "VIEW RELEASES" = "VIEW RELEASES";
 "VIGNETTE" = "VIGNETTE";
 "VISUALIZATION" = "VISUALIZATION";
+"VISUALIZATION DIMENSIONS MUST BE BETWEEN 16 AND 8,192 PIXELS." = "VISUALIZATION DIMENSIONS MUST BE BETWEEN 16 AND 8,192 PIXELS.";
 "Value" = "Value";
 "Verifying update signature…" = "Verifying update signature…";
 "Version %@" = "Version %@";
@@ -2579,6 +2587,7 @@
 "View releases" = "View releases";
 "Vignette" = "Vignette";
 "Visualization" = "Visualization";
+"Visualization dimensions must be between 16 and 8,192 pixels." = "Visualization dimensions must be between 16 and 8,192 pixels.";
 "WAIT FOR THE PROCESSED PREVIEW TO FINISH BEFORE RESETTING." = "WAIT FOR THE PROCESSED PREVIEW TO FINISH BEFORE RESETTING.";
 "WAVEFORM" = "WAVEFORM";
 "WELCOME TO NASHI" = "WELCOME TO NASHI";
@@ -2654,6 +2663,7 @@
 "ZIP REGULAR FILES AND FOLDERS WITHOUT LINKS (10,000 ITEM LIMIT)." = "ZIP REGULAR FILES AND FOLDERS WITHOUT LINKS (10,000 ITEM LIMIT).";
 "Zip regular files and folders without links (10,000 item limit)." = "Zip regular files and folders without links (10,000 item limit).";
 "macOS Reduce Motion is on. Nashi keeps motion off." = "macOS Reduce Motion is on. Nashi keeps motion off.";
+"macOS could not open the generated media preview." = "macOS could not open the generated media preview.";
 "owner/repository or GitHub URL" = "owner/repository or GitHub URL";
 "←/→ FILES · MEDIA: SPACE PLAY/PAUSE, ←/→ 1S, ALT+←/→ FILES · ESC CLOSES" = "←/→ FILES · MEDIA: SPACE PLAY/PAUSE, ←/→ 1S, ALT+←/→ FILES · ESC CLOSES";
 "←/→ FILES · MEDIA: SPACE PLAY/PAUSE, ←/→ 1S, ⌥←/→ FILES · ESC CLOSES" = "←/→ FILES · MEDIA: SPACE PLAY/PAUSE, ←/→ 1S, ⌥←/→ FILES · ESC CLOSES";
