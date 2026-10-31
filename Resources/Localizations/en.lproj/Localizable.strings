@@ -366,6 +366,7 @@
 "CHOOSE A BACKGROUND IMAGE." = "CHOOSE A BACKGROUND IMAGE.";
 "CHOOSE A CANVAS WITHIN 100 MP AND 30,000 PIXELS." = "CHOOSE A CANVAS WITHIN 100 MP AND 30,000 PIXELS.";
 "CHOOSE A COMPLETE RTFD FOLDER CONTAINING TXT.RTF." = "CHOOSE A COMPLETE RTFD FOLDER CONTAINING TXT.RTF.";
+"CHOOSE A CROP RECTANGLE." = "CHOOSE A CROP RECTANGLE.";
 "CHOOSE A DESTINATION OUTSIDE THE FOLDER BEING MOVED." = "CHOOSE A DESTINATION OUTSIDE THE FOLDER BEING MOVED.";
 "CHOOSE A FILE TO PREVIEW." = "CHOOSE A FILE TO PREVIEW.";
 "CHOOSE A FINISHED VIDEO INSTEAD OF A LIVE OR UPCOMING STREAM." = "CHOOSE A FINISHED VIDEO INSTEAD OF A LIVE OR UPCOMING STREAM.";
@@ -506,8 +507,10 @@
 "CREATED" = "CREATED";
 "CROP" = "CROP";
 "CROP AREA" = "CROP AREA";
+"CROP COORDINATES MUST BE FINITE." = "CROP COORDINATES MUST BE FINITE.";
 "CROP IMAGE" = "CROP IMAGE";
 "CROP IMAGE · NASHI" = "CROP IMAGE · NASHI";
+"CROP ORIGINS MUST BE NONNEGATIVE AND DIMENSIONS AT LEAST 1 × 1 PIXEL." = "CROP ORIGINS MUST BE NONNEGATIVE AND DIMENSIONS AT LEAST 1 × 1 PIXEL.";
 "CROP VIDEO" = "CROP VIDEO";
 "CTRL+O  CHOOSE FILES\nCTRL+V  PASTE FILES, TEXT, AN IMAGE OR LINK\nCTRL+SPACE / ENTER  OPEN TOOLS\nCTRL+1 / CTRL+2  HOME / LIBRARY\nCTRL+F  FIND IN LIBRARY\nCTRL+SHIFT+D  USE A COPIED DOWNLOAD LINK\nCTRL+U  CHECK FOR UPDATES\n\nWHEEL: ARROWS / TAB TO CHOOSE, ENTER TO OPEN, ESC TO CLOSE\nMEDIA: SPACE PLAY/PAUSE, ←/→ 1 SECOND, SHIFT+←/→ 1/30S, I/O SET RANGE\nCROP: DRAG, SHIFT LOCKS RATIO, ENTER SAVES\nEDITING TEXT: NORMAL PASTE AND ARROW KEYS ARE PRESERVED." = "CTRL+O  CHOOSE FILES\nCTRL+V  PASTE FILES, TEXT, AN IMAGE OR LINK\nCTRL+SPACE / ENTER  OPEN TOOLS\nCTRL+1 / CTRL+2  HOME / LIBRARY\nCTRL+F  FIND IN LIBRARY\nCTRL+SHIFT+D  USE A COPIED DOWNLOAD LINK\nCTRL+U  CHECK FOR UPDATES\n\nWHEEL: ARROWS / TAB TO CHOOSE, ENTER TO OPEN, ESC TO CLOSE\nMEDIA: SPACE PLAY/PAUSE, ←/→ 1 SECOND, SHIFT+←/→ 1/30S, I/O SET RANGE\nCROP: DRAG, SHIFT LOCKS RATIO, ENTER SAVES\nEDITING TEXT: NORMAL PASTE AND ARROW KEYS ARE PRESERVED.";
 "CTRL+O  CHOOSE FILES\nCTRL+V  PASTE FILES, TEXT, AN IMAGE OR LINK\nCTRL+SPACE / ENTER  OPEN TOOLS AND CONVERSIONS\nDELETE  REMOVE SELECTED FILES FROM NASHI\nCTRL+1 / CTRL+2  HOME / LIBRARY\nCTRL+F  FIND IN LIBRARY\nCTRL+SHIFT+D  USE A COPIED DOWNLOAD LINK\nCTRL+U  CHECK FOR UPDATES\n\nWHEEL: ARROWS / TAB TO CHOOSE, ENTER TO OPEN, ESC TO CLOSE\nMEDIA: SPACE PLAY/PAUSE, ←/→ 1 SECOND, SHIFT+←/→ 1/30S, I/O SET RANGE\nCROP: DRAG, SHIFT LOCKS RATIO, ENTER SAVES\nEDITING TEXT: NORMAL PASTE AND ARROW KEYS ARE PRESERVED." = "CTRL+O  CHOOSE FILES\nCTRL+V  PASTE FILES, TEXT, AN IMAGE OR LINK\nCTRL+SPACE / ENTER  OPEN TOOLS AND CONVERSIONS\nDELETE  REMOVE SELECTED FILES FROM NASHI\nCTRL+1 / CTRL+2  HOME / LIBRARY\nCTRL+F  FIND IN LIBRARY\nCTRL+SHIFT+D  USE A COPIED DOWNLOAD LINK\nCTRL+U  CHECK FOR UPDATES\n\nWHEEL: ARROWS / TAB TO CHOOSE, ENTER TO OPEN, ESC TO CLOSE\nMEDIA: SPACE PLAY/PAUSE, ←/→ 1 SECOND, SHIFT+←/→ 1/30S, I/O SET RANGE\nCROP: DRAG, SHIFT LOCKS RATIO, ENTER SAVES\nEDITING TEXT: NORMAL PASTE AND ARROW KEYS ARE PRESERVED.";
@@ -559,6 +562,7 @@
 "Choose a background image." = "Choose a background image.";
 "Choose a canvas within 100 MP and 30,000 pixels." = "Choose a canvas within 100 MP and 30,000 pixels.";
 "Choose a complete RTFD folder containing TXT.rtf." = "Choose a complete RTFD folder containing TXT.rtf.";
+"Choose a crop rectangle." = "Choose a crop rectangle.";
 "Choose a destination outside the folder being moved." = "Choose a destination outside the folder being moved.";
 "Choose a file to preview." = "Choose a file to preview.";
 "Choose a finished video instead of a live or upcoming stream." = "Choose a finished video instead of a live or upcoming stream.";
@@ -713,6 +717,8 @@
 "Crop Image · Nashi" = "Crop Image · Nashi";
 "Crop Video" = "Crop Video";
 "Crop area" = "Crop area";
+"Crop coordinates must be finite." = "Crop coordinates must be finite.";
+"Crop origins must be nonnegative and dimensions at least 1 × 1 pixel." = "Crop origins must be nonnegative and dimensions at least 1 × 1 pixel.";
 "Ctrl+O  Choose files\nCtrl+V  Paste files, text, an image or link\nCtrl+Space / Enter  Open tools\nCtrl+1 / Ctrl+2  Home / Library\nCtrl+F  Find in Library\nCtrl+Shift+D  Use a copied download link\nCtrl+U  Check for updates\n\nWheel: arrows / Tab to choose, Enter to open, Esc to close\nMedia: Space play/pause, ←/→ 1 second, Shift+←/→ 1/30s, I/O set range\nCrop: drag, Shift locks ratio, Enter saves\nEditing text: normal paste and arrow keys are preserved." = "Ctrl+O  Choose files\nCtrl+V  Paste files, text, an image or link\nCtrl+Space / Enter  Open tools\nCtrl+1 / Ctrl+2  Home / Library\nCtrl+F  Find in Library\nCtrl+Shift+D  Use a copied download link\nCtrl+U  Check for updates\n\nWheel: arrows / Tab to choose, Enter to open, Esc to close\nMedia: Space play/pause, ←/→ 1 second, Shift+←/→ 1/30s, I/O set range\nCrop: drag, Shift locks ratio, Enter saves\nEditing text: normal paste and arrow keys are preserved.";
 "Ctrl+O  Choose files\nCtrl+V  Paste files, text, an image or link\nCtrl+Space / Enter  Open tools and conversions\nDelete  Remove selected files from Nashi\nCtrl+1 / Ctrl+2  Home / Library\nCtrl+F  Find in Library\nCtrl+Shift+D  Use a copied download link\nCtrl+U  Check for updates\n\nWheel: arrows / Tab to choose, Enter to open, Esc to close\nMedia: Space play/pause, ←/→ 1 second, Shift+←/→ 1/30s, I/O set range\nCrop: drag, Shift locks ratio, Enter saves\nEditing text: normal paste and arrow keys are preserved." = "Ctrl+O  Choose files\nCtrl+V  Paste files, text, an image or link\nCtrl+Space / Enter  Open tools and conversions\nDelete  Remove selected files from Nashi\nCtrl+1 / Ctrl+2  Home / Library\nCtrl+F  Find in Library\nCtrl+Shift+D  Use a copied download link\nCtrl+U  Check for updates\n\nWheel: arrows / Tab to choose, Enter to open, Esc to close\nMedia: Space play/pause, ←/→ 1 second, Shift+←/→ 1/30s, I/O set range\nCrop: drag, Shift locks ratio, Enter saves\nEditing text: normal paste and arrow keys are preserved.";
 "Ctrl+Shift+D  Use a copied link  ·  Public, downloadable media" = "Ctrl+Shift+D  Use a copied link  ·  Public, downloadable media";
@@ -933,6 +939,10 @@
 "Equal clips: %@" = "Equal clips: %@";
 "Equal clips: %lld" = "Equal clips: %lld";
 "Esc to close" = "Esc to close";
+"Every redaction area must have positive dimensions and fit completely inside the %@ × %@ pixel image. Adjust the areas for this image and try again." = "Every redaction area must have positive dimensions and fit completely inside the %@ × %@ pixel image. Adjust the areas for this image and try again.";
+"Every redaction area must have positive dimensions and fit completely inside the %@ × %lld pixel image. Adjust the areas for this image and try again." = "Every redaction area must have positive dimensions and fit completely inside the %@ × %lld pixel image. Adjust the areas for this image and try again.";
+"Every redaction area must have positive dimensions and fit completely inside the %lld × %@ pixel image. Adjust the areas for this image and try again." = "Every redaction area must have positive dimensions and fit completely inside the %lld × %@ pixel image. Adjust the areas for this image and try again.";
+"Every redaction area must have positive dimensions and fit completely inside the %lld × %lld pixel image. Adjust the areas for this image and try again." = "Every redaction area must have positive dimensions and fit completely inside the %lld × %lld pixel image. Adjust the areas for this image and try again.";
 "Everything has a next form." = "Everything has a next form.";
 "Expand Float" = "Expand Float";
 "Expanded update is too large." = "Expanded update is too large.";
@@ -1815,6 +1825,10 @@
 "Redact Image" = "Redact Image";
 "Redact Photo" = "Redact Photo";
 "Redact Video" = "Redact Video";
+"Redaction coordinates must be finite for the %@ × %@ pixel image." = "Redaction coordinates must be finite for the %@ × %@ pixel image.";
+"Redaction coordinates must be finite for the %@ × %lld pixel image." = "Redaction coordinates must be finite for the %@ × %lld pixel image.";
+"Redaction coordinates must be finite for the %lld × %@ pixel image." = "Redaction coordinates must be finite for the %lld × %@ pixel image.";
+"Redaction coordinates must be finite for the %lld × %lld pixel image." = "Redaction coordinates must be finite for the %lld × %lld pixel image.";
 "Redo" = "Redo";
 "Reduce padding or spacing to fit the images." = "Reduce padding or spacing to fit the images.";
 "Reduce spacing to fit the featured layout." = "Reduce spacing to fit the featured layout.";
@@ -1909,6 +1923,7 @@
 "SELECT / MOVE" = "SELECT / MOVE";
 "SELECT A CLIP AND PRESS DELETE TO REMOVE IT FROM THE RESULT." = "SELECT A CLIP AND PRESS DELETE TO REMOVE IT FROM THE RESULT.";
 "SELECT ALL" = "SELECT ALL";
+"SELECT AN AREA TO REDACT, OR DETECT FACES OR TEXT." = "SELECT AN AREA TO REDACT, OR DETECT FACES OR TEXT.";
 "SELECT AT LEAST ONE AVAILABLE PHOTO." = "SELECT AT LEAST ONE AVAILABLE PHOTO.";
 "SELECT AT LEAST ONE PAGE." = "SELECT AT LEAST ONE PAGE.";
 "SELECT ONE CROP RECTANGLE." = "SELECT ONE CROP RECTANGLE.";
@@ -2060,6 +2075,7 @@
 "Select / Move" = "Select / Move";
 "Select All" = "Select All";
 "Select a clip and press Delete to remove it from the result." = "Select a clip and press Delete to remove it from the result.";
+"Select an area to redact, or detect faces or text." = "Select an area to redact, or detect faces or text.";
 "Select at least one available photo." = "Select at least one available photo.";
 "Select at least one page." = "Select at least one page.";
 "Select one crop rectangle." = "Select one crop rectangle.";
@@ -2274,6 +2290,10 @@
 "The archive entry leaves its destination." = "The archive entry leaves its destination.";
 "The clipping exceeds 200 MB." = "The clipping exceeds 200 MB.";
 "The clipping has no readable text. Include its original resource fork/AppleDouble sidecar, or paste its text into Nashi." = "The clipping has no readable text. Include its original resource fork/AppleDouble sidecar, or paste its text into Nashi.";
+"The crop rectangle must fit completely inside the %@ × %@ pixel image." = "The crop rectangle must fit completely inside the %@ × %@ pixel image.";
+"The crop rectangle must fit completely inside the %@ × %lld pixel image." = "The crop rectangle must fit completely inside the %@ × %lld pixel image.";
+"The crop rectangle must fit completely inside the %lld × %@ pixel image." = "The crop rectangle must fit completely inside the %lld × %@ pixel image.";
+"The crop rectangle must fit completely inside the %lld × %lld pixel image." = "The crop rectangle must fit completely inside the %lld × %lld pixel image.";
 "The document has no editable body." = "The document has no editable body.";
 "The document is missing %@" = "The document is missing %@";
 "The document is missing %lld" = "The document is missing %lld";

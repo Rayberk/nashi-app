@@ -1,4 +1,5 @@
 import XCTest
+import CoreGraphics
 @testable import NashiCore
 
 final class AppLocalizationTests:XCTestCase {
@@ -87,5 +88,34 @@ final class AppLocalizationTests:XCTestCase {
         XCTAssertEqual(AppLocalization.text("2 selected",language:"fr"),"2 sélectionnés")
         XCTAssertEqual(AppLocalization.text("1 selected",language:"tr"),"1 seçili")
         XCTAssertEqual(AppLocalization.text("1 selected",language:"en"),"1 selected")
+    }
+    /// Crop and redact batches report "<file name>: <message>". The message is translated; the file name, even one
+    /// that contains ": " followed by catalogued copy, stays exactly as it is.
+    func testFilePrefixedBatchErrorsTranslateOnlyTheMessage() throws {
+        let directory=FileManager.default.temporaryDirectory.appendingPathComponent("nashi-l10n-\(UUID().uuidString)",isDirectory:true)
+        try FileManager.default.createDirectory(at:directory,withIntermediateDirectories:true)
+        defer { try? FileManager.default.removeItem(at:directory) }
+        func image(_ width:Int,_ height:Int) -> CGImage {
+            let context=CGContext(data:nil,width:width,height:height,bitsPerComponent:8,bytesPerRow:0,space:CGColorSpace(name:CGColorSpace.sRGB)!,bitmapInfo:CGImageAlphaInfo.premultipliedLast.rawValue)!
+            context.setFillColor(CGColor(red:0.9,green:0.5,blue:0.1,alpha:1));context.fill(CGRect(x:0,y:0,width:width,height:height));return context.makeImage()!
+        }
+        let large=directory.appendingPathComponent("Large.png"),small=directory.appendingPathComponent("Scan.png: Preview unavailable: köşe.png")
+        try ImageEngine.write(image(400,300),to:large);try ImageEngine.write(image(40,25),to:small)
+        var options=OperationOptions();options.crop=EditRect(x:0,y:0,width:200,height:150);options.outputDirectory=directory
+        XCTAssertThrowsError(try ConversionEngine.run(.init(inputs:[large,small],operation:.tool(.cropImage),options:options))) { error in
+            let message=error.localizedDescription,name=small.lastPathComponent
+            XCTAssertEqual(message,name+": The crop rectangle must fit completely inside the 40 × 25 pixel image.")
+            XCTAssertEqual(AppLocalization.text(message,language:"tr"),name+": Kırpma alanı 40 × 25 piksellik görselin tamamen içinde kalmalı.")
+            XCTAssertEqual(AppLocalization.text(message,language:"fr"),name+"\u{00A0}: Le rectangle de recadrage doit tenir entièrement dans l’image de 40 × 25 pixels.")
+            XCTAssertEqual(AppLocalization.text(message,language:"en"),message)
+        }
+        XCTAssertEqual(AppLocalization.text("Report: v2.png: Choose an image.",language:"tr"),"Report: v2.png: Bir görsel seç.")
+        // An untranslated message leaves everything, including copy inside the file name, unchanged.
+        let untranslated="Scan.png: Preview unavailable: köşe.png: Could not resize image."
+        XCTAssertEqual(AppLocalization.text(untranslated,language:"tr"),untranslated)
+        // Without a file extension before ": ", or with more than a catalog message after it, nothing changes.
+        for source in ["Output: Choose an image.","Version 1.2: Choose an image.","photo.png: Choose an image. Again"] {
+            XCTAssertEqual(AppLocalization.text(source,language:"tr"),source)
+        }
     }
 }

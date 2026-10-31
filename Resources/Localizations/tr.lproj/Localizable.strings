@@ -366,6 +366,7 @@
 "CHOOSE A BACKGROUND IMAGE." = "BİR ARKA PLAN GÖRSELİ SEÇ.";
 "CHOOSE A CANVAS WITHIN 100 MP AND 30,000 PIXELS." = "100 MP VE 30.000 PİKSELİ AŞMAYAN BİR TUVAL SEÇ.";
 "CHOOSE A COMPLETE RTFD FOLDER CONTAINING TXT.RTF." = "TXT.RTF İÇEREN EKSİKSİZ BİR RTFD KLASÖRÜ SEÇ.";
+"CHOOSE A CROP RECTANGLE." = "BİR KIRPMA ALANI SEÇ.";
 "CHOOSE A DESTINATION OUTSIDE THE FOLDER BEING MOVED." = "TAŞINAN KLASÖRÜN DIŞINDA BİR HEDEF SEÇ.";
 "CHOOSE A FILE TO PREVIEW." = "ÖNİZLEMEK İÇİN BİR DOSYA SEÇ.";
 "CHOOSE A FINISHED VIDEO INSTEAD OF A LIVE OR UPCOMING STREAM." = "CANLI VEYA HENÜZ BAŞLAMAMIŞ BİR YAYIN YERİNE TAMAMLANMIŞ BİR VİDEO SEÇ.";
@@ -506,8 +507,10 @@
 "CREATED" = "OLUŞTURULMA";
 "CROP" = "KIRP";
 "CROP AREA" = "KIRPMA ALANI";
+"CROP COORDINATES MUST BE FINITE." = "KIRPMA KOORDİNATLARI SONLU SAYILAR OLMALI.";
 "CROP IMAGE" = "GÖRSELİ KIRP";
 "CROP IMAGE · NASHI" = "GÖRSELİ KIRP · NASHI";
+"CROP ORIGINS MUST BE NONNEGATIVE AND DIMENSIONS AT LEAST 1 × 1 PIXEL." = "KIRPMA BAŞLANGICI NEGATİF OLAMAZ VE BOYUTLAR EN AZ 1 × 1 PİKSEL OLMALI.";
 "CROP VIDEO" = "VİDEOYU KIRP";
 "CTRL+O  CHOOSE FILES\nCTRL+V  PASTE FILES, TEXT, AN IMAGE OR LINK\nCTRL+SPACE / ENTER  OPEN TOOLS\nCTRL+1 / CTRL+2  HOME / LIBRARY\nCTRL+F  FIND IN LIBRARY\nCTRL+SHIFT+D  USE A COPIED DOWNLOAD LINK\nCTRL+U  CHECK FOR UPDATES\n\nWHEEL: ARROWS / TAB TO CHOOSE, ENTER TO OPEN, ESC TO CLOSE\nMEDIA: SPACE PLAY/PAUSE, ←/→ 1 SECOND, SHIFT+←/→ 1/30S, I/O SET RANGE\nCROP: DRAG, SHIFT LOCKS RATIO, ENTER SAVES\nEDITING TEXT: NORMAL PASTE AND ARROW KEYS ARE PRESERVED." = "CTRL+O  DOSYA SEÇ\nCTRL+V  DOSYA, METİN, GÖRSEL VEYA BAĞLANTI YAPIŞTIR\nCTRL+SPACE / ENTER  ARAÇLARI AÇ\nCTRL+1 / CTRL+2  ANA SAYFA / KİTAPLIK\nCTRL+F  KİTAPLIKTA ARA\nCTRL+SHIFT+D  KOPYALANAN İNDİRME BAĞLANTISINI KULLAN\nCTRL+U  GÜNCELLEMELERİ DENETLE\n\nÇARK: SEÇMEK İÇİN OKLAR / TAB, AÇMAK İÇİN ENTER, KAPATMAK İÇİN ESC\nMEDYA: SPACE OYNAT/DURAKLAT, ←/→ 1 SANİYE, SHIFT+←/→ 1/30 SN, I/O ARALIĞI AYARLA\nKIRPMA: SÜRÜKLE, SHIFT ORANI KİLİTLER, ENTER KAYDEDER\nMETİN DÜZENLERKEN: NORMAL YAPIŞTIRMA VE OK TUŞLARI OLDUĞU GİBİ ÇALIŞIR.";
 "CTRL+O  CHOOSE FILES\nCTRL+V  PASTE FILES, TEXT, AN IMAGE OR LINK\nCTRL+SPACE / ENTER  OPEN TOOLS AND CONVERSIONS\nDELETE  REMOVE SELECTED FILES FROM NASHI\nCTRL+1 / CTRL+2  HOME / LIBRARY\nCTRL+F  FIND IN LIBRARY\nCTRL+SHIFT+D  USE A COPIED DOWNLOAD LINK\nCTRL+U  CHECK FOR UPDATES\n\nWHEEL: ARROWS / TAB TO CHOOSE, ENTER TO OPEN, ESC TO CLOSE\nMEDIA: SPACE PLAY/PAUSE, ←/→ 1 SECOND, SHIFT+←/→ 1/30S, I/O SET RANGE\nCROP: DRAG, SHIFT LOCKS RATIO, ENTER SAVES\nEDITING TEXT: NORMAL PASTE AND ARROW KEYS ARE PRESERVED." = "CTRL+O  DOSYA SEÇ\nCTRL+V  DOSYA, METİN, GÖRSEL VEYA BAĞLANTI YAPIŞTIR\nCTRL+SPACE / ENTER  ARAÇLARI VE DÖNÜŞTÜRMELERİ AÇ\nDELETE  SEÇİLİ DOSYALARI NASHI LİSTESİNDEN KALDIR\nCTRL+1 / CTRL+2  ANA SAYFA / KİTAPLIK\nCTRL+F  KİTAPLIKTA ARA\nCTRL+SHIFT+D  KOPYALANAN İNDİRME BAĞLANTISINI KULLAN\nCTRL+U  GÜNCELLEMELERİ DENETLE\n\nÇARK: SEÇMEK İÇİN OKLAR / TAB, AÇMAK İÇİN ENTER, KAPATMAK İÇİN ESC\nMEDYA: SPACE OYNAT/DURAKLAT, ←/→ 1 SANİYE, SHIFT+←/→ 1/30 SN, I/O ARALIĞI AYARLA\nKIRPMA: SÜRÜKLE, SHIFT ORANI KİLİTLER, ENTER KAYDEDER\nMETİN DÜZENLERKEN: NORMAL YAPIŞTIRMA VE OK TUŞLARI OLDUĞU GİBİ ÇALIŞIR.";
@@ -559,6 +562,7 @@
 "Choose a background image." = "Bir arka plan görseli seç.";
 "Choose a canvas within 100 MP and 30,000 pixels." = "100 MP ve 30.000 pikseli aşmayan bir tuval seç.";
 "Choose a complete RTFD folder containing TXT.rtf." = "TXT.rtf içeren eksiksiz bir RTFD klasörü seç.";
+"Choose a crop rectangle." = "Bir kırpma alanı seç.";
 "Choose a destination outside the folder being moved." = "Taşınan klasörün dışında bir hedef seç.";
 "Choose a file to preview." = "Önizlemek için bir dosya seç.";
 "Choose a finished video instead of a live or upcoming stream." = "Canlı veya henüz başlamamış bir yayın yerine tamamlanmış bir video seç.";
@@ -713,6 +717,8 @@
 "Crop Image · Nashi" = "Görseli Kırp · Nashi";
 "Crop Video" = "Videoyu Kırp";
 "Crop area" = "Kırpma alanı";
+"Crop coordinates must be finite." = "Kırpma koordinatları sonlu sayılar olmalı.";
+"Crop origins must be nonnegative and dimensions at least 1 × 1 pixel." = "Kırpma başlangıcı negatif olamaz ve boyutlar en az 1 × 1 piksel olmalı.";
 "Ctrl+O  Choose files\nCtrl+V  Paste files, text, an image or link\nCtrl+Space / Enter  Open tools\nCtrl+1 / Ctrl+2  Home / Library\nCtrl+F  Find in Library\nCtrl+Shift+D  Use a copied download link\nCtrl+U  Check for updates\n\nWheel: arrows / Tab to choose, Enter to open, Esc to close\nMedia: Space play/pause, ←/→ 1 second, Shift+←/→ 1/30s, I/O set range\nCrop: drag, Shift locks ratio, Enter saves\nEditing text: normal paste and arrow keys are preserved." = "Ctrl+O  Dosya seç\nCtrl+V  Dosya, metin, görsel veya bağlantı yapıştır\nCtrl+Space / Enter  Araçları aç\nCtrl+1 / Ctrl+2  Ana Sayfa / Kitaplık\nCtrl+F  Kitaplıkta ara\nCtrl+Shift+D  Kopyalanan indirme bağlantısını kullan\nCtrl+U  Güncellemeleri denetle\n\nÇark: seçmek için oklar / Tab, açmak için Enter, kapatmak için Esc\nMedya: Space oynat/duraklat, ←/→ 1 saniye, Shift+←/→ 1/30 sn, I/O aralığı ayarla\nKırpma: sürükle, Shift oranı kilitler, Enter kaydeder\nMetin düzenlerken: normal yapıştırma ve ok tuşları olduğu gibi çalışır.";
 "Ctrl+O  Choose files\nCtrl+V  Paste files, text, an image or link\nCtrl+Space / Enter  Open tools and conversions\nDelete  Remove selected files from Nashi\nCtrl+1 / Ctrl+2  Home / Library\nCtrl+F  Find in Library\nCtrl+Shift+D  Use a copied download link\nCtrl+U  Check for updates\n\nWheel: arrows / Tab to choose, Enter to open, Esc to close\nMedia: Space play/pause, ←/→ 1 second, Shift+←/→ 1/30s, I/O set range\nCrop: drag, Shift locks ratio, Enter saves\nEditing text: normal paste and arrow keys are preserved." = "Ctrl+O  Dosya seç\nCtrl+V  Dosya, metin, görsel veya bağlantı yapıştır\nCtrl+Space / Enter  Araçları ve dönüştürmeleri aç\nDelete  Seçili dosyaları Nashi listesinden kaldır\nCtrl+1 / Ctrl+2  Ana Sayfa / Kitaplık\nCtrl+F  Kitaplıkta ara\nCtrl+Shift+D  Kopyalanan indirme bağlantısını kullan\nCtrl+U  Güncellemeleri denetle\n\nÇark: seçmek için oklar / Tab, açmak için Enter, kapatmak için Esc\nMedya: Space oynat/duraklat, ←/→ 1 saniye, Shift+←/→ 1/30 sn, I/O aralığı ayarla\nKırpma: sürükle, Shift oranı kilitler, Enter kaydeder\nMetin düzenlerken: normal yapıştırma ve ok tuşları olduğu gibi çalışır.";
 "Ctrl+Shift+D  Use a copied link  ·  Public, downloadable media" = "Ctrl+Shift+D  Kopyalanan bağlantıyı kullan  ·  Herkese açık, indirilebilir medya";
@@ -933,6 +939,10 @@
 "Equal clips: %@" = "Eşit klip sayısı: %@";
 "Equal clips: %lld" = "Eşit klip sayısı: %lld";
 "Esc to close" = "Kapatmak için Esc";
+"Every redaction area must have positive dimensions and fit completely inside the %@ × %@ pixel image. Adjust the areas for this image and try again." = "Her sansür alanının boyutları sıfırdan büyük olmalı ve alan %@ × %@ piksellik görselin tamamen içinde kalmalı. Alanları bu görsele göre ayarla ve yeniden dene.";
+"Every redaction area must have positive dimensions and fit completely inside the %@ × %lld pixel image. Adjust the areas for this image and try again." = "Her sansür alanının boyutları sıfırdan büyük olmalı ve alan %@ × %lld piksellik görselin tamamen içinde kalmalı. Alanları bu görsele göre ayarla ve yeniden dene.";
+"Every redaction area must have positive dimensions and fit completely inside the %lld × %@ pixel image. Adjust the areas for this image and try again." = "Her sansür alanının boyutları sıfırdan büyük olmalı ve alan %lld × %@ piksellik görselin tamamen içinde kalmalı. Alanları bu görsele göre ayarla ve yeniden dene.";
+"Every redaction area must have positive dimensions and fit completely inside the %lld × %lld pixel image. Adjust the areas for this image and try again." = "Her sansür alanının boyutları sıfırdan büyük olmalı ve alan %lld × %lld piksellik görselin tamamen içinde kalmalı. Alanları bu görsele göre ayarla ve yeniden dene.";
 "Everything has a next form." = "Her dosyanın yeni bir hâli var.";
 "Expand Float" = "Float’ı genişlet";
 "Expanded update is too large." = "Açılan güncelleme çok büyük.";
@@ -1815,6 +1825,10 @@
 "Redact Image" = "Görseli Sansürle";
 "Redact Photo" = "Fotoğrafı Sansürle";
 "Redact Video" = "Videoyu Sansürle";
+"Redaction coordinates must be finite for the %@ × %@ pixel image." = "Sansür koordinatları %@ × %@ piksellik görsel için sonlu sayılar olmalı.";
+"Redaction coordinates must be finite for the %@ × %lld pixel image." = "Sansür koordinatları %@ × %lld piksellik görsel için sonlu sayılar olmalı.";
+"Redaction coordinates must be finite for the %lld × %@ pixel image." = "Sansür koordinatları %lld × %@ piksellik görsel için sonlu sayılar olmalı.";
+"Redaction coordinates must be finite for the %lld × %lld pixel image." = "Sansür koordinatları %lld × %lld piksellik görsel için sonlu sayılar olmalı.";
 "Redo" = "Yinele";
 "Reduce padding or spacing to fit the images." = "Görsellerin sığması için kenar boşluğunu veya aralığı azalt.";
 "Reduce spacing to fit the featured layout." = "Öne çıkan düzene sığması için aralığı azalt.";
@@ -1909,6 +1923,7 @@
 "SELECT / MOVE" = "SEÇ / TAŞI";
 "SELECT A CLIP AND PRESS DELETE TO REMOVE IT FROM THE RESULT." = "BİR KLİBİ SEÇ VE SONUÇTAN ÇIKARMAK İÇİN DELETE'E BAS.";
 "SELECT ALL" = "TÜMÜNÜ SEÇ";
+"SELECT AN AREA TO REDACT, OR DETECT FACES OR TEXT." = "SANSÜRLENECEK BİR ALAN SEÇ YA DA YÜZLERİ VEYA METNİ ALGILA.";
 "SELECT AT LEAST ONE AVAILABLE PHOTO." = "KULLANILABİLİR EN AZ BİR FOTOĞRAF SEÇ.";
 "SELECT AT LEAST ONE PAGE." = "EN AZ BİR SAYFA SEÇ.";
 "SELECT ONE CROP RECTANGLE." = "TEK BİR KIRPMA ALANI SEÇ.";
@@ -2060,6 +2075,7 @@
 "Select / Move" = "Seç / Taşı";
 "Select All" = "Tümünü Seç";
 "Select a clip and press Delete to remove it from the result." = "Bir klibi seç ve sonuçtan çıkarmak için Delete'e bas.";
+"Select an area to redact, or detect faces or text." = "Sansürlenecek bir alan seç ya da yüzleri veya metni algıla.";
 "Select at least one available photo." = "Kullanılabilir en az bir fotoğraf seç.";
 "Select at least one page." = "En az bir sayfa seç.";
 "Select one crop rectangle." = "Tek bir kırpma alanı seç.";
@@ -2274,6 +2290,10 @@
 "The archive entry leaves its destination." = "Arşivdeki bir öğe hedef klasörün dışına çıkıyor.";
 "The clipping exceeds 200 MB." = "Metin kırpıntısı 200 MB'ı aşıyor.";
 "The clipping has no readable text. Include its original resource fork/AppleDouble sidecar, or paste its text into Nashi." = "Metin kırpıntısında okunabilir metin yok. Orijinal resource fork/AppleDouble dosyasını da ekle veya metnini Nashi'ye yapıştır.";
+"The crop rectangle must fit completely inside the %@ × %@ pixel image." = "Kırpma alanı %@ × %@ piksellik görselin tamamen içinde kalmalı.";
+"The crop rectangle must fit completely inside the %@ × %lld pixel image." = "Kırpma alanı %@ × %lld piksellik görselin tamamen içinde kalmalı.";
+"The crop rectangle must fit completely inside the %lld × %@ pixel image." = "Kırpma alanı %lld × %@ piksellik görselin tamamen içinde kalmalı.";
+"The crop rectangle must fit completely inside the %lld × %lld pixel image." = "Kırpma alanı %lld × %lld piksellik görselin tamamen içinde kalmalı.";
 "The document has no editable body." = "Belgede düzenlenebilir bir içerik yok.";
 "The document is missing %@" = "Belgede şu öğe eksik: %@";
 "The document is missing %lld" = "Belgede şu öğe eksik: %lld";
