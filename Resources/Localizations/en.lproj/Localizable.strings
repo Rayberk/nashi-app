@@ -1443,6 +1443,8 @@
 "NICE FILES.\nNO FUSS." = "NICE FILES.\nNO FUSS.";
 "NICELY DONE." = "NICELY DONE.";
 "NICELY DONE. 1 FILE IS READY." = "NICELY DONE. 1 FILE IS READY.";
+"NO DOWNLOADABLE MEDIA WAS FOUND. USE THE VIDEO'S SHARE LINK, OR COPY IMAGE ADDRESS FOR A PHOTO." = "NO DOWNLOADABLE MEDIA WAS FOUND. USE THE VIDEO'S SHARE LINK, OR COPY IMAGE ADDRESS FOR A PHOTO.";
+"NO DOWNLOADABLE PUBLIC MEDIA WAS FOUND. LOGIN-REQUIRED AND PROTECTED MEDIA ARE NOT SUPPORTED." = "NO DOWNLOADABLE PUBLIC MEDIA WAS FOUND. LOGIN-REQUIRED AND PROTECTED MEDIA ARE NOT SUPPORTED.";
 "NO FOLDERS ALLOWED YET." = "NO FOLDERS ALLOWED YET.";
 "NO MATCHES. TRY A FILE NAME OR TOOL." = "NO MATCHES. TRY A FILE NAME OR TOOL.";
 "NO MATCHING REGIONS WERE DETECTED. YOU CAN STILL DRAW AREAS BY HAND." = "NO MATCHING REGIONS WERE DETECTED. YOU CAN STILL DRAW AREAS BY HAND.";
@@ -1497,6 +1499,8 @@
 "Nicely done. 1 file is ready." = "Nicely done. 1 file is ready.";
 "No QR codes found. Try a larger or sharper image." = "No QR codes found. Try a larger or sharper image.";
 "No QR codes this time." = "No QR codes this time.";
+"No downloadable media was found. Use the video's share link, or Copy Image Address for a photo." = "No downloadable media was found. Use the video's share link, or Copy Image Address for a photo.";
+"No downloadable public media was found. Login-required and protected media are not supported." = "No downloadable public media was found. Login-required and protected media are not supported.";
 "No file tools\n%@ Convert\n%@ Actions" = "No file tools\n%@ Convert\n%@ Actions";
 "No file tools\n%@ Convert\n%lld Actions" = "No file tools\n%@ Convert\n%lld Actions";
 "No file tools\n%lld Convert\n%@ Actions" = "No file tools\n%lld Convert\n%@ Actions";
@@ -2258,6 +2262,11 @@
 "THE REQUESTED PDF SIZE COULD NOT BE REACHED. CHOOSE A LARGER TARGET." = "THE REQUESTED PDF SIZE COULD NOT BE REACHED. CHOOSE A LARGER TARGET.";
 "THE SAME CONVERSION AND TOOL CATALOG AS MACOS." = "THE SAME CONVERSION AND TOOL CATALOG AS MACOS.";
 "THE SIGNED PACKAGE VERSION DOES NOT MATCH THIS UPDATE." = "THE SIGNED PACKAGE VERSION DOES NOT MATCH THIS UPDATE.";
+"THE SITE COULD NOT PROVIDE THIS MEDIA. TRY A FRESH PUBLIC SHARE LINK OR A DIRECT MEDIA URL." = "THE SITE COULD NOT PROVIDE THIS MEDIA. TRY A FRESH PUBLIC SHARE LINK OR A DIRECT MEDIA URL.";
+"THE SITE DID NOT ALLOW THIS DOWNLOAD. THE LINK MAY HAVE EXPIRED OR NEED A LOGIN." = "THE SITE DID NOT ALLOW THIS DOWNLOAD. THE LINK MAY HAVE EXPIRED OR NEED A LOGIN.";
+"THE SITE DID NOT RETURN READABLE MEDIA DETAILS." = "THE SITE DID NOT RETURN READABLE MEDIA DETAILS.";
+"THE SITE IS LIMITING REQUESTS. WAIT A LITTLE AND TRY AGAIN." = "THE SITE IS LIMITING REQUESTS. WAIT A LITTLE AND TRY AGAIN.";
+"THE SITE RETURNED TOO MUCH METADATA. TRY AN INDIVIDUAL MEDIA LINK." = "THE SITE RETURNED TOO MUCH METADATA. TRY AN INDIVIDUAL MEDIA LINK.";
 "THE UPDATE DOES NOT CONTAIN NASHI." = "THE UPDATE DOES NOT CONTAIN NASHI.";
 "THE UPDATE NEEDS ANOTHER TRY" = "THE UPDATE NEEDS ANOTHER TRY";
 "THE UPDATE SIGNATURE IS INVALID. YOUR EXISTING APP WAS KEPT." = "THE UPDATE SIGNATURE IS INVALID. YOUR EXISTING APP WAS KEPT.";
@@ -2275,7 +2284,10 @@
 "THIS IMAGE EXCEEDS 200 MB." = "THIS IMAGE EXCEEDS 200 MB.";
 "THIS IMAGE IS TOO LARGE (100 MP LIMIT)." = "THIS IMAGE IS TOO LARGE (100 MP LIMIT).";
 "THIS IMAGE IS TOO LARGE TO PASTE. CHOOSE THE IMAGE FILE INSTEAD." = "THIS IMAGE IS TOO LARGE TO PASTE. CHOOSE THE IMAGE FILE INSTEAD.";
+"THIS IS A LIVE OR UPCOMING STREAM. USE A FINISHED VIDEO LINK." = "THIS IS A LIVE OR UPCOMING STREAM. USE A FINISHED VIDEO LINK.";
 "THIS LINK DID NOT RETURN A DOWNLOADABLE IMAGE." = "THIS LINK DID NOT RETURN A DOWNLOADABLE IMAGE.";
+"THIS LINK REQUIRES A LOGIN OR IS RESTRICTED. TRY A PUBLIC SHARE LINK; NASHI DOES NOT READ YOUR BROWSER SESSIONS." = "THIS LINK REQUIRES A LOGIN OR IS RESTRICTED. TRY A PUBLIC SHARE LINK; NASHI DOES NOT READ YOUR BROWSER SESSIONS.";
+"THIS MEDIA IS PROTECTED AND CANNOT BE DOWNLOADED HERE." = "THIS MEDIA IS PROTECTED AND CANNOT BE DOWNLOADED HERE.";
 "THIS OUTPUT FORMAT HAS NO ADJUSTABLE CONVERSION DEFAULTS." = "THIS OUTPUT FORMAT HAS NO ADJUSTABLE CONVERSION DEFAULTS.";
 "THIS PDF CONTAINS NO PAGES." = "THIS PDF CONTAINS NO PAGES.";
 "THIS PDF HAS FORM FIELDS OR ATTACHMENTS THAT MERGING, SPLITTING OR REORDERING PAGES CANNOT KEEP. NO COPY WAS EXPORTED." = "THIS PDF HAS FORM FIELDS OR ATTACHMENTS THAT MERGING, SPLITTING OR REORDERING PAGES CANNOT KEEP. NO COPY WAS EXPORTED.";
@@ -2283,6 +2295,7 @@
 "THIS PDF IS PASSWORD PROTECTED. ENTER ITS PASSWORD." = "THIS PDF IS PASSWORD PROTECTED. ENTER ITS PASSWORD.";
 "THIS PDF PAGE COULD NOT BE READ." = "THIS PDF PAGE COULD NOT BE READ.";
 "THIS PDF REQUIRES A VALID PASSWORD." = "THIS PDF REQUIRES A VALID PASSWORD.";
+"THIS POST CONTAINS VIDEOS, NOT PHOTOS. USE ITS REEL LINK TO DOWNLOAD VIDEO." = "THIS POST CONTAINS VIDEOS, NOT PHOTOS. USE ITS REEL LINK TO DOWNLOAD VIDEO.";
 "THIS POST CONTAINS VIDEOS. USE ITS REEL LINK TO DOWNLOAD VIDEO." = "THIS POST CONTAINS VIDEOS. USE ITS REEL LINK TO DOWNLOAD VIDEO.";
 "THIS REPOSITORY IS PRIVATE" = "THIS REPOSITORY IS PRIVATE";
 "THIS RTFD ATTACHMENT SYNTAX COULD NOT BE PRESERVED." = "THIS RTFD ATTACHMENT SYNTAX COULD NOT BE PRESERVED.";
@@ -2377,6 +2390,11 @@
 "The requested image size could not be reached. Choose a larger target." = "The requested image size could not be reached. Choose a larger target.";
 "The same conversion and tool catalog as macOS." = "The same conversion and tool catalog as macOS.";
 "The signed package version does not match this update." = "The signed package version does not match this update.";
+"The site could not provide this media. Try a fresh public share link or a direct media URL." = "The site could not provide this media. Try a fresh public share link or a direct media URL.";
+"The site did not allow this download. The link may have expired or need a login." = "The site did not allow this download. The link may have expired or need a login.";
+"The site did not return readable media details." = "The site did not return readable media details.";
+"The site is limiting requests. Wait a little and try again." = "The site is limiting requests. Wait a little and try again.";
+"The site returned too much metadata. Try an individual media link." = "The site returned too much metadata. Try an individual media link.";
 "The text encoding of %@ could not be read." = "The text encoding of %@ could not be read.";
 "The text encoding of %lld could not be read." = "The text encoding of %lld could not be read.";
 "The update does not contain Nashi." = "The update does not contain Nashi.";
@@ -2406,8 +2424,12 @@
 "This image exceeds 200 MB." = "This image exceeds 200 MB.";
 "This image is too large (100 MP limit)." = "This image is too large (100 MP limit).";
 "This image is too large to paste. Choose the image file instead." = "This image is too large to paste. Choose the image file instead.";
+"This is a live or upcoming stream. Use a finished video link." = "This is a live or upcoming stream. Use a finished video link.";
 "This link did not return a downloadable image." = "This link did not return a downloadable image.";
+"This link requires a login or is restricted. Try a public share link; Nashi does not read your browser sessions." = "This link requires a login or is restricted. Try a public share link; Nashi does not read your browser sessions.";
+"This media is protected and cannot be downloaded here." = "This media is protected and cannot be downloaded here.";
 "This output format has no adjustable conversion defaults." = "This output format has no adjustable conversion defaults.";
+"This post contains videos, not photos. Use its Reel link to download video." = "This post contains videos, not photos. Use its Reel link to download video.";
 "This post contains videos. Use its Reel link to download video." = "This post contains videos. Use its Reel link to download video.";
 "This repository is private" = "This repository is private";
 "This size cannot be reached. Choose a larger target or smaller dimensions." = "This size cannot be reached. Choose a larger target or smaller dimensions.";
