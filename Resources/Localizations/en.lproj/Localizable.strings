@@ -195,6 +195,7 @@
 "AN EMBEDDED IMAGE IS MISSING OR TOO LARGE." = "AN EMBEDDED IMAGE IS MISSING OR TOO LARGE.";
 "AN EMPTY OUTPUT WAS PRODUCED." = "AN EMPTY OUTPUT WAS PRODUCED.";
 "AN EPUB IMAGE POINTS OUTSIDE ITS PACKAGE." = "AN EPUB IMAGE POINTS OUTSIDE ITS PACKAGE.";
+"AN EPUB RESOURCE POINTS OUTSIDE ITS PACKAGE." = "AN EPUB RESOURCE POINTS OUTSIDE ITS PACKAGE.";
 "AN HTTPS DOWNLOAD IS REQUIRED." = "AN HTTPS DOWNLOAD IS REQUIRED.";
 "AN OUTPUT CANNOT BE A SYMBOLIC LINK." = "AN OUTPUT CANNOT BE A SYMBOLIC LINK.";
 "AN OUTPUT IS OUTSIDE ITS STAGING DIRECTORY." = "AN OUTPUT IS OUTSIDE ITS STAGING DIRECTORY.";
@@ -272,6 +273,7 @@
 "Already optimized. Original quality retained." = "Already optimized. Original quality retained.";
 "Always a little fresher." = "Always a little fresher.";
 "An EPUB image points outside its package." = "An EPUB image points outside its package.";
+"An EPUB resource points outside its package." = "An EPUB resource points outside its package.";
 "An HTTPS download is required." = "An HTTPS download is required.";
 "An RTFD attachment is missing or too large: %@" = "An RTFD attachment is missing or too large: %@";
 "An RTFD attachment is missing or too large: %lld" = "An RTFD attachment is missing or too large: %lld";
@@ -2297,6 +2299,9 @@
 "THE DOWNLOAD STOPPED RESPONDING. PLEASE TRY AGAIN." = "THE DOWNLOAD STOPPED RESPONDING. PLEASE TRY AGAIN.";
 "THE DOWNLOADED FILE CONTAINS NO VIDEO." = "THE DOWNLOADED FILE CONTAINS NO VIDEO.";
 "THE DOWNLOADED TOOLS ARE INCOMPLETE. PLEASE TRY SETUP AGAIN." = "THE DOWNLOADED TOOLS ARE INCOMPLETE. PLEASE TRY SETUP AGAIN.";
+"THE EPUB CONTAINS NO READABLE CHAPTERS." = "THE EPUB CONTAINS NO READABLE CHAPTERS.";
+"THE EPUB CONTAINS XML ENTITY DECLARATIONS, WHICH ARE NOT SUPPORTED." = "THE EPUB CONTAINS XML ENTITY DECLARATIONS, WHICH ARE NOT SUPPORTED.";
+"THE EPUB HAS NO PACKAGE DOCUMENT." = "THE EPUB HAS NO PACKAGE DOCUMENT.";
 "THE IMAGE DOWNLOAD ENDED EARLY." = "THE IMAGE DOWNLOAD ENDED EARLY.";
 "THE IMAGE ORDER MUST INCLUDE EVERY IMAGE ONCE." = "THE IMAGE ORDER MUST INCLUDE EVERY IMAGE ONCE.";
 "THE MEDIA SERVER REDIRECTED TO AN INSECURE URL." = "THE MEDIA SERVER REDIRECTED TO AN INSECURE URL.";
@@ -2338,6 +2343,7 @@
 "THIS IMAGE IS TOO LARGE (100 MP LIMIT)." = "THIS IMAGE IS TOO LARGE (100 MP LIMIT).";
 "THIS IMAGE IS TOO LARGE TO PASTE. CHOOSE THE IMAGE FILE INSTEAD." = "THIS IMAGE IS TOO LARGE TO PASTE. CHOOSE THE IMAGE FILE INSTEAD.";
 "THIS IS A LIVE OR UPCOMING STREAM. USE A FINISHED VIDEO LINK." = "THIS IS A LIVE OR UPCOMING STREAM. USE A FINISHED VIDEO LINK.";
+"THIS IS NOT A MODERN PAGES DOCUMENT." = "THIS IS NOT A MODERN PAGES DOCUMENT.";
 "THIS LINK DID NOT RETURN A DOWNLOADABLE IMAGE." = "THIS LINK DID NOT RETURN A DOWNLOADABLE IMAGE.";
 "THIS LINK REQUIRES A LOGIN OR IS RESTRICTED. TRY A PUBLIC SHARE LINK; NASHI DOES NOT READ YOUR BROWSER SESSIONS." = "THIS LINK REQUIRES A LOGIN OR IS RESTRICTED. TRY A PUBLIC SHARE LINK; NASHI DOES NOT READ YOUR BROWSER SESSIONS.";
 "THIS MEDIA IS PROTECTED AND CANNOT BE DOWNLOADED HERE." = "THIS MEDIA IS PROTECTED AND CANNOT BE DOWNLOADED HERE.";
@@ -2407,6 +2413,9 @@
 "Texture" = "Texture";
 "That PDF size cannot be reached while keeping selectable text, links and annotations. Choose a larger target." = "That PDF size cannot be reached while keeping selectable text, links and annotations. Choose a larger target.";
 "That PDF size cannot be reached while keeping selectable text, links, and annotations. Choose a larger target." = "That PDF size cannot be reached while keeping selectable text, links, and annotations. Choose a larger target.";
+"The EPUB contains XML entity declarations, which are not supported." = "The EPUB contains XML entity declarations, which are not supported.";
+"The EPUB contains no readable chapters." = "The EPUB contains no readable chapters.";
+"The EPUB has no package document." = "The EPUB has no package document.";
 "The PDF contains no pages." = "The PDF contains no pages.";
 "The PDF page is too large to render at this resolution." = "The PDF page is too large to render at this resolution.";
 "The Pages document could not be read: %@." = "The Pages document could not be read: %@.";
@@ -2443,6 +2452,10 @@
 "The downloaded tools are incomplete. Please try setup again." = "The downloaded tools are incomplete. Please try setup again.";
 "The image download ended early." = "The image download ended early.";
 "The image order must include every image once." = "The image order must include every image once.";
+"The local document converter did not produce a %@ file. %@" = "The local document converter did not produce a %@ file. %@";
+"The local document converter did not produce a %@ file. %lld" = "The local document converter did not produce a %@ file. %lld";
+"The local document converter did not produce a %lld file. %@" = "The local document converter did not produce a %lld file. %@";
+"The local document converter did not produce a %lld file. %lld" = "The local document converter did not produce a %lld file. %lld";
 "The media server redirected to an insecure URL." = "The media server redirected to an insecure URL.";
 "The metadata field %@ could not be removed." = "The metadata field %@ could not be removed.";
 "The metadata field %lld could not be removed." = "The metadata field %lld could not be removed.";
@@ -2501,6 +2514,7 @@
 "This image is too large (100 MP limit)." = "This image is too large (100 MP limit).";
 "This image is too large to paste. Choose the image file instead." = "This image is too large to paste. Choose the image file instead.";
 "This is a live or upcoming stream. Use a finished video link." = "This is a live or upcoming stream. Use a finished video link.";
+"This is not a modern Pages document." = "This is not a modern Pages document.";
 "This link did not return a downloadable image." = "This link did not return a downloadable image.";
 "This link requires a login or is restricted. Try a public share link; Nashi does not read your browser sessions." = "This link requires a login or is restricted. Try a public share link; Nashi does not read your browser sessions.";
 "This media is protected and cannot be downloaded here." = "This media is protected and cannot be downloaded here.";

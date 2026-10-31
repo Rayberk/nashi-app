@@ -195,6 +195,7 @@
 "AN EMBEDDED IMAGE IS MISSING OR TOO LARGE." = "GÖMÜLÜ BİR GÖRSEL EKSİK VEYA ÇOK BÜYÜK.";
 "AN EMPTY OUTPUT WAS PRODUCED." = "BOŞ BİR ÇIKTI OLUŞTU.";
 "AN EPUB IMAGE POINTS OUTSIDE ITS PACKAGE." = "BİR EPUB GÖRSELİ, PAKETİNİN DIŞINI GÖSTERİYOR.";
+"AN EPUB RESOURCE POINTS OUTSIDE ITS PACKAGE." = "BİR EPUB KAYNAĞI, PAKETİNİN DIŞINI GÖSTERİYOR.";
 "AN HTTPS DOWNLOAD IS REQUIRED." = "İNDİRME HTTPS ÜZERİNDEN YAPILMALI.";
 "AN OUTPUT CANNOT BE A SYMBOLIC LINK." = "ÇIKTI SEMBOLİK BAĞLANTI OLAMAZ.";
 "AN OUTPUT IS OUTSIDE ITS STAGING DIRECTORY." = "BİR ÇIKTI GEÇİCİ KLASÖRÜNÜN DIŞINDA KALDI.";
@@ -272,6 +273,7 @@
 "Already optimized. Original quality retained." = "Zaten optimize edilmiş. Orijinal kalite korundu.";
 "Always a little fresher." = "Hep biraz daha yeni.";
 "An EPUB image points outside its package." = "Bir EPUB görseli, paketinin dışını gösteriyor.";
+"An EPUB resource points outside its package." = "Bir EPUB kaynağı, paketinin dışını gösteriyor.";
 "An HTTPS download is required." = "İndirme HTTPS üzerinden yapılmalı.";
 "An RTFD attachment is missing or too large: %@" = "Bir RTFD eki eksik veya çok büyük: %@";
 "An RTFD attachment is missing or too large: %lld" = "Bir RTFD eki eksik veya çok büyük: %lld";
@@ -2297,6 +2299,9 @@
 "THE DOWNLOAD STOPPED RESPONDING. PLEASE TRY AGAIN." = "İNDİRME YANIT VERMİYOR. LÜTFEN TEKRAR DENE.";
 "THE DOWNLOADED FILE CONTAINS NO VIDEO." = "İNDİRİLEN DOSYADA VİDEO YOK.";
 "THE DOWNLOADED TOOLS ARE INCOMPLETE. PLEASE TRY SETUP AGAIN." = "İNDİRİLEN ARAÇLAR EKSİK. KURULUMU TEKRAR DENE.";
+"THE EPUB CONTAINS NO READABLE CHAPTERS." = "EPUB DOSYASINDA OKUNABİLİR BÖLÜM YOK.";
+"THE EPUB CONTAINS XML ENTITY DECLARATIONS, WHICH ARE NOT SUPPORTED." = "EPUB DOSYASI, DESTEKLENMEYEN XML VARLIK BİLDİRİMLERİ İÇERİYOR.";
+"THE EPUB HAS NO PACKAGE DOCUMENT." = "EPUB DOSYASINDA PAKET BELGESİ YOK.";
 "THE IMAGE DOWNLOAD ENDED EARLY." = "GÖRSEL İNDİRMESİ ERKEN SONA ERDİ.";
 "THE IMAGE ORDER MUST INCLUDE EVERY IMAGE ONCE." = "GÖRSEL SIRASINDA HER GÖRSEL BİR KEZ YER ALMALI.";
 "THE MEDIA SERVER REDIRECTED TO AN INSECURE URL." = "MEDYA SUNUCUSU GÜVENLİ OLMAYAN BİR ADRESE YÖNLENDİRDİ.";
@@ -2338,6 +2343,7 @@
 "THIS IMAGE IS TOO LARGE (100 MP LIMIT)." = "BU GÖRSEL ÇOK BÜYÜK (SINIR 100 MP).";
 "THIS IMAGE IS TOO LARGE TO PASTE. CHOOSE THE IMAGE FILE INSTEAD." = "BU GÖRSEL YAPIŞTIRMAK İÇİN ÇOK BÜYÜK. BUNUN YERİNE GÖRSEL DOSYASINI SEÇ.";
 "THIS IS A LIVE OR UPCOMING STREAM. USE A FINISHED VIDEO LINK." = "BU, CANLI VEYA HENÜZ BAŞLAMAMIŞ BİR YAYIN. TAMAMLANMIŞ BİR VİDEONUN BAĞLANTISINI KULLAN.";
+"THIS IS NOT A MODERN PAGES DOCUMENT." = "BU, YENİ BİÇİMLİ BİR PAGES BELGESİ DEĞİL.";
 "THIS LINK DID NOT RETURN A DOWNLOADABLE IMAGE." = "BU BAĞLANTIDAN İNDİRİLEBİLİR BİR GÖRSEL GELMEDİ.";
 "THIS LINK REQUIRES A LOGIN OR IS RESTRICTED. TRY A PUBLIC SHARE LINK; NASHI DOES NOT READ YOUR BROWSER SESSIONS." = "BU BAĞLANTI GİRİŞ GEREKTİRİYOR VEYA ERİŞİMİ KISITLI. HERKESE AÇIK BİR PAYLAŞIM BAĞLANTISI DENE; NASHI TARAYICI OTURUMLARINI OKUMAZ.";
 "THIS MEDIA IS PROTECTED AND CANNOT BE DOWNLOADED HERE." = "BU MEDYA KORUMALI VE BURADA İNDİRİLEMEZ.";
@@ -2407,6 +2413,9 @@
 "Texture" = "Doku";
 "That PDF size cannot be reached while keeping selectable text, links and annotations. Choose a larger target." = "Seçilebilir metin, bağlantılar ve notlar korunarak bu PDF boyutuna inilemiyor. Daha büyük bir hedef seç.";
 "That PDF size cannot be reached while keeping selectable text, links, and annotations. Choose a larger target." = "Seçilebilir metin, bağlantılar ve notlar korunarak bu PDF boyutuna inilemiyor. Daha büyük bir hedef seç.";
+"The EPUB contains XML entity declarations, which are not supported." = "EPUB dosyası, desteklenmeyen XML varlık bildirimleri içeriyor.";
+"The EPUB contains no readable chapters." = "EPUB dosyasında okunabilir bölüm yok.";
+"The EPUB has no package document." = "EPUB dosyasında paket belgesi yok.";
 "The PDF contains no pages." = "PDF'de sayfa yok.";
 "The PDF page is too large to render at this resolution." = "PDF sayfası bu çözünürlükte işlenemeyecek kadar büyük.";
 "The Pages document could not be read: %@." = "Pages belgesi okunamadı: %@.";
@@ -2443,6 +2452,10 @@
 "The downloaded tools are incomplete. Please try setup again." = "İndirilen araçlar eksik. Kurulumu tekrar dene.";
 "The image download ended early." = "Görsel indirmesi erken sona erdi.";
 "The image order must include every image once." = "Görsel sırasında her görsel bir kez yer almalı.";
+"The local document converter did not produce a %@ file. %@" = "Yerel belge dönüştürücü bir %@ dosyası oluşturmadı. %@";
+"The local document converter did not produce a %@ file. %lld" = "Yerel belge dönüştürücü bir %@ dosyası oluşturmadı. %lld";
+"The local document converter did not produce a %lld file. %@" = "Yerel belge dönüştürücü bir %lld dosyası oluşturmadı. %@";
+"The local document converter did not produce a %lld file. %lld" = "Yerel belge dönüştürücü bir %lld dosyası oluşturmadı. %lld";
 "The media server redirected to an insecure URL." = "Medya sunucusu güvenli olmayan bir adrese yönlendirdi.";
 "The metadata field %@ could not be removed." = "%@ meta veri alanı kaldırılamadı.";
 "The metadata field %lld could not be removed." = "%lld meta veri alanı kaldırılamadı.";
@@ -2501,6 +2514,7 @@
 "This image is too large (100 MP limit)." = "Bu görsel çok büyük (sınır 100 MP).";
 "This image is too large to paste. Choose the image file instead." = "Bu görsel yapıştırmak için çok büyük. Bunun yerine görsel dosyasını seç.";
 "This is a live or upcoming stream. Use a finished video link." = "Bu, canlı veya henüz başlamamış bir yayın. Tamamlanmış bir videonun bağlantısını kullan.";
+"This is not a modern Pages document." = "Bu, yeni biçimli bir Pages belgesi değil.";
 "This link did not return a downloadable image." = "Bu bağlantıdan indirilebilir bir görsel gelmedi.";
 "This link requires a login or is restricted. Try a public share link; Nashi does not read your browser sessions." = "Bu bağlantı giriş gerektiriyor veya erişimi kısıtlı. Herkese açık bir paylaşım bağlantısı dene; Nashi tarayıcı oturumlarını okumaz.";
 "This media is protected and cannot be downloaded here." = "Bu medya korumalı ve burada indirilemez.";
