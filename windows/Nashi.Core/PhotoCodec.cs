@@ -67,7 +67,8 @@ public static class PhotoCodec
         // PNG has one gray channel (plus alpha), so expand it to RGB first.
         if(image.ColorType is ColorType.Grayscale or ColorType.GrayscaleAlpha){image.ColorSpace=ColorSpace.sRGB;image.ColorType=image.HasAlpha?ColorType.TrueColorAlpha:ColorType.TrueColor;}
         if(o.Exposure!=0)image.Evaluate(Channels.RGB,EvaluateOperator.Multiply,Math.Pow(2,o.Exposure));
-        image.BrightnessContrast(new Percentage(o.Brightness*100),new Percentage((o.Contrast-1)*50));
+        // Colour only, as on macOS: on alpha, brightness made transparent areas visible and contrast faded opaque ones.
+        image.BrightnessContrast(new Percentage(o.Brightness*100),new Percentage((o.Contrast-1)*50),Channels.RGB);
         if(o.Gamma!=1)image.GammaCorrect(o.Gamma,Channels.RGB);
         if(o.Shadows!=0||o.Highlights!=0||o.Whites!=0||o.Blacks!=0||o.Saturation!=1||o.Vibrance!=0||o.Temperature!=0||o.Tint!=0||o.Fade!=0)
         {
@@ -84,7 +85,7 @@ public static class PhotoCodec
         pixels.Dispose();
         }
         if(o.Hue!=0)image.Modulate(new Percentage(100),new Percentage(100),new Percentage(100+o.Hue/1.8));
-        if(o.Dehaze!=0)image.BrightnessContrast(new Percentage(-o.Dehaze*8),new Percentage(o.Dehaze*25));
+        if(o.Dehaze!=0)image.BrightnessContrast(new Percentage(-o.Dehaze*8),new Percentage(o.Dehaze*25),Channels.RGB);
         if(o.NoiseReduction>0)image.MedianFilter((uint)Math.Clamp(Math.Ceiling(o.NoiseReduction*2),1,3));
         // Blur is the Gaussian standard deviation, like macOS CIGaussianBlur's radius.
         // GaussianBlur(radius) keeps sigma at 1 (barely blurred, still readable when
