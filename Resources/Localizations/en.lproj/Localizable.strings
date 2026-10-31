@@ -395,6 +395,7 @@
 "CLEAR SELECTION" = "CLEAR SELECTION";
 "CLIPBOARD IS BUSY. TRY AGAIN." = "CLIPBOARD IS BUSY. TRY AGAIN.";
 "CLIPBOARD IS BUSY. TRY PASTE AGAIN." = "CLIPBOARD IS BUSY. TRY PASTE AGAIN.";
+"CLOSE" = "CLOSE";
 "CLOSE FLOAT WITHOUT DELETING FILES" = "CLOSE FLOAT WITHOUT DELETING FILES";
 "CLOSE WINDOW" = "CLOSE WINDOW";
 "COLLAPSE FLOAT" = "COLLAPSE FLOAT";
@@ -564,6 +565,7 @@
 "Clip %lld" = "Clip %lld";
 "Clipboard is busy. Try Paste again." = "Clipboard is busy. Try Paste again.";
 "Clipboard is busy. Try again." = "Clipboard is busy. Try again.";
+"Close" = "Close";
 "Close Float without deleting files" = "Close Float without deleting files";
 "Close Window" = "Close Window";
 "Collapse Float" = "Collapse Float";

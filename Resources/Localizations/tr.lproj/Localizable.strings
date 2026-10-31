@@ -395,6 +395,7 @@
 "CLEAR SELECTION" = "SEÇİMİ TEMİZLE";
 "CLIPBOARD IS BUSY. TRY AGAIN." = "PANO MEŞGUL. TEKRAR DENE.";
 "CLIPBOARD IS BUSY. TRY PASTE AGAIN." = "PANO MEŞGUL. YENİDEN YAPIŞTIRMAYI DENE.";
+"CLOSE" = "KAPAT";
 "CLOSE FLOAT WITHOUT DELETING FILES" = "DOSYALARI SİLMEDEN FLOAT’I KAPAT";
 "CLOSE WINDOW" = "PENCEREYİ KAPAT";
 "COLLAPSE FLOAT" = "FLOAT’I DARALT";
@@ -564,6 +565,7 @@
 "Clip %lld" = "Klip %lld";
 "Clipboard is busy. Try Paste again." = "Pano meşgul. Yeniden yapıştırmayı dene.";
 "Clipboard is busy. Try again." = "Pano meşgul. Tekrar dene.";
+"Close" = "Kapat";
 "Close Float without deleting files" = "Dosyaları silmeden Float’ı kapat";
 "Close Window" = "Pencereyi Kapat";
 "Collapse Float" = "Float’ı daralt";

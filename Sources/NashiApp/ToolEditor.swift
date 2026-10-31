@@ -856,7 +856,7 @@ struct ToolEditor:View {
 struct WindowCloseButton:NSViewRepresentable {
     final class Coordinator:NSObject { @objc func close(_ sender:NSButton) { sender.window?.close() } }
     func makeCoordinator()->Coordinator { Coordinator() }
-    func makeNSView(context:Context)->NSButton { let button=NSButton(image:NSImage(systemSymbolName:"xmark.circle.fill",accessibilityDescription:"Close")!,target:context.coordinator,action:#selector(Coordinator.close(_:)));button.isBordered=false;button.setAccessibilityLabel("Close");return button }
+    func makeNSView(context:Context)->NSButton { let button=NSButton(image:NSImage(systemSymbolName:"xmark.circle.fill",accessibilityDescription:L10n.text("Close"))!,target:context.coordinator,action:#selector(Coordinator.close(_:)));button.isBordered=false;button.setAccessibilityLabel(L10n.text("Close"));return button }
     func updateNSView(_ nsView:NSButton,context:Context) { }
 }
 struct WindowDragRegion:NSViewRepresentable {
