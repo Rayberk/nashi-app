@@ -99,6 +99,8 @@ internal static class ParityChecks
         var partialPhotos=WebPhotos.Instagram("{\"entries\":[{\"duration\":null,\"thumbnails\":[null,{\"url\":42},{\"url\":\"https://cdninstagram.com/synthetic-photo.jpg\",\"width\":900,\"height\":600}]}]}");
         check(partialPhotos.Length==1&&partialPhotos[0].Width==900&&partialPhotos[0].Height==600,
             "Malformed Instagram thumbnail variants hid a valid public image.");
+        // YouTube's hover preview is an animated thumbnail under /an_webp/; like on the Mac, it stands for its video.
+        check(WebMediaPayload.Parse("https://i.ytimg.com/an_webp/mXS5W7_kdzk/mqdefault_6s.webp?du=3000&sqp=synthetic") is {Kind:"youtube",Url:"https://www.youtube.com/watch?v=mXS5W7_kdzk"},"YouTube hover preview was downloaded as an image instead of its video");
         check(LegacyTextCodec.Decode(Encoding.Unicode.GetPreamble().Concat(Encoding.Unicode.GetBytes("Türkçe 🍐")).ToArray())=="Türkçe 🍐","UTF-16 text lost Unicode");
         check(LegacyTextCodec.Decode(new UTF32Encoding(false,true).GetPreamble().Concat(Encoding.UTF32.GetBytes("Türkçe 🍐")).ToArray())=="Türkçe 🍐","UTF-32 text was read as UTF-16");
         // Files from Turkish Windows, 7-Zip and Excel: ANSI 1254 text, OEM 857 ZIP names, semicolon CSV.
