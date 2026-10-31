@@ -57,6 +57,26 @@ const ids=['compress','removeMetadata','editImage','annotateImage','frameImage',
  await test('English strings, layout and real image export',async()=>{await page.goto(base+'/');await page.locator('.demo-file').first().waitFor();await page.locator('[data-mode="convert"]').click();await page.getByRole('menuitem',{name:'PNG',exact:true}).click();await page.waitForFunction(()=>Number(document.querySelector('#library-count').textContent)===1);assert.equal(await page.locator('html').getAttribute('lang'),'en');});
  await page.goto(base+'/tr/');await page.locator('.demo-file').first().waitFor();await page.screenshot({path:path.join(output,'desktop-hero.png')});await page.locator('#playground').scrollIntoViewIfNeeded();await page.locator('[data-mode="tools"]').click();await page.screenshot({path:path.join(output,'desktop-wheel.png')});await page.keyboard.press('Escape');
  await test('390px touch viewport fits; tap selects, opens wheel and exports',async()=>{await page.setViewportSize({width:390,height:844});await page.locator('[data-group="image"]').click();assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));await page.locator('.demo-file').nth(1).click();await page.locator('[data-mode="convert"]').click();const r=await page.locator('.demo-wheel').boundingBox();assert.ok(r.x>=0&&r.x+r.width<=390);await page.getByRole('menuitem',{name:'JPG',exact:true}).click();await page.waitForFunction(()=>Number(document.querySelector('#library-count').textContent)>0);await page.screenshot({path:path.join(output,'mobile-playground.png')});await openTool('cropImage');assert.ok(await page.evaluate(()=>document.querySelector('dialog').scrollWidth<=innerWidth));await page.screenshot({path:path.join(output,'mobile-crop.png')});await page.locator('.close-editor').click();});
+ await test('Keyboard and modifier wheel actions preserve multi-selection',async()=>{
+  await page.locator('[data-group="image"]').click();
+  await page.locator('.demo-file').nth(1).click({modifiers:['Shift']});
+  assert.equal(await page.locator('.demo-file[aria-pressed="true"]').count(),2);
+  await page.locator('.demo-file').first().focus();
+  await page.keyboard.press('Enter');
+  assert.equal(await page.locator('.demo-file[aria-pressed="true"]').count(),2);
+  await page.keyboard.press('Escape');
+  await page.locator('.demo-file').first().click({modifiers:['Control']});
+  assert.equal(await page.locator('.demo-file[aria-pressed="true"]').count(),2);
+  await page.keyboard.press('Escape');
+ });
+ await test('Clicking one selected file collapses Shift multi-selection',async()=>{
+  await page.locator('[data-group="image"]').click();
+  await page.locator('.demo-file').nth(1).click({modifiers:['Shift']});
+  assert.equal(await page.locator('.demo-file[aria-pressed="true"]').count(),2);
+  await page.locator('.demo-file').first().click();
+  assert.equal(await page.locator('.demo-file[aria-pressed="true"]').count(),1);
+  assert.equal(await page.locator('.demo-file').first().getAttribute('aria-pressed'),'true');
+ });
  if(errors.length)failures.push({name:'No browser errors',error:errors.join('\n')});
  const report={url:base,passed:passed.length,checks:passed,failures,consoleErrors:errors};await fs.writeFile(path.join(output,'report.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({passed:passed.length,failed:failures.length,errors:errors.length}));await browser.close();if(failures.length)process.exitCode=1;
 })().catch(e=>{console.error(e);process.exitCode=1;});
