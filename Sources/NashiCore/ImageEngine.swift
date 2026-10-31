@@ -180,7 +180,9 @@ public enum ImageEngine {
         if a.noiseReduction > 0 { ci = ci.applyingFilter("CINoiseReduction", parameters: ["inputNoiseLevel": min(1,a.noiseReduction) * 0.1, "inputSharpness": 0]) }
         if a.exposure != 0 { ci = ci.applyingFilter("CIExposureAdjust", parameters: [kCIInputEVKey: min(10,max(-10,a.exposure))]) }
         if a.temperature != 0 || a.tint != 0 {
-            ci = ci.applyingFilter("CITemperatureAndTint", parameters: ["inputNeutral": CIVector(x:6500,y:0), "inputTargetNeutral": CIVector(x:6500 + max(-1,min(1,a.temperature)) * 3000, y:max(-1,min(1,a.tint)) * 100)])
+            // A lower target neutral warms and a negative target tint adds magenta.
+            // Positive values warm and add magenta, matching the Windows editor.
+            ci = ci.applyingFilter("CITemperatureAndTint", parameters: ["inputNeutral": CIVector(x:6500,y:0), "inputTargetNeutral": CIVector(x:6500 - max(-1,min(1,a.temperature)) * 3000, y:-max(-1,min(1,a.tint)) * 100)])
         }
         ci=ci.applyingFilter("CIColorControls",parameters:[kCIInputBrightnessKey:options.brightness+a.brightness,kCIInputContrastKey:max(0,options.contrast*a.contrast),kCIInputSaturationKey:max(0,options.saturation*a.saturation)])
         if a.highlights != 0 || a.shadows != 0 || a.whites != 0 || a.blacks != 0 {
