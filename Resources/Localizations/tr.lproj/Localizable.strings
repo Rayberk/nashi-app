@@ -279,6 +279,8 @@
 "An archive link points outside the extraction folder." = "Arşivdeki bir bağlantı, açılacağı klasörün dışını gösteriyor.";
 "An embedded image is missing or too large." = "Gömülü bir görsel eksik veya çok büyük.";
 "An empty output was produced." = "Boş bir çıktı oluştu.";
+"An empty output was produced: %@" = "Boş bir çıktı oluştu: %@";
+"An empty output was produced: %lld" = "Boş bir çıktı oluştu: %lld";
 "An output cannot be a symbolic link." = "Çıktı sembolik bağlantı olamaz.";
 "An output is outside its staging directory." = "Bir çıktı geçici klasörünün dışında kaldı.";
 "Annotate" = "İşaretle";
@@ -1716,6 +1718,7 @@
 "PROCESSED PREVIEW UNAVAILABLE FOR THIS WINDOWS CODEC." = "BU WINDOWS CODEC'İ İÇİN İŞLENMİŞ ÖNİZLEME KULLANILAMIYOR.";
 "PROCESSED PREVIEW · EXPORT USES THE ORIGINAL FILE." = "İŞLENMİŞ ÖNİZLEME · DIŞA AKTARMADA ORİJİNAL DOSYA KULLANILIR.";
 "PROCESSED PREVIEW. CHOOSE ORIGINAL TO EDIT AREAS." = "İŞLENMİŞ ÖNİZLEME. ALANLARI DÜZENLEMEK İÇİN ORİJİNAL'İ SEÇ.";
+"PROCESSING MEDIA…" = "MEDYA İŞLENİYOR…";
 "PROCESSING…" = "İŞLENİYOR…";
 "PROTECTED MEDIA CANNOT BE DOWNLOADED." = "KORUMALI MEDYA İNDİRİLEMEZ.";
 "PUBLIC REPOSITORY · NO TOKEN NEEDED" = "HERKESE AÇIK DEPO · TOKEN GEREKMEZ";
@@ -1792,6 +1795,7 @@
 "Processed preview unavailable for this Windows codec." = "Bu Windows codec'i için işlenmiş önizleme kullanılamıyor.";
 "Processed preview · export uses the original file." = "İşlenmiş önizleme · dışa aktarmada orijinal dosya kullanılır.";
 "Processed preview. Choose Original to edit areas." = "İşlenmiş önizleme. Alanları düzenlemek için Orijinal'i seç.";
+"Processing media…" = "Medya işleniyor…";
 "Processing…" = "İşleniyor…";
 "Protected media cannot be downloaded." = "Korumalı medya indirilemez.";
 "Public repository · No token needed" = "Herkese açık depo · Token gerekmez";

@@ -279,6 +279,8 @@
 "An archive link points outside the extraction folder." = "An archive link points outside the extraction folder.";
 "An embedded image is missing or too large." = "An embedded image is missing or too large.";
 "An empty output was produced." = "An empty output was produced.";
+"An empty output was produced: %@" = "An empty output was produced: %@";
+"An empty output was produced: %lld" = "An empty output was produced: %lld";
 "An output cannot be a symbolic link." = "An output cannot be a symbolic link.";
 "An output is outside its staging directory." = "An output is outside its staging directory.";
 "Annotate" = "Annotate";
@@ -1716,6 +1718,7 @@
 "PROCESSED PREVIEW UNAVAILABLE FOR THIS WINDOWS CODEC." = "PROCESSED PREVIEW UNAVAILABLE FOR THIS WINDOWS CODEC.";
 "PROCESSED PREVIEW · EXPORT USES THE ORIGINAL FILE." = "PROCESSED PREVIEW · EXPORT USES THE ORIGINAL FILE.";
 "PROCESSED PREVIEW. CHOOSE ORIGINAL TO EDIT AREAS." = "PROCESSED PREVIEW. CHOOSE ORIGINAL TO EDIT AREAS.";
+"PROCESSING MEDIA…" = "PROCESSING MEDIA…";
 "PROCESSING…" = "PROCESSING…";
 "PROTECTED MEDIA CANNOT BE DOWNLOADED." = "PROTECTED MEDIA CANNOT BE DOWNLOADED.";
 "PUBLIC REPOSITORY · NO TOKEN NEEDED" = "PUBLIC REPOSITORY · NO TOKEN NEEDED";
@@ -1792,6 +1795,7 @@
 "Processed preview unavailable for this Windows codec." = "Processed preview unavailable for this Windows codec.";
 "Processed preview · export uses the original file." = "Processed preview · export uses the original file.";
 "Processed preview. Choose Original to edit areas." = "Processed preview. Choose Original to edit areas.";
+"Processing media…" = "Processing media…";
 "Processing…" = "Processing…";
 "Protected media cannot be downloaded." = "Protected media cannot be downloaded.";
 "Public repository · No token needed" = "Public repository · No token needed";
