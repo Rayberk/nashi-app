@@ -15,7 +15,7 @@ public sealed record WebMediaPayload(string Url,string Kind,string? Thumbnail=nu
         var urls=candidates.Where(c=>Uri.TryCreate(c,UriKind.Absolute,out var u)&&u.Scheme is "http" or "https"&&string.IsNullOrEmpty(u.UserInfo)&&(u.Host.Contains('.')||u.HostNameType==UriHostNameType.IPv6&&!u.IsLoopback)).Distinct().Select(c=>new Uri(c)).ToArray();
         foreach(var url in urls)
         {
-            var host=url.Host.ToLowerInvariant();if(host is "youtube.com" or "www.youtube.com" or "m.youtube.com" or "youtu.be"||host.EndsWith(".ytimg.com",StringComparison.Ordinal)||host=="i.ytimg.com")
+            var host=url.Host.ToLowerInvariant();if(host is "youtube.com" or "www.youtube.com" or "m.youtube.com" or "music.youtube.com" or "youtu.be"||host.EndsWith(".ytimg.com",StringComparison.Ordinal)||host=="i.ytimg.com")
             {
                 var id=YoutubeId(url);if(id is not null)return new("https://www.youtube.com/watch?v="+id,"youtube",urls.FirstOrDefault(u=>u.Host.EndsWith(".ytimg.com",StringComparison.Ordinal))?.AbsoluteUri);
             }
@@ -30,7 +30,7 @@ public sealed record WebMediaPayload(string Url,string Kind,string? Thumbnail=nu
     public static string? YoutubeId(Uri url)
     {
         string? id=null;var path=url.AbsolutePath.Split('/',StringSplitOptions.RemoveEmptyEntries);
-        if(url.Host=="youtu.be")id=path.FirstOrDefault();else if(url.Host.EndsWith(".ytimg.com",StringComparison.Ordinal)&&path.Length>=2&&path[0] is "vi" or "vi_webp")id=path[1];
+        if(url.Host=="youtu.be")id=path.FirstOrDefault();else if(url.Host.EndsWith(".ytimg.com",StringComparison.Ordinal)&&path.Length>=2&&path[0] is "vi" or "vi_webp" or "an_webp")id=path[1];
         else if(path.Length>=2&&path[0] is "shorts" or "embed" or "live")id=path[1];else foreach(var pair in url.Query.TrimStart('?').Split('&')){var parts=pair.Split('=',2);if(parts.Length==2&&parts[0]=="v")id=Uri.UnescapeDataString(parts[1]);}
         return id is not null&&Regex.IsMatch(id,@"^[A-Za-z0-9_-]{11}$",RegexOptions.CultureInvariant,TimeSpan.FromSeconds(1))?id:null;
     }

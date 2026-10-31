@@ -263,6 +263,9 @@ private enum PagesDOCXReader {
                 let maximumColumns = 1024
                 for (rowIndex,row) in element.elements("tr").enumerated() {
                     var cells: [[String:Any]] = [], column = 0
+                    // A vertical merge only survives rows that continue it in
+                    // the same grid column; a wider or missing cell ends it.
+                    var continued: [Int:(Int,Int)] = [:]
                     var horizontalAnchor: Int?
                     for cell in row.elements("tc") {
                         let properties = cell.first("tcPr")
@@ -276,22 +279,22 @@ private enum PagesDOCXReader {
                         guard column <= maximumColumns - span else {
                             throw NashiError.invalidInput("This Word document contains a table wider than the supported limit of \(maximumColumns) columns. It could not be converted to Pages.")
                         }
-                        let cellParagraphs = blockElements(cell).filter { $0.local == "p" }
-                        let value = cellParagraphs.map(plainText).joined(separator:"\n")
+                        let value = cellText(cell)
                         var cellModel: [String:Any] = ["text":value]
                         if let fill = properties?.first("shd")?.attr("fill"), let color = color(fill) { cellModel["formatting"] = ["fill":["kind":"color","color":color]] }
                         cells.append(cellModel)
                         if span > 1 { for _ in 1..<span { cells.append(["text":""]) } }
                         if let vertical = properties?.first("vMerge") {
-                            if vertical.attr("val") == "restart" { activeVertical[column] = (rowIndex,span) }
+                            if vertical.attr("val") == "restart" { continued[column] = (rowIndex,span) }
                             // A continuation narrower or wider than its restart
                             // cannot extend the restart's rectangle without
                             // swallowing or overlapping neighbouring cells.
                             else if let origin = activeVertical[column], origin.1 == span {
+                                continued[column] = origin
                                 if let index = merges.firstIndex(where: {$0["row"] == origin.0 && $0["column"] == column}) { merges[index]["rowCount"] = rowIndex - origin.0 + 1 }
                                 else { merges.append(["row":origin.0,"column":column,"rowCount":rowIndex-origin.0+1,"columnCount":origin.1]) }
-                            } else { activeVertical[column] = nil }
-                        } else { activeVertical[column] = nil }
+                            }
+                        }
                         // Legacy w:hMerge continuations join the restart cell
                         // to their left; cells that also merge vertically stay out.
                         var joinsHorizontal = false
@@ -306,6 +309,7 @@ private enum PagesDOCXReader {
                         if span > 1 && properties?.first("vMerge") == nil && !joinsHorizontal { merges.append(["row":rowIndex,"column":column,"rowCount":1,"columnCount":span]) }
                         column += span
                     }
+                    activeVertical = continued
                     rows.append(cells)
                 }
                 let widths = element.first("tblGrid")?.elements("gridCol").map { ($0.number("w") ?? 2400) / 20 } ?? []
@@ -371,6 +375,15 @@ private enum PagesDOCXReader {
         guard let open=raw.firstIndex(of:">"),let close=raw.lastIndex(of:"<"),open<close else{return ""}
         return DocumentText.decodeEntities(String(raw[raw.index(after:open)..<close]))
     }
+    /// Plain text of a table cell. A nested table keeps its text as lines of
+    /// tab-separated cells, since a Pages cell cannot hold a table.
+    static func cellText(_ cell: XMLElement, depth: Int = 0) -> String {
+        blockElements(cell).compactMap { child -> String? in
+            if child.local == "p" { return plainText(child) }
+            guard child.local == "tbl", depth < 32 else { return nil }
+            return child.elements("tr").map { $0.elements("tc").map { cellText($0, depth: depth + 1) }.joined(separator: "\t") }.joined(separator: "\n")
+        }.joined(separator: "\n")
+    }
     /// The external target of a `HYPERLINK "url" [\o "tip"] [\l "bookmark"]`
     /// field instruction; bookmark-only links have no URL in the Pages model.
     static func hyperlinkField(_ instruction: String) -> String? {
@@ -427,7 +440,7 @@ private enum PagesDOCXReader {
         if let value=element.first("color")?.attr("val"),let color=color(value){result["fontColor"]=color}
         if let value=element.first("highlight")?.attr("val"),let color=color(value){result["backgroundColor"]=color}
         if let underline=element.first("u"){result["underline"] = underline.attr("val") == "none" ? 0 : underline.attr("val") == "double" ? 2 : 1}
-        if let strike=element.first("strike"){result["strikethru"] = strike.attr("val") == "0" ? 0 : 1}
+        if let strike=element.first("strike"){result["strikethru"] = ["0","false","off"].contains(strike.attr("val") ?? "1") ? 0 : 1}
         if let align=element.first("vertAlign")?.attr("val"){result["superscript"] = align == "superscript" ? 1 : align == "subscript" ? -1 : 0}
         if let language=element.first("lang")?.attr("val"){result["language"]=language}
         return result
