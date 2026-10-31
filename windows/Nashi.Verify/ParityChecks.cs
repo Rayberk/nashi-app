@@ -1,4 +1,5 @@
 using Nashi.Core;
+using System.Formats.Tar;
 using System.IO.Compression;
 using System.Text;
 using ImageMagick;
@@ -117,6 +118,10 @@ internal static class ParityChecks
         var nested=Directory.CreateDirectory(Path.Combine(root,"Zip folder","Nested"));File.WriteAllText(Path.Combine(nested.FullName,"Fruit.txt"),"Pear");var folderZip=DocumentEngine.Zip([nested.Parent!.FullName],root);var folderRestored=ArchiveEngine.Extract(folderZip,root)[0];check(File.ReadAllText(Path.Combine(folderRestored,"Zip folder","Nested","Fruit.txt"))=="Pear","Folder ZIP lost nested files");
         Directory.CreateDirectory(Path.Combine(nested.FullName,"Empty"));var withEmpty=DocumentEngine.Zip([nested.Parent!.FullName],root);foreach(var format in new[]{"tar","gz","zip"}){var restored=ArchiveEngine.Extract(ArchiveEngine.Convert(withEmpty,format,root)[0],root)[0];check(Directory.Exists(Path.Combine(restored,"Zip folder","Nested","Empty")),"Archive conversion lost an empty folder: "+format);}
         var rar=Path.Combine(root,"Stored.rar");StoredRar(rar);var rarOutput=ArchiveEngine.Extract(rar,root)[0];check(File.ReadAllText(Path.Combine(rarOutput,"Fruit.txt"))=="Nashi pear fixture","Stored RAR extraction failed");
+        var dotted=Path.Combine(root,"Dotted.tar.gz");using(var file=File.Create(dotted))using(var gz=new GZipStream(file,CompressionLevel.Optimal))using(var writer=new TarWriter(gz,TarEntryFormat.Gnu)){writer.WriteEntry(new GnuTarEntry(TarEntryType.Directory,"./"));writer.WriteEntry(new GnuTarEntry(TarEntryType.RegularFile,"./Fruit.txt"){DataStream=new MemoryStream(Encoding.UTF8.GetBytes("Pear"))});}
+        string? dottedText=null;try{dottedText=File.ReadAllText(Path.Combine(ArchiveEngine.Extract(dotted,root)[0],"Fruit.txt"));}catch(InvalidDataException){}check(dottedText=="Pear","Tarball with ./ entries was refused");
+        var dottedAttack=Path.Combine(root,"Dotted attack.tar");using(var file=File.Create(dottedAttack))using(var writer=new TarWriter(file,TarEntryFormat.Gnu))writer.WriteEntry(new GnuTarEntry(TarEntryType.RegularFile,"./../outside.txt"){DataStream=new MemoryStream([1])});
+        try{ArchiveEngine.Extract(dottedAttack,root);throw new Exception("Dotted traversal tarball accepted");}catch(InvalidDataException){check(true,"Dotted archive traversal protection");}
         var attack=Path.Combine(root,"Unsafe second.zip");using(var archive=ZipFile.Open(attack,ZipArchiveMode.Create)){using var stream=archive.CreateEntry("../outside.txt").Open();stream.WriteByte(1);}
         try{ArchiveEngine.Extract(attack,root);throw new Exception("Traversal archive accepted");}catch(InvalidDataException){check(true,"New archive traversal protection");}
         var svg=Path.Combine(root,"Static.svg");File.WriteAllText(svg,"<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"96\" height=\"64\"><rect width=\"96\" height=\"64\" fill=\"#E5BC59\"/></svg>");
