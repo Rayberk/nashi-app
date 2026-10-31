@@ -120,6 +120,7 @@
 "A PDF PAGE COULD NOT BE READ." = "UNE PAGE PDF N’A PAS PU ÊTRE LUE.";
 "A PDF page could not be read." = "Une page PDF n’a pas pu être lue.";
 "A PERFECT LANDING SPOT" = "UN POINT DE CHUTE IDÉAL";
+"A PHOTO IN THIS POST IS UNAVAILABLE. TRY A FRESH PUBLIC POST LINK." = "UNE PHOTO DE CETTE PUBLICATION EST INDISPONIBLE. ESSAYEZ UN NOUVEAU LIEN DE PUBLICATION PUBLIQUE.";
 "A PHOTO IS UNAVAILABLE. TRY A FRESH PUBLIC POST LINK." = "UNE PHOTO EST INDISPONIBLE. ESSAYEZ UN NOUVEAU LIEN DE PUBLICATION PUBLIQUE.";
 "A PLACE FOR FRESH FILES." = "UN ENDROIT POUR LES NOUVEAUX FICHIERS.";
 "A SELECTED ITEM IS MISSING." = "UN ÉLÉMENT SÉLECTIONNÉ EST MANQUANT.";
@@ -144,6 +145,7 @@
 "A new form.\nIn a tap." = "Une nouvelle forme.\nEn un geste.";
 "A page range is outside the PDF." = "Une plage de pages dépasse le PDF.";
 "A perfect landing spot" = "Un point de chute idéal";
+"A photo in this post is unavailable. Try a fresh public post link." = "Une photo de cette publication est indisponible. Essayez un nouveau lien de publication publique.";
 "A photo is unavailable. Try a fresh public post link." = "Une photo est indisponible. Essayez un nouveau lien de publication publique.";
 "A place for fresh files." = "Un endroit pour les nouveaux fichiers.";
 "A selected item is missing." = "Un élément sélectionné est manquant.";
@@ -2265,6 +2267,7 @@
 "THE OPERATION WAS CANCELLED." = "L’OPÉRATION A ÉTÉ ANNULÉE.";
 "THE PDF CONTAINS NO PAGES." = "LE PDF NE CONTIENT AUCUNE PAGE.";
 "THE PDF PAGE IS TOO LARGE TO RENDER AT THIS RESOLUTION." = "LA PAGE PDF EST TROP GRANDE POUR ÊTRE RENDUE À CETTE RÉSOLUTION.";
+"THE POST DID NOT RETURN READABLE PHOTO DETAILS." = "LA PUBLICATION N’A PAS RENVOYÉ D’INFORMATIONS LISIBLES SUR LES PHOTOS.";
 "THE PROCESSING TOOL COULD NOT START." = "L’OUTIL DE TRAITEMENT N’A PAS PU DÉMARRER.";
 "THE REQUESTED FILE SIZE COULD NOT BE REACHED. CHOOSE A LARGER TARGET." = "LA TAILLE DE FICHIER DEMANDÉE N’A PAS PU ÊTRE ATTEINTE. CHOISISSEZ UNE CIBLE PLUS GRANDE.";
 "THE REQUESTED IMAGE SIZE COULD NOT BE REACHED. CHOOSE A LARGER TARGET." = "LA TAILLE D’IMAGE DEMANDÉE N’A PAS PU ÊTRE ATTEINTE. CHOISISSEZ UNE CIBLE PLUS GRANDE.";
@@ -2398,6 +2401,7 @@
 "The metadata field %@ could not be removed." = "Le champ de métadonnées %@ n’a pas pu être supprimé.";
 "The metadata field %lld could not be removed." = "Le champ de métadonnées %lld n’a pas pu être supprimé.";
 "The operation was cancelled." = "L’opération a été annulée.";
+"The post did not return readable photo details." = "La publication n’a pas renvoyé d’informations lisibles sur les photos.";
 "The processing tool could not start." = "L’outil de traitement n’a pas pu démarrer.";
 "The requested PDF size could not be reached." = "La taille de PDF demandée n’a pas pu être atteinte.";
 "The requested PDF size could not be reached. Choose a larger target." = "La taille de PDF demandée n’a pas pu être atteinte. Choisissez une cible plus grande.";
@@ -2510,6 +2514,7 @@
 "USE A STATIC SVG WITHOUT EMBEDDED SCRIPTS OR HTML." = "UTILISEZ UN SVG STATIQUE SANS SCRIPTS NI HTML INTÉGRÉS.";
 "USE IN NASHI" = "UTILISER DANS NASHI";
 "USE ONCE IF MACOS NEEDS PERMISSION FOR YOUR SAVED UPDATE CONNECTION." = "À UTILISER UNE FOIS SI MACOS DEMANDE UNE AUTORISATION POUR VOTRE CONNEXION DE MISE À JOUR ENREGISTRÉE.";
+"USE ONE INSTAGRAM PHOTO POST WITH UP TO 50 ITEMS." = "UTILISEZ UNE SEULE PUBLICATION DE PHOTOS INSTAGRAM CONTENANT JUSQU’À 50 ÉLÉMENTS.";
 "USE OPEN TO PREVIEW THIS DOCUMENT IN ITS DEFAULT APP." = "UTILISEZ OUVRIR POUR AFFICHER CE DOCUMENT DANS L’APP PAR DÉFAUT.";
 "Undo" = "Annuler";
 "Undo Area" = "Annuler la zone";
@@ -2548,6 +2553,7 @@
 "Use a static SVG without embedded scripts or HTML." = "Utilisez un SVG statique sans scripts ni HTML intégrés.";
 "Use in Nashi" = "Utiliser dans Nashi";
 "Use once if macOS needs permission for your saved update connection." = "À utiliser une fois si macOS demande une autorisation pour votre connexion de mise à jour enregistrée.";
+"Use one Instagram photo post with up to 50 items." = "Utilisez une seule publication de photos Instagram contenant jusqu’à 50 éléments.";
 "VALUE" = "VALEUR";
 "VERIFYING UPDATE SIGNATURE…" = "VÉRIFICATION DE LA SIGNATURE DE LA MISE À JOUR…";
 "VIBRANCE" = "ÉCLAT";
