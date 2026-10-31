@@ -79,6 +79,15 @@ final class WebDownloadTests:XCTestCase {
             XCTAssertEqual(failure?.details,"ERROR: Something specific broke")
         }
     }
+    func testTrimmedDiagnosticsKeepOnlyWholeLines() throws {
+        func progress(_ count:Int)->String { "i=0;while [ $i -lt \(count) ];do echo 'NASHI_PROGRESS:  12.3%' >&2;i=$((i+1));done;" }
+        let link="https://media.example.org/video?"+String(repeating:"p",count:1_450)+"&signature=secret"
+        // Only the last 16,000 bytes are kept; this trim lands near the end of the warning's link.
+        let script=progress(1_000)+"echo 'WARNING: Retrying \(link)' >&2;"+progress(690)+"echo 'ERROR: HTTP Error 403: Forbidden' >&2;exit 1"
+        XCTAssertThrowsError(try WebDownloadProcess.run(URL(fileURLWithPath:"/bin/sh"),["-c",script],token:.init(),timeout:30)) { error in
+            XCTAssertEqual((error as? WebDownloadFailure)?.details,"ERROR: HTTP Error 403: Forbidden")
+        }
+    }
     func testErrorsDoNotExposeSourceSecrets() {
         let message=WebDownloadEngine.friendlyError("ERROR 403: https://example.org/private?token=secret")
         XCTAssertFalse(message.contains("secret"));XCTAssertFalse(message.contains("https://"))
