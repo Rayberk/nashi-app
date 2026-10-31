@@ -379,6 +379,7 @@
 "CHOOSE A PLAIN OUTPUT FILENAME." = "SADE BİR ÇIKTI DOSYA ADI SEÇ.";
 "CHOOSE A POSITIVE SIZE OR A REDUCTION BELOW 100%. ZERO USES AUTOMATIC COMPRESSION." = "POZİTİF BİR BOYUT VEYA %100'ÜN ALTINDA BİR KÜÇÜLTME SEÇ. SIFIR, OTOMATİK SIKIŞTIRMA KULLANIR.";
 "CHOOSE A POSITIVE TARGET SIZE OR A REDUCTION BETWEEN 0 AND 100%." = "POZİTİF BİR HEDEF BOYUT VEYA %0 İLE %100 ARASINDA BİR KÜÇÜLTME SEÇ.";
+"CHOOSE A READABLE LOCAL MEDIA FILE." = "OKUNABİLİR BİR YEREL MEDYA DOSYASI SEÇ.";
 "CHOOSE A RECTANGLE INSIDE THE VIDEO." = "VİDEONUN İÇİNDE KALAN BİR DİKDÖRTGEN SEÇ.";
 "CHOOSE A SUPPORTED MAXIMUM VIDEO HEIGHT." = "DESTEKLENEN BİR MAKSİMUM VİDEO YÜKSEKLİĞİ SEÇ.";
 "CHOOSE A TARGET OF AT LEAST 2 KB." = "EN AZ 2 KB'LIK BİR HEDEF SEÇ.";
@@ -567,6 +568,7 @@
 "Choose a plain output filename." = "Sade bir çıktı dosya adı seç.";
 "Choose a positive size or a reduction below 100%. Zero uses automatic compression." = "Pozitif bir boyut veya %100'ün altında bir küçültme seç. Sıfır, otomatik sıkıştırma kullanır.";
 "Choose a positive target size or a reduction between 0 and 100%." = "Pozitif bir hedef boyut veya %0 ile %100 arasında bir küçültme seç.";
+"Choose a readable local media file." = "Okunabilir bir yerel medya dosyası seç.";
 "Choose a rectangle inside the video." = "Videonun içinde kalan bir dikdörtgen seç.";
 "Choose a supported maximum video height." = "Desteklenen bir maksimum video yüksekliği seç.";
 "Choose a target of at least 2 KB." = "En az 2 KB'lık bir hedef seç.";

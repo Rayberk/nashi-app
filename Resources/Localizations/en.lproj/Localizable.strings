@@ -379,6 +379,7 @@
 "CHOOSE A PLAIN OUTPUT FILENAME." = "CHOOSE A PLAIN OUTPUT FILENAME.";
 "CHOOSE A POSITIVE SIZE OR A REDUCTION BELOW 100%. ZERO USES AUTOMATIC COMPRESSION." = "CHOOSE A POSITIVE SIZE OR A REDUCTION BELOW 100%. ZERO USES AUTOMATIC COMPRESSION.";
 "CHOOSE A POSITIVE TARGET SIZE OR A REDUCTION BETWEEN 0 AND 100%." = "CHOOSE A POSITIVE TARGET SIZE OR A REDUCTION BETWEEN 0 AND 100%.";
+"CHOOSE A READABLE LOCAL MEDIA FILE." = "CHOOSE A READABLE LOCAL MEDIA FILE.";
 "CHOOSE A RECTANGLE INSIDE THE VIDEO." = "CHOOSE A RECTANGLE INSIDE THE VIDEO.";
 "CHOOSE A SUPPORTED MAXIMUM VIDEO HEIGHT." = "CHOOSE A SUPPORTED MAXIMUM VIDEO HEIGHT.";
 "CHOOSE A TARGET OF AT LEAST 2 KB." = "CHOOSE A TARGET OF AT LEAST 2 KB.";
@@ -567,6 +568,7 @@
 "Choose a plain output filename." = "Choose a plain output filename.";
 "Choose a positive size or a reduction below 100%. Zero uses automatic compression." = "Choose a positive size or a reduction below 100%. Zero uses automatic compression.";
 "Choose a positive target size or a reduction between 0 and 100%." = "Choose a positive target size or a reduction between 0 and 100%.";
+"Choose a readable local media file." = "Choose a readable local media file.";
 "Choose a rectangle inside the video." = "Choose a rectangle inside the video.";
 "Choose a supported maximum video height." = "Choose a supported maximum video height.";
 "Choose a target of at least 2 KB." = "Choose a target of at least 2 KB.";
