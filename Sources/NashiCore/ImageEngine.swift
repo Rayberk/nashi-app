@@ -465,10 +465,14 @@ public enum ImageEngine {
         let x=(Double(width)-imageWidth)*max(0,min(1,settings.position.x)),top=(Double(height)-imageHeight)*max(0,min(1,settings.position.y))
         let r=CGRect(x:x,y:Double(height)-top-imageHeight,width:imageWidth,height:imageHeight)
         let radius=max(0,min(settings.cornerRadius,min(r.width,r.height)/2)),path=CGPath(roundedRect:r,cornerWidth:radius,cornerHeight:radius,transform:nil)
-        if settings.shadowRadius>0,settings.shadowOpacity>0 {
-            ctx.saveGState();ctx.setShadow(offset:CGSize(width:0,height:-settings.shadowRadius/4),blur:settings.shadowRadius,color:CGColor(gray:0,alpha:max(0,min(1,settings.shadowOpacity))));ctx.setFillColor(CGColor(gray:0,alpha:1));ctx.addPath(path);ctx.fillPath();ctx.restoreGState()
-        }
+        // Cast the shadow from the clipped image itself. Filling the shape with black
+        // to cast it would show through every transparent pixel of the image.
+        let shadowed=settings.shadowRadius>0 && settings.shadowOpacity>0
+        ctx.saveGState()
+        if shadowed { ctx.setShadow(offset:CGSize(width:0,height:-settings.shadowRadius/4),blur:settings.shadowRadius,color:CGColor(gray:0,alpha:max(0,min(1,settings.shadowOpacity))));ctx.beginTransparencyLayer(auxiliaryInfo:nil) }
         ctx.saveGState();ctx.addPath(path);ctx.clip();ctx.interpolationQuality = .high;ctx.draw(image,in:r);ctx.restoreGState()
+        if shadowed { ctx.endTransparencyLayer() }
+        ctx.restoreGState()
         guard let result=ctx.makeImage() else { throw NashiError.failed("Could not frame image.") };return result
     }
 
