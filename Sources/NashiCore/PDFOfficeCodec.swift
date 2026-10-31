@@ -26,9 +26,9 @@ enum PDFOfficeCodec {
         }
         context.setFillColor(CGColor(gray: 1, alpha: 1)); context.fill(CGRect(x: 0, y: 0, width: width, height: height))
         context.scaleBy(x: scale, y: scale)
-        if crop != nil { context.translateBy(x: -bounds.minX, y: -bounds.minY) }
-        else { context.concatenate(cgPage.getDrawingTransform(.cropBox, rect: bounds, rotate: 0, preserveAspectRatio: true)) }
-        context.drawPDFPage(cgPage)
+        if crop != nil { context.translateBy(x: -bounds.minX, y: -bounds.minY); context.drawPDFPage(cgPage) }
+        // A whole page keeps its annotations, such as stamps and filled form fields, as viewers show it.
+        else { page.draw(with: .cropBox, to: context) }
         try token.check()
         guard let image = context.makeImage(), let data = NSBitmapImageRep(cgImage: image).representation(using: .png, properties: [:]) else { throw NashiError.failed("The PDF page image could not be written.") }
         return data
