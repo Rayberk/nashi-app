@@ -17,6 +17,8 @@
 "%@ selected" = "%@ seçili";
 "%@ selected · Drag to carry files" = "%@ seçili · Dosyaları taşımak için sürükle";
 "%@ ways to change it" = "%@ farklı biçime çevir";
+"%@ · %@ smaller" = "%@ · %@ daha küçük";
+"%@ · %lld smaller" = "%@ · %lld daha küçük";
 "%@ · Nashi" = "%@ · Nashi";
 "%@ · Original stays safe" = "%@ · Orijinal dosyan güvende";
 "%@, page %@" = "%@, sayfa %@";
@@ -37,6 +39,8 @@
 "%lld selected" = "%lld seçili";
 "%lld selected · Drag to carry files" = "%lld seçili · Dosyaları taşımak için sürükle";
 "%lld ways to change it" = "%lld farklı biçime çevir";
+"%lld · %@ smaller" = "%lld · %@ daha küçük";
+"%lld · %lld smaller" = "%lld · %lld daha küçük";
 "%lld · Nashi" = "%lld · Nashi";
 "%lld · Original stays safe" = "%lld · Orijinal dosyan güvende";
 "%lld, page %@" = "%lld, sayfa %@";
@@ -137,6 +141,7 @@
 "ALLOW HOME FOLDER ACCESS…" = "ANA KLASÖRE ERİŞİM İZNİ VER…";
 "ALLOW NASHI IN MACOS LOGIN ITEMS." = "MACOS GİRİŞ ÖĞELERİ BÖLÜMÜNDEN NASHI'YE İZİN VER.";
 "ALREADY AVAILABLE ON YOUR COMPUTER" = "BİLGİSAYARINDA ZATEN HAZIR";
+"ALREADY OPTIMIZED. ORIGINAL QUALITY RETAINED." = "ZATEN OPTİMİZE EDİLMİŞ. ORİJİNAL KALİTE KORUNDU.";
 "AN EMBEDDED IMAGE IS MISSING OR TOO LARGE." = "GÖMÜLÜ BİR GÖRSEL EKSİK VEYA ÇOK BÜYÜK.";
 "AN EMPTY OUTPUT WAS PRODUCED." = "BOŞ BİR ÇIKTI OLUŞTU.";
 "AN HTTPS DOWNLOAD IS REQUIRED." = "İNDİRME HTTPS ÜZERİNDEN YAPILMALI.";
@@ -207,6 +212,7 @@
 "Allow Home Folder Access…" = "Ana Klasöre Erişim İzni Ver…";
 "Allow Nashi in macOS Login Items." = "macOS Giriş Öğeleri bölümünden Nashi'ye izin ver.";
 "Already available on your computer" = "Bilgisayarında zaten hazır";
+"Already optimized. Original quality retained." = "Zaten optimize edilmiş. Orijinal kalite korundu.";
 "An HTTPS download is required." = "İndirme HTTPS üzerinden yapılmalı.";
 "An RTFD attachment is missing or too large: %@" = "Bir RTFD eki eksik veya çok büyük: %@";
 "An RTFD attachment is missing or too large: %lld" = "Bir RTFD eki eksik veya çok büyük: %lld";
@@ -1881,6 +1887,8 @@
 "Saved %lld new files. Originals kept." = "%lld yeni dosya kaydedildi. Orijinaller korundu.";
 "Saved 1 new file. Originals kept." = "1 yeni dosya kaydedildi. Orijinal korundu.";
 "Saved in post order in a new Instagram folder." = "Gönderi sırasıyla yeni bir Instagram klasörüne kaydedilir.";
+"Saved size: %@" = "Kaydedilen boyut: %@";
+"Saved size: %lld" = "Kaydedilen boyut: %lld";
 "Saving collage…" = "Kolaj kaydediliyor…";
 "Saving document…" = "Belge kaydediliyor…";
 "Saving images…" = "Görseller kaydediliyor…";

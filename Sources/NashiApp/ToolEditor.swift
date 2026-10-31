@@ -81,6 +81,7 @@ struct ToolEditor:View {
     @State private var qrResults:[String]=[]
     @State private var pdfEditor=PDFPageEditorState()
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.locale) private var locale
 
     var input:URL? { inputs.first }
     var category:FileCategory { input.map(FileCategory.detect) ?? .other }
@@ -541,8 +542,8 @@ struct ToolEditor:View {
         func bytes(_ urls:[URL])->Int64 { urls.reduce(0) { $0+((try? FileManager.default.attributesOfItem(atPath:$1.path)[.size] as? NSNumber)?.int64Value ?? 0) } }
         let before=bytes(inputs),after=bytes(state.outputs)
         if before==after { return "Already optimized. Original quality retained." }
-        let size=ByteCountFormatter.string(fromByteCount:after,countStyle:.file)
-        return before>after && before>0 ? "\(size) · \(Int((1-Double(after)/Double(before))*100))% smaller":"Saved size: \(size)"
+        let size=after.formatted(.byteCount(style:.file).locale(locale))
+        return before>after && before>0 ? "\(size) · \(Int((1-Double(after)/Double(before))*100).formatted(.percent.locale(locale))) smaller":"Saved size: \(size)"
     }
     @ViewBuilder var mediaTimeline:some View {
         if duration>0 {
