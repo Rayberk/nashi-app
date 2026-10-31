@@ -126,6 +126,7 @@
 "A SPLIT POINT LIES OUTSIDE THE VIDEO." = "UN POINT DE COUPURE SE TROUVE EN DEHORS DE LA VIDÉO.";
 "A SUBTITLE CUE ENDS BEFORE IT STARTS." = "UNE RÉPLIQUE DE SOUS-TITRE SE TERMINE AVANT DE COMMENCER.";
 "A TABLE CELL SPAN IS INVALID OR EXCEEDS 1,024 COLUMNS." = "LA FUSION D’UNE CELLULE DE TABLEAU EST INVALIDE OU DÉPASSE 1 024 COLONNES.";
+"A WAVEFORM REQUIRES A FINITE MEDIA DURATION." = "UNE FORME D’ONDE NÉCESSITE UNE DURÉE DE MÉDIA FINIE.";
 "A discarded clip is outside the range." = "Un clip supprimé est en dehors de la plage.";
 "A few small preferences. A smoother everyday." = "Quelques petites préférences. Un quotidien plus fluide.";
 "A few tools. More possibilities." = "Quelques outils. Plus de possibilités.";
@@ -150,6 +151,7 @@
 "A split point lies outside the video." = "Un point de coupure se trouve en dehors de la vidéo.";
 "A subtitle cue ends before it starts." = "Une réplique de sous-titre se termine avant de commencer.";
 "A table cell span is invalid or exceeds 1,024 columns." = "La fusion d’une cellule de tableau est invalide ou dépasse 1 024 colonnes.";
+"A waveform requires a finite media duration." = "Une forme d’onde nécessite une durée de média finie.";
 "ABOUT" = "À PROPOS";
 "ACCESSIBILITY" = "ACCESSIBILITÉ";
 "ACTIONS" = "ACTIONS";
@@ -400,6 +402,7 @@
 "CHOOSE A POSITIVE TARGET SIZE OR A REDUCTION BETWEEN 0 AND 100%." = "CHOISISSEZ UNE TAILLE CIBLE POSITIVE OU UNE RÉDUCTION COMPRISE ENTRE 0 ET 100 %.";
 "CHOOSE A READABLE LOCAL MEDIA FILE." = "CHOISISSEZ UN FICHIER MÉDIA LOCAL LISIBLE.";
 "CHOOSE A RECTANGLE INSIDE THE VIDEO." = "CHOISISSEZ UN RECTANGLE À L’INTÉRIEUR DE LA VIDÉO.";
+"CHOOSE A STILL IMAGE FOR THE VIDEO." = "CHOISISSEZ UNE IMAGE FIXE POUR LA VIDÉO.";
 "CHOOSE A SUPPORTED MAXIMUM VIDEO HEIGHT." = "CHOISISSEZ UNE HAUTEUR VIDÉO MAXIMALE PRISE EN CHARGE.";
 "CHOOSE A TARGET OF AT LEAST 2 KB." = "CHOISISSEZ UNE CIBLE D’AU MOINS 2 KO.";
 "CHOOSE A VALID RANGE FIRST." = "CHOISISSEZ D’ABORD UNE PLAGE VALIDE.";
@@ -515,6 +518,7 @@
 "COULD NOT COPY THE QR CODES." = "IMPOSSIBLE DE COPIER LES CODES QR.";
 "COULD NOT COPY THE SELECTED FILE PATHS." = "IMPOSSIBLE DE COPIER LES CHEMINS DES FICHIERS SÉLECTIONNÉS.";
 "COULD NOT COPY THE SELECTED FILES." = "IMPOSSIBLE DE COPIER LES FICHIERS SÉLECTIONNÉS.";
+"COULD NOT DECODE THE AUDIO WAVEFORM." = "IMPOSSIBLE DE DÉCODER LA FORME D’ONDE AUDIO.";
 "COULD NOT ORIENT IMAGE." = "IMPOSSIBLE D’ORIENTER L’IMAGE.";
 "COULD NOT READ THIS PDF." = "IMPOSSIBLE DE LIRE CE PDF.";
 "COULD NOT RENDER THE REDACTION." = "IMPOSSIBLE D’APPLIQUER LE CAVIARDAGE.";
@@ -598,6 +602,7 @@
 "Choose a positive target size or a reduction between 0 and 100%." = "Choisissez une taille cible positive ou une réduction comprise entre 0 et 100 %.";
 "Choose a readable local media file." = "Choisissez un fichier média local lisible.";
 "Choose a rectangle inside the video." = "Choisissez un rectangle à l’intérieur de la vidéo.";
+"Choose a still image for the video." = "Choisissez une image fixe pour la vidéo.";
 "Choose a supported maximum video height." = "Choisissez une hauteur vidéo maximale prise en charge.";
 "Choose a target of at least 2 KB." = "Choisissez une cible d’au moins 2 Ko.";
 "Choose a valid range first." = "Choisissez d’abord une plage valide.";
@@ -723,6 +728,7 @@
 "Could not copy the QR codes." = "Impossible de copier les codes QR.";
 "Could not copy the selected file paths." = "Impossible de copier les chemins des fichiers sélectionnés.";
 "Could not copy the selected files." = "Impossible de copier les fichiers sélectionnés.";
+"Could not decode the audio waveform." = "Impossible de décoder la forme d’onde audio.";
 "Could not open %@." = "Impossible d’ouvrir %@.";
 "Could not open %lld." = "Impossible d’ouvrir %lld.";
 "Could not orient image." = "Impossible d’orienter l’image.";
@@ -1333,6 +1339,7 @@
 "Local by design · MIT source\nVersion %lld" = "Local par conception · Source MIT\nVersion %lld";
 "Looking for little squares…" = "À la recherche de petits carrés…";
 "Loudness range" = "Plage de volume sonore";
+"MACOS COULD NOT OPEN THE GENERATED MEDIA PREVIEW." = "MACOS N’A PAS PU OUVRIR L’APERÇU MULTIMÉDIA GÉNÉRÉ.";
 "MACOS REDUCE MOTION IS ON. NASHI KEEPS MOTION OFF." = "L’OPTION RÉDUIRE LES ANIMATIONS DE MACOS EST ACTIVÉE. NASHI DÉSACTIVE LES ANIMATIONS.";
 "MADE FOR YOUR MAC" = "CONÇU POUR VOTRE MAC";
 "MAGNIFIER" = "LOUPE";
@@ -2544,6 +2551,7 @@
 "VIEW RELEASES" = "VOIR LES VERSIONS";
 "VIGNETTE" = "VIGNETTAGE";
 "VISUALIZATION" = "VISUALISATION";
+"VISUALIZATION DIMENSIONS MUST BE BETWEEN 16 AND 8,192 PIXELS." = "LES DIMENSIONS DE LA VISUALISATION DOIVENT ÊTRE COMPRISES ENTRE 16 ET 8 192 PIXELS.";
 "Value" = "Valeur";
 "Verifying update signature…" = "Vérification de la signature de la mise à jour…";
 "Version %@" = "Version %@";
@@ -2563,6 +2571,7 @@
 "View releases" = "Voir les versions";
 "Vignette" = "Vignettage";
 "Visualization" = "Visualisation";
+"Visualization dimensions must be between 16 and 8,192 pixels." = "Les dimensions de la visualisation doivent être comprises entre 16 et 8 192 pixels.";
 "WAIT FOR THE PROCESSED PREVIEW TO FINISH BEFORE RESETTING." = "ATTENDEZ LA FIN DE L’APERÇU TRAITÉ AVANT DE RÉINITIALISER.";
 "WAVEFORM" = "FORME D’ONDE";
 "WELCOME TO NASHI" = "BIENVENUE DANS NASHI";
@@ -2638,6 +2647,7 @@
 "ZIP REGULAR FILES AND FOLDERS WITHOUT LINKS (10,000 ITEM LIMIT)." = "COMPRESSEZ EN ZIP DES FICHIERS ET DOSSIERS ORDINAIRES, SANS LIENS (LIMITE DE 10 000 ÉLÉMENTS).";
 "Zip regular files and folders without links (10,000 item limit)." = "Compressez en ZIP des fichiers et dossiers ordinaires, sans liens (limite de 10 000 éléments).";
 "macOS Reduce Motion is on. Nashi keeps motion off." = "L’option Réduire les animations de macOS est activée. Nashi désactive les animations.";
+"macOS could not open the generated media preview." = "macOS n’a pas pu ouvrir l’aperçu multimédia généré.";
 "owner/repository or GitHub URL" = "propriétaire/dépôt ou URL GitHub";
 "←/→ FILES · MEDIA: SPACE PLAY/PAUSE, ←/→ 1S, ALT+←/→ FILES · ESC CLOSES" = "←/→ FICHIERS · MÉDIAS : ESPACE LECTURE/PAUSE, ←/→ 1 S, ALT+←/→ FICHIERS · ÉCHAP FERME";
 "←/→ FILES · MEDIA: SPACE PLAY/PAUSE, ←/→ 1S, ⌥←/→ FILES · ESC CLOSES" = "←/→ FICHIERS · MÉDIAS : ESPACE LECTURE/PAUSE, ←/→ 1 S, ⌥←/→ FICHIERS · ÉCHAP FERME";

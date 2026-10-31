@@ -126,6 +126,7 @@
 "A SPLIT POINT LIES OUTSIDE THE VIDEO." = "BİR BÖLME NOKTASI VİDEONUN DIŞINDA KALIYOR.";
 "A SUBTITLE CUE ENDS BEFORE IT STARTS." = "BİR ALTYAZI SATIRI BAŞLAMADAN BİTİYOR.";
 "A TABLE CELL SPAN IS INVALID OR EXCEEDS 1,024 COLUMNS." = "BİR TABLO HÜCRESİNİN GENİŞLİĞİ GEÇERSİZ VEYA 1.024 SÜTUNU AŞIYOR.";
+"A WAVEFORM REQUIRES A FINITE MEDIA DURATION." = "DALGA BİÇİMİ İÇİN MEDYANIN SÜRESİ BELLİ OLMALI.";
 "A discarded clip is outside the range." = "Çıkarılan bir klip aralığın dışında.";
 "A few small preferences. A smoother everyday." = "Birkaç küçük tercih. Daha akıcı bir gün.";
 "A few tools. More possibilities." = "Birkaç araç. Daha fazla olanak.";
@@ -150,6 +151,7 @@
 "A split point lies outside the video." = "Bir bölme noktası videonun dışında kalıyor.";
 "A subtitle cue ends before it starts." = "Bir altyazı satırı başlamadan bitiyor.";
 "A table cell span is invalid or exceeds 1,024 columns." = "Bir tablo hücresinin genişliği geçersiz veya 1.024 sütunu aşıyor.";
+"A waveform requires a finite media duration." = "Dalga biçimi için medyanın süresi belli olmalı.";
 "ABOUT" = "HAKKINDA";
 "ACCESSIBILITY" = "ERİŞİLEBİLİRLİK";
 "ACTIONS" = "İŞLEMLER";
@@ -400,6 +402,7 @@
 "CHOOSE A POSITIVE TARGET SIZE OR A REDUCTION BETWEEN 0 AND 100%." = "POZİTİF BİR HEDEF BOYUT VEYA %0 İLE %100 ARASINDA BİR KÜÇÜLTME SEÇ.";
 "CHOOSE A READABLE LOCAL MEDIA FILE." = "OKUNABİLİR BİR YEREL MEDYA DOSYASI SEÇ.";
 "CHOOSE A RECTANGLE INSIDE THE VIDEO." = "VİDEONUN İÇİNDE KALAN BİR DİKDÖRTGEN SEÇ.";
+"CHOOSE A STILL IMAGE FOR THE VIDEO." = "VİDEO İÇİN SABİT BİR GÖRSEL SEÇ.";
 "CHOOSE A SUPPORTED MAXIMUM VIDEO HEIGHT." = "DESTEKLENEN BİR MAKSİMUM VİDEO YÜKSEKLİĞİ SEÇ.";
 "CHOOSE A TARGET OF AT LEAST 2 KB." = "EN AZ 2 KB'LIK BİR HEDEF SEÇ.";
 "CHOOSE A VALID RANGE FIRST." = "ÖNCE GEÇERLİ BİR ARALIK SEÇ.";
@@ -515,6 +518,7 @@
 "COULD NOT COPY THE QR CODES." = "QR KODLARI KOPYALANAMADI.";
 "COULD NOT COPY THE SELECTED FILE PATHS." = "SEÇİLİ DOSYA YOLLARI KOPYALANAMADI.";
 "COULD NOT COPY THE SELECTED FILES." = "SEÇİLİ DOSYALAR KOPYALANAMADI.";
+"COULD NOT DECODE THE AUDIO WAVEFORM." = "SESİN DALGA BİÇİMİ ÇÖZÜMLENEMEDİ.";
 "COULD NOT ORIENT IMAGE." = "GÖRSELİN YÖNÜ DÜZELTİLEMEDİ.";
 "COULD NOT READ THIS PDF." = "BU PDF OKUNAMADI.";
 "COULD NOT RENDER THE REDACTION." = "SANSÜR UYGULANAMADI.";
@@ -598,6 +602,7 @@
 "Choose a positive target size or a reduction between 0 and 100%." = "Pozitif bir hedef boyut veya %0 ile %100 arasında bir küçültme seç.";
 "Choose a readable local media file." = "Okunabilir bir yerel medya dosyası seç.";
 "Choose a rectangle inside the video." = "Videonun içinde kalan bir dikdörtgen seç.";
+"Choose a still image for the video." = "Video için sabit bir görsel seç.";
 "Choose a supported maximum video height." = "Desteklenen bir maksimum video yüksekliği seç.";
 "Choose a target of at least 2 KB." = "En az 2 KB'lık bir hedef seç.";
 "Choose a valid range first." = "Önce geçerli bir aralık seç.";
@@ -723,6 +728,7 @@
 "Could not copy the QR codes." = "QR kodları kopyalanamadı.";
 "Could not copy the selected file paths." = "Seçili dosya yolları kopyalanamadı.";
 "Could not copy the selected files." = "Seçili dosyalar kopyalanamadı.";
+"Could not decode the audio waveform." = "Sesin dalga biçimi çözümlenemedi.";
 "Could not open %@." = "%@ açılamadı.";
 "Could not open %lld." = "%lld açılamadı.";
 "Could not orient image." = "Görselin yönü düzeltilemedi.";
@@ -1333,6 +1339,7 @@
 "Local by design · MIT source\nVersion %lld" = "Verilerin cihazında kalır · MIT lisanslı kaynak kodu\nSürüm %lld";
 "Looking for little squares…" = "QR kodları aranıyor…";
 "Loudness range" = "Ses düzeyi aralığı";
+"MACOS COULD NOT OPEN THE GENERATED MEDIA PREVIEW." = "MACOS OLUŞTURULAN MEDYA ÖNİZLEMESİNİ AÇAMADI.";
 "MACOS REDUCE MOTION IS ON. NASHI KEEPS MOTION OFF." = "MACOS HAREKETİ AZALT AÇIK. NASHI ANİMASYONLARI KAPALI TUTAR.";
 "MADE FOR YOUR MAC" = "MAC'İN İÇİN TASARLANDI";
 "MAGNIFIER" = "BÜYÜTEÇ";
@@ -2544,6 +2551,7 @@
 "VIEW RELEASES" = "SÜRÜMLERİ GÖR";
 "VIGNETTE" = "VİNYET";
 "VISUALIZATION" = "GÖRSELLEŞTİRME";
+"VISUALIZATION DIMENSIONS MUST BE BETWEEN 16 AND 8,192 PIXELS." = "GÖRSELLEŞTİRME BOYUTLARI 16 İLE 8.192 PİKSEL ARASINDA OLMALI.";
 "Value" = "Değer";
 "Verifying update signature…" = "Güncelleme imzası doğrulanıyor…";
 "Version %@" = "Sürüm %@";
@@ -2563,6 +2571,7 @@
 "View releases" = "Sürümleri gör";
 "Vignette" = "Vinyet";
 "Visualization" = "Görselleştirme";
+"Visualization dimensions must be between 16 and 8,192 pixels." = "Görselleştirme boyutları 16 ile 8.192 piksel arasında olmalı.";
 "WAIT FOR THE PROCESSED PREVIEW TO FINISH BEFORE RESETTING." = "SIFIRLAMADAN ÖNCE İŞLENMİŞ ÖNİZLEMENİN BİTMESİNİ BEKLE.";
 "WAVEFORM" = "DALGA BİÇİMİ";
 "WELCOME TO NASHI" = "NASHI'YE HOŞ GELDİN";
@@ -2638,6 +2647,7 @@
 "ZIP REGULAR FILES AND FOLDERS WITHOUT LINKS (10,000 ITEM LIMIT)." = "BAĞLANTI İÇERMEYEN NORMAL DOSYA VE KLASÖRLERİ SIKIŞTIR (SINIR 10.000 ÖĞE).";
 "Zip regular files and folders without links (10,000 item limit)." = "Bağlantı içermeyen normal dosya ve klasörleri sıkıştır (sınır 10.000 öğe).";
 "macOS Reduce Motion is on. Nashi keeps motion off." = "macOS Hareketi Azalt açık. Nashi animasyonları kapalı tutar.";
+"macOS could not open the generated media preview." = "macOS oluşturulan medya önizlemesini açamadı.";
 "owner/repository or GitHub URL" = "kullanıcı/depo veya GitHub adresi";
 "←/→ FILES · MEDIA: SPACE PLAY/PAUSE, ←/→ 1S, ALT+←/→ FILES · ESC CLOSES" = "←/→ DOSYALAR · MEDYA: SPACE OYNAT/DURAKLAT, ←/→ 1 SN, ALT+←/→ DOSYALAR · ESC KAPATIR";
 "←/→ FILES · MEDIA: SPACE PLAY/PAUSE, ←/→ 1S, ⌥←/→ FILES · ESC CLOSES" = "←/→ DOSYALAR · MEDYA: SPACE OYNAT/DURAKLAT, ←/→ 1 SN, ⌥←/→ DOSYALAR · ESC KAPATIR";
