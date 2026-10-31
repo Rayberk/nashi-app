@@ -257,7 +257,8 @@ public sealed class MediaEngine(string ffmpeg, string ffprobe)
                     else
                     {
                         var effect=options.RedactionMode=="blur"?"gblur=sigma=20:steps=2":$"scale={Math.Max(1,rect.Width/16)}:{Math.Max(1,rect.Height/16)}:flags=neighbor,scale={rect.Width}:{rect.Height}:flags=neighbor";
-                        graph.Add($"[{previous}]split[b{n}][c{n}];[c{n}]crop={rect.Width}:{rect.Height}:{rect.X}:{rect.Y}:exact=1,{effect}[e{n}];[b{n}][e{n}]overlay={rect.X}:{rect.Y}:enable='{enabled}'[{next}]");
+                        // overlay blends the patch by its alpha; an opaque patch replaces the area in videos with transparency (as on macOS).
+                        graph.Add($"[{previous}]split[b{n}][c{n}];[c{n}]crop={rect.Width}:{rect.Height}:{rect.X}:{rect.Y}:exact=1,{effect},format=yuv420p[e{n}];[b{n}][e{n}]overlay={rect.X}:{rect.Y}:enable='{enabled}'[{next}]");
                     }
                     previous=next;
                 }
