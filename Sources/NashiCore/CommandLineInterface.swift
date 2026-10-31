@@ -91,7 +91,8 @@ do {
     }
     private static func normalizeFileURLs(_ options:inout [String:Any]) {
         func fileURL(_ value:Any?)->Any? {
-            guard let value=value as? String,URL(string:value)?.scheme==nil else { return value }
+            // Only file URLs pass through; a relative name such as "Q3:2024" is a path, not a URL scheme.
+            guard let value=value as? String,URL(string:value)?.isFileURL != true else { return value }
             return URL(fileURLWithPath:(value as NSString).expandingTildeInPath).absoluteString
         }
         for key in ["outputDirectory","visualizationImage"] { if let value=options[key] { options[key]=fileURL(value) } }
