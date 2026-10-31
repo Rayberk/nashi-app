@@ -9,6 +9,7 @@
 "%@ exports" = "Exports %@";
 "%@ files" = "%@ fichiers";
 "%@ files, ready to go." = "%@ fichiers, prêts à partir.";
+"%@ found" = "%@ trouvés";
 "%@ input" = "Entrée %@";
 "%@ is enabled" = "%@ est activé";
 "%@ is not installed." = "%@ n’est pas installé.";
@@ -31,6 +32,7 @@
 "%lld exports" = "Exports %lld";
 "%lld files" = "%lld fichiers";
 "%lld files, ready to go." = "%lld fichiers, prêts à partir.";
+"%lld found" = "%lld trouvés";
 "%lld input" = "Entrée %lld";
 "%lld is enabled" = "%lld est activé";
 "%lld is not installed." = "%lld n’est pas installé.";
@@ -45,11 +47,15 @@
 "%lld · Original stays safe" = "%lld · L’original reste intact";
 "%lld, page %@" = "%lld, page %@";
 "%lld, page %lld" = "%lld, page %lld";
+"0 FOUND" = "0 TROUVÉ";
 "0 SELECTED" = "0 SÉLECTIONNÉ";
+"0 found" = "0 trouvé";
 "0 selected" = "0 sélectionné";
+"1 FOUND" = "1 TROUVÉ";
 "1 ITEM" = "1 ÉLÉMENT";
 "1 PHOTO" = "1 PHOTO";
 "1 SELECTED" = "1 SÉLECTIONNÉ";
+"1 found" = "1 trouvé";
 "1 item" = "1 élément";
 "1 photo" = "1 photo";
 "1 selected" = "1 sélectionné";
@@ -135,6 +141,8 @@
 "ADD SELECTED RANGE" = "AJOUTER LA PLAGE SÉLECTIONNÉE";
 "ADD SPLIT" = "AJOUTER UNE COUPURE";
 "ADD TO AN EXISTING FLOAT" = "AJOUTER À UN FLOAT EXISTANT";
+"ADD TO FLOAT" = "AJOUTER AU FLOAT";
+"ADDED TO FLOAT." = "AJOUTÉ AU FLOAT.";
 "ADDING PAGES…" = "AJOUT DES PAGES…";
 "ADDITIONAL OPTIONS" = "OPTIONS SUPPLÉMENTAIRES";
 "AIRDROP IS UNAVAILABLE ON THIS MAC." = "AIRDROP N’EST PAS DISPONIBLE SUR CE MAC.";
@@ -206,7 +214,9 @@
 "Add files" = "Ajouter des fichiers";
 "Add or change files" = "Modifier la sélection";
 "Add selected range" = "Ajouter la plage sélectionnée";
+"Add to Float" = "Ajouter au Float";
 "Add to an existing Float" = "Ajouter à un Float existant";
+"Added to Float." = "Ajouté au Float.";
 "Adding pages…" = "Ajout des pages…";
 "Additional options" = "Options supplémentaires";
 "AirDrop is unavailable on this Mac." = "AirDrop n’est pas disponible sur ce Mac.";
@@ -725,6 +735,7 @@
 "DRAG ACROSS THE PREVIEW TO SELECT THE AREA TO KEEP." = "FAITES GLISSER SUR L’APERÇU POUR SÉLECTIONNER LA ZONE À CONSERVER.";
 "DRAG AN AREA FIRST." = "FAITES D’ABORD GLISSER UNE ZONE.";
 "DRAG AN EXISTING ANNOTATION TO MOVE IT; DRAG ITS HANDLES TO RESIZE. TURN OFF SELECT / MOVE TO DRAW." = "FAITES GLISSER UNE ANNOTATION EXISTANTE POUR LA DÉPLACER ; FAITES GLISSER SES POIGNÉES POUR LA REDIMENSIONNER. DÉSACTIVEZ SÉLECTIONNER / DÉPLACER POUR DESSINER.";
+"DRAG EITHER EDGE TO RESIZE THE RANGE, OR DRAG ITS MIDDLE TO MOVE IT." = "FAITES GLISSER UN BORD POUR REDIMENSIONNER LA PLAGE, OU SON MILIEU POUR LA DÉPLACER.";
 "DRAG INSIDE TO MOVE. DRAG NEAR A CORNER TO RESIZE. DRAG OUTSIDE TO START A NEW SELECTION." = "FAITES GLISSER À L’INTÉRIEUR POUR DÉPLACER. FAITES GLISSER PRÈS D’UN COIN POUR REDIMENSIONNER. FAITES GLISSER À L’EXTÉRIEUR POUR DÉMARRER UNE NOUVELLE SÉLECTION.";
 "DRAG ON THE PREVIEW TO ADD AN AREA. EACH AREA IS SAVED INTO THE NEW COPY." = "FAITES GLISSER SUR L’APERÇU POUR AJOUTER UNE ZONE. CHAQUE ZONE EST ENREGISTRÉE DANS LA NOUVELLE COPIE.";
 "DRAG SHORTCUTS" = "RACCOURCIS DE GLISSER-DÉPOSER";
@@ -802,6 +813,7 @@
 "Drag across the preview to select the area to keep." = "Faites glisser sur l’aperçu pour sélectionner la zone à conserver.";
 "Drag an area first." = "Faites d’abord glisser une zone.";
 "Drag an existing annotation to move it; drag its handles to resize. Turn off Select / Move to draw." = "Faites glisser une annotation existante pour la déplacer ; faites glisser ses poignées pour la redimensionner. Désactivez Sélectionner / Déplacer pour dessiner.";
+"Drag either edge to resize the range, or drag its middle to move it." = "Faites glisser un bord pour redimensionner la plage, ou son milieu pour la déplacer.";
 "Drag inside to move. Drag near a corner to resize. Drag outside to start a new selection." = "Faites glisser à l’intérieur pour déplacer. Faites glisser près d’un coin pour redimensionner. Faites glisser à l’extérieur pour démarrer une nouvelle sélection.";
 "Drag on the preview to add an area. Each area is saved into the new copy." = "Faites glisser sur l’aperçu pour ajouter une zone. Chaque zone est enregistrée dans la nouvelle copie.";
 "Drag shortcuts" = "Raccourcis de glisser-déposer";
@@ -898,6 +910,7 @@
 "FILE TOOLS WHEEL" = "ROUE DES OUTILS DE FICHIER";
 "FILES" = "FICHIERS";
 "FILES ARE PROCESSED LOCALLY ON YOUR MAC." = "LES FICHIERS SONT TRAITÉS LOCALEMENT SUR VOTRE MAC.";
+"FILES COPIED." = "FICHIERS COPIÉS.";
 "FILES COPIED. PASTE THEM WHEREVER YOU NEED." = "FICHIERS COPIÉS. COLLEZ-LES OÙ VOUS VOULEZ.";
 "FILES IN FLOAT" = "FICHIERS DANS FLOAT";
 "FILES MISSING" = "FICHIERS MANQUANTS";
@@ -964,6 +977,7 @@
 "File tools wheel" = "Roue des outils de fichier";
 "Files" = "Fichiers";
 "Files are processed locally on your Mac." = "Les fichiers sont traités localement sur votre Mac.";
+"Files copied." = "Fichiers copiés.";
 "Files copied. Paste them wherever you need." = "Fichiers copiés. Collez-les où vous voulez.";
 "Files in Float" = "Fichiers dans Float";
 "Files missing" = "Fichiers manquants";
@@ -1341,8 +1355,10 @@
 "NOTHING HERE YET. PASTE SOMETHING OR MAKE YOUR FIRST FRESH COPY." = "RIEN ICI POUR L’INSTANT. COLLEZ QUELQUE CHOSE OU CRÉEZ VOTRE PREMIÈRE COPIE.";
 "NUMBER" = "NUMÉRO";
 "NUMBER OF CLIPS" = "NOMBRE DE CLIPS";
+"Nashi %@ wheel" = "Roue %@ Nashi";
 "Nashi %@ · Build %@" = "Nashi %@ · Build %@";
 "Nashi %@ · Build %lld" = "Nashi %@ · Build %lld";
+"Nashi %lld wheel" = "Roue %lld Nashi";
 "Nashi %lld · Build %@" = "Nashi %lld · Build %@";
 "Nashi %lld · Build %lld" = "Nashi %lld · Build %lld";
 "Nashi Settings" = "Réglages de Nashi";
@@ -1453,6 +1469,8 @@
 "Open link" = "Ouvrir le lien";
 "Open permission settings…" = "Ouvrir les réglages d’autorisation…";
 "Open wheel" = "Ouvrir la roue";
+"Opened in %@." = "Ouvert dans %@.";
+"Opened in %lld." = "Ouvert dans %lld.";
 "Optional. You can change this in Settings." = "Facultatif. Vous pouvez le modifier dans les Réglages.";
 "Organize PDF" = "Organiser un PDF";
 "Original" = "Original";
@@ -1607,6 +1625,10 @@
 "Processing…" = "Traitement en cours…";
 "Protected media cannot be downloaded." = "Les médias protégés ne peuvent pas être téléchargés.";
 "Public updates work without a token." = "Les mises à jour publiques fonctionnent sans jeton.";
+"QR CODE COPIED." = "CODE QR COPIÉ.";
+"QR CODES COPIED." = "CODES QR COPIÉS.";
+"QR code copied." = "Code QR copié.";
+"QR codes copied." = "Codes QR copiés.";
 "QUALITY" = "QUALITÉ";
 "QUALITY (%)" = "QUALITÉ (%)";
 "QUICK LOOK" = "COUP D’ŒIL";
@@ -1782,6 +1804,7 @@
 "SAVING DOCUMENT…" = "ENREGISTREMENT DU DOCUMENT…";
 "SAVING IMAGES…" = "ENREGISTREMENT DES IMAGES…";
 "SCAN AGAIN" = "ANALYSER À NOUVEAU";
+"SCAN COMPLETE." = "ANALYSE TERMINÉE.";
 "SEARCH FORMATS" = "RECHERCHER DES FORMATS";
 "SEARCH METADATA" = "RECHERCHER DANS LES MÉTADONNÉES";
 "SECONDS" = "SECONDES";
@@ -1823,6 +1846,7 @@
 "SHADOW RADIUS" = "RAYON DE L’OMBRE";
 "SHADOWS" = "OMBRES";
 "SHARE" = "PARTAGER";
+"SHARED WITH AIRDROP." = "PARTAGÉ VIA AIRDROP.";
 "SHARE…" = "PARTAGER…";
 "SHARPEN" = "ACCENTUER";
 "SHARPNESS" = "NETTETÉ";
@@ -1929,6 +1953,7 @@
 "Saving document…" = "Enregistrement du document…";
 "Saving images…" = "Enregistrement des images…";
 "Scan again" = "Analyser à nouveau";
+"Scan complete." = "Analyse terminée.";
 "Search formats" = "Rechercher des formats";
 "Search metadata" = "Rechercher dans les métadonnées";
 "Seconds" = "Secondes";
@@ -1972,6 +1997,7 @@
 "Shadow radius" = "Rayon de l’ombre";
 "Shadows" = "Ombres";
 "Share" = "Partager";
+"Shared with AirDrop." = "Partagé via AirDrop.";
 "Share…" = "Partager…";
 "Sharpen" = "Accentuer";
 "Sharpness" = "Netteté";

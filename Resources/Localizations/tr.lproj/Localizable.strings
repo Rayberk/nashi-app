@@ -9,6 +9,7 @@
 "%@ exports" = "%@ çıktıları";
 "%@ files" = "%@ dosya";
 "%@ files, ready to go." = "%@ dosya hazır.";
+"%@ found" = "%@ bulundu";
 "%@ input" = "%@ girdisi";
 "%@ is enabled" = "%@ izni açık";
 "%@ is not installed." = "%@ kurulu değil.";
@@ -31,6 +32,7 @@
 "%lld exports" = "%lld çıktıları";
 "%lld files" = "%lld dosya";
 "%lld files, ready to go." = "%lld dosya hazır.";
+"%lld found" = "%lld bulundu";
 "%lld input" = "%lld girdisi";
 "%lld is enabled" = "%lld izni açık";
 "%lld is not installed." = "%lld kurulu değil.";
@@ -45,11 +47,15 @@
 "%lld · Original stays safe" = "%lld · Orijinal dosyan güvende";
 "%lld, page %@" = "%lld, sayfa %@";
 "%lld, page %lld" = "%lld, sayfa %lld";
+"0 FOUND" = "0 BULUNDU";
 "0 SELECTED" = "0 SEÇİLİ";
+"0 found" = "0 bulundu";
 "0 selected" = "0 seçili";
+"1 FOUND" = "1 BULUNDU";
 "1 ITEM" = "1 ÖĞE";
 "1 PHOTO" = "1 FOTOĞRAF";
 "1 SELECTED" = "1 SEÇİLİ";
+"1 found" = "1 bulundu";
 "1 item" = "1 öğe";
 "1 photo" = "1 fotoğraf";
 "1 selected" = "1 seçili";
@@ -135,6 +141,8 @@
 "ADD SELECTED RANGE" = "SEÇİLİ ARALIĞI EKLE";
 "ADD SPLIT" = "BÖLME NOKTASI EKLE";
 "ADD TO AN EXISTING FLOAT" = "MEVCUT YÜZEN PENCEREYE EKLE";
+"ADD TO FLOAT" = "YÜZEN PENCEREYE EKLE";
+"ADDED TO FLOAT." = "YÜZEN PENCEREYE EKLENDİ.";
 "ADDING PAGES…" = "SAYFALAR EKLENİYOR…";
 "ADDITIONAL OPTIONS" = "DİĞER SEÇENEKLER";
 "AIRDROP IS UNAVAILABLE ON THIS MAC." = "AİRDROP BU MAC'TE KULLANILAMIYOR.";
@@ -206,7 +214,9 @@
 "Add files" = "Dosya ekle";
 "Add or change files" = "Dosya ekle veya değiştir";
 "Add selected range" = "Seçili aralığı ekle";
+"Add to Float" = "Yüzen pencereye ekle";
 "Add to an existing Float" = "Mevcut yüzen pencereye ekle";
+"Added to Float." = "Yüzen pencereye eklendi.";
 "Adding pages…" = "Sayfalar ekleniyor…";
 "Additional options" = "Diğer seçenekler";
 "AirDrop is unavailable on this Mac." = "AirDrop bu Mac'te kullanılamıyor.";
@@ -725,6 +735,7 @@
 "DRAG ACROSS THE PREVIEW TO SELECT THE AREA TO KEEP." = "KORUNACAK ALANI SEÇMEK İÇİN ÖNİZLEMEDE SÜRÜKLE.";
 "DRAG AN AREA FIRST." = "ÖNCE BİR ALAN SÜRÜKLE.";
 "DRAG AN EXISTING ANNOTATION TO MOVE IT; DRAG ITS HANDLES TO RESIZE. TURN OFF SELECT / MOVE TO DRAW." = "BİR İŞARETİ TAŞIMAK İÇİN İÇİNİ, BOYUTLANDIRMAK İÇİN TUTAMAĞINI SÜRÜKLE. ÇİZMEK İÇİN SEÇ / TAŞI'YI KAPAT.";
+"DRAG EITHER EDGE TO RESIZE THE RANGE, OR DRAG ITS MIDDLE TO MOVE IT." = "ARALIĞI BOYUTLANDIRMAK İÇİN KENARLARINDAN BİRİNİ, TAŞIMAK İÇİN ORTASINI SÜRÜKLE.";
 "DRAG INSIDE TO MOVE. DRAG NEAR A CORNER TO RESIZE. DRAG OUTSIDE TO START A NEW SELECTION." = "TAŞIMAK İÇİN ALANIN İÇİNİ, BOYUTLANDIRMAK İÇİN KÖŞEYİ SÜRÜKLE. YENİ SEÇİM İÇİN ALANIN DIŞINDA SÜRÜKLE.";
 "DRAG ON THE PREVIEW TO ADD AN AREA. EACH AREA IS SAVED INTO THE NEW COPY." = "ALAN EKLEMEK İÇİN ÖNİZLEMEDE SÜRÜKLE. HER ALAN YENİ KOPYAYA İŞLENİR.";
 "DRAG SHORTCUTS" = "SÜRÜKLEME KISAYOLLARI";
@@ -802,6 +813,7 @@
 "Drag across the preview to select the area to keep." = "Korunacak alanı seçmek için önizlemede sürükle.";
 "Drag an area first." = "Önce bir alan sürükle.";
 "Drag an existing annotation to move it; drag its handles to resize. Turn off Select / Move to draw." = "Bir işareti taşımak için içini, boyutlandırmak için tutamağını sürükle. Çizmek için Seç / Taşı'yı kapat.";
+"Drag either edge to resize the range, or drag its middle to move it." = "Aralığı boyutlandırmak için kenarlarından birini, taşımak için ortasını sürükle.";
 "Drag inside to move. Drag near a corner to resize. Drag outside to start a new selection." = "Taşımak için alanın içini, boyutlandırmak için köşeyi sürükle. Yeni seçim için alanın dışında sürükle.";
 "Drag on the preview to add an area. Each area is saved into the new copy." = "Alan eklemek için önizlemede sürükle. Her alan yeni kopyaya işlenir.";
 "Drag shortcuts" = "Sürükleme kısayolları";
@@ -898,6 +910,7 @@
 "FILE TOOLS WHEEL" = "DOSYA ARAÇLARI ÇARKI";
 "FILES" = "DOSYALAR";
 "FILES ARE PROCESSED LOCALLY ON YOUR MAC." = "DOSYALAR MAC'İNDE İŞLENİR.";
+"FILES COPIED." = "DOSYALAR KOPYALANDI.";
 "FILES COPIED. PASTE THEM WHEREVER YOU NEED." = "DOSYALAR KOPYALANDI. İSTEDİĞİN YERE YAPIŞTIR.";
 "FILES IN FLOAT" = "FLOAT’TAKİ DOSYALAR";
 "FILES MISSING" = "DOSYALAR BULUNAMIYOR";
@@ -964,6 +977,7 @@
 "File tools wheel" = "Dosya araçları çarkı";
 "Files" = "Dosyalar";
 "Files are processed locally on your Mac." = "Dosyalar Mac'inde işlenir.";
+"Files copied." = "Dosyalar kopyalandı.";
 "Files copied. Paste them wherever you need." = "Dosyalar kopyalandı. İstediğin yere yapıştır.";
 "Files in Float" = "Float’taki dosyalar";
 "Files missing" = "Dosyalar bulunamıyor";
@@ -1341,8 +1355,10 @@
 "NOTHING HERE YET. PASTE SOMETHING OR MAKE YOUR FIRST FRESH COPY." = "BURADA HENÜZ BİR ŞEY YOK. BİR DOSYA YAPIŞTIR VEYA İLK KOPYANI OLUŞTUR.";
 "NUMBER" = "NUMARA";
 "NUMBER OF CLIPS" = "KLİP SAYISI";
+"Nashi %@ wheel" = "Nashi %@ çarkı";
 "Nashi %@ · Build %@" = "Nashi %@ · Derleme %@";
 "Nashi %@ · Build %lld" = "Nashi %@ · Derleme %lld";
+"Nashi %lld wheel" = "Nashi %lld çarkı";
 "Nashi %lld · Build %@" = "Nashi %lld · Derleme %@";
 "Nashi %lld · Build %lld" = "Nashi %lld · Derleme %lld";
 "Nashi Settings" = "Nashi Ayarları";
@@ -1453,6 +1469,8 @@
 "Open link" = "Bağlantıyı aç";
 "Open permission settings…" = "İzin ayarlarını aç…";
 "Open wheel" = "Çarkı aç";
+"Opened in %@." = "%@ ile açıldı.";
+"Opened in %lld." = "%lld ile açıldı.";
 "Optional. You can change this in Settings." = "İsteğe bağlı. Ayarlardan değiştirebilirsin.";
 "Organize PDF" = "PDF'yi Düzenle";
 "Original" = "Orijinal";
@@ -1607,6 +1625,10 @@
 "Processing…" = "İşleniyor…";
 "Protected media cannot be downloaded." = "Korumalı medya indirilemez.";
 "Public updates work without a token." = "Herkese açık güncellemeler için token gerekmez.";
+"QR CODE COPIED." = "QR KODU KOPYALANDI.";
+"QR CODES COPIED." = "QR KODLARI KOPYALANDI.";
+"QR code copied." = "QR kodu kopyalandı.";
+"QR codes copied." = "QR kodları kopyalandı.";
 "QUALITY" = "KALİTE";
 "QUALITY (%)" = "KALİTE (%)";
 "QUICK LOOK" = "HIZLI BAKIŞ";
@@ -1782,6 +1804,7 @@
 "SAVING DOCUMENT…" = "BELGE KAYDEDİLİYOR…";
 "SAVING IMAGES…" = "GÖRSELLER KAYDEDİLİYOR…";
 "SCAN AGAIN" = "YENİDEN TARA";
+"SCAN COMPLETE." = "TARAMA TAMAMLANDI.";
 "SEARCH FORMATS" = "BİÇİMLERDE ARA";
 "SEARCH METADATA" = "META VERİLERDE ARA";
 "SECONDS" = "SANİYE";
@@ -1823,6 +1846,7 @@
 "SHADOW RADIUS" = "GÖLGE YARIÇAPI";
 "SHADOWS" = "GÖLGELER";
 "SHARE" = "PAYLAŞ";
+"SHARED WITH AIRDROP." = "AİRDROP İLE PAYLAŞILDI.";
 "SHARE…" = "PAYLAŞ…";
 "SHARPEN" = "KESKİNLEŞTİRME";
 "SHARPNESS" = "KESKİNLİK";
@@ -1929,6 +1953,7 @@
 "Saving document…" = "Belge kaydediliyor…";
 "Saving images…" = "Görseller kaydediliyor…";
 "Scan again" = "Yeniden tara";
+"Scan complete." = "Tarama tamamlandı.";
 "Search formats" = "Biçimlerde ara";
 "Search metadata" = "Meta verilerde ara";
 "Seconds" = "Saniye";
@@ -1972,6 +1997,7 @@
 "Shadow radius" = "Gölge yarıçapı";
 "Shadows" = "Gölgeler";
 "Share" = "Paylaş";
+"Shared with AirDrop." = "AirDrop ile paylaşıldı.";
 "Share…" = "Paylaş…";
 "Sharpen" = "Keskinleştirme";
 "Sharpness" = "Keskinlik";
