@@ -521,7 +521,7 @@ public enum MediaEngine {
                     if info.hasAudio { arguments += audioEncoding(ext == "webm" ? "opus" : ext == "wmv" ? "wma" : ext == "avi" ? "mp3" : "m4a", quality: options.quality, bitrate: Int(audioRate), source: info.audio) }
                     if ["mp4", "mov", "m4v"].contains(ext) { arguments += ["-movflags", "+faststart"] }
                 } else {
-                    arguments += ["-map", "0:a:0", "-vn"] + audioEncoding(ext, quality: options.quality, bitrate: Int(audioRate), source: info.audio)
+                    arguments += ["-map", "0:a:0", "-vn"] + audioEncoding(ext, quality: options.quality, bitrate: Int(audioRate), source: info.audio, channels: audioRate < 24000 ? 1 : nil)
                     // libopus cannot encode at 22.05 kHz; 24 kHz is its nearest supported rate.
                     if audioRate < 24000 { arguments += ["-ac", "1", "-ar", ext == "opus" ? "24000" : "22050"] }
                 }
@@ -584,7 +584,9 @@ public enum MediaEngine {
         case "ogg": return ["-c:a", "libvorbis", "-b:a", String(max(32000, min(320000, rate)))]
         case "opus":
             let encoderRate = [48000, 24000, 16000, 12000, 8000].contains(sampleRate) ? sampleRate : 48000
-            return ["-c:a", "libopus", "-b:a", String(min(512000, min(rate, 256000 * channelCount))), "-ar", String(encoderRate)]
+            // libopus rejects surround layouts outside Vorbis order, such as the 5.1(side) of FLAC and AC-3 sources.
+            let layout = [3: "3.0", 4: "quad", 5: "5.0", 6: "5.1", 7: "6.1", 8: "7.1"][channelCount]
+            return ["-c:a", "libopus", "-b:a", String(min(512000, min(rate, 256000 * channelCount))), "-ar", String(encoderRate)] + (layout.map { ["-ch_layout", $0] } ?? [])
         case "wma": return ["-c:a", "wmav2", "-b:a", String(max(24000, min(320000, rate))), "-ar", String(max(8000, min(48000, sampleRate)))] + (channelCount > 2 ? ["-ac", "2"] : [])
         default: return ["-c:a", "aac", "-b:a", String(rate)]
         }
