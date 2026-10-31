@@ -120,6 +120,7 @@
 "A PDF PAGE COULD NOT BE READ." = "BİR PDF SAYFASI OKUNAMADI.";
 "A PDF page could not be read." = "Bir PDF sayfası okunamadı.";
 "A PERFECT LANDING SPOT" = "BURAYA BIRAKABİLİRSİN";
+"A PHOTO IN THIS POST IS UNAVAILABLE. TRY A FRESH PUBLIC POST LINK." = "BU GÖNDERİDEKİ BİR FOTOĞRAFA ULAŞILAMIYOR. GÖNDERİNİN GÜNCEL, HERKESE AÇIK BAĞLANTISINI DENE.";
 "A PHOTO IS UNAVAILABLE. TRY A FRESH PUBLIC POST LINK." = "BİR FOTOĞRAFA ULAŞILAMIYOR. GÖNDERİNİN GÜNCEL, HERKESE AÇIK BAĞLANTISINI DENE.";
 "A PLACE FOR FRESH FILES." = "YENİ DOSYALAR İÇİN BİR YER.";
 "A SELECTED ITEM IS MISSING." = "SEÇİLEN ÖĞELERDEN BİRİ BULUNAMIYOR.";
@@ -145,6 +146,7 @@
 "A new form.\nIn a tap." = "Tek dokunuş.\nYeni bir biçim.";
 "A page range is outside the PDF." = "Bir sayfa aralığı PDF'nin dışında.";
 "A perfect landing spot" = "Buraya bırakabilirsin";
+"A photo in this post is unavailable. Try a fresh public post link." = "Bu gönderideki bir fotoğrafa ulaşılamıyor. Gönderinin güncel, herkese açık bağlantısını dene.";
 "A photo is unavailable. Try a fresh public post link." = "Bir fotoğrafa ulaşılamıyor. Gönderinin güncel, herkese açık bağlantısını dene.";
 "A place for fresh files." = "Yeni dosyalar için bir yer.";
 "A selected item is missing." = "Seçilen öğelerden biri bulunamıyor.";
@@ -2273,6 +2275,7 @@
 "THE OPERATION WAS CANCELLED." = "İŞLEM İPTAL EDİLDİ.";
 "THE PDF CONTAINS NO PAGES." = "PDF'DE SAYFA YOK.";
 "THE PDF PAGE IS TOO LARGE TO RENDER AT THIS RESOLUTION." = "PDF SAYFASI BU ÇÖZÜNÜRLÜKTE İŞLENEMEYECEK KADAR BÜYÜK.";
+"THE POST DID NOT RETURN READABLE PHOTO DETAILS." = "GÖNDERİ OKUNABİLİR FOTOĞRAF BİLGİSİ DÖNDÜRMEDİ.";
 "THE PROCESSING TOOL COULD NOT START." = "İŞLEME ARACI BAŞLATILAMADI.";
 "THE REQUESTED FILE SIZE COULD NOT BE REACHED. CHOOSE A LARGER TARGET." = "İSTENEN DOSYA BOYUTUNA İNİLEMEDİ. DAHA BÜYÜK BİR HEDEF SEÇ.";
 "THE REQUESTED IMAGE SIZE COULD NOT BE REACHED. CHOOSE A LARGER TARGET." = "İSTENEN GÖRSEL BOYUTUNA İNİLEMEDİ. DAHA BÜYÜK BİR HEDEF SEÇ.";
@@ -2414,6 +2417,7 @@
 "The metadata field %@ could not be removed." = "%@ meta veri alanı kaldırılamadı.";
 "The metadata field %lld could not be removed." = "%lld meta veri alanı kaldırılamadı.";
 "The operation was cancelled." = "İşlem iptal edildi.";
+"The post did not return readable photo details." = "Gönderi okunabilir fotoğraf bilgisi döndürmedi.";
 "The processing tool could not start." = "İşleme aracı başlatılamadı.";
 "The requested PDF size could not be reached." = "İstenen PDF boyutuna inilemedi.";
 "The requested PDF size could not be reached. Choose a larger target." = "İstenen PDF boyutuna inilemedi. Daha büyük bir hedef seç.";
@@ -2533,6 +2537,7 @@
 "USE A STATIC SVG WITHOUT EMBEDDED SCRIPTS OR HTML." = "GÖMÜLÜ BETİK VEYA HTML İÇERMEYEN STATİK BİR SVG KULLAN.";
 "USE IN NASHI" = "NASHI'DE KULLAN";
 "USE ONCE IF MACOS NEEDS PERMISSION FOR YOUR SAVED UPDATE CONNECTION." = "MACOS KAYITLI GÜNCELLEME BAĞLANTISI İÇİN İZİN İSTERSE BİR KEZ KULLAN.";
+"USE ONE INSTAGRAM PHOTO POST WITH UP TO 50 ITEMS." = "EN FAZLA 50 ÖĞE İÇEREN TEK BİR INSTAGRAM FOTOĞRAF GÖNDERİSİ KULLAN.";
 "USE OPEN TO PREVIEW THIS DOCUMENT IN ITS DEFAULT APP." = "BU BELGEYİ VARSAYILAN UYGULAMASINDA ÖNİZLEMEK İÇİN AÇ'I KULLAN.";
 "Undo" = "Geri Al";
 "Undo Area" = "Alanı Geri Al";
@@ -2571,6 +2576,7 @@
 "Use a static SVG without embedded scripts or HTML." = "Gömülü betik veya HTML içermeyen statik bir SVG kullan.";
 "Use in Nashi" = "Nashi'de kullan";
 "Use once if macOS needs permission for your saved update connection." = "macOS kayıtlı güncelleme bağlantısı için izin isterse bir kez kullan.";
+"Use one Instagram photo post with up to 50 items." = "En fazla 50 öğe içeren tek bir Instagram fotoğraf gönderisi kullan.";
 "VALUE" = "DEĞER";
 "VERIFYING UPDATE SIGNATURE…" = "GÜNCELLEME İMZASI DOĞRULANIYOR…";
 "VIBRANCE" = "CANLILIK";
