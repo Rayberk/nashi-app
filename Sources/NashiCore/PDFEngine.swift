@@ -43,6 +43,8 @@ public enum PDFEngine {
     }
     public static func pageOrder(_ ranges:String, count:Int) throws -> [Int] {
         if ranges.trimmingCharacters(in:.whitespacesAndNewlines).isEmpty { return Array(0..<count) }
+        // "1 - 3" is as common as "1-3"; Windows trims both sides of the dash too.
+        let ranges=ranges.replacingOccurrences(of:#"\s*-\s*"#,with:"-",options:.regularExpression)
         var result:[Int]=[]
         for part in ranges.split(separator:",") {
             let pieces=part.trimmingCharacters(in:.whitespaces).split(separator:"-")
