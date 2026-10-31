@@ -179,6 +179,12 @@ if(Environment.GetEnvironmentVariable("NASHI_VERIFY_FFMPEG") is {} encoder && En
         var wav=await engine.ConvertAsync([source],"wav",directory,new());var normalizedWav=await engine.ToolAsync("normalizeAudio",wav,directory,new());
         var sourceRate=(await engine.InspectAsync(wav[0])).Audio?.SampleRate??0;var normalizedRate=(await engine.InspectAsync(normalizedWav[0])).Audio?.SampleRate??0;Check(sourceRate>0&&normalizedRate==sourceRate,$"Normalization changed the sample rate ({sourceRate} Hz → {normalizedRate} Hz)");
         var snapshots=await engine.ToolAsync("videoSnapshots",[source],directory,new(){SnapshotTimes=[0,1]});Check(snapshots.Count==2&&snapshots.All(File.Exists),"Snapshot output missing");
+        // Image viewers ignore a PNG pixel aspect, so frames of DV (32:27), NTSC 4:3 (8:9) and rotated HDV (4:3) videos are saved in their displayed shape, also at the end.
+        foreach(var (frameSize,frameSar,frameRotation,frameShape) in new[]{("720x480","32/27","0","853x480"),("720x480","8/9","0","640x480"),("1440x1080","4/3","90","810x1440")})
+        {
+            var frameSource=Path.Combine(directory,$"Frame source {frameSize} {frameSar.Replace('/',' ')}.mp4");await ProcessRunner.RunAsync(encoder,["-v","error","-f","lavfi","-i",$"testsrc2=size={frameSize}:rate=12:duration=0.5,setsar={frameSar}","-c:v","libx264","-pix_fmt","yuv420p",frameSource+".mp4"]);await ProcessRunner.RunAsync(encoder,["-v","error","-display_rotation:v:0",frameRotation,"-i",frameSource+".mp4","-c","copy",frameSource]);
+            foreach(var frame in await engine.ToolAsync("videoSnapshots",[frameSource],directory,new(){SnapshotTimes=[.2,(await engine.InspectAsync(frameSource)).Duration]})){var frameInfo=(await engine.InspectAsync(frame)).Video;Check($"{frameInfo?.Width}x{frameInfo?.Height}"==frameShape,$"A frame of a {frameSize} video with {frameSar} pixels was saved at {frameInfo?.Width}x{frameInfo?.Height} instead of {frameShape}");}
+        }
         // The player shows the last frame from its start to the end, including an audio tail after the picture.
         var pictureEndsEarly=Path.Combine(directory,"Picture ends early.mp4");await ProcessRunner.RunAsync(encoder,["-v","error","-f","lavfi","-i","testsrc=size=128x96:rate=25:duration=2","-f","lavfi","-i","sine=duration=2.5:sample_rate=48000","-c:v","libx264","-pix_fmt","yuv420p","-c:a","aac",pictureEndsEarly]);
         // Matroska stores no video stream duration, so its end is found by decoding.

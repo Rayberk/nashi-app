@@ -223,14 +223,15 @@ public sealed class MediaEngine(string ffmpeg, string ffprobe)
                 {
                     var time=options.SnapshotTimes[n];if(!double.IsFinite(time)||time<0||(info.Duration>0&&time>info.Duration))throw new ArgumentException("A frame lies outside the video.");
                     var file=Output(directory,input,"png"," Frame "+(n+1));
-                    try{await RenderAsync(["-ss",Number(time),"-i",input,"-map","0:v:0","-frames:v","1","-update","1","-c:v","png"],file,null,progress,token);}
+                    // Image viewers ignore a PNG pixel aspect, so non-square pixels are resized to their displayed shape (as on macOS).
+                    try{await RenderAsync(["-ss",Number(time),"-i",input,"-map","0:v:0","-frames:v","1","-update","1","-vf","scale=-1:ih:reset_sar=1","-c:v","png"],file,null,progress,token);}
                     catch(IOException)when(!File.Exists(file)||new FileInfo(file).Length==0)
                     {
                         // FFmpeg writes the first frame at or after -ss. Past the start of the last frame (the end, a long last
                         // frame or an audio tail) there is none, yet the player shows the last frame there. Packet times can be
                         // missing or early (B-frames in AVI), so decode the last second of video to the end and keep the final frame.
                         File.Delete(file);if(!lastVideoRead){lastVideo=await LastVideoTimestampAsync(input,info.Duration,token);lastVideoRead=true;}if(lastVideo is not {} last)throw;
-                        await RenderAsync([..(last>1?new[]{"-ss",Number(last-1)}:[]),"-i",input,"-map","0:v:0","-update","1","-c:v","png"],file,null,progress,token);
+                        await RenderAsync([..(last>1?new[]{"-ss",Number(last-1)}:[]),"-i",input,"-map","0:v:0","-update","1","-vf","scale=-1:ih:reset_sar=1","-c:v","png"],file,null,progress,token);
                     }frames.Add(file);
                     progress(new((double)(n+1)/options.SnapshotTimes.Length,"Saving frame "+(n+1)));
                 }
