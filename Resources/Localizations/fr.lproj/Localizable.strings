@@ -1441,6 +1441,8 @@
 "NICE FILES.\nNO FUSS." = "DE BEAUX FICHIERS.\nSANS PRISE DE TÊTE.";
 "NICELY DONE." = "BIEN JOUÉ.";
 "NICELY DONE. 1 FILE IS READY." = "BIEN JOUÉ. 1 FICHIER EST PRÊT.";
+"NO DOWNLOADABLE MEDIA WAS FOUND. USE THE VIDEO'S SHARE LINK, OR COPY IMAGE ADDRESS FOR A PHOTO." = "AUCUN MÉDIA TÉLÉCHARGEABLE N’A ÉTÉ TROUVÉ. UTILISEZ LE LIEN DE PARTAGE DE LA VIDÉO, OU COPIER L’ADRESSE DE L’IMAGE POUR UNE PHOTO.";
+"NO DOWNLOADABLE PUBLIC MEDIA WAS FOUND. LOGIN-REQUIRED AND PROTECTED MEDIA ARE NOT SUPPORTED." = "AUCUN MÉDIA PUBLIC TÉLÉCHARGEABLE N’A ÉTÉ TROUVÉ. LES MÉDIAS PROTÉGÉS OU NÉCESSITANT UNE CONNEXION NE SONT PAS PRIS EN CHARGE.";
 "NO FOLDERS ALLOWED YET." = "AUCUN DOSSIER AUTORISÉ POUR L’INSTANT.";
 "NO MATCHES. TRY A FILE NAME OR TOOL." = "AUCUN RÉSULTAT. ESSAYEZ UN NOM DE FICHIER OU D’OUTIL.";
 "NO MATCHING REGIONS WERE DETECTED. YOU CAN STILL DRAW AREAS BY HAND." = "AUCUNE ZONE CORRESPONDANTE N’A ÉTÉ DÉTECTÉE. VOUS POUVEZ TOUJOURS DESSINER DES ZONES À LA MAIN.";
@@ -1495,6 +1497,8 @@
 "Nicely done. 1 file is ready." = "Bien joué. 1 fichier est prêt.";
 "No QR codes found. Try a larger or sharper image." = "Aucun code QR trouvé. Essayez une image plus grande ou plus nette.";
 "No QR codes this time." = "Aucun code QR cette fois.";
+"No downloadable media was found. Use the video's share link, or Copy Image Address for a photo." = "Aucun média téléchargeable n’a été trouvé. Utilisez le lien de partage de la vidéo, ou Copier l’adresse de l’image pour une photo.";
+"No downloadable public media was found. Login-required and protected media are not supported." = "Aucun média public téléchargeable n’a été trouvé. Les médias protégés ou nécessitant une connexion ne sont pas pris en charge.";
 "No file tools\n%@ Convert\n%@ Actions" = "Aucun outil de fichier\n%@ Convertir\n%@ Actions";
 "No file tools\n%@ Convert\n%lld Actions" = "Aucun outil de fichier\n%@ Convertir\n%lld Actions";
 "No file tools\n%lld Convert\n%@ Actions" = "Aucun outil de fichier\n%lld Convertir\n%@ Actions";
@@ -2254,6 +2258,11 @@
 "THE REQUESTED PDF SIZE COULD NOT BE REACHED. CHOOSE A LARGER TARGET." = "LA TAILLE DE PDF DEMANDÉE N’A PAS PU ÊTRE ATTEINTE. CHOISISSEZ UNE CIBLE PLUS GRANDE.";
 "THE SAME CONVERSION AND TOOL CATALOG AS MACOS." = "LE MÊME CATALOGUE DE CONVERSIONS ET D’OUTILS QUE SUR MACOS.";
 "THE SIGNED PACKAGE VERSION DOES NOT MATCH THIS UPDATE." = "LA VERSION DU PAQUET SIGNÉ NE CORRESPOND PAS À CETTE MISE À JOUR.";
+"THE SITE COULD NOT PROVIDE THIS MEDIA. TRY A FRESH PUBLIC SHARE LINK OR A DIRECT MEDIA URL." = "LE SITE N’A PAS PU FOURNIR CE MÉDIA. ESSAYEZ UN NOUVEAU LIEN DE PARTAGE PUBLIC OU UNE URL DIRECTE VERS LE MÉDIA.";
+"THE SITE DID NOT ALLOW THIS DOWNLOAD. THE LINK MAY HAVE EXPIRED OR NEED A LOGIN." = "LE SITE N’A PAS AUTORISÉ CE TÉLÉCHARGEMENT. LE LIEN A PEUT-ÊTRE EXPIRÉ OU NÉCESSITE UNE CONNEXION.";
+"THE SITE DID NOT RETURN READABLE MEDIA DETAILS." = "LE SITE N’A PAS RENVOYÉ D’INFORMATIONS LISIBLES SUR LE MÉDIA.";
+"THE SITE IS LIMITING REQUESTS. WAIT A LITTLE AND TRY AGAIN." = "LE SITE LIMITE LES REQUÊTES. PATIENTEZ UN PEU, PUIS RÉESSAYEZ.";
+"THE SITE RETURNED TOO MUCH METADATA. TRY AN INDIVIDUAL MEDIA LINK." = "LE SITE A RENVOYÉ TROP DE MÉTADONNÉES. ESSAYEZ LE LIEN D’UN SEUL MÉDIA.";
 "THE UPDATE DOES NOT CONTAIN NASHI." = "LA MISE À JOUR NE CONTIENT PAS NASHI.";
 "THE UPDATE NEEDS ANOTHER TRY" = "LA MISE À JOUR DOIT ÊTRE RELANCÉE";
 "THE UPDATE SIGNATURE IS INVALID. YOUR EXISTING APP WAS KEPT." = "LA SIGNATURE DE LA MISE À JOUR EST INVALIDE. VOTRE APP EXISTANTE A ÉTÉ CONSERVÉE.";
@@ -2270,7 +2279,10 @@
 "THIS IMAGE EXCEEDS 200 MB." = "CETTE IMAGE DÉPASSE 200 MO.";
 "THIS IMAGE IS TOO LARGE (100 MP LIMIT)." = "CETTE IMAGE EST TROP GRANDE (LIMITE DE 100 MPX).";
 "THIS IMAGE IS TOO LARGE TO PASTE. CHOOSE THE IMAGE FILE INSTEAD." = "CETTE IMAGE EST TROP GRANDE POUR ÊTRE COLLÉE. CHOISISSEZ PLUTÔT LE FICHIER IMAGE.";
+"THIS IS A LIVE OR UPCOMING STREAM. USE A FINISHED VIDEO LINK." = "IL S’AGIT D’UNE DIFFUSION EN DIRECT OU À VENIR. UTILISEZ LE LIEN D’UNE VIDÉO TERMINÉE.";
 "THIS LINK DID NOT RETURN A DOWNLOADABLE IMAGE." = "CE LIEN N’A PAS RENVOYÉ D’IMAGE TÉLÉCHARGEABLE.";
+"THIS LINK REQUIRES A LOGIN OR IS RESTRICTED. TRY A PUBLIC SHARE LINK; NASHI DOES NOT READ YOUR BROWSER SESSIONS." = "CE LIEN NÉCESSITE UNE CONNEXION OU EST RESTREINT. ESSAYEZ UN LIEN DE PARTAGE PUBLIC ; NASHI NE LIT PAS VOS SESSIONS DE NAVIGATEUR.";
+"THIS MEDIA IS PROTECTED AND CANNOT BE DOWNLOADED HERE." = "CE MÉDIA EST PROTÉGÉ ET NE PEUT PAS ÊTRE TÉLÉCHARGÉ ICI.";
 "THIS OUTPUT FORMAT HAS NO ADJUSTABLE CONVERSION DEFAULTS." = "CE FORMAT DE SORTIE N’A PAS DE RÉGLAGES DE CONVERSION MODIFIABLES.";
 "THIS PDF CONTAINS NO PAGES." = "CE PDF NE CONTIENT AUCUNE PAGE.";
 "THIS PDF HAS FORM FIELDS OR ATTACHMENTS THAT MERGING, SPLITTING OR REORDERING PAGES CANNOT KEEP. NO COPY WAS EXPORTED." = "CE PDF CONTIENT DES CHAMPS DE FORMULAIRE OU DES PIÈCES JOINTES QUE LA FUSION, LA DIVISION OU LA RÉORGANISATION DES PAGES NE PEUT PAS CONSERVER. AUCUNE COPIE N’A ÉTÉ EXPORTÉE.";
@@ -2278,6 +2290,7 @@
 "THIS PDF IS PASSWORD PROTECTED. ENTER ITS PASSWORD." = "CE PDF EST PROTÉGÉ PAR UN MOT DE PASSE. SAISISSEZ SON MOT DE PASSE.";
 "THIS PDF PAGE COULD NOT BE READ." = "CETTE PAGE PDF N’A PAS PU ÊTRE LUE.";
 "THIS PDF REQUIRES A VALID PASSWORD." = "CE PDF NÉCESSITE UN MOT DE PASSE VALIDE.";
+"THIS POST CONTAINS VIDEOS, NOT PHOTOS. USE ITS REEL LINK TO DOWNLOAD VIDEO." = "CETTE PUBLICATION CONTIENT DES VIDÉOS, PAS DES PHOTOS. UTILISEZ SON LIEN REEL POUR TÉLÉCHARGER LA VIDÉO.";
 "THIS POST CONTAINS VIDEOS. USE ITS REEL LINK TO DOWNLOAD VIDEO." = "CETTE PUBLICATION CONTIENT DES VIDÉOS. UTILISEZ SON LIEN REEL POUR TÉLÉCHARGER LA VIDÉO.";
 "THIS REPOSITORY IS PRIVATE" = "CE DÉPÔT EST PRIVÉ";
 "THIS RTFD ATTACHMENT SYNTAX COULD NOT BE PRESERVED." = "CETTE SYNTAXE DE PIÈCE JOINTE RTFD N’A PAS PU ÊTRE PRÉSERVÉE.";
@@ -2366,6 +2379,11 @@
 "The requested image size could not be reached. Choose a larger target." = "La taille d’image demandée n’a pas pu être atteinte. Choisissez une cible plus grande.";
 "The same conversion and tool catalog as macOS." = "Le même catalogue de conversions et d’outils que sur macOS.";
 "The signed package version does not match this update." = "La version du paquet signé ne correspond pas à cette mise à jour.";
+"The site could not provide this media. Try a fresh public share link or a direct media URL." = "Le site n’a pas pu fournir ce média. Essayez un nouveau lien de partage public ou une URL directe vers le média.";
+"The site did not allow this download. The link may have expired or need a login." = "Le site n’a pas autorisé ce téléchargement. Le lien a peut-être expiré ou nécessite une connexion.";
+"The site did not return readable media details." = "Le site n’a pas renvoyé d’informations lisibles sur le média.";
+"The site is limiting requests. Wait a little and try again." = "Le site limite les requêtes. Patientez un peu, puis réessayez.";
+"The site returned too much metadata. Try an individual media link." = "Le site a renvoyé trop de métadonnées. Essayez le lien d’un seul média.";
 "The text encoding of %@ could not be read." = "L’encodage du texte de %@ n’a pas pu être lu.";
 "The text encoding of %lld could not be read." = "L’encodage du texte de %lld n’a pas pu être lu.";
 "The update does not contain Nashi." = "La mise à jour ne contient pas Nashi.";
@@ -2394,8 +2412,12 @@
 "This image exceeds 200 MB." = "Cette image dépasse 200 Mo.";
 "This image is too large (100 MP limit)." = "Cette image est trop grande (limite de 100 Mpx).";
 "This image is too large to paste. Choose the image file instead." = "Cette image est trop grande pour être collée. Choisissez plutôt le fichier image.";
+"This is a live or upcoming stream. Use a finished video link." = "Il s’agit d’une diffusion en direct ou à venir. Utilisez le lien d’une vidéo terminée.";
 "This link did not return a downloadable image." = "Ce lien n’a pas renvoyé d’image téléchargeable.";
+"This link requires a login or is restricted. Try a public share link; Nashi does not read your browser sessions." = "Ce lien nécessite une connexion ou est restreint. Essayez un lien de partage public ; Nashi ne lit pas vos sessions de navigateur.";
+"This media is protected and cannot be downloaded here." = "Ce média est protégé et ne peut pas être téléchargé ici.";
 "This output format has no adjustable conversion defaults." = "Ce format de sortie n’a pas de réglages de conversion modifiables.";
+"This post contains videos, not photos. Use its Reel link to download video." = "Cette publication contient des vidéos, pas des photos. Utilisez son lien Reel pour télécharger la vidéo.";
 "This post contains videos. Use its Reel link to download video." = "Cette publication contient des vidéos. Utilisez son lien Reel pour télécharger la vidéo.";
 "This repository is private" = "Ce dépôt est privé";
 "This size cannot be reached. Choose a larger target or smaller dimensions." = "Cette taille est impossible à atteindre. Choisissez une cible plus grande ou des dimensions plus petites.";

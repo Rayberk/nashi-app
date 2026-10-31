@@ -1441,6 +1441,8 @@
 "NICE FILES.\nNO FUSS." = "DOSYALAR HAZIR.\nZAHMET YOK.";
 "NICELY DONE." = "HAZIR, ELİNE SAĞLIK!";
 "NICELY DONE. 1 FILE IS READY." = "HAZIR! 1 DOSYAN HAZIR.";
+"NO DOWNLOADABLE MEDIA WAS FOUND. USE THE VIDEO'S SHARE LINK, OR COPY IMAGE ADDRESS FOR A PHOTO." = "İNDİRİLEBİLİR MEDYA BULUNAMADI. VİDEONUN PAYLAŞIM BAĞLANTISINI KULLAN; FOTOĞRAF İÇİN GÖRSEL ADRESİNİ KOPYALA.";
+"NO DOWNLOADABLE PUBLIC MEDIA WAS FOUND. LOGIN-REQUIRED AND PROTECTED MEDIA ARE NOT SUPPORTED." = "HERKESE AÇIK İNDİRİLEBİLİR MEDYA BULUNAMADI. GİRİŞ GEREKTİREN VE KORUMALI MEDYALAR DESTEKLENMİYOR.";
 "NO FOLDERS ALLOWED YET." = "HENÜZ İZİN VERİLEN KLASÖR YOK.";
 "NO MATCHES. TRY A FILE NAME OR TOOL." = "EŞLEŞME BULUNAMADI. DOSYA ADI VEYA ARAÇ ADIYLA ARA.";
 "NO MATCHING REGIONS WERE DETECTED. YOU CAN STILL DRAW AREAS BY HAND." = "EŞLEŞEN BÖLGE BULUNAMADI. ALANLARI YİNE DE ELLE ÇİZEBİLİRSİN.";
@@ -1495,6 +1497,8 @@
 "Nicely done. 1 file is ready." = "Hazır! 1 dosyan hazır.";
 "No QR codes found. Try a larger or sharper image." = "QR kodu bulunamadı. Daha büyük veya daha net bir görsel dene.";
 "No QR codes this time." = "QR kodu bulunamadı.";
+"No downloadable media was found. Use the video's share link, or Copy Image Address for a photo." = "İndirilebilir medya bulunamadı. Videonun paylaşım bağlantısını kullan; fotoğraf için görsel adresini kopyala.";
+"No downloadable public media was found. Login-required and protected media are not supported." = "Herkese açık indirilebilir medya bulunamadı. Giriş gerektiren ve korumalı medyalar desteklenmiyor.";
 "No file tools\n%@ Convert\n%@ Actions" = "Dosya aracı yok\n%@ Dönüştür\n%@ İşlemler";
 "No file tools\n%@ Convert\n%lld Actions" = "Dosya aracı yok\n%@ Dönüştür\n%lld İşlemler";
 "No file tools\n%lld Convert\n%@ Actions" = "Dosya aracı yok\n%lld Dönüştür\n%@ İşlemler";
@@ -2254,6 +2258,11 @@
 "THE REQUESTED PDF SIZE COULD NOT BE REACHED. CHOOSE A LARGER TARGET." = "İSTENEN PDF BOYUTUNA İNİLEMEDİ. DAHA BÜYÜK BİR HEDEF SEÇ.";
 "THE SAME CONVERSION AND TOOL CATALOG AS MACOS." = "MACOS İLE AYNI DÖNÜŞTÜRME VE ARAÇ SEÇENEKLERİ.";
 "THE SIGNED PACKAGE VERSION DOES NOT MATCH THIS UPDATE." = "İMZALI PAKETİN SÜRÜMÜ BU GÜNCELLEMEYLE EŞLEŞMİYOR.";
+"THE SITE COULD NOT PROVIDE THIS MEDIA. TRY A FRESH PUBLIC SHARE LINK OR A DIRECT MEDIA URL." = "SİTE BU MEDYAYI SAĞLAYAMADI. HERKESE AÇIK YENİ BİR PAYLAŞIM BAĞLANTISI VEYA DOĞRUDAN BİR MEDYA URL'Sİ DENE.";
+"THE SITE DID NOT ALLOW THIS DOWNLOAD. THE LINK MAY HAVE EXPIRED OR NEED A LOGIN." = "SİTE BU İNDİRMEYE İZİN VERMEDİ. BAĞLANTININ SÜRESİ DOLMUŞ OLABİLİR YA DA GİRİŞ GEREKEBİLİR.";
+"THE SITE DID NOT RETURN READABLE MEDIA DETAILS." = "SİTE OKUNABİLİR MEDYA BİLGİSİ DÖNDÜRMEDİ.";
+"THE SITE IS LIMITING REQUESTS. WAIT A LITTLE AND TRY AGAIN." = "SİTE İSTEKLERİ SINIRLIYOR. BİRAZ BEKLEYİP YENİDEN DENE.";
+"THE SITE RETURNED TOO MUCH METADATA. TRY AN INDIVIDUAL MEDIA LINK." = "SİTE ÇOK FAZLA META VERİ DÖNDÜRDÜ. TEK BİR MEDYANIN BAĞLANTISINI DENE.";
 "THE UPDATE DOES NOT CONTAIN NASHI." = "GÜNCELLEME NASHI'Yİ İÇERMİYOR.";
 "THE UPDATE NEEDS ANOTHER TRY" = "GÜNCELLEMEYİ YENİDEN DENEMEK GEREKİYOR";
 "THE UPDATE SIGNATURE IS INVALID. YOUR EXISTING APP WAS KEPT." = "GÜNCELLEME İMZASI GEÇERSİZ. MEVCUT UYGULAMAN KORUNDU.";
@@ -2270,7 +2279,10 @@
 "THIS IMAGE EXCEEDS 200 MB." = "BU GÖRSEL 200 MB'I AŞIYOR.";
 "THIS IMAGE IS TOO LARGE (100 MP LIMIT)." = "BU GÖRSEL ÇOK BÜYÜK (SINIR 100 MP).";
 "THIS IMAGE IS TOO LARGE TO PASTE. CHOOSE THE IMAGE FILE INSTEAD." = "BU GÖRSEL YAPIŞTIRMAK İÇİN ÇOK BÜYÜK. BUNUN YERİNE GÖRSEL DOSYASINI SEÇ.";
+"THIS IS A LIVE OR UPCOMING STREAM. USE A FINISHED VIDEO LINK." = "BU, CANLI VEYA HENÜZ BAŞLAMAMIŞ BİR YAYIN. TAMAMLANMIŞ BİR VİDEONUN BAĞLANTISINI KULLAN.";
 "THIS LINK DID NOT RETURN A DOWNLOADABLE IMAGE." = "BU BAĞLANTIDAN İNDİRİLEBİLİR BİR GÖRSEL GELMEDİ.";
+"THIS LINK REQUIRES A LOGIN OR IS RESTRICTED. TRY A PUBLIC SHARE LINK; NASHI DOES NOT READ YOUR BROWSER SESSIONS." = "BU BAĞLANTI GİRİŞ GEREKTİRİYOR VEYA ERİŞİMİ KISITLI. HERKESE AÇIK BİR PAYLAŞIM BAĞLANTISI DENE; NASHI TARAYICI OTURUMLARINI OKUMAZ.";
+"THIS MEDIA IS PROTECTED AND CANNOT BE DOWNLOADED HERE." = "BU MEDYA KORUMALI VE BURADA İNDİRİLEMEZ.";
 "THIS OUTPUT FORMAT HAS NO ADJUSTABLE CONVERSION DEFAULTS." = "BU ÇIKTI BİÇİMİNİN AYARLANABİLİR DÖNÜŞTÜRME TERCİHİ YOK.";
 "THIS PDF CONTAINS NO PAGES." = "BU PDF'DE SAYFA YOK.";
 "THIS PDF HAS FORM FIELDS OR ATTACHMENTS THAT MERGING, SPLITTING OR REORDERING PAGES CANNOT KEEP. NO COPY WAS EXPORTED." = "BU PDF'DE BİRLEŞTİRME, BÖLME VEYA SAYFALARI YENİDEN SIRALAMA SIRASINDA KORUNAMAYAN FORM ALANLARI YA DA EKLER VAR. KOPYA DIŞA AKTARILMADI.";
@@ -2278,6 +2290,7 @@
 "THIS PDF IS PASSWORD PROTECTED. ENTER ITS PASSWORD." = "BU PDF PAROLAYLA KORUNUYOR. PAROLASINI GİR.";
 "THIS PDF PAGE COULD NOT BE READ." = "BU PDF SAYFASI OKUNAMADI.";
 "THIS PDF REQUIRES A VALID PASSWORD." = "BU PDF İÇİN GEÇERLİ BİR PAROLA GEREKİYOR.";
+"THIS POST CONTAINS VIDEOS, NOT PHOTOS. USE ITS REEL LINK TO DOWNLOAD VIDEO." = "BU GÖNDERİDE FOTOĞRAF DEĞİL, VİDEO VAR. VİDEOYU İNDİRMEK İÇİN GÖNDERİNİN REEL BAĞLANTISINI KULLAN.";
 "THIS POST CONTAINS VIDEOS. USE ITS REEL LINK TO DOWNLOAD VIDEO." = "BU GÖNDERİDE VİDEO VAR. VİDEOYU İNDİRMEK İÇİN REEL BAĞLANTISINI KULLAN.";
 "THIS REPOSITORY IS PRIVATE" = "BU DEPO GİZLİ";
 "THIS RTFD ATTACHMENT SYNTAX COULD NOT BE PRESERVED." = "BU RTFD EKİNİN YAPISI KORUNAMADI.";
@@ -2366,6 +2379,11 @@
 "The requested image size could not be reached. Choose a larger target." = "İstenen görsel boyutuna inilemedi. Daha büyük bir hedef seç.";
 "The same conversion and tool catalog as macOS." = "macOS ile aynı dönüştürme ve araç seçenekleri.";
 "The signed package version does not match this update." = "İmzalı paketin sürümü bu güncellemeyle eşleşmiyor.";
+"The site could not provide this media. Try a fresh public share link or a direct media URL." = "Site bu medyayı sağlayamadı. Herkese açık yeni bir paylaşım bağlantısı veya doğrudan bir medya URL'si dene.";
+"The site did not allow this download. The link may have expired or need a login." = "Site bu indirmeye izin vermedi. Bağlantının süresi dolmuş olabilir ya da giriş gerekebilir.";
+"The site did not return readable media details." = "Site okunabilir medya bilgisi döndürmedi.";
+"The site is limiting requests. Wait a little and try again." = "Site istekleri sınırlıyor. Biraz bekleyip yeniden dene.";
+"The site returned too much metadata. Try an individual media link." = "Site çok fazla meta veri döndürdü. Tek bir medyanın bağlantısını dene.";
 "The text encoding of %@ could not be read." = "%@ dosyasının metin kodlaması okunamadı.";
 "The text encoding of %lld could not be read." = "%lld dosyasının metin kodlaması okunamadı.";
 "The update does not contain Nashi." = "Güncelleme Nashi'yi içermiyor.";
@@ -2394,8 +2412,12 @@
 "This image exceeds 200 MB." = "Bu görsel 200 MB'ı aşıyor.";
 "This image is too large (100 MP limit)." = "Bu görsel çok büyük (sınır 100 MP).";
 "This image is too large to paste. Choose the image file instead." = "Bu görsel yapıştırmak için çok büyük. Bunun yerine görsel dosyasını seç.";
+"This is a live or upcoming stream. Use a finished video link." = "Bu, canlı veya henüz başlamamış bir yayın. Tamamlanmış bir videonun bağlantısını kullan.";
 "This link did not return a downloadable image." = "Bu bağlantıdan indirilebilir bir görsel gelmedi.";
+"This link requires a login or is restricted. Try a public share link; Nashi does not read your browser sessions." = "Bu bağlantı giriş gerektiriyor veya erişimi kısıtlı. Herkese açık bir paylaşım bağlantısı dene; Nashi tarayıcı oturumlarını okumaz.";
+"This media is protected and cannot be downloaded here." = "Bu medya korumalı ve burada indirilemez.";
 "This output format has no adjustable conversion defaults." = "Bu çıktı biçiminin ayarlanabilir dönüştürme tercihi yok.";
+"This post contains videos, not photos. Use its Reel link to download video." = "Bu gönderide fotoğraf değil, video var. Videoyu indirmek için gönderinin Reel bağlantısını kullan.";
 "This post contains videos. Use its Reel link to download video." = "Bu gönderide video var. Videoyu indirmek için Reel bağlantısını kullan.";
 "This repository is private" = "Bu depo gizli";
 "This size cannot be reached. Choose a larger target or smaller dimensions." = "Bu boyuta inilemiyor. Daha büyük bir hedef veya daha küçük boyutlar seç.";
