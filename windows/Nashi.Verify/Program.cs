@@ -63,6 +63,9 @@ try
     library.SetWindowManagement(false);
     var reopened=new LibraryStore(libraryDirectory);Check(reopened.Entries.Single().Paths.Single()==unicodeFile&&reopened.Appearance=="dark"&&!reopened.WindowManagementEnabled,"Library restart lost paths or settings");
     Check(reopened.Search("Türkçe").Count()==1&&reopened.Search("PASTED").Count()==1&&reopened.Search("absent").Count()==0,"Library search failed");
+    var namedLibrary=new LibraryStore(Path.Combine(root,"Named library"));var izmir=Path.Combine(root,"İzmir Café.txt");File.WriteAllText(izmir,"x");namedLibrary.Record("Resize Image",[izmir]);
+    Check(new[]{"izmir","İZMİR","cafe"," İzmir "}.All(q=>namedLibrary.Search(q).Count()==1&&namedLibrary.Search(q,"tr").Count()==1)&&namedLibrary.Search("görseli boyut","tr").Count()==1&&namedLibrary.Search("Ankara","tr").Count()==0,"Library search missed a file name that differs only in case or accents, as macOS finds it");
+    File.Delete(izmir);
     File.Delete(unicodeFile);Check(reopened.Entries.Single().AvailablePaths.Length==0,"Missing Library file was available");
     for(var i=0;i<55;i++)library.Record("ZIP "+i,[Path.Combine(root,"Output.txt")]);Check(library.Entries.Count==LibraryStore.Limit,"Library retention limit failed");
     Check(new LibraryStore(libraryDirectory).Entries.Count==LibraryStore.Limit,"Persisted Library limit failed");
