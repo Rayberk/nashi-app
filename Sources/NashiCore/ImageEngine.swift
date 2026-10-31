@@ -214,7 +214,8 @@ public enum ImageEngine {
         if a.grain > 0, let random = CIFilter(name:"CIRandomGenerator")?.outputImage {
             let monochrome = CIVector(x:0.3333,y:0.3333,z:0.3334,w:0)
             let grain = random.cropped(to:bounds).applyingFilter("CIColorMatrix",parameters:["inputRVector":monochrome,"inputGVector":monochrome,"inputBVector":monochrome,"inputAVector":CIVector(x:0,y:0,z:0,w:0),"inputBiasVector":CIVector(x:0,y:0,z:0,w:min(1,a.grain)*0.25)])
-            ci = grain.composited(over:ci)
+            // Source-atop keeps the image's own alpha, so grain does not cover transparent pixels.
+            ci = grain.applyingFilter("CISourceAtopCompositing",parameters:[kCIInputBackgroundImageKey:ci])
         }
         if a.vignette != 0 { ci = ci.applyingFilter("CIVignette",parameters:[kCIInputIntensityKey:max(-2,min(2,a.vignette)),kCIInputRadiusKey:Double(min(image.width,image.height))*0.5]) }
         ci = ci.cropped(to:bounds)
