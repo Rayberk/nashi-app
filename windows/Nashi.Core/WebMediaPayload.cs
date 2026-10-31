@@ -15,7 +15,7 @@ public sealed record WebMediaPayload(string Url,string Kind,string? Thumbnail=nu
         var urls=candidates.Where(c=>Uri.TryCreate(c,UriKind.Absolute,out var u)&&u.Scheme is "http" or "https"&&string.IsNullOrEmpty(u.UserInfo)&&(u.Host.Contains('.')||u.HostNameType==UriHostNameType.IPv6&&!u.IsLoopback)).Distinct().Select(c=>new Uri(c)).ToArray();
         foreach(var url in urls)
         {
-            var host=url.Host.ToLowerInvariant();if(host is "youtube.com" or "www.youtube.com" or "m.youtube.com" or "youtu.be"||host.EndsWith(".ytimg.com",StringComparison.Ordinal)||host=="i.ytimg.com")
+            var host=url.Host.ToLowerInvariant();if(host is "youtube.com" or "www.youtube.com" or "m.youtube.com" or "music.youtube.com" or "youtu.be"||host.EndsWith(".ytimg.com",StringComparison.Ordinal)||host=="i.ytimg.com")
             {
                 var id=YoutubeId(url);if(id is not null)return new("https://www.youtube.com/watch?v="+id,"youtube",urls.FirstOrDefault(u=>u.Host.EndsWith(".ytimg.com",StringComparison.Ordinal))?.AbsoluteUri);
             }
