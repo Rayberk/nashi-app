@@ -11,6 +11,8 @@ public sealed record MediaInfo(double Duration, long Bytes, IReadOnlyList<MediaS
     public bool HasAudio => Streams.Any(s => s.Kind == "audio");
     /// Ogg keeps Vorbis and Opus comments on the audio stream rather than in file-level tags.
     public bool OggStreamTags { get; init; }
+    /// Apple devices store location, make, model and capture date as com.apple.quicktime.* file tags.
+    public bool QuickTimeKeys { get; init; }
 }
 public sealed record MediaRegion(double X, double Y, double Width, double Height, double Start = 0, double? End = null);
 public sealed record MediaRange(double Start, double End);
@@ -82,7 +84,8 @@ public sealed class MediaEngine(string ffmpeg, string ffprobe)
         }
         var duration = root.TryGetProperty("format", out var format) && double.TryParse(GetString(format,"duration"), CultureInfo.InvariantCulture, out var seconds) && double.IsFinite(seconds) ? Math.Max(0,seconds) : 0;
         var oggTags=format.ValueKind==JsonValueKind.Object&&GetString(format,"format_name").Split(',').Contains("ogg")&&root.GetProperty("streams").EnumerateArray().FirstOrDefault(s=>GetString(s,"codec_type")=="audio") is {ValueKind:JsonValueKind.Object} audio&&audio.TryGetProperty("tags",out var audioTags)&&audioTags.ValueKind==JsonValueKind.Object&&audioTags.EnumerateObject().Any();
-        return new(duration, new FileInfo(input).Length, streams){OggStreamTags=oggTags};
+        var quickTimeKeys=format.ValueKind==JsonValueKind.Object&&format.TryGetProperty("tags",out var formatTags)&&formatTags.ValueKind==JsonValueKind.Object&&formatTags.EnumerateObject().Any(t=>t.Name.StartsWith("com.apple.quicktime.",StringComparison.Ordinal));
+        return new(duration, new FileInfo(input).Length, streams){OggStreamTags=oggTags,QuickTimeKeys=quickTimeKeys};
     }
 
     // The last video packet's time from the container start, read without decoding: the final minute first, then the whole file.
@@ -130,6 +133,8 @@ public sealed class MediaEngine(string ffmpeg, string ffprobe)
             arguments.AddRange(options.PreserveMetadata ? ["-map_metadata","0"] : ["-map_metadata","-1","-map_metadata:s","-1","-map_chapters","-1"]);
             // Other containers write file-level tags, so copy Ogg's stream comments there too (as on macOS).
             if(options.PreserveMetadata&&info.OggStreamTags)arguments.AddRange(["-map_metadata","0:s:a:0"]);
+            // The MP4 and MOV muxer writes only its fixed tag list unless asked for the source's own keys (as on macOS).
+            if(options.PreserveMetadata&&info.QuickTimeKeys&&format is "mp4" or "mov" or "m4v")arguments.AddRange(["-movflags","+use_metadata_tags"]);
             await RenderAsync(arguments,output,info.Duration,Scoped(progress,index,inputs.Count),token);
             outputs.Add(output);
         }

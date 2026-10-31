@@ -123,6 +123,10 @@ if(Environment.GetEnvironmentVariable("NASHI_VERIFY_FFMPEG") is {} encoder && En
             Check(paddedInfo.Video is {Width:98,Height:66}&&paddedInfo.Duration>0,"Odd video dimensions could not convert to "+format);
         }
         Check((await engine.InspectAsync(odd)).Video is {Width:97,Height:65},"Odd-dimension conversion changed the source");
+        // iPhones store location, make, model and capture date as QuickTime keys, which the MP4 and MOV muxer writes only when asked to.
+        var iphone=Path.Combine(directory,"IMG_0001.MOV");await ProcessRunner.RunAsync(encoder,["-v","error","-f","lavfi","-i","testsrc2=size=128x72:rate=12:duration=0.5","-c:v","libx264","-movflags","use_metadata_tags","-metadata","com.apple.quicktime.location.ISO6709=+35.6895+139.6917+040.000/","-metadata","com.apple.quicktime.make=Apple","-metadata","com.apple.quicktime.model=iPhone 15","-metadata","com.apple.quicktime.creationdate=2026-10-31T12:00:00+0900",iphone]);Check((await FileTags(iphone)).GetValueOrDefault("com.apple.quicktime.model")=="iPhone 15","iPhone fixture lacks its QuickTime keys");
+        foreach(var (iphoneFormat,iphoneKeep) in new[]{("mp4",true),("mov",true),("m4v",true),("mkv",true),("mp4",false),("mov",false)})
+        {var iphoneTags=await FileTags((await engine.ConvertAsync([iphone],iphoneFormat,directory,new(){PreserveMetadata=iphoneKeep}))[0]);Check(new[]{("location.ISO6709","+35.6895+139.6917+040.000/"),("make","Apple"),("model","iPhone 15"),("creationdate","2026-10-31T12:00:00+0900")}.All(t=>iphoneTags.GetValueOrDefault("com.apple.quicktime."+t.Item1)==(iphoneKeep?t.Item2:null)),$"An iPhone video converted to {iphoneFormat} with metadata {(iphoneKeep?"kept":"off")} has {string.Join(", ",iphoneTags.Select(t=>t.Key+"="+t.Value))}");}
         var reporter=new InlineProgress(p=>progress.Add(p));
         Check(Math.Abs((await engine.InspectAsync(source)).Video!.FrameRate-12)<.001,"Frame-by-frame preview lost actual source FPS");
         var trimmed=await engine.ToolAsync("trimVideo",[source],directory,new(){Start=.25,End=1.25},reporter);
