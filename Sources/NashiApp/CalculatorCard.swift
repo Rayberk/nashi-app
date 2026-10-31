@@ -14,10 +14,7 @@ import NashiCore
     private var lastAttempt:Date?
     init(rates:CurrencyRates?=CurrencyRateService.cached(),query:String="") { self.rates=rates;self.query=query;refresh() }
 
-    static var localCurrency:String {
-        let chosen=UserDefaults.standard.string(forKey:"calculatorCurrency") ?? "auto"
-        return chosen=="auto" ? (Locale.current.currency?.identifier ?? "USD"):chosen
-    }
+    static var localCurrency:String { Calculator.localCurrency(environment:[:]) }
     var answer:Calculator.Answer? { if case .answer(let answer)? = outcome { return answer };return nil }
 
     func refresh() {
@@ -36,7 +33,7 @@ import NashiCore
         fetchTask=Task { [weak self] in
             let fresh=try? await CurrencyRateService.fetch()
             guard let self else { return }
-            if let fresh { self.rates=fresh }
+            if let fresh { self.rates=fresh;CurrencyRateService.store(fresh) }
             self.ratesUnavailable=self.rates == nil
             self.loadingRates=false;self.fetchTask=nil
             self.outcome=Calculator.evaluate(self.query,rates:self.rates,localCurrency:Self.localCurrency)
@@ -52,7 +49,7 @@ import NashiCore
 struct CalculatorCard:View {
     @ObservedObject var model:CalculatorModel
     @AppStorage("appLanguage") private var language="en"
-    @AppStorage("calculatorCurrency") private var currency="auto"
+    @AppStorage(Calculator.currencyPreferenceKey) private var currency="auto"
     var body:some View {
         VStack(alignment:.leading,spacing:12) {
             HStack(spacing:12) {

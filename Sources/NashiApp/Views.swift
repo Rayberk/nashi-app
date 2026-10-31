@@ -28,7 +28,7 @@ struct SettingsView:View {
     @AppStorage("appAppearance") private var appAppearance="system"
     @AppStorage("appLanguage") private var appLanguage="en"
     @AppStorage("windowManagementEnabled") private var windowManagementEnabled=true
-    @AppStorage("calculatorCurrency") private var calculatorCurrency="auto"
+    @AppStorage(Calculator.currencyPreferenceKey) private var calculatorCurrency="auto"
     @State private var windowAccessibility=AXIsProcessTrusted()
     @Environment(\.accessibilityReduceMotion) private var systemReducedMotion
     init(updater:AppUpdater,showingUpdates:Bool=false,initialSection:SettingsSection = .general) {

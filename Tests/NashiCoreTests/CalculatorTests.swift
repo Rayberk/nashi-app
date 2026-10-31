@@ -122,6 +122,118 @@ final class CalculatorTests:XCTestCase {
         }
     }
 
+    func testNumbersFollowTheLocaleSeparators() {
+        let turkish=Locale(identifier:"tr_TR")
+        func value(_ query:String,_ locale:Locale)->Double? {
+            guard case .answer(let answer)? = Calculator.evaluate(query,rates:rates,localCurrency:"TRY",locale:locale) else { return nil }
+            return answer.value
+        }
+        // Turkish writes one thousand as 1.000 and one and a half as 1,5.
+        XCTAssertEqual(value("1.000 usd",turkish),34_250)
+        XCTAssertEqual(value("1,5 * 2",turkish),3)
+        XCTAssertEqual(value("1.234,5 + 0,5",turkish),1235)
+        XCTAssertEqual(value("2.469 * 1",turkish),2469,"A displayed Turkish answer can be typed back in")
+        XCTAssertEqual(value("1.5 * 2",turkish),3,"A dot that cannot group thousands is still a decimal point")
+        XCTAssertEqual(value("1.000.000 / 1.000",turkish),1000)
+        XCTAssertEqual(value("1,000.5 + 1",locale),1001.5)
+        XCTAssertEqual(value("1,5 * 2",locale),3,"A comma that cannot group thousands is still a decimal point")
+        XCTAssertEqual(value(".5 * 4",locale),2)
+        XCTAssertNil(value("1.234,5 + 1",locale))
+        XCTAssertNil(value("1,23,4 + 1",locale))
+    }
+
+    func testCurrencyMissingFromDownloadedRatesShowsNothing() {
+        // Fetching again would not add the code, so this is not a pending answer.
+        XCTAssertNil(Calculator.evaluate("1 bitcoin to usd",rates:rates,localCurrency:"TRY",locale:locale))
+        XCTAssertNil(Calculator.evaluate("10 CHF",rates:rates,localCurrency:"TRY",locale:locale))
+        XCTAssertEqual(Calculator.evaluate("10 CHF",rates:nil,localCurrency:"TRY",locale:locale),.needsRates(from:"CHF",to:"TRY"))
+    }
+
+    func testLocalCurrencyPrefersEnvironmentThenSettingThenRegion() throws {
+        let suite="Nashi.CalculatorTests."+UUID().uuidString,defaults=try XCTUnwrap(UserDefaults(suiteName:suite))
+        defer { defaults.removePersistentDomain(forName:suite) }
+        let region=Locale(identifier:"tr_TR")
+        XCTAssertEqual(Calculator.localCurrency(environment:[:],defaults:defaults,locale:region),"TRY")
+        defaults.set("auto",forKey:Calculator.currencyPreferenceKey)
+        XCTAssertEqual(Calculator.localCurrency(environment:[:],defaults:defaults,locale:region),"TRY")
+        defaults.set("EUR",forKey:Calculator.currencyPreferenceKey)
+        XCTAssertEqual(Calculator.localCurrency(environment:[:],defaults:defaults,locale:region),"EUR")
+        XCTAssertEqual(Calculator.localCurrency(environment:["NASHI_CURRENCY":"gbp"],defaults:defaults,locale:region),"GBP")
+        XCTAssertEqual(Calculator.localCurrency(environment:["NASHI_CURRENCY":"pounds"],defaults:defaults,locale:region),"EUR")
+    }
+
+    // MARK: Command line
+
+    private func run(_ body:()->Int32)->(code:Int32,output:String,error:String) {
+        let directory=FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString,isDirectory:true)
+        try? FileManager.default.createDirectory(at:directory,withIntermediateDirectories:true)
+        defer { try? FileManager.default.removeItem(at:directory) }
+        let outURL=directory.appendingPathComponent("stdout"),errURL=directory.appendingPathComponent("stderr")
+        FileManager.default.createFile(atPath:outURL.path,contents:nil);FileManager.default.createFile(atPath:errURL.path,contents:nil)
+        guard let out=try? FileHandle(forWritingTo:outURL),let err=try? FileHandle(forWritingTo:errURL) else { return (-1,"","") }
+        fflush(stdout);fflush(stderr)
+        let savedOut=dup(STDOUT_FILENO),savedErr=dup(STDERR_FILENO)
+        dup2(out.fileDescriptor,STDOUT_FILENO);dup2(err.fileDescriptor,STDERR_FILENO)
+        let code=body()
+        fflush(stdout);fflush(stderr)
+        dup2(savedOut,STDOUT_FILENO);dup2(savedErr,STDERR_FILENO);close(savedOut);close(savedErr)
+        try? out.close();try? err.close()
+        return (code,(try? String(contentsOf:outURL,encoding:.utf8)) ?? "",(try? String(contentsOf:errURL,encoding:.utf8)) ?? "")
+    }
+    private func temporaryCache()->URL { FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString,isDirectory:true).appendingPathComponent("rates.json") }
+
+    func testCalcCommandRoutesMathAndUnitsThroughTheEntryPoint() {
+        let math=run { NashiCommandLine.run(arguments:["nashi-cli","calc","10+10"]) }
+        XCTAssertEqual(math.code,0);XCTAssertEqual(math.output,"10+10 = 20\n");XCTAssertEqual(math.error,"")
+        let spaced=run { NashiCommandLine.run(arguments:["nashi-cli","calc","2","m","to","cm"]) }
+        XCTAssertEqual(spaced.code,0);XCTAssertEqual(spaced.output,"2 m = 200 cm\n")
+        let nothing=run { NashiCommandLine.run(arguments:["nashi-cli","calc","hello"]) }
+        XCTAssertEqual(nothing.code,1);XCTAssertEqual(nothing.output,"");XCTAssertEqual(nothing.error,"Nothing to calculate.\n")
+        let usage=run { NashiCommandLine.run(arguments:["nashi-cli","calc"]) }
+        XCTAssertEqual(usage.code,64);XCTAssertTrue(usage.error.contains("nashi-cli calc EXPRESSION"))
+    }
+
+    func testCalcCommandUsesFreshCachedRatesWithoutDownloading() throws {
+        let cache=temporaryCache();defer { try? FileManager.default.removeItem(at:cache.deletingLastPathComponent()) }
+        CurrencyRateService.store(CurrencyRates(base:"USD",rates:["TRY":34.25,"EUR":0.92],updated:Date()),at:cache)
+        let result=run { NashiCommandLine.calculate("1 USD",environment:["NASHI_CURRENCY":"TRY"],locale:locale,cacheURL:cache,fetch:{ throw NashiError.invalidInput("No download expected.") }) }
+        XCTAssertEqual(result.code,0);XCTAssertEqual(result.output,"1.00 USD = 34.25 TRY\n");XCTAssertEqual(result.error,"")
+    }
+
+    func testCalcCommandUsesTheSavedCurrencySetting() throws {
+        let suite="Nashi.CalculatorTests."+UUID().uuidString,defaults=try XCTUnwrap(UserDefaults(suiteName:suite))
+        defer { defaults.removePersistentDomain(forName:suite) }
+        defaults.set("EUR",forKey:Calculator.currencyPreferenceKey)
+        let cache=temporaryCache();defer { try? FileManager.default.removeItem(at:cache.deletingLastPathComponent()) }
+        CurrencyRateService.store(CurrencyRates(base:"USD",rates:["TRY":34.25,"EUR":0.92],updated:Date()),at:cache)
+        let result=run { NashiCommandLine.calculate("10 USD",environment:[:],defaults:defaults,locale:locale,cacheURL:cache,fetch:{ throw NashiError.invalidInput("No download expected.") }) }
+        XCTAssertEqual(result.output,"10.00 USD = 9.20 EUR\n")
+    }
+
+    func testCalcCommandDownloadsMissingOrStaleRatesAndCachesThem() throws {
+        let cache=temporaryCache();defer { try? FileManager.default.removeItem(at:cache.deletingLastPathComponent()) }
+        let stale=CurrencyRates(base:"USD",rates:["TRY":30],updated:Date(timeIntervalSinceNow:-5*86400))
+        CurrencyRateService.store(stale,at:cache)
+        let fresh=CurrencyRates(base:"USD",rates:["TRY":34.25],updated:Date())
+        let result=run { NashiCommandLine.calculate("2 usd to try",environment:[:],locale:locale,cacheURL:cache,fetch:{ fresh }) }
+        XCTAssertEqual(result.code,0);XCTAssertEqual(result.output,"2.00 USD = 68.50 TRY\n")
+        XCTAssertEqual(CurrencyRateService.cached(at:cache),fresh)
+    }
+
+    func testCalcCommandReportsOfflineRatesAndKeepsStaleAnswers() throws {
+        let cache=temporaryCache();defer { try? FileManager.default.removeItem(at:cache.deletingLastPathComponent()) }
+        let offline:@Sendable () async throws->CurrencyRates={ throw URLError(.notConnectedToInternet) }
+        let missing=run { NashiCommandLine.calculate("1 USD to TRY",environment:[:],locale:locale,cacheURL:cache,fetch:offline) }
+        XCTAssertEqual(missing.code,1);XCTAssertEqual(missing.output,"");XCTAssertEqual(missing.error,"Currency rates are unavailable right now.\n")
+        XCTAssertNil(CurrencyRateService.cached(at:cache))
+        // Old rates still answer when the download fails.
+        let stale=CurrencyRates(base:"USD",rates:["TRY":30],updated:Date(timeIntervalSinceNow:-5*86400))
+        CurrencyRateService.store(stale,at:cache)
+        let kept=run { NashiCommandLine.calculate("1 USD to TRY",environment:[:],locale:locale,cacheURL:cache,fetch:offline) }
+        XCTAssertEqual(kept.code,0);XCTAssertEqual(kept.output,"1.00 USD = 30.00 TRY\n")
+        XCTAssertEqual(CurrencyRateService.cached(at:cache),stale)
+    }
+
     func testRateServiceDecodesCachesAndConverts() throws {
         let json=#"{"result":"success","base_code":"USD","time_last_update_unix":1793318551,"rates":{"USD":1,"AED":3.6725,"TRY":34.25}}"#
         let decoded=try CurrencyRateService.decode(Data(json.utf8))

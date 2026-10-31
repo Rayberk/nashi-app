@@ -23,41 +23,52 @@ public enum Calculator {
     public static func evaluate(_ input:String,rates:CurrencyRates?=nil,localCurrency:String="USD",locale:Locale = .current)->Outcome? {
         let query=input.trimmingCharacters(in:.whitespacesAndNewlines)
         guard !query.isEmpty,query.count<=512 else { return nil }
-        if let conversion=parseConversion(query,localCurrency:localCurrency,rates:rates) { return convert(conversion,rates:rates,locale:locale) }
-        var parser=Parser(query)
+        let decimal=decimalSeparator(locale)
+        if let conversion=parseConversion(query,localCurrency:localCurrency,rates:rates,decimal:decimal) { return convert(conversion,rates:rates,locale:locale) }
+        var parser=Parser(query,decimal:decimal)
         guard let parsed=try? parser.parse(),parsed.value.isFinite,parsed.operations>0 else { return nil }
         let value=clean(parsed.value)
         return .answer(Answer(kind:.math,value:value,text:format(value,style:.math,locale:locale),copyText:copy(value,style:.math,locale:locale),detail:"\(query) =",ratesUpdated:nil))
     }
+
+    public static let currencyPreferenceKey="calculatorCurrency"
+    /// The currency bare amounts convert to: NASHI_CURRENCY, then Settings → Calculator, then the Mac's region.
+    public static func localCurrency(environment:[String:String]=ProcessInfo.processInfo.environment,defaults:UserDefaults = .standard,locale:Locale = .current)->String {
+        let isCode={(code:String)->Bool in code.count==3 && code.allSatisfy{$0.isASCII && $0.isLetter}}
+        if let code=environment["NASHI_CURRENCY"]?.uppercased(),isCode(code) { return code }
+        if let code=defaults.string(forKey:currencyPreferenceKey)?.uppercased(),isCode(code) { return code }
+        return locale.currency?.identifier ?? "USD"
+    }
+    static func decimalSeparator(_ locale:Locale)->Character { locale.decimalSeparator == "," ? ",":"." }
 
     // MARK: Conversions
 
     private struct Conversion { let amount:Double;let from:Unit;let to:Unit;let amountText:String }
     private static let separators=try! NSRegularExpression(pattern:#"\s+(?:to|in|into|as|=)\s+|\s*(?:->|→)\s*"#,options:[.caseInsensitive])
 
-    private static func parseConversion(_ query:String,localCurrency:String,rates:CurrencyRates?)->Conversion? {
+    private static func parseConversion(_ query:String,localCurrency:String,rates:CurrencyRates?,decimal:Character)->Conversion? {
         let range=NSRange(query.startIndex...,in:query)
         if let match=separators.matches(in:query,range:range).last,let r=Range(match.range,in:query) {
             let left=String(query[..<r.lowerBound]),right=String(query[r.upperBound...]).trimmingCharacters(in:.whitespaces)
-            guard let source=splitAmount(left,rates:rates) else { return nil }
+            guard let source=splitAmount(left,rates:rates,decimal:decimal) else { return nil }
             let targets=Unit.lookup(right,rates:rates)
             for from in source.units { if let to=targets.first(where:{$0.category==from.category}) { return Conversion(amount:source.amount,from:from,to:to,amountText:source.amountText) } }
             return nil
         }
         // A bare amount with a currency converts to the local currency, like "1 USD" or "$20".
-        guard let source=splitAmount(query,rates:rates),let from=source.units.first,from.category == .currency,!source.amountText.isEmpty else { return nil }
+        guard let source=splitAmount(query,rates:rates,decimal:decimal),let from=source.units.first,from.category == .currency,!source.amountText.isEmpty else { return nil }
         let local=localCurrency.uppercased()
         let target=from.id != local ? local:(local=="USD" ? "EUR":"USD")
         return Conversion(amount:source.amount,from:from,to:.currency(target),amountText:source.amountText)
     }
 
     /// Splits "12.5 km" or "$20" into an amount expression and the units its trailing word could mean.
-    private static func splitAmount(_ text:String,rates:CurrencyRates?)->(amount:Double,amountText:String,units:[Unit])? {
+    private static func splitAmount(_ text:String,rates:CurrencyRates?,decimal:Character)->(amount:Double,amountText:String,units:[Unit])? {
         var text=text.trimmingCharacters(in:.whitespaces)
         var prefix:[Unit]=[]
         if let first=text.first,let code=Unit.currencySymbols[first] { prefix=[.currency(code)];text=String(text.dropFirst()).trimmingCharacters(in:.whitespaces) }
         if !prefix.isEmpty {
-            guard let value=amount(text) else { return nil }
+            guard let value=amount(text,decimal:decimal) else { return nil }
             return (value,text,prefix)
         }
         // Prefer the longest unit phrase so "square feet" wins over "feet"; "5km" may omit the space.
@@ -70,13 +81,13 @@ public enum Calculator {
             let units=Unit.lookup(unit,rates:rates)
             guard !units.isEmpty else { continue }
             if expression.trimmingCharacters(in:.whitespaces).isEmpty { return (1,"",units) }
-            if let value=amount(expression) { return (value,expression.trimmingCharacters(in:.whitespaces),units) }
+            if let value=amount(expression,decimal:decimal) { return (value,expression.trimmingCharacters(in:.whitespaces),units) }
         }
         return nil
     }
 
-    private static func amount(_ text:String)->Double? {
-        var parser=Parser(text)
+    private static func amount(_ text:String,decimal:Character)->Double? {
+        var parser=Parser(text,decimal:decimal)
         guard let parsed=try? parser.parse(),parsed.value.isFinite else { return nil }
         return parsed.value
     }
@@ -85,7 +96,9 @@ public enum Calculator {
         let from=conversion.from,to=conversion.to
         let amountLabel=conversion.amountText.isEmpty ? "1":format(conversion.amount,style:from.category == .currency ? .currency:.unit,locale:locale)
         if from.category == .currency {
-            guard let rates,let value=rates.convert(conversion.amount,from:from.id,to:to.id) else { return .needsRates(from:from.id,to:to.id) }
+            guard let rates else { return .needsRates(from:from.id,to:to.id) }
+            // Downloaded rates that lack a code (e.g. BTC) will not gain it by fetching again.
+            guard let value=rates.convert(conversion.amount,from:from.id,to:to.id) else { return nil }
             let text=format(value,style:.currency,locale:locale)
             return .answer(Answer(kind:.currency,value:value,text:"\(text) \(to.id)",copyText:copy(value,style:.currency,locale:locale),detail:"\(amountLabel) \(from.id) =",ratesUpdated:rates.updated))
         }
@@ -255,7 +268,7 @@ extension Calculator {
         private var tokens:[Token]=[]
         private var index=0
         private(set) var operations=0
-        init(_ text:String) { tokens=Parser.tokenize(text) }
+        init(_ text:String,decimal:Character=".") { tokens=Parser.tokenize(text,decimal:decimal) }
 
         mutating func parse() throws->(value:Double,operations:Int) {
             guard !tokens.isEmpty else { throw ParseError.invalid }
@@ -361,30 +374,37 @@ extension Calculator {
             "ln":{log($0)},"log":{log10($0)},"log2":{log2($0)},"exp":{exp($0)}
         ]
 
-        static func tokenize(_ text:String)->[Token] { (try? tokenizeThrowing(text)) ?? [.op("?")] }
-        private static func tokenizeThrowing(_ text:String) throws->[Token] {
+        static func tokenize(_ text:String,decimal:Character=".")->[Token] { (try? tokenizeThrowing(text,decimal:decimal)) ?? [.op("?")] }
+        /// Reads separators the way the locale writes numbers: "1.000,5" in Turkish, "1,000.5" in English.
+        /// A lone separator that cannot be grouping ("1.5" in Turkish, "1,5" in English) still reads as a decimal point.
+        static func number(_ raw:String,decimal:Character) throws->Double {
+            let grouping:Character=decimal=="," ? ".":","
+            var integer=raw,fraction=""
+            if let index=raw.lastIndex(of:decimal) { integer=String(raw[..<index]);fraction=String(raw[raw.index(after:index)...]) }
+            guard fraction.allSatisfy({$0.isASCII && $0.isNumber}) else { throw ParseError.invalid }
+            let groups=integer.split(separator:grouping,omittingEmptySubsequences:false)
+            if groups.count>1 {
+                if !groups[0].isEmpty && groups[0].count<=3 && groups.dropFirst().allSatisfy({$0.count==3}) { integer=groups.joined() }
+                else {
+                    guard groups.count==2,fraction.isEmpty else { throw ParseError.invalid }
+                    integer=String(groups[0]);fraction=String(groups[1])
+                }
+            }
+            guard integer.allSatisfy({$0.isASCII && $0.isNumber}),let value=Double((integer.isEmpty ? "0":integer)+"."+(fraction.isEmpty ? "0":fraction)) else { throw ParseError.invalid }
+            return value
+        }
+        private static func tokenizeThrowing(_ text:String,decimal:Character) throws->[Token] {
             var tokens:[Token]=[]
             let characters=Array(text)
             var i=0
             while i<characters.count {
                 let c=characters[i]
                 if c.isWhitespace { i+=1;continue }
-                if c.isNumber || (c=="." && i+1<characters.count && characters[i+1].isNumber) {
-                    var digits="";var j=i
-                    while j<characters.count {
-                        let d=characters[j]
-                        if d.isNumber { digits.append(d) }
-                        else if d=="." { digits.append(".") }
-                        else if d=="," {
-                            // "1,000" groups thousands; "1,5" is a decimal comma.
-                            var k=j+1;while k<characters.count,characters[k].isNumber { k+=1 }
-                            let run=k-j-1
-                            if run==3 && !digits.contains(".") { } else if run>0 && !digits.contains(".") { digits.append(".") } else { break }
-                        } else if d=="_" || d=="'" && j+1<characters.count && characters[j+1].isNumber { } else { break }
-                        j+=1
-                    }
-                    guard let value=Double(digits),digits.filter({$0=="."}).count<=1 else { throw ParseError.invalid }
-                    tokens.append(.number(value));i=j;continue
+                if c.isNumber || ((c=="." || c==",") && i+1<characters.count && characters[i+1].isNumber) {
+                    // A separator belongs to the number only when a digit follows it.
+                    var raw="";var j=i
+                    while j<characters.count,characters[j].isNumber || ((characters[j]=="." || characters[j]==",") && j+1<characters.count && characters[j+1].isNumber) { raw.append(characters[j]);j+=1 }
+                    tokens.append(.number(try number(raw,decimal:decimal)));i=j;continue
                 }
                 // "3x4" and "3 x (2+1)" read as multiplication.
                 if c=="x" || c=="X",let last=tokens.last,last == .close || { if case .number = last { return true };return false }(),
@@ -458,8 +478,6 @@ public enum CurrencyRateService {
         request.setValue("application/json",forHTTPHeaderField:"Accept")
         let (data,response)=try await session.data(for:request)
         guard (response as? HTTPURLResponse)?.statusCode==200 else { throw NashiError.invalidInput("Currency rates are unavailable right now.") }
-        let rates=try decode(data)
-        store(rates)
-        return rates
+        return try decode(data)
     }
 }
