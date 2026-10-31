@@ -211,6 +211,9 @@ if(Environment.GetEnvironmentVariable("NASHI_VERIFY_FFMPEG") is {} encoder && En
             Check(written==expected,$"{name} → {format}: {written}");
         }
         var gif=Path.Combine(directory,"Animated.gif");await ProcessRunner.RunAsync(encoder,["-v","error","-f","lavfi","-i","testsrc2=size=128x72:rate=12:duration=1",gif]);var gifWebm=await engine.ConvertAsync([gif],"webm",directory,new());Check((await engine.InspectAsync(gifWebm[0])).Video?.Codec=="vp9","GIF to WebM conversion did not produce a VP9 video");
+        // GIF viewers ignore a pixel aspect, so DV (32:27), NTSC 4:3 (8:9) and HDV (4:3) frames are resized to their displayed shape; square pixels keep their size.
+        foreach(var (gifSize,gifSar,gifShape) in new[]{("720x480","32/27","720x406"),("720x480","8/9","720x540"),("1440x1080","4/3","960x540"),("128x72","1","128x72")})
+        {var gifSource=Path.Combine(directory,$"GIF source {gifSize} {gifSar.Replace('/',' ')}.mp4");await ProcessRunner.RunAsync(encoder,["-v","error","-f","lavfi","-i",$"testsrc2=size={gifSize}:rate=12:duration=0.5,setsar={gifSar}","-c:v","libx264","-pix_fmt","yuv420p",gifSource]);var gifShaped=(await engine.InspectAsync((await engine.ConvertAsync([gifSource],"gif",directory,new()))[0])).Video;Check($"{gifShaped?.Width}x{gifShaped?.Height}"==gifShape,$"A {gifSize} video with {gifSar} pixels became a {gifShaped?.Width}x{gifShaped?.Height} GIF instead of {gifShape}");}
         var portrait=Path.Combine(directory,"Portrait.mp4");
         await ProcessRunner.RunAsync(encoder,["-v","error","-display_rotation:v:0","90","-i",source,"-map","0","-c","copy",portrait]);
         var portraitInfo=await engine.InspectAsync(portrait);Check(portraitInfo.Video?.Width==72&&portraitInfo.Video.Height==128,"Portrait display dimensions ignored rotation");
