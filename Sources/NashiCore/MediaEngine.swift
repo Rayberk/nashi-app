@@ -442,6 +442,10 @@ public enum MediaEngine {
             if mode == "solid" {
                 graph.append("[\(previous)]drawbox=x=\(rect.x):y=\(rect.y):w=\(rect.w):h=\(rect.h):color=\(try ffmpegColor(options.backgroundColor,opaque:true)):t=fill:enable='\(enable)'[\(next)]")
             } else {
+                // overlay rounds x/y down to the 4:2:0 chroma grid, which would shift an odd-origin
+                // patch and leave the last column/row visible. Start the patch on even pixels.
+                let x = rect.x / 2 * 2, y = rect.y / 2 * 2
+                let rect = (x: x, y: y, w: rect.w + rect.x - x, h: rect.h + rect.y - y)
                 let effect = mode == "blur" ? "gblur=sigma=20:steps=2" : "scale=\(max(1, rect.w / 16)):\(max(1, rect.h / 16)):flags=neighbor,scale=\(rect.w):\(rect.h):flags=neighbor"
                 graph.append("[\(previous)]split[base\(index)][crop\(index)];[crop\(index)]crop=\(rect.w):\(rect.h):\(rect.x):\(rect.y):exact=1,\(effect)[effect\(index)];[base\(index)][effect\(index)]overlay=\(rect.x):\(rect.y):enable='\(enable)'[\(next)]")
             }
