@@ -5,6 +5,8 @@ if(Environment.GetEnvironmentVariable("NASHI_VERIFY_DOWNLOAD_TOOLS")=="1")
 {
     var toolPath=Environment.GetEnvironmentVariable("NASHI_VERIFY_TOOLS_DIRECTORY")??throw new Exception("Set a test tool directory.");
     var tools=new Toolchain(toolPath);if(!tools.Ready)await tools.InstallAsync();
+    // Starting each download proves it is this platform's binary and that it kept its executable bit.
+    await ProcessRunner.RunAsync(tools.Executable("yt-dlp"),["--version"]);await ProcessRunner.RunAsync(tools.Executable("deno"),["--version"]);
     Environment.SetEnvironmentVariable("NASHI_VERIFY_FFMPEG",tools.Executable("ffmpeg"));Environment.SetEnvironmentVariable("NASHI_VERIFY_FFPROBE",tools.Executable("ffprobe"));
 }
 var checks = 0;
@@ -163,6 +165,19 @@ if(Environment.GetEnvironmentVariable("NASHI_VERIFY_FFMPEG") is {} encoder && En
         var bleeped=await engine.ToolAsync("redactAudio",audio,directory,new(){AudioRedactions=[new(.25,.75)]});Check((await engine.InspectAsync(bleeped[0])).HasAudio,"Bleep export failed");
         var stereo=Path.Combine(directory,"Stereo.wav");await ProcessRunner.RunAsync(encoder,["-v","error","-f","lavfi","-i","sine=duration=1:sample_rate=48000","-ac","2",stereo]);var stereoBleep=await engine.ToolAsync("redactAudio",[stereo],directory,new(){AudioRedactions=[new(.25,.75)]});
         Check((await ProcessRunner.RunAsync(probe,["-v","error","-select_streams","a:0","-show_entries","stream=channels","-of","csv=p=0",stereoBleep[0]])).Output.Trim()=="2","Audio redaction downmixed a stereo file");
+        // FLAC and AC-3 surround decode as 5.1(side); libopus takes only Vorbis-order layouts and WMA at most two channels.
+        async Task<string> AudioLayout(string file)=>(await ProcessRunner.RunAsync(probe,["-v","error","-select_streams","a:0","-show_entries","stream=channels,channel_layout","-of","csv=p=0",file])).Output.Trim();
+        var surround=Path.Combine(directory,"Surround.mkv");await ProcessRunner.RunAsync(encoder,["-v","error","-f","lavfi","-i","testsrc2=size=128x72:rate=12:duration=1","-f","lavfi","-i","sine=duration=1:sample_rate=48000","-af","aformat=channel_layouts=5.1(side)","-c:v","libx264","-c:a","flac",surround]);Check(await AudioLayout(surround)=="6,5.1(side)","Surround fixture has another layout");
+        // ASF stores no channel layout, so WMA and WMV report only their two channels.
+        foreach(var (surroundFormat,layout) in new[]{("opus","6,5.1"),("webm","6,5.1"),("wma","2,unknown"),("wmv","2,unknown"),("flac","6,5.1(side)"),("mkv","6,5.1")})
+        {string? converted=null;try{converted=(await engine.ConvertAsync([surround],surroundFormat,directory,new()))[0];}catch(IOException){}Check(converted is not null&&await AudioLayout(converted)==layout,"5.1(side) audio did not convert to "+surroundFormat);}
+        var surroundOpus=Path.Combine(directory,"Surround source.opus");await ProcessRunner.RunAsync(encoder,["-v","error","-f","lavfi","-i","sine=duration=1:sample_rate=48000","-af","aformat=channel_layouts=5.1","-c:a","libopus",surroundOpus]);
+        foreach(var (surroundTool,surroundOptions,layout) in new (string,MediaOptions,string)[]{("trimAudio",new(){Start=.25,End=.75},"6,5.1"),("audioChannels",new(){Channels=2},"2,stereo"),("audioChannels",new(){Channels=1},"1,mono")})
+            Check(await AudioLayout((await engine.ToolAsync(surroundTool,[surroundOpus],directory,surroundOptions))[0])==layout,"Surround Opus "+surroundTool+" wrote the wrong channels");
+        // Edits re-encode WMV audio as two-channel WMA; copies and muted exports keep or drop it unchanged.
+        var surroundWmv=Path.Combine(directory,"Surround source.wmv");await ProcessRunner.RunAsync(encoder,["-v","error","-f","lavfi","-i","testsrc2=size=128x72:rate=12:duration=1","-f","lavfi","-i","sine=duration=1:sample_rate=48000","-af","aformat=channel_layouts=5.1(side)","-c:v","wmv2","-c:a","pcm_s16le",surroundWmv]);
+        foreach(var (surroundTool,surroundOptions,layout) in new (string,MediaOptions,string)[]{("trimVideo",new(){Start=.25,End=.75},"2,unknown"),("cropVideo",new(){Regions=[new(0,0,64,40)]},"2,unknown"),("changeVideoSpeed",new(){Speed=2},"2,unknown"),("redactVideo",new(){Regions=[new(0,0,32,32)]},"2,unknown"),("removeMetadata",new(),"6,5.1(side)"),("muteVideo",new(),"")})
+        {string? edited=null;try{edited=(await engine.ToolAsync(surroundTool,[surroundWmv],directory,surroundOptions))[0];}catch(IOException){}Check(edited is not null&&await AudioLayout(edited)==layout,"Surround WMV "+surroundTool+" failed or wrote the wrong channels");}
         var redacted=await engine.ToolAsync("redactVideo",[source],directory,new(){Regions=[new(0,0,32,32,.25,.75)],RedactionMode="blur"});Check((await engine.InspectAsync(redacted[0])).Video is not null,"Video redaction failed");
         var channels=await engine.ToolAsync("audioChannels",audio,directory,new(){Channels=1});Check((await engine.InspectAsync(channels[0])).HasAudio,"Channel export failed");
         var visualized=await engine.ToolAsync("audioToVideo",audio,directory,new(){Width=128,Height=72});Check((await engine.InspectAsync(visualized[0])).Video?.Width==128,"Audio visualization failed");
@@ -173,9 +188,27 @@ if(Environment.GetEnvironmentVariable("NASHI_VERIFY_FFMPEG") is {} encoder && En
         {
             var converted=await engine.ConvertAsync([source],ext,directory,new());Check((await engine.InspectAsync(converted[0])).HasAudio,"No audio in "+ext);if(FeatureCatalog.Conversions.ContainsKey(ext)){var edited=await engine.ToolAsync("removeMetadata",converted,directory,new(){RemoveAllMetadata=false,Metadata=new(){{"title","Nashi tag roundtrip"}}});Check((await Tags(edited[0])).GetValueOrDefault("title")=="Nashi tag roundtrip","Audio metadata failed: "+ext);}
         }
+        // FFmpeg reads Ogg Vorbis and Opus comments as audio-stream tags, while MP3, M4A, FLAC and WAV store file-level tags.
+        async Task<Dictionary<string,string>> FileTags(string file){using var doc=JsonDocument.Parse((await ProcessRunner.RunAsync(probe,["-v","error","-show_format","-of","json",file])).Output);var tags=new Dictionary<string,string>(StringComparer.OrdinalIgnoreCase);if(doc.RootElement.GetProperty("format").TryGetProperty("tags",out var values))foreach(var p in values.EnumerateObject())tags[p.Name]=p.Value.ToString();return tags;}
+        foreach(var (oggName,oggCodec) in new[]{("Tagged.ogg","libvorbis"),("Tagged.opus","libopus")})
+        {
+            var oggSource=Path.Combine(directory,oggName);await ProcessRunner.RunAsync(encoder,["-v","error","-f","lavfi","-i","sine=duration=1:sample_rate=48000","-c:a",oggCodec,"-metadata","title=Ogg title","-metadata","artist=Ogg artist",oggSource]);
+            foreach(var target in new[]{"mp3","m4a","flac","wav"})
+            {
+                var kept=await FileTags((await engine.ConvertAsync([oggSource],target,directory,new()))[0]);Check(kept.GetValueOrDefault("title")=="Ogg title"&&kept.GetValueOrDefault("artist")=="Ogg artist",oggName+" lost its tags converting to "+target+" with metadata kept");
+                var dropped=await FileTags((await engine.ConvertAsync([oggSource],target,directory,new(){PreserveMetadata=false}))[0]);Check(!dropped.ContainsKey("title")&&!dropped.ContainsKey("artist"),oggName+" kept its tags converting to "+target+" with metadata off");
+            }
+        }
         foreach(var ext in MediaEngine.VideoFormats)
         {
             var converted=await engine.ConvertAsync([source],ext,directory,new());Check((await engine.InspectAsync(converted[0])).Video is not null,"No video in "+ext);
+        }
+        // WMA stops at 48 kHz: hi-res audio is saved at 48 kHz in WMA and WMV, other audio keeps its rate.
+        foreach(var (name,fixture,format,expected) in new[]{("Hi-res.m4a",new[]{"-f","lavfi","-i","sine=sample_rate=192000:duration=1","-ac","2","-c:a","alac"},"wma","wmav2,48000,2"),("Hi-res 88.2 kHz.flac",["-f","lavfi","-i","sine=sample_rate=88200:duration=1"],"wma","wmav2,48000,1"),("Hi-res audio.mkv",["-f","lavfi","-i","testsrc=size=64x48:duration=1","-f","lavfi","-i","sine=sample_rate=96000:duration=1","-c:a","flac"],"wmv","wmav2,48000,1"),("22 kHz.wav",["-f","lavfi","-i","sine=sample_rate=22050:duration=1","-ac","2"],"wma","wmav2,22050,2"),("44.1 kHz.mp4",["-f","lavfi","-i","testsrc=size=64x48:duration=1","-f","lavfi","-i","sine=sample_rate=44100:duration=1"],"wmv","wmav2,44100,1")})
+        {
+            var file=Path.Combine(directory,name);await ProcessRunner.RunAsync(encoder,["-v","error",..fixture,file]);string written;
+            try{written=(await ProcessRunner.RunAsync(probe,["-v","error","-select_streams","a:0","-show_entries","stream=codec_name,sample_rate,channels","-of","csv=p=0",(await engine.ConvertAsync([file],format,directory,new()))[0]])).Output.Trim();}catch(IOException error){written=error.Message.Split('\n')[0];}
+            Check(written==expected,$"{name} → {format}: {written}");
         }
         var gif=Path.Combine(directory,"Animated.gif");await ProcessRunner.RunAsync(encoder,["-v","error","-f","lavfi","-i","testsrc2=size=128x72:rate=12:duration=1",gif]);var gifWebm=await engine.ConvertAsync([gif],"webm",directory,new());Check((await engine.InspectAsync(gifWebm[0])).Video?.Codec=="vp9","GIF to WebM conversion did not produce a VP9 video");
         var portrait=Path.Combine(directory,"Portrait.mp4");
@@ -186,6 +219,22 @@ if(Environment.GetEnvironmentVariable("NASHI_VERIFY_FFMPEG") is {} encoder && En
         var finalHash=System.Security.Cryptography.SHA256.HashData(await File.ReadAllBytesAsync(source));
         Check(original.SequenceEqual(finalHash),"Source changed");
         Console.WriteLine(JsonSerializer.Serialize(new{passed=checks,scope="Engine safety plus real FFmpeg conversion, trim, mute, speed, crop, split, join, normalize, snapshots and redaction; Windows UI not claimed"}));
+    }
+    finally{Directory.Delete(directory,true);}
+}
+
+// Optional ExifTool checks install the pinned upstream package beside the test media tools.
+if(Environment.GetEnvironmentVariable("NASHI_VERIFY_DOWNLOAD_TOOLS")=="1"&&Environment.GetEnvironmentVariable("NASHI_VERIFY_TOOLS_DIRECTORY") is {} metadataTools)
+{
+    var metadata=new MetadataService(metadataTools.TrimEnd('/','\\')+" Metadata");await metadata.InstallAsync(null,CancellationToken.None);
+    var directory=Path.Combine(Path.GetTempPath(),"Nashi-Metadata-"+Guid.NewGuid().ToString("N"));Directory.CreateDirectory(directory);
+    try
+    {
+        var photo=Path.Combine(directory,"Fixture ' $().jpg");using(var image=new ImageMagick.MagickImage(ImageMagick.MagickColors.Gold,16,16))image.Write(photo,ImageMagick.MagickFormat.Jpeg);
+        var tagged=await metadata.WriteAsync([photo],directory,false,new Dictionary<string,string>{{"EXIF:Artist","Nashi fixture"}});
+        Check((await metadata.ReadAsync(tagged[0])).GetValueOrDefault("EXIF:Artist")=="Nashi fixture","ExifTool did not write and read back a tag");
+        Check(!(await metadata.ReadAsync(photo)).ContainsKey("EXIF:Artist"),"Metadata editing changed the original");
+        Console.WriteLine(JsonSerializer.Serialize(new{passed=checks,scope="Verified ExifTool download, tag write and read back"}));
     }
     finally{Directory.Delete(directory,true);}
 }

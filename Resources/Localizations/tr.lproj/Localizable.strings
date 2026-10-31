@@ -6,6 +6,7 @@
 "%@  Tools" = "%@  Araçlar";
 "%@ QR code found." = "%@ QR kodu bulundu.";
 "%@ QR codes found." = "%@ QR kodu bulundu.";
+"%@ areas selected" = "%@ alan seçili";
 "%@ exports" = "%@ çıktıları";
 "%@ files" = "%@ dosya";
 "%@ files, ready to go." = "%@ dosya hazır.";
@@ -17,6 +18,7 @@
 "%@ photos" = "%@ fotoğraf";
 "%@ selected" = "%@ seçili";
 "%@ selected · Drag to carry files" = "%@ seçili · Dosyaları taşımak için sürükle";
+"%@ split points" = "%@ bölme noktası";
 "%@ timeline" = "%@ zaman çizelgesi";
 "%@ ways to change it" = "%@ farklı biçime çevir";
 "%@ · %@ smaller" = "%@ · %@ daha küçük";
@@ -30,6 +32,7 @@
 "%lld  Tools" = "%lld  Araçlar";
 "%lld QR code found." = "%lld QR kodu bulundu.";
 "%lld QR codes found." = "%lld QR kodu bulundu.";
+"%lld areas selected" = "%lld alan seçili";
 "%lld exports" = "%lld çıktıları";
 "%lld files" = "%lld dosya";
 "%lld files, ready to go." = "%lld dosya hazır.";
@@ -41,6 +44,7 @@
 "%lld photos" = "%lld fotoğraf";
 "%lld selected" = "%lld seçili";
 "%lld selected · Drag to carry files" = "%lld seçili · Dosyaları taşımak için sürükle";
+"%lld split points" = "%lld bölme noktası";
 "%lld timeline" = "%lld zaman çizelgesi";
 "%lld ways to change it" = "%lld farklı biçime çevir";
 "%lld · %@ smaller" = "%lld · %@ daha küçük";
@@ -49,19 +53,27 @@
 "%lld · Original stays safe" = "%lld · Orijinal dosyan güvende";
 "%lld, page %@" = "%lld, sayfa %@";
 "%lld, page %lld" = "%lld, sayfa %lld";
+"0 AREAS SELECTED" = "0 ALAN SEÇİLİ";
 "0 FOUND" = "0 BULUNDU";
 "0 SELECTED" = "0 SEÇİLİ";
+"0 SPLIT POINTS" = "0 BÖLME NOKTASI";
+"0 areas selected" = "0 alan seçili";
 "0 found" = "0 bulundu";
 "0 selected" = "0 seçili";
+"0 split points" = "0 bölme noktası";
+"1 AREA SELECTED" = "1 ALAN SEÇİLİ";
 "1 FOUND" = "1 BULUNDU";
 "1 ITEM" = "1 ÖĞE";
 "1 PHOTO" = "1 FOTOĞRAF";
 "1 SELECTED" = "1 SEÇİLİ";
+"1 SPLIT POINT" = "1 BÖLME NOKTASI";
 "1 WAY TO CHANGE IT" = "1 FARKLI BİÇİME ÇEVİR";
+"1 area selected" = "1 alan seçili";
 "1 found" = "1 bulundu";
 "1 item" = "1 öğe";
 "1 photo" = "1 fotoğraf";
 "1 selected" = "1 seçili";
+"1 split point" = "1 bölme noktası";
 "1 way to change it" = "1 farklı biçime çevir";
 "1/3 LEFT · MIDDLE · RIGHT   /   1/2 LEFT · RIGHT   /   2/3 LEFT · RIGHT" = "1/3 SOL · ORTA · SAĞ   /   1/2 SOL · SAĞ   /   2/3 SOL · SAĞ";
 "1/3 left · middle · right   /   1/2 left · right   /   2/3 left · right" = "1/3 sol · orta · sağ   /   1/2 sol · sağ   /   2/3 sol · sağ";
@@ -469,6 +481,7 @@
 "CONVERT TO" = "ŞUNA DÖNÜŞTÜR";
 "CONVERT · WHILE DRAGGING" = "DÖNÜŞTÜR · SÜRÜKLERKEN";
 "CONVERT, FINE-TUNE, AND SEND THEM ON THEIR WAY." = "DÖNÜŞTÜR, İNCE AYAR YAP VE PAYLAŞ.";
+"CONVERTING DOWNLOADED AUDIO…" = "İNDİRİLEN SES DÖNÜŞTÜRÜLÜYOR…";
 "COPIED ALL" = "TÜMÜ KOPYALANDI";
 "COPIED LINK" = "KOPYALANAN BAĞLANTI";
 "COPY" = "KOPYALA";
@@ -665,6 +678,7 @@
 "Convert to %lld" = "%lld biçimine dönüştür";
 "Convert · while dragging" = "Dönüştür · sürüklerken";
 "Convert, fine-tune, and send them on their way." = "Dönüştür, ince ayar yap ve paylaş.";
+"Converting downloaded audio…" = "İndirilen ses dönüştürülüyor…";
 "Copied all" = "Tümü kopyalandı";
 "Copied link" = "Kopyalanan bağlantı";
 "Copy" = "Kopyala";
@@ -752,6 +766,7 @@
 "DOWNLOAD VIDEO…" = "VİDEOYU İNDİR…";
 "DOWNLOAD ↗" = "İNDİR ↗";
 "DOWNLOADING LIBREOFFICE 26.8.1…" = "LIBREOFFICE 26.8.1 İNDİRİLİYOR…";
+"DOWNLOADING MEDIA…" = "MEDYA İNDİRİLİYOR…";
 "DOWNLOADING…" = "İNDİRİLİYOR…";
 "DOWNLOAD…" = "İNDİR…";
 "DRAG A CROP INSIDE THE IMAGE." = "KIRPMA ALANINI GÖRSELİN İÇİNDE SÜRÜKLE.";
@@ -835,6 +850,9 @@
 "Downloading LibreOffice 26.8.1…" = "LibreOffice 26.8.1 indiriliyor…";
 "Downloading Nashi %@…" = "Nashi %@ indiriliyor…";
 "Downloading Nashi %lld…" = "Nashi %lld indiriliyor…";
+"Downloading media…" = "Medya indiriliyor…";
+"Downloading · %@" = "İndiriliyor · %@";
+"Downloading · %lld" = "İndiriliyor · %lld";
 "Downloading…" = "İndiriliyor…";
 "Download…" = "İndir…";
 "Drag a crop inside the image." = "Kırpma alanını görselin içinde sürükle.";
@@ -914,6 +932,8 @@
 "Enter a valid number for %@." = "%@ için geçerli bir sayı gir.";
 "Enter a valid number for %lld." = "%lld için geçerli bir sayı gir.";
 "Enter page numbers within this PDF, in the desired order." = "Bu PDF'deki sayfa numaralarını istediğin sırayla gir.";
+"Equal clips: %@" = "Eşit klip sayısı: %@";
+"Equal clips: %lld" = "Eşit klip sayısı: %lld";
 "Esc to close" = "Kapatmak için Esc";
 "Everything has a next form." = "Her dosyanın yeni bir hâli var.";
 "Expand Float" = "Float’ı genişlet";
@@ -964,9 +984,12 @@
 "FINISH OR CANCEL THE CURRENT OPERATION FIRST." = "ÖNCE MEVCUT İŞLEMİ BİTİR VEYA İPTAL ET.";
 "FINISH SETUP" = "KURULUMU TAMAMLA";
 "FINISH THE CURRENT OPERATION OR CHOOSE CANCEL BEFORE CLOSING NASHI." = "NASHI'Yİ KAPATMADAN ÖNCE İŞLEMİN BİTMESİNİ BEKLE VEYA İPTAL'İ SEÇ.";
+"FINISHING MEDIA…" = "MEDYA TAMAMLANIYOR…";
+"FINISHING YOUR FILE…" = "DOSYAN TAMAMLANIYOR…";
 "FIRST-TIME SETUP" = "İLK KURULUM";
 "FIT" = "SIĞDIR";
 "FIT WHOLE IMAGE" = "GÖRSELİN TAMAMINI SIĞDIR";
+"FITTING VIDEO TO THE SELECTED SIZE…" = "VİDEO SEÇİLEN BOYUTA SIĞDIRILIYOR…";
 "FIXED PAGES" = "SABİT SAYFALAR";
 "FLEXIBLE, REFLOWABLE TEXT" = "ESNEK, YENİDEN AKABİLEN METİN";
 "FLIP" = "ÇEVİR";
@@ -1034,10 +1057,13 @@
 "Finish or cancel the current operation first." = "Önce mevcut işlemi bitir veya iptal et.";
 "Finish setup" = "Kurulumu tamamla";
 "Finish the current operation or choose Cancel before closing Nashi." = "Nashi'yi kapatmadan önce işlemin bitmesini bekle veya İptal'i seç.";
+"Finishing media…" = "Medya tamamlanıyor…";
+"Finishing your file…" = "Dosyan tamamlanıyor…";
 "Fit" = "Sığdır";
 "Fit whole image" = "Görselin tamamını sığdır";
 "Fitting image · attempt %@…" = "Görsel sığdırılıyor · deneme %@…";
 "Fitting image · attempt %lld…" = "Görsel sığdırılıyor · deneme %lld…";
+"Fitting video to the selected size…" = "Video seçilen boyuta sığdırılıyor…";
 "Fixed pages" = "Sabit sayfalar";
 "Flexible, reflowable text" = "Esnek, yeniden akabilen metin";
 "Flip" = "Çevir";
@@ -1590,6 +1616,7 @@
 "POSITION X" = "X KONUMU";
 "POSITION Y" = "Y KONUMU";
 "PREPARING A LOCAL PREVIEW…" = "YEREL ÖNİZLEME HAZIRLANIYOR…";
+"PREPARING MEDIA…" = "MEDYA HAZIRLANIYOR…";
 "PREPARING MOVE…" = "TAŞIMA HAZIRLANIYOR…";
 "PREPARING PREVIEW…" = "ÖNİZLEME HAZIRLANIYOR…";
 "PREPARING PROCESSED PREVIEW…" = "İŞLENMİŞ ÖNİZLEME HAZIRLANIYOR…";
@@ -1624,6 +1651,8 @@
 "Page ranges, for example 1-3, 5" = "Sayfa aralıkları, örneğin 1-3, 5";
 "Pages input exceeds 200 MB." = "Pages dosyası 200 MB'ı aşıyor.";
 "Pages per file" = "Dosya başına sayfa";
+"Pages per file: %@" = "Dosya başına sayfa: %@";
+"Pages per file: %lld" = "Dosya başına sayfa: %lld";
 "Paste" = "Yapıştır";
 "Paste a public http(s) media or page link." = "Herkese açık bir http(s) medya veya sayfa bağlantısı yapıştır.";
 "Paste a public media link to begin." = "Başlamak için herkese açık bir medya bağlantısı yapıştır.";
@@ -1637,7 +1666,11 @@
 "Pasted text" = "Yapıştırılan metin";
 "Pause" = "Duraklat";
 "Photo %@" = "Fotoğraf %@";
+"Photo %@ of %@…" = "Fotoğraf %@/%@…";
+"Photo %@ of %lld…" = "Fotoğraf %@/%lld…";
 "Photo %lld" = "Fotoğraf %lld";
+"Photo %lld of %@…" = "Fotoğraf %lld/%@…";
+"Photo %lld of %lld…" = "Fotoğraf %lld/%lld…";
 "Photos" = "Fotoğraflar";
 "Pick a folder you work in. Fresh copies are saved beside the originals by default." = "Çalıştığın bir klasörü seç. Yeni kopyalar varsayılan olarak orijinallerin yanına kaydedilir.";
 "Pin" = "Sabitle";
@@ -1657,6 +1690,7 @@
 "Preparing %@…" = "%@ hazırlanıyor…";
 "Preparing %lld…" = "%lld hazırlanıyor…";
 "Preparing a local preview…" = "Yerel önizleme hazırlanıyor…";
+"Preparing media…" = "Medya hazırlanıyor…";
 "Preparing move…" = "Taşıma hazırlanıyor…";
 "Preparing preview…" = "Önizleme hazırlanıyor…";
 "Preparing processed preview…" = "İşlenmiş önizleme hazırlanıyor…";
@@ -2016,6 +2050,8 @@
 "Saved in post order in a new Instagram folder." = "Gönderi sırasıyla yeni bir Instagram klasörüne kaydedilir.";
 "Saved size: %@" = "Kaydedilen boyut: %@";
 "Saved size: %lld" = "Kaydedilen boyut: %lld";
+"Saved to %@" = "%@ klasörüne kaydedildi";
+"Saved to %lld" = "%lld klasörüne kaydedildi";
 "Saved token · Leave blank to keep it" = "Kayıtlı token · Korumak için boş bırak";
 "Saving collage…" = "Kolaj kaydediliyor…";
 "Saving document…" = "Belge kaydediliyor…";
