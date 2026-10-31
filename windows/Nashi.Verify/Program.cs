@@ -177,6 +177,13 @@ if(Environment.GetEnvironmentVariable("NASHI_VERIFY_FFMPEG") is {} encoder && En
         {
             var converted=await engine.ConvertAsync([source],ext,directory,new());Check((await engine.InspectAsync(converted[0])).Video is not null,"No video in "+ext);
         }
+        // WMA stops at 48 kHz: hi-res audio is saved at 48 kHz in WMA and WMV, other audio keeps its rate.
+        foreach(var (name,fixture,format,expected) in new[]{("Hi-res.m4a",new[]{"-f","lavfi","-i","sine=sample_rate=192000:duration=1","-ac","2","-c:a","alac"},"wma","wmav2,48000,2"),("Hi-res 88.2 kHz.flac",["-f","lavfi","-i","sine=sample_rate=88200:duration=1"],"wma","wmav2,48000,1"),("Hi-res audio.mkv",["-f","lavfi","-i","testsrc=size=64x48:duration=1","-f","lavfi","-i","sine=sample_rate=96000:duration=1","-c:a","flac"],"wmv","wmav2,48000,1"),("22 kHz.wav",["-f","lavfi","-i","sine=sample_rate=22050:duration=1","-ac","2"],"wma","wmav2,22050,2"),("44.1 kHz.mp4",["-f","lavfi","-i","testsrc=size=64x48:duration=1","-f","lavfi","-i","sine=sample_rate=44100:duration=1"],"wmv","wmav2,44100,1")})
+        {
+            var file=Path.Combine(directory,name);await ProcessRunner.RunAsync(encoder,["-v","error",..fixture,file]);string written;
+            try{written=(await ProcessRunner.RunAsync(probe,["-v","error","-select_streams","a:0","-show_entries","stream=codec_name,sample_rate,channels","-of","csv=p=0",(await engine.ConvertAsync([file],format,directory,new()))[0]])).Output.Trim();}catch(IOException error){written=error.Message.Split('\n')[0];}
+            Check(written==expected,$"{name} → {format}: {written}");
+        }
         var gif=Path.Combine(directory,"Animated.gif");await ProcessRunner.RunAsync(encoder,["-v","error","-f","lavfi","-i","testsrc2=size=128x72:rate=12:duration=1",gif]);var gifWebm=await engine.ConvertAsync([gif],"webm",directory,new());Check((await engine.InspectAsync(gifWebm[0])).Video?.Codec=="vp9","GIF to WebM conversion did not produce a VP9 video");
         var portrait=Path.Combine(directory,"Portrait.mp4");
         await ProcessRunner.RunAsync(encoder,["-v","error","-display_rotation:v:0","90","-i",source,"-map","0","-c","copy",portrait]);

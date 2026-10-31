@@ -121,6 +121,7 @@ public sealed class MediaEngine(string ffmpeg, string ffprobe)
                     arguments.AddRange(VideoEncoding(format,options));
                 }
             }
+            if (format is "wma" or "wmv") arguments.AddRange(WmaRate(info));
             arguments.AddRange(options.PreserveMetadata ? ["-map_metadata","0"] : ["-map_metadata","-1","-map_metadata:s","-1","-map_chapters","-1"]);
             await RenderAsync(arguments,output,info.Duration,Scoped(progress,index,inputs.Count),token);
             outputs.Add(output);
@@ -282,6 +283,8 @@ public sealed class MediaEngine(string ffmpeg, string ffprobe)
         int? rate=ext switch{"wav" or "aiff" or "flac"=>source,"ogg"=>Math.Min(source,192000),"mp3" or "m4a" or "aac" or "wma"=>Math.Min(source,48000),_=>null};
         return rate is {} value?["-ar",value.ToString(CultureInfo.InvariantCulture)]:[];
     }
+    // WMA stops at 48 kHz. FFmpeg fits other encoders' rates (AAC, MP3) on its own, but not WMA's, so hi-res sources failed.
+    private static string[] WmaRate(MediaInfo info)=>info.Audio is {SampleRate:>48000}?["-ar","48000"]:[];
 
     private async Task<string> CompressAsync(string input,MediaInfo info,string directory,MediaOptions options,Action<OperationProgress> progress,CancellationToken token)
     {
