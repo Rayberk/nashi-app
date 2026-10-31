@@ -267,10 +267,13 @@ private enum PagesDOCXReader {
                         if span > 1 { for _ in 1..<span { cells.append(["text":""]) } }
                         if let vertical = properties?.first("vMerge") {
                             if vertical.attr("val") == "restart" { activeVertical[column] = (rowIndex,span) }
-                            else if let origin = activeVertical[column] {
+                            // A continuation narrower or wider than its restart
+                            // cannot extend the restart's rectangle without
+                            // swallowing or overlapping neighbouring cells.
+                            else if let origin = activeVertical[column], origin.1 == span {
                                 if let index = merges.firstIndex(where: {$0["row"] == origin.0 && $0["column"] == column}) { merges[index]["rowCount"] = rowIndex - origin.0 + 1 }
                                 else { merges.append(["row":origin.0,"column":column,"rowCount":rowIndex-origin.0+1,"columnCount":origin.1]) }
-                            }
+                            } else { activeVertical[column] = nil }
                         } else { activeVertical[column] = nil }
                         if span > 1 && properties?.first("vMerge") == nil { merges.append(["row":rowIndex,"column":column,"rowCount":1,"columnCount":span]) }
                         column += span
