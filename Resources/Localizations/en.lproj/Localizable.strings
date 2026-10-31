@@ -2245,6 +2245,7 @@
 "THE CLIPPING HAS NO READABLE TEXT. INCLUDE ITS ORIGINAL RESOURCE FORK/APPLEDOUBLE SIDECAR, OR PASTE ITS TEXT INTO NASHI." = "THE CLIPPING HAS NO READABLE TEXT. INCLUDE ITS ORIGINAL RESOURCE FORK/APPLEDOUBLE SIDECAR, OR PASTE ITS TEXT INTO NASHI.";
 "THE DOCUMENT HAS NO EDITABLE BODY." = "THE DOCUMENT HAS NO EDITABLE BODY.";
 "THE DOCUMENT PACKAGE IS TOO LARGE OR CONTAINS DUPLICATE ENTRIES." = "THE DOCUMENT PACKAGE IS TOO LARGE OR CONTAINS DUPLICATE ENTRIES.";
+"THE DOCUMENT XML IS NOT SUPPORTED." = "THE DOCUMENT XML IS NOT SUPPORTED.";
 "THE DOWNLOAD CONNECTION WAS INTERRUPTED." = "THE DOWNLOAD CONNECTION WAS INTERRUPTED.";
 "THE DOWNLOAD STOPPED RESPONDING. PLEASE TRY AGAIN." = "THE DOWNLOAD STOPPED RESPONDING. PLEASE TRY AGAIN.";
 "THE DOWNLOADED FILE CONTAINS NO VIDEO." = "THE DOWNLOADED FILE CONTAINS NO VIDEO.";
@@ -2289,6 +2290,7 @@
 "THIS LINK REQUIRES A LOGIN OR IS RESTRICTED. TRY A PUBLIC SHARE LINK; NASHI DOES NOT READ YOUR BROWSER SESSIONS." = "THIS LINK REQUIRES A LOGIN OR IS RESTRICTED. TRY A PUBLIC SHARE LINK; NASHI DOES NOT READ YOUR BROWSER SESSIONS.";
 "THIS MEDIA IS PROTECTED AND CANNOT BE DOWNLOADED HERE." = "THIS MEDIA IS PROTECTED AND CANNOT BE DOWNLOADED HERE.";
 "THIS OUTPUT FORMAT HAS NO ADJUSTABLE CONVERSION DEFAULTS." = "THIS OUTPUT FORMAT HAS NO ADJUSTABLE CONVERSION DEFAULTS.";
+"THIS PAGES FILE IS TOO LARGE OR IS NOT A REGULAR DOCUMENT FILE." = "THIS PAGES FILE IS TOO LARGE OR IS NOT A REGULAR DOCUMENT FILE.";
 "THIS PDF CONTAINS NO PAGES." = "THIS PDF CONTAINS NO PAGES.";
 "THIS PDF HAS FORM FIELDS OR ATTACHMENTS THAT MERGING, SPLITTING OR REORDERING PAGES CANNOT KEEP. NO COPY WAS EXPORTED." = "THIS PDF HAS FORM FIELDS OR ATTACHMENTS THAT MERGING, SPLITTING OR REORDERING PAGES CANNOT KEEP. NO COPY WAS EXPORTED.";
 "THIS PDF HAS FORM FIELDS OR ATTACHMENTS THAT METADATA CLEANUP CANNOT KEEP. NO COPY WAS EXPORTED." = "THIS PDF HAS FORM FIELDS OR ATTACHMENTS THAT METADATA CLEANUP CANNOT KEEP. NO COPY WAS EXPORTED.";
@@ -2304,6 +2306,10 @@
 "THIS TEXT IS TOO LARGE TO PREVIEW. USE OPEN TO READ THE COMPLETE FILE." = "THIS TEXT IS TOO LARGE TO PREVIEW. USE OPEN TO READ THE COMPLETE FILE.";
 "THIS WINDOW COULD NOT BE ARRANGED. THE APP MAY RESTRICT RESIZING." = "THIS WINDOW COULD NOT BE ARRANGED. THE APP MAY RESTRICT RESIZING.";
 "THIS WINDOWS CODEC CANNOT PLAY DIRECTLY. SET UP MEDIA TOOLS TO CREATE A LOCAL PREVIEW." = "THIS WINDOWS CODEC CANNOT PLAY DIRECTLY. SET UP MEDIA TOOLS TO CREATE A LOCAL PREVIEW.";
+"THIS WORD DOCUMENT CONTAINS AN INVALID OR OVERSIZED TABLE CELL SPAN. IT COULD NOT BE CONVERTED TO PAGES." = "THIS WORD DOCUMENT CONTAINS AN INVALID OR OVERSIZED TABLE CELL SPAN. IT COULD NOT BE CONVERTED TO PAGES.";
+"THIS WORD DOCUMENT CONTAINS DUPLICATE RELATIONSHIP IDENTIFIERS. IT COULD NOT BE CONVERTED TO PAGES." = "THIS WORD DOCUMENT CONTAINS DUPLICATE RELATIONSHIP IDENTIFIERS. IT COULD NOT BE CONVERTED TO PAGES.";
+"THIS WORD DOCUMENT CONTAINS DUPLICATE STYLE IDENTIFIERS. IT COULD NOT BE CONVERTED TO PAGES." = "THIS WORD DOCUMENT CONTAINS DUPLICATE STYLE IDENTIFIERS. IT COULD NOT BE CONVERTED TO PAGES.";
+"THIS WORD DOCUMENT HAS NO EDITABLE BODY." = "THIS WORD DOCUMENT HAS NO EDITABLE BODY.";
 "THOSE FILES ARE NO LONGER AVAILABLE." = "THOSE FILES ARE NO LONGER AVAILABLE.";
 "THUMBNAIL" = "THUMBNAIL";
 "TIMES (SECONDS)" = "TIMES (SECONDS)";
@@ -2350,6 +2356,8 @@
 "That PDF size cannot be reached while keeping selectable text, links, and annotations. Choose a larger target." = "That PDF size cannot be reached while keeping selectable text, links, and annotations. Choose a larger target.";
 "The PDF contains no pages." = "The PDF contains no pages.";
 "The PDF page is too large to render at this resolution." = "The PDF page is too large to render at this resolution.";
+"The Pages document could not be read: %@." = "The Pages document could not be read: %@.";
+"The Pages document could not be read: %lld." = "The Pages document could not be read: %lld.";
 "The UTF-16 text in %@ is damaged." = "The UTF-16 text in %@ is damaged.";
 "The UTF-16 text in %lld is damaged." = "The UTF-16 text in %lld is damaged.";
 "The UTF-32 text in %@ is damaged." = "The UTF-32 text in %@ is damaged.";
@@ -2369,6 +2377,7 @@
 "The crop rectangle must fit completely inside the %@ × %lld pixel image." = "The crop rectangle must fit completely inside the %@ × %lld pixel image.";
 "The crop rectangle must fit completely inside the %lld × %@ pixel image." = "The crop rectangle must fit completely inside the %lld × %@ pixel image.";
 "The crop rectangle must fit completely inside the %lld × %lld pixel image." = "The crop rectangle must fit completely inside the %lld × %lld pixel image.";
+"The document XML is not supported." = "The document XML is not supported.";
 "The document has no editable body." = "The document has no editable body.";
 "The document is missing %@" = "The document is missing %@";
 "The document is missing %lld" = "The document is missing %lld";
@@ -2407,8 +2416,15 @@
 "This PDF is password protected. Enter its password." = "This PDF is password protected. Enter its password.";
 "This PDF page could not be read." = "This PDF page could not be read.";
 "This PDF requires a valid password." = "This PDF requires a valid password.";
+"This Pages file is too large or is not a regular document file." = "This Pages file is too large or is not a regular document file.";
 "This RTFD attachment syntax could not be preserved." = "This RTFD attachment syntax could not be preserved.";
 "This Windows codec cannot play directly. Set up media tools to create a local preview." = "This Windows codec cannot play directly. Set up media tools to create a local preview.";
+"This Word document contains a table wider than the supported limit of %@ columns. It could not be converted to Pages." = "This Word document contains a table wider than the supported limit of %@ columns. It could not be converted to Pages.";
+"This Word document contains a table wider than the supported limit of %lld columns. It could not be converted to Pages." = "This Word document contains a table wider than the supported limit of %lld columns. It could not be converted to Pages.";
+"This Word document contains an invalid or oversized table cell span. It could not be converted to Pages." = "This Word document contains an invalid or oversized table cell span. It could not be converted to Pages.";
+"This Word document contains duplicate relationship identifiers. It could not be converted to Pages." = "This Word document contains duplicate relationship identifiers. It could not be converted to Pages.";
+"This Word document contains duplicate style identifiers. It could not be converted to Pages." = "This Word document contains duplicate style identifiers. It could not be converted to Pages.";
+"This Word document has no editable body." = "This Word document has no editable body.";
 "This conversion is not available for %@." = "This conversion is not available for %@.";
 "This conversion is not available for %lld." = "This conversion is not available for %lld.";
 "This crop applies to every selected image and must fit inside each one." = "This crop applies to every selected image and must fit inside each one.";

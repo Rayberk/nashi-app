@@ -2245,6 +2245,7 @@
 "THE CLIPPING HAS NO READABLE TEXT. INCLUDE ITS ORIGINAL RESOURCE FORK/APPLEDOUBLE SIDECAR, OR PASTE ITS TEXT INTO NASHI." = "METİN KIRPINTISINDA OKUNABİLİR METİN YOK. ORİJİNAL RESOURCE FORK/APPLEDOUBLE DOSYASINI DA EKLE VEYA METNİNİ NASHI'YE YAPIŞTIR.";
 "THE DOCUMENT HAS NO EDITABLE BODY." = "BELGEDE DÜZENLENEBİLİR BİR İÇERİK YOK.";
 "THE DOCUMENT PACKAGE IS TOO LARGE OR CONTAINS DUPLICATE ENTRIES." = "BELGE PAKETİ ÇOK BÜYÜK VEYA YİNELENEN ÖĞELER İÇERİYOR.";
+"THE DOCUMENT XML IS NOT SUPPORTED." = "BELGENİN XML İÇERİĞİ DESTEKLENMİYOR.";
 "THE DOWNLOAD CONNECTION WAS INTERRUPTED." = "İNDİRME BAĞLANTISI KESİLDİ.";
 "THE DOWNLOAD STOPPED RESPONDING. PLEASE TRY AGAIN." = "İNDİRME YANIT VERMİYOR. LÜTFEN TEKRAR DENE.";
 "THE DOWNLOADED FILE CONTAINS NO VIDEO." = "İNDİRİLEN DOSYADA VİDEO YOK.";
@@ -2289,6 +2290,7 @@
 "THIS LINK REQUIRES A LOGIN OR IS RESTRICTED. TRY A PUBLIC SHARE LINK; NASHI DOES NOT READ YOUR BROWSER SESSIONS." = "BU BAĞLANTI GİRİŞ GEREKTİRİYOR VEYA ERİŞİMİ KISITLI. HERKESE AÇIK BİR PAYLAŞIM BAĞLANTISI DENE; NASHI TARAYICI OTURUMLARINI OKUMAZ.";
 "THIS MEDIA IS PROTECTED AND CANNOT BE DOWNLOADED HERE." = "BU MEDYA KORUMALI VE BURADA İNDİRİLEMEZ.";
 "THIS OUTPUT FORMAT HAS NO ADJUSTABLE CONVERSION DEFAULTS." = "BU ÇIKTI BİÇİMİNİN AYARLANABİLİR DÖNÜŞTÜRME TERCİHİ YOK.";
+"THIS PAGES FILE IS TOO LARGE OR IS NOT A REGULAR DOCUMENT FILE." = "BU PAGES DOSYASI ÇOK BÜYÜK YA DA NORMAL BİR BELGE DOSYASI DEĞİL.";
 "THIS PDF CONTAINS NO PAGES." = "BU PDF'DE SAYFA YOK.";
 "THIS PDF HAS FORM FIELDS OR ATTACHMENTS THAT MERGING, SPLITTING OR REORDERING PAGES CANNOT KEEP. NO COPY WAS EXPORTED." = "BU PDF'DE BİRLEŞTİRME, BÖLME VEYA SAYFALARI YENİDEN SIRALAMA SIRASINDA KORUNAMAYAN FORM ALANLARI YA DA EKLER VAR. KOPYA DIŞA AKTARILMADI.";
 "THIS PDF HAS FORM FIELDS OR ATTACHMENTS THAT METADATA CLEANUP CANNOT KEEP. NO COPY WAS EXPORTED." = "BU PDF'DE META VERİ TEMİZLİĞİ SIRASINDA KORUNAMAYAN FORM ALANLARI YA DA EKLER VAR. KOPYA DIŞA AKTARILMADI.";
@@ -2304,6 +2306,10 @@
 "THIS TEXT IS TOO LARGE TO PREVIEW. USE OPEN TO READ THE COMPLETE FILE." = "BU METİN ÖNİZLEME İÇİN ÇOK BÜYÜK. DOSYANIN TAMAMINI OKUMAK İÇİN AÇ'I KULLAN.";
 "THIS WINDOW COULD NOT BE ARRANGED. THE APP MAY RESTRICT RESIZING." = "BU PENCERE DÜZENLENEMEDİ. UYGULAMA YENİDEN BOYUTLANDIRMAYI KISITLIYOR OLABİLİR.";
 "THIS WINDOWS CODEC CANNOT PLAY DIRECTLY. SET UP MEDIA TOOLS TO CREATE A LOCAL PREVIEW." = "BU WINDOWS CODEC'İ DOĞRUDAN OYNATILAMIYOR. YEREL ÖNİZLEME OLUŞTURMAK İÇİN MEDYA ARAÇLARINI KUR.";
+"THIS WORD DOCUMENT CONTAINS AN INVALID OR OVERSIZED TABLE CELL SPAN. IT COULD NOT BE CONVERTED TO PAGES." = "BU WORD BELGESİNDE GEÇERSİZ VEYA ÇOK GENİŞ BİR TABLO HÜCRESİ BİRLEŞTİRMESİ VAR. PAGES BİÇİMİNE DÖNÜŞTÜRÜLEMEDİ.";
+"THIS WORD DOCUMENT CONTAINS DUPLICATE RELATIONSHIP IDENTIFIERS. IT COULD NOT BE CONVERTED TO PAGES." = "BU WORD BELGESİNDE YİNELENEN İLİŞKİ KİMLİKLERİ VAR. PAGES BİÇİMİNE DÖNÜŞTÜRÜLEMEDİ.";
+"THIS WORD DOCUMENT CONTAINS DUPLICATE STYLE IDENTIFIERS. IT COULD NOT BE CONVERTED TO PAGES." = "BU WORD BELGESİNDE YİNELENEN STİL KİMLİKLERİ VAR. PAGES BİÇİMİNE DÖNÜŞTÜRÜLEMEDİ.";
+"THIS WORD DOCUMENT HAS NO EDITABLE BODY." = "BU WORD BELGESİNDE DÜZENLENEBİLİR BİR İÇERİK YOK.";
 "THOSE FILES ARE NO LONGER AVAILABLE." = "BU DOSYALARA ARTIK ULAŞILAMIYOR.";
 "THUMBNAIL" = "KÜÇÜK RESİM";
 "TIMES (SECONDS)" = "ZAMANLAR (SANİYE)";
@@ -2350,6 +2356,8 @@
 "That PDF size cannot be reached while keeping selectable text, links, and annotations. Choose a larger target." = "Seçilebilir metin, bağlantılar ve notlar korunarak bu PDF boyutuna inilemiyor. Daha büyük bir hedef seç.";
 "The PDF contains no pages." = "PDF'de sayfa yok.";
 "The PDF page is too large to render at this resolution." = "PDF sayfası bu çözünürlükte işlenemeyecek kadar büyük.";
+"The Pages document could not be read: %@." = "Pages belgesi okunamadı: %@.";
+"The Pages document could not be read: %lld." = "Pages belgesi okunamadı: %lld.";
 "The UTF-16 text in %@ is damaged." = "%@ içindeki UTF-16 metin bozuk.";
 "The UTF-16 text in %lld is damaged." = "%lld içindeki UTF-16 metin bozuk.";
 "The UTF-32 text in %@ is damaged." = "%@ içindeki UTF-32 metin bozuk.";
@@ -2369,6 +2377,7 @@
 "The crop rectangle must fit completely inside the %@ × %lld pixel image." = "Kırpma alanı %@ × %lld piksellik görselin tamamen içinde kalmalı.";
 "The crop rectangle must fit completely inside the %lld × %@ pixel image." = "Kırpma alanı %lld × %@ piksellik görselin tamamen içinde kalmalı.";
 "The crop rectangle must fit completely inside the %lld × %lld pixel image." = "Kırpma alanı %lld × %lld piksellik görselin tamamen içinde kalmalı.";
+"The document XML is not supported." = "Belgenin XML içeriği desteklenmiyor.";
 "The document has no editable body." = "Belgede düzenlenebilir bir içerik yok.";
 "The document is missing %@" = "Belgede şu öğe eksik: %@";
 "The document is missing %lld" = "Belgede şu öğe eksik: %lld";
@@ -2407,8 +2416,15 @@
 "This PDF is password protected. Enter its password." = "Bu PDF parolayla korunuyor. Parolasını gir.";
 "This PDF page could not be read." = "Bu PDF sayfası okunamadı.";
 "This PDF requires a valid password." = "Bu PDF için geçerli bir parola gerekiyor.";
+"This Pages file is too large or is not a regular document file." = "Bu Pages dosyası çok büyük ya da normal bir belge dosyası değil.";
 "This RTFD attachment syntax could not be preserved." = "Bu RTFD ekinin yapısı korunamadı.";
 "This Windows codec cannot play directly. Set up media tools to create a local preview." = "Bu Windows codec'i doğrudan oynatılamıyor. Yerel önizleme oluşturmak için medya araçlarını kur.";
+"This Word document contains a table wider than the supported limit of %@ columns. It could not be converted to Pages." = "Bu Word belgesinde desteklenen %@ sütun sınırından daha geniş bir tablo var. Pages biçimine dönüştürülemedi.";
+"This Word document contains a table wider than the supported limit of %lld columns. It could not be converted to Pages." = "Bu Word belgesinde desteklenen %lld sütun sınırından daha geniş bir tablo var. Pages biçimine dönüştürülemedi.";
+"This Word document contains an invalid or oversized table cell span. It could not be converted to Pages." = "Bu Word belgesinde geçersiz veya çok geniş bir tablo hücresi birleştirmesi var. Pages biçimine dönüştürülemedi.";
+"This Word document contains duplicate relationship identifiers. It could not be converted to Pages." = "Bu Word belgesinde yinelenen ilişki kimlikleri var. Pages biçimine dönüştürülemedi.";
+"This Word document contains duplicate style identifiers. It could not be converted to Pages." = "Bu Word belgesinde yinelenen stil kimlikleri var. Pages biçimine dönüştürülemedi.";
+"This Word document has no editable body." = "Bu Word belgesinde düzenlenebilir bir içerik yok.";
 "This conversion is not available for %@." = "%@ için bu dönüştürme kullanılamıyor.";
 "This conversion is not available for %lld." = "%lld için bu dönüştürme kullanılamıyor.";
 "This crop applies to every selected image and must fit inside each one." = "Bu kırpma, seçilen tüm görsellere uygulanır ve her görselin sınırlarına sığmalıdır.";
