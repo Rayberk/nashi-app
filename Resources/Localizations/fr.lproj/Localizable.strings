@@ -366,6 +366,7 @@
 "CHOOSE A BACKGROUND IMAGE." = "CHOISISSEZ UNE IMAGE D’ARRIÈRE-PLAN.";
 "CHOOSE A CANVAS WITHIN 100 MP AND 30,000 PIXELS." = "CHOISISSEZ UN CANEVAS DE 100 MPX ET 30 000 PIXELS AU MAXIMUM.";
 "CHOOSE A COMPLETE RTFD FOLDER CONTAINING TXT.RTF." = "CHOISISSEZ UN DOSSIER RTFD COMPLET CONTENANT TXT.RTF.";
+"CHOOSE A CROP RECTANGLE." = "CHOISISSEZ UN RECTANGLE DE RECADRAGE.";
 "CHOOSE A DESTINATION OUTSIDE THE FOLDER BEING MOVED." = "CHOISISSEZ UNE DESTINATION EN DEHORS DU DOSSIER DÉPLACÉ.";
 "CHOOSE A FILE TO PREVIEW." = "CHOISISSEZ UN FICHIER À PRÉVISUALISER.";
 "CHOOSE A FINISHED VIDEO INSTEAD OF A LIVE OR UPCOMING STREAM." = "CHOISISSEZ UNE VIDÉO TERMINÉE PLUTÔT QU’UNE DIFFUSION EN DIRECT OU À VENIR.";
@@ -503,8 +504,10 @@
 "CREATED" = "CRÉATION";
 "CROP" = "RECADRER";
 "CROP AREA" = "ZONE DE RECADRAGE";
+"CROP COORDINATES MUST BE FINITE." = "LES COORDONNÉES DE RECADRAGE DOIVENT ÊTRE DES NOMBRES FINIS.";
 "CROP IMAGE" = "RECADRER L’IMAGE";
 "CROP IMAGE · NASHI" = "RECADRER L’IMAGE · NASHI";
+"CROP ORIGINS MUST BE NONNEGATIVE AND DIMENSIONS AT LEAST 1 × 1 PIXEL." = "L’ORIGINE DU RECADRAGE NE PEUT PAS ÊTRE NÉGATIVE ET SES DIMENSIONS DOIVENT ÊTRE D’AU MOINS 1 × 1 PIXEL.";
 "CROP VIDEO" = "RECADRER LA VIDÉO";
 "CTRL+O  CHOOSE FILES\nCTRL+V  PASTE FILES, TEXT, AN IMAGE OR LINK\nCTRL+SPACE / ENTER  OPEN TOOLS\nCTRL+1 / CTRL+2  HOME / LIBRARY\nCTRL+F  FIND IN LIBRARY\nCTRL+SHIFT+D  USE A COPIED DOWNLOAD LINK\nCTRL+U  CHECK FOR UPDATES\n\nWHEEL: ARROWS / TAB TO CHOOSE, ENTER TO OPEN, ESC TO CLOSE\nMEDIA: SPACE PLAY/PAUSE, ←/→ 1 SECOND, SHIFT+←/→ 1/30S, I/O SET RANGE\nCROP: DRAG, SHIFT LOCKS RATIO, ENTER SAVES\nEDITING TEXT: NORMAL PASTE AND ARROW KEYS ARE PRESERVED." = "CTRL+O  CHOISIR DES FICHIERS\nCTRL+V  COLLER DES FICHIERS, DU TEXTE, UNE IMAGE OU UN LIEN\nCTRL+ESPACE / ENTRÉE  OUVRIR LES OUTILS\nCTRL+1 / CTRL+2  ACCUEIL / BIBLIOTHÈQUE\nCTRL+F  RECHERCHER DANS LA BIBLIOTHÈQUE\nCTRL+MAJ+D  UTILISER UN LIEN DE TÉLÉCHARGEMENT COPIÉ\nCTRL+U  RECHERCHER LES MISES À JOUR\n\nROUE : FLÈCHES / TAB POUR CHOISIR, ENTRÉE POUR OUVRIR, ÉCHAP POUR FERMER\nMÉDIAS : ESPACE LECTURE/PAUSE, ←/→ 1 SECONDE, MAJ+←/→ 1/30 S, I/O DÉFINIR LA PLAGE\nRECADRAGE : GLISSER, MAJ VERROUILLE LES PROPORTIONS, ENTRÉE ENREGISTRE\nMODIFICATION DE TEXTE : LE COLLAGE ET LES FLÈCHES FONCTIONNENT NORMALEMENT.";
 "CTRL+O  CHOOSE FILES\nCTRL+V  PASTE FILES, TEXT, AN IMAGE OR LINK\nCTRL+SPACE / ENTER  OPEN TOOLS AND CONVERSIONS\nDELETE  REMOVE SELECTED FILES FROM NASHI\nCTRL+1 / CTRL+2  HOME / LIBRARY\nCTRL+F  FIND IN LIBRARY\nCTRL+SHIFT+D  USE A COPIED DOWNLOAD LINK\nCTRL+U  CHECK FOR UPDATES\n\nWHEEL: ARROWS / TAB TO CHOOSE, ENTER TO OPEN, ESC TO CLOSE\nMEDIA: SPACE PLAY/PAUSE, ←/→ 1 SECOND, SHIFT+←/→ 1/30S, I/O SET RANGE\nCROP: DRAG, SHIFT LOCKS RATIO, ENTER SAVES\nEDITING TEXT: NORMAL PASTE AND ARROW KEYS ARE PRESERVED." = "CTRL+O  CHOISIR DES FICHIERS\nCTRL+V  COLLER DES FICHIERS, DU TEXTE, UNE IMAGE OU UN LIEN\nCTRL+ESPACE / ENTRÉE  OUVRIR LES OUTILS ET LES CONVERSIONS\nSUPPR  RETIRER LES FICHIERS SÉLECTIONNÉS DE NASHI\nCTRL+1 / CTRL+2  ACCUEIL / BIBLIOTHÈQUE\nCTRL+F  RECHERCHER DANS LA BIBLIOTHÈQUE\nCTRL+MAJ+D  UTILISER UN LIEN DE TÉLÉCHARGEMENT COPIÉ\nCTRL+U  RECHERCHER LES MISES À JOUR\n\nROUE : FLÈCHES / TAB POUR CHOISIR, ENTRÉE POUR OUVRIR, ÉCHAP POUR FERMER\nMÉDIAS : ESPACE LECTURE/PAUSE, ←/→ 1 SECONDE, MAJ+←/→ 1/30 S, I/O DÉFINIR LA PLAGE\nRECADRAGE : GLISSER, MAJ VERROUILLE LES PROPORTIONS, ENTRÉE ENREGISTRE\nMODIFICATION DE TEXTE : LE COLLAGE ET LES FLÈCHES FONCTIONNENT NORMALEMENT.";
@@ -556,6 +559,7 @@
 "Choose a background image." = "Choisissez une image d’arrière-plan.";
 "Choose a canvas within 100 MP and 30,000 pixels." = "Choisissez un canevas de 100 Mpx et 30 000 pixels au maximum.";
 "Choose a complete RTFD folder containing TXT.rtf." = "Choisissez un dossier RTFD complet contenant TXT.rtf.";
+"Choose a crop rectangle." = "Choisissez un rectangle de recadrage.";
 "Choose a destination outside the folder being moved." = "Choisissez une destination en dehors du dossier déplacé.";
 "Choose a file to preview." = "Choisissez un fichier à prévisualiser.";
 "Choose a finished video instead of a live or upcoming stream." = "Choisissez une vidéo terminée plutôt qu’une diffusion en direct ou à venir.";
@@ -707,6 +711,8 @@
 "Crop Image · Nashi" = "Recadrer l’image · Nashi";
 "Crop Video" = "Recadrer la vidéo";
 "Crop area" = "Zone de recadrage";
+"Crop coordinates must be finite." = "Les coordonnées de recadrage doivent être des nombres finis.";
+"Crop origins must be nonnegative and dimensions at least 1 × 1 pixel." = "L’origine du recadrage ne peut pas être négative et ses dimensions doivent être d’au moins 1 × 1 pixel.";
 "Ctrl+O  Choose files\nCtrl+V  Paste files, text, an image or link\nCtrl+Space / Enter  Open tools\nCtrl+1 / Ctrl+2  Home / Library\nCtrl+F  Find in Library\nCtrl+Shift+D  Use a copied download link\nCtrl+U  Check for updates\n\nWheel: arrows / Tab to choose, Enter to open, Esc to close\nMedia: Space play/pause, ←/→ 1 second, Shift+←/→ 1/30s, I/O set range\nCrop: drag, Shift locks ratio, Enter saves\nEditing text: normal paste and arrow keys are preserved." = "Ctrl+O  Choisir des fichiers\nCtrl+V  Coller des fichiers, du texte, une image ou un lien\nCtrl+Espace / Entrée  Ouvrir les outils\nCtrl+1 / Ctrl+2  Accueil / Bibliothèque\nCtrl+F  Rechercher dans la bibliothèque\nCtrl+Maj+D  Utiliser un lien de téléchargement copié\nCtrl+U  Rechercher les mises à jour\n\nRoue : flèches / Tab pour choisir, Entrée pour ouvrir, Échap pour fermer\nMédias : Espace lecture/pause, ←/→ 1 seconde, Maj+←/→ 1/30 s, I/O définir la plage\nRecadrage : glisser, Maj verrouille les proportions, Entrée enregistre\nModification de texte : le collage et les flèches fonctionnent normalement.";
 "Ctrl+O  Choose files\nCtrl+V  Paste files, text, an image or link\nCtrl+Space / Enter  Open tools and conversions\nDelete  Remove selected files from Nashi\nCtrl+1 / Ctrl+2  Home / Library\nCtrl+F  Find in Library\nCtrl+Shift+D  Use a copied download link\nCtrl+U  Check for updates\n\nWheel: arrows / Tab to choose, Enter to open, Esc to close\nMedia: Space play/pause, ←/→ 1 second, Shift+←/→ 1/30s, I/O set range\nCrop: drag, Shift locks ratio, Enter saves\nEditing text: normal paste and arrow keys are preserved." = "Ctrl+O  Choisir des fichiers\nCtrl+V  Coller des fichiers, du texte, une image ou un lien\nCtrl+Espace / Entrée  Ouvrir les outils et les conversions\nSuppr  Retirer les fichiers sélectionnés de Nashi\nCtrl+1 / Ctrl+2  Accueil / Bibliothèque\nCtrl+F  Rechercher dans la bibliothèque\nCtrl+Maj+D  Utiliser un lien de téléchargement copié\nCtrl+U  Rechercher les mises à jour\n\nRoue : flèches / Tab pour choisir, Entrée pour ouvrir, Échap pour fermer\nMédias : Espace lecture/pause, ←/→ 1 seconde, Maj+←/→ 1/30 s, I/O définir la plage\nRecadrage : glisser, Maj verrouille les proportions, Entrée enregistre\nModification de texte : le collage et les flèches fonctionnent normalement.";
 "Ctrl+Shift+D  Use a copied link  ·  Public, downloadable media" = "Ctrl+Maj+D  Utiliser un lien copié  ·  Médias publics téléchargeables";
@@ -927,6 +933,10 @@
 "Equal clips: %@" = "Clips égaux : %@";
 "Equal clips: %lld" = "Clips égaux : %lld";
 "Esc to close" = "Échap pour fermer";
+"Every redaction area must have positive dimensions and fit completely inside the %@ × %@ pixel image. Adjust the areas for this image and try again." = "Chaque zone caviardée doit avoir des dimensions positives et tenir entièrement dans l’image de %@ × %@ pixels. Ajustez les zones pour cette image, puis réessayez.";
+"Every redaction area must have positive dimensions and fit completely inside the %@ × %lld pixel image. Adjust the areas for this image and try again." = "Chaque zone caviardée doit avoir des dimensions positives et tenir entièrement dans l’image de %@ × %lld pixels. Ajustez les zones pour cette image, puis réessayez.";
+"Every redaction area must have positive dimensions and fit completely inside the %lld × %@ pixel image. Adjust the areas for this image and try again." = "Chaque zone caviardée doit avoir des dimensions positives et tenir entièrement dans l’image de %lld × %@ pixels. Ajustez les zones pour cette image, puis réessayez.";
+"Every redaction area must have positive dimensions and fit completely inside the %lld × %lld pixel image. Adjust the areas for this image and try again." = "Chaque zone caviardée doit avoir des dimensions positives et tenir entièrement dans l’image de %lld × %lld pixels. Ajustez les zones pour cette image, puis réessayez.";
 "Everything has a next form." = "Tout a une prochaine forme.";
 "Expand Float" = "Développer Float";
 "Expanded update is too large." = "La mise à jour décompressée est trop volumineuse.";
@@ -1801,6 +1811,10 @@
 "Redact Image" = "Caviarder l’image";
 "Redact Photo" = "Caviarder la photo";
 "Redact Video" = "Caviarder la vidéo";
+"Redaction coordinates must be finite for the %@ × %@ pixel image." = "Les coordonnées de caviardage doivent être des nombres finis pour l’image de %@ × %@ pixels.";
+"Redaction coordinates must be finite for the %@ × %lld pixel image." = "Les coordonnées de caviardage doivent être des nombres finis pour l’image de %@ × %lld pixels.";
+"Redaction coordinates must be finite for the %lld × %@ pixel image." = "Les coordonnées de caviardage doivent être des nombres finis pour l’image de %lld × %@ pixels.";
+"Redaction coordinates must be finite for the %lld × %lld pixel image." = "Les coordonnées de caviardage doivent être des nombres finis pour l’image de %lld × %lld pixels.";
 "Redo" = "Rétablir";
 "Reduce padding or spacing to fit the images." = "Réduisez les marges ou l’espacement pour que les images tiennent.";
 "Reduce spacing to fit the featured layout." = "Réduisez l’espacement pour que la mise en page en vedette tienne.";
@@ -1895,6 +1909,7 @@
 "SELECT / MOVE" = "SÉLECTIONNER / DÉPLACER";
 "SELECT A CLIP AND PRESS DELETE TO REMOVE IT FROM THE RESULT." = "SÉLECTIONNEZ UN CLIP ET APPUYEZ SUR SUPPRIMER POUR LE RETIRER DU RÉSULTAT.";
 "SELECT ALL" = "TOUT SÉLECTIONNER";
+"SELECT AN AREA TO REDACT, OR DETECT FACES OR TEXT." = "SÉLECTIONNEZ UNE ZONE À CAVIARDER, OU DÉTECTEZ LES VISAGES OU LE TEXTE.";
 "SELECT AT LEAST ONE AVAILABLE PHOTO." = "SÉLECTIONNEZ AU MOINS UNE PHOTO DISPONIBLE.";
 "SELECT ONE CROP RECTANGLE." = "SÉLECTIONNEZ UN SEUL RECTANGLE DE RECADRAGE.";
 "SELECT ONLY THIS REPOSITORY AND GIVE CONTENTS READ ACCESS. THE TOKEN STAYS IN THIS MAC’S KEYCHAIN." = "SÉLECTIONNEZ UNIQUEMENT CE DÉPÔT ET ACCORDEZ L’ACCÈS EN LECTURE À CONTENTS. LE JETON RESTE DANS LE TROUSSEAU DE CE MAC.";
@@ -2045,6 +2060,7 @@
 "Select / Move" = "Sélectionner / Déplacer";
 "Select All" = "Tout sélectionner";
 "Select a clip and press Delete to remove it from the result." = "Sélectionnez un clip et appuyez sur Supprimer pour le retirer du résultat.";
+"Select an area to redact, or detect faces or text." = "Sélectionnez une zone à caviarder, ou détectez les visages ou le texte.";
 "Select at least one available photo." = "Sélectionnez au moins une photo disponible.";
 "Select one crop rectangle." = "Sélectionnez un seul rectangle de recadrage.";
 "Select only this repository and give Contents read access. The token stays in this Mac’s Keychain." = "Sélectionnez uniquement ce dépôt et accordez l’accès en lecture à Contents. Le jeton reste dans le trousseau de ce Mac.";
@@ -2249,6 +2265,10 @@
 "The archive entry leaves its destination." = "L’entrée de l’archive sort de sa destination.";
 "The clipping exceeds 200 MB." = "Le fragment dépasse 200 Mo.";
 "The clipping has no readable text. Include its original resource fork/AppleDouble sidecar, or paste its text into Nashi." = "Le fragment ne contient aucun texte lisible. Incluez son fichier annexe d’origine (resource fork/AppleDouble) ou collez son texte dans Nashi.";
+"The crop rectangle must fit completely inside the %@ × %@ pixel image." = "Le rectangle de recadrage doit tenir entièrement dans l’image de %@ × %@ pixels.";
+"The crop rectangle must fit completely inside the %@ × %lld pixel image." = "Le rectangle de recadrage doit tenir entièrement dans l’image de %@ × %lld pixels.";
+"The crop rectangle must fit completely inside the %lld × %@ pixel image." = "Le rectangle de recadrage doit tenir entièrement dans l’image de %lld × %@ pixels.";
+"The crop rectangle must fit completely inside the %lld × %lld pixel image." = "Le rectangle de recadrage doit tenir entièrement dans l’image de %lld × %lld pixels.";
 "The document has no editable body." = "Le document n’a pas de corps modifiable.";
 "The document is missing %@" = "Il manque %@ au document";
 "The document is missing %lld" = "Il manque %lld au document";
