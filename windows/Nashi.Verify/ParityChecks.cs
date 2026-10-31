@@ -136,6 +136,9 @@ internal static class ParityChecks
         var changed=PhotoCodec.Adjust(png,new(){Brightness=.2,Saturation=.3,Temperature=.2,Shadows=.1});using(var a=new MagickImage(png))using(var b=new MagickImage(changed))check(a.Compare(b,ErrorMetric.Absolute)>0,"Photo adjustments did not change pixels");
         foreach(var effect in new[]{new PhotoAdjustments{Blur=2},new(){Sharpen=1},new(){NoiseReduction=.5},new(){Grain=.3},new(){Vignette=.4},new(){Gamma=1.2},new(){Exposure=.5},new(){Hue=50},new(){Dehaze=.2}})check(PhotoCodec.Adjust(png,effect).Length>0,"Photo effect failed");
         try{PhotoCodec.Adjust(png,new(){Gamma=double.NaN});throw new Exception("Invalid adjustment accepted");}catch(ArgumentException){check(true,"Photo finite validation");}
+        foreach(var hue in new[]{180d,-150d}){using var a=new MagickImage(png);using var b=new MagickImage(PhotoCodec.Adjust(png,new(){Hue=hue}));check(a.Compare(b,ErrorMetric.Absolute)>0,"Hue beyond 100 degrees did not change pixels");}
+        try{PhotoCodec.Adjust(png,new(){Hue=181});throw new Exception("Out of range hue accepted");}catch(ArgumentException){check(true,"Photo hue range validation");}
+        try{PhotoCodec.Adjust(png,new(){Blur=101});throw new Exception("Out of range blur accepted");}catch(ArgumentException){check(true,"Photo adjustment range validation");}
         // Redaction blur (24) must erase 4-pixel stripes the way macOS CIGaussianBlur does, not leave them readable.
         // Only the centre is measured: edge pixels are clamped, so border stripes cannot fully average out.
         using(var stripes=new MagickImage(MagickColors.White,200,80)){for(var x=0;x<200;x+=8)new ImageMagick.Drawing.Drawables().FillColor(MagickColors.Black).Rectangle(x,0,x+3,79).Draw(stripes);
