@@ -286,7 +286,10 @@ public enum MediaEngine {
             if audio && !infos[index].hasAudio { arguments += ["-f", "lavfi", "-i", "anullsrc=r=48000:cl=stereo"] }
             arguments += ["-map", "0:v:0", "-vf", "scale=\(width):\(height):force_original_aspect_ratio=decrease,pad=\(width):\(height):(ow-iw)/2:(oh-ih)/2,setsar=1,fps=\(decimal(fps)),setpts=PTS-STARTPTS"]
             if audio { arguments += ["-map", infos[index].hasAudio ? "0:a:0" : "1:a:0", "-af", "aresample=48000,asetpts=PTS-STARTPTS", "-ac", "2", "-ar", "48000"] } else { arguments += ["-an"] }
-            arguments += ["-t", decimal(infos[index].duration)] + videoEncoding("mp4", quality: options.quality)
+            // An unknown duration is 0, and `-t 0` would encode an empty clip. The clip's own
+            // video then bounds the generated silence instead.
+            let silent = audio && !infos[index].hasAudio
+            arguments += (infos[index].duration > 0 ? ["-t", decimal(infos[index].duration)] : silent ? ["-shortest"] : []) + videoEncoding("mp4", quality: options.quality)
             try render(arguments, to: clip, token: token, duration: infos[index].duration, progress: { value,_ in progress(OperationProgress.map(value, from: Double(index)/Double(inputs.count)*0.95, to: Double(index+1)/Double(inputs.count)*0.95),"Joining clip \(index+1) of \(inputs.count)…") })
             clips.append(clip)
         }
