@@ -226,7 +226,9 @@ private enum PagesDOCXReader {
                             else if ["drawing","pict"].contains(child.local), let image = try image(child) { runs.append(image) }
                         }
                     } else if item.local == "hyperlink" {
-                        let destination = item.attr("id").flatMap { relationships[$0] }
+                        var destination = item.attr("id").flatMap { relationships[$0] }
+                        // Word keeps a URL's #fragment in w:anchor, not in the relationship target.
+                        if let target = destination, !target.contains("#"), let anchor = item.attr("anchor")?.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed), !anchor.isEmpty { destination = target + "#" + anchor }
                         for child in item.elements(nil) { try visit(child, link:destination) }
                     } else if ["sdt","sdtContent","ins","smartTag"].contains(item.local) { for child in item.elements(nil) { try visit(child, link:link) } }
                 }
