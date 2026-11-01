@@ -85,7 +85,9 @@ public sealed class MediaEngine(string ffmpeg, string ffprobe)
         var duration = root.TryGetProperty("format", out var format) && double.TryParse(GetString(format,"duration"), CultureInfo.InvariantCulture, out var seconds) && double.IsFinite(seconds) ? Math.Max(0,seconds) : 0;
         var oggTags=format.ValueKind==JsonValueKind.Object&&GetString(format,"format_name").Split(',').Contains("ogg")&&root.GetProperty("streams").EnumerateArray().FirstOrDefault(s=>GetString(s,"codec_type")=="audio") is {ValueKind:JsonValueKind.Object} audio&&audio.TryGetProperty("tags",out var audioTags)&&audioTags.ValueKind==JsonValueKind.Object&&audioTags.EnumerateObject().Any();
         var quickTimeKeys=format.ValueKind==JsonValueKind.Object&&format.TryGetProperty("tags",out var formatTags)&&formatTags.ValueKind==JsonValueKind.Object&&formatTags.EnumerateObject().Any(t=>t.Name.StartsWith("com.apple.quicktime.",StringComparison.Ordinal));
-        return new(duration, new FileInfo(input).Length, streams){OggStreamTags=oggTags,QuickTimeKeys=quickTimeKeys};
+        // FileInfo sizes a symbolic link itself; compression targets come from the media it points to (as on macOS).
+        var file=new FileInfo(input);
+        return new(duration, (file.ResolveLinkTarget(true) as FileInfo??file).Length, streams){OggStreamTags=oggTags,QuickTimeKeys=quickTimeKeys};
     }
 
     // The last video packet's time from the container start, read without decoding: the final minute first, then the whole file.
