@@ -203,6 +203,10 @@ internal static class ParityChecks
         var decodedSrt=SubtitleCodec.Convert(encodedVtt,"srt");
         check(decodedSrt.Contains("Tom & Jerry",StringComparison.Ordinal)&&!decodedSrt.Contains("&amp;",StringComparison.Ordinal),"WebVTT character references leaked into SRT output");
         try{SubtitleCodec.Parse("00:00:02.000 --> 00:00:01.000\ninvalid");throw new Exception("Reversed subtitle accepted");}catch(InvalidDataException){check(true,"Subtitle validation");}
+        // Like the Mac, a timing line starts the next cue even without a blank line before it, and the SRT cue number just above it is dropped.
+        foreach(var packedCues in new[]{"1\n00:00:01,000 --> 00:00:02,000\nHello\n2\n00:00:03,000 --> 00:00:04,000\nWorld\n","1\r\n00:00:01,000 --> 00:00:02,000\r\nHello\r\n2\r\n00:00:03,000 --> 00:00:04,000\r\nWorld\r\n","WEBVTT\n\n00:00:01.000 --> 00:00:02.000\nHello\n00:00:03.000 --> 00:00:04.000\nWorld\n"})
+            check(SubtitleCodec.Parse(packedCues).Select(c=>c.Text).SequenceEqual(new[]{"Hello","World"})&&SubtitleCodec.Convert(packedCues,"txt")=="Hello\n\nWorld\n","Subtitle cues without a blank line between them were merged into one cue");
+        check(SubtitleCodec.Parse("1\n00:00:01,000 --> 00:00:02,000\nA --> B\n1999\n\n2\n00:00:03,000 --> 00:00:04,000\nSecond\n").Select(c=>c.Text).SequenceEqual(new[]{"A --> B\n1999","Second"})&&SubtitleCodec.Parse("1\n00:00:01,000 --> 00:00:02,000\n2\n00:00:03,000 --> 00:00:04,000\nWorld\n").Select(c=>c.Text).SequenceEqual(new[]{"","World"}),"Subtitle text that only looks like a cue number or timing was dropped, or an empty packed cue kept the next cue's number");
         var input=Path.Combine(root,"Archive source.txt");File.WriteAllText(input,"Türkçe 🍐 retained");var zip=DocumentEngine.Zip([input],root);
         foreach(var format in new[]{"tar","gz","zip"})
         {
