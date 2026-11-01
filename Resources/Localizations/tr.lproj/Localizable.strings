@@ -1725,6 +1725,7 @@
 "PREPARING MOVE…" = "TAŞIMA HAZIRLANIYOR…";
 "PREPARING PREVIEW…" = "ÖNİZLEME HAZIRLANIYOR…";
 "PREPARING PROCESSED PREVIEW…" = "İŞLENMİŞ ÖNİZLEME HAZIRLANIYOR…";
+"PREPARING VISUALIZATION…" = "GÖRSELLEŞTİRME HAZIRLANIYOR…";
 "PREPARING YOUR FILE…" = "DOSYAN HAZIRLANIYOR…";
 "PREPARING…" = "HAZIRLANIYOR…";
 "PRESERVE METADATA" = "META VERİLERİ KORU";
@@ -1800,6 +1801,7 @@
 "Preparing move…" = "Taşıma hazırlanıyor…";
 "Preparing preview…" = "Önizleme hazırlanıyor…";
 "Preparing processed preview…" = "İşlenmiş önizleme hazırlanıyor…";
+"Preparing visualization…" = "Görselleştirme hazırlanıyor…";
 "Preparing your file…" = "Dosyan hazırlanıyor…";
 "Preparing…" = "Hazırlanıyor…";
 "Preserve metadata" = "Meta verileri koru";
