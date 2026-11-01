@@ -235,6 +235,7 @@
 "AUDIO · MP3" = "AUDIO · MP3";
 "AUTHORIZE SAVED TOKEN…" = "AUTORISER LE JETON ENREGISTRÉ…";
 "AUTO" = "AUTO";
+"AVAILABLE AFTER THE CURRENT TASK FINISHES" = "DISPONIBLE UNE FOIS LA TÂCHE EN COURS TERMINÉE";
 "AVAILABLE FILES SELECTED. SOME FILES HAVE MOVED OR WERE DELETED." = "FICHIERS DISPONIBLES SÉLECTIONNÉS. CERTAINS FICHIERS ONT ÉTÉ DÉPLACÉS OU SUPPRIMÉS.";
 "About" = "À propos";
 "Accessibility" = "Accessibilité";
@@ -323,6 +324,7 @@
 "Audio · MP3" = "Audio · MP3";
 "Authorize Saved Token…" = "Autoriser le jeton enregistré…";
 "Auto" = "Auto";
+"Available after the current task finishes" = "Disponible une fois la tâche en cours terminée";
 "Available files selected. Some files have moved or were deleted." = "Fichiers disponibles sélectionnés. Certains fichiers ont été déplacés ou supprimés.";
 "BACK" = "RETOUR";
 "BACKGROUND" = "ARRIÈRE-PLAN";
@@ -799,6 +801,7 @@
 "DEVICES" = "APPAREILS";
 "DISCONNECT & FORGET TOKEN" = "SE DÉCONNECTER ET OUBLIER LE JETON";
 "DISMISS" = "FERMER";
+"DISMISS ERROR" = "FERMER L’ERREUR";
 "DOCUMENT XML IS TOO LARGE." = "LE XML DU DOCUMENT EST TROP VOLUMINEUX.";
 "DOCUMENTS" = "DOCUMENTS";
 "DONE" = "TERMINÉ";
@@ -876,6 +879,7 @@
 "Devices" = "Appareils";
 "Disconnect & Forget Token" = "Se déconnecter et oublier le jeton";
 "Dismiss" = "Fermer";
+"Dismiss error" = "Fermer l’erreur";
 "Document XML is too large." = "Le XML du document est trop volumineux.";
 "Documents" = "Documents";
 "Done" = "Terminé";
@@ -1502,6 +1506,7 @@
 "NO MATCHES. TRY A FILE NAME OR TOOL." = "AUCUN RÉSULTAT. ESSAYEZ UN NOM DE FICHIER OU D’OUTIL.";
 "NO MATCHING REGIONS WERE DETECTED. YOU CAN STILL DRAW AREAS BY HAND." = "AUCUNE ZONE CORRESPONDANTE N’A ÉTÉ DÉTECTÉE. VOUS POUVEZ TOUJOURS DESSINER DES ZONES À LA MAIN.";
 "NO MEDIA OUTPUT WAS PRODUCED." = "AUCUNE SORTIE MULTIMÉDIA N’A ÉTÉ PRODUITE.";
+"NO OUTPUT FORMATS" = "AUCUN FORMAT DE SORTIE";
 "NO OUTPUT WAS PRODUCED." = "AUCUNE SORTIE N’A ÉTÉ PRODUITE.";
 "NO PUBLIC DOWNLOADABLE MEDIA FOUND. SOME SITES REQUIRE SIGN-IN OR DO NOT EXPOSE DOWNLOADABLE MEDIA." = "AUCUN MÉDIA PUBLIC TÉLÉCHARGEABLE TROUVÉ. CERTAINS SITES EXIGENT UNE CONNEXION OU N’EXPOSENT PAS DE MÉDIAS TÉLÉCHARGEABLES.";
 "NO QR CODES FOUND. TRY A LARGER OR SHARPER IMAGE." = "AUCUN CODE QR TROUVÉ. ESSAYEZ UNE IMAGE PLUS GRANDE OU PLUS NETTE.";
@@ -1511,6 +1516,7 @@
 "NO TIMED SUBTITLE CUES WERE FOUND IN THIS FILE." = "AUCUNE RÉPLIQUE DE SOUS-TITRE HORODATÉE N’A ÉTÉ TROUVÉE DANS CE FICHIER.";
 "NO TIMED SUBTITLE CUES WERE FOUND." = "AUCUNE RÉPLIQUE DE SOUS-TITRE HORODATÉE N’A ÉTÉ TROUVÉE.";
 "NO TOOLS FOR THIS FILE TYPE" = "AUCUN OUTIL POUR CE TYPE DE FICHIER";
+"NO TOOLS FOR THIS SELECTION" = "AUCUN OUTIL POUR CETTE SÉLECTION";
 "NO UNPROTECTED DOWNLOADABLE FORMAT IS AVAILABLE." = "AUCUN FORMAT TÉLÉCHARGEABLE NON PROTÉGÉ N’EST DISPONIBLE.";
 "NO UPDATE CHECKS YET" = "AUCUNE RECHERCHE DE MISE À JOUR POUR L’INSTANT";
 "NO USABLE YOUTUBE THUMBNAIL WAS FOUND." = "AUCUNE MINIATURE YOUTUBE UTILISABLE N’A ÉTÉ TROUVÉE.";
@@ -1567,6 +1573,7 @@
 "No matches. Try a file name or tool." = "Aucun résultat. Essayez un nom de fichier ou d’outil.";
 "No matching regions were detected. You can still draw areas by hand." = "Aucune zone correspondante n’a été détectée. Vous pouvez toujours dessiner des zones à la main.";
 "No media output was produced." = "Aucune sortie multimédia n’a été produite.";
+"No output formats" = "Aucun format de sortie";
 "No output was produced." = "Aucune sortie n’a été produite.";
 "No public downloadable media found. Some sites require sign-in or do not expose downloadable media." = "Aucun média public téléchargeable trouvé. Certains sites exigent une connexion ou n’exposent pas de médias téléchargeables.";
 "No readable text was found in this text clipping." = "Aucun texte lisible n’a été trouvé dans ce fragment.";
@@ -1574,6 +1581,7 @@
 "No timed subtitle cues were found in this file." = "Aucune réplique de sous-titre horodatée n’a été trouvée dans ce fichier.";
 "No timed subtitle cues were found." = "Aucune réplique de sous-titre horodatée n’a été trouvée.";
 "No tools for this file type" = "Aucun outil pour ce type de fichier";
+"No tools for this selection" = "Aucun outil pour cette sélection";
 "No unprotected downloadable format is available." = "Aucun format téléchargeable non protégé n’est disponible.";
 "No update checks yet" = "Aucune recherche de mise à jour pour l’instant";
 "No usable YouTube thumbnail was found." = "Aucune miniature YouTube utilisable n’a été trouvée.";
@@ -1808,6 +1816,8 @@
 "Preserve original pages" = "Conserver les pages d’origine";
 "Preset" = "Préréglage";
 "Preview" = "Aperçu";
+"Preview %@" = "Aperçu de %@";
+"Preview %lld" = "Aperçu de %lld";
 "Preview Left" = "Aperçu à gauche";
 "Preview Processed" = "Aperçu du résultat traité";
 "Preview Right" = "Aperçu à droite";
@@ -1942,6 +1952,10 @@
 "Reflowable text" = "Texte adaptable";
 "Release to place · Esc cancels" = "Relâchez pour placer · Échap annule";
 "Remove" = "Retirer";
+"Remove %@" = "Retirer %@";
+"Remove %@ from selection" = "Retirer %@ de la sélection";
+"Remove %lld" = "Retirer %lld";
+"Remove %lld from selection" = "Retirer %lld de la sélection";
 "Remove All" = "Tout supprimer";
 "Remove Audio" = "Supprimer l’audio";
 "Remove Background" = "Supprimer l’arrière-plan";
@@ -2235,6 +2249,8 @@
 "Sharpness" = "Netteté";
 "Shift locks the ratio · Return crops\nDrag inside to move; drag a handle to resize." = "Maj verrouille les proportions · Retour recadre\nFaites glisser à l’intérieur pour déplacer ; faites glisser une poignée pour redimensionner.";
 "Shift to convert" = "Maj pour convertir";
+"Show %@ in Finder" = "Afficher %@ dans le Finder";
+"Show %lld in Finder" = "Afficher %lld dans le Finder";
 "Show Nashi in Finder" = "Afficher Nashi dans le Finder";
 "Show Original" = "Afficher l’original";
 "Show in Explorer" = "Afficher dans l’Explorateur";
@@ -2629,6 +2645,7 @@
 "USE ONCE IF MACOS NEEDS PERMISSION FOR YOUR SAVED UPDATE CONNECTION." = "À UTILISER UNE FOIS SI MACOS DEMANDE UNE AUTORISATION POUR VOTRE CONNEXION DE MISE À JOUR ENREGISTRÉE.";
 "USE ONE INSTAGRAM PHOTO POST WITH UP TO 50 ITEMS." = "UTILISEZ UNE SEULE PUBLICATION DE PHOTOS INSTAGRAM CONTENANT JUSQU’À 50 ÉLÉMENTS.";
 "USE OPEN TO PREVIEW THIS DOCUMENT IN ITS DEFAULT APP." = "UTILISEZ OUVRIR POUR AFFICHER CE DOCUMENT DANS L’APP PAR DÉFAUT.";
+"USE THESE FILES AGAIN" = "RÉUTILISER CES FICHIERS";
 "Undo" = "Annuler";
 "Undo Area" = "Annuler la zone";
 "Undo area" = "Annuler la zone";
@@ -2663,12 +2680,15 @@
 "Upstream package has no regular %@ executable." = "Le paquet amont ne contient pas d’exécutable %@ ordinaire.";
 "Upstream package has no regular %lld executable." = "Le paquet amont ne contient pas d’exécutable %lld ordinaire.";
 "Upstream versions, licenses and source links" = "Versions amont, licences et liens vers les sources";
+"Use %@ again" = "Réutiliser %@";
+"Use %lld again" = "Réutiliser %lld";
 "Use Open to preview this document in its default app." = "Utilisez Ouvrir pour afficher ce document dans l’app par défaut.";
 "Use a regular writable folder for portable updates." = "Utilisez un dossier ordinaire accessible en écriture pour les mises à jour portables.";
 "Use a static SVG without embedded scripts or HTML." = "Utilisez un SVG statique sans scripts ni HTML intégrés.";
 "Use in Nashi" = "Utiliser dans Nashi";
 "Use once if macOS needs permission for your saved update connection." = "À utiliser une fois si macOS demande une autorisation pour votre connexion de mise à jour enregistrée.";
 "Use one Instagram photo post with up to 50 items." = "Utilisez une seule publication de photos Instagram contenant jusqu’à 50 éléments.";
+"Use these files again" = "Réutiliser ces fichiers";
 "VALUE" = "VALEUR";
 "VERIFYING AND PREPARING OFFICE TOOLS…" = "VÉRIFICATION ET PRÉPARATION DES OUTILS BUREAUTIQUES…";
 "VERIFYING UPDATE SIGNATURE…" = "VÉRIFICATION DE LA SIGNATURE DE LA MISE À JOUR…";
@@ -2789,5 +2809,7 @@
 "↑/↓ choose · Space preview · Return use in Nashi" = "↑/↓ choisir · Espace aperçu · Retour utiliser dans Nashi";
 "↶ RESET" = "↶ RÉINITIALISER";
 "↶ Reset" = "↶ Réinitialiser";
+"⌘V · PASTE FILES, TEXT, AN IMAGE OR LINK" = "⌘V · COLLER DES FICHIERS, DU TEXTE, UNE IMAGE OU UN LIEN";
+"⌘V · Paste files, text, an image or link" = "⌘V · Coller des fichiers, du texte, une image ou un lien";
 "✦  READY WHEN YOU ARE" = "✦  PRÊT QUAND VOUS L’ÊTES";
 "✦  START HERE" = "✦  COMMENCEZ ICI";
