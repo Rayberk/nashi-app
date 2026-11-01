@@ -60,6 +60,8 @@ public sealed partial class OfficeDocuments
                     }
                     else if(item.Name.LocalName=="hyperlink"){var destination=rels.GetValueOrDefault(Attr(item,"id")??"");foreach(var child in item.Elements())Visit(child,destination);}
                     else if(item.Name.LocalName is "sdt" or "sdtContent" or "ins" or "smartTag")foreach(var child in item.Elements())Visit(child,link);
+                    // As on the Mac, simple fields (page numbers, dates), custom XML, tracked moves and direction wrappers hold ordinary runs too.
+                    else if(item.Name.LocalName is "fldSimple" or "customXml" or "moveTo" or "dir" or "bdo")foreach(var child in item.Elements())Visit(child,link);
                 }
                 foreach(var child in element.Elements())Visit(child);return new{type="paragraph",runs,character=runs.Count==0?Merge(baseStyle.C,Character(Child(props,"rPr"))):baseStyle.C.Where(p=>p.Key!="backgroundColor").ToDictionary(p=>p.Key,p=>p.Value),paragraph=Merge(baseStyle.P,ParagraphStyle(props))};
             }
