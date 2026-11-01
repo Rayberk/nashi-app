@@ -134,6 +134,18 @@ if(Environment.GetEnvironmentVariable("NASHI_VERIFY_FFMPEG") is {} encoder && En
         Check((await engine.ToolAsync("trimVideo",[source],directory,new(){Start=1.1,End=1.15},reporter)).Count==1,"A 50 ms trim was refused by floating-point rounding");
         Check(progress.Any(p=>p.Fraction>0&&p.Fraction<.98),"No live media progress");
         var audio=await engine.ConvertAsync([source],"mp3",directory,new());Check((await engine.InspectAsync(audio[0])).HasAudio,"Audio conversion failed");
+        // FileInfo sizes a symbolic link itself (its path's length here); percentage targets come from the media it points to (as on macOS).
+        var linkedSizeFolder=Path.Combine(directory,"Linked size");Directory.CreateDirectory(linkedSizeFolder);var linkedSizeSong=Path.Combine(linkedSizeFolder,"Linked song.mp3");var linkedSizeLinked=true;
+        // Windows accounts without Developer Mode or elevation cannot create symbolic links.
+        try{File.CreateSymbolicLink(linkedSizeSong,audio[0]);}catch(Exception e)when(OperatingSystem.IsWindows()&&e is UnauthorizedAccessException or IOException){linkedSizeLinked=false;Console.Error.WriteLine("Skipping symbolic link media checks: this account cannot create symbolic links.");}
+        if(linkedSizeLinked)
+        {
+            var linkedSizeMissing=Path.Combine(linkedSizeFolder,"Missing song.mp3");File.CreateSymbolicLink(linkedSizeMissing,Path.Combine(directory,"No such song.mp3"));
+            var linkedSizeInfo=await engine.InspectAsync(linkedSizeSong);Check(linkedSizeInfo.Bytes==new FileInfo(audio[0]).Length,$"Inspect sized a symbolic link as {linkedSizeInfo.Bytes} bytes instead of the linked file's {new FileInfo(audio[0]).Length}");
+            var linkedSizeCompressed=await engine.ToolAsync("compress",[linkedSizeSong],directory,new(){ReductionPercent=30});Check(Path.GetFileName(linkedSizeCompressed[0])=="Linked song Compressed.m4a"&&new FileInfo(linkedSizeCompressed[0]).Length<=new FileInfo(audio[0]).Length*.7,"Compress by percentage failed for a symbolic link");
+            var linkedSizeFolderLink=Path.Combine(linkedSizeFolder,"Folder.mp3");Directory.CreateSymbolicLink(linkedSizeFolderLink,directory);
+            foreach(var linkedSizeRefused in new[]{linkedSizeMissing,linkedSizeFolderLink}){try{await engine.InspectAsync(linkedSizeRefused);throw new Exception("A dangling or folder symbolic link was inspected: "+linkedSizeRefused);}catch(IOException){checks++;}}
+        }
         var deep=await engine.ConvertAsync([source],"wav",directory,new(){SampleDepth="pcm24"});var matched=await engine.ConvertAsync(deep,"aiff",directory,new());Check((await engine.InspectAsync(matched[0])).Streams.First(s=>s.Kind=="audio").Bits==24,"Match source reduced 24-bit audio");
         var floating=await engine.ConvertAsync([source],"wav",directory,new(){SampleDepth="float32"});var floatMatch=await engine.ConvertAsync(floating,"aiff",directory,new());Check((await engine.InspectAsync(floatMatch[0])).Streams.First(s=>s.Kind=="audio").Codec=="pcm_f32be","Match source lost floating point audio");
         // Album art is an attached picture stream, not a tag; MP3, M4A and FLAC store JPEG and PNG art.
