@@ -38,6 +38,9 @@ public static partial class DocumentEngine
             }
             else if(tool=="compress")
             {
+                // A rebuilt copy is saved without the password and permissions, which macOS keeps. PDFsharp cannot re-create them
+                // (the typed password may be the owner's), so a protected PDF is kept byte for byte instead of losing its protection.
+                if(Protected(source)){var kept=SafePaths.Unique(tx.StagingDirectory,Path.GetFileNameWithoutExtension(input)+" Compressed.pdf");File.Copy(input,kept);outputs.Add(kept);continue;}
                 // Compression keeps the document properties, as on macOS; only metadata cleanup clears them.
                 using var result=new PdfDocument();foreach(var page in source.Pages)result.AddPage(page);result.Options.CompressContentStreams=true;result.Info.Title=source.Info.Title;result.Info.Author=source.Info.Author;result.Info.Subject=source.Info.Subject;result.Info.Keywords=source.Info.Keywords;result.Info.Creator=source.Info.Creator;
                 var output=SafePaths.Unique(tx.StagingDirectory,Path.GetFileNameWithoutExtension(input)+" Compressed.pdf");result.Save(output);outputs.Add(output);
@@ -51,6 +54,8 @@ public static partial class DocumentEngine
         }
         return tx.Publish(outputs,token);
     }
+    /// Whether the PDF was encrypted (a user or owner password); every /Encrypt dictionary names its /Filter.
+    public static bool Protected(PdfDocument pdf)=>pdf.SecurityHandler.Elements.ContainsKey("/Filter");
     // These tools copy pages into a new document, which leaves the catalog's form field registry
     // and attachments behind: fields go dead and files disappear without a word. Refuse instead,
     // as macOS does where it cannot keep them. Unlike macOS, metadata cleanup still accepts tagged
