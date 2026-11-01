@@ -202,6 +202,12 @@ internal static class ParityChecks
         }
         var clipping=LegacyTextCodec.Clipping(Encoding.UTF8.GetBytes("<?xml version=\"1.0\"?><plist><dict><key>public.utf8-plain-text</key><data>VMO8cmvDp2U=</data></dict></plist>"));check(Encoding.UTF8.GetString(clipping.Bytes)=="Türkçe","Text clipping plist lost content");
         var binary=LegacyTextCodec.Clipping(System.Convert.FromBase64String("YnBsaXN0MDDRAQJfEBZwdWJsaWMudXRmOC1wbGFpbi10ZXh0aQBUAPwAcgBrAOcAZQAg2DzfUAgLJAAAAAAAAAEBAAAAAAAAAAMAAAAAAAAAAAAAAAAAAAA3"));check(Encoding.UTF8.GetString(binary.Bytes)=="Türkçe 🍐","Binary text clipping lost Unicode");
+        // Like the Mac, a manual page break (w:br w:type="page") splits the paragraph and the next part starts a new page; other breaks stay line breaks.
+        using(var pageBreakModel=System.Text.Json.JsonDocument.Parse(System.Text.Json.JsonSerializer.Serialize(OfficeDocuments.ReadDocx(Nested("Page breaks.docx","<w:p><w:pPr><w:jc w:val=\"center\"/></w:pPr><w:r><w:t>One</w:t><w:br w:type=\"page\"/><w:t>Two</w:t><w:br/><w:t>soft</w:t><w:br w:type=\"textWrapping\"/><w:t>wrap</w:t><w:lastRenderedPageBreak/><w:cr/></w:r></w:p><w:p><w:r><w:br w:type=\"page\"/></w:r></w:p><w:p><w:pPr><w:pageBreakBefore/></w:pPr><w:r><w:t>Chapter</w:t></w:r></w:p>")))))
+        {
+            var pageBreakBlocks=pageBreakModel.RootElement.GetProperty("blocks").EnumerateArray().Select(b=>string.Concat(b.GetProperty("runs").EnumerateArray().Select(r=>r.GetProperty("text").GetString()))+(b.GetProperty("paragraph").TryGetProperty("pageBreakBefore",out var before)&&before.GetBoolean()?"[page]":"")+(b.GetProperty("paragraph").TryGetProperty("alignment",out var alignment)?"@"+alignment.GetInt32():"")).ToArray();
+            check(string.Join("|",pageBreakBlocks)=="One@2|Two\nsoft\nwrap\n[page]@2||[page]|Chapter[page]","Pages interchange turned a Word page break into a line break: "+string.Join("|",pageBreakBlocks));
+        }
         var docx=Path.Combine(root,"Styled.docx");using(var archive=ZipFile.Open(docx,ZipArchiveMode.Create))
         {
             void Part(string name,string text){using var writer=new StreamWriter(archive.CreateEntry(name).Open(),new UTF8Encoding(false));writer.Write(text);}
