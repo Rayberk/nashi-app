@@ -1725,6 +1725,7 @@
 "PREPARING MOVE…" = "PRÉPARATION DU DÉPLACEMENT…";
 "PREPARING PREVIEW…" = "PRÉPARATION DE L’APERÇU…";
 "PREPARING PROCESSED PREVIEW…" = "PRÉPARATION DE L’APERÇU TRAITÉ…";
+"PREPARING VISUALIZATION…" = "PRÉPARATION DE LA VISUALISATION…";
 "PREPARING YOUR FILE…" = "PRÉPARATION DE VOTRE FICHIER…";
 "PREPARING…" = "PRÉPARATION…";
 "PRESERVE METADATA" = "CONSERVER LES MÉTADONNÉES";
@@ -1800,6 +1801,7 @@
 "Preparing move…" = "Préparation du déplacement…";
 "Preparing preview…" = "Préparation de l’aperçu…";
 "Preparing processed preview…" = "Préparation de l’aperçu traité…";
+"Preparing visualization…" = "Préparation de la visualisation…";
 "Preparing your file…" = "Préparation de votre fichier…";
 "Preparing…" = "Préparation…";
 "Preserve metadata" = "Conserver les métadonnées";

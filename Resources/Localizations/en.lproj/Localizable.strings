@@ -1725,6 +1725,7 @@
 "PREPARING MOVE…" = "PREPARING MOVE…";
 "PREPARING PREVIEW…" = "PREPARING PREVIEW…";
 "PREPARING PROCESSED PREVIEW…" = "PREPARING PROCESSED PREVIEW…";
+"PREPARING VISUALIZATION…" = "PREPARING VISUALIZATION…";
 "PREPARING YOUR FILE…" = "PREPARING YOUR FILE…";
 "PREPARING…" = "PREPARING…";
 "PRESERVE METADATA" = "PRESERVE METADATA";
@@ -1800,6 +1801,7 @@
 "Preparing move…" = "Preparing move…";
 "Preparing preview…" = "Preparing preview…";
 "Preparing processed preview…" = "Preparing processed preview…";
+"Preparing visualization…" = "Preparing visualization…";
 "Preparing your file…" = "Preparing your file…";
 "Preparing…" = "Preparing…";
 "Preserve metadata" = "Preserve metadata";
