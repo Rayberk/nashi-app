@@ -186,6 +186,19 @@ internal static class ParityChecks
             using var model=System.Text.Json.JsonDocument.Parse(System.Text.Json.JsonSerializer.Serialize(OfficeDocuments.ReadDocx(highlighted)));
             check(OfficeDocuments.ModelHtml(model.RootElement).Contains("background-color:rgb("+rgb+")"),"Word highlight color '"+color+"' was lost in the interchange");
         }
+        // Word keeps a link's #section in w:anchor; like the Mac, it is rejoined (percent-encoded) unless the target already has a fragment.
+        var anchoredLinks=Path.Combine(root,"Anchored links.docx");using(var archive=ZipFile.Open(anchoredLinks,ZipArchiveMode.Create))
+        {
+            void Part(string name,string text){using var writer=new StreamWriter(archive.CreateEntry(name).Open(),new UTF8Encoding(false));writer.Write(text);}
+            Part("word/_rels/document.xml.rels","<Relationships xmlns=\"http://schemas.openxmlformats.org/package/2006/relationships\"><Relationship Id=\"rA\" Target=\"https://example.com/page\" TargetMode=\"External\"/><Relationship Id=\"rF\" Target=\"https://example.com/page#kept\" TargetMode=\"External\"/></Relationships>");
+            string Link(string attributes,string text)=>"<w:hyperlink "+attributes+"><w:r><w:t>"+text+"</w:t></w:r></w:hyperlink>";
+            Part("word/document.xml","<w:document xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\"><w:body><w:p>"+Link("r:id=\"rA\" w:anchor=\"part-2\"","A")+Link("r:id=\"rA\" w:anchor=\"Bölüm 2\"","B")+Link("r:id=\"rF\" w:anchor=\"other\"","C")+Link("r:id=\"rA\"","D")+Link("w:anchor=\"Bookmark\"","E")+"</w:p></w:body></w:document>");
+        }
+        using(var anchoredModel=System.Text.Json.JsonDocument.Parse(System.Text.Json.JsonSerializer.Serialize(OfficeDocuments.ReadDocx(anchoredLinks))))
+        {
+            var anchoredRuns=string.Join(" ",anchoredModel.RootElement.GetProperty("blocks")[0].GetProperty("runs").EnumerateArray().Select(r=>r.GetProperty("text").GetString()+"="+(r.GetProperty("link").ValueKind==System.Text.Json.JsonValueKind.String?r.GetProperty("link").GetString():"none")));
+            check(anchoredRuns=="A=https://example.com/page#part-2 B=https://example.com/page#B%C3%B6l%C3%BCm%202 C=https://example.com/page#kept D=https://example.com/page E=none","Pages interchange lost the #section of a Word hyperlink: "+anchoredRuns);
+        }
         var clearedHighlight=Path.Combine(root,"Cleared highlight.docx");using(var archive=ZipFile.Open(clearedHighlight,ZipArchiveMode.Create))
         {
             void Part(string name,string text){using var writer=new StreamWriter(archive.CreateEntry(name).Open(),new UTF8Encoding(false));writer.Write(text);}
