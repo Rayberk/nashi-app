@@ -65,6 +65,21 @@ internal static class ParityChecks
         check(DocumentEngine.Pdf("splitPDF",[taggedPdf],root).Count==1&&DocumentEngine.Pdf("mergePDFs",[textPdf,vectorPdf],root).Count==1&&DocumentEngine.Pdf("removeMetadata",[taggedPdf],root).Count==1,"Tagged PDFs without forms or attachments were refused");
         var outlinePdf=Pdf("Outline.pdf","BT /F1 24 Tf 72 700 Td (Chapter 1) Tj ET",pdf=>{var page=pdf.AddPage();page.Size=PdfSharp.PageSize.A4;pdf.Outlines.Add("Bölüm 2",page).Top=500;pdf.Info.Title="Private title";});
         using(var cleaned=PdfSharp.Pdf.IO.PdfReader.Open(DocumentEngine.Pdf("removeMetadata",[outlinePdf],root)[0],PdfSharp.Pdf.IO.PdfDocumentOpenMode.Import))check(cleaned.Info.Title==""&&cleaned.Outlines.Count==1&&cleaned.Outlines[0] is {Title:"Bölüm 2",Top:500} chapter&&chapter.DestinationPage==cleaned.Pages[1],"Metadata cleanup dropped the PDF's bookmarks");
+        // Page labels (i, ii, Ön-5…) number pages by position and cleanup keeps every page in order, so they survive it; the Mac refuses such files.
+        PdfSharp.Pdf.PdfDictionary LabelNode(PdfSharp.Pdf.PdfDocument pdf,string key,PdfSharp.Pdf.PdfArray value){var node=new PdfSharp.Pdf.PdfDictionary(pdf);pdf.Internals.AddObject(node);node.Elements[key]=value;return node;}
+        var labelledPdf=Pdf("Page labels.pdf","BT /F1 24 Tf 72 700 Td (Preface) Tj ET",pdf=>
+        {
+            pdf.AddPage();pdf.AddPage();pdf.Info.Title="Private title";var roman=new PdfSharp.Pdf.PdfDictionary(pdf);roman.Elements.SetName("/S","/r");var appendix=new PdfSharp.Pdf.PdfDictionary(pdf);appendix.Elements["/P"]=new PdfSharp.Pdf.PdfString("Ön-");appendix.Elements.SetName("/S","/D");appendix.Elements.SetInteger("/St",5);
+            var leaf=LabelNode(pdf,"/Nums",new PdfSharp.Pdf.PdfArray(pdf,new PdfSharp.Pdf.PdfInteger(0),roman,new PdfSharp.Pdf.PdfInteger(2),appendix));leaf.Elements["/Kids"]=new PdfSharp.Pdf.PdfArray(pdf,leaf.Reference!);
+            var labels=new PdfSharp.Pdf.PdfDictionary(pdf);labels.Elements["/Kids"]=new PdfSharp.Pdf.PdfArray(pdf,leaf.Reference!);Catalog(pdf,"/PageLabels",labels);
+        });
+        using(var cleaned=PdfSharp.Pdf.IO.PdfReader.Open(DocumentEngine.Pdf("removeMetadata",[labelledPdf],root)[0],PdfSharp.Pdf.IO.PdfDocumentOpenMode.Import))
+        {
+            var labelLeaf=(cleaned.Internals.Catalog.Elements.GetDictionary("/PageLabels")?.Elements.GetArray("/Kids")?.Elements[0] as PdfSharp.Pdf.Advanced.PdfReference)?.Value as PdfSharp.Pdf.PdfDictionary;var labelNumbers=labelLeaf?.Elements.GetArray("/Nums");
+            check(cleaned.Info.Title==""&&labelNumbers is {Elements.Count:4}&&labelNumbers.Elements.GetInteger(2)==2&&labelNumbers.Elements.GetDictionary(1)?.Elements.GetName("/S")=="/r"&&labelNumbers.Elements.GetDictionary(3) is {} appendixLabel&&appendixLabel.Elements.GetString("/P")=="Ön-"&&appendixLabel.Elements.GetInteger("/St")==5&&(labelLeaf!.Elements.GetArray("/Kids")?.Elements[0] as PdfSharp.Pdf.Advanced.PdfReference)?.Value==labelLeaf,"Metadata cleanup dropped or changed the PDF's custom page labels");
+        }
+        var deepLabelsPdf=Pdf("Deep page labels.pdf","BT /F1 24 Tf 72 700 Td (Deep) Tj ET",pdf=>{var node=LabelNode(pdf,"/Nums",new PdfSharp.Pdf.PdfArray(pdf));for(var level=0;level<40;level++)node=LabelNode(pdf,"/Kids",new PdfSharp.Pdf.PdfArray(pdf,node.Reference!));Catalog(pdf,"/PageLabels",node.Reference!);});
+        check(Refused(()=>DocumentEngine.Pdf("removeMetadata",[deepLabelsPdf],root)),"Metadata cleanup exported a PDF whose page labels it could not copy");
         var namedPdf=Pdf("Named outline.pdf","BT /F1 24 Tf 72 700 Td (Chapter 1) Tj ET",pdf=>
         {
             var page=pdf.AddPage();PdfSharp.Pdf.PdfDictionary Indirect(){var item=new PdfSharp.Pdf.PdfDictionary(pdf);pdf.Internals.AddObject(item);return item;}
