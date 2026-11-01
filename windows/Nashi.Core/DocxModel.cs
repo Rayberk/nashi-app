@@ -51,7 +51,7 @@ public sealed partial class OfficeDocuments
                         var rp=Child(item,"rPr");var runBase=Attr(Child(rp,"rStyle"),"val") is {} sid?Resolve(sid,includeDefaults:false).C:new();var formatting=Merge(baseStyle.C,runBase,Character(rp));
                         foreach(var child in item.Elements())
                         {
-                            if(child.Name.LocalName is "t" or "tab" or "br" or "cr")runs.Add(new{text=child.Name.LocalName=="t"?child.Value:child.Name.LocalName=="tab"?"\t":"\n",character=formatting,link});
+                            if(child.Name.LocalName=="br"&&Attr(child,"type")=="page")runs.Add(PageBreak);else if(child.Name.LocalName is "t" or "tab" or "br" or "cr")runs.Add(new{text=child.Name.LocalName=="t"?child.Value:child.Name.LocalName=="tab"?"\t":"\n",character=formatting,link});
                             if(child.Name.LocalName is "drawing" or "pict")
                             {
                                 var id=child.Descendants().Select(e=>Attr(e,"embed")??(e.Name.LocalName=="imagedata"?Attr(e,"id"):null)).FirstOrDefault(v=>v is not null);if(id is null||!rels.TryGetValue(id,out var target)||Local(target) is not {} local)continue;var entry=zip.GetEntry(local);if(entry is null||entry.Length>20_000_000)throw new InvalidDataException("An embedded image is missing or too large.");using var source=entry.Open();using var bytes=new MemoryStream();source.CopyTo(bytes);var extent=child.Descendants().FirstOrDefault(e=>e.Name.LocalName=="extent");runs.Add(new{type="image",data=Convert.ToBase64String(bytes.ToArray()),fileName=Path.GetFileName(local),width=Num(extent,"cx")/12700,height=Num(extent,"cy")/12700,alt=Attr(child.Descendants().FirstOrDefault(e=>e.Name.LocalName=="docPr"),"descr")??""});
@@ -61,7 +61,11 @@ public sealed partial class OfficeDocuments
                     else if(item.Name.LocalName=="hyperlink"){var destination=rels.GetValueOrDefault(Attr(item,"id")??"");foreach(var child in item.Elements())Visit(child,destination);}
                     else if(item.Name.LocalName is "sdt" or "sdtContent" or "ins" or "smartTag")foreach(var child in item.Elements())Visit(child,link);
                 }
-                foreach(var child in element.Elements())Visit(child);return new{type="paragraph",runs,character=runs.Count==0?Merge(baseStyle.C,Character(Child(props,"rPr"))):baseStyle.C.Where(p=>p.Key!="backgroundColor").ToDictionary(p=>p.Key,p=>p.Value),paragraph=Merge(baseStyle.P,ParagraphStyle(props))};
+                foreach(var child in element.Elements())Visit(child);var character=runs.Count==0?Merge(baseStyle.C,Character(Child(props,"rPr"))):baseStyle.C.Where(p=>p.Key!="backgroundColor").ToDictionary(p=>p.Key,p=>p.Value);var paragraph=Merge(baseStyle.P,ParagraphStyle(props));
+                if(!runs.Contains(PageBreak))return new{type="paragraph",runs,character,paragraph};
+                // Pages has no inline page break: as on the Mac, the paragraph ends at a manual page break and each later part starts a new page.
+                var parts=new List<List<object>>{new()};foreach(var run in runs)if(run==PageBreak)parts.Add([]);else parts[^1].Add(run);
+                return parts.Select((part,index)=>(object)new{type="paragraph",runs=part,character,paragraph=index==0?paragraph:Merge(paragraph,new(){{"pageBreakBefore",true}})}).ToArray();
             }
             if(element.Name.LocalName=="tbl")
             {
@@ -77,10 +81,12 @@ public sealed partial class OfficeDocuments
                 return new{type="table",rows,merges,columnWidths=Child(element,"tblGrid")?.Elements().Select(c=>(Num(c,"w")??2400)/20).ToArray()??[]};
             }return null;
         }
-        var blocks=Blocks(body).Select(Block).Where(b=>b is not null).ToArray();var model=new Dictionary<string,object?>{{"blocks",blocks}};var section=Child(body,"sectPr");if(section is not null)
+        var blocks=Blocks(body).Select(Block).OfType<object>().SelectMany(b=>b as object[]??[b]).ToArray();var model=new Dictionary<string,object?>{{"blocks",blocks}};var section=Child(body,"sectPr");if(section is not null)
         {
             var setup=new Dictionary<string,object?>();foreach(var (name,key) in new[]{("w","pageWidth"),("h","pageHeight")})if(Num(Child(section,"pgSz"),name) is {} size)setup[key]=size/20;foreach(var (name,key) in new[]{("left","leftMargin"),("right","rightMargin"),("top","topMargin"),("bottom","bottomMargin")})if(Num(Child(section,"pgMar"),name) is {} size)setup[key]=size/20;model["pageSetup"]=setup;
             foreach(var (name,key) in new[]{("headerReference","header"),("footerReference","footer")})if(Attr(Child(section,name),"id") is {} id&&rels.TryGetValue(id,out var target)&&Local(target) is {} local&&zip.GetEntry(local) is not null)model[key]=string.Concat(Xml(zip,local).Descendants().Where(e=>e.Name.LocalName=="t").Select(e=>e.Value));
         }return model;
     }
+    // Stands for a w:br w:type="page" in a paragraph's runs until the paragraph is split there.
+    private static readonly object PageBreak=new();
 }
