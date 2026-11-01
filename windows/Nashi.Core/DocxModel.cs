@@ -56,6 +56,7 @@ public sealed partial class OfficeDocuments
                             {
                                 var id=child.Descendants().Select(e=>Attr(e,"embed")??(e.Name.LocalName=="imagedata"?Attr(e,"id"):null)).FirstOrDefault(v=>v is not null);if(id is null||!rels.TryGetValue(id,out var target)||Local(target) is not {} local)continue;var entry=zip.GetEntry(local);if(entry is null||entry.Length>20_000_000)throw new InvalidDataException("An embedded image is missing or too large.");using var source=entry.Open();using var bytes=new MemoryStream();source.CopyTo(bytes);var extent=child.Descendants().FirstOrDefault(e=>e.Name.LocalName=="extent");runs.Add(new{type="image",data=Convert.ToBase64String(bytes.ToArray()),fileName=Path.GetFileName(local),width=Num(extent,"cx")/12700,height=Num(extent,"cy")/12700,alt=Attr(child.Descendants().FirstOrDefault(e=>e.Name.LocalName=="docPr"),"descr")??""});
                             }
+                            if(child.Name.LocalName=="noBreakHyphen")runs.Add(new{text="\u2011",character=formatting,link});
                         }
                     }
                     else if(item.Name.LocalName=="hyperlink"){var destination=rels.GetValueOrDefault(Attr(item,"id")??"");foreach(var child in item.Elements())Visit(child,destination);}
