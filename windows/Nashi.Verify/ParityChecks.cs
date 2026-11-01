@@ -274,6 +274,9 @@ internal static class ParityChecks
         try{MergedTable("Wide gridBefore","<w:trPr><w:gridBefore w:val=\"1024\"/></w:trPr>"+MergeCell("A"));throw new Exception("A row past 1,024 grid columns was accepted");}catch(InvalidDataException){check(true,"w:gridBefore column limit");}
         var srt="1\r\n00:00:01,005 --> 00:00:02,230\r\n<b>Türkçe 🍐</b>\r\n\r\n2\r\n00:00:03,000 --> 00:00:04,000\r\nSecond line\r\n";
         var vtt=SubtitleCodec.Convert(srt,"vtt");check(vtt.StartsWith("WEBVTT",StringComparison.Ordinal)&&vtt.Contains("00:00:01.005"),"SRT/VTT timestamps changed");check(SubtitleCodec.Parse(SubtitleCodec.Convert(vtt,"srt")).Length==2,"Subtitle round trip lost cues");check(SubtitleCodec.Convert(vtt,"txt").Contains("Türkçe 🍐")&&!SubtitleCodec.Convert(vtt,"txt").Contains("<b>"),"Subtitle plain text failed");
+        // As on the Mac, WebVTT numeric references follow HTML: windows-1252 for 0x80–0x9F, U+FFFD for NUL, surrogates and values past U+10FFFF.
+        var htmlNumbersVtt="WEBVTT\n\n00:00:01.000 --> 00:00:02.000\nIt&#146;s 9&#150;5 &#X41; a&#0;b&#xD800;c&#99999999999;d &#x1F350; &#129; &amp;#146; &#38;lt;\n";
+        check(SubtitleCodec.Convert(htmlNumbersVtt,"srt")=="1\n00:00:01,000 --> 00:00:02,000\nIt’s 9–5 A a�b�c�d 🍐 \u0081 &#146; &lt;\n"&&SubtitleCodec.Convert(htmlNumbersVtt,"txt")=="It’s 9–5 A a�b�c�d 🍐 \u0081 &#146; &lt;\n"&&SubtitleCodec.Convert(htmlNumbersVtt,"vtt").Contains("It&#146;s 9&#150;5 &#X41;",StringComparison.Ordinal),"WebVTT numeric character references did not follow the HTML rules in SRT or TXT, or the WebVTT output changed");
         var encodedVtt="WEBVTT\n\n00:00:01.000 --> 00:00:02.000\nTom &amp; Jerry\n\n";
         var decodedSrt=SubtitleCodec.Convert(encodedVtt,"srt");
         check(decodedSrt.Contains("Tom & Jerry",StringComparison.Ordinal)&&!decodedSrt.Contains("&amp;",StringComparison.Ordinal),"WebVTT character references leaked into SRT output");
