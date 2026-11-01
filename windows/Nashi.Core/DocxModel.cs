@@ -8,6 +8,9 @@ public sealed partial class OfficeDocuments
     private static IEnumerable<XElement> Blocks(XElement e)=>e.Elements().SelectMany(c=>c.Name.LocalName is "sdt" or "sdtContent" or "customXml"?Blocks(c):[c]);
     private static string? Attr(XElement? e,string n)=>e?.Attributes().FirstOrDefault(a=>a.Name.LocalName==n)?.Value;
     private static double? Num(XElement? e,string n)=>double.TryParse(Attr(e,n),NumberStyles.Float,CultureInfo.InvariantCulture,out var x)&&double.IsFinite(x)?x:null;
+    // Word keeps a URL's #section in w:anchor, not in the relationship target. Like the Mac (Foundation's urlFragmentAllowed),
+    // the anchor's UTF-8 bytes are percent-encoded except letters, digits and !$&'()*+,-./:;=?@_~.
+    private static string Fragment(string anchor)=>string.Concat(System.Text.Encoding.UTF8.GetBytes(anchor).Select(b=>b<128&&(char.IsAsciiLetterOrDigit((char)b)||"!$&'()*+,-./:;=?@_~".Contains((char)b))?((char)b).ToString():"%"+b.ToString("X2",CultureInfo.InvariantCulture)));
     private static Dictionary<string,object?> Merge(params Dictionary<string,object?>[] dictionaries){var result=new Dictionary<string,object?>();foreach(var d in dictionaries)foreach(var p in d)result[p.Key]=p.Value;return result;}
     private static object? FontColor(string? value)=>value?.Length==6&&int.TryParse(value,NumberStyles.HexNumber,CultureInfo.InvariantCulture,out var n)?new{r=((n>>16)&255)/255d,g=((n>>8)&255)/255d,b=(n&255)/255d,space="srgb"}:null;
     private static object? HighlightColor(string? value)=>FontColor(value switch
@@ -58,7 +61,7 @@ public sealed partial class OfficeDocuments
                             }
                         }
                     }
-                    else if(item.Name.LocalName=="hyperlink"){var destination=rels.GetValueOrDefault(Attr(item,"id")??"");foreach(var child in item.Elements())Visit(child,destination);}
+                    else if(item.Name.LocalName=="hyperlink"){var destination=rels.GetValueOrDefault(Attr(item,"id")??"");if(destination is not null&&!destination.Contains('#')&&Attr(item,"anchor") is {Length:>0} anchor)destination+="#"+Fragment(anchor);foreach(var child in item.Elements())Visit(child,destination);}
                     else if(item.Name.LocalName is "sdt" or "sdtContent" or "ins" or "smartTag")foreach(var child in item.Elements())Visit(child,link);
                 }
                 foreach(var child in element.Elements())Visit(child);return new{type="paragraph",runs,character=runs.Count==0?Merge(baseStyle.C,Character(Child(props,"rPr"))):baseStyle.C.Where(p=>p.Key!="backgroundColor").ToDictionary(p=>p.Key,p=>p.Value),paragraph=Merge(baseStyle.P,ParagraphStyle(props))};
