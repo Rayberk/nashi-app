@@ -32,6 +32,10 @@ public enum Calculator {
     }
 
     public static let currencyPreferenceKey="calculatorCurrency"
+    /// Where Settings → Calculator is saved. nashi-cli has preferences of its own, so it asks for the app's by name.
+    static func appDefaults(current:String?=Bundle.main.bundleIdentifier,app:String="local.tangerine.replica")->UserDefaults {
+        current == app ? .standard:UserDefaults(suiteName:app) ?? .standard
+    }
     /// The currency bare amounts convert to: NASHI_CURRENCY, then Settings → Calculator, then the Mac's region.
     public static func localCurrency(environment:[String:String]=ProcessInfo.processInfo.environment,defaults:UserDefaults = .standard,locale:Locale = .current)->String {
         let isCode={(code:String)->Bool in code.count==3 && code.allSatisfy{$0.isASCII && $0.isLetter}}
@@ -130,7 +134,8 @@ public enum Calculator {
     }
     private static func adjusted(_ value:Double,_ style:Style)->Style {
         // Tiny values keep their significant digits instead of rounding to zero.
-        style == .currency && abs(value)<0.01 && value != 0 ? .math:style
+        guard value != 0,style != .math,abs(value)<(style == .currency ? 0.01:0.001) else { return style }
+        return .math
     }
     static func format(_ value:Double,style:Style,locale:Locale)->String {
         if abs(value)>=1e15 || (abs(value)<1e-9 && value != 0) { return scientific(value,locale:locale) }
@@ -384,7 +389,8 @@ extension Calculator {
             guard fraction.allSatisfy({$0.isASCII && $0.isNumber}) else { throw ParseError.invalid }
             let groups=integer.split(separator:grouping,omittingEmptySubsequences:false)
             if groups.count>1 {
-                if !groups[0].isEmpty && groups[0].count<=3 && groups.dropFirst().allSatisfy({$0.count==3}) { integer=groups.joined() }
+                // Grouped numbers never start with zero, so "0.125" in Turkish is a decimal rather than 125.
+                if !groups[0].isEmpty && !groups[0].hasPrefix("0") && groups[0].count<=3 && groups.dropFirst().allSatisfy({$0.count==3}) { integer=groups.joined() }
                 else {
                     guard groups.count==2,fraction.isEmpty else { throw ParseError.invalid }
                     integer=String(groups[0]);fraction=String(groups[1])

@@ -95,7 +95,7 @@ do {
 
     /// `calc EXPRESSION`: prints "QUERY = ANSWER" and returns 0, or prints why there is no answer and returns 1.
     /// Rates come from the cache and are downloaded only when a currency query has none or stale ones.
-    static func calculate(_ query:String,environment:[String:String]=ProcessInfo.processInfo.environment,defaults:UserDefaults = .standard,locale:Locale = .current,
+    static func calculate(_ query:String,environment:[String:String]=ProcessInfo.processInfo.environment,defaults:UserDefaults=Calculator.appDefaults(),locale:Locale = .current,
                           cacheURL:URL=CurrencyRateService.cacheURL,fetch:@escaping @Sendable () async throws->CurrencyRates={ try await CurrencyRateService.fetch() })->Int32 {
         let local=Calculator.localCurrency(environment:environment,defaults:defaults,locale:locale)
         final class RatesBox:@unchecked Sendable { var rates:CurrencyRates?;var fetched=false;init(_ rates:CurrencyRates?){self.rates=rates} }

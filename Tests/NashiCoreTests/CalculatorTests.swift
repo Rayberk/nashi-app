@@ -82,6 +82,10 @@ final class CalculatorTests:XCTestCase {
         XCTAssertEqual(answer("6 ft to cm")?.text,"182.88 cm")
         XCTAssertEqual(answer("1 inch to mm")?.text,"25.4 mm")
         XCTAssertEqual(answer("100 c to f")?.text,"212 °F")
+        XCTAssertEqual(answer("1 second to years")?.text,"0.0000000317 yr","Tiny results keep their digits instead of rounding to zero")
+        XCTAssertEqual(answer("1 second to years")?.copyText,"0.0000000317")
+        XCTAssertEqual(answer("100 KB to TB")?.text,"0.0000001 TB")
+        XCTAssertEqual(answer("1.5 KB to GB")?.text,"0.0000015 GB")
         XCTAssertEqual(answer("32 °F to °C")?.text,"0 °C")
         XCTAssertEqual(answer("0 kelvin to celsius")?.text,"-273.15 °C")
         XCTAssertEqual(answer("1 lb to kg")?.text,"0.453592 kg")
@@ -135,6 +139,11 @@ final class CalculatorTests:XCTestCase {
         XCTAssertEqual(value("2.469 * 1",turkish),2469,"A displayed Turkish answer can be typed back in")
         XCTAssertEqual(value("1.5 * 2",turkish),3,"A dot that cannot group thousands is still a decimal point")
         XCTAssertEqual(value("1.000.000 / 1.000",turkish),1000)
+        XCTAssertEqual(value("0.125 * 8",turkish),1,"A leading zero is never a thousands group")
+        XCTAssertEqual(value("0.250 usd",turkish),8.5625)
+        XCTAssertEqual(value("0.125 kg to g",turkish),125)
+        XCTAssertNil(value("0.125.000 + 1",turkish))
+        XCTAssertEqual(value("0,125 * 8",locale),1)
         XCTAssertEqual(value("1,000.5 + 1",locale),1001.5)
         XCTAssertEqual(value("1,5 * 2",locale),3,"A comma that cannot group thousands is still a decimal point")
         XCTAssertEqual(value(".5 * 4",locale),2)
@@ -208,6 +217,15 @@ final class CalculatorTests:XCTestCase {
         CurrencyRateService.store(CurrencyRates(base:"USD",rates:["TRY":34.25,"EUR":0.92],updated:Date()),at:cache)
         let result=run { NashiCommandLine.calculate("10 USD",environment:[:],defaults:defaults,locale:locale,cacheURL:cache,fetch:{ throw NashiError.invalidInput("No download expected.") }) }
         XCTAssertEqual(result.output,"10.00 USD = 9.20 EUR\n")
+    }
+
+    func testCalcCommandReadsTheCurrencySettingFromTheApp() throws {
+        let suite="Nashi.CalculatorTests."+UUID().uuidString,app=try XCTUnwrap(UserDefaults(suiteName:suite))
+        defer { app.removePersistentDomain(forName:suite) }
+        app.set("EUR",forKey:Calculator.currencyPreferenceKey)
+        let standalone=Calculator.appDefaults(current:nil,app:suite)
+        XCTAssertEqual(Calculator.localCurrency(environment:[:],defaults:standalone,locale:locale),"EUR")
+        XCTAssertTrue(Calculator.appDefaults(current:suite,app:suite) === UserDefaults.standard,"The app reads its own preferences directly")
     }
 
     func testCalcCommandDownloadsMissingOrStaleRatesAndCachesThem() throws {
