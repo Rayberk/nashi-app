@@ -235,6 +235,7 @@
 "AUDIO · MP3" = "SES · MP3";
 "AUTHORIZE SAVED TOKEN…" = "KAYITLI TOKENA İZİN VER…";
 "AUTO" = "OTOMATİK";
+"AVAILABLE AFTER THE CURRENT TASK FINISHES" = "MEVCUT İŞLEM BİTİNCE KULLANILABİLİR";
 "AVAILABLE FILES SELECTED. SOME FILES HAVE MOVED OR WERE DELETED." = "MEVCUT DOSYALAR SEÇİLDİ. BAZI DOSYALAR TAŞINMIŞ VEYA SİLİNMİŞ.";
 "About" = "Hakkında";
 "Accessibility" = "Erişilebilirlik";
@@ -323,6 +324,7 @@
 "Audio · MP3" = "Ses · MP3";
 "Authorize Saved Token…" = "Kayıtlı Tokena İzin Ver…";
 "Auto" = "Otomatik";
+"Available after the current task finishes" = "Mevcut işlem bitince kullanılabilir";
 "Available files selected. Some files have moved or were deleted." = "Mevcut dosyalar seçildi. Bazı dosyalar taşınmış veya silinmiş.";
 "BACK" = "GERİ";
 "BACKGROUND" = "ARKA PLAN";
@@ -799,6 +801,7 @@
 "DEVICES" = "AYGITLAR";
 "DISCONNECT & FORGET TOKEN" = "BAĞLANTIYI KES VE TOKENI SİL";
 "DISMISS" = "KAPAT";
+"DISMISS ERROR" = "HATAYI KAPAT";
 "DOCUMENT XML IS TOO LARGE." = "BELGE XML'İ ÇOK BÜYÜK.";
 "DOCUMENTS" = "BELGELER";
 "DONE" = "BİTTİ";
@@ -876,6 +879,7 @@
 "Devices" = "Aygıtlar";
 "Disconnect & Forget Token" = "Bağlantıyı Kes ve Tokenı Sil";
 "Dismiss" = "Kapat";
+"Dismiss error" = "Hatayı kapat";
 "Document XML is too large." = "Belge XML'i çok büyük.";
 "Documents" = "Belgeler";
 "Done" = "Bitti";
@@ -1502,6 +1506,7 @@
 "NO MATCHES. TRY A FILE NAME OR TOOL." = "EŞLEŞME BULUNAMADI. DOSYA ADI VEYA ARAÇ ADIYLA ARA.";
 "NO MATCHING REGIONS WERE DETECTED. YOU CAN STILL DRAW AREAS BY HAND." = "EŞLEŞEN BÖLGE BULUNAMADI. ALANLARI YİNE DE ELLE ÇİZEBİLİRSİN.";
 "NO MEDIA OUTPUT WAS PRODUCED." = "MEDYA ÇIKTISI OLUŞMADI.";
+"NO OUTPUT FORMATS" = "ÇIKTI BİÇİMİ YOK";
 "NO OUTPUT WAS PRODUCED." = "ÇIKTI OLUŞMADI.";
 "NO PUBLIC DOWNLOADABLE MEDIA FOUND. SOME SITES REQUIRE SIGN-IN OR DO NOT EXPOSE DOWNLOADABLE MEDIA." = "HERKESE AÇIK, İNDİRİLEBİLİR MEDYA BULUNAMADI. BAZI SİTELER GİRİŞ GEREKTİRİR VEYA MEDYAYI İNDİRMEYE AÇMAZ.";
 "NO QR CODES FOUND. TRY A LARGER OR SHARPER IMAGE." = "QR KODU BULUNAMADI. DAHA BÜYÜK VEYA DAHA NET BİR GÖRSEL DENE.";
@@ -1511,6 +1516,7 @@
 "NO TIMED SUBTITLE CUES WERE FOUND IN THIS FILE." = "BU DOSYADA ZAMANLANMIŞ ALTYAZI SATIRI BULUNAMADI.";
 "NO TIMED SUBTITLE CUES WERE FOUND." = "ZAMANLANMIŞ ALTYAZI SATIRI BULUNAMADI.";
 "NO TOOLS FOR THIS FILE TYPE" = "BU DOSYA TÜRÜ İÇİN ARAÇ YOK";
+"NO TOOLS FOR THIS SELECTION" = "BU SEÇİM İÇİN ARAÇ YOK";
 "NO UNPROTECTED DOWNLOADABLE FORMAT IS AVAILABLE." = "KORUMASIZ, İNDİRİLEBİLİR BİR BİÇİM YOK.";
 "NO UPDATE CHECKS YET" = "HENÜZ GÜNCELLEME DENETLENMEDİ";
 "NO USABLE YOUTUBE THUMBNAIL WAS FOUND." = "KULLANILABİLİR BİR YOUTUBE KÜÇÜK RESMİ BULUNAMADI.";
@@ -1567,6 +1573,7 @@
 "No matches. Try a file name or tool." = "Eşleşme bulunamadı. Dosya adı veya araç adıyla ara.";
 "No matching regions were detected. You can still draw areas by hand." = "Eşleşen bölge bulunamadı. Alanları yine de elle çizebilirsin.";
 "No media output was produced." = "Medya çıktısı oluşmadı.";
+"No output formats" = "Çıktı biçimi yok";
 "No output was produced." = "Çıktı oluşmadı.";
 "No public downloadable media found. Some sites require sign-in or do not expose downloadable media." = "Herkese açık, indirilebilir medya bulunamadı. Bazı siteler giriş gerektirir veya medyayı indirmeye açmaz.";
 "No readable text was found in this text clipping." = "Bu metin kırpıntısında okunabilir metin bulunamadı.";
@@ -1574,6 +1581,7 @@
 "No timed subtitle cues were found in this file." = "Bu dosyada zamanlanmış altyazı satırı bulunamadı.";
 "No timed subtitle cues were found." = "Zamanlanmış altyazı satırı bulunamadı.";
 "No tools for this file type" = "Bu dosya türü için araç yok";
+"No tools for this selection" = "Bu seçim için araç yok";
 "No unprotected downloadable format is available." = "Korumasız, indirilebilir bir biçim yok.";
 "No update checks yet" = "Henüz güncelleme denetlenmedi";
 "No usable YouTube thumbnail was found." = "Kullanılabilir bir YouTube küçük resmi bulunamadı.";
@@ -1808,6 +1816,8 @@
 "Preserve original pages" = "Orijinal sayfaları koru";
 "Preset" = "Ön ayar";
 "Preview" = "Önizleme";
+"Preview %@" = "%@ öğesini önizle";
+"Preview %lld" = "%lld öğesini önizle";
 "Preview Left" = "Solu Önizle";
 "Preview Processed" = "İşlenmişi Önizle";
 "Preview Right" = "Sağı Önizle";
@@ -1942,6 +1952,10 @@
 "Reflowable text" = "Esnek metin düzeni";
 "Release to place · Esc cancels" = "Yerleştirmek için bırak · Esc iptal eder";
 "Remove" = "Kaldır";
+"Remove %@" = "%@ öğesini kaldır";
+"Remove %@ from selection" = "%@ öğesini seçimden kaldır";
+"Remove %lld" = "%lld öğesini kaldır";
+"Remove %lld from selection" = "%lld öğesini seçimden kaldır";
 "Remove All" = "Tümünü Kaldır";
 "Remove Audio" = "Sesi Kaldır";
 "Remove Background" = "Arka Planı Kaldır";
@@ -2235,6 +2249,8 @@
 "Sharpness" = "Keskinlik";
 "Shift locks the ratio · Return crops\nDrag inside to move; drag a handle to resize." = "Shift oranı kilitler · Enter kırpar\nTaşımak için alanın içini, boyutlandırmak için tutamağı sürükle.";
 "Shift to convert" = "Dönüştürmek için Shift";
+"Show %@ in Finder" = "%@ öğesini Finder'da göster";
+"Show %lld in Finder" = "%lld öğesini Finder'da göster";
 "Show Nashi in Finder" = "Nashi'yi Finder'da Göster";
 "Show Original" = "Orijinali Göster";
 "Show in Explorer" = "Dosya Gezgini'nde Göster";
@@ -2629,6 +2645,7 @@
 "USE ONCE IF MACOS NEEDS PERMISSION FOR YOUR SAVED UPDATE CONNECTION." = "MACOS KAYITLI GÜNCELLEME BAĞLANTISI İÇİN İZİN İSTERSE BİR KEZ KULLAN.";
 "USE ONE INSTAGRAM PHOTO POST WITH UP TO 50 ITEMS." = "EN FAZLA 50 ÖĞE İÇEREN TEK BİR INSTAGRAM FOTOĞRAF GÖNDERİSİ KULLAN.";
 "USE OPEN TO PREVIEW THIS DOCUMENT IN ITS DEFAULT APP." = "BU BELGEYİ VARSAYILAN UYGULAMASINDA ÖNİZLEMEK İÇİN AÇ'I KULLAN.";
+"USE THESE FILES AGAIN" = "BU DOSYALARI YENİDEN KULLAN";
 "Undo" = "Geri Al";
 "Undo Area" = "Alanı Geri Al";
 "Undo area" = "Alanı geri al";
@@ -2663,12 +2680,15 @@
 "Upstream package has no regular %@ executable." = "İndirilen pakette normal bir %@ çalıştırılabilir dosyası yok.";
 "Upstream package has no regular %lld executable." = "İndirilen pakette normal bir %lld çalıştırılabilir dosyası yok.";
 "Upstream versions, licenses and source links" = "Araç sürümleri, lisanslar ve kaynak bağlantıları";
+"Use %@ again" = "%@ öğesini yeniden kullan";
+"Use %lld again" = "%lld öğesini yeniden kullan";
 "Use Open to preview this document in its default app." = "Bu belgeyi varsayılan uygulamasında önizlemek için Aç'ı kullan.";
 "Use a regular writable folder for portable updates." = "Taşınabilir güncellemeler için yazılabilir, normal bir klasör kullan.";
 "Use a static SVG without embedded scripts or HTML." = "Gömülü betik veya HTML içermeyen statik bir SVG kullan.";
 "Use in Nashi" = "Nashi'de kullan";
 "Use once if macOS needs permission for your saved update connection." = "macOS kayıtlı güncelleme bağlantısı için izin isterse bir kez kullan.";
 "Use one Instagram photo post with up to 50 items." = "En fazla 50 öğe içeren tek bir Instagram fotoğraf gönderisi kullan.";
+"Use these files again" = "Bu dosyaları yeniden kullan";
 "VALUE" = "DEĞER";
 "VERIFYING AND PREPARING OFFICE TOOLS…" = "OFİS ARAÇLARI DOĞRULANIYOR VE HAZIRLANIYOR…";
 "VERIFYING UPDATE SIGNATURE…" = "GÜNCELLEME İMZASI DOĞRULANIYOR…";
@@ -2789,5 +2809,7 @@
 "↑/↓ choose · Space preview · Return use in Nashi" = "↑/↓ seç · Space önizle · Enter Nashi'de kullan";
 "↶ RESET" = "↶ SIFIRLA";
 "↶ Reset" = "↶ Sıfırla";
+"⌘V · PASTE FILES, TEXT, AN IMAGE OR LINK" = "⌘V · DOSYA, METİN, GÖRSEL VEYA BAĞLANTI YAPIŞTIR";
+"⌘V · Paste files, text, an image or link" = "⌘V · Dosya, metin, görsel veya bağlantı yapıştır";
 "✦  READY WHEN YOU ARE" = "✦  SIRA SENDE";
 "✦  START HERE" = "✦  BURADAN BAŞLA";

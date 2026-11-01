@@ -235,6 +235,7 @@
 "AUDIO · MP3" = "AUDIO · MP3";
 "AUTHORIZE SAVED TOKEN…" = "AUTHORIZE SAVED TOKEN…";
 "AUTO" = "AUTO";
+"AVAILABLE AFTER THE CURRENT TASK FINISHES" = "AVAILABLE AFTER THE CURRENT TASK FINISHES";
 "AVAILABLE FILES SELECTED. SOME FILES HAVE MOVED OR WERE DELETED." = "AVAILABLE FILES SELECTED. SOME FILES HAVE MOVED OR WERE DELETED.";
 "About" = "About";
 "Accessibility" = "Accessibility";
@@ -323,6 +324,7 @@
 "Audio · MP3" = "Audio · MP3";
 "Authorize Saved Token…" = "Authorize Saved Token…";
 "Auto" = "Auto";
+"Available after the current task finishes" = "Available after the current task finishes";
 "Available files selected. Some files have moved or were deleted." = "Available files selected. Some files have moved or were deleted.";
 "BACK" = "BACK";
 "BACKGROUND" = "BACKGROUND";
@@ -799,6 +801,7 @@
 "DEVICES" = "DEVICES";
 "DISCONNECT & FORGET TOKEN" = "DISCONNECT & FORGET TOKEN";
 "DISMISS" = "DISMISS";
+"DISMISS ERROR" = "DISMISS ERROR";
 "DOCUMENT XML IS TOO LARGE." = "DOCUMENT XML IS TOO LARGE.";
 "DOCUMENTS" = "DOCUMENTS";
 "DONE" = "DONE";
@@ -876,6 +879,7 @@
 "Devices" = "Devices";
 "Disconnect & Forget Token" = "Disconnect & Forget Token";
 "Dismiss" = "Dismiss";
+"Dismiss error" = "Dismiss error";
 "Document XML is too large." = "Document XML is too large.";
 "Documents" = "Documents";
 "Done" = "Done";
@@ -1502,6 +1506,7 @@
 "NO MATCHES. TRY A FILE NAME OR TOOL." = "NO MATCHES. TRY A FILE NAME OR TOOL.";
 "NO MATCHING REGIONS WERE DETECTED. YOU CAN STILL DRAW AREAS BY HAND." = "NO MATCHING REGIONS WERE DETECTED. YOU CAN STILL DRAW AREAS BY HAND.";
 "NO MEDIA OUTPUT WAS PRODUCED." = "NO MEDIA OUTPUT WAS PRODUCED.";
+"NO OUTPUT FORMATS" = "NO OUTPUT FORMATS";
 "NO OUTPUT WAS PRODUCED." = "NO OUTPUT WAS PRODUCED.";
 "NO PUBLIC DOWNLOADABLE MEDIA FOUND. SOME SITES REQUIRE SIGN-IN OR DO NOT EXPOSE DOWNLOADABLE MEDIA." = "NO PUBLIC DOWNLOADABLE MEDIA FOUND. SOME SITES REQUIRE SIGN-IN OR DO NOT EXPOSE DOWNLOADABLE MEDIA.";
 "NO QR CODES FOUND. TRY A LARGER OR SHARPER IMAGE." = "NO QR CODES FOUND. TRY A LARGER OR SHARPER IMAGE.";
@@ -1511,6 +1516,7 @@
 "NO TIMED SUBTITLE CUES WERE FOUND IN THIS FILE." = "NO TIMED SUBTITLE CUES WERE FOUND IN THIS FILE.";
 "NO TIMED SUBTITLE CUES WERE FOUND." = "NO TIMED SUBTITLE CUES WERE FOUND.";
 "NO TOOLS FOR THIS FILE TYPE" = "NO TOOLS FOR THIS FILE TYPE";
+"NO TOOLS FOR THIS SELECTION" = "NO TOOLS FOR THIS SELECTION";
 "NO UNPROTECTED DOWNLOADABLE FORMAT IS AVAILABLE." = "NO UNPROTECTED DOWNLOADABLE FORMAT IS AVAILABLE.";
 "NO UPDATE CHECKS YET" = "NO UPDATE CHECKS YET";
 "NO USABLE YOUTUBE THUMBNAIL WAS FOUND." = "NO USABLE YOUTUBE THUMBNAIL WAS FOUND.";
@@ -1567,6 +1573,7 @@
 "No matches. Try a file name or tool." = "No matches. Try a file name or tool.";
 "No matching regions were detected. You can still draw areas by hand." = "No matching regions were detected. You can still draw areas by hand.";
 "No media output was produced." = "No media output was produced.";
+"No output formats" = "No output formats";
 "No output was produced." = "No output was produced.";
 "No public downloadable media found. Some sites require sign-in or do not expose downloadable media." = "No public downloadable media found. Some sites require sign-in or do not expose downloadable media.";
 "No readable text was found in this text clipping." = "No readable text was found in this text clipping.";
@@ -1574,6 +1581,7 @@
 "No timed subtitle cues were found in this file." = "No timed subtitle cues were found in this file.";
 "No timed subtitle cues were found." = "No timed subtitle cues were found.";
 "No tools for this file type" = "No tools for this file type";
+"No tools for this selection" = "No tools for this selection";
 "No unprotected downloadable format is available." = "No unprotected downloadable format is available.";
 "No update checks yet" = "No update checks yet";
 "No usable YouTube thumbnail was found." = "No usable YouTube thumbnail was found.";
@@ -1808,6 +1816,8 @@
 "Preserve original pages" = "Preserve original pages";
 "Preset" = "Preset";
 "Preview" = "Preview";
+"Preview %@" = "Preview %@";
+"Preview %lld" = "Preview %lld";
 "Preview Left" = "Preview Left";
 "Preview Processed" = "Preview Processed";
 "Preview Right" = "Preview Right";
@@ -1942,6 +1952,10 @@
 "Reflowable text" = "Reflowable text";
 "Release to place · Esc cancels" = "Release to place · Esc cancels";
 "Remove" = "Remove";
+"Remove %@" = "Remove %@";
+"Remove %@ from selection" = "Remove %@ from selection";
+"Remove %lld" = "Remove %lld";
+"Remove %lld from selection" = "Remove %lld from selection";
 "Remove All" = "Remove All";
 "Remove Audio" = "Remove Audio";
 "Remove Background" = "Remove Background";
@@ -2235,6 +2249,8 @@
 "Sharpness" = "Sharpness";
 "Shift locks the ratio · Return crops\nDrag inside to move; drag a handle to resize." = "Shift locks the ratio · Return crops\nDrag inside to move; drag a handle to resize.";
 "Shift to convert" = "Shift to convert";
+"Show %@ in Finder" = "Show %@ in Finder";
+"Show %lld in Finder" = "Show %lld in Finder";
 "Show Nashi in Finder" = "Show Nashi in Finder";
 "Show Original" = "Show Original";
 "Show in Explorer" = "Show in Explorer";
@@ -2629,6 +2645,7 @@
 "USE ONCE IF MACOS NEEDS PERMISSION FOR YOUR SAVED UPDATE CONNECTION." = "USE ONCE IF MACOS NEEDS PERMISSION FOR YOUR SAVED UPDATE CONNECTION.";
 "USE ONE INSTAGRAM PHOTO POST WITH UP TO 50 ITEMS." = "USE ONE INSTAGRAM PHOTO POST WITH UP TO 50 ITEMS.";
 "USE OPEN TO PREVIEW THIS DOCUMENT IN ITS DEFAULT APP." = "USE OPEN TO PREVIEW THIS DOCUMENT IN ITS DEFAULT APP.";
+"USE THESE FILES AGAIN" = "USE THESE FILES AGAIN";
 "Undo" = "Undo";
 "Undo Area" = "Undo Area";
 "Undo area" = "Undo area";
@@ -2663,12 +2680,15 @@
 "Upstream package has no regular %@ executable." = "Upstream package has no regular %@ executable.";
 "Upstream package has no regular %lld executable." = "Upstream package has no regular %lld executable.";
 "Upstream versions, licenses and source links" = "Upstream versions, licenses and source links";
+"Use %@ again" = "Use %@ again";
+"Use %lld again" = "Use %lld again";
 "Use Open to preview this document in its default app." = "Use Open to preview this document in its default app.";
 "Use a regular writable folder for portable updates." = "Use a regular writable folder for portable updates.";
 "Use a static SVG without embedded scripts or HTML." = "Use a static SVG without embedded scripts or HTML.";
 "Use in Nashi" = "Use in Nashi";
 "Use once if macOS needs permission for your saved update connection." = "Use once if macOS needs permission for your saved update connection.";
 "Use one Instagram photo post with up to 50 items." = "Use one Instagram photo post with up to 50 items.";
+"Use these files again" = "Use these files again";
 "VALUE" = "VALUE";
 "VERIFYING AND PREPARING OFFICE TOOLS…" = "VERIFYING AND PREPARING OFFICE TOOLS…";
 "VERIFYING UPDATE SIGNATURE…" = "VERIFYING UPDATE SIGNATURE…";
@@ -2789,5 +2809,7 @@
 "↑/↓ choose · Space preview · Return use in Nashi" = "↑/↓ choose · Space preview · Return use in Nashi";
 "↶ RESET" = "↶ RESET";
 "↶ Reset" = "↶ Reset";
+"⌘V · PASTE FILES, TEXT, AN IMAGE OR LINK" = "⌘V · PASTE FILES, TEXT, AN IMAGE OR LINK";
+"⌘V · Paste files, text, an image or link" = "⌘V · Paste files, text, an image or link";
 "✦  READY WHEN YOU ARE" = "✦  READY WHEN YOU ARE";
 "✦  START HERE" = "✦  START HERE";
