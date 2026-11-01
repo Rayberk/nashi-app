@@ -66,13 +66,21 @@ public sealed partial class OfficeDocuments
             if(element.Name.LocalName=="tbl")
             {
                 var rows=new List<List<object>>();var merges=new List<Dictionary<string,int>>();var vertical=new Dictionary<int,(int Row,int Span)>();var rowIndex=0;
+                // As on the Mac, a vertical merge only survives rows that continue it in the same grid column with the same width,
+                // w:gridBefore leaves leading grid columns empty, and a legacy w:hMerge continuation joins the restart cell to its left.
                 foreach(var row in element.Elements().Where(e=>e.Name.LocalName=="tr"))
                 {
-                    var cells=new List<object>();var column=0;foreach(var cell in row.Elements().Where(e=>e.Name.LocalName=="tc"))
+                    var cells=new List<object>();var column=0;var continued=new Dictionary<int,(int Row,int Span)>();int? anchor=null;
+                    if(int.TryParse(Attr(Child(Child(row,"trPr"),"gridBefore"),"val"),NumberStyles.AllowLeadingSign,CultureInfo.InvariantCulture,out var skipped)&&skipped>0){if(skipped>1024)throw new InvalidDataException("A table cell span is invalid or exceeds 1,024 columns.");column=skipped;for(var n=0;n<skipped;n++)cells.Add(new{text=""});}
+                    foreach(var cell in row.Elements().Where(e=>e.Name.LocalName=="tc"))
                     {
                         var props=Child(cell,"tcPr");var raw=Num(Child(props,"gridSpan"),"val");var span=raw is null?1:checked((int)raw.Value);if(span is <1 or >1024||column>1024-span)throw new InvalidDataException("A table cell span is invalid or exceeds 1,024 columns.");var text=string.Join("\n",Blocks(cell).Where(p=>p.Name.LocalName=="p").Select(p=>string.Concat(p.Descendants().Where(e=>e.Name.LocalName=="t").Select(t=>t.Value))));cells.Add(new{text});for(var n=1;n<span;n++)cells.Add(new{text=""});
-                        var vm=Child(props,"vMerge");if(vm is not null){if(Attr(vm,"val")=="restart")vertical[column]=(rowIndex,span);else if(vertical.TryGetValue(column,out var origin)){var merged=merges.FirstOrDefault(m=>m["row"]==origin.Row&&m["column"]==column);if(merged is null){merged=new(){{"row",origin.Row},{"column",column},{"rowCount",1},{"columnCount",origin.Span}};merges.Add(merged);}merged["rowCount"]=rowIndex-origin.Row+1;}}else{vertical.Remove(column);if(span>1)merges.Add(new(){{"row",rowIndex},{"column",column},{"rowCount",1},{"columnCount",span}});}column+=span;
-                    }rows.Add(cells);rowIndex++;
+                        var vm=Child(props,"vMerge");var hm=vm is null?Child(props,"hMerge"):null;var extends=false;var joins=false;
+                        if(vm is not null){if(Attr(vm,"val")=="restart")continued[column]=(rowIndex,span);else if(vertical.TryGetValue(column,out var origin)&&origin.Span==span){continued[column]=origin;extends=true;var merged=merges.FirstOrDefault(m=>m["row"]==origin.Row&&m["column"]==column);if(merged is null){merged=new(){{"row",origin.Row},{"column",column},{"rowCount",1},{"columnCount",origin.Span}};merges.Add(merged);}merged["rowCount"]=rowIndex-origin.Row+1;}}
+                        if(hm is null)anchor=null;else if(Attr(hm,"val")=="restart")anchor=column;else if(anchor is {} start){joins=true;var merged=merges.FirstOrDefault(m=>m["row"]==rowIndex&&m["column"]==start);if(merged is null){merged=new(){{"row",rowIndex},{"column",start},{"rowCount",1},{"columnCount",1}};merges.Add(merged);}merged["columnCount"]=column+span-start;}
+                        // A spanning cell keeps its width whether or not a continuation follows; a continuation only grows that entry.
+                        if(span>1&&!extends&&!joins)merges.Add(new(){{"row",rowIndex},{"column",column},{"rowCount",1},{"columnCount",span}});column+=span;
+                    }vertical=continued;rows.Add(cells);rowIndex++;
                 }
                 return new{type="table",rows,merges,columnWidths=Child(element,"tblGrid")?.Elements().Select(c=>(Num(c,"w")??2400)/20).ToArray()??[]};
             }return null;

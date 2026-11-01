@@ -197,6 +197,33 @@ internal static class ParityChecks
         check(System.Text.Json.JsonSerializer.Serialize(OfficeDocuments.ReadDocx(Nested("Nested controls.docx","<w:p>"+Deep(20,"<w:sdt><w:sdtContent>","</w:sdtContent></w:sdt>")+"</w:p>"+Deep(20,"<w:sdt><w:sdtContent>","</w:sdtContent></w:sdt>","<w:p><w:r><w:t>Body text</w:t></w:r></w:p>")))) is var shallow&&shallow.Contains("Deep text")&&shallow.Contains("Body text"),"Pages interchange rejected a document with a few nested content controls");
         check(TooDeep(Nested("Deep body.docx",Deep(150,"<w:sdt><w:sdtContent>","</w:sdtContent></w:sdt>","<w:p/>")))&&TooDeep(Nested("Deep cell.docx","<w:tbl><w:tr><w:tc>"+Deep(300,"<w:customXml>","</w:customXml>","<w:p/>")+"</w:tc></w:tr></w:tbl>"))&&TooDeep(Nested("Deep paragraph.docx","<w:p>"+Deep(300,"<w:smartTag>","</w:smartTag>")+"</w:p>"))&&TooDeep(Nested("Deep run.docx","<w:p>"+deepText+"</w:p>"))&&TooDeep(Nested("Deep header.docx","<w:p/>","<w:p>"+deepText+"</w:p>")),"Pages interchange accepted content nested deeper than it can safely read");
         check(TooDeep(Nested("Stack bomb.docx","<w:p><w:r><w:t>"+Deep(50_000,"<w:x>","</w:x>","Deep text")+"</w:t></w:r></w:p>")),"Pages interchange did not reject a deeply nested document before overflowing the stack");
+        // Word table merges as the Mac reads them: a vertical merge stops at a wider, missing or narrower cell, a spanning restart keeps its width,
+        // w:gridBefore shifts a row right, and legacy w:hMerge continuations join their restart cell. Rows read "texts|…", merges "row,column,rows x columns".
+        string MergeCell(string text,string properties="")=>"<w:tc><w:tcPr>"+properties+"</w:tcPr><w:p><w:r><w:t>"+text+"</w:t></w:r></w:p></w:tc>";
+        var mergedTables=0;string MergedTable(string name,params string[] rows)
+        {
+            using var model=System.Text.Json.JsonDocument.Parse(System.Text.Json.JsonSerializer.Serialize(OfficeDocuments.ReadDocx(Nested(name+" "+ ++mergedTables+".docx","<w:tbl>"+string.Concat(rows.Select(r=>"<w:tr>"+r+"</w:tr>"))+"</w:tbl>"))));var table=model.RootElement.GetProperty("blocks")[0];
+            return string.Join("|",table.GetProperty("rows").EnumerateArray().Select(r=>string.Join(",",r.EnumerateArray().Select(c=>c.GetProperty("text").GetString()))))+";"+string.Join(" ",table.GetProperty("merges").EnumerateArray().Select(m=>$"{m.GetProperty("row")},{m.GetProperty("column")},{m.GetProperty("rowCount")}x{m.GetProperty("columnCount")}"));
+        }
+        const string vRestart="<w:vMerge w:val=\"restart\"/>",vContinue="<w:vMerge/>",spanTwo="<w:gridSpan w:val=\"2\"/>";
+        foreach(var (mergeRows,mergeExpected) in new[]
+        {
+            (new[]{MergeCell("A")+MergeCell("B",vRestart),MergeCell("C",spanTwo),MergeCell("D")+MergeCell("",vContinue)},"A,B|C,|D,;1,0,1x2"),
+            (new[]{MergeCell("A")+MergeCell("B",vRestart),MergeCell("C"),MergeCell("E")+MergeCell("",vContinue)},"A,B|C|E,;"),
+            (new[]{MergeCell("A",vRestart)+MergeCell("B"),MergeCell("",vContinue)+MergeCell("C"),MergeCell("",vContinue)+MergeCell("D")},"A,B|,C|,D;0,0,3x1"),
+            (new[]{MergeCell("A",spanTwo+vRestart),MergeCell("",vContinue)+MergeCell("Neighbour")},"A,|,Neighbour;0,0,1x2"),
+            (new[]{MergeCell("A",spanTwo+vRestart),MergeCell("",spanTwo+vContinue)},"A,|,;0,0,2x2"),
+            (new[]{MergeCell("A",spanTwo+vRestart),MergeCell("B")+MergeCell("C")},"A,|B,C;0,0,1x2"),
+            (new[]{MergeCell("X")+MergeCell("Y"),MergeCell("",spanTwo+vContinue)},"X,Y|,;1,0,1x2"),
+            (new[]{MergeCell("A")+MergeCell("B")+MergeCell("C"),"<w:trPr><w:gridBefore w:val=\"1\"/></w:trPr>"+MergeCell("E")+MergeCell("F")},"A,B,C|,E,F;"),
+            (new[]{MergeCell("A")+MergeCell("B",vRestart)+MergeCell("C"),"<w:trPr><w:gridBefore w:val=\"1\"/></w:trPr>"+MergeCell("",vContinue)+MergeCell("F")},"A,B,C|,,F;0,1,2x1"),
+            (new[]{MergeCell("A")+MergeCell("B")+MergeCell("C"),"<w:trPr><w:gridAfter w:val=\"1\"/></w:trPr>"+MergeCell("E")+MergeCell("F")},"A,B,C|E,F;"),
+            (new[]{MergeCell("A",spanTwo+"<w:hMerge w:val=\"restart\"/>")+MergeCell("",spanTwo+"<w:hMerge/>")},"A,,,;0,0,1x4"),
+            (new[]{MergeCell("A","<w:hMerge w:val=\"restart\"/>")+MergeCell("","<w:hMerge w:val=\"continue\"/>")+MergeCell("C")},"A,,C;0,0,1x2"),
+            (new[]{MergeCell("A")+MergeCell("B","<w:hMerge/>")},"A,B;"),
+            (new[]{MergeCell("A","<w:hMerge w:val=\"restart\"/>")+MergeCell("B",vRestart+"<w:hMerge/>")},"A,B;"),
+        })check(MergedTable("Merged table",mergeRows) is var mergeActual&&mergeActual==mergeExpected,"Word table merges differ from the Mac: "+mergeActual+" instead of "+mergeExpected);
+        try{MergedTable("Wide gridBefore","<w:trPr><w:gridBefore w:val=\"1024\"/></w:trPr>"+MergeCell("A"));throw new Exception("A row past 1,024 grid columns was accepted");}catch(InvalidDataException){check(true,"w:gridBefore column limit");}
         var srt="1\r\n00:00:01,005 --> 00:00:02,230\r\n<b>Türkçe 🍐</b>\r\n\r\n2\r\n00:00:03,000 --> 00:00:04,000\r\nSecond line\r\n";
         var vtt=SubtitleCodec.Convert(srt,"vtt");check(vtt.StartsWith("WEBVTT",StringComparison.Ordinal)&&vtt.Contains("00:00:01.005"),"SRT/VTT timestamps changed");check(SubtitleCodec.Parse(SubtitleCodec.Convert(vtt,"srt")).Length==2,"Subtitle round trip lost cues");check(SubtitleCodec.Convert(vtt,"txt").Contains("Türkçe 🍐")&&!SubtitleCodec.Convert(vtt,"txt").Contains("<b>"),"Subtitle plain text failed");
         var encodedVtt="WEBVTT\n\n00:00:01.000 --> 00:00:02.000\nTom &amp; Jerry\n\n";
