@@ -911,6 +911,8 @@
 "Download ↗" = "İndir ↗";
 "Download, verify and install Nashi %@? The app will restart. No account or token is needed." = "Nashi %@ indirilip doğrulansın ve kurulsun mu? Uygulama yeniden başlayacak. Hesap veya token gerekmez.";
 "Download, verify and install Nashi %lld? The app will restart. No account or token is needed." = "Nashi %lld indirilip doğrulansın ve kurulsun mu? Uygulama yeniden başlayacak. Hesap veya token gerekmez.";
+"Downloading %@…" = "%@ indiriliyor…";
+"Downloading %lld…" = "%lld indiriliyor…";
 "Downloading LibreOffice 26.8.1…" = "LibreOffice 26.8.1 indiriliyor…";
 "Downloading Nashi %@…" = "Nashi %@ indiriliyor…";
 "Downloading Nashi %lld…" = "Nashi %lld indiriliyor…";
@@ -1402,6 +1404,7 @@
 "MEDIA SETUP" = "MEDYA KURULUMU";
 "MEDIA TOOLS" = "MEDYA ARAÇLARI";
 "MEDIA TOOLS ARE ALREADY INSTALLED." = "MEDYA ARAÇLARI ZATEN KURULU.";
+"MEDIA TOOLS ARE READY." = "MEDYA ARAÇLARI HAZIR.";
 "MEDIA TOOLS READY. YOU CAN EDIT, CONVERT AND DOWNLOAD MEDIA." = "MEDYA ARAÇLARI HAZIR. DÜZENLEYEBİLİR, DÖNÜŞTÜREBİLİR VE İNDİREBİLİRSİN.";
 "MEDIUM · 1920 PX" = "ORTA · 1920 PX";
 "MEDIUM · 1920 PX LONGEST EDGE" = "ORTA · UZUN KENAR 1920 PX";
@@ -1447,6 +1450,7 @@
 "Media setup" = "Medya kurulumu";
 "Media tools" = "Medya araçları";
 "Media tools are already installed." = "Medya araçları zaten kurulu.";
+"Media tools are ready." = "Medya araçları hazır.";
 "Media tools ready. You can edit, convert and download media." = "Medya araçları hazır. Düzenleyebilir, dönüştürebilir ve indirebilirsin.";
 "Medium · 1920 px" = "Orta · 1920 px";
 "Medium · 1920 px longest edge" = "Orta · uzun kenar 1920 px";
@@ -2348,6 +2352,10 @@
 "THE UPDATE DOES NOT CONTAIN NASHI." = "GÜNCELLEME NASHI'Yİ İÇERMİYOR.";
 "THE UPDATE NEEDS ANOTHER TRY" = "GÜNCELLEMEYİ YENİDEN DENEMEK GEREKİYOR";
 "THE UPDATE SIGNATURE IS INVALID. YOUR EXISTING APP WAS KEPT." = "GÜNCELLEME İMZASI GEÇERSİZ. MEVCUT UYGULAMAN KORUNDU.";
+"THE UPSTREAM DOWNLOAD CHECKSUM DID NOT MATCH. NOTHING WAS INSTALLED." = "İNDİRİLEN ARACIN SAĞLAMA TOPLAMI EŞLEŞMEDİ. HİÇBİR ŞEY KURULMADI.";
+"THE UPSTREAM DOWNLOAD EXCEEDS ITS SIZE LIMIT." = "İNDİRİLEN ARAÇ BOYUT SINIRINI AŞIYOR.";
+"THE UPSTREAM DOWNLOAD HAS AN INVALID SIZE." = "İNDİRİLEN ARACIN BOYUTU GEÇERSİZ.";
+"THE UPSTREAM SERVER DID NOT RETURN A SUCCESSFUL HTTPS DOWNLOAD." = "KAYNAK SUNUCU BAŞARILI BİR HTTPS İNDİRMESİ DÖNDÜRMEDİ.";
 "THE VIDEO HAS NO READABLE DIMENSIONS." = "VİDEONUN BOYUTLARI OKUNAMIYOR.";
 "THESE FILES HAVE MOVED OR WERE DELETED." = "BU DOSYALAR TAŞINMIŞ VEYA SİLİNMİŞ.";
 "THIS CROP APPLIES TO EVERY SELECTED IMAGE AND MUST FIT INSIDE EACH ONE." = "BU KIRPMA, SEÇİLEN TÜM GÖRSELLERE UYGULANIR VE HER GÖRSELİN SINIRLARINA SIĞMALIDIR.";
@@ -2509,6 +2517,10 @@
 "The update does not contain Nashi." = "Güncelleme Nashi'yi içermiyor.";
 "The update needs another try" = "Güncellemeyi yeniden denemek gerekiyor";
 "The update signature is invalid. Your existing app was kept." = "Güncelleme imzası geçersiz. Mevcut uygulaman korundu.";
+"The upstream download checksum did not match. Nothing was installed." = "İndirilen aracın sağlama toplamı eşleşmedi. Hiçbir şey kurulmadı.";
+"The upstream download exceeds its size limit." = "İndirilen araç boyut sınırını aşıyor.";
+"The upstream download has an invalid size." = "İndirilen aracın boyutu geçersiz.";
+"The upstream server did not return a successful HTTPS download." = "Kaynak sunucu başarılı bir HTTPS indirmesi döndürmedi.";
 "The video has no readable dimensions." = "Videonun boyutları okunamıyor.";
 "These files have moved or were deleted." = "Bu dosyalar taşınmış veya silinmiş.";
 "This PDF contains no pages." = "Bu PDF'de sayfa yok.";
@@ -2646,6 +2658,8 @@
 "Upgraded from Tangerine? macOS may still show the previous name. Choose this Nashi app when adding it to %@." = "Tangerine'den mi geçtin? macOS eski adı gösterebilir. %@ iznine eklerken bu Nashi uygulamasını seç.";
 "Upgraded from Tangerine? macOS may still show the previous name. Choose this Nashi app when adding it to %lld." = "Tangerine'den mi geçtin? macOS eski adı gösterebilir. %lld iznine eklerken bu Nashi uygulamasını seç.";
 "Upstream download checksum mismatch. Nothing was installed." = "İndirilen aracın sağlama toplamı eşleşmiyor. Hiçbir şey kurulmadı.";
+"Upstream package has no regular %@ executable." = "İndirilen pakette normal bir %@ çalıştırılabilir dosyası yok.";
+"Upstream package has no regular %lld executable." = "İndirilen pakette normal bir %lld çalıştırılabilir dosyası yok.";
 "Upstream versions, licenses and source links" = "Araç sürümleri, lisanslar ve kaynak bağlantıları";
 "Use Open to preview this document in its default app." = "Bu belgeyi varsayılan uygulamasında önizlemek için Aç'ı kullan.";
 "Use a regular writable folder for portable updates." = "Taşınabilir güncellemeler için yazılabilir, normal bir klasör kullan.";
@@ -2654,6 +2668,7 @@
 "Use once if macOS needs permission for your saved update connection." = "macOS kayıtlı güncelleme bağlantısı için izin isterse bir kez kullan.";
 "Use one Instagram photo post with up to 50 items." = "En fazla 50 öğe içeren tek bir Instagram fotoğraf gönderisi kullan.";
 "VALUE" = "DEĞER";
+"VERIFYING AND PREPARING OFFICE TOOLS…" = "OFİS ARAÇLARI DOĞRULANIYOR VE HAZIRLANIYOR…";
 "VERIFYING UPDATE SIGNATURE…" = "GÜNCELLEME İMZASI DOĞRULANIYOR…";
 "VIBRANCE" = "CANLILIK";
 "VIDEO" = "VİDEO";
@@ -2667,6 +2682,7 @@
 "VISUALIZATION" = "GÖRSELLEŞTİRME";
 "VISUALIZATION DIMENSIONS MUST BE BETWEEN 16 AND 8,192 PIXELS." = "GÖRSELLEŞTİRME BOYUTLARI 16 İLE 8.192 PİKSEL ARASINDA OLMALI.";
 "Value" = "Değer";
+"Verifying and preparing office tools…" = "Ofis araçları doğrulanıyor ve hazırlanıyor…";
 "Verifying update signature…" = "Güncelleme imzası doğrulanıyor…";
 "Version %@" = "Sürüm %@";
 "Version %@ is available" = "%@ sürümü hazır";

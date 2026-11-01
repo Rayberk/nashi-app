@@ -911,6 +911,8 @@
 "Download ↗" = "Télécharger ↗";
 "Download, verify and install Nashi %@? The app will restart. No account or token is needed." = "Télécharger, vérifier et installer Nashi %@ ? L’app redémarrera. Aucun compte ni jeton n’est nécessaire.";
 "Download, verify and install Nashi %lld? The app will restart. No account or token is needed." = "Télécharger, vérifier et installer Nashi %lld ? L’app redémarrera. Aucun compte ni jeton n’est nécessaire.";
+"Downloading %@…" = "Téléchargement de %@…";
+"Downloading %lld…" = "Téléchargement de %lld…";
 "Downloading LibreOffice 26.8.1…" = "Téléchargement de LibreOffice 26.8.1…";
 "Downloading Nashi %@…" = "Téléchargement de Nashi %@…";
 "Downloading Nashi %lld…" = "Téléchargement de Nashi %lld…";
@@ -1402,6 +1404,7 @@
 "MEDIA SETUP" = "CONFIGURATION DES MÉDIAS";
 "MEDIA TOOLS" = "OUTILS MULTIMÉDIAS";
 "MEDIA TOOLS ARE ALREADY INSTALLED." = "LES OUTILS MULTIMÉDIAS SONT DÉJÀ INSTALLÉS.";
+"MEDIA TOOLS ARE READY." = "LES OUTILS MULTIMÉDIAS SONT PRÊTS.";
 "MEDIA TOOLS READY. YOU CAN EDIT, CONVERT AND DOWNLOAD MEDIA." = "OUTILS MULTIMÉDIAS PRÊTS. VOUS POUVEZ MODIFIER, CONVERTIR ET TÉLÉCHARGER DES MÉDIAS.";
 "MEDIUM · 1920 PX" = "MOYEN · 1920 PX";
 "MEDIUM · 1920 PX LONGEST EDGE" = "MOYEN · 1920 PX SUR LE PLUS GRAND CÔTÉ";
@@ -1447,6 +1450,7 @@
 "Media setup" = "Configuration des médias";
 "Media tools" = "Outils multimédias";
 "Media tools are already installed." = "Les outils multimédias sont déjà installés.";
+"Media tools are ready." = "Les outils multimédias sont prêts.";
 "Media tools ready. You can edit, convert and download media." = "Outils multimédias prêts. Vous pouvez modifier, convertir et télécharger des médias.";
 "Medium · 1920 px" = "Moyen · 1920 px";
 "Medium · 1920 px longest edge" = "Moyen · 1920 px sur le plus grand côté";
@@ -2348,6 +2352,10 @@
 "THE UPDATE DOES NOT CONTAIN NASHI." = "LA MISE À JOUR NE CONTIENT PAS NASHI.";
 "THE UPDATE NEEDS ANOTHER TRY" = "LA MISE À JOUR DOIT ÊTRE RELANCÉE";
 "THE UPDATE SIGNATURE IS INVALID. YOUR EXISTING APP WAS KEPT." = "LA SIGNATURE DE LA MISE À JOUR EST INVALIDE. VOTRE APP EXISTANTE A ÉTÉ CONSERVÉE.";
+"THE UPSTREAM DOWNLOAD CHECKSUM DID NOT MATCH. NOTHING WAS INSTALLED." = "LA SOMME DE CONTRÔLE DU TÉLÉCHARGEMENT AMONT NE CORRESPOND PAS. RIEN N’A ÉTÉ INSTALLÉ.";
+"THE UPSTREAM DOWNLOAD EXCEEDS ITS SIZE LIMIT." = "LE TÉLÉCHARGEMENT AMONT DÉPASSE SA TAILLE MAXIMALE.";
+"THE UPSTREAM DOWNLOAD HAS AN INVALID SIZE." = "LE TÉLÉCHARGEMENT AMONT A UNE TAILLE NON VALIDE.";
+"THE UPSTREAM SERVER DID NOT RETURN A SUCCESSFUL HTTPS DOWNLOAD." = "LE SERVEUR AMONT N’A PAS FOURNI DE TÉLÉCHARGEMENT HTTPS RÉUSSI.";
 "THE VIDEO HAS NO READABLE DIMENSIONS." = "LES DIMENSIONS DE LA VIDÉO SONT ILLISIBLES.";
 "THESE FILES HAVE MOVED OR WERE DELETED." = "CES FICHIERS ONT ÉTÉ DÉPLACÉS OU SUPPRIMÉS.";
 "THIS CROP APPLIES TO EVERY SELECTED IMAGE AND MUST FIT INSIDE EACH ONE." = "CE RECADRAGE S’APPLIQUE À TOUTES LES IMAGES SÉLECTIONNÉES ET DOIT TENIR DANS CHACUNE D’ELLES.";
@@ -2509,6 +2517,10 @@
 "The update does not contain Nashi." = "La mise à jour ne contient pas Nashi.";
 "The update needs another try" = "La mise à jour doit être relancée";
 "The update signature is invalid. Your existing app was kept." = "La signature de la mise à jour est invalide. Votre app existante a été conservée.";
+"The upstream download checksum did not match. Nothing was installed." = "La somme de contrôle du téléchargement amont ne correspond pas. Rien n’a été installé.";
+"The upstream download exceeds its size limit." = "Le téléchargement amont dépasse sa taille maximale.";
+"The upstream download has an invalid size." = "Le téléchargement amont a une taille non valide.";
+"The upstream server did not return a successful HTTPS download." = "Le serveur amont n’a pas fourni de téléchargement HTTPS réussi.";
 "The video has no readable dimensions." = "Les dimensions de la vidéo sont illisibles.";
 "These files have moved or were deleted." = "Ces fichiers ont été déplacés ou supprimés.";
 "This PDF contains no pages." = "Ce PDF ne contient aucune page.";
@@ -2646,6 +2658,8 @@
 "Upgraded from Tangerine? macOS may still show the previous name. Choose this Nashi app when adding it to %@." = "Vous venez de Tangerine ? macOS peut encore afficher l’ancien nom. Choisissez cette app Nashi en l’ajoutant à %@.";
 "Upgraded from Tangerine? macOS may still show the previous name. Choose this Nashi app when adding it to %lld." = "Vous venez de Tangerine ? macOS peut encore afficher l’ancien nom. Choisissez cette app Nashi en l’ajoutant à %lld.";
 "Upstream download checksum mismatch. Nothing was installed." = "Somme de contrôle du téléchargement amont incorrecte. Rien n’a été installé.";
+"Upstream package has no regular %@ executable." = "Le paquet amont ne contient pas d’exécutable %@ ordinaire.";
+"Upstream package has no regular %lld executable." = "Le paquet amont ne contient pas d’exécutable %lld ordinaire.";
 "Upstream versions, licenses and source links" = "Versions amont, licences et liens vers les sources";
 "Use Open to preview this document in its default app." = "Utilisez Ouvrir pour afficher ce document dans l’app par défaut.";
 "Use a regular writable folder for portable updates." = "Utilisez un dossier ordinaire accessible en écriture pour les mises à jour portables.";
@@ -2654,6 +2668,7 @@
 "Use once if macOS needs permission for your saved update connection." = "À utiliser une fois si macOS demande une autorisation pour votre connexion de mise à jour enregistrée.";
 "Use one Instagram photo post with up to 50 items." = "Utilisez une seule publication de photos Instagram contenant jusqu’à 50 éléments.";
 "VALUE" = "VALEUR";
+"VERIFYING AND PREPARING OFFICE TOOLS…" = "VÉRIFICATION ET PRÉPARATION DES OUTILS BUREAUTIQUES…";
 "VERIFYING UPDATE SIGNATURE…" = "VÉRIFICATION DE LA SIGNATURE DE LA MISE À JOUR…";
 "VIBRANCE" = "ÉCLAT";
 "VIDEO" = "VIDÉO";
@@ -2667,6 +2682,7 @@
 "VISUALIZATION" = "VISUALISATION";
 "VISUALIZATION DIMENSIONS MUST BE BETWEEN 16 AND 8,192 PIXELS." = "LES DIMENSIONS DE LA VISUALISATION DOIVENT ÊTRE COMPRISES ENTRE 16 ET 8 192 PIXELS.";
 "Value" = "Valeur";
+"Verifying and preparing office tools…" = "Vérification et préparation des outils bureautiques…";
 "Verifying update signature…" = "Vérification de la signature de la mise à jour…";
 "Version %@" = "Version %@";
 "Version %@ is available" = "La version %@ est disponible";
