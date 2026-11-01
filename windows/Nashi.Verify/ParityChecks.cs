@@ -40,6 +40,14 @@ internal static class ParityChecks
         var textPdf=Pdf("Text.pdf","BT /F1 24 Tf 72 700 Td (Nashi fixture) Tj ET");var vectorPdf=Pdf("Vector.pdf","0 0 1 rg 72 72 200 200 re f");
         var titledPdf=Pdf("Titled.pdf","BT /F1 24 Tf 72 700 Td (Report) Tj ET",pdf=>{pdf.Info.Title="Rapor";pdf.Info.Author="Ayşe Yılmaz";pdf.Info.Subject="Satış";pdf.Info.Keywords="q3";});
         using(var compressed=PdfSharp.Pdf.IO.PdfReader.Open(DocumentEngine.Pdf("compress",[titledPdf],root)[0],PdfSharp.Pdf.IO.PdfDocumentOpenMode.Import))check(compressed.Info is {Title:"Rapor",Author:"Ayşe Yılmaz",Subject:"Satış",Keywords:"q3"},"Compressing a PDF dropped its title, author, subject or keywords");
+        // Like the Mac, Compress keeps a PDF's password and permissions; a rebuilt copy was saved unprotected.
+        foreach(var (userPassword,typed) in new[]{("user-secret","user-secret"),("user-secret","owner-secret"),("","")})
+        {
+            var protectedPdf=Pdf("Protected "+typed.Length+userPassword.Length+".pdf","BT /F1 24 Tf 72 700 Td (Private) Tj ET",pdf=>{if(userPassword.Length>0)pdf.SecuritySettings.UserPassword=userPassword;pdf.SecuritySettings.OwnerPassword="owner-secret";pdf.SecuritySettings.PermitPrint=false;});
+            var protectedCompressed=DocumentEngine.Pdf("compress",[protectedPdf],root,password:typed)[0];var opensWithoutPassword=true;try{using var _=PdfSharp.Pdf.IO.PdfReader.Open(protectedCompressed,PdfSharp.Pdf.IO.PdfDocumentOpenMode.Import);}catch(PdfSharp.Pdf.IO.PdfReaderException){opensWithoutPassword=false;}
+            using var reopened=PdfSharp.Pdf.IO.PdfReader.Open(protectedCompressed,userPassword,PdfSharp.Pdf.IO.PdfDocumentOpenMode.Import);
+            check(opensWithoutPassword==(userPassword.Length==0)&&reopened.SecurityHandler.Elements.ContainsKey("/Filter")&&reopened.PageCount==1,"Compressing a protected PDF saved a copy without its password or permissions");
+        }
         using(var cleaned=PdfSharp.Pdf.IO.PdfReader.Open(DocumentEngine.Pdf("removeMetadata",[titledPdf],root)[0],PdfSharp.Pdf.IO.PdfDocumentOpenMode.Import))check(cleaned.Info is {Title:"",Author:"",Subject:"",Keywords:""},"Remove Metadata kept the title, author, subject or keywords");
         var textHtml=OfficeDocuments.PdfHtml(textPdf,"",(_,_)=>[9],out var textBlank);var vectorHtml=OfficeDocuments.PdfHtml(vectorPdf,"",(_,area)=>area is null?[1,2,3]:null,out var vectorBlank);
         check(textBlank.Length==0&&textHtml.Contains("Nashi")&&!textHtml.Contains("data:image")&&vectorBlank.SequenceEqual(new[]{1})&&vectorHtml.Contains("data:image/png;base64,AQID"),"A PDF page without extractable text or images converted to a blank page");
