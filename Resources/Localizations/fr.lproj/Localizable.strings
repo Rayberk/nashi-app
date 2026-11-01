@@ -371,6 +371,8 @@
 "CANCEL DOWNLOAD" = "ANNULER LE TÉLÉCHARGEMENT";
 "CANCEL SETUP" = "ANNULER LA CONFIGURATION";
 "CANCELLED. ORIGINALS KEPT." = "ANNULÉ. ORIGINAUX CONSERVÉS.";
+"CANNOT COMPRESS MEDIA WITHOUT A KNOWN DURATION." = "IMPOSSIBLE DE COMPRESSER UN MÉDIA DONT LA DURÉE EST INCONNUE.";
+"CANNOT SPLIT A VIDEO WITH UNKNOWN DURATION." = "IMPOSSIBLE DE DIVISER UNE VIDÉO DONT LA DURÉE EST INCONNUE.";
 "CANNOT START UPDATE INSTALLER." = "IMPOSSIBLE DE DÉMARRER LE PROGRAMME D’INSTALLATION DE LA MISE À JOUR.";
 "CANVAS" = "CANEVAS";
 "CANVAS HEIGHT" = "HAUTEUR DU CANEVAS";
@@ -531,6 +533,7 @@
 "COULD NOT COPY THE SELECTED FILE PATHS." = "IMPOSSIBLE DE COPIER LES CHEMINS DES FICHIERS SÉLECTIONNÉS.";
 "COULD NOT COPY THE SELECTED FILES." = "IMPOSSIBLE DE COPIER LES FICHIERS SÉLECTIONNÉS.";
 "COULD NOT DECODE THE AUDIO WAVEFORM." = "IMPOSSIBLE DE DÉCODER LA FORME D’ONDE AUDIO.";
+"COULD NOT INSPECT MEDIA INFORMATION." = "IMPOSSIBLE D’ANALYSER LES INFORMATIONS DU MÉDIA.";
 "COULD NOT ORIENT IMAGE." = "IMPOSSIBLE D’ORIENTER L’IMAGE.";
 "COULD NOT READ THIS PDF." = "IMPOSSIBLE DE LIRE CE PDF.";
 "COULD NOT RENDER THE REDACTION." = "IMPOSSIBLE D’APPLIQUER LE CAVIARDAGE.";
@@ -560,6 +563,8 @@
 "Cancel download" = "Annuler le téléchargement";
 "Cancel setup" = "Annuler la configuration";
 "Cancelled. Originals kept." = "Annulé. Originaux conservés.";
+"Cannot compress media without a known duration." = "Impossible de compresser un média dont la durée est inconnue.";
+"Cannot split a video with unknown duration." = "Impossible de diviser une vidéo dont la durée est inconnue.";
 "Cannot start update installer." = "Impossible de démarrer le programme d’installation de la mise à jour.";
 "Canvas" = "Canevas";
 "Canvas height" = "Hauteur du canevas";
@@ -747,6 +752,7 @@
 "Could not copy the selected file paths." = "Impossible de copier les chemins des fichiers sélectionnés.";
 "Could not copy the selected files." = "Impossible de copier les fichiers sélectionnés.";
 "Could not decode the audio waveform." = "Impossible de décoder la forme d’onde audio.";
+"Could not inspect media information." = "Impossible d’analyser les informations du média.";
 "Could not open %@." = "Impossible d’ouvrir %@.";
 "Could not open %lld." = "Impossible d’ouvrir %lld.";
 "Could not orient image." = "Impossible d’orienter l’image.";
@@ -2312,6 +2318,9 @@
 "THE EPUB CONTAINS NO READABLE CHAPTERS." = "L’EPUB NE CONTIENT AUCUN CHAPITRE LISIBLE.";
 "THE EPUB CONTAINS XML ENTITY DECLARATIONS, WHICH ARE NOT SUPPORTED." = "L’EPUB CONTIENT DES DÉCLARATIONS D’ENTITÉS XML, QUI NE SONT PAS PRISES EN CHARGE.";
 "THE EPUB HAS NO PACKAGE DOCUMENT." = "L’EPUB NE CONTIENT PAS DE DOCUMENT DE PAQUETAGE.";
+"THE FILE HAS NO AUDIO TRACK." = "LE FICHIER NE CONTIENT AUCUNE PISTE AUDIO.";
+"THE FILE HAS NO PLAYABLE AUDIO OR VIDEO TRACK." = "LE FICHIER NE CONTIENT AUCUNE PISTE AUDIO OU VIDÉO LISIBLE.";
+"THE FILE HAS NO VIDEO TRACK." = "LE FICHIER NE CONTIENT AUCUNE PISTE VIDÉO.";
 "THE IMAGE DOWNLOAD ENDED EARLY." = "LE TÉLÉCHARGEMENT DE L’IMAGE S’EST TERMINÉ PRÉMATURÉMENT.";
 "THE IMAGE ORDER MUST INCLUDE EVERY IMAGE ONCE." = "L’ORDRE DES IMAGES DOIT INCLURE CHAQUE IMAGE UNE FOIS.";
 "THE MEDIA SERVER REDIRECTED TO AN INSECURE URL." = "LE SERVEUR MULTIMÉDIA A REDIRIGÉ VERS UNE URL NON SÉCURISÉE.";
@@ -2339,6 +2348,7 @@
 "THE UPDATE DOES NOT CONTAIN NASHI." = "LA MISE À JOUR NE CONTIENT PAS NASHI.";
 "THE UPDATE NEEDS ANOTHER TRY" = "LA MISE À JOUR DOIT ÊTRE RELANCÉE";
 "THE UPDATE SIGNATURE IS INVALID. YOUR EXISTING APP WAS KEPT." = "LA SIGNATURE DE LA MISE À JOUR EST INVALIDE. VOTRE APP EXISTANTE A ÉTÉ CONSERVÉE.";
+"THE VIDEO HAS NO READABLE DIMENSIONS." = "LES DIMENSIONS DE LA VIDÉO SONT ILLISIBLES.";
 "THESE FILES HAVE MOVED OR WERE DELETED." = "CES FICHIERS ONT ÉTÉ DÉPLACÉS OU SUPPRIMÉS.";
 "THIS CROP APPLIES TO EVERY SELECTED IMAGE AND MUST FIT INSIDE EACH ONE." = "CE RECADRAGE S’APPLIQUE À TOUTES LES IMAGES SÉLECTIONNÉES ET DOIT TENIR DANS CHACUNE D’ELLES.";
 "THIS DOCUMENT NESTS ITS CONTENT TOO DEEPLY TO CONVERT." = "LE CONTENU DE CE DOCUMENT EST TROP PROFONDÉMENT IMBRIQUÉ POUR ÊTRE CONVERTI.";
@@ -2463,6 +2473,9 @@
 "The download stopped responding. Please try again." = "Le téléchargement ne répond plus. Veuillez réessayer.";
 "The downloaded file contains no video." = "Le fichier téléchargé ne contient pas de vidéo.";
 "The downloaded tools are incomplete. Please try setup again." = "Les outils téléchargés sont incomplets. Veuillez relancer la configuration.";
+"The file has no audio track." = "Le fichier ne contient aucune piste audio.";
+"The file has no playable audio or video track." = "Le fichier ne contient aucune piste audio ou vidéo lisible.";
+"The file has no video track." = "Le fichier ne contient aucune piste vidéo.";
 "The image download ended early." = "Le téléchargement de l’image s’est terminé prématurément.";
 "The image order must include every image once." = "L’ordre des images doit inclure chaque image une fois.";
 "The local document converter did not produce a %@ file. %@" = "Le convertisseur de documents local n’a pas produit de fichier %@. %@";
@@ -2496,6 +2509,7 @@
 "The update does not contain Nashi." = "La mise à jour ne contient pas Nashi.";
 "The update needs another try" = "La mise à jour doit être relancée";
 "The update signature is invalid. Your existing app was kept." = "La signature de la mise à jour est invalide. Votre app existante a été conservée.";
+"The video has no readable dimensions." = "Les dimensions de la vidéo sont illisibles.";
 "These files have moved or were deleted." = "Ces fichiers ont été déplacés ou supprimés.";
 "This PDF contains no pages." = "Ce PDF ne contient aucune page.";
 "This PDF has form fields or attachments that merging, splitting or reordering pages cannot keep. No copy was exported." = "Ce PDF contient des champs de formulaire ou des pièces jointes que la fusion, la division ou la réorganisation des pages ne peut pas conserver. Aucune copie n’a été exportée.";

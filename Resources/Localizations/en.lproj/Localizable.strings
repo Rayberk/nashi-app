@@ -371,6 +371,8 @@
 "CANCEL DOWNLOAD" = "CANCEL DOWNLOAD";
 "CANCEL SETUP" = "CANCEL SETUP";
 "CANCELLED. ORIGINALS KEPT." = "CANCELLED. ORIGINALS KEPT.";
+"CANNOT COMPRESS MEDIA WITHOUT A KNOWN DURATION." = "CANNOT COMPRESS MEDIA WITHOUT A KNOWN DURATION.";
+"CANNOT SPLIT A VIDEO WITH UNKNOWN DURATION." = "CANNOT SPLIT A VIDEO WITH UNKNOWN DURATION.";
 "CANNOT START UPDATE INSTALLER." = "CANNOT START UPDATE INSTALLER.";
 "CANVAS" = "CANVAS";
 "CANVAS HEIGHT" = "CANVAS HEIGHT";
@@ -531,6 +533,7 @@
 "COULD NOT COPY THE SELECTED FILE PATHS." = "COULD NOT COPY THE SELECTED FILE PATHS.";
 "COULD NOT COPY THE SELECTED FILES." = "COULD NOT COPY THE SELECTED FILES.";
 "COULD NOT DECODE THE AUDIO WAVEFORM." = "COULD NOT DECODE THE AUDIO WAVEFORM.";
+"COULD NOT INSPECT MEDIA INFORMATION." = "COULD NOT INSPECT MEDIA INFORMATION.";
 "COULD NOT ORIENT IMAGE." = "COULD NOT ORIENT IMAGE.";
 "COULD NOT READ THIS PDF." = "COULD NOT READ THIS PDF.";
 "COULD NOT RENDER THE REDACTION." = "COULD NOT RENDER THE REDACTION.";
@@ -560,6 +563,8 @@
 "Cancel download" = "Cancel download";
 "Cancel setup" = "Cancel setup";
 "Cancelled. Originals kept." = "Cancelled. Originals kept.";
+"Cannot compress media without a known duration." = "Cannot compress media without a known duration.";
+"Cannot split a video with unknown duration." = "Cannot split a video with unknown duration.";
 "Cannot start update installer." = "Cannot start update installer.";
 "Canvas" = "Canvas";
 "Canvas height" = "Canvas height";
@@ -747,6 +752,7 @@
 "Could not copy the selected file paths." = "Could not copy the selected file paths.";
 "Could not copy the selected files." = "Could not copy the selected files.";
 "Could not decode the audio waveform." = "Could not decode the audio waveform.";
+"Could not inspect media information." = "Could not inspect media information.";
 "Could not open %@." = "Could not open %@.";
 "Could not open %lld." = "Could not open %lld.";
 "Could not orient image." = "Could not orient image.";
@@ -2312,6 +2318,9 @@
 "THE EPUB CONTAINS NO READABLE CHAPTERS." = "THE EPUB CONTAINS NO READABLE CHAPTERS.";
 "THE EPUB CONTAINS XML ENTITY DECLARATIONS, WHICH ARE NOT SUPPORTED." = "THE EPUB CONTAINS XML ENTITY DECLARATIONS, WHICH ARE NOT SUPPORTED.";
 "THE EPUB HAS NO PACKAGE DOCUMENT." = "THE EPUB HAS NO PACKAGE DOCUMENT.";
+"THE FILE HAS NO AUDIO TRACK." = "THE FILE HAS NO AUDIO TRACK.";
+"THE FILE HAS NO PLAYABLE AUDIO OR VIDEO TRACK." = "THE FILE HAS NO PLAYABLE AUDIO OR VIDEO TRACK.";
+"THE FILE HAS NO VIDEO TRACK." = "THE FILE HAS NO VIDEO TRACK.";
 "THE IMAGE DOWNLOAD ENDED EARLY." = "THE IMAGE DOWNLOAD ENDED EARLY.";
 "THE IMAGE ORDER MUST INCLUDE EVERY IMAGE ONCE." = "THE IMAGE ORDER MUST INCLUDE EVERY IMAGE ONCE.";
 "THE MEDIA SERVER REDIRECTED TO AN INSECURE URL." = "THE MEDIA SERVER REDIRECTED TO AN INSECURE URL.";
@@ -2339,6 +2348,7 @@
 "THE UPDATE DOES NOT CONTAIN NASHI." = "THE UPDATE DOES NOT CONTAIN NASHI.";
 "THE UPDATE NEEDS ANOTHER TRY" = "THE UPDATE NEEDS ANOTHER TRY";
 "THE UPDATE SIGNATURE IS INVALID. YOUR EXISTING APP WAS KEPT." = "THE UPDATE SIGNATURE IS INVALID. YOUR EXISTING APP WAS KEPT.";
+"THE VIDEO HAS NO READABLE DIMENSIONS." = "THE VIDEO HAS NO READABLE DIMENSIONS.";
 "THESE FILES HAVE MOVED OR WERE DELETED." = "THESE FILES HAVE MOVED OR WERE DELETED.";
 "THIS CROP APPLIES TO EVERY SELECTED IMAGE AND MUST FIT INSIDE EACH ONE." = "THIS CROP APPLIES TO EVERY SELECTED IMAGE AND MUST FIT INSIDE EACH ONE.";
 "THIS DOCUMENT NESTS ITS CONTENT TOO DEEPLY TO CONVERT." = "THIS DOCUMENT NESTS ITS CONTENT TOO DEEPLY TO CONVERT.";
@@ -2463,6 +2473,9 @@
 "The download stopped responding. Please try again." = "The download stopped responding. Please try again.";
 "The downloaded file contains no video." = "The downloaded file contains no video.";
 "The downloaded tools are incomplete. Please try setup again." = "The downloaded tools are incomplete. Please try setup again.";
+"The file has no audio track." = "The file has no audio track.";
+"The file has no playable audio or video track." = "The file has no playable audio or video track.";
+"The file has no video track." = "The file has no video track.";
 "The image download ended early." = "The image download ended early.";
 "The image order must include every image once." = "The image order must include every image once.";
 "The local document converter did not produce a %@ file. %@" = "The local document converter did not produce a %@ file. %@";
@@ -2496,6 +2509,7 @@
 "The update does not contain Nashi." = "The update does not contain Nashi.";
 "The update needs another try" = "The update needs another try";
 "The update signature is invalid. Your existing app was kept." = "The update signature is invalid. Your existing app was kept.";
+"The video has no readable dimensions." = "The video has no readable dimensions.";
 "These files have moved or were deleted." = "These files have moved or were deleted.";
 "This PDF contains no pages." = "This PDF contains no pages.";
 "This PDF has form fields or attachments that merging, splitting or reordering pages cannot keep. No copy was exported." = "This PDF has form fields or attachments that merging, splitting or reordering pages cannot keep. No copy was exported.";

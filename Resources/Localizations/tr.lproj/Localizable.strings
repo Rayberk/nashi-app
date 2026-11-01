@@ -371,6 +371,8 @@
 "CANCEL DOWNLOAD" = "İNDİRMEYİ İPTAL ET";
 "CANCEL SETUP" = "KURULUMU İPTAL ET";
 "CANCELLED. ORIGINALS KEPT." = "İPTAL EDİLDİ. ORİJİNALLER KORUNDU.";
+"CANNOT COMPRESS MEDIA WITHOUT A KNOWN DURATION." = "SÜRESİ BİLİNMEYEN MEDYA SIKIŞTIRILAMAZ.";
+"CANNOT SPLIT A VIDEO WITH UNKNOWN DURATION." = "SÜRESİ BİLİNMEYEN BİR VİDEO BÖLÜNEMEZ.";
 "CANNOT START UPDATE INSTALLER." = "GÜNCELLEME YÜKLEYİCİSİ BAŞLATILAMADI.";
 "CANVAS" = "TUVAL";
 "CANVAS HEIGHT" = "TUVAL YÜKSEKLİĞİ";
@@ -531,6 +533,7 @@
 "COULD NOT COPY THE SELECTED FILE PATHS." = "SEÇİLİ DOSYA YOLLARI KOPYALANAMADI.";
 "COULD NOT COPY THE SELECTED FILES." = "SEÇİLİ DOSYALAR KOPYALANAMADI.";
 "COULD NOT DECODE THE AUDIO WAVEFORM." = "SESİN DALGA BİÇİMİ ÇÖZÜMLENEMEDİ.";
+"COULD NOT INSPECT MEDIA INFORMATION." = "MEDYA BİLGİLERİ İNCELENEMEDİ.";
 "COULD NOT ORIENT IMAGE." = "GÖRSELİN YÖNÜ DÜZELTİLEMEDİ.";
 "COULD NOT READ THIS PDF." = "BU PDF OKUNAMADI.";
 "COULD NOT RENDER THE REDACTION." = "SANSÜR UYGULANAMADI.";
@@ -560,6 +563,8 @@
 "Cancel download" = "İndirmeyi iptal et";
 "Cancel setup" = "Kurulumu iptal et";
 "Cancelled. Originals kept." = "İptal edildi. Orijinaller korundu.";
+"Cannot compress media without a known duration." = "Süresi bilinmeyen medya sıkıştırılamaz.";
+"Cannot split a video with unknown duration." = "Süresi bilinmeyen bir video bölünemez.";
 "Cannot start update installer." = "Güncelleme yükleyicisi başlatılamadı.";
 "Canvas" = "Tuval";
 "Canvas height" = "Tuval yüksekliği";
@@ -747,6 +752,7 @@
 "Could not copy the selected file paths." = "Seçili dosya yolları kopyalanamadı.";
 "Could not copy the selected files." = "Seçili dosyalar kopyalanamadı.";
 "Could not decode the audio waveform." = "Sesin dalga biçimi çözümlenemedi.";
+"Could not inspect media information." = "Medya bilgileri incelenemedi.";
 "Could not open %@." = "%@ açılamadı.";
 "Could not open %lld." = "%lld açılamadı.";
 "Could not orient image." = "Görselin yönü düzeltilemedi.";
@@ -2312,6 +2318,9 @@
 "THE EPUB CONTAINS NO READABLE CHAPTERS." = "EPUB DOSYASINDA OKUNABİLİR BÖLÜM YOK.";
 "THE EPUB CONTAINS XML ENTITY DECLARATIONS, WHICH ARE NOT SUPPORTED." = "EPUB DOSYASI, DESTEKLENMEYEN XML VARLIK BİLDİRİMLERİ İÇERİYOR.";
 "THE EPUB HAS NO PACKAGE DOCUMENT." = "EPUB DOSYASINDA PAKET BELGESİ YOK.";
+"THE FILE HAS NO AUDIO TRACK." = "DOSYADA SES İZİ YOK.";
+"THE FILE HAS NO PLAYABLE AUDIO OR VIDEO TRACK." = "DOSYADA OYNATILABİLİR BİR SES VEYA VİDEO İZİ YOK.";
+"THE FILE HAS NO VIDEO TRACK." = "DOSYADA VİDEO İZİ YOK.";
 "THE IMAGE DOWNLOAD ENDED EARLY." = "GÖRSEL İNDİRMESİ ERKEN SONA ERDİ.";
 "THE IMAGE ORDER MUST INCLUDE EVERY IMAGE ONCE." = "GÖRSEL SIRASINDA HER GÖRSEL BİR KEZ YER ALMALI.";
 "THE MEDIA SERVER REDIRECTED TO AN INSECURE URL." = "MEDYA SUNUCUSU GÜVENLİ OLMAYAN BİR ADRESE YÖNLENDİRDİ.";
@@ -2339,6 +2348,7 @@
 "THE UPDATE DOES NOT CONTAIN NASHI." = "GÜNCELLEME NASHI'Yİ İÇERMİYOR.";
 "THE UPDATE NEEDS ANOTHER TRY" = "GÜNCELLEMEYİ YENİDEN DENEMEK GEREKİYOR";
 "THE UPDATE SIGNATURE IS INVALID. YOUR EXISTING APP WAS KEPT." = "GÜNCELLEME İMZASI GEÇERSİZ. MEVCUT UYGULAMAN KORUNDU.";
+"THE VIDEO HAS NO READABLE DIMENSIONS." = "VİDEONUN BOYUTLARI OKUNAMIYOR.";
 "THESE FILES HAVE MOVED OR WERE DELETED." = "BU DOSYALAR TAŞINMIŞ VEYA SİLİNMİŞ.";
 "THIS CROP APPLIES TO EVERY SELECTED IMAGE AND MUST FIT INSIDE EACH ONE." = "BU KIRPMA, SEÇİLEN TÜM GÖRSELLERE UYGULANIR VE HER GÖRSELİN SINIRLARINA SIĞMALIDIR.";
 "THIS DOCUMENT NESTS ITS CONTENT TOO DEEPLY TO CONVERT." = "BU BELGENİN İÇERİĞİ DÖNÜŞTÜRÜLEMEYECEK KADAR İÇ İÇE.";
@@ -2463,6 +2473,9 @@
 "The download stopped responding. Please try again." = "İndirme yanıt vermiyor. Lütfen tekrar dene.";
 "The downloaded file contains no video." = "İndirilen dosyada video yok.";
 "The downloaded tools are incomplete. Please try setup again." = "İndirilen araçlar eksik. Kurulumu tekrar dene.";
+"The file has no audio track." = "Dosyada ses izi yok.";
+"The file has no playable audio or video track." = "Dosyada oynatılabilir bir ses veya video izi yok.";
+"The file has no video track." = "Dosyada video izi yok.";
 "The image download ended early." = "Görsel indirmesi erken sona erdi.";
 "The image order must include every image once." = "Görsel sırasında her görsel bir kez yer almalı.";
 "The local document converter did not produce a %@ file. %@" = "Yerel belge dönüştürücü bir %@ dosyası oluşturmadı. %@";
@@ -2496,6 +2509,7 @@
 "The update does not contain Nashi." = "Güncelleme Nashi'yi içermiyor.";
 "The update needs another try" = "Güncellemeyi yeniden denemek gerekiyor";
 "The update signature is invalid. Your existing app was kept." = "Güncelleme imzası geçersiz. Mevcut uygulaman korundu.";
+"The video has no readable dimensions." = "Videonun boyutları okunamıyor.";
 "These files have moved or were deleted." = "Bu dosyalar taşınmış veya silinmiş.";
 "This PDF contains no pages." = "Bu PDF'de sayfa yok.";
 "This PDF has form fields or attachments that merging, splitting or reordering pages cannot keep. No copy was exported." = "Bu PDF'de birleştirme, bölme veya sayfaları yeniden sıralama sırasında korunamayan form alanları ya da ekler var. Kopya dışa aktarılmadı.";
