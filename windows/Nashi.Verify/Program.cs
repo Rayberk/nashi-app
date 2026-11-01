@@ -111,6 +111,10 @@ if(Environment.GetEnvironmentVariable("NASHI_VERIFY_FFMPEG") is {} encoder && En
     var directory=Path.Combine(Path.GetTempPath(),"Nashi-Media-"+Guid.NewGuid().ToString("N"));Directory.CreateDirectory(directory);
     try
     {
+        // A failing tool's message keeps its last 6,000 characters from a whole line, as the Mac trims yt-dlp details:
+        // ashowinfo writes ~8.7 KB of "[Parsed_ashowinfo_0 @ …]" lines before the empty output aborts.
+        try{await ProcessRunner.RunAsync(encoder,["-hide_banner","-nostdin","-f","lavfi","-i","sine=d=1","-af","ashowinfo,aselect=0","-abort_on","empty_output","-f","null","-"]);throw new Exception("An empty FFmpeg output did not fail");}
+        catch(IOException error){Check(error.Message.StartsWith("[Parsed_ashowinfo_0 @",StringComparison.Ordinal)&&error.Message.Length<=6000&&error.Message.EndsWith("Conversion failed!",StringComparison.Ordinal),"A tool error message started in the middle of a line: "+error.Message[..Math.Min(80,error.Message.Length)]);}
         var source=Path.Combine(directory,"Source ' $().mp4");
         await ProcessRunner.RunAsync(encoder,["-v","error","-f","lavfi","-i","testsrc2=size=128x72:rate=12:duration=2","-f","lavfi","-i","sine=duration=2:sample_rate=48000","-c:v","libx264","-c:a","aac",source]);
         var original=System.Security.Cryptography.SHA256.HashData(await File.ReadAllBytesAsync(source));
