@@ -205,6 +205,9 @@ internal static class ParityChecks
             Part("word/styles.xml","<w:styles xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><w:style w:type=\"paragraph\" w:styleId=\"Marked\"><w:rPr><w:highlight w:val=\"yellow\"/></w:rPr></w:style></w:styles>");
             Part("word/document.xml","<w:document xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><w:body><w:p><w:pPr><w:pStyle w:val=\"Marked\"/></w:pPr><w:r><w:t>Inherited</w:t></w:r><w:r><w:rPr><w:highlight w:val=\"none\"/></w:rPr><w:t>Cleared</w:t></w:r></w:p></w:body></w:document>");
         }
+        // A Pages header or footer can have several lines; like the Mac (and table cells), each line break is kept in the HTML that Office imports.
+        string HeaderFooterHtml(string header,string footer){using var model=System.Text.Json.JsonDocument.Parse(System.Text.Json.JsonSerializer.Serialize(new{header,footer,blocks=Array.Empty<object>()}));return OfficeDocuments.ModelHtml(model.RootElement);}
+        check(HeaderFooterHtml("Header one\nHeader two","<b>Footer</b>\nline 2\nline 3").Contains("<header>Header one<br/>Header two</header><footer>&lt;b&gt;Footer&lt;/b&gt;<br/>line 2<br/>line 3</footer>",StringComparison.Ordinal)&&HeaderFooterHtml("Only header","Only footer").Contains("<header>Only header</header><footer>Only footer</footer>",StringComparison.Ordinal),"Pages header or footer line breaks were collapsed into spaces");
         using(var model=System.Text.Json.JsonDocument.Parse(System.Text.Json.JsonSerializer.Serialize(OfficeDocuments.ReadDocx(clearedHighlight))))
         {
             var runs=model.RootElement.GetProperty("blocks")[0].GetProperty("runs");var inherited=runs[0].GetProperty("character").GetProperty("backgroundColor");
